@@ -1,2 +1,3 @@
 # dotfiles
-My config files for i3, nvim, tmux, urvxt +more
+
+My config files for i3, nvim, tmux, urvxt, polybar +more
