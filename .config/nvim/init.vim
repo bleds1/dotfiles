@@ -85,6 +85,9 @@ let &t_SR.="\e[4 q"
 let g:netrw_banner=0
 let g:netrw_winsize=20
 
+"Ranger replace netrw?
+let g:ranger_replace_netrw = 1
+
 "FZF settings
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 "let $FZF_DEFAULT_COMMAND = "find -L"

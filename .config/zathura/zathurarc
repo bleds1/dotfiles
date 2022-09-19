@@ -1,0 +1,15 @@
+set statusbar -h-padding 0
+set statusbar -v-padding 0
+set page-padding 1
+map <C-u> scroll half-up
+map <C-d> scroll half-down
+map i recolor
+map n navigate next
+map p navigate previous
+map q quit
+map z zoom in
+map x zoom out
+set guioptions none
+set font "terminus 9"
+set statusbar-fg "#c9c9c9"
+unmap f
