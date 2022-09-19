@@ -50,6 +50,8 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 
 call plug#end()
 
@@ -130,6 +132,8 @@ map <leader>, :FZF<CR>
 map <leader>bi :Buffers<CR>
 map <leader>. :BLines!<CR>
 map <leader>f :Files!<CR>
+let g:ranger_map_keys = 0
+map <leader>r :Ranger<CR>
 "Goyo
 map <leader>g :Goyo<CR>
 " Startify splash page
