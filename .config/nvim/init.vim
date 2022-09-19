@@ -125,7 +125,7 @@ map <leader>bk :bd<CR>
 map <leader>e :enew<CR>
 "Netrw explorer left
 map <leader>z :Lex<CR>  
-"Telescope/FZF 
+"FZF 
 map <leader>, :FZF<CR>
 map <leader>bi :Buffers<CR>
 map <leader>. :BLines!<CR>
