@@ -16,6 +16,7 @@ set number      "line nos
 set relativenumber  "relative line nos
 set laststatus=0    "show bottom bar
 set wrap        "wrap text
+set noshowmode  "do not show insert msgs etc. whwen using statusline
 set noerrorbells    "no error noises/visual bells
 set wildmode=longest,list,full  
 set tabstop=4 softtabstop=4  "number columns occupied by tab character
@@ -33,6 +34,8 @@ set t_Co=256    "set 256 colour terminal
 call plug#begin('/home/bledley/.config/nvim/plugged')
 
 Plug 'gruvbox-community/gruvbox'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'vim-python/python-syntax'
 Plug 'ap/vim-css-color'
@@ -57,6 +60,14 @@ set cursorline
 hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
+
+lua << END
+require('lualine').setup{
+  options = {
+    theme = 'gruvbox'
+  }
+}
+END
 
 "Cursor
 autocmd InsertEnter,InsertLeave * set cul!
@@ -141,6 +152,8 @@ map <leader>t :vertical topleft :terminal fish<CR>
 "yanked to clipboard Ctrl+c
 vnoremap <C-c> "+y
 vnoremap <C-y> "+y
+"switch on transparency, source vimrc to turn off
+map <leader>x :hi Normal guibg=NONE ctermbg=NONE<CR>
 "source init.vim    
 map <leader>sv :source ~/.config/nvim/init.vim<CR>
 "url view
