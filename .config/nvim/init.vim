@@ -1,8 +1,8 @@
 "NEOVIM CONIG
-
+"
 "General
             
-set nocompatible
+set nocompatible    "redundant?
 set undolevels=500
 set showmatch
 set ignorecase  "case insensitive matching (only works with smartcase)
@@ -26,13 +26,15 @@ set expandtab   "converts tabs to white space
 set smartindent
 set scrolloff=8 "scrolls screen 8 lines before end of screen
 set splitright splitbelow
-filetype plugin indent on   " allows auto-indenting depending on file type
+set signcolumn=yes     "set a key to toggle?
+filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
 set t_Co=256    "set 256 colour terminal
 
 "Plugins
 
 call plug#begin('/home/bledley/.config/nvim/plugged')
 
+" Appearance
 Plug 'gruvbox-community/gruvbox'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -44,6 +46,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
+" Find files
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
@@ -53,7 +56,48 @@ Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
+" LSP Support
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
+" Formatters & linting chris@machine 
+Plug 'jose-elias-alvarez/null-ls.nvim' " 
+
+" LSP-zero
+Plug 'VonHeikemen/lsp-zero.nvim'
+
 call plug#end()
+
+lua <<EOF
+local lsp = require('lsp-zero')
+
+lsp.preset('recommended')
+lsp.setup()
+EOF
+
+" Null-ls settings
+lua  <<EOF
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+        require("null-ls").builtins.diagnostics.eslint,
+        require("null-ls").builtins.completion.spell,
+    },
+})
+EOF
 
 "Colorscheme
 colorscheme gruvbox
@@ -156,15 +200,15 @@ nnoremap <leader>+ :vertical resize =5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 "Open terminal
 map <leader>t :vertical topleft :terminal fish<CR>
-"yanked to clipboard Ctrl+c
+"Yank to clipboard Ctrl+c
 vnoremap <C-c> "+y
 vnoremap <C-y> "+y
-"switch on transparency, source vimrc to turn off
+"Switch on transparency, source vimrc to turn off
 map <leader>x :hi Normal guibg=NONE ctermbg=NONE<CR>
-"source init.vim    
+"Source init.vim    
 map <leader>sv :source ~/.config/nvim/init.vim<CR>
-"url view
+"Url view
 :noremap <leader>u :w<Home>silent <End> !urlview<CR> 
-"jump to the last position when reopening a file
+"Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "
