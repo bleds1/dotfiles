@@ -56,12 +56,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
@@ -69,14 +67,11 @@ Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
-
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-
 " Formatters & linting chris@machine 
 Plug 'jose-elias-alvarez/null-ls.nvim' " 
-
 " LSP-zero
 Plug 'VonHeikemen/lsp-zero.nvim'
 
@@ -98,6 +93,15 @@ require("null-ls").setup({
         require("null-ls").builtins.completion.spell,
     },
 })
+
+EOF
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}
 EOF
 
 "Colorscheme
@@ -111,7 +115,7 @@ autocmd WinLeave * setlocal nocursorline
 lua << END
 require('lualine').setup{
   options = {
-    theme = 'gruvbox'
+    theme = 'dracula'
   }
 }
 END
@@ -148,15 +152,18 @@ let g:startify_lists = [
          \ ]
 "
 let g:startify_bookmarks = [
-			\ { 'w': '~/Documents/vimwiki/index.md' },
-			\ { 'd': '~/Documents/vimwiki/diary/diary.md'},
-            \ { 'n': '~/.config/nvim/init.vim' },
-			\ { 'i': '~/.config/i3/config' },
+            \ { '.': '~/dotfiles/' },
 			\ { 'b': '~/.config/polybar/config' },
-			\ { 'p': '~/.config/picom/picom.conf' },
-			\ { 'D': '~/Documents/' },
 			\ { 'c': '~/.config/' },
+			\ { 'd': '~/Documents/vimwiki/diary/diary.md'},
+			\ { 'D': '~/Documents/' },
+			\ { 'i': '~/.config/i3/config' },
+            \ { 'n': '~/.config/nvim/init.vim' },
+			\ { 'p': '~/.config/picom/picom.conf' },
  			\ { 's': '~/.local/bin/' },
+ 			\ { 't': '~/.tmux.conf/' },
+			\ { 'w': '~/Documents/vimwiki/index.md' },
+            \ { 'x': '~/.Xresources' },
 			\ ]
 "Vimwiki
 ".md files outside the wiki are not seen as .vimwiki
@@ -223,6 +230,8 @@ function! ToggleSignColumn()
         let b:signcolumn_on=1
     endif
 endfunction
+"Transparent signcolumn (works but symbols not transparent)
+"highlight! link SignColumn LineNr
 "Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "END
