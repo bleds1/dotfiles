@@ -1,0 +1,21 @@
+# unsetting the keys bound to next/previous image by stating it without assigning any keys:
+next_img
+prev_img
+# further unsetting:
+zoom_in 
+zoom_out 
+scroll_right 
+scroll_left 
+scroll_up 
+scroll_down 
+space
+# resetting
+toggle_fullscreen f
+next_img space
+prev_img BackSpace
+scroll_left Left
+scroll_right Right
+scroll_up Up
+scroll_down Down
+zoom_in z
+zoom_out x 
