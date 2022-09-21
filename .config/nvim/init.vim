@@ -26,7 +26,7 @@ set expandtab   "converts tabs to white space
 set smartindent
 set scrolloff=8 "scrolls screen 8 lines before end of screen
 set splitright splitbelow
-set signcolumn=yes     "set a key to toggle?
+set signcolumn=yes     "toggle with leader 1/2"
 filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
 set t_Co=256    "set 256 colour terminal
 
@@ -46,6 +46,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
 " Find files
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -209,6 +210,19 @@ map <leader>x :hi Normal guibg=NONE ctermbg=NONE<CR>
 map <leader>sv :source ~/.config/nvim/init.vim<CR>
 "Url view
 :noremap <leader>u :w<Home>silent <End> !urlview<CR> 
+" Toggle signcolumn
+nnoremap <leader>1 :set signcolumn=yes<CR>
+nnoremap <Leader>2 :call ToggleSignColumn()<CR>
+" Toggle signcolumn function
+function! ToggleSignColumn()
+    if !exists("b:signcolumn_on") || b:signcolumn_on
+        set signcolumn=no
+        let b:signcolumn_on=0
+    else
+        set signcolumn=number
+        let b:signcolumn_on=1
+    endif
+endfunction
 "Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"
+"END
