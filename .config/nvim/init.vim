@@ -185,6 +185,7 @@ let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
 			\ { 'b': '~/.config/polybar/config' },
 			\ { 'd': '~/Documents/vimwiki/diary/diary.md'},
+			\ { 'k': '~/.config/kitty/kitty.conf' },
 			\ { 'i': '~/.config/i3/config' },
             \ { 'n': '~/.config/nvim/init.vim' },
 			\ { 'p': '~/.config/picom/picom.conf' },
