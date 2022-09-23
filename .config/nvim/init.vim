@@ -1,4 +1,4 @@
-"NEOVIM CONIG
+"nvim/init.vim
 "
 "General
             
@@ -19,7 +19,7 @@ set wrap        "wrap text
 set noshowmode  "do not show insert msgs etc. whwen using statusline
 set noerrorbells    "no error noises/visual bells
 set wildmode=longest,list,full  
-set tabstop=4 softtabstop=4  "number columns occupied by tab character
+set tabstop=4 "number columns occupied by tab character
 set shiftwidth=4    "width for autoindents
 set softtabstop=4   "see multiple spaces as tabstops so <BS>
 set expandtab   "converts tabs to white space
@@ -36,6 +36,7 @@ call plug#begin('/home/bledley/.config/nvim/plugged')
 
 " Appearance
 Plug 'gruvbox-community/gruvbox'
+Plug 'arzg/vim-colors-xcode'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -56,6 +57,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'kyazdani42/nvim-tree.lua'
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
@@ -105,7 +107,9 @@ require('nvim-treesitter.configs').setup {
 EOF
 
 "Colorscheme
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme xcodedark
+set background=dark
 "Cursorline
 set cursorline
 hi cursorline cterm=none term=none
@@ -142,8 +146,16 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 "let $FZF_DEFAULT_COMMAND = "find -L"
 
 "Startify settings"
-let g:startify_custom_header =      [            "NEOVIM v0.7.2"            ]
+let g:startify_custom_header = [
+    \'                                                      ', 
+    \'                         NEOVIM 0.7.2                 ', 
+    \'                                                      ',
+    \'                                                      ',
+    \]
 "
+let g:startify_files_number = 5
+let g:startify_padding_left = 10
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_lists = [
          \ {'header': ['   Recent '],            'type': 'files' },
 	 \ {'header': ['   Bookmarks'], 'type': 'bookmarks' },
@@ -154,13 +166,10 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
 			\ { 'b': '~/.config/polybar/config' },
-			\ { 'c': '~/.config/' },
 			\ { 'd': '~/Documents/vimwiki/diary/diary.md'},
-			\ { 'D': '~/Documents/' },
 			\ { 'i': '~/.config/i3/config' },
             \ { 'n': '~/.config/nvim/init.vim' },
 			\ { 'p': '~/.config/picom/picom.conf' },
- 			\ { 's': '~/.local/bin/' },
  			\ { 't': '~/.tmux.conf/' },
 			\ { 'w': '~/Documents/vimwiki/index.md' },
             \ { 'x': '~/.Xresources' },
@@ -187,6 +196,7 @@ map <leader>, :FZF<CR>
 map <leader>bi :Buffers<CR>
 map <leader>. :BLines!<CR>
 map <leader>f :Files!<CR>
+map <leader>ff :Telescope find_files<CR>
 let g:ranger_map_keys = 0
 map <leader>r :Ranger<CR>
 "Goyo

@@ -74,7 +74,7 @@ URxvt*termName: rxvt-unicode-256color
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
-URxvt.internalBorder: 10
+URxvt.internalBorder: 8
 !! terminus names see end of file!
 
 URxvt.font:     xft:Iosevka:style=Regular:size=10, \
