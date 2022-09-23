@@ -136,7 +136,7 @@ URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
 URxvt.keysym.M-z:    command:\033]710;xft:Iosevka:style=Regular:size=9\007
 URxvt.keysym.M-x:    command:\033]710;xft:Iosevka:style=Regular:size=10\007
-URxvt.keysym.M-c:    command:\033]710;xft:Iosevka:style=Regular:size=12\007
+URxvt.keysym.M-c:    command:\033]710;xft:Iosevka:style=Regular:size=11\007
 ! URxvt.keysym.M-z: resize-font:smaller
 ! URxvt.keysym.M-x: resize-font:bigger
 ! URxvt.keysym.M-c: resize-font:reset

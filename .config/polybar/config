@@ -78,20 +78,23 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+###################################################################
+
 [bar/polybar2]
 
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 16
+height = 18
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
 fixed-center = true
+bottom = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-;line-size = 1
+line-size = 1
 ;line-color = #f00
 
 border-size = 0
@@ -99,19 +102,19 @@ border-top-size = 0
 border-bottom-size = 0
 border-color = #141a1b
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Mononoki Nerd Font:pixelsize=8;1
-font-1 = SourceCodePro:fontformat=truetype:size=8:antialias=false;0
-font-2 = SourceCodePro:pixelsize=8;1
+font-0 = Terminus:pixelsize=6;0
+font-1 = Mononoki Nerd Font:pixelsize=8;1
+font-2 = SourceCodePro:pixelsize=6;1
 
 modules-left = battery i3 xwindow
-modules-center =
-modules-right = wlan cpu temperature date
+modules-center =  
+modules-right = wlan cpu memory temperature date
 
 tray-position = right
 tray-padding = 2
