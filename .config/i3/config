@@ -21,10 +21,6 @@ font pango:monospace 8
 set $term kitty
 # set modkey
 set $mod Mod4
-# US Keyboard Layout
-exec setxkbmap -layout us
-# set caps as esc with setxkbmap
-exec --no-startup-id setxkbmap -option caps:escape
 # Polybar
 exec_always polybar polybar1 &
 # Conky
@@ -222,6 +218,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Keyboard Layout
+#exec --no-startup-id setxkbmap -layout us
+# set caps as esc with setxkbmap
+exec --no-startup-id setxkbmap -option caps:escape
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
