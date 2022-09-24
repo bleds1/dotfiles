@@ -191,6 +191,7 @@ let g:startify_bookmarks = [
 			\ { 'p': '~/.config/picom/picom.conf' },
  			\ { 't': '~/.tmux.conf/' },
 			\ { 'w': '~/Documents/vimwiki/index.md' },
+            \ { 'z': '~/.zshrc' },
             \ { 'x': '~/.Xresources' },
 			\ ]
 "Vimwiki

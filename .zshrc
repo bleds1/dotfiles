@@ -155,6 +155,8 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vids="cd ~/Videos/"
 alias music="cd ~/Music/"
+alias wiki="cd ~/Documents/vimwiki/"
+alias diary="cd ~/Documents/vimwiki/diary/"
 
 #grep color
 alias grep="grep --color=auto"
