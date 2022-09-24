@@ -2,33 +2,33 @@
 "
 "General
             
-set nocompatible    "redundant?
-set undolevels=500
-set showmatch
-set ignorecase  "case insensitive matching (only works with smartcase)
-set smartcase   "if capital is included in search make it case-sensitive
-set nohlsearch    "highlight search results
-set nobackup    "no auto backups
+"set noshowmode  "do not show insert msgs etc. whwen using statusline
+filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
+set expandtab   "converts tabs to white space
 set hidden      "hide buffers in background when abandoned
+set ignorecase  "case insensitive matching (only works with smartcase)
+set laststatus=0    "show bottom bar
 set mouse=a     "enable mouse usage (all modes)
+set nobackup    "no auto backups
+set nocompatible    "redundant?
+set noerrorbells    "no error noises/visual bells
+set nohlsearch    "highlight search results
 set noswapfile  "no swap      
 set number      "line nos
 set relativenumber  "relative line nos
-set laststatus=0    "show bottom bar
-set wrap        "wrap text
-set noshowmode  "do not show insert msgs etc. whwen using statusline
-set noerrorbells    "no error noises/visual bells
-set wildmode=longest,list,full  
-set tabstop=4 "number columns occupied by tab character
-set shiftwidth=4    "width for autoindents
-set softtabstop=4   "see multiple spaces as tabstops so <BS>
-set expandtab   "converts tabs to white space
-set smartindent
 set scrolloff=8 "scrolls screen 8 lines before end of screen
-set splitright splitbelow
+set shiftwidth=4    "width for autoindents
+set showmatch
 set signcolumn=yes     "toggle with leader 1/2"
-filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
+set smartcase   "if capital is included in search make it case-sensitive
+set smartindent
+set softtabstop=4   "see multiple spaces as tabstops so <BS>
+set splitright splitbelow
 set t_Co=256    "set 256 colour terminal
+set tabstop=4 "number columns occupied by tab character
+set undolevels=500
+set wildmode=longest,list,full  
+set wrap        "wrap text
 
 "Plugins
 
@@ -108,7 +108,7 @@ EOF
 
 "Colorscheme
 "colorscheme gruvbox
-colorscheme xcodedark
+colorscheme xcodedarkhc
 set background=dark
 "Cursorline
 set cursorline

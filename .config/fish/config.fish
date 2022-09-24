@@ -43,9 +43,6 @@ alias db="deadbeef"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 
-##starship prompt
-##starship init fish | source
-
 #start of fish prompt
 
 # name: Nim
@@ -193,3 +190,5 @@ function fish_prompt
 end
 ## end of fish prompt
 
+##starship prompt
+starship init fish | source

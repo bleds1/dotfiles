@@ -18,7 +18,7 @@ font pango:monospace 8
 
 # STARTUP
 # Default Terminal
-set $term urxvt
+set $term kitty
 # set modkey
 set $mod Mod4
 # US Keyboard Layout
@@ -29,8 +29,6 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec_always polybar polybar1 &
 # Conky
 exec --no-startup-id conky
-# urxvtd daemon
-exec_always --no-startup-id urxvtd -q &
 # Set Wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpapers/space-owl.jpg
 # transparency
@@ -38,18 +36,18 @@ exec_always --no-startup-id picom --experimental-backends &
 # dunst notifcations
 exec_always --no-startup-id dunst &
 #terminal dropdown
-exec_always --no-startup-id urxvt -name "dropdown" -e fish &
+#exec_always --no-startup-id kitty -T "dropdown" &
 
 # dropdown/scratchpad window terminal
-for_window [instance="dropdown"] floating enable;
-for_window [instance="dropdown"] move scratchpad;
-for_window [instance="dropdown"] sticky enable;
-for_window [instance="dropdown"] scratchpad show;
-for_window [instance="dropdown"] border pixel 1;
-for_window [instance="dropdown"] resize set 800 600;
-for_window [instance="dropdown"] move position center
+#for_window [title="dropdown"] floating enable;
+#for_window [title="dropdown"] move scratchpad;
+#for_window [title="dropdown"] sticky enable;
+#for_window [title="dropdown"] scratchpad show;
+#for_window [title="dropdown"] border pixel 1;
+#for_window [title="dropdown"] resize set 800 600;
+#for_window [title="dropdown"] move position center
 # dropdown keybind
-bindsym $mod+Return [instance="dropdown"] scratchpad show; move position center
+#bindsym $mod+Return [title="dropdown"] scratchpad show; move position center
 
 # ranger scratchpad
 #exec_always --no-startup-id urxvt -n "ranger" -e ranger &
@@ -62,7 +60,7 @@ bindsym $mod+Return [instance="dropdown"] scratchpad show; move position center
 #for_window [instance="ranger"] resize set 628 778
 # dropdown keybind
 #bindsym $mod+g [instance="ranger"] scratchpad show, move position center
-bindsym $mod+g exec urxvt -e "ranger" 
+bindsym $mod+g exec kitty -e "ranger" 
 #window classes
 #mpv
 for_window [class="mpv"] floating enable
@@ -91,7 +89,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # KEYBINDS
 
 # start a terminal
-bindsym $mod+t exec ~/.local/bin/ut.sh
+bindsym $mod+t exec kitty
 
 # open browser
 bindsym $mod+b exec firefox
@@ -107,7 +105,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+p exec ~/.scripts/dmenu_pass 
 
 # open nmtui
-bindsym $mod+i exec --no-startup-id $term -e nmtui
+bindsym $mod+i exec --no-startup-id kitty -e nmtui
 
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
