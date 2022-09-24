@@ -137,6 +137,7 @@ alias vf="nvim (fzf)"
 alias zat="zathura"
 alias db="deadbeef"
 alias zrc="$EDITOR $HOME/.zshrc"
+alias h="history | f"
 
 #ls exa
 alias l="exa -a --color=always --sort Name"
@@ -146,6 +147,14 @@ alias la="exa -al --color=always --sort Name --group-directories-first"
 alias lm="exa -al --color=always --sort modified --reverse --no-permissions --no-filesize --no-user"
 alias lt="exa -aT --color=always --group-directories-first"
 
+#shortcuts
+alias docs="cd ~/Documents/"
+alias dl="cd ~/Downloads/"
+alias pics="cd ~/Pictures/"
+alias .="cd ~/dotfiles/"
+alias cfg="cd ~/.config/"
+alias vids="cd ~/Videos/"
+alias music="cd ~/Music/"
 
 #grep color
 alias grep="grep --color=auto"
