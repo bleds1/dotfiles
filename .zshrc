@@ -21,6 +21,8 @@ ENABLE_CORRECTION="true"
 # editor default
 export EDITOR=nvim
 export VISUAL=nvim
+export BROWSER=firefox
+export TERMINAL=kitty
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -177,12 +179,15 @@ alias rm="rm -i"
 # vi mode 
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^v' edit-command-line
+
 
 # use vim keys in tab complete menu
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey "^?" backward-delete-char
 
 #history-substring-search
 bindkey '^[[A' history-substring-search-up
