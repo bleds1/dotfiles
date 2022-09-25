@@ -116,6 +116,10 @@ hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
+hi Normal ctermbg=16 ctermfg=242 guibg=#000000 guifg=#f5f5f5
+hi LineNr ctermbg=16 guibg=#000000
+hi EndOfBuffer ctermbg=16 guibg=#000000
+
 lua << END
 require('lualine').setup{
   options = {

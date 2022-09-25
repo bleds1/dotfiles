@@ -144,7 +144,7 @@ alias h="history | f"
 
 #git
 alias gs='git status'
-alias ga='git add'
+alias ga='git add -A'
 alias gp='git push'
 alias gpo='git push origin main'
 alias gplo='git pull origin'
