@@ -189,7 +189,7 @@ let g:startify_bookmarks = [
 			\ { 'i': '~/.config/i3/config' },
             \ { 'n': '~/.config/nvim/init.vim' },
 			\ { 'p': '~/.config/picom/picom.conf' },
- 			\ { 't': '~/.tmux.conf/' },
+ 			\ { 'm': '~/dotfiles/.tmux.conf/' },
 			\ { 'w': '~/Documents/vimwiki/index.md' },
             \ { 'z': '~/.zshrc' },
             \ { 'x': '~/.Xresources' },
@@ -210,10 +210,10 @@ map <leader>bk :bd<CR>
 "new buffer (space, e)
 map <leader>e :enew<CR>
 "Netrw explorer left
-map <leader>z :Lex<CR>  
+map <leader>z :NvimTreeToggle<CR>  
 "FZF 
 map <leader>, :FZF<CR>
-map <leader>bi :Buffers<CR>
+map <leader>b :Buffers<CR>
 map <leader>. :BLines!<CR>
 map <leader>f :Files!<CR>
 map <leader>ff :Telescope find_files<CR>
@@ -260,7 +260,37 @@ function! ToggleSignColumn()
         let b:signcolumn_on=1
     endif
 endfunction
-"Transparent signcolumn (works but symbols not transparent)
+"
+lua <<EOF
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
+  },
+})
+EOF
+
+"Transparent signcolumn for certain themes (works but symbols not transparent)
 "highlight! link SignColumn LineNr
 "Jump to the last position when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

@@ -113,7 +113,9 @@ bindsym $mod+Shift+t sticky toggle
 bindsym $mod+q kill
 
 #basic lockscreen
-bindsym $mod+z exec i3lock -c 000000
+set $i3lockwall sh ~/.local/bin/lock
+#bindsym $mod+z exec i3lock -c 000000
+bindsym $mod+z exec --no-startup-id $i3lockwall
 
 # take a screenshot
 bindsym Print exec scrot
@@ -171,6 +173,9 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# window floating rules 
+for_window [class="Arandr"] floating enable
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

@@ -142,6 +142,19 @@ alias db="deadbeef"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 
+#git
+alias gs='git status'
+alias ga='git add'
+alias gp='git push'
+alias gpo='git push origin main'
+alias gplo='git pull origin'
+alias gb='git branch '
+alias gc='git commit'
+alias gco='git checkout '
+alias gl='git log'
+alias glog='git log --pretty="oneline"'
+alias glol='git log --graph --oneline --decorate'
+
 #ls exa
 alias l="exa -a --color=always --sort Name"
 alias ls="exa -a --color=always --sort Name --group-directories-first"
@@ -172,15 +185,17 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 
 #confirm before overwrite
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
+alias cp="cp -i -v"
+alias mv="mv -i -v"
+alias rm="rm -i -v"
+
+#lynx
+alias lynx='lynx -vikeys -accept_all_cookies'
 
 # vi mode 
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^v' edit-command-line
-
 
 # use vim keys in tab complete menu
 bindkey -M menuselect 'h' vi-backward-char
@@ -188,6 +203,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey "^?" backward-delete-char
+
+# show hidden in tab completion
+setopt globdots
 
 #history-substring-search
 bindkey '^[[A' history-substring-search-up
