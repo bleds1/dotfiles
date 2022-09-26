@@ -3,12 +3,15 @@
 My config files for: 
 
 - i3 gaps
+- Kitty
 - Neovim
+- Polybar 
+- Zsh
+- Qutebrowser
+- Ranger
 - Tmux
 - Urvxt
-- Polybar 
+- Dunst
 - Picom
-- Qutebrowser
-- Xresources
 
 +more
