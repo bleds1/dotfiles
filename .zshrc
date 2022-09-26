@@ -92,7 +92,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting history-substring-search)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting history-substring-search fzf)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -116,6 +116,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#364949'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+#FZF - TODO alt-c show hidden directories?
+#
+export FZF_BASE="$HOME/.fzf.zsh"
+DISABLE_FZF_AUTO_COMPLETION="true'"
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 ##aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -123,10 +129,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#364949'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 alias ..="cd .."
 alias c="clear -x"
 
@@ -220,3 +222,5 @@ source ~/.config/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 #suppress warngins powerlevel10k
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
