@@ -58,6 +58,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'jiangmiao/auto-pairs'
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
@@ -116,7 +117,7 @@ hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-hi Normal ctermbg=16 ctermfg=242 guibg=#000000 guifg=#f5f5f5
+hi Normal ctermbg=16 ctermfg=242 guibg=#000000 guifg=#FFFFFF
 hi LineNr ctermbg=16 guibg=#000000
 hi EndOfBuffer ctermbg=16 guibg=#000000
 
@@ -132,11 +133,6 @@ END
 autocmd InsertEnter,InsertLeave * set cul!
 autocmd InsertEnter * set nocul
 autocmd InsertLEave * set cul
-
-"Blinking block/line
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[0 q"
-let &t_SR.="\e[4 q"
 
 "Netrw
 let g:netrw_banner=0
