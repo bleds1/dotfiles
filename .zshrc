@@ -143,7 +143,8 @@ alias zat="zathura"
 alias db="deadbeef"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
-
+alias t="task"
+alias ta="task add"
 #git
 alias gs='git status'
 alias ga='git add -A'

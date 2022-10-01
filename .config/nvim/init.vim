@@ -46,6 +46,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
+"Plug 'tbabej/taskwiki' "TODO Python errors
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 " Find files
