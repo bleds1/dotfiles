@@ -29,7 +29,6 @@ set tabstop=4 "number columns occupied by tab character
 set undolevels=500
 set wildmode=longest,list,full  
 set wrap        "wrap text
-set completeopt=menuone,noinsert,noselect 
 
 "Plugins
 call plug#begin('/home/bledley/.config/nvim/plugged')
@@ -107,6 +106,8 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true }
 }
 EOF
+
+set completeopt=menuone,noinsert,noselect 
 
 "Colorscheme
 "colorscheme gruvbox
