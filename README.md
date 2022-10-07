@@ -10,7 +10,7 @@ My config files for:
 - Qutebrowser
 - Ranger
 - Tmux
-- Urvxt
+- Taskwarrior
 - Dunst
 - Picom
 
