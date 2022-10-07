@@ -49,9 +49,9 @@ Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 " Find files
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'nvim-telescope/telescope-file-browser.nvim'
+"Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+"Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -60,54 +60,54 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'jiangmiao/auto-pairs'
 " LSP Support
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'williamboman/mason.nvim'
+"Plug 'williamboman/mason-lspconfig.nvim'
 " Autocompletion
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'hrsh7th/cmp-buffer'
+"Plug 'hrsh7th/cmp-path'
+"Plug 'saadparwaiz1/cmp_luasnip'
+"Plug 'hrsh7th/cmp-nvim-lsp'
+"Plug 'hrsh7th/cmp-nvim-lua'
 " Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
+"Plug 'L3MON4D3/LuaSnip'
+"Plug 'rafamadriz/friendly-snippets'
 " Formatters & linting chris@machine 
-Plug 'jose-elias-alvarez/null-ls.nvim' " 
+"Plug 'jose-elias-alvarez/null-ls.nvim' " 
 " LSP-zero
-Plug 'VonHeikemen/lsp-zero.nvim'
+"Plug 'VonHeikemen/lsp-zero.nvim'
 
 call plug#end()
 
-lua <<EOF
-local lsp = require('lsp-zero')
+"lua <<EOF
+"local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
-lsp.setup()
-EOF
+"lsp.preset('recommended')
+"lsp.setup()
+"EOF
 
 " Null-ls settings
-lua  <<EOF
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.eslint,
-        require("null-ls").builtins.completion.spell,
-    },
-})
+"lua  <<EOF
+"require("null-ls").setup({
+"    sources = {
+"        require("null-ls").builtins.formatting.stylua,
+"        require("null-ls").builtins.diagnostics.eslint,
+"        require("null-ls").builtins.completion.spell,
+"    },
+"})
+"
+"EOF
 
-EOF
+"lua <<EOF
+"require('nvim-treesitter.configs').setup {
+"  ensure_installed = "all",
+"  highlight = { enable = true },
+"  indent = { enable = true }
+"}
+"EOF
 
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "all",
-  highlight = { enable = true },
-  indent = { enable = true }
-}
-EOF
-
-set completeopt=menuone,noinsert,noselect 
+"set completeopt=menuone,noinsert,noselect 
 
 "Colorscheme
 "colorscheme gruvbox
