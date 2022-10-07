@@ -1,8 +1,8 @@
 set statusbar -h-padding 0
 set statusbar -v-padding 0
 set page-padding 1
-map <C-u> scroll half-up
-map <C-d> scroll half-down
+map u scroll half-up
+map d scroll half-down
 map i recolor
 map n navigate next
 map p navigate previous
