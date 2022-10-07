@@ -191,10 +191,9 @@ let g:startify_bookmarks = [
 			\ { 'i': '~/.config/i3/config' },
             \ { 'n': '~/.config/nvim/init.vim' },
 			\ { 'p': '~/.config/picom/picom.conf' },
- 			\ { 'm': '~/dotfiles/.tmux.conf/' },
+ 			\ { 'm': '~/dotfiles/.tmux.conf' },
 			\ { 'w': '~/Documents/vimwiki/index.md' },
             \ { 'z': '~/.zshrc' },
-            \ { 'x': '~/.Xresources' },
 			\ ]
 "Vimwiki
 ".md files outside the wiki are not seen as .vimwiki
