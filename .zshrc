@@ -145,10 +145,7 @@ alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias t="task"
 alias ta="task add"
-alias tcal="task calendar"
-alias tb="task burndown"
 alias timer="termdown --no-figlet --alt-format --no-text-magic"
-
 #git
 alias gs='git status'
 alias ga='git add -A'
