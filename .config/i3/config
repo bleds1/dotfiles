@@ -26,7 +26,7 @@ exec_always polybar polybar1 &
 # Conky
 #exec --no-startup-id conky
 # Set Wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/space-owl.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/pyramid-simple-wallpaper.jpg
 # transparency
 exec_always --no-startup-id picom --experimental-backends &
 # dunst notifcations

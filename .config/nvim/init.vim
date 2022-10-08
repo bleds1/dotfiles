@@ -36,6 +36,8 @@ call plug#begin('/home/bledley/.config/nvim/plugged')
 " Appearance
 Plug 'gruvbox-community/gruvbox'
 Plug 'arzg/vim-colors-xcode'
+Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -111,22 +113,24 @@ call plug#end()
 
 "Colorscheme
 "colorscheme gruvbox
-colorscheme xcodedarkhc
-set background=dark
+"colorscheme xcodedarkhc
+"colorscheme nord
+colorscheme onedark
+"set background=dark
 "Cursorline
 set cursorline
 hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-hi Normal ctermbg=16 ctermfg=242 guibg=#000000 guifg=#FFFFFF
-hi LineNr ctermbg=16 guibg=#000000
-hi EndOfBuffer ctermbg=16 guibg=#000000
+hi Normal ctermfg=245 ctermbg=NONE
+hi LineNr ctermfg=237 
+"hi EndOfBuffer ctermbg=16 guibg=#111317
 
 lua << END
 require('lualine').setup{
   options = {
-    theme = 'dracula'
+    theme = 'ayu_mirage'
   }
 }
 END
