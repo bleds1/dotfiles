@@ -412,8 +412,8 @@ label-muted-background = ${color.background}
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 95
-low-at = 30
+full-at = 100
+low-at = 25
 poll-interval = 5
 
 format-charging = <animation-charging> <label-charging>
@@ -449,8 +449,8 @@ animation-discharging-framerate = 750
 type = internal/battery
 battery = BAT1
 adapter = AC
-full-at = 95
-low-at = 30
+full-at = 100
+low-at = 25
 poll-interval = 5
 
 format-charging = <animation-charging> <label-charging>

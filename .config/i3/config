@@ -163,6 +163,10 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Mod1+Right workspace next
 bindsym $mod+Mod1+Left workspace prev
 
+# left right workspace switching v keys
+bindsym $mod+Mod1+l workspace next
+bindsym $mod+Mod1+h workspace prev
+
 # split in vertical orientation
 bindsym $mod+Shift+v split v
 
@@ -177,6 +181,7 @@ bindsym $mod+space focus mode_toggle
 
 # window floating rules 
 for_window [class="Arandr"] floating enable
+#for_window [class="gedit"] floating enable 
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
