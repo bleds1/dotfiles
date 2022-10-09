@@ -56,11 +56,12 @@ font-0 = Terminus:pixelsize=10;0
 font-1 = Mononoki Nerd Font:pixelsize=10;0
 font-2 = SourceCodePro:pixelsize=10;0
 
-modules-left = battery bat2 i3 xwindow
-modules-center =  
-modules-right = wlan cpu memory temperature date
-
-tray-position = right
+modules-left = i3
+;modules-left = battery bat2 i3 xwindow
+modules-center = date 
+;modules-right = wlan cpu memory temperature date
+modules-right = wlan battery bat2
+;tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -357,7 +358,7 @@ date-alt = " %d %b %G "
 ;
 time = %H:%M
 time-alt = %H:%M
-format-prefix =
+;format-prefix =
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #aa62d171
 label = %date% %time%

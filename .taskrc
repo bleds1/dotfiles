@@ -63,12 +63,13 @@ alias.burndown=burndown.daily
 # Custom Colors 
 color.active=color43
 color.today=color35
-color.calendar.today=color0 on color43
+color.calendar.today=color0 on color35
 color.overdue=color9
 color.calendar.overdue=color0 on color196
 color.due=color172
+color.due.today=color41
 color.calendar.due=color0 on color172
-color.calendar.due.today=color0 on color172
+color.calendar.due.today=color0 on color41
 color.waiting=color243
 color.completed=color239
 color.scheduled=color107
