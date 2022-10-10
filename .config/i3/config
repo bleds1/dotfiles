@@ -24,7 +24,7 @@ set $mod Mod4
 # Polybar
 exec_always polybar polybar1 &
 # Conky
-#exec --no-startup-id conky
+exec --no-startup-id conky
 # Set Wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpapers/pyramid-simple-wallpaper.jpg
 # transparency
@@ -181,7 +181,6 @@ bindsym $mod+space focus mode_toggle
 
 # window floating rules 
 for_window [class="Arandr"] floating enable
-#for_window [class="gedit"] floating enable 
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -231,7 +230,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Keyboard Layout
-#exec --no-startup-id setxkbmap -layout us
 # set caps as esc with setxkbmap
 exec --no-startup-id setxkbmap -option caps:escape
 
