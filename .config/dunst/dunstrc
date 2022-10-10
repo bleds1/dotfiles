@@ -126,8 +126,8 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    #format = "<b>%s</b>\n%b"
-    format = "<b><span foreground='#A0A8CD'>%s</span></b>\n%b"
+    format = "<b>%s</b>\n%b"
+    #format = "<b><span foreground='#A0A8CD'>%s</span></b>\n%b"
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
     alignment = center
@@ -311,7 +311,6 @@
     foreground = "#e03d3d"
     frame_color = "#e03d3d"
     timeout = -1
-    format = "<b>%s</b>\n%b"
     # Icon for notifications with critical urgency, uncomment to enable
     icon =  ~/Documents/dunst-icons/normal.png
 
