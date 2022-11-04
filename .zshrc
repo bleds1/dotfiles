@@ -131,8 +131,7 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 #
 alias ..="cd .."
 alias c="clear -x"
-
-##others
+alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
 alias vim="nvim"
@@ -140,7 +139,6 @@ alias oldvim="\vim"
 alias f="fzf"
 alias vf="nvim (fzf)"
 alias zat="zathura"
-alias db="deadbeef"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias t="task"
@@ -158,7 +156,6 @@ alias gco='git checkout '
 alias gl='git log'
 alias glog='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
-
 #ls exa
 alias l="exa -a --color=always --sort Name"
 alias ls="exa -a --color=always --sort Name --group-directories-first"
@@ -182,7 +179,6 @@ alias glo=glow
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-
 
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
@@ -214,7 +210,6 @@ setopt globdots
 #history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
 
 #suppress warnings powerlevel10k
 
