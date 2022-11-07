@@ -13,7 +13,6 @@ config.load_autoconfig(False)
 # Setting dark mode
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#121419'
-#config.bind(',d', 'config-cycle colors.webpage.darkmode.enabled, True ;; restart')
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
 config.bind(',v', 'hint links spawn mpv {hint-url}')
@@ -45,7 +44,7 @@ c.colors.tabs.even.fg = '#5e5e5e'
 c.colors.hints.bg = '#00A39E'
 # Default font
 c.fonts.default_size = '9pt'
-c.fonts.completion.entry = '9pt "Terminus"'
+c.fonts.completion.entry = '11pt "Terminus"'
 c.fonts.debug_console = '9pt "Terminus"'
 c.fonts.statusbar = '9pt "Terminus"' 
 ## Background color of the completion widget category headers.
@@ -71,7 +70,7 @@ c.colors.completion.even.bg = '#191C21'
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
 ## Type: List of QtColor, or QtColor
-c.colors.completion.fg = ['#cccccc', '#cccccc', '#cccccc']
+c.colors.completion.fg = ['#BBBBBB', '#ffffff', '#BBBBBB']
 
 ## Background color of the selected completion item.
 ## Type: QssColor
@@ -83,7 +82,7 @@ c.colors.completion.item.selected.border.bottom = '#009994'
 
 ## Top border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.top = '#817691'
+c.colors.completion.item.selected.border.top = '#009994'
 
 ## Foreground color of the selected completion item.
 ## Type: QtColor
@@ -91,11 +90,11 @@ c.colors.completion.item.selected.fg = '#cccccc'
 
 ## Foreground color of the matched text in the selected completion item.
 ## Type: QtColor
-c.colors.completion.item.selected.match.fg = '#cccccc'
+c.colors.completion.item.selected.match.fg = '#ffffff'
 
 ## Foreground color of the matched text in the completion.
 ## Type: QtColor
-c.colors.completion.match.fg = '#cccccc'
+c.colors.completion.match.fg = '#ffffff'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
@@ -759,7 +758,7 @@ c.completion.cmd_history_max_items = 5000
 ## Python to format its timestamps.
 ## Type: String
 # c.completion.timestamp_format = '%Y-%m-%d %H:%M'
-
+c.completion.timestamp_format = '%d-%m-%Y %H:%M'
 ## Execute the best-matching command on a partial match.
 ## Type: Bool
 # c.completion.use_best_match = False
@@ -1093,7 +1092,7 @@ c.content.media.video_capture = 'ask'
 ##   - true
 ##   - false
 ##   - ask
-#c.content.notifications.enabled = 'ask'
+#c.content.notifications.enabled = 'True'
 
 ## What notification presenter to use for web notifications. Note that
 ## not all implementations support all features of notifications: - With
@@ -1474,7 +1473,7 @@ c.fonts.web.family.cursive = ''
 
 ## CSS border value for hints.
 ## Type: String
-c.hints.border = '1px solid #6689BD'
+c.hints.border = '1px solid #009994'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
@@ -1932,7 +1931,7 @@ c.hints.leave_on_load = True
 ##   - keypress: Display pressed keys when composing a vi command.
 ##   - progress: Progress bar for the current page loading.
 ##   - text:foo: Display the static text after the colon, `foo` in the example.
-# c.statusbar.widgets = ['keypress', 'url', 'scroll', 'history', 'tabs', 'progress']
+c.statusbar.widgets = ['url', 'scroll', 'progress']
 
 ## Open new tabs (middleclick/ctrl+click) in the background.
 ## Type: Bool
