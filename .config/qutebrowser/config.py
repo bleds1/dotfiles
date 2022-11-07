@@ -13,12 +13,12 @@
 # Get rid of Auto Load Dialogue
 config.load_autoconfig(False)
 ## Ranger as file picker
-config.set("fileselect.handler", "external")
-config.set("fileselect.single_file.command", ['urxvt', '-e', 'ranger', '--choosefile={}'])
-config.set("fileselect.multiple_files.command", ['urxvt', '-e', 'ranger', '--choosefiles={}'])
+#config.set("fileselect.handler", "external")
+#config.set("fileselect.single_file.command", ['urxvt', '-e', 'ranger', '--choosefile={}'])
+#config.set("fileselect.multiple_files.command", ['urxvt', '-e', 'ranger', '--choosefiles={}'])
 
 # Setting dark mode
-config.set("colors.webpage.darkmode.enabled", True)
+#config.set("colors.webpage.darkmode.enabled", True)
 
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
@@ -26,7 +26,7 @@ config.bind(',v', 'hint links spawn mpv {hint-url}')
 config.bind(',id', 'hint images download')
 config.bind(',iv', 'hint images spawn feh {hint-url}')
 # open link in firefox
-config.bind(',b', 'hint links spawn firefox {hint-url}')
+#config.bind(',b', 'hint links spawn firefox {hint-url}')
 ## Hiding status bar and tabs
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
@@ -48,23 +48,23 @@ c.colors.tabs.selected.even.fg = '#adadad'
 c.colors.tabs.odd.fg = '#5e5e5e'
 c.colors.tabs.even.fg = '#5e5e5e'
 # Background color for hints
-c.colors.hints.bg = '#1a8872'
+c.colors.hints.bg = '#6689BD'
 # Default font
-c.fonts.default_size = '8pt'
-c.fonts.completion.entry = '8pt "Terminus"'
-c.fonts.debug_console = '8pt "Terminus"'
-c.fonts.statusbar = '8pt "Terminus"' 
+c.fonts.default_size = '9pt'
+c.fonts.completion.entry = '9pt "Terminus"'
+c.fonts.debug_console = '9pt "Terminus"'
+c.fonts.statusbar = '9pt "Terminus"' 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.bg = '#1a1a1a'
+c.colors.completion.category.bg = '#191C21'
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.bottom = '#262626'
+c.colors.completion.category.border.bottom = '#191C21'
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.top = '#262626'
+c.colors.completion.category.border.top = '#191C21'
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
@@ -72,7 +72,7 @@ c.colors.completion.category.fg = '#cccccc'
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-c.colors.completion.even.bg = '#333333'
+c.colors.completion.even.bg = '#191C21'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
@@ -81,11 +81,11 @@ c.colors.completion.fg = ['#cccccc', '#cccccc', '#cccccc']
 
 ## Background color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.bg = '#1a8872'
+c.colors.completion.item.selected.bg = '#6689BD'
 
 ## Bottom border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#1a8872'
+c.colors.completion.item.selected.border.bottom = '#6689BD'
 
 ## Top border color of the selected completion item.
 ## Type: QssColor
@@ -105,14 +105,14 @@ c.colors.completion.match.fg = '#cccccc'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = '#262626'
-c.colors.completion.even.bg = '#262626'
+c.colors.completion.odd.bg = '#191C21'
+c.colors.completion.even.bg = '#191C21'
 
 # Default Zoom
-c.zoom.default = '90%'
+#c.zoom.default = '90%'
 
-# Vim as editor
-c.editor.command = ['st', '-e', 'vim', '{}']
+# Vim as editor TODO:not working
+c.editor.command = ['xfce4-terminal', '-e', 'nvim', '{file}']
 
 # tabs
 c.tabs.favicons.show = 'never'
@@ -122,7 +122,7 @@ c.tabs.title.format = '{current_title}'
 c.downloads.location.directory = '/home/bledley/Downloads'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': 'https://duckduckgo.com/?q={}', 'am': 'https://www.amazon.co.uk/s?k={}','go': 'https://www.google.com/search?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'r': 'https://teddit.net/r/{}', 'wik': 'https://wikiless.org/wiki/Main_Page?lang=en/search={}'}
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'r': 'https://teddit.net/r/{}', 'wik': 'https://wikiless.org/wiki/Main_Page?lang=en/search={}'}
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
@@ -157,7 +157,7 @@ config.bind('<6>', 'tab-focus 6')
 ## session which was last loaded. This behavior can be customized via the
 ## `session.default_name` setting.
 #Type: Bool
-c.auto_save.session = False
+#c.auto_save.session = false
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebEngine and QtWebKit (not
@@ -274,27 +274,27 @@ c.auto_save.session = False
 ## Foreground color of disabled items in the context menu. If set to
 ## null, the Qt default is used.
 ## Type: QssColor
-# c.colors.contextmenu.disabled.fg = None
+#c.colors.contextmenu.disabled.fg = '#7d7d7d`
 
 ## Background color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.bg = '#272727'
+c.colors.contextmenu.menu.bg = '#2e3440'
 
 ## Foreground color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.fg = '#7d7d7d'
+c.colors.contextmenu.menu.fg = '#8a8a8a'
 
 ## Background color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.bg = '#1a8872'
+c.colors.contextmenu.selected.bg = '#3e4450'
 
 ## Foreground color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.fg = '#272727'
+c.colors.contextmenu.selected.fg = '#D5d5d5'
 
 ## Background color for the download bar.
 ## Type: QssColor
@@ -318,7 +318,7 @@ c.colors.downloads.start.bg = '#6272a4'
 
 ## Color gradient stop for download backgrounds.
 ## Type: QtColor
-c.colors.downloads.stop.bg = '#1A8872'
+c.colors.downloads.stop.bg = '#6689BD'
 
 ## Color gradient end for download text.
 ## Type: QtColor
@@ -461,7 +461,7 @@ c.colors.statusbar.insert.bg = '#1e1e1e'
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.fg = '#31D8B6'
+c.colors.statusbar.insert.fg = '#6689BD'
 
 ## Background color of the statusbar.
 ## Type: QssColor
@@ -501,7 +501,7 @@ c.colors.statusbar.url.fg = '#7d7d7d'
 
 ## Foreground color of the URL in the statusbar for hovered links.
 ## Type: QssColor
-c.colors.statusbar.url.hover.fg = '#1a8872'
+c.colors.statusbar.url.hover.fg = '#BBCCDD'
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (http).
@@ -535,11 +535,11 @@ c.colors.tabs.indicator.error = '#B84242'
 
 ## Color gradient start for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.start = '#1a8872'
+c.colors.tabs.indicator.start = '#6689BD'
 
 ## Color gradient end for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.stop = '#1a8872'
+c.colors.tabs.indicator.stop = '#6689BD'
 
 ## Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -815,7 +815,7 @@ c.content.blocking.enabled = True
 ## blocked but should be allowed, consider using
 ## `content.blocking.whitelist` instead.
 #Type: Bool
-c.content.blocking.hosts.block_subdomains = True
+#c.content.blocking.hosts.block_subdomains = True
 
 ## List of URLs to host blocklists for the host blocker.  Only used when
 ## the simple host-blocker is used (see `content.blocking.method`).  The
@@ -906,7 +906,7 @@ c.content.cookies.accept = 'no-3rdparty'
 
 ## Store cookies.
 ## Type: Bool
-c.content.cookies.store = True
+#c.content.cookies.store = false
 
 ## Default encoding to use for websites. The encoding must be a string
 ## describing an encoding such as _utf-8_, _iso-8859-1_, etc.
@@ -1099,7 +1099,7 @@ c.content.media.video_capture = 'ask'
 ##   - true
 ##   - false
 ##   - ask
-c.content.notifications.enabled = 'ask'
+#c.content.notifications.enabled = 'ask'
 
 ## What notification presenter to use for web notifications. Note that
 ## not all implementations support all features of notifications: - With
@@ -1119,7 +1119,7 @@ c.content.notifications.enabled = 'ask'
 ##   - systray: Use a notification presenter based on a systray icon. Falls back to `libnotify` or `messages` if not systray is available. This is a reimplementation of the `qt` setting value, but with the possibility to switch to it at runtime.
 ##   - messages: Show notifications as qutebrowser messages. Most notification features aren't available.
 ##   - herbe: (experimental!) Show notifications using herbe (github.com/dudik/herbe). Most notification features aren't available.
-c.content.notifications.presenter = 'auto'
+#c.content.notifications.presenter = 'auto'
 
 ## Whether to show the origin URL for notifications. Note that URL
 ## patterns with this setting only get matched against the origin part of
@@ -1480,7 +1480,7 @@ c.fonts.web.family.cursive = ''
 
 ## CSS border value for hints.
 ## Type: String
-c.hints.border = '1px solid #1a8872'
+c.hints.border = '1px solid #6689BD'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
@@ -2275,7 +2275,7 @@ c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%
 # config.bind('<Ctrl-A>', 'navigate increment')
 # config.bind('<Ctrl-Alt-p>', 'print')
 # config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+#config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
 # config.bind('<Ctrl-F>', 'scroll-page 0 1')
 # config.bind('<Ctrl-N>', 'open -w')
@@ -2289,7 +2289,7 @@ config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-Shift-W>', 'close')
 # config.bind('<Ctrl-T>', 'open -t')
 # config.bind('<Ctrl-Tab>', 'tab-focus last')
-config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+#config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'mode-enter passthrough')
 # config.bind('<Ctrl-W>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
@@ -2314,7 +2314,7 @@ config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('J', 'tab-next')
 # config.bind('K', 'tab-prev')
 # config.bind('L', 'forward')
-# config.bind('M', 'bookmark-add')
+config.bind('B', 'bookmark-add')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'set-cmd-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -2336,7 +2336,8 @@ config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('b', 'set-cmd-text -s :quickmark-load')
 # config.bind('cd', 'download-clear')
 # config.bind('co', 'tab-only')
-# config.bind('d', 'tab-close')
+config.bind('d', 'scroll-page 0 0.5')
+config.bind('u', 'scroll-page 0 -0.5')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
@@ -2400,7 +2401,7 @@ config.bind('gd', 'download')
 # config.bind('tsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
-config.bind('u', 'undo')
+#config.bind('u', 'undo')
 # config.bind('v', 'mode-enter caret')
 # config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
 # config.bind('wIf', 'devtools-focus')
