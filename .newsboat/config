@@ -1,0 +1,70 @@
+browser "qutebrowser %u"
+player "mpv"
+external-url-viewer "urlview"
+auto-reload yes
+reload-time 30
+reload-threads 100
+max-items 500
+save-path ~/Downloads
+#text-width 50
+delete-read-articles-on-quit yes
+confirm-exit no
+feed-sort-order lastupdated
+
+# Unbind keys
+unbind-key b
+unbind-key B
+unbind-key g
+unbind-key G
+unbind-key o
+unbind-key U
+unbind-key n
+unbind-key d
+unbind-key u
+unbind-key N
+unbind-key P
+unbind-key K
+unbind-key J
+# Bind keys
+bind-key b open-in-browser-and-mark-read
+bind-key B open-in-browser
+bind-key g home
+bind-key G end
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key U show-urls
+bind-key K prev-feed
+bind-key J next-feed
+bind-key N next-unread
+bind-key P prev-unread
+bind-key d pagedown
+bind-key u pageup
+bind-key c toggle-show-read-feeds
+bind-key n toggle-article-read
+# Notifications
+notify-always yes
+#notify-program /usr/bin/dunst
+notify-format "Newsboat: %n unread articles in #f feeds"
+
+# Macros
+#macro v set browser "mpv %u" ; open-in-browser ; set browser "w3m %u"
+#macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser qutebrowser"
+#browser xdg-open
+macro v set browser "yt-dlp -qo - %u | mpv --no-terminal -"; open-in-browser; set browser "w3m %u"
+
+# Appearance
+
+show-title-bar no
+articlelist-format "%4i %t"
+
+# Colors
+
+color listnormal color244 default
+color listnormal_unread color244 default bold
+color listfocus color36 default reverse
+color listfocus_unread color36 default reverse
+color info color244 default 
+color background color244 default
+color article color244 default
