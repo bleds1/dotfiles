@@ -190,20 +190,19 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
 			\ { 'b': '~/.config/polybar/config' },
-			\ { 'd': '~/Documents/vimwiki/diary/diary.md'},
+			\ { 'd': '~/Documents/vault/diary/diary.md'},
 			\ { 'k': '~/.config/kitty/kitty.conf' },
 			\ { 'i': '~/.config/i3/config' },
             \ { 'n': '~/.config/nvim/init.vim' },
 			\ { 'p': '~/.config/picom/picom.conf' },
  			\ { 'm': '~/dotfiles/.tmux.conf' },
-			\ { 'w': '~/Documents/vimwiki/index.md' },
             \ { 'z': '~/.zshrc' },
 			\ ]
 "Vimwiki
 ".md files outside the wiki are not seen as .vimwiki
 let g:vimwiki_global_ext = 0
 "
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+let g:vimwiki_list = [{'path': '~/Documents/vault/',
                      \ 'syntax': 'markdown', 'ext': '.md'}]
 "Leader Key binds
 let mapleader = "\<Space>"
