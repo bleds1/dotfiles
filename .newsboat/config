@@ -63,8 +63,8 @@ articlelist-format "%4i %t"
 
 color listnormal color244 default
 color listnormal_unread color244 default bold
-color listfocus color36 default reverse
-color listfocus_unread color36 default reverse
+color listfocus color37 default reverse
+color listfocus_unread color37 default reverse
 color info color244 default 
 color background color244 default
 color article color244 default
