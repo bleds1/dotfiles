@@ -1092,7 +1092,7 @@ c.content.media.video_capture = 'ask'
 ##   - true
 ##   - false
 ##   - ask
-#c.content.notifications.enabled = 'True'
+c.content.notifications.enabled 
 
 ## What notification presenter to use for web notifications. Note that
 ## not all implementations support all features of notifications: - With
