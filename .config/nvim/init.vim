@@ -29,7 +29,7 @@ set tabstop=4 "number columns occupied by tab character
 set undolevels=500
 set wildmode=longest,list,full  
 set wrap        "wrap text
-
+"au BufRead,BufNewFile * startinsert "start in insert mode
 "Plugins
 call plug#begin('/home/bledley/.config/nvim/plugged')
 
