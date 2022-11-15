@@ -146,6 +146,7 @@ alias ta="task add"
 alias timer="termdown --no-figlet --alt-format --no-text-magic"
 alias cal="calcurse"
 alias qb="qutebrowser"
+alias n="v ~/Documents/vault/1.inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
