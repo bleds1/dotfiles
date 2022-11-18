@@ -146,7 +146,7 @@ alias ta="task add"
 alias timer="termdown --no-figlet --alt-format --no-text-magic"
 alias cal="calcurse"
 alias qb="qutebrowser"
-alias n="v ~/Documents/vault/1.inbox/$(date +%Y-%m-%d-%H%M).md"
+alias n="v ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -176,7 +176,8 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias wik="cd ~/Documents/vimwiki/"
-alias dia="cd ~/Documents/vimwiki/diary/"
+alias dia="cd ~/Documents/vault/0.inbox/0.diary/"
+alias vault="cd ~/Documents/vault/"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
