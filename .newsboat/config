@@ -7,7 +7,7 @@ reload-threads 100
 max-items 500
 save-path ~/Downloads
 #text-width 50
-delete-read-articles-on-quit yes
+delete-read-articles-on-quit no
 confirm-exit no
 feed-sort-order lastupdated
 
@@ -61,10 +61,10 @@ articlelist-format "%4i %t"
 
 # Colors
 
-color listnormal color244 default
-color listnormal_unread color244 default bold
+color listnormal color247 default
+color listnormal_unread color247 default bold
 color listfocus color37 default reverse
 color listfocus_unread color37 default reverse
-color info color244 default 
-color background color244 default
-color article color244 default
+color info color247 default 
+color background color247 default
+color article color247 default
