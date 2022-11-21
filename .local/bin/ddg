@@ -1,0 +1,4 @@
+   #!/usr/bin/env zsh
+
+
+   lynx -vikeys -accept_all_cookies "https://lite.duckduckgo.com/lite/?q=$@"
