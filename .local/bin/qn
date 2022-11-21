@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kitty -e nvim /home/bledley/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md
