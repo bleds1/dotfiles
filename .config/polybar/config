@@ -18,18 +18,18 @@
 
 ## Colors ###
 [colors]
-background = #121419
+background = #1d1d1d
 background-alt = #444
-foreground = #aa787878
+foreground = #aac7c7c7
 foreground-alt = #00292929
-primary = #1A8872
-secondary = #1A8872
-alert = #1A8872
+primary = #82abaa
+secondary = #82abaa
+alert = #82abaa
 
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 18
+height = 16
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -56,12 +56,12 @@ font-0 = Terminus:pixelsize=10;0
 font-1 = Mononoki Nerd Font:pixelsize=10;0
 font-2 = SourceCodePro:pixelsize=10;0
 
-modules-left = i3
+modules-left = xwindow
 ;modules-left = battery bat2 i3 xwindow
 modules-center = date 
 ;modules-right = wlan cpu memory temperature date
-modules-right = wlan battery bat2
-;tray-position = right
+modules-right = wlan pulseaudio battery bat2
+tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -315,9 +315,9 @@ label-disconnected-padding = 0
 label-connected-padding-right = 0
 label-disconnected-padding-right = 0
 
-label-connected =   %{A1:urxvt -e kitty:}wlan%{A}
+label-connected =   %{A1:kitty -e nmtui:}wlan%{A}
 #label-connected =   %{A1:urxvt -e nmtui:}%essid%
-label-disconnected = %{A1:urxvt -e kitty:} Offline%{A}
+label-disconnected = %{A1:kitty -e nmtui:} Offline%{A}
 # labels }睊  %downspeed%%{A} %essid% %signal%
 format-connected = <ramp-signal><label-connected>
 format-disconnected = <label-disconnected>
@@ -416,32 +416,33 @@ full-at = 100
 low-at = 25
 poll-interval = 5
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging>
 ;format-charging-padding = 1
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
 ;format-discharging-padding = 1
 
-label-charging = "%percentage%%"
-label-discharging = "%percentage%%"
-
+;label-charging = "%percentage%%"
+;label-discharging = "%percentage%%"
+label-charging = " %percentage%%"
 label-full = " %percentage%%"
+label-discharging = " %percentage%%"
 ;label-full-padding = 1
 
-ramp-capacity-0 = ""
-ramp-capacity-1 = ""
-ramp-capacity-2 = ""
-ramp-capacity-foreground = ${colors.foreground-alt}
+;ramp-capacity-0 = ""
+;ramp-capacity-1 = ""
+;ramp-capacity-2 = ""
+;ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = ""
-animation-charging-1 = ""
-animation-charging-2 = ""
-animation-charging-framerate = 750
+;animation-charging-0 = ""
+;animation-charging-1 = ""
+;animation-charging-2 = ""
+;animation-charging-framerate = 750
 
-animation-discharging-0 = ""
-animation-discharging-1 = ""
-animation-discharging-2 = ""
-animation-discharging-framerate = 750
+;animation-discharging-0 = ""
+;animation-discharging-1 = ""
+;animation-discharging-2 = ""
+;animation-discharging-framerate = 750
 
 ###################################################################################
 
@@ -453,33 +454,34 @@ full-at = 100
 low-at = 25
 poll-interval = 5
 
-format-charging = <animation-charging> <label-charging>
+
+format-charging = <label-charging>
 ;format-charging-padding = 1
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
 ;format-discharging-padding = 1
 
-label-charging = "%percentage%%"
-label-discharging = "%percentage%%"
-
+;label-charging = "%percentage%%"
+;label-discharging = "%percentage%%"
+label-charging = " %percentage%%"
 label-full = " %percentage%%"
+label-discharging = " %percentage%%"
 ;label-full-padding = 1
 
-ramp-capacity-0 = ""
-ramp-capacity-1 = ""
-ramp-capacity-2 = ""
-ramp-capacity-foreground = ${colors.foreground-alt}
+;ramp-capacity-0 = ""
+;ramp-capacity-1 = ""
+;ramp-capacity-2 = ""
+;ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = ""
-animation-charging-1 = ""
-animation-charging-2 = ""
-animation-charging-framerate = 750
+;animation-charging-0 = ""
+;animation-charging-1 = ""
+;animation-charging-2 = ""
+;animation-charging-framerate = 750
 
-animation-discharging-0 = ""
-animation-discharging-1 = ""
-animation-discharging-2 = ""
-animation-discharging-framerate = 750
-
+;animation-discharging-0 = ""
+;animation-discharging-1 = ""
+;animation-discharging-2 = ""
+;animation-discharging-framerate = 750
 ###################################################################################
 [module/temperature]
 type = internal/temperature
@@ -554,7 +556,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 2
-margin-bottom = 2
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
