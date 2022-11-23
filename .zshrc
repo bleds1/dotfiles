@@ -144,7 +144,6 @@ alias h="history | f"
 alias t="task"
 alias ta="task add"
 alias timer="termdown --no-figlet --alt-format --no-text-magic"
-alias cal="calcurse"
 alias qb="qutebrowser"
 alias n="v ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
