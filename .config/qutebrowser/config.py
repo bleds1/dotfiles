@@ -11,6 +11,7 @@ config.load_autoconfig(False)
 #config.set("fileselect.multiple_files.command", ['kitty', '-e', 'ranger', '--choosefiles={}'])
 
 # Setting dark mode
+config.bind(',r', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#1d1d1d'
 c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -1092,7 +1093,7 @@ c.content.media.video_capture = 'ask'
 ##   - true
 ##   - false
 ##   - ask
-c.content.notifications.enabled 
+c.content.notifications.enabled = 'ask'
 
 ## What notification presenter to use for web notifications. Note that
 ## not all implementations support all features of notifications: - With
@@ -1112,7 +1113,7 @@ c.content.notifications.enabled
 ##   - systray: Use a notification presenter based on a systray icon. Falls back to `libnotify` or `messages` if not systray is available. This is a reimplementation of the `qt` setting value, but with the possibility to switch to it at runtime.
 ##   - messages: Show notifications as qutebrowser messages. Most notification features aren't available.
 ##   - herbe: (experimental!) Show notifications using herbe (github.com/dudik/herbe). Most notification features aren't available.
-#c.content.notifications.presenter = 'auto'
+c.content.notifications.presenter = 'auto'
 
 ## Whether to show the origin URL for notifications. Note that URL
 ## patterns with this setting only get matched against the origin part of
