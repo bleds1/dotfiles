@@ -34,9 +34,9 @@ c.colors.tabs.odd.bg = '#2b2b2b'
 # Background color of unselected even tabs
 c.colors.tabs.even.bg = '#2b2b2b'
 # Background color of selected odd tabs
-c.colors.tabs.selected.odd.bg = '#1d1d1d'
+c.colors.tabs.selected.odd.bg = '#2b2b2b'
 # Background color of selected even tabs
-c.colors.tabs.selected.even.bg = '#1d1d1d'
+c.colors.tabs.selected.even.bg = '#2b2b2b'
 c.colors.tabs.selected.odd.fg = '#adadad'
 c.colors.tabs.selected.even.fg = '#adadad'
 c.colors.tabs.odd.fg = '#5e5e5e'
