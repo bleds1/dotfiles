@@ -28,11 +28,11 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 config.bind(',b', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
 # Background color of the tab bar
-c.colors.tabs.bar.bg = '#262626'
+c.colors.tabs.bar.bg = '#2b2b2b'
 # Background color of unselected odd tabs
-c.colors.tabs.odd.bg = '#262626'
+c.colors.tabs.odd.bg = '#2b2b2b'
 # Background color of unselected even tabs
-c.colors.tabs.even.bg = '#262626'
+c.colors.tabs.even.bg = '#2b2b2b'
 # Background color of selected odd tabs
 c.colors.tabs.selected.odd.bg = '#1d1d1d'
 # Background color of selected even tabs
