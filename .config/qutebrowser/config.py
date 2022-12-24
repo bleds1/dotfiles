@@ -1090,7 +1090,7 @@ c.content.media.video_capture = 'ask'
 ## Allow websites to show notifications.
 ## Type: BoolAsk
 ## Valid values:
-##   - true
+##   - true ##TODO True results in error
 ##   - false
 ##   - ask
 c.content.notifications.enabled = 'ask'
