@@ -186,8 +186,8 @@ let g:vimwiki_list = [{'path': '~/Documents/vault/',
 "Leader Key binds
 let mapleader = "\<Space>"
 "Buffer next and prev
-map <leader>n :bn<CR>
-map <leader>p :bp<CR>
+map <leader>bn :bn<CR>
+map <leader>bp :bp<CR>
 "Buffer close
 map <leader>bk :bd<CR>
 "new buffer (space, e)
