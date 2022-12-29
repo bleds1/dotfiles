@@ -11,7 +11,7 @@ fi
 # Adding Doom Emacs to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
 # Doom Emacs alias
-alias emacs="emacsclient -c -a 'emacs'"
+#alias emacs="emacsclient -c -a 'emacs'"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -149,6 +149,7 @@ alias t="task"
 alias ta="task add"
 alias qb="qutebrowser"
 alias n="v ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
+alias em="emacs ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
