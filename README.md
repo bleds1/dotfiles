@@ -13,5 +13,5 @@ My config files for:
 - Taskwarrior
 - Dunst
 - Picom
-
+- Doom Emacs
 +more
