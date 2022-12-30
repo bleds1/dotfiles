@@ -76,7 +76,7 @@
        :term
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
-       term              ; basic terminal emulator for Emacs
+       ;;term              ; basic terminal emulator for Emacs
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
@@ -104,7 +104,7 @@
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
-       tmux              ; an API for interacting with tmux
+       ;;tmux              ; an API for interacting with tmux
        ;;tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
@@ -186,7 +186,7 @@
        :app
        ;;calendar
        ;;emms
-       ;;everywhere        ; *leave* Emacs!? You must be joking
+       everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought

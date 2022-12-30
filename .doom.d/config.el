@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;;
-;; Place your private configuration here! Remember, you do not need to run 'doom
+;; Header at the top of config supposedly improves speed to load? you do not need to run 'doom
 ;; sync' after modifying this file!
 ;;
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -8,7 +8,51 @@
 (setq user-full-name "John Doe"
       user-mail-address "john@doe.com")
 ;;
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
+;; BASICS
+;;
+;; Start Doom screen maximized
+;;
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+;;
+;; Delete files to trash
+(setq-default
+      delete-by-moving-to-trash t)
+;;
+;; Undo limit 80mb/More granual changes whilst in insert
+;;
+(setq undo-limit 80000000
+      evil-want-fine-undo t
+;;
+;; Scroll  Margin
+;;
+      scroll-margin 2)
+;;
+;; Display time in modeline
+      (display-time-mode 1)
+;;
+;; Word count in modeline
+;;
+(setq doom-modeline-enable-word-count t)
+;;
+;; Disable quit confirmation message
+(setq confirm-kill-emacs nil)
+;;
+;; Relative line numbers
+;;
+(setq display-line-numbers-type 'relative)
+;;
+;; Better default buffer names
+;;
+(setq doom-fallback-buffer-name "DOOM"
+      +doom-dashboard-name "DOOM")
+;;
+;; Quick access dashboard key
+;;
+(map! :leader :desc "Dashboard" "d" #'+doom-dashboard/open)
+;;
+;; FONTS
+;;
+;; Doom exposes five (optional) variables for controlling fonts:
 ;;
 ;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
@@ -18,32 +62,49 @@
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
+;; accept.
 ;;
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 16 :weight 'Medium)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
 ;;
-;; Disable quit confirmation message
-(setq confirm-kill-emacs nil)
+;; THEME & LOOK
 ;;
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This was the default until changed:
 ;;
 (setq doom-theme 'doom-wilmersdorf)
+(custom-set-faces
+  '(default ((t (:background "#1e1e1e")))))
+;;
+;; Solaire mode needs to disabled for consistent background color
+;;
+(after! solaire-mode
+  (solaire-global-mode -1))
 ;;
 ;; Set splash page image
 (setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
 ;;
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(add-to-list '+doom-dashboard-menu-sections
+             '("Add journal entry"
+               :icon (all-the-icons-octicon "calendar" :face 'doom-dashboard-menu-title)
+               :when (featurep! :lang org +journal)
+               :face (:inherit (doom-dashboard-menu-title bold))
+               :action org-journal-new-entry))
+(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+(assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
+;;
+;; Zen mode zoom
+;;
+(setq +zen-text-scale 0.8)
 ;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;
 (after! org
 (setq org-directory "~/Documents/org/")
+(setq org-roam-directory "~/Documents/org/roam")
 (setq org-agenda-files
       (directory-files-recursively "~/Documents/org/" "\\.org$"))
 (setq org-log-done 'time)
