@@ -12,7 +12,7 @@
 ;;
 ;; Start Doom screen maximized
 ;;
-(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 ;;
 ;; Delete files to trash
 (setq-default
@@ -28,11 +28,15 @@
       scroll-margin 2)
 ;;
 ;; Display time in modeline
-      (display-time-mode 1)
-;;
+;;      (display-time-mode 1)
+(setq display-time-format "%H:%M")
 ;; Word count in modeline
 ;;
 (setq doom-modeline-enable-word-count t)
+;;
+;; Height of modeline
+;;
+(setq doom-modeline-height 15)
 ;;
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
@@ -75,7 +79,7 @@
 ;; `load-theme' function. This was the default until changed:
 ;;
 (setq doom-theme 'doom-wilmersdorf)
-(custom-set-faces
+  (custom-set-faces
   '(default ((t (:background "#1e1e1e")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
@@ -99,6 +103,8 @@
 ;;
 (setq +zen-text-scale 0.8)
 ;;
+;; Org
+;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;
@@ -113,6 +119,9 @@
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d"
       org-journal-file-format "%Y-%m-%d.org")
+(setq org-ellipsis " ▾")
+(setq org-superstar-cycle-headline-bullets '("◉" "○" "●" "○" "●" "○" "●"))
+(setq org-hide-emphasis-markers t)
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
