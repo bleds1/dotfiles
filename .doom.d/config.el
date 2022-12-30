@@ -11,7 +11,6 @@
 ;; BASICS
 ;;
 ;; Start Doom screen maximized
-;;
 (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 ;;
 ;; Delete files to trash
@@ -19,39 +18,33 @@
       delete-by-moving-to-trash t)
 ;;
 ;; Undo limit 80mb/More granual changes whilst in insert
-;;
 (setq undo-limit 80000000
       evil-want-fine-undo t
 ;;
 ;; Scroll  Margin
-;;
       scroll-margin 2)
 ;;
 ;; Display time in modeline
 ;;      (display-time-mode 1)
 (setq display-time-format "%H:%M")
-;; Word count in modeline
 ;;
+;; Word count in modeline
 (setq doom-modeline-enable-word-count t)
 ;;
 ;; Height of modeline
-;;
 (setq doom-modeline-height 15)
 ;;
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
 ;;
 ;; Relative line numbers
-;;
 (setq display-line-numbers-type 'relative)
 ;;
 ;; Better default buffer names
-;;
 (setq doom-fallback-buffer-name "DOOM"
       +doom-dashboard-name "DOOM")
 ;;
 ;; Quick access dashboard key
-;;
 (map! :leader :desc "Dashboard" "d" #'+doom-dashboard/open)
 ;;
 ;; FONTS
@@ -83,7 +76,6 @@
   '(default ((t (:background "#1e1e1e")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
-;;
 (after! solaire-mode
   (solaire-global-mode -1))
 ;;
@@ -100,7 +92,6 @@
 (assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
 ;;
 ;; Zen mode zoom
-;;
 (setq +zen-text-scale 0.8)
 ;;
 ;; Org
