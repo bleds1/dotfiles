@@ -148,8 +148,8 @@ alias h="history | f"
 alias t="task"
 alias ta="task add"
 alias qb="qutebrowser"
-alias n="v ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
-alias em="emacs ~/Documents/vault/0.inbox/$(date +%Y-%m-%d-%H%M).md"
+alias n="v ~/Documents/org/0.inbox/$(date +%Y-%m-%d-%H%M).md"
+alias em="emacs ~/Documents/org/0.inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
