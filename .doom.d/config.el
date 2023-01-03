@@ -25,7 +25,7 @@
       scroll-margin 2)
 ;;
 ;; Display time in modeline
-;;      (display-time-mode 1)
+(display-time-mode 1)
 (setq display-time-format "%H:%M")
 ;;
 ;; Word count in modeline
@@ -82,12 +82,12 @@
 ;; Set splash page image
 (setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
 ;;
-(add-to-list '+doom-dashboard-menu-sections
-             '("Add journal entry"
-               :icon (all-the-icons-octicon "calendar" :face 'doom-dashboard-menu-title)
-               :when (featurep! :lang org +journal)
-               :face (:inherit (doom-dashboard-menu-title bold))
-               :action org-journal-new-entry))
+;(add-to-list '+doom-dashboard-menu-sections
+;            '("Add journal entry"
+;             :icon (all-the-icons-octicon "calendar" :face 'doom-dashboard-menu-title)
+;            :when (featurep! :lang org +journal)
+;           :face (:inherit (doom-dashboard-menu-title bold))
+;          :action org-journal-new-entry))
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
 ;;
@@ -101,7 +101,6 @@
 ;;
 (after! org
 (setq org-directory "~/Documents/org/")
-(setq org-roam-directory "~/Documents/org/roam")
 (setq org-agenda-files
       (directory-files-recursively "~/Documents/org/" "\\.org$"))
 (setq org-log-done 'time)
@@ -109,8 +108,8 @@
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d"
-      org-journal-file-format "%Y-%m-%d.md"
-      org-journal-dir "~/Documents/org/0.inbox/")
+      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-dir "~/Documents/org/roam/0.inbox/journal/")
 (setq org-ellipsis " ▾")
 (setq org-superstar-cycle-headline-bullets '("◉" "○" "●" "○" "●" "○" "●"))
 (setq org-hide-emphasis-markers t)
@@ -119,9 +118,9 @@
 (setq org-agenda-max-todos 20)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Documents/org/tasks.org" "INBOX")
+        '(("t" "Todo" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-      ("n" "Note" entry (file "~/Documents/org/inbox.org")
+      ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/journal/fleeting-notes.org")
        "* %?\n%U" :empty-lines 1)))
 (setq org-todo-keywords
       '((sequence
@@ -148,6 +147,26 @@
        ("DONE" :foreground "#50a14f" :weight normal :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
 ;;
+;; org-roam
+(after! org
+(setq org-roam-directory "~/Documents/org/roam/")
+(setq org-roam-index-file "~/Documents/org/roam/index.org")
+(setq org-roam-completion-everywhere t)
+(setq org-roam-capture-templates
+   '(("n" "Default Note" plain
+      "%?"
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+      :unnarrowed t)
+     ("l" "Lit Notes" plain
+ "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+      :unnarrowed t)))
+
+(setq org-roam-dailies-capture-templates
+    '(("d" "default" entry "* %<%I:%M %p>: %?"
+       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n")))))
+;;
+(setq org-roam-dailies-directory "~/Documents/org/roam/0.inbox/journal")
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;

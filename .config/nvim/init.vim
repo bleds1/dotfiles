@@ -170,7 +170,7 @@ let g:startify_lists = [
 "
 let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
-			\ { 'd': '~/Documents/vault/0.inbox/0.diary/'},
+			\ { 'j': '~/Documents/org/0.inbox/0.journal/'},
 			\ { 'k': '~/dotfiles/.config/kitty/kitty.conf' },
             \ { 'n': '~/dotfiles/.config/nvim/init.vim' },
 			\ { 'p': '~/dotfiles/.config/picom/picom.conf' },

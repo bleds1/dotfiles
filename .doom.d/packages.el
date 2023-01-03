@@ -52,3 +52,5 @@
 ;; Disable Solaire-mode for consistent backgrounds?
 (package! solaire-mode :disable t)
 ;;
+;;(package! powerline)
+;;(package! airline-themes)
