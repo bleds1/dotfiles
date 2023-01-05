@@ -115,6 +115,9 @@
 (setq org-agenda-files
       (directory-files-recursively "~/Documents/org/" "\\.org$"))
 (setq org-log-done 'time)
+(setq org-agenda-span 7
+      org-agenda-start-day "-3")
+
 ;;
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
@@ -129,12 +132,16 @@
 (setq org-agenda-max-todos 20)
 ;;
 (setq org-capture-templates
-        '(("t" "Todo" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
+        '(("t" "TODO" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-      ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting-notes.org")
-       "* %?\n%U" :empty-lines 1)
-        ("s" "Shopping List" plain (file "~/Documents/org/roam/shopping_list.org")
-         "%?" :empty-lines 0)))
+         ("e" "Event" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
+          "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
+         ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting-notes.org")
+        "* %?\n%U" :empty-lines 1)
+         ("b" "Bookmark" plain (file+olp "~/Documents/org/roam/bookmarks.org" "INBOX")
+          "%?" :empty-lines 2)
+         ("s" "Shopping List" plain (file "~/Documents/org/roam/shopping_list.org")
+         "%?- [ ]" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
@@ -160,6 +167,7 @@
        ("GOAL" :foreground "#acb0d0" :weight normal :underline t)
        ("PROJECT" :foreground "#acb0d0" :weight normal :underline t)
        ("EVENT" :foreground "#acb0d0" :weight normal :underline t)
+       ("ROUTINE" :foreground "#acb0d0" :weight normal :underline t)
        ("DONE" :foreground "#50a14f" :weight normal :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
 ;;
