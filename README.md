@@ -2,7 +2,7 @@
 
 My config files for: 
 
-- i3 gaps
+- Doom Emacs
 - Kitty
 - Neovim
 - Polybar 
@@ -13,5 +13,7 @@ My config files for:
 - Taskwarrior
 - Dunst
 - Picom
-- Doom Emacs
-+more
+- i3 gaps
+- Zathura
+
++ more?
