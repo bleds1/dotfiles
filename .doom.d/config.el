@@ -13,6 +13,13 @@
 ;; Start Doom screen maximized
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 ;;
+;; Ask for buffer on window split
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (consult-buffer))
+;;
 ;; Delete files to trash
 (setq-default
       delete-by-moving-to-trash t)
@@ -62,8 +69,8 @@
 ;; accept.
 ;;
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 16 :weight 'Medium)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
+      doom-big-font (font-spec :family "JetBrains Mono" :size 15 :weight 'Medium)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16))
 ;;
 ;; THEME & LOOK
 ;;
@@ -73,7 +80,7 @@
 ;;
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
-  '(default ((t (:background "#1e1e1e")))))
+  '(default ((t (:background "#282C34")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
@@ -90,6 +97,10 @@
 ;          :action org-journal-new-entry))
 (assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
+;;
+;;tree macs font
+(setq doom-themes-treemacs-enable-variable-pitch nil)
+;;
 ;;
 ;; Zen mode zoom
 (setq +zen-text-scale 0.8)
@@ -120,8 +131,10 @@
 (setq org-capture-templates
         '(("t" "Todo" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-      ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/journal/fleeting-notes.org")
-       "* %?\n%U" :empty-lines 1)))
+      ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting-notes.org")
+       "* %?\n%U" :empty-lines 1)
+        ("s" "Shopping List" plain (file "~/Documents/org/roam/shopping_list.org")
+         "%?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
@@ -130,6 +143,8 @@
          "LATER(l)"
          "GOAL(g)"
          "PROJECT(p)"
+         "EVENT(e)"
+         "ROUTINE(r)"
          "|"
          "SOMEDAY(s)"
          "WAITING(w)"
@@ -144,6 +159,7 @@
        ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
        ("GOAL" :foreground "#acb0d0" :weight normal :underline t)
        ("PROJECT" :foreground "#acb0d0" :weight normal :underline t)
+       ("EVENT" :foreground "#acb0d0" :weight normal :underline t)
        ("DONE" :foreground "#50a14f" :weight normal :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
 ;;
@@ -155,23 +171,23 @@
 (setq org-roam-capture-templates
    '(("n" "Default Note" plain
       "%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+date: %U\n")
       :unnarrowed t)
      ("l" "Lit Notes" plain
  "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+date: %U\n")
       :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n")))))
+       :if-new (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n")))))
 ;;
-(setq org-roam-dailies-directory "~/Documents/org/roam/0.inbox/journal")
+(setq org-roam-dailies-directory "~/Documents/org/roam/0.inbox/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
 ;; Projectile Dir
-(setq projectile-project-search-path '("~/dotfiles/" "~/.config/"))
+(setq projectile-project-search-path '("~/dotfiles/" "~/Documents/org/roam/"))
 ;;
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

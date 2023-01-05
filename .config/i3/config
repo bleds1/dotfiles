@@ -24,7 +24,7 @@ set $mod Mod4
 # Polybar
 exec_always polybar polybar1 &
 # Conky
-exec --no-startup-id conky
+#exec --no-startup-id conky
 # Set Wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpapers/pyramid-simple-wallpaper.jpg
 # transparency
@@ -88,14 +88,10 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym $mod+t exec kitty
 
 # open browser
-bindsym $mod+b exec firefox
+bindsym $mod+b exec qutebrowser
 
 # open file manager
-#bindsym $mod+n exec pcmanfm
-bindsym $mod+n exec nautilus
-
-# open music
-bindsym $mod+m exec deadbeef
+bindsym $mod+n exec pcmanfm
 
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run 
