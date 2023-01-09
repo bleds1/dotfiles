@@ -80,7 +80,7 @@
 ;;
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
-  '(default ((t (:background "#282C34")))))
+  '(default ((t (:background "#1a1a1a")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
@@ -115,7 +115,7 @@
 (setq org-agenda-files
       (directory-files-recursively "~/Documents/org/" "\\.org$"))
 (setq org-log-done 'time)
-(setq org-agenda-span 7
+(setq org-agenda-span 10
       org-agenda-start-day "-3")
 
 ;;
@@ -132,34 +132,40 @@
 (setq org-agenda-max-todos 20)
 ;;
 (setq org-capture-templates
-        '(("t" "TODO" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
+        '(("t" "Task" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-         ("e" "Event" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
+         ("e" "Event" entry (file+olp "~/Documents/org/roam/agenda.org" "INBOX")
           "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting-notes.org")
+         ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting_notes.org")
         "* %?\n%U" :empty-lines 1)
          ("b" "Bookmark" plain (file+olp "~/Documents/org/roam/bookmarks.org" "INBOX")
           "%?" :empty-lines 2)
+         ("d" "Daily Plan" plain (file+datetree "~/Documents/org/roam/daily_plan.org")
+         (file "~/Documents/org/templates/tpl-daily-plan.txt") :empty-lines 1)
+        ("g" "Goal" plain (file+olp "~/Documents/org/roam/goals.org" "INBOX")
+         (file "~/Documents/org/templates/tpl-goals.txt") :empty-lines 1)
+         ("w" "Weekly Review" plain (file+datetree "~/Documents/org/roam/weekly_review.org")
+         (file "~/Documents/org/templates/tpl-weekly_review.txt") :empty-lines 1)
+         ("r" "Reading List" plain (file+olp "~/Documents/org/roam/reading_list.org" "INBOX")
+          "%?" :empty-lines 1)
          ("s" "Shopping List" plain (file "~/Documents/org/roam/shopping_list.org")
          "%?- [ ]" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
-         "ACTIVE(a)"
          "NEXT(n)"
          "LATER(l)"
          "GOAL(g)"
          "PROJECT(p)"
          "EVENT(e)"
          "ROUTINE(r)"
-         "|"
          "SOMEDAY(s)"
+         "|"
          "WAITING(w)"
          "DONE(d)"
          "CANCELLED(c)" )))
       org-todo-keyword-faces
       '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-       ("ACTIVE" :foreground "#00FFF7" :weight normal :underline t)
        ("NEXT" :foreground "#009994" :weight normal :underline t)
        ("LATER" :foreground "#acb0d0" :weight normal :underline t)
        ("SOMEDAY" :foreground "#acb0d0" :weight normal :underline t)
