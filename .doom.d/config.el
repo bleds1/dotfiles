@@ -134,7 +134,7 @@
 (setq org-capture-templates
         '(("t" "Task" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-         ("e" "Event" entry (file+olp "~/Documents/org/roam/agenda.org" "INBOX")
+         ("e" "Event" entry (file+olp "~/Documents/org/roam/events.org" "INBOX")
           "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
          ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting_notes.org")
         "* %?\n%U" :empty-lines 1)
@@ -144,6 +144,8 @@
          (file "~/Documents/org/templates/tpl-daily-plan.txt") :empty-lines 1)
         ("g" "Goal" plain (file+olp "~/Documents/org/roam/goals.org" "INBOX")
          (file "~/Documents/org/templates/tpl-goals.txt") :empty-lines 1)
+        ("p" "Project" plain (file+olp "~/Documents/org/roam/projects.org" "INBOX")
+         (file "~/Documents/org/templates/tpl-project.txt") :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Documents/org/roam/weekly_review.org")
          (file "~/Documents/org/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Documents/org/roam/reading_list.org" "INBOX")
@@ -161,8 +163,8 @@
          "ROUTINE(r)"
          "SOMEDAY(s)"
          "|"
-         "WAITING(w)"
          "DONE(d)"
+         "WAITING(w)"
          "CANCELLED(c)" )))
       org-todo-keyword-faces
       '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
