@@ -160,7 +160,7 @@
          "GOAL(g)"
          "PROJECT(p)"
          "EVENT(e)"
-         "ROUTINE(r)"
+         "REPEAT(r)"
          "SOMEDAY(s)"
          "|"
          "DONE(d)"
@@ -175,7 +175,7 @@
        ("GOAL" :foreground "#acb0d0" :weight normal :underline t)
        ("PROJECT" :foreground "#acb0d0" :weight normal :underline t)
        ("EVENT" :foreground "#acb0d0" :weight normal :underline t)
-       ("ROUTINE" :foreground "#acb0d0" :weight normal :underline t)
+       ("REPEAT" :foreground "#acb0d0" :weight normal :underline t)
        ("DONE" :foreground "#50a14f" :weight normal :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
 ;;
