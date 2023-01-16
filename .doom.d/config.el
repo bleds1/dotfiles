@@ -111,19 +111,25 @@
 ;; change `org-directory'. It must be set before org loads!
 ;;
 (after! org
-(setq org-directory "~/Documents/org/")
+(setq org-directory "~/Dropbox/org/")
 (setq org-agenda-files
-      (directory-files-recursively "~/Documents/org/" "\\.org$"))
+      (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
 (setq org-log-done 'time)
 (setq org-agenda-span 10
       org-agenda-start-day "-3")
-
+(setq org-agenda-custom-commands ;then define tags, see vid
+(setq
+org-fancy-priorities-list '("!" "M" "L")
+ org-priority-faces
+ '((?H :foreground "#E35959" :weight bold)
+   (?M :foreground "#57D1B9" :weight bold)
+   (?L :foreground "#B2ABAA" :weight bold))))
 ;;
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d"
       org-journal-file-format "%Y-%m-%d.org"
-      org-journal-dir "~/Documents/org/roam/0.inbox/journal/")
+      org-journal-dir "~/Dropbox/org/roam/0_Inbox/journal/")
 (setq org-ellipsis " ▾")
 (setq org-superstar-cycle-headline-bullets '("◉" "○" "●" "○" "●" "○" "●"))
 (setq org-hide-emphasis-markers t)
@@ -132,25 +138,25 @@
 (setq org-agenda-max-todos 20)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Documents/org/roam/tasks.org" "INBOX")
+        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/tasks.org" "INBOX")
           "* TODO %?\n %U\n" :empty-lines 1)
-         ("e" "Event" entry (file+olp "~/Documents/org/roam/events.org" "INBOX")
+         ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
           "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ("n" "Fleeting Notes" entry (file "~/Documents/org/roam/0.inbox/fleeting_notes.org")
+         ("n" "Fleeting Notes" entry (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.org")
         "* %?\n%U" :empty-lines 1)
-         ("b" "Bookmark" plain (file+olp "~/Documents/org/roam/bookmarks.org" "INBOX")
+         ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/bookmarks.org" "INBOX")
           "%?" :empty-lines 2)
-         ("d" "Daily Plan" plain (file+datetree "~/Documents/org/roam/daily_plan.org")
-         (file "~/Documents/org/templates/tpl-daily-plan.txt") :empty-lines 1)
-        ("g" "Goal" plain (file+olp "~/Documents/org/roam/goals.org" "INBOX")
-         (file "~/Documents/org/templates/tpl-goals.txt") :empty-lines 1)
-        ("p" "Project" plain (file+olp "~/Documents/org/roam/projects.org" "INBOX")
-         (file "~/Documents/org/templates/tpl-project.txt") :empty-lines 1)
-         ("w" "Weekly Review" plain (file+datetree "~/Documents/org/roam/weekly_review.org")
-         (file "~/Documents/org/templates/tpl-weekly_review.txt") :empty-lines 1)
-         ("r" "Reading List" plain (file+olp "~/Documents/org/roam/reading_list.org" "INBOX")
+         ("d" "Daily Plan" plain (file+datetree "~/Dropbox/org/roam/daily_plan.org")
+         (file "~/Dropbox/org/roam/3_Resources/templates/tpl-daily-plan.txt") :empty-lines 1)
+        ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
+         (file "~/Dropbox/org/roam/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
+        ("p" "Project" plain (file+olp "~/Dropbox/org/roam/projects.org" "INBOX")
+         (file "~/Dropbox/org/roam/3_Resources/templates/tpl-project.txt") :empty-lines 1)
+         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/org/roam/weekly_review.org")
+         (file "~/Dropbox/org/roam/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
+         ("r" "Reading List" plain (file+olp "~/Dropbox/org/roam/reading_list.org" "INBOX")
           "%?" :empty-lines 1)
-         ("s" "Shopping List" plain (file "~/Documents/org/roam/shopping_list.org")
+         ("s" "Shopping List" plain (file "~/Dropbox/org/roam/shopping_list.org")
          "%?- [ ]" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
@@ -181,8 +187,8 @@
 ;;
 ;; org-roam
 (after! org
-(setq org-roam-directory "~/Documents/org/roam/")
-(setq org-roam-index-file "~/Documents/org/roam/index.org")
+(setq org-roam-directory "~/Dropbox/org/roam/")
+(setq org-roam-index-file "~/Dropbox/org/roam/index.org")
 (setq org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
    '(("n" "Default Note" plain
@@ -198,12 +204,12 @@
     '(("d" "default" entry "* %<%I:%M %p>: %?"
        :if-new (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n")))))
 ;;
-(setq org-roam-dailies-directory "~/Documents/org/roam/0.inbox/")
+(setq org-roam-dailies-directory "~/Dropbox/org/roam/0_Inbox/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
 ;; Projectile Dir
-(setq projectile-project-search-path '("~/dotfiles/" "~/Documents/org/roam/"))
+(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/"))
 ;;
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

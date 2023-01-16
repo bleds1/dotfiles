@@ -146,8 +146,8 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
-alias n="v ~/Documents/org/roam/0.inbox/$(date +%Y-%m-%d-%H%M).org"
-alias em="emacsclient -a -c 'emacs' ~/Documents/org/roam/0.inbox/$(date +%Y-%m-%d-%H%M).org"
+alias n="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).org"
+alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).org"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -176,9 +176,6 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
-alias wik="cd ~/Documents/vimwiki/"
-alias dia="cd ~/Documents/vault/0.inbox/0.diary/"
-alias vault="cd ~/Documents/vault/"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
@@ -196,6 +193,24 @@ alias rm="rm -i -v"
 
 #lynx
 alias lynx='lynx -vikeys -accept_all_cookies'
+
+
+# CLI Pomodoro
+declare -A pomo_options
+pomo_options["work"]="60"
+pomo_options["break"]="15"
+
+pomodoro () {
+  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+  val=$1
+  echo $val | lolcat
+  timer ${pomo_options["$val"]}m
+  spd-say "'$val' session done"
+  fi
+}
+
+alias wo="pomodoro 'work'"
+alias br="pomodoro 'break'"
 
 # vi mode 
 bindkey -v

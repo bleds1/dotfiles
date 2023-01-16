@@ -3,7 +3,7 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Documents/org/roam/0.inbox}
+ZROOT=${ZET_ROOT:=~/Dropbox/org/roam/0_Inbox}
 
 name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
 content="*"
