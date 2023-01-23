@@ -45,9 +45,12 @@
 (setq confirm-kill-emacs nil)
 ;;
 ;; Relative line numbers
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type nil)
 ;;
-;; Better default buffer names
+;; Disable line-numbers in only org-mode buffers
+;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
+;;
+;;Better default buffer names
 (setq doom-fallback-buffer-name "DOOM"
       +doom-dashboard-name "DOOM")
 ;;
@@ -113,22 +116,26 @@
 (after! org
 (setq org-directory "~/Dropbox/org/")
 (setq org-agenda-files
-      (directory-files-recursively "~/Dropbox/org/" "\\.org$"))
+      (quote ("~/Dropbox/org/roam/tasks.org"
+              "~/Dropbox/org/roam/events.org"
+              "~/Dropbox/org/roam/goals.org")))
+      ;(directory-files-recursively "~/Dropbox/org/" "\\.org$"))
+
 (setq org-log-done 'time)
-(setq org-agenda-span 10
-      org-agenda-start-day "-3")
+(setq org-agenda-span 5
+      org-agenda-start-day "-1")
 (setq org-agenda-custom-commands ;then define tags, see vid
 (setq
 org-fancy-priorities-list '("!" "M" "L")
  org-priority-faces
- '((?H :foreground "#E35959" :weight bold)
+ '((?! :foreground "#E35959" :weight bold)
    (?M :foreground "#57D1B9" :weight bold)
    (?L :foreground "#B2ABAA" :weight bold))))
 ;;
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d"
-      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-file-format "%Y-%m-%d.md"
       org-journal-dir "~/Dropbox/org/roam/0_Inbox/journal/")
 (setq org-ellipsis " ▾")
 (setq org-superstar-cycle-headline-bullets '("◉" "○" "●" "○" "●" "○" "●"))
@@ -142,14 +149,16 @@ org-fancy-priorities-list '("!" "M" "L")
           "* TODO %?\n %U\n" :empty-lines 1)
          ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
           "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ("n" "Fleeting Notes" entry (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.org")
-        "* %?\n%U" :empty-lines 1)
+         ("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
+        "# %?\n%U" :prepend t)
          ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/bookmarks.org" "INBOX")
           "%?" :empty-lines 2)
-         ("d" "Daily Plan" plain (file+datetree "~/Dropbox/org/roam/daily_plan.org")
-         (file "~/Dropbox/org/roam/3_Resources/templates/tpl-daily-plan.txt") :empty-lines 1)
+         ("d" "Daily Plan" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
+         (file "~/Dropbox/org/roam/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
         ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
+         ("f" "Finances" plain (file "~/Dropbox/org/roam/2_Areas/Finances/expenses.md")
+         "# %U - %^{Amount} %^{Summary} %^g" :prepend t)
         ("p" "Project" plain (file+olp "~/Dropbox/org/roam/projects.org" "INBOX")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-project.txt") :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/org/roam/weekly_review.org")
@@ -208,6 +217,19 @@ org-fancy-priorities-list '("!" "M" "L")
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
+;; Place tags close to the right-hand side of the window - is this working?
+(add-hook 'org-finalize-agenda-hook 'place-agenda-tags)
+(defun place-agenda-tags ()
+"Put the agenda tags by the right border of the agenda window."
+(setq org-agenda-tags-column (- 4 (window-width)))
+(org-agenda-align-tags))
+;;
+;;
+;; Set keys
+;;
+(global-set-key (kbd "<f12>") 'org-agenda-day-view)
+(global-set-key (kbd "<f11>") 'org-agenda-week-view)
+(global-set-key (kbd "<f5>") 'treemacs)
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/"))
 ;;

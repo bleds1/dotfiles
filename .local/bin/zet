@@ -14,8 +14,8 @@ for word in $@; do
 done
 
 if [ ! -e "$name.org" ]; then
-  echo -e "$content\n\n#+FILETAGS:" > $name.org
+  echo -e "$content\n\n#+FILETAGS:" > $name.md
 fi
 
-emacsclient -n $name.org
+emacsclient -n $name.md
 

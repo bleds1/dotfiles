@@ -146,8 +146,8 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
-alias n="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).org"
-alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).org"
+alias n="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
+alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -181,7 +181,10 @@ alias glo=glow
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-
+#
+#screen caffinate
+alias cafon="xset s off -dpms && echo "Caffeine_ON""
+alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
@@ -197,20 +200,22 @@ alias lynx='lynx -vikeys -accept_all_cookies'
 
 # CLI Pomodoro
 declare -A pomo_options
-pomo_options["work"]="60"
-pomo_options["break"]="15"
+pomo_options["Focus"]="60"
+pomo_options["Break"]="15"
 
 pomodoro () {
   if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
   val=$1
   echo $val | lolcat
   timer ${pomo_options["$val"]}m
-  spd-say "'$val' session done"
+  paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+  echo "Session Complete"
+  notify-send "Session Complete"
   fi
 }
 
-alias wo="pomodoro 'work'"
-alias br="pomodoro 'break'"
+alias fo="pomodoro 'Focus'"
+alias br="pomodoro 'Break'"
 
 # vi mode 
 bindkey -v
