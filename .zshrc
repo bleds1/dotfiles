@@ -148,6 +148,7 @@ alias h="history | f"
 alias qb="qutebrowser"
 alias n="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
+alias emt="emacsclient -nw ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
