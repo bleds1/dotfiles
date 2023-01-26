@@ -10,10 +10,11 @@ My config files for:
 - Qutebrowser
 - Ranger
 - Tmux
-- Taskwarrior
 - Dunst
 - Picom
+- Feh
 - i3 gaps
 - Zathura
+- Newsboat
 
 + more?
