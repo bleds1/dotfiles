@@ -145,16 +145,22 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-agenda-max-todos 20)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/tasks.org" "INBOX")
+        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/tasks.org" "Tasks")
           "* TODO %?\n %U\n" :empty-lines 1)
+         ("n" "Fleeting Notes" entry (file+olp "~/Dropbox/org/roam/fleetingnotes.org" "Notes")
+          "** Note take on %U\n %?\n" :empty-lines 1)
          ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
           "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
-        "# %?\n%U" :prepend t)
+         ;("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
+        ;"# %?\n%U" :prepend t)
          ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/bookmarks.org" "INBOX")
           "%?" :empty-lines 2)
          ("d" "Daily Review" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
+         ("j" "Journal" entry (file+datetree "~/Dropbox/org/roam/journal.org")
+         "** %u
+Entered on %<%H:%M>
+%?\n" :empty-lines-before 1)
         ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Finances" plain (file "~/Dropbox/org/roam/2_Areas/Finances/expenses.md")
@@ -227,9 +233,11 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-startup-folded t)
 (setq org-deadline-warning-days 7)
 ;;
+(beacon-mode 1)
+;;
 ;; Set keys
 ;;
-(global-set-key (kbd "<f12>") 'org-agenda-day-view)
+(global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'org-agenda-week-view)
 (global-set-key (kbd "<f5>") 'treemacs)
 ;; Projectile Dir

@@ -54,3 +54,4 @@
 ;;
 ;;(package! powerline)
 ;;(package! airline-themes)
+(package! beacon)

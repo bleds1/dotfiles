@@ -218,6 +218,7 @@ pomodoro () {
 alias fo="pomodoro 'Focus'"
 alias br="pomodoro 'Break'"
 
+alias nf="neofetch | lolcat"
 # vi mode 
 bindkey -v
 export KEYTIMEOUT=1
