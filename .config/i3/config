@@ -23,14 +23,15 @@ set $term kitty
 set $mod Mod4
 # Polybar
 exec_always polybar polybar1 &
-# Conky
-#exec --no-startup-id conky
+exec_always xfce4-power-manager
+exec_always xfce4-clipman
+exec_always emacs --daemon &
 # Set Wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/pyramid-simple-wallpaper.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/win2000-classic-darl-grey-scaled.jpg
 # transparency
 exec_always --no-startup-id picom --experimental-backends &
 # dunst notifcations
-exec_always --no-startup-id dunst &
+#exec_always --no-startup-id dunst &
 #terminal dropdown
 #exec_always --no-startup-id kitty -T "dropdown" &
 
@@ -87,6 +88,9 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # start a terminal
 bindsym $mod+t exec kitty
 
+# emacs client
+bindsym $mod+e exec emacsclient -c -a 'emacs'
+
 # open browser
 bindsym $mod+b exec qutebrowser
 
@@ -115,8 +119,8 @@ set $i3lockwall sh ~/.local/bin/lock
 bindsym $mod+z exec --no-startup-id $i3lockwall
 
 # take a screenshot
-bindsym Print exec scrot
-bindsym $mod+Shift+p exec scrot
+bindsym Print exec xfce4-screenshooter
+bindsym $mod+Shift+p exec xfce4-screenshooter
 
 # remove all gaps
 bindsym $mod+Shift+f gaps inner current set 0; gaps outer current set 0

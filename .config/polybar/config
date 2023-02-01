@@ -18,7 +18,7 @@
 
 ## Colors ###
 [colors]
-background = #1d1d1d
+background = #1e1e1e
 background-alt = #444
 foreground = #aac7c7c7
 foreground-alt = #00292929
@@ -56,12 +56,12 @@ font-0 = Terminus:pixelsize=10;0
 font-1 = Mononoki Nerd Font:pixelsize=10;0
 font-2 = SourceCodePro:pixelsize=10;0
 
-modules-left = xwindow
+modules-left = i3 
 ;modules-left = battery bat2 i3 xwindow
-modules-center = date 
+modules-center = 
 ;modules-right = wlan cpu memory temperature date
-modules-right = wlan pulseaudio battery bat2
-tray-position = right
+modules-right = wlan date
+tray-position = left
 tray-padding = 2
 ;tray-background = #0063ff
 
@@ -315,9 +315,9 @@ label-disconnected-padding = 0
 label-connected-padding-right = 0
 label-disconnected-padding-right = 0
 
-label-connected =   %{A1:kitty -e nmtui:}wlan%{A}
+label-connected =   %{A1:kitty -e nmtui:}%{A}
 #label-connected =   %{A1:urxvt -e nmtui:}%essid%
-label-disconnected = %{A1:kitty -e nmtui:} Offline%{A}
+label-disconnected = %{A1:kitty -e nmtui:} %{A}
 # labels }睊  %downspeed%%{A} %essid% %signal%
 format-connected = <ramp-signal><label-connected>
 format-disconnected = <label-disconnected>
