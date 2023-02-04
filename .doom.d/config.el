@@ -33,10 +33,16 @@
 ;;
 ;; Display time in modeline
 (display-time-mode 1)
-(setq display-time-format "%H:%M")
-;;
+;;(setq display-time-format "%H:%M")
+(setq display-time-format "%Y-%m-%d %H:%M")
+(after! doom-modeline
+  (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
+  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
+  (line-number-mode -1)
+  (setq doom-modeline-buffer-encoding nil))
 ;; Word count in modeline
 (setq doom-modeline-enable-word-count t)
+(setq display-time-default-load-average nil)
 ;;
 ;; Height of modeline
 (setq doom-modeline-height 15)
@@ -72,8 +78,8 @@
 ;; accept.
 ;;
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 15 :weight 'Medium)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 16))
+      doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
 ;;
 ;; THEME & LOOK
 ;;
@@ -83,7 +89,7 @@
 ;;
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
-  '(default ((t (:background "#1a1a1a")))))
+  '(default ((t (:background "#1a1a1a" :foreground "#a9b1d6")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
@@ -120,7 +126,7 @@
               "~/Dropbox/org/roam/events.org"
               "~/Dropbox/org/roam/goals.org")))
       ;(directory-files-recursively "~/Dropbox/org/" "\\.org$"))
-
+(setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
@@ -132,13 +138,17 @@ org-fancy-priorities-list '("!" "M" "L")
    (?M :foreground "#57D1B9" :weight bold)
    (?L :foreground "#B2ABAA" :weight bold))))
 ;;
+(set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
+(set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
+(set-popup-rule! "^\\*vterm*" :side 'right :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
+;;
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
       org-journal-date-format "%a, %Y-%m-%d"
       org-journal-file-format "%Y-%m-%d.md"
       org-journal-dir "~/Dropbox/org/roam/0_Inbox/journal/")
 (setq org-ellipsis " ▾")
-(setq org-superstar-cycle-headline-bullets '("◉" "○" "●" "○" "●" "○" "●"))
+(setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
 (setq org-hide-emphasis-markers t)
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-into-drawer t)
@@ -233,13 +243,52 @@ Entered on %<%H:%M>
 (setq org-startup-folded t)
 (setq org-deadline-warning-days 7)
 ;;
-(beacon-mode 1)
+;; Beacon global minor mode
+(use-package! beacon)
+(after! beacon (beacon-mode 1))
+;;
+;; Focus
+(use-package! focus)
+;;
+(setq browse-url-browser-function 'eww-browse-url)
 ;;
 ;; Set keys
+;;
+;; Keyboard shortcuts for regularly used files
+;;
+(defun zz/add-file-keybinding (key file &optional desc)
+  (let ((key key)
+        (file file)
+        (desc desc))
+    (map! :desc (or desc file)
+          key
+          (lambda () (interactive) (find-file file)))))
+(zz/add-file-keybinding "C-c z n" "~/Dropbox/org/roam/fleetingnotes.org" "fleetingnotes.org")
 ;;
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'org-agenda-week-view)
 (global-set-key (kbd "<f5>") 'treemacs)
+;;
+;; Make a new org buffer easier (from tecosaur.github.io)
+;;
+(evil-define-command +evil-buffer-org-new (count file)
+  "Creates a new ORG buffer replacing the current window, optionally
+   editing a certain FILE"
+  :repeat nil
+  (interactive "P<f>")
+  (if file
+      (evil-edit file)
+    (let ((buffer (generate-new-buffer "*new org*")))
+      (set-window-buffer nil buffer)
+      (with-current-buffer buffer
+        (org-mode)
+        (setq-local doom-real-buffer-p t)))))
+
+(map! :leader
+      (:prefix "b"
+       :desc "New empty Org buffer" "o" #'+evil-buffer-org-new))
+;;
+;;
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/"))
 ;;
