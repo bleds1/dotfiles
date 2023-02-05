@@ -266,7 +266,7 @@ Entered on %<%H:%M>
 (zz/add-file-keybinding "C-c z n" "~/Dropbox/org/roam/fleetingnotes.org" "fleetingnotes.org")
 ;;
 (global-set-key (kbd "<f12>") 'writeroom-mode)
-(global-set-key (kbd "<f11>") 'org-agenda-week-view)
+(global-set-key (kbd "<f11>") 'focus-mode)
 (global-set-key (kbd "<f5>") 'treemacs)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
