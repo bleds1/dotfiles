@@ -345,7 +345,8 @@ Entered on %<%H:%M>
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight semi-bold :family "variable-pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1)))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1)))))
 ;;
 ;; My snippet functions
 (defun my-org-title-matter ()
