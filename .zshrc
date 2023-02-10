@@ -170,6 +170,7 @@ alias lm="exa -al --color=always --sort modified --reverse --no-permissions --no
 alias lt="exa -aT --color=always --group-directories-first"
 
 #shortcuts
+alias bb="cd ~/bleds_blog/"
 alias doc="cd ~/Documents/"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
@@ -237,6 +238,12 @@ setopt globdots
 #history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# Ruby exports
+
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
 
 #suppress warnings powerlevel10k
 

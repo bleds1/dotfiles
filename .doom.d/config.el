@@ -41,7 +41,7 @@
   (line-number-mode -1)
   (setq doom-modeline-buffer-encoding nil))
 ;; Word count in modeline
-(setq doom-modeline-enable-word-count t)
+;(setq doom-modeline-enable-word-count t)
 (setq display-time-default-load-average nil)
 ;;
 ;; Height of modeline
@@ -79,7 +79,7 @@
 ;;
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
 ;;
 ;; THEME & LOOK
 ;;
@@ -152,7 +152,7 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-hide-emphasis-markers t)
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-into-drawer t)
-(setq org-agenda-max-todos 20)
+(setq org-agenda-max-todos 30)
 ;;
 (setq org-capture-templates
         '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/tasks.org" "Tasks")
@@ -218,11 +218,11 @@ Entered on %<%H:%M>
 (setq org-roam-capture-templates
    '(("n" "Default Note" plain
       "%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+date: %U\n")
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
       :unnarrowed t)
      ("l" "Lit Notes" plain
  "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+date: %U\n")
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
       :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
@@ -285,14 +285,89 @@ Entered on %<%H:%M>
         (setq-local doom-real-buffer-p t)))))
 
 (map! :leader
-      (:prefix "b"
-       :desc "New empty Org buffer" "o" #'+evil-buffer-org-new))
+      (:prefix "n"
+       :desc "New empty Org buffer" "O" #'+evil-buffer-org-new))
 ;;
+;; Make a new md buffer easy
+
+(evil-define-command +evil-buffer-md-new (count file)
+  "Creates a new markdown buffer replacing the current window, optionally
+   editing a certain FILE"
+  :repeat nil
+  (interactive "P<f>")
+  (if file
+      (evil-edit file)
+    (let ((buffer (generate-new-buffer "*new md*")))
+      (set-window-buffer nil buffer)
+      (with-current-buffer buffer
+        (markdown-mode)
+        (setq-local doom-real-buffer-p t)))))
+
+(map! :leader
+      (:prefix "n"
+       :desc "New empty md buffer" "M" #'+evil-buffer-md-new))
 ;;
+;; Load elfeed-org
+(require 'elfeed-org)
+
+;; Initialize elfeed-org
+;; This hooks up elfeed-org to read the configuration when elfeed
+;; is started with =M-x elfeed=
+(elfeed-org)
+
+;; Optionally specify a number of files containing elfeed
+;; configuration. If not set then the location below is used.
+;; Note: The customize interface is also supported.
+(setq rmh-elfeed-org-files (list "~/Dropbox/org/roam/elfeed.org"))
 ;; Projectile Dir
-(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/"))
+(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/" "~/bleds_blog/" ))
 ;;
-;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; Org mode variable headings?
+(add-hook 'org-mode-hook #'+org-pretty-mode)
+(custom-set-faces!
+  '(outline-1 :weight semi-bold :height 1.1)
+  '(outline-2 :weight semi-bold :height 1.1)
+  '(outline-3 :weight semi-bold :height 1.1)
+  '(outline-4 :weight semi-bold :height 1.1)
+  '(outline-5 :weight semi-bold :height 1.1)
+  '(outline-6 :weight semi-bold :height 1.1)
+  '(outline-8 :weight semi-bold)
+  '(outline-9 :weight semi-bold)
+  '(org-document-title :height 1.2))
+(setq org-agenda-deadline-faces
+      '((1.001 . error)
+        (1.0 . org-warning)
+        (0.5 . org-upcoming-deadline)
+        (0.0 . org-upcoming-distant-deadline)))
+;;
+;; Markdown headings
+(custom-set-faces
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight semi-bold :family "variable-pitch"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1)))))
+;;
+;; My snippet functions
+(defun my-org-title-matter ()
+ (interactive)
+ (insert "#+TITLE:
+#+DATE:
+#+FILETAGS:")
+ )
+;;
+;; My jekyll front matter
+;;
+(defun my-website-front-matter ()
+ (interactive)
+ (insert "---
+layout: post
+title: ""
+date: 2023-00-00 00:00:00
+categories:
+---")
+ )
+;;
+;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
 ;;   (after! PACKAGE
