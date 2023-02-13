@@ -39,13 +39,13 @@
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
   (line-number-mode -1)
+  (setq doom-modeline-height 15)
+  (setq display-time-default-load-average nil)
   (setq doom-modeline-buffer-encoding nil))
 ;; Word count in modeline
 ;(setq doom-modeline-enable-word-count t)
-(setq display-time-default-load-average nil)
 ;;
 ;; Height of modeline
-(setq doom-modeline-height 15)
 ;;
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
@@ -123,6 +123,8 @@
 (setq org-directory "~/Dropbox/org/")
 (setq org-agenda-files
       (quote ("~/Dropbox/org/roam/tasks.org"
+              "~/Dropbox/org/roam/inbox.org"
+              "~/Dropbox/org/roam/repeat.org"
               "~/Dropbox/org/roam/events.org"
               "~/Dropbox/org/roam/goals.org")))
       ;(directory-files-recursively "~/Dropbox/org/" "\\.org$"))
@@ -130,13 +132,25 @@
 (setq org-log-done 'time)
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
+(setq org-refile-targets (quote (("tasks.org" :maxlevel . 4)
+                                 ("inbox.org" :level . 4)
+                                 ("repeat.org" :level . 4)
+                                 ("bookmarks.org" :level . 4)
+                                 ("events.org" :level . 4)
+                                 ("goals.org" :level . 4)
+                                 ("archive.org" :level . 4)
+                                 ("reading_list.org" :level . 4)
+                                 ("someday.org" :level . 4))))
+
+(after! org
+(setq org-agenda-use-tag-inheritance t)
 (setq org-agenda-custom-commands ;then define tags, see vid
 (setq
 org-fancy-priorities-list '("!" "M" "L")
  org-priority-faces
  '((?! :foreground "#E35959" :weight bold)
    (?M :foreground "#57D1B9" :weight bold)
-   (?L :foreground "#B2ABAA" :weight bold))))
+   (?L :foreground "#B2ABAA" :weight bold)))))
 ;;
 (set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
@@ -144,7 +158,7 @@ org-fancy-priorities-list '("!" "M" "L")
 ;;
 (setq org-journal-date-prefix "#+TITLE: "
       org-journal-time-prefix "* "
-      org-journal-date-format "%a, %Y-%m-%d"
+      org-journal-date-format "%Y-%m-%d %a %H:%M"
       org-journal-file-format "%Y-%m-%d.md"
       org-journal-dir "~/Dropbox/org/roam/0_Inbox/journal/")
 (setq org-ellipsis " ▾")
@@ -155,37 +169,33 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-agenda-max-todos 30)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/tasks.org" "Tasks")
-          "* TODO %?\n %U\n" :empty-lines 1)
-         ("n" "Fleeting Notes" entry (file+olp "~/Dropbox/org/roam/fleetingnotes.org" "Notes")
-          "** Note take on %U\n %?\n" :empty-lines 1)
+        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+          "** TODO %?\n %U\n" :empty-lines 1)
          ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
-          "* EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ;("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
-        ;"# %?\n%U" :prepend t)
-         ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/bookmarks.org" "INBOX")
-          "%?" :empty-lines 2)
+          "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
+         ("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
+        "* %?
+%U" :empty-lines 1)
+         ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+          "** TODO %?" :empty-lines 1)
          ("d" "Daily Review" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
-         ("j" "Journal" entry (file+datetree "~/Dropbox/org/roam/journal.org")
-         "** %u
-Entered on %<%H:%M>
-%?\n" :empty-lines-before 1)
         ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
-         ("f" "Finances" plain (file "~/Dropbox/org/roam/2_Areas/Finances/expenses.md")
+         ("f" "Finances" plain (file "~/Dropbox/org/roam/3_Resources/Finances/expenses.md")
          "# %U - %^{Amount} %^{Summary} %^g" :prepend t)
         ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/org/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/org/roam/weekly_review.org")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
-         ("r" "Reading List" plain (file+olp "~/Dropbox/org/roam/reading_list.org" "INBOX")
-          "%?" :empty-lines 1)
+         ("r" "Reading List" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+          "** %?" :empty-lines 1)
          ("s" "Shopping List" plain (file "~/Dropbox/org/roam/shopping_list.org")
          "%?- [ ]" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
+         "ACTIVE (a)"
          "NEXT(n)"
          "LATER(l)"
          "GOAL(g)"
@@ -214,20 +224,26 @@ Entered on %<%H:%M>
 (after! org
 (setq org-roam-directory "~/Dropbox/org/roam/")
 (setq org-roam-index-file "~/Dropbox/org/roam/index.org")
+(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
-   '(("n" "Default Note" plain
+   '(("n" "Daily Note" plain
       "%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
+      :if-new (file+head "${slug}-%<%Y-%m-%d>.md" "---
+#+TITLE: ${TITLE}\n#+DATE: %U\n#+FILETAGS:
+---
+# Daily Note
+\n")
       :unnarrowed t)
      ("l" "Lit Notes" plain
  "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.org" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
+      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.md" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
       :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n")))))
+       :if-new (file+head "%<%Y-%m-%d>.md" "---
+#+TITLE: %<%Y-%m-%d>\n")))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/org/roam/0_Inbox/")
 ;; Autosave disable/enable
@@ -242,6 +258,7 @@ Entered on %<%H:%M>
 ;;
 (setq org-startup-folded t)
 (setq org-deadline-warning-days 7)
+;;
 ;;
 ;; Beacon global minor mode
 (use-package! beacon)
@@ -263,7 +280,7 @@ Entered on %<%H:%M>
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c z n" "~/Dropbox/org/roam/fleetingnotes.org" "fleetingnotes.org")
+(zz/add-file-keybinding "C-c z n" "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md" "fleeting_notes.md")
 ;;
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
@@ -306,6 +323,10 @@ Entered on %<%H:%M>
 (map! :leader
       (:prefix "n"
        :desc "New empty md buffer" "M" #'+evil-buffer-md-new))
+;;
+(map! :leader
+      (:prefix "n"
+               :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
 ;;
 ;; Load elfeed-org
 (require 'elfeed-org)
@@ -351,9 +372,11 @@ Entered on %<%H:%M>
 ;; My snippet functions
 (defun my-org-title-matter ()
  (interactive)
- (insert "#+TITLE:
+ (insert "---
+#+TITLE:
 #+DATE:
-#+FILETAGS:")
+#+FILETAGS:
+---")
  )
 ;;
 ;; My jekyll front matter
@@ -367,6 +390,8 @@ date: 2023-00-00 00:00:00
 categories:
 ---")
  )
+;;
+;;
 ;;
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

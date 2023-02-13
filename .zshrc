@@ -146,7 +146,7 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
-alias n="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
+alias nn="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 alias emt="emacsclient -nw ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
 #git

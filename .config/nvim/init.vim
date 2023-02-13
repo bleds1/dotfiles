@@ -114,8 +114,8 @@ call plug#end()
 "Colorscheme
 "colorscheme gruvbox
 "colorscheme xcodedarkhc
-"colorscheme nord
-colorscheme onedark
+colorscheme nord
+"colorscheme onedark
 "set background=dark
 "Cursorline
 set cursorline
@@ -170,7 +170,6 @@ let g:startify_lists = [
 "
 let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
-			\ { 'j': '~/Documents/org/0.inbox/0.journal/'},
 			\ { 'k': '~/dotfiles/.config/kitty/kitty.conf' },
             \ { 'n': '~/dotfiles/.config/nvim/init.vim' },
 			\ { 'p': '~/dotfiles/.config/picom/picom.conf' },

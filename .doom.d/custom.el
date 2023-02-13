@@ -41,13 +41,33 @@
       ((agenda ""
         ((org-agenda-span '3)
          (org-agenda-overriding-header "3 day view:")))
-       (todo "NEXT|TODO"
-             ((org-agenda-overriding-header "Tasks:"))))
+       (tags-todo ":@refile:"
+                  ((org-agenda-overriding-header "Refile:")))
+       (todo "NEXT"
+             ((org-agenda-overriding-header "Next Actions:")))
+       (todo "TODO"
+             ((org-agenda-files
+               '("~/Dropbox/org/roam/tasks.org"))
+              (org-agenda-overriding-header "Tasks:"))))
       nil)))
- '(package-selected-packages '(org-roam airline-themes)))
+ '(package-selected-packages '(org-roam)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#1a1a1a" :foreground "#a9b1d6")))))
+ '(default ((t (:background "#1a1a1a" :foreground "#a9b1d6"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight semi-bold :family "variable-pitch"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
+ '(org-document-title ((t (:height 1.2))))
+ '(outline-1 ((t (:weight semi-bold :height 1.1))))
+ '(outline-2 ((t (:weight semi-bold :height 1.1))))
+ '(outline-3 ((t (:weight semi-bold :height 1.1))))
+ '(outline-4 ((t (:weight semi-bold :height 1.1))))
+ '(outline-5 ((t (:weight semi-bold :height 1.1))))
+ '(outline-6 ((t (:weight semi-bold :height 1.1))))
+ '(outline-8 ((t (:weight semi-bold))))
+ '(outline-9 ((t (:weight semi-bold)))))
