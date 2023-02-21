@@ -202,7 +202,7 @@ alias lynx='lynx -vikeys -accept_all_cookies'
 
 # CLI Pomodoro
 declare -A pomo_options
-pomo_options["Focus"]="60"
+pomo_options["Focus"]="30"
 pomo_options["Break"]="15"
 
 pomodoro () {
@@ -210,7 +210,7 @@ pomodoro () {
   val=$1
   echo $val | lolcat
   timer ${pomo_options["$val"]}m
-  paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+  alert
   echo "Session Complete"
   notify-send "Session Complete"
   fi

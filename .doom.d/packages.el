@@ -55,3 +55,6 @@
 (package! beacon)
 ;
 (package! focus)
+;;
+(package! md-roam
+  :recipe (:host github :repo "nobiot/md-roam"))

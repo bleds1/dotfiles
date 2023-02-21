@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#paplay ~/.local/share/sounds/me-too.ogg
+#paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
-paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
-
-#paplay ~/sfx/snes-startup.wav
+paplay ~/sfx/advance_ding.wav

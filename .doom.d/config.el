@@ -156,11 +156,10 @@ org-fancy-priorities-list '("!" "M" "L")
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*vterm*" :side 'right :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 ;;
-(setq org-journal-date-prefix "#+TITLE: "
+(setq
       org-journal-time-prefix "* "
-      org-journal-date-format "%Y-%m-%d %a %H:%M"
       org-journal-file-format "%Y-%m-%d.md"
-      org-journal-dir "~/Dropbox/org/roam/0_Inbox/journal/")
+      org-journal-dir "~/Dropbox/org/roam/0_Inbox/")
 (setq org-ellipsis " ▾")
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
 (setq org-hide-emphasis-markers t)
@@ -173,13 +172,12 @@ org-fancy-priorities-list '("!" "M" "L")
           "** TODO %?\n %U\n" :empty-lines 1)
          ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ("n" "Fleeting Notes" plain (file "~/Dropbox/org/roam/0_Inbox/fleeting_notes.md")
-        "* %?
-%U" :empty-lines 1)
-         ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
-          "** TODO %?" :empty-lines 1)
-         ("d" "Daily Review" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
-         (file "~/Dropbox/org/roam/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
+         ("b" "Bookmark" plain (file "~/Dropbox/org/roam/bookmarks.md")
+          "* [](%?)" :empty-lines 1)
+        ;("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+        ; "** TODO %?" :empty-lines 1)
+         ;("d" "Daily Review" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
+         ;(file "~/Dropbox/org/roam/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
         ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Finances" plain (file "~/Dropbox/org/roam/3_Resources/Finances/expenses.md")
@@ -190,8 +188,8 @@ org-fancy-priorities-list '("!" "M" "L")
          (file "~/Dropbox/org/roam/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
-         ("s" "Shopping List" plain (file "~/Dropbox/org/roam/shopping_list.org")
-         "%?- [ ]" :empty-lines 0)))
+         ("s" "Shopping List" plain (file "~/Dropbox/org/roam/shopping_list.md")
+         "- [ ] %?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
@@ -223,27 +221,19 @@ org-fancy-priorities-list '("!" "M" "L")
 ;; org-roam
 (after! org
 (setq org-roam-directory "~/Dropbox/org/roam/")
-(setq org-roam-index-file "~/Dropbox/org/roam/index.org")
-(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+;(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
    '(("n" "Daily Note" plain
       "%?"
       :if-new (file+head "${slug}-%<%Y-%m-%d>.md" "---
-#+TITLE: ${TITLE}\n#+DATE: %U\n#+FILETAGS:
----
-# Daily Note
-\n")
-      :unnarrowed t)
-     ("l" "Lit Notes" plain
- "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-      :if-new (file+head "%<%Y-%m-%d-%H%M>-${slug}.md" "#+TITLE: ${TITLE}\n#+DATE: %U\n")
-      :unnarrowed t)))
-
+title: ${TITLE}\n#+DATE: %U\n
+---")))))
+;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
        :if-new (file+head "%<%Y-%m-%d>.md" "---
-#+TITLE: %<%Y-%m-%d>\n")))))
+title: %<%Y-%m-%d>\ndate: %U\n ---\n # Daily Notes\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/org/roam/0_Inbox/")
 ;; Autosave disable/enable
@@ -361,23 +351,15 @@ org-fancy-priorities-list '("!" "M" "L")
         (0.5 . org-upcoming-deadline)
         (0.0 . org-upcoming-distant-deadline)))
 ;;
-;; Markdown headings
-(custom-set-faces
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight semi-bold :family "variable-pitch"))))
- '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
- '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
- '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1)))))
 ;;
 ;; My snippet functions
-(defun my-org-title-matter ()
+(defun my-front-matter ()
  (interactive)
- (insert "---
-#+TITLE:
-#+DATE:
-#+FILETAGS:
----")
+ (insert "---\ntitle: ${title}\nid: %<%Y-%m-%d-%H%M>\ndate: %U\ntags: \n---\n")
  )
+;;
+;;
+;;
 ;;
 ;; My jekyll front matter
 ;;
@@ -390,9 +372,29 @@ date: 2023-00-00 00:00:00
 categories:
 ---")
  )
+;
+;(setq org-clock-sound "~/sfx/ding.wav")
 ;;
+;; md-roam
 ;;
+(use-package! md-roam
+  :after org-roam
+  :config
+  (set-company-backend! 'markdown-mode 'company-capf)
+  (setq org-roam-file-extensions '("org" "md"))
+  (md-roam-mode 1)
+  (org-roam-db-autosync-mode 1)
+  (add-to-list 'org-roam-capture-templates
+               '("n" "Node" plain "" :target
+                 (file+head "${slug}.md"
+                            "---\ntitle: ${title}\nid: %<%Y-%m-%d-%H%M>\ndate: %U\ntags: \n---\n")
+                 :unnarrowed t))
+  )
 ;;
+;; org timer
+(setq org-clock-sound "~/sfx/advance_ding.wav")
+
+
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
