@@ -146,9 +146,9 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
-alias nn="v ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
-alias em="emacsclient -a -c 'emacs' ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
-alias emt="emacsclient -nw ~/Dropbox/org/roam/0_Inbox/$(date +%Y-%m-%d-%H%M).md"
+alias nn="v ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
+alias em="emacsclient -a -c 'emacs' ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
+alias emt="emacsclient -nw ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -178,6 +178,7 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
+alias jou="cd ~/Dropbox/roam/journals/"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
