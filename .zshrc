@@ -146,10 +146,10 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
-alias nn="v ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
+alias nn="v ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
 alias ro="cd ~/Dropbox/roam/pages/"
-alias em="emacsclient -a -c 'emacs' ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
-alias emt="emacsclient -nw ~/Dropbox/roam/pages/$(date +%Y_%m_%d_%H%M).md"
+alias em="emacsclient -a -c 'emacs' ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
+alias emt="emacsclient -nw ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
