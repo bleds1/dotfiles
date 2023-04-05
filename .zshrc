@@ -148,6 +148,7 @@ alias h="history | f"
 alias qb="qutebrowser"
 alias nn="v ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
 alias ro="cd ~/Dropbox/roam/pages/"
+alias in="cd ~/Dropbox/0_Inbox/"
 alias em="emacsclient -a -c 'emacs' ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
 alias emt="emacsclient -nw ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
 #git
@@ -167,7 +168,7 @@ alias l="exa -a --color=always --sort Name"
 alias ls="exa -a --color=always --sort Name --group-directories-first"
 alias ll="exa -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
 alias la="exa -al --color=always --sort Name --group-directories-first"
-alias lm="exa -al --color=always --sort modified --reverse --no-permissions --no-filesize --no-user"
+alias lm="exa -al --color=always --sort modified --reverse"
 alias lt="exa -aT --color=always --group-directories-first"
 
 #shortcuts
