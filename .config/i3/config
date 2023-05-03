@@ -16,7 +16,7 @@ default_floating_border pixel 0
 # Font
 # Font for window titles. Will also be used by the bar unless a different font
 #font pango:monospace 8
-font roboto 8
+font pango: roboto 8
 
 # Scratchpads
 bindsym $mod+Shift+minus move scratchpad
