@@ -1,22 +1,22 @@
 ## i3 CONFIG ##
 #
 # no title bars
-default_border pixel
+default_border pixel 1
 # gaps
-gaps inner 0
-gaps outer 0
+gaps inner 6
+gaps outer 6
 #smart_gaps on
 
-# focus colours
-client.focused #7494BE #7494BE #ffffff #4f4f4f #4f4f4f
-new_window pixel 0
+# focus colours border  backgr  text   indicator  child border
+client.focused #82abaa #82abaa #ffffff #82abaa #82abaa
+new_window pixel 1
 new_float normal 
-default_floating_border pixel 0
+default_floating_border pixel 1
 
 # Font
 # Font for window titles. Will also be used by the bar unless a different font
 #font pango:monospace 8
-font pango: roboto 8
+font pango: Roboto 8
 
 # Scratchpads
 bindsym $mod+Shift+minus move scratchpad
