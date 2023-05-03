@@ -9,9 +9,9 @@ gaps outer 0
 
 # focus colours
 client.focused #7494BE #7494BE #ffffff #4f4f4f #4f4f4f
-new_window pixel 1
+new_window pixel 0
 new_float normal 
-default_floating_border pixel 1
+default_floating_border pixel 0
 
 # Font for window titles. Will also be used by the bar unless a different font
 font pango:monospace 8
@@ -22,12 +22,17 @@ set $term kitty
 # set modkey
 set $mod Mod4
 # Polybar
-exec_always polybar polybar1 &
+#exec_always polybar polybar1 &
+exec_always xfce4-panel
 exec_always xfce4-power-manager
-exec_always xfce4-clipman
-exec_always emacs --daemon &
+#exec_always xfce4-clipman
+exec_always blueman-applet
+exec_always --no-startup-id dropbox start
+exec_always nm-applet
+exec_always xfce4-screensaver
+exec_always xfce4-notifyd
 # Set Wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/win2000-classic-darl-grey-scaled.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
 # transparency
 exec_always --no-startup-id picom --experimental-backends &
 # dunst notifcations
@@ -88,11 +93,8 @@ set $refresh_i3status killall -SIGUSR1 i3status
 # start a terminal
 bindsym $mod+t exec kitty
 
-# emacs client
-bindsym $mod+e exec emacsclient -c -a 'emacs'
-
 # open browser
-bindsym $mod+b exec qutebrowser
+bindsym $mod+b exec firefox
 
 # open file manager
 bindsym $mod+n exec pcmanfm
@@ -100,7 +102,7 @@ bindsym $mod+n exec pcmanfm
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run 
 bindsym $mod+p exec ~/.local/bin/dmenu_pass 
-
+bindsym $mod+x exec xfce4-popup-whiskermenu
 # open nmtui
 bindsym $mod+i exec --no-startup-id kitty -e nmtui
 
