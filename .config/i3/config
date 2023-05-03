@@ -13,9 +13,12 @@ new_window pixel 0
 new_float normal 
 default_floating_border pixel 0
 
+# Font
 # Font for window titles. Will also be used by the bar unless a different font
-font pango:monospace 8
+#font pango:monospace 8
+font roboto 8
 
+# Scratchpads
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
@@ -36,20 +39,9 @@ exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec_always devilspie &
 exec_always guake
-# Set Wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
-# transparency
 exec_always --no-startup-id picom --experimental-backends &
 bindsym $mod+g exec kitty -e "ranger" 
-#window classes
-#mpv
-for_window [class="mpv"] floating enable
-for_window [class="mpv"] resize set 590 333, move position center
-for_window [class="mpv"] sticky enable
-#feh
-for_window [class="feh"] floating enable
-for_window [class="feh"] resize set 800 600, move position center
-#for_window [class="feh"] sticky enable
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -62,51 +54,46 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
+
+#window classes
+
+#mpv
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] resize set 590 333, move position center
+for_window [class="mpv"] sticky enable
+#feh
+for_window [class="feh"] floating enable
+for_window [class="feh"] resize set 800 600, move position center
+#for_window [class="feh"] sticky enable
 
 # KEYBINDS
 
 # start a terminal
 bindsym $mod+t exec kitty
-
 # open browser
 bindsym $mod+b exec firefox
-
 # open file manager
 bindsym $mod+n exec pcmanfm
-
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_run 
 bindsym $mod+p exec ~/.local/bin/dmenu_pass 
 bindsym $mod+x exec xfce4-popup-whiskermenu
 # open nmtui
 bindsym $mod+i exec --no-startup-id kitty -e nmtui
-
-# fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# sticky toggle
-bindsym $mod+Shift+t sticky toggle
-
-# kill focused window
-bindsym $mod+q kill
-
-#basic lockscreen
-#set $i3lockwall sh ~/.local/bin/lock
-#bindsym $mod+z exec i3lock -c 000000
-#bindsym $mod+z exec --no-startup-id $i3lockwall
-bindsym $mod+z exec xflock4
 # take a screenshot
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+p exec xfce4-screenshooter
 
-# remove all gaps
-bindsym $mod+Shift+f gaps inner current set 0; gaps outer current set 0
+# Lockscreen
 
-# default gaps
-bindsym $mod+Shift+d gaps inner current set 6; gaps outer current set 6
+#set $i3lockwall sh ~/.local/bin/lock
+#bindsym $mod+z exec i3lock -c 000000
+#bindsym $mod+z exec --no-startup-id $i3lockwall
+bindsym $mod+z exec xflock4
+
+# Brightness and Volume
 
 # keys for screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
@@ -117,6 +104,23 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Window management
+
+# fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# sticky toggle
+bindsym $mod+Shift+t sticky toggle
+
+# kill focused window
+bindsym $mod+q kill
+
+# remove all gaps
+bindsym $mod+Shift+f gaps inner current set 0; gaps outer current set 0
+
+# default gaps
+bindsym $mod+Shift+d gaps inner current set 6; gaps outer current set 6
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -162,6 +166,10 @@ bindsym $mod+space focus mode_toggle
 # window floating rules 
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
+
+# floating pop up automatically
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
