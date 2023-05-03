@@ -165,10 +165,11 @@ alias glog='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
 #ls exa
 alias l="exa -a --color=always --sort Name"
-alias ls="exa -a --color=always --sort Name --group-directories-first"
+#alias ls="exa -a --color=always --sort Name --group-directories-first"
+alias ls="exa -al --color=always --sort modified --reverse"
 alias ll="exa -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
 alias la="exa -al --color=always --sort Name --group-directories-first"
-alias lm="exa -al --color=always --sort modified --reverse"
+#alias lm="exa -al --color=always --sort modified --reverse"
 alias lt="exa -aT --color=always --group-directories-first"
 
 #shortcuts
