@@ -34,6 +34,7 @@ exec_always --no-startup-id dropbox start
 exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
+exec_always devilspie &
 # Set Wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
 # transparency
@@ -119,10 +120,10 @@ bindsym $mod+Shift+t sticky toggle
 bindsym $mod+q kill
 
 #basic lockscreen
-set $i3lockwall sh ~/.local/bin/lock
+#set $i3lockwall sh ~/.local/bin/lock
 #bindsym $mod+z exec i3lock -c 000000
-bindsym $mod+z exec --no-startup-id $i3lockwall
-
+#bindsym $mod+z exec --no-startup-id $i3lockwall
+bindsym $mod+z exec xflock4
 # take a screenshot
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+p exec xfce4-screenshooter
