@@ -8,7 +8,7 @@ gaps outer 6
 #smart_gaps on
 
 # focus colours border  backgr  text   indicator  child border
-client.focused #82abaa #82abaa #ffffff #82abaa #82abaa
+client.focused #151515 #151515 #ffffff #151515 #151515
 new_window pixel 1
 new_float normal 
 default_floating_border pixel 1
@@ -74,6 +74,12 @@ for_window [class="feh"] resize set 800 600, move position center
 bindsym $mod+t exec kitty
 # open browser
 bindsym $mod+b exec firefox
+# open libreddit
+bindsym $mod+r exec firefox reddit.com
+# open email
+bindsym $mod+e exec firefox mail.proton.me
+# open obsidian
+bindsym $mod+o exec obsidian
 # open file manager
 bindsym $mod+n exec pcmanfm
 # start dmenu
