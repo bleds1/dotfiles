@@ -13,7 +13,6 @@ new_window pixel 1
 new_float normal 
 default_floating_border pixel 1
 
-# Font
 # Font for window titles. Will also be used by the bar unless a different font
 #font pango:monospace 8
 font pango: Roboto-Regular 10
@@ -27,7 +26,6 @@ bindsym $mod+minus scratchpad show
 set $term kitty
 # set modkey
 set $mod Mod4
-# Polybar
 #exec_always polybar polybar1 &
 exec_always xfce4-panel --disable-wm-check
 exec_always --no-startup-id xfce4-power-manager
@@ -89,8 +87,6 @@ bindsym $mod+c exec rofi -show filebrowser
 #bindsym $mod+d exec --no-startup-id dmenu_run 
 #bindsym $mod+p exec ~/.local/bin/dmenu_pass 
 #bindsym $mod+x exec xfce4-popup-whiskermenu
-# open nmtui
-bindsym $mod+i exec --no-startup-id kitty -e nmtui
 # take a screenshot
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+p exec xfce4-screenshooter
@@ -105,8 +101,8 @@ bindsym $mod+z exec xflock4
 # Brightness and Volume
 
 # keys for screen brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+#bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
+#bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
 # keys for volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
