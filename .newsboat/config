@@ -1,4 +1,4 @@
-browser "qutebrowser %u"
+browser "firefox %u"
 player "mpv"
 external-url-viewer "urlview"
 auto-reload yes
@@ -50,7 +50,7 @@ notify-format "Newsboat: %n unread articles in #f feeds"
 
 # Macros
 #macro v set browser "mpv %u" ; open-in-browser ; set browser "w3m %u"
-#macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser qutebrowser"
+#macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser firefox"
 #browser xdg-open
 macro v set browser "yt-dlp -qo - %u | mpv --no-terminal -"; open-in-browser; set browser "w3m %u"
 
