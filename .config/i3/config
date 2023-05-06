@@ -75,7 +75,7 @@ bindsym $mod+b exec firefox
 # open libreddit
 bindsym $mod+r exec firefox reddit.com
 # open email
-bindsym $mod+e exec firefox mail.proton.me
+bindsym $mod+m exec firefox mail.proton.me
 # open obsidian
 bindsym $mod+o exec obsidian
 # open file manager
@@ -84,6 +84,7 @@ bindsym $mod+n exec pcmanfm
 bindsym $mod+x exec rofi -show run
 bindsym $mod+v exec rofi -show window
 bindsym $mod+c exec rofi -show filebrowser
+bindsym $mod+e exec rofi-edit.sh
 #bindsym $mod+d exec --no-startup-id dmenu_run 
 #bindsym $mod+p exec ~/.local/bin/dmenu_pass 
 #bindsym $mod+x exec xfce4-popup-whiskermenu
