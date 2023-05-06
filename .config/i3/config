@@ -87,7 +87,6 @@ bindsym $mod+c exec rofi -show filebrowser
 bindsym $mod+e exec rofi-edit.sh
 #bindsym $mod+d exec --no-startup-id dmenu_run 
 #bindsym $mod+p exec ~/.local/bin/dmenu_pass 
-#bindsym $mod+x exec xfce4-popup-whiskermenu
 # take a screenshot
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+p exec xfce4-screenshooter
