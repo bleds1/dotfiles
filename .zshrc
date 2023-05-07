@@ -194,7 +194,9 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
-
+# tw
+alias t="task"
+alias ta="task add"
 #confirm before overwrite
 alias cp="cp -i -v"
 alias mv="mv -i -v"
