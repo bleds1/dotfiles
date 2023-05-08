@@ -89,7 +89,7 @@
 ;;
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
-  '(default ((t (:background "#1a1a1a" :foreground "#a9b1d6")))))
+  '(default ((t (:background "#151515" :foreground "#a9b1d6")))))
 ;;
 ;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
@@ -158,8 +158,8 @@ org-fancy-priorities-list '("!" "M" "L")
 ;;
 (setq
       org-journal-time-prefix "* "
-      org-journal-file-format "%Y-%m-%d.md"
-      org-journal-dir "~/Dropbox/org/roam/0_Inbox/")
+      org-journal-file-format "%Y_%m_%d.md"
+      org-journal-dir "~/Dropbox/roam/journals/")
 (setq org-ellipsis " ▾")
 (setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
 (setq org-hide-emphasis-markers t)
@@ -220,22 +220,22 @@ org-fancy-priorities-list '("!" "M" "L")
 ;;
 ;; org-roam
 (after! org
-(setq org-roam-directory "~/Dropbox/org/roam/")
+(setq org-roam-directory "~/Dropbox/roam/")
 ;(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
    '(("n" "Daily Note" plain
       "%?"
-      :if-new (file+head "${slug}-%<%Y-%m-%d>.md" "---
+      :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
 title: ${TITLE}\n#+DATE: %U\n
 ---")))))
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y-%m-%d>.md" "---
+       :if-new (file+head "%<%Y_%m_%d>.md" "---
 title: %<%Y-%m-%d>\ndate: %U\n ---\n # Daily Notes\n"))))
 ;;
-(setq org-roam-dailies-directory "~/Dropbox/org/roam/0_Inbox/")
+(setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
@@ -331,7 +331,7 @@ title: %<%Y-%m-%d>\ndate: %U\n ---\n # Daily Notes\n"))))
 ;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/Dropbox/org/roam/elfeed.org"))
 ;; Projectile Dir
-(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/org/roam/" "~/bleds_blog/" ))
+(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/"))
 ;;
 ;; Org mode variable headings?
 (add-hook 'org-mode-hook #'+org-pretty-mode)
