@@ -1,0 +1,53 @@
+#!/bin/bash
+
+myTerm=kitty
+myEdit=vim
+
+menu(){
+	printf "1. Mail\n"
+	printf "2. Calendar\n"
+	printf "3. Reddit\n"
+	printf "4. Magnetdl\n"
+	printf "5. Github\n"
+	printf "6. Mastodon\n"
+	printf "7. Twitter\n"
+    printf "8. Wikipedia\n"
+}
+
+main(){
+    choice=$(menu | rofi -dmenu | cut -d. -f1)
+
+	case $choice in
+		1)
+            firefox account.proton.me
+            ;;
+		2)
+            firefox calendar.proton.me
+            ;;
+		3)
+            firefox reddit.com
+            ;;
+		4)
+            firefox --private-window magnetdl.com
+            ;;
+
+		5)
+            firefox github.com/bleds1
+            ;;
+
+		6)
+            firefox mastodon.art/home
+            ;;
+
+		7)
+            firefox --twitter.com
+            ;;
+        8)
+            firefox en.wikipedia.org/wiki/Main_Page
+            ;;
+        esac
+}
+
+main
+
+
