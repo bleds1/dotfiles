@@ -8,6 +8,7 @@ menu(){
 	printf "2. kitty\n"
 	printf "3. .zsh\n"
 	printf "4. picom\n"
+    printf "5. tmux\n"
 }
 
 main(){
@@ -28,6 +29,9 @@ main(){
 			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/picom/picom.conf"
             ;;
 
+		5)
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/.tmux.conf/"
+            ;;
         esac
 }
 
