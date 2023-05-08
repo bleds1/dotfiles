@@ -83,6 +83,7 @@ bindsym $mod+x exec rofi -show run
 bindsym $mod+v exec rofi -show window
 bindsym $mod+c exec rofi -show filebrowser
 bindsym $mod+e exec rofi-edit
+bindsym $mod+s exec searchweb
 #bindsym $mod+d exec --no-startup-id dmenu_run 
 #bindsym $mod+p exec ~/.local/bin/dmenu_pass 
 # take a screenshot
