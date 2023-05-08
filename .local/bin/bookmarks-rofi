@@ -12,6 +12,7 @@ menu(){
 	printf "6. Mastodon\n"
 	printf "7. Twitter\n"
     printf "8. Wikipedia\n"
+    printf "9. Scores & Fixtures\n"
 }
 
 main(){
@@ -44,6 +45,9 @@ main(){
             ;;
         8)
             firefox en.wikipedia.org/wiki/Main_Page
+            ;;
+        9)
+            firefox www.bbc.co.uk/sport/football/scores-fixtures
             ;;
         esac
 }
