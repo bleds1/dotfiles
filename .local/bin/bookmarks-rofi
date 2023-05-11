@@ -13,6 +13,7 @@ menu(){
 	printf "7. Twitter\n"
     printf "8. Wikipedia\n"
     printf "9. Scores & Fixtures\n"
+    printf "10. Crimson Daggers\n"
 }
 
 main(){
@@ -49,6 +50,11 @@ main(){
         9)
             firefox www.bbc.co.uk/sport/football/scores-fixtures
             ;;
+
+        10)
+            firefox https://crimsondaggers.com/forum/forum-10.html
+            ;;
+
         esac
 }
 
