@@ -30,7 +30,7 @@ main(){
             ;;
 
 		5)
-			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/.tmux.conf/"
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.tmux.conf/"
             ;;
         esac
 }
