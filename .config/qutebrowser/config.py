@@ -13,7 +13,7 @@ config.load_autoconfig(False)
 # Setting dark mode
 config.bind(',r', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
-c.colors.webpage.bg = '#1d1d1d'
+c.colors.webpage.bg = '#151515'
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
 config.bind(',v', 'hint links spawn mpv {hint-url}')
@@ -28,15 +28,15 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 config.bind(',b', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
 # Background color of the tab bar
-c.colors.tabs.bar.bg = '#2b2b2b'
+c.colors.tabs.bar.bg = '#151515'
 # Background color of unselected odd tabs
-c.colors.tabs.odd.bg = '#2b2b2b'
+c.colors.tabs.odd.bg = '#151515'
 # Background color of unselected even tabs
-c.colors.tabs.even.bg = '#2b2b2b'
+c.colors.tabs.even.bg = '#151515'
 # Background color of selected odd tabs
-c.colors.tabs.selected.odd.bg = '#2b2b2b'
+c.colors.tabs.selected.odd.bg = '#151515'
 # Background color of selected even tabs
-c.colors.tabs.selected.even.bg = '#2b2b2b'
+c.colors.tabs.selected.even.bg = '#151515'
 c.colors.tabs.selected.odd.fg = '#adadad'
 c.colors.tabs.selected.even.fg = '#adadad'
 c.colors.tabs.odd.fg = '#5e5e5e'
@@ -50,15 +50,15 @@ c.fonts.debug_console = '9pt "Terminus"'
 c.fonts.statusbar = '9pt "Terminus"' 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.bg = '#1d1d1d'
+c.colors.completion.category.bg = '#151515'
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.bottom = '#1d1d1d'
+c.colors.completion.category.border.bottom = '#151515'
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.top = '#1d1d1d'
+c.colors.completion.category.border.top = '#151515'
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
@@ -66,7 +66,7 @@ c.colors.completion.category.fg = '#cccccc'
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-c.colors.completion.even.bg = '#1d1d1d'
+c.colors.completion.even.bg = '#151515'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
@@ -87,7 +87,7 @@ c.colors.completion.item.selected.border.top = '#82ABAA'
 
 ## Foreground color of the selected completion item.
 ## Type: QtColor
-c.colors.completion.item.selected.fg = '#1d1d1d'
+c.colors.completion.item.selected.fg = '#151515'
 
 ## Foreground color of the matched text in the selected completion item.
 ## Type: QtColor
@@ -99,8 +99,8 @@ c.colors.completion.match.fg = '#ffffff'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = '#1d1d1d'
-c.colors.completion.even.bg = '#1d1d1d'
+c.colors.completion.odd.bg = '#151515'
+c.colors.completion.even.bg = '#151515'
 
 # Default Zoom
 #c.zoom.default = '90%'
@@ -273,7 +273,7 @@ config.bind('<6>', 'tab-focus 6')
 ## Background color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.bg = '#1d1d1d'
+c.colors.contextmenu.menu.bg = '#151515'
 
 ## Foreground color of the context menu. If set to null, the Qt default
 ## is used.
@@ -288,11 +288,11 @@ c.colors.contextmenu.selected.bg = '#82ABAA'
 ## Foreground color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.fg = '#1d1d1d'
+c.colors.contextmenu.selected.fg = '#151515'
 
 ## Background color for the download bar.
 ## Type: QssColor
-c.colors.downloads.bar.bg = '#1d1d1d'
+c.colors.downloads.bar.bg = '#151515'
 
 ## Background color for downloads with errors.
 ## Type: QtColor
@@ -399,7 +399,7 @@ c.colors.messages.error.bg = '#b84242'
 
 ## Background color for prompts.
 ## Type: QssColor
-c.colors.prompts.bg = '#272727'
+c.colors.prompts.bg = '#151515'
 
 ## Border used around UI elements in prompts.
 ## Type: String
@@ -419,7 +419,7 @@ c.colors.prompts.fg = '#7d7d7d'
 
 ## Background color of the statusbar in caret mode.
 ## Type: QssColor
-c.colors.statusbar.caret.bg = '#1d1d1d'
+c.colors.statusbar.caret.bg = '#151515'
 
 ## Foreground color of the statusbar in caret mode.
 ## Type: QssColor
@@ -427,7 +427,7 @@ c.colors.statusbar.caret.fg = '#a488ce'
 
 ## Background color of the statusbar in caret mode with a selection.
 ## Type: QssColor
-c.colors.statusbar.caret.selection.bg = '#1d1d1d'
+c.colors.statusbar.caret.selection.bg = '#151515'
 
 ## Foreground color of the statusbar in caret mode with a selection.
 ## Type: QssColor
@@ -435,7 +435,7 @@ c.colors.statusbar.caret.selection.fg = '#7d7d7d'
 
 ## Background color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.bg = '#1d1d1d'
+c.colors.statusbar.command.bg = '#151515'
 
 ## Foreground color of the statusbar in command mode.
 ## Type: QssColor
@@ -451,7 +451,7 @@ c.colors.statusbar.command.fg = '#7d7d7d'
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = '#1d1d1d'
+c.colors.statusbar.insert.bg = '#151515'
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
@@ -459,7 +459,7 @@ c.colors.statusbar.insert.fg = '#82ABAA'
 
 ## Background color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.bg = '#1d1d1d'
+c.colors.statusbar.normal.bg = '#151515'
 
 ## Foreground color of the statusbar.
 ## Type: QssColor
@@ -475,7 +475,7 @@ c.colors.statusbar.normal.fg = '#7d7d7d'
 
 ## Background color of the statusbar in private browsing mode.
 ## Type: QssColor
-c.colors.statusbar.private.bg = '#1d1d1d'
+c.colors.statusbar.private.bg = '#151515'
 
 ## Foreground color of the statusbar in private browsing mode.
 ## Type: QssColor
@@ -554,7 +554,7 @@ c.colors.tabs.indicator.stop = '#82ABAA'
 
 ## Background color of pinned unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.even.bg = '#1d1d1d'
+c.colors.tabs.pinned.even.bg = '#151515'
 
 ## Foreground color of pinned unselected even tabs.
 ## Type: QtColor
@@ -562,7 +562,7 @@ c.colors.tabs.pinned.even.fg = '#7d7d7d'
 
 ## Background color of pinned unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.odd.bg = '#1d1d1d'
+c.colors.tabs.pinned.odd.bg = '#151515'
 
 ## Foreground color of pinned unselected odd tabs.
 ## Type: QtColor
