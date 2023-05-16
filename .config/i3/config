@@ -21,7 +21,7 @@ default_floating_border pixel 1
 hide_edge_borders none
 smart_borders on
 # Font for window titles. Will also be used by the bar unless a different font
-font pango: JetBrains Mono Light 9
+font pango: JetBrains Mono Light 8
 
 # Scratchpads
 bindsym $mod+Shift+minus move scratchpad
