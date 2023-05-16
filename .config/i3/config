@@ -6,15 +6,20 @@ default_border pixel 1
 gaps inner 6
 gaps outer 6
 #smart_gaps on
-
-# focus colours border  backgr  text   indicator  child border
-client.focused #151515 #151515 #ffffff #151515 #151515
+    
+# class                 border  backgr. text    indicator child_border
+#client.focused          #82abaa #285577 #ffffff #82abaa   #82abaa
+#client.focused_inactive #82abaa #5f676a #ffffff #82abaa   #82abaa
+#client.unfocused        #333333 #222222 #888888 #82abaa   #82abaa
+#client.urgent           #2f343a #900000 #ffffff #82abaa   #82abaa
+#client.placeholder      #000000 #0c0c0c #ffffff #82abaa   #82abaa
+#client.background       #ffffff
+#
 new_window pixel 1
 new_float normal 
 default_floating_border pixel 1
-
+#smart_borders on
 # Font for window titles. Will also be used by the bar unless a different font
-#font pango:monospace 8
 font pango: Roboto-Regular 10
 
 # Scratchpads
