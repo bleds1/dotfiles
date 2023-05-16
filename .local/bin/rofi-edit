@@ -9,6 +9,8 @@ menu(){
 	printf "3. .zsh\n"
 	printf "4. picom\n"
     printf "5. tmux\n"
+    printf "6. qutebrowser\n"
+
 }
 
 main(){
@@ -30,7 +32,11 @@ main(){
             ;;
 
 		5)
-			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.tmux.conf/"
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/.tmux.conf/"
+            ;;
+
+		6)
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/qutebrowser/config.py"
             ;;
         esac
 }
