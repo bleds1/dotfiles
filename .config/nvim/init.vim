@@ -220,7 +220,7 @@ map <leader>s <C-w>s
 nnoremap <leader>+ :vertical resize =5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 "Open terminal
-map <leader>t :vertical topleft :terminal fish<CR>
+map <leader>t :vertical topleft :terminal zsh<CR>
 "Yank to clipboard Ctrl+c
 vnoremap <C-c> "+y
 vnoremap <C-y> "+y
