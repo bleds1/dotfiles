@@ -15,7 +15,8 @@ client.placeholder   #151515 #151515 #ffffff #82abaa   #82abaa
 client.background       #ffffff
 #
 # No title bars
-default_border pixel 1
+default_border pixel
+#default_border normal
 new_window pixel 1
 new_float normal 
 default_floating_border pixel 1
@@ -234,7 +235,8 @@ bindsym $mod+Shift+End move container to workspace number $ws10
 # workspace specific launch
 exec --no-startup-id i3-msg 'workspace 1; exec kitty -e tmux'
 assign [class="kitty"] $ws1
-assign [class="firefox"] $ws2
+assign [class="obsidian"] $ws2
+assign [class="firefox"] $ws3
 assign [class="FreeTube"] $ws4
 # reload the configuration file
 bindsym $mod+Shift+c reload
