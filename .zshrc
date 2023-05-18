@@ -135,6 +135,8 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 #
 alias ..="cd .."
 alias c="clear -x"
+alias ct="clear -x && task"
+alias cn="clear -x && neofetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
