@@ -18,7 +18,7 @@
 
 ## Colors ###
 [colors]
-background = #1e1e1e
+background = #151515
 background-alt = #444
 foreground = #aac7c7c7
 foreground-alt = #00292929
@@ -34,7 +34,7 @@ height = 16
 ;offset-y = 1%
 radius = 0
 fixed-center = true
-
+bottom = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -46,23 +46,25 @@ border-top-size = 0
 border-bottom-size = 0
 border-color = #141a1b
 
-padding-left = 1
-padding-right = 1
+#padding-left = 1
+#padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Terminus:pixelsize=10;0
-font-1 = Mononoki Nerd Font:pixelsize=10;0
-font-2 = SourceCodePro:pixelsize=10;0
+font-0 = JetBrainsMono Light:pixelsize=9;0
+font-1 = Mononoki Nerd Font:pixelsize=9;0
+font-2 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow
 ;modules-left = battery bat2 i3 xwindow
 modules-center = 
 ;modules-right = wlan cpu memory temperature date
-modules-right = wlan date
+modules-right = filesystem cpu temperature memory pulseaudio date
 tray-position = right
-tray-padding = 2
+tray-padding = 1
+tray-scale = 1.0
+#tray-maxsize = 200
 ;tray-background = #0063ff
 
 ;wm-restack = 
@@ -81,68 +83,68 @@ cursor-scroll = ns-resize
 
 ###################################################################
 
-[bar/polybar2]
+#[bar/polybar2]
 
-monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 18
+#monitor = ${env:MONITOR:HDMI-1}
+#width = 100%
+#height = 18
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 0
-fixed-center = true
+#radius = 0
+#fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+#background = ${colors.background}
+#foreground = ${colors.foreground}
 
-line-size = 1
+#line-size = 1
 ;line-color = #f00
 
-border-size = 0
-border-top-size = 0
-border-bottom-size = 0
-border-color = #141a1b
-
-padding-left = 1
-padding-right = 1
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = Terminus:pixelsize=10;0
-font-1 = Mononoki Nerd Font:pixelsize=10;0
-font-2 = SourceCodePro:pixelsize=10;0
-
-modules-left = i3 xwindow
-;modules-left = battery bat2 i3 xwindow
-modules-center = date 
-;modules-right = wlan cpu memory temperature date
-modules-right = wlan battery bat2
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = 
-;wm-restack =
-
-;override-redirect = true
-
-;scroll-up = 
-;scroll-down =
+#border-size = 0
+#border-top-size = 0
+#border-bottom-size = 0
+#border-color = #141a1b
+#
+#padding-left = 1
+#padding-right = 1
+#
+#module-margin-left = 1
+#module-margin-right = 2
+#
+#font-0 = Terminus:pixelsize=10;0
+#font-1 = Mononoki Nerd Font:pixelsize=10;0
+#font-2 = SourceCodePro:pixelsize=10;0
+#
+#modules-left = i3 xwindow
+#;modules-left = battery bat2 i3 xwindow
+#modules-center = date 
+#;modules-right = wlan cpu memory temperature date
+#modules-right = wlan battery bat2
+#tray-position = right
+#tray-padding = 2
+#;tray-background = #0063ff
+#
+#;wm-restack = 
+#;wm-restack =
+#
+#;override-redirect = true
+#
+#;scroll-up = 
+######;scroll-down =
 
 ;scroll-up = 
 ;scroll-down = 
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+#cursor-click = pointer
+#cursor-scroll = ns-resize
 ################################################################################
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:90:...%
-label-padding-left = 1
-label-padding-right = 0
-label-empty-padding-left = 1
-label-empty-padding-right = 1
+label = %title:0:100:...%
+#label-padding-left = 1
+#label-padding-right = 0
+#label-empty-padding-left = 1
+#label-empty-padding-right = 1
 label-empty =  Ubuntu/Linux
 
 ## without colors ##
@@ -171,7 +173,7 @@ label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
-interval = 25
+interval = 2
 
 mount-0 = /
 
@@ -195,20 +197,21 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-foreground = #aa919191
-label-focused-background = #aa232323
-#label-focused-underline= #AAA488CE 
-label-focused-padding = 2
+label-focused-forground = ${colors.foreground}
+#label-focused-foreground = #aa151515
+#label-focused-background = #82abaa
+label-focused-underline= #82abaa 
+label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -219,7 +222,7 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -351,16 +354,16 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 ;date-alt = " %d %b %G "
-date-alt = " %Y_%m_%d" 
+date = "%Y_%m_%d %H:%M" 
 ;
-time = %H:%M
-time-alt = %H:%M
-;format-prefix =
+#time = %H:%M
+#time-alt = %H:%M
+format-prefix =
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #aa62d171
-label = %date% %time%
+label = %date%
 label-forerground = ${colors.forergound}
 label-background = ${colors.background}
 label-padding =1
