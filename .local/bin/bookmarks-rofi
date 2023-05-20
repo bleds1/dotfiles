@@ -14,6 +14,7 @@ menu(){
     printf "8. Wikipedia\n"
     printf "9. Scores & Fixtures\n"
     printf "10. Crimson Daggers\n"
+    printf "11. Raindrop\n"
 }
 
 main(){
@@ -53,7 +54,11 @@ main(){
 
         10)
             firefox https://crimsondaggers.com/forum/forum-10.html
-            ;;
+            ;;  
+
+        11)
+            firefox https://app.raindrop.io/my/0
+            ;;  
 
         esac
 }
