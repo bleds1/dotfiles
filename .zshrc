@@ -257,7 +257,7 @@ function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
 
 # Fleeting Obsidian function
 function note {
-    echo "- $@" >> ~/Dropbox/roam/pages/Fleeting.md
+    echo "- $(date +%Y_%m_%d_%H%M)\n - $@" >> ~/Dropbox/roam/pages/Fleeting.md
     echo "" >> ~/Dropbox/roam/pages/Fleeting.md
 }
 #suppress warnings powerlevel10k
