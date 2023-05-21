@@ -135,7 +135,7 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 #
 alias ..="cd .."
 alias c="clear -x"
-alias ct="clear -x && task"
+alias ct="clear -x && cat ~/Dropbox/roam/pages/TODO.md"
 alias cn="clear -x && neofetch"
 alias open="xdg-open"
 alias q="exit"
@@ -197,8 +197,8 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 # tw
-alias t="task"
-alias ta="task add"
+alias t="cat ~/Dropbox/roam/pages/TODO.md"
+
 #confirm before overwrite
 alias cp="cp -i -v"
 alias mv="mv -i -v"
