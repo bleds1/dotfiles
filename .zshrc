@@ -252,9 +252,11 @@ bindkey '^[[B' history-substring-search-down
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
+# Cli todo to Obsidian function
+#
+function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
 
 #suppress warnings powerlevel10k
-
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
