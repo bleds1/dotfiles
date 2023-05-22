@@ -199,7 +199,7 @@ map <leader>, :FZF<CR>
 map <leader>b :Buffers<CR>
 map <leader>. :BLines!<CR>
 map <leader>f :Files!<CR>
-map <leader>ff :Telescope find_files<CR>
+#map <leader>ff :Telescope find_files<CR>
 let g:ranger_map_keys = 0
 map <leader>r :Ranger<CR>
 "Goyo
