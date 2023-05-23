@@ -3,19 +3,19 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/org/roam/0_Inbox}
+ZROOT=${ZET_ROOT:=~/Dropbox/roam/pages}
 
-name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
-content="*"
+name="$ZROOT/$(date +"%Y_%m_%d_%H%M")"
+content="#"
 
 for word in $@; do
-  name+="-$word"
+  name+="_$word"
   content+=" ${word^}"
 done
 
-if [ ! -e "$name.org" ]; then
-  echo -e "$content\n\n#+FILETAGS:" > $name.md
+if [ ! -e "$name.md" ]; then
+  echo -e "$content\n" > $name.md
 fi
 
-emacsclient -n $name.md
+nvim -n $name.md
 
