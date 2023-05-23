@@ -15,6 +15,7 @@ menu(){
     printf "9. Scores & Fixtures\n"
     printf "10. Crimson Daggers\n"
     printf "11. Raindrop\n"
+    printf "12. Ominvore\n"
 }
 
 main(){
@@ -60,6 +61,9 @@ main(){
             firefox https://app.raindrop.io/my/0
             ;;  
 
+        12)
+            firefox https://omnivore.app/home
+            ;;  
         esac
 }
 
