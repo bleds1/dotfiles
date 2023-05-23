@@ -43,6 +43,7 @@ exec_always --no-startup-id dropbox start
 exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
+exec aw
 #exec_always devilspie &
 exec guake
 #exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
