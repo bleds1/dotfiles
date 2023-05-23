@@ -14,7 +14,7 @@ for word in $@; do
 done
 
 if [ ! -e "$name.md" ]; then
-  echo -e "$content\n" > $name.md
+    echo -e "$content\n\n- id: $(date +"%Y-%m-%d-%H%M")\n" > $name.md
 fi
 
 nvim -n $name.md
