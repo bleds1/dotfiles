@@ -25,7 +25,6 @@ foreground-alt = #00292929
 primary = #82abaa
 secondary = #82abaa
 alert = #82abaa
-
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
@@ -38,13 +37,13 @@ bottom = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 2
 ;line-color = #f00
 
 border-size = 0
 border-top-size = 0
 border-bottom-size = 0
-border-color = #141a1b
+border-color = #151515
 
 #padding-left = 1
 #padding-right = 1
@@ -56,12 +55,12 @@ font-0 = JetBrainsMono Light:pixelsize=9;0
 font-1 = Mononoki Nerd Font:pixelsize=9;0
 font-2 = SourceCodePro:pixelsize=9;0
 
-modules-left = i3 xwindow
+modules-left = i3 
 ;modules-left = battery bat2 i3 xwindow
 modules-center = 
 ;modules-right = wlan cpu memory temperature date
-modules-right = filesystem cpu temperature memory pulseaudio date
-tray-position = right
+modules-right = filesystem temperature memory pulseaudio battery bat2 wlan date
+tray-position = none
 tray-padding = 1
 tray-scale = 1.0
 #tray-maxsize = 200
@@ -86,61 +85,17 @@ cursor-scroll = ns-resize
 #[bar/polybar2]
 
 #monitor = ${env:MONITOR:HDMI-1}
-#width = 100%
-#height = 18
-;offset-x = 1%
-;offset-y = 1%
-#radius = 0
-#fixed-center = true
 
-#background = ${colors.background}
-#foreground = ${colors.foreground}
-
-#line-size = 1
-;line-color = #f00
-
-#border-size = 0
-#border-top-size = 0
-#border-bottom-size = 0
-#border-color = #141a1b
-#
-#padding-left = 1
-#padding-right = 1
-#
-#module-margin-left = 1
-#module-margin-right = 2
-#
-#font-0 = Terminus:pixelsize=10;0
-#font-1 = Mononoki Nerd Font:pixelsize=10;0
-#font-2 = SourceCodePro:pixelsize=10;0
-#
-#modules-left = i3 xwindow
-#;modules-left = battery bat2 i3 xwindow
-#modules-center = date 
-#;modules-right = wlan cpu memory temperature date
-#modules-right = wlan battery bat2
-#tray-position = right
-#tray-padding = 2
-#;tray-background = #0063ff
-#
-#;wm-restack = 
-#;wm-restack =
-#
-#;override-redirect = true
-#
-#;scroll-up = 
-######;scroll-down =
-
-;scroll-up = 
-;scroll-down = 
-
-#cursor-click = pointer
-#cursor-scroll = ns-resize
 ################################################################################
-
+#[module/arrow1]
+#type = custom/script
+#content = ""
+#content-foreground = ${colors.foreground}
+#content-background = ${colors.background}
+################################################################################
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:100:...%
+label = %title:0:30:...%
 #label-padding-left = 1
 #label-padding-right = 0
 #label-empty-padding-left = 1
@@ -180,7 +135,7 @@ mount-0 = /
 format-mounted = <label-mounted>
 format-unmounted = <label-unmounted>
 
-label-mounted =   %free%
+label-mounted =   %free%/%total%
 ;label-mounted =   %used%/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -203,9 +158,9 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-forground = ${colors.foreground}
+label-focused-foreground = ${colors.foreground}
 #label-focused-foreground = #aa151515
-#label-focused-background = #82abaa
+label-focused-background = #151515
 label-focused-underline= #82abaa 
 label-focused-padding = 1
 
@@ -276,9 +231,11 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
+;format-prefix = " "
 format-prefix = " "
-#format-prefix = "cpu "
-#format-prefix-padding-right = 0
+;format-prefix ="⟨  "
+;format-prefix = "cpu "
+;format-prefix-padding-right = 0
 label = %percentage:2%%
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
@@ -291,14 +248,13 @@ format-padding = 0
 
 [module/memory]
 type = internal/memory
-interval = 2
-#format-prefix = " "
-#format-prefix = "  "
-#format-prefix = "mem "
+interval = 5
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 #format-underline = #aa62d171
 #label = %percentage_used%%
 label = %gb_used%
+click-left = $TERMINAL -e btop &
 #################################################################################
 
 [module/wlan]
@@ -318,9 +274,9 @@ label-disconnected-padding = 0
 label-connected-padding-right = 0
 label-disconnected-padding-right = 0
 
-label-connected =   %{A1:kitty -e nmtui:}%{A}
+label-connected =   %essid% %{A1:kitty -e nmtui:}%{A}
 #label-connected =   %{A1:urxvt -e nmtui:}%essid%
-label-disconnected = %{A1:kitty -e nmtui:} %{A}
+label-disconnected = %{A1:kitty -e nmtui:} Offline %{A}
 # labels }睊  %downspeed%%{A} %essid% %signal%
 format-connected = <ramp-signal><label-connected>
 format-disconnected = <label-disconnected>
@@ -366,7 +322,7 @@ format-prefix =
 label = %date%
 label-forerground = ${colors.forergound}
 label-background = ${colors.background}
-label-padding =1
+label-padding = 1
 label-padding-right = 1
 label-padding-left = 1
 ################################################################################
