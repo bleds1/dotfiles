@@ -61,10 +61,10 @@ articlelist-format "%4i %t"
 
 # Colors
 
-color listnormal color247 default
-color listnormal_unread color247 default bold
-color listfocus color37 default reverse
-color listfocus_unread color37 default reverse
-color info color247 default 
-color background color247 default
-color article color247 default
+color listnormal color15 default
+color listnormal_unread color15 default bold
+color listfocus color15 default reverse
+color listfocus_unread color15 default reverse
+color info color15 default 
+color background color15 default
+color article color15 default
