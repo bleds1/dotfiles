@@ -23,7 +23,7 @@ foreground = #aac7c7c7
 foreground-alt = #00292929
 primary = #82abaa
 secondary = #82abaa
-alert = #82abaa
+alert = #aa82abaa
 
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
@@ -56,10 +56,8 @@ font-1 = Mononoki Nerd Font:pixelsize=9;0
 font-2 = FontAwesome:pixelsize=9;0
 font-3 = SourceCodePro:pixelsize=9;0
 
-modules-left = i3 
-;modules-left = battery bat2 i3 xwindow
+modules-left = i3 xwindow 
 modules-center = 
-;modules-right = wlan cpu memory temperature date
 modules-right = filesystem temperature memory pulseaudio battery bat2 wlan date
 tray-position = none
 tray-padding = 1
@@ -131,7 +129,7 @@ label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
-interval = 2
+interval = 20
 
 mount-0 = /
 
@@ -391,17 +389,17 @@ label-discharging = " %percentage%%"
 ramp-capacity-0 = ""
 ramp-capacity-1 = ""
 ramp-capacity-2 = ""
-ramp-capacity-0-foreground = #B64D57
+ramp-capacity-0-foreground = #C280A0
 
-;animation-charging-0 = ""
-;animation-charging-1 = ""
-;animation-charging-2 = ""
-;animation-charging-framerate = 750
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-framerate = 750
 
-;animation-discharging-0 = ""
-;animation-discharging-1 = ""
-;animation-discharging-2 = ""
-;animation-discharging-framerate = 750
+animation-discharging-0 = ""
+animation-discharging-1 = ""
+animation-discharging-2 = ""
+animation-discharging-framerate = 750
 
 ###################################################################################
 

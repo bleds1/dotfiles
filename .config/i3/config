@@ -44,7 +44,7 @@ exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec aw
-#exec_always devilspie &
+exec_always devilspie &
 #exec guake
 #exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
 exec --no-startup-id nitrogen --restore 
@@ -54,7 +54,6 @@ exec_always --no-startup-id autotiling
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -238,8 +237,8 @@ bindsym $mod+Shift+End move container to workspace number $ws10
 exec --no-startup-id i3-msg 'workspace 1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace 1; exec kitty -e tmux'
 assign [class="kitty"] $ws1
-assign [class="obsidian"] $ws2
-assign [class="firefox"] $ws3
+assign [class="firefox"] $ws2
+assign [class="obsidian"] $ws3
 assign [class="FreeTube"] $ws4
 # reload the configuration file
 bindsym $mod+Shift+c reload
