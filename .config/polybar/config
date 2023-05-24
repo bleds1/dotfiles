@@ -63,7 +63,7 @@ modules-right = filesystem temperature memory pulseaudio battery bat2 wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
-#tray-maxsize = 200
+tray-maxsize = 15
 ;tray-background = #0063ff
 
 ;wm-restack = 
@@ -139,7 +139,6 @@ label-mounted =   %free%/%total%
 ;label-mounted =   %used%/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
 
 ################################################################################
 
@@ -254,7 +253,7 @@ format-prefix-foreground = ${colors.foreground}
 #format-underline = #aa62d171
 #label = %percentage_used%%
 label = %gb_used%
-click-left = $TERMINAL -e btop &
+click-left = kitty -e btop 
 #################################################################################
 
 [module/wlan]
@@ -311,8 +310,9 @@ format-disconnected =
 [module/date]
 type = internal/date
 interval = 1
-;date-alt = " %d %b %G "
-date = "%Y_%m_%d %H:%M" 
+date = "%H:%M"
+date-alt = "%Y_%m_%d %H:%M"
+;date = "%Y_%m_%d %H:%M" 
 ;
 #time = %H:%M
 #time-alt = %H:%M
