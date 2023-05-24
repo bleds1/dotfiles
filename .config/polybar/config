@@ -15,7 +15,6 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
-
 ## Colors ###
 [colors]
 background = #151515
@@ -25,6 +24,7 @@ foreground-alt = #00292929
 primary = #82abaa
 secondary = #82abaa
 alert = #82abaa
+
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
@@ -53,7 +53,8 @@ module-margin-right = 2
 
 font-0 = JetBrainsMono Light:pixelsize=9;0
 font-1 = Mononoki Nerd Font:pixelsize=9;0
-font-2 = SourceCodePro:pixelsize=9;0
+font-2 = FontAwesome:pixelsize=9;0
+font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 
 ;modules-left = battery bat2 i3 xwindow
@@ -86,6 +87,8 @@ cursor-scroll = ns-resize
 
 #monitor = ${env:MONITOR:HDMI-1}
 
+###################################################################
+#MODULES
 ################################################################################
 #[module/arrow1]
 #type = custom/script
@@ -248,7 +251,7 @@ format-padding = 0
 [module/memory]
 type = internal/memory
 interval = 5
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground}
 #format-underline = #aa62d171
 #label = %percentage_used%%
@@ -274,7 +277,6 @@ label-connected-padding-right = 0
 label-disconnected-padding-right = 0
 
 label-connected =   %essid% %{A1:kitty -e nmtui:}%{A}
-#label-connected =   %{A1:urxvt -e nmtui:}%essid%
 label-disconnected = %{A1:kitty -e nmtui:} Offline %{A}
 # labels }睊  %downspeed%%{A} %essid% %signal%
 format-connected = <ramp-signal><label-connected>
@@ -312,11 +314,9 @@ type = internal/date
 interval = 1
 date = "%H:%M"
 date-alt = "%Y_%m_%d %H:%M"
-;date = "%Y_%m_%d %H:%M" 
-;
 #time = %H:%M
 #time-alt = %H:%M
-format-prefix =
+format-prefix = " "
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #aa62d171
 label = %date%
@@ -324,7 +324,7 @@ label-forerground = ${colors.forergound}
 label-background = ${colors.background}
 label-padding = 1
 label-padding-right = 1
-label-padding-left = 1
+label-padding-left = 0
 ################################################################################
 
 [module/pulseaudio]
@@ -385,13 +385,13 @@ format-discharging = <label-discharging>
 ;label-discharging = "%percentage%%"
 label-charging = " %percentage%%"
 label-full = " %percentage%%"
-label-discharging = " %percentage%%"
+label-discharging = " %percentage%%"
 ;label-full-padding = 1
 
-;ramp-capacity-0 = ""
-;ramp-capacity-1 = ""
-;ramp-capacity-2 = ""
-;ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-0-foreground = #B64D57
 
 ;animation-charging-0 = ""
 ;animation-charging-1 = ""
