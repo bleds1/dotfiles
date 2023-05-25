@@ -1,0 +1,9 @@
+#!/bin/bash
+# This script searches my pdf directory with fzf in the terminal and launches with Okular
+# TODO make this script detach from the terminal instance
+
+pdflaunch="/home/bledley/Documents/Library/pdf"
+
+menu=$(ls -a "$pdflaunch" | uniq -u | fzf --height=100% --reverse --header-first)
+
+exec nohup okular "$pdflaunch"/"$menu">/dev/null 2>&1

@@ -1,0 +1,9 @@
+#!/bin/bash
+# This script searches my ebooks directory with fzf in the terminal and opens the file in Okular
+# TODO make this script detach from the terminal instance
+
+eblaunch="/home/bledley/Documents/Library/ebooks"
+
+menu=$(ls -a "$eblaunch" | uniq -u | fzf --height=100% --reverse --header-first)
+
+exec nohup okular "$eblaunch"/"$menu">/dev/null 2>&1
