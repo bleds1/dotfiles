@@ -58,7 +58,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow 
 modules-center = 
-modules-right = filesystem temperature memory pulseaudio battery bat2 wlan date
+modules-right = session-time filesystem temperature memory pulseaudio battery bat2 wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
@@ -87,6 +87,11 @@ cursor-scroll = ns-resize
 
 ###################################################################
 #MODULES
+################################################################################
+[module/session-time]
+type = custom/script
+exec = ~/dotfiles/.config/polybar/session.sh
+interval = 1
 ################################################################################
 #[module/arrow1]
 #type = custom/script
