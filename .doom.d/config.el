@@ -169,7 +169,7 @@ org-fancy-priorities-list '("!" "M" "L")
 ;;
 (setq org-capture-templates
         '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
-          "** TODO %?\n %U\n" :empty-lines 1)
+          "** TODO %?\n")
          ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
          ("b" "Bookmark" plain (file "~/Dropbox/org/roam/bookmarks.md")
