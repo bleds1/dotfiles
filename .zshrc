@@ -253,8 +253,9 @@ export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
 # Cli todo to Obsidian function
-function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
-
+#function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
+function todo { echo "** TODO $1" >> ~/Dropbox/org/roam/inbox.org  }
+#
 # Fleeting Obsidian function
 function note {
     echo "- $(date +%Y_%m_%d_%H%M)\n - $@" >> ~/Dropbox/roam/pages/Fleeting.md
