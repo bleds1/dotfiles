@@ -34,7 +34,7 @@
 ;; Display time in modeline
 (display-time-mode 1)
 ;;(setq display-time-format "%H:%M")
-(setq display-time-format "%Y-%m-%d %H:%M")
+(setq display-time-format "%Y_%m_%d %H:%M")
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
@@ -51,7 +51,7 @@
 (setq confirm-kill-emacs nil)
 ;;
 ;; Relative line numbers
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type :relative)
 ;;
 ;; Disable line-numbers in only org-mode buffers
 ;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
@@ -232,8 +232,7 @@ title: ${TITLE}\n#+DATE: %U\n
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.md" "---
-title: %<%Y-%m-%d>\ndate: %U\n ---\n # Daily Notes\n"))))
+       :if-new (file+head "%<%Y_%m_%d>.md" "-id: %<%Y-%m-%d-%H%M>\n tags: #fleeting \n-Log \n -"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
@@ -355,7 +354,7 @@ title: %<%Y-%m-%d>\ndate: %U\n ---\n # Daily Notes\n"))))
 ;; My snippet functions
 (defun my-front-matter ()
  (interactive)
- (insert "---\ntitle: ${title}\nid: %<%Y-%m-%d-%H%M>\ndate: %U\ntags: \n---\n")
+ (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
  )
 ;;
 ;;
@@ -387,7 +386,7 @@ categories:
   (add-to-list 'org-roam-capture-templates
                '("n" "Node" plain "" :target
                  (file+head "${slug}.md"
-                            "---\ntitle: ${title}\nid: %<%Y-%m-%d-%H%M>\ndate: %U\ntags: \n---\n")
+                            "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
                  :unnarrowed t))
   )
 ;;
