@@ -258,8 +258,7 @@ function todo { echo "** TODO $1" >> ~/Dropbox/org/roam/inbox.org  }
 #
 # Fleeting Obsidian function
 function note {
-    echo "- $(date +%Y_%m_%d_%H%M)\n - $@" >> ~/Dropbox/roam/pages/Fleeting.md
-    echo "" >> ~/Dropbox/roam/pages/Fleeting.md
+    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/org/roam/inbox.org
 }
 #suppress warnings powerlevel10k
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
