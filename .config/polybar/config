@@ -340,8 +340,8 @@ label-volume = "%percentage%%"
 label-volume-foreground = ${colors.foreground}
 label-volume-background = ${colors.background}
 label-muted =  muted
-label-muted-foreground = ${color.foreground}
-label-muted-background = ${color.background}
+label-muted-foreground = ${colors.foreground}
+label-muted-background = ${colors.background}
 
 #bar-volume-width = 10
 #bar-volume-foreground0 = #62d171

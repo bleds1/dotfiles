@@ -50,7 +50,7 @@
 (setq confirm-kill-emacs nil)
 ;;
 ;; Relative line numbers
-(setq display-line-numbers-type :relative)
+(setq display-line-numbers-type nil)
 ;;
 ;; Disable line-numbers in only org-mode buffers
 ;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
@@ -103,7 +103,7 @@
 ;            :when (featurep! :lang org +journal)
 ;           :face (:inherit (doom-dashboard-menu-title bold))
 ;          :action org-journal-new-entry))
-(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
+;(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
 (assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
 ;;
 ;;tree macs font
@@ -167,22 +167,20 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-agenda-max-todos 30)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+        '(("i" "Task" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** TODO %?\n")
           ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %? %U\n")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ;("b" "Bookmark" plain (file "~/Dropbox/org/bookmarks.md")
-         ;"* [](%?)" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
          "** %?")
          ("d" "Daily Review" plain (file+datetree "~/Dropbox/roam/daily_review.org")
          (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
         ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
-         ("f" "Finances" plain (file "~/Dropbox/3_Resources/Finances/expenses.md")
-         "# %U - %^{Amount} %^{Summary} %^g" :prepend t)
+         ("f" "Finances" plain (file "~/Dropbox/roam/expenses.org")
+         "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
         ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly_review.org")
@@ -271,7 +269,12 @@ title: ${TITLE}\n#+DATE: %U\n
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
+(zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
+(zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
+(zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 ;;
+(global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
