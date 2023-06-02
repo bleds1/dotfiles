@@ -35,7 +35,7 @@ bindsym $mod+minus scratchpad show
 set $term kitty
 # set modkey
 set $mod Mod4
-exec_always polybar polybar1 > /dev/null >2>&1 &
+exec_always polybar polybar1
 #exec_always xfce4-panel --disable-wm-check
 exec_always --no-startup-id xfce4-power-manager
 exec_always blueman-applet
@@ -43,7 +43,7 @@ exec_always --no-startup-id dropbox start
 exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
-exec aw
+#exec aw
 exec_always devilspie &
 #exec guake
 #exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png

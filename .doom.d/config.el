@@ -45,6 +45,7 @@
 ;; Word count in modeline
 ;(setq doom-modeline-enable-word-count t)
 ;;
+;;Disable modeline
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
 ;;
@@ -246,7 +247,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (org-agenda-align-tags))
 ;;
 (setq org-startup-folded t)
-(setq org-deadline-warning-days 7)
+(setq org-deadline-warning-days 0)
 ;;
 ;;
 ;; Beacon global minor mode
@@ -271,6 +272,7 @@ title: ${TITLE}\n#+DATE: %U\n
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
 ;;
+(global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
 (global-set-key (kbd "<f5>") 'treemacs)

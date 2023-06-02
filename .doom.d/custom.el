@@ -42,13 +42,13 @@
         ((org-agenda-span '3)
          (org-agenda-overriding-header "3 day view:")))
        (tags-todo ":@refile:"
-                  ((org-agenda-overriding-header "Refile:")))
+                  ((org-agenda-overriding-header "Inbox (Refile):")))
        (todo "NEXT"
-             ((org-agenda-overriding-header "Next Actions:")))
+             ((org-agenda-overriding-header "Next Actions (Projects):")))
        (todo "TODO"
              ((org-agenda-files
                '("~/Dropbox/roam/tasks.org"))
-              (org-agenda-overriding-header "Tasks:"))))
+              (org-agenda-overriding-header "Tasks (Unscheduled):"))))
       nil)))
  '(package-selected-packages '(org-roam)))
 (custom-set-faces
