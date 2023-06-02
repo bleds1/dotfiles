@@ -231,7 +231,7 @@ title: ${TITLE}\n#+DATE: %U\n
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.md" "-id: %<%Y-%m-%d-%H%M>\n tags: #fleeting \n-Log \n -"))))
+       :if-new (file+head "%<%Y_%m_%d>.md" "---\ntitle:\nid: %<%Y-%m-%d-%H%M>\n tags: #fleeting\n---\n-Log\n -"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
@@ -272,7 +272,11 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
+(zz/add-file-keybinding "C-c l" "~/Dropbox/roam/shopping_list.org" "shopping_list.org")
+(zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading_list.org" "reading_list.org")
 (zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
+(zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
+(zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
 ;;
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
@@ -322,6 +326,25 @@ title: ${TITLE}\n#+DATE: %U\n
       (:prefix "n"
                :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
 ;;
+;; Dired
+(evil-define-key 'normal dired-mode-map
+  (kbd "M-RET") 'dired-display-file
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-open-file ; use dired-find-file instead of dired-open.
+  (kbd "m") 'dired-mark
+  (kbd "t") 'dired-toggle-marks
+  (kbd "u") 'dired-unmark
+  (kbd "C") 'dired-do-copy
+  (kbd "D") 'dired-do-delete
+  (kbd "J") 'dired-goto-file
+  (kbd "M") 'dired-do-chmod
+  (kbd "R") 'dired-do-rename
+  (kbd "T") 'dired-do-touch
+  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring.
+  (kbd "Z") 'dired-do-compress
+  (kbd "+") 'dired-create-directory
+  (kbd "-") 'dired-do-kill-lines
+  )
 ;; Load elfeed-org
 (require 'elfeed-org)
 

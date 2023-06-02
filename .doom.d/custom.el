@@ -50,7 +50,13 @@
                '("~/Dropbox/roam/tasks.org"))
               (org-agenda-overriding-header "Tasks (Unscheduled):"))))
       nil)))
- '(package-selected-packages '(org-roam)))
+ '(package-selected-packages '(org-roam))
+ '(warning-suppress-types
+   '((org-element-cache)
+     (org-element-cache)
+     (org-element-cache)
+     (org-element-cache)
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
