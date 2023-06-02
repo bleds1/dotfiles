@@ -135,7 +135,7 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 #
 alias ..="cd .."
 alias c="clear -x"
-alias ct="clear -x && cat ~/Dropbox/roam/pages/TODO.md"
+alias ct="clear -x && cat ~/Dropbox/roam/tasks.org"
 alias cn="clear -x && neofetch"
 alias open="xdg-open"
 alias q="exit"
@@ -152,8 +152,8 @@ alias nn="v ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
 alias rgr="ranger"
 alias ro="cd ~/Dropbox/roam/"
 alias in="cd ~/Dropbox/0_Inbox/"
-alias em="emacsclient -a -c 'emacs' ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
-alias emt="emacsclient -nw ~/Dropbox/0_Inbox/$(date +%Y_%m_%d_%H%M).md"
+alias em="emacsclient -a -c 'emacs' ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
+alias emt="emacsclient -nw ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -254,11 +254,11 @@ export PATH=$HOME/gems/bin:$PATH
 
 # Cli todo to Obsidian function
 #function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
-function todo { echo "** TODO $1" >> ~/Dropbox/org/roam/inbox.org  }
+function todo { echo "** TODO $1" >> ~/Dropbox/roam/inbox.org  }
 #
 # Fleeting Obsidian function
 function note {
-    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/org/roam/inbox.org
+    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/inbox.org
 }
 #suppress warnings powerlevel10k
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

@@ -47,7 +47,7 @@
              ((org-agenda-overriding-header "Next Actions:")))
        (todo "TODO"
              ((org-agenda-files
-               '("~/Dropbox/org/roam/tasks.org"))
+               '("~/Dropbox/roam/tasks.org"))
               (org-agenda-overriding-header "Tasks:"))))
       nil)))
  '(package-selected-packages '(org-roam)))

@@ -6,7 +6,7 @@ set -e
 ZROOT=${ZET_ROOT:=~/Dropbox/roam/pages}
 
 name="$ZROOT/$(date +"%Y_%m_%d_%H%M")"
-content="#"
+content="---\ntitle:"
 
 for word in $@; do
   name+="_$word"
@@ -14,7 +14,7 @@ for word in $@; do
 done
 
 if [ ! -e "$name.md" ]; then
-    echo -e "$content\n\n- id: $(date +"%Y-%m-%d-%H%M")\n" > $name.md
+    echo -e "$content\nid: $(date +"%Y-%m-%d-%H%M")\ntags:\n---\n" > $name.md
 fi
 
 nvim -n $name.md

@@ -118,14 +118,14 @@
 ;; change `org-directory'. It must be set before org loads!
 ;;
 (after! org
-(setq org-directory "~/Dropbox/org/")
+(setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files
-      (quote ("~/Dropbox/org/roam/tasks.org"
-              "~/Dropbox/org/roam/inbox.org"
-              "~/Dropbox/org/roam/repeat.org"
-              "~/Dropbox/org/roam/events.org"
-              "~/Dropbox/org/roam/goals.org")))
-      ;(directory-files-recursively "~/Dropbox/org/" "\\.org$"))
+      (quote ("~/Dropbox/roam/tasks.org"
+              "~/Dropbox/roam/inbox.org"
+              "~/Dropbox/roam/repeat.org"
+              "~/Dropbox/roam/events.org"
+              "~/Dropbox/roam/goals.org")))
+      ;(directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-agenda-span 5
@@ -166,29 +166,29 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-agenda-max-todos 30)
 ;;
 (setq org-capture-templates
-        '(("t" "Task" entry (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+        '(("t" "Task" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** TODO %?\n")
-          ("n" "Quick Note" entry (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+          ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %? %U\n")
-         ("e" "Event" entry (file+olp "~/Dropbox/org/roam/events.org" "INBOX")
+         ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-         ;("b" "Bookmark" plain (file "~/Dropbox/org/roam/bookmarks.md")
+         ;("b" "Bookmark" plain (file "~/Dropbox/org/bookmarks.md")
          ;"* [](%?)" :empty-lines 1)
-        ("b" "Bookmark" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
          "** %?")
-         ("d" "Daily Review" plain (file+datetree "~/Dropbox/org/roam/daily_review.org")
+         ("d" "Daily Review" plain (file+datetree "~/Dropbox/roam/daily_review.org")
          (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
-        ("g" "Goal" plain (file+olp "~/Dropbox/org/roam/goals.org" "INBOX")
+        ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Finances" plain (file "~/Dropbox/3_Resources/Finances/expenses.md")
          "# %U - %^{Amount} %^{Summary} %^g" :prepend t)
-        ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/org/roam/someday.org" "INBOX")
+        ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
-         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/org/roam/weekly_review.org")
+         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly_review.org")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
-         ("r" "Reading List" plain (file+olp "~/Dropbox/org/roam/inbox.org" "INBOX")
+         ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
-         ("s" "Shopping List" plain (file "~/Dropbox/org/roam/shopping_list.org")
+         ("s" "Shopping List" plain (file "~/Dropbox/roam/shopping_list.org")
          "- [ ] %?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
@@ -269,7 +269,7 @@ title: ${TITLE}\n#+DATE: %U\n
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c i" "~/Dropbox/org/roam/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
 ;;
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
@@ -328,9 +328,9 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
-(setq rmh-elfeed-org-files (list "~/Dropbox/org/roam/elfeed.org"))
+(setq rmh-elfeed-org-files (list "~/Dropbox/roam/elfeed.org"))
 ;; Projectile Dir
-(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/" "Dropbox/org/roam/"))
+(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
 ;; Org mode variable headings?
 (add-hook 'org-mode-hook #'+org-pretty-mode)

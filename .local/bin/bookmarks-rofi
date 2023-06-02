@@ -16,6 +16,7 @@ menu(){
     printf "10. Crimson Daggers\n"
     printf "11. Raindrop\n"
     printf "12. Ominvore\n"
+    printf "13. Libgen\n"
 }
 
 main(){
@@ -63,7 +64,10 @@ main(){
 
         12)
             firefox https://omnivore.app/home
-            ;;  
+            ;;
+        13)
+            firefox https://libgen.rs
+            ;;
         esac
 }
 
