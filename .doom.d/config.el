@@ -118,6 +118,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;
+(require 'org-habit)
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files
@@ -175,8 +176,10 @@ org-fancy-priorities-list '("!" "M" "L")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
          "** %?")
-         ("d" "Daily Review" plain (file+datetree "~/Dropbox/roam/daily_review.org")
-         (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt") :empty-lines 1)
+         ("p" "Daily Plan" plain (file+datetree "~/Dropbox/roam/daily_planner.org")
+         (file "~/Dropbox/3_Resources/templates/daily-plan.txt"))
+         ("d" "Daily Review" plain (file+datetree "~/Dropbox/roam/daily_planner.org")
+         (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt"))
         ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Finances" plain (file "~/Dropbox/roam/expenses.org")
@@ -277,6 +280,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
+(zz/add-file-keybinding "C-c g" "~/Dropbox/roam/daily_planner.org" "daily_planner.org")
 ;;
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
