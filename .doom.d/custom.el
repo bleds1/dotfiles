@@ -36,6 +36,7 @@
      ("https://jillianhess.substack.com/feed" substack blog)
      ("https://edwardsnowden.substack.com/feed" substack blog)
      ("https://louisestigell.substack.com/feed" substack blog)))
+ '(highlight-indent-guides-method 'character)
  '(org-agenda-custom-commands
    '(("n" "3 day view with NEXT & TODO"
       ((agenda ""
@@ -56,7 +57,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias))))
+     (defvaralias)) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,3 +78,4 @@
  '(outline-6 ((t (:weight semi-bold :height 1.1))))
  '(outline-8 ((t (:weight semi-bold))))
  '(outline-9 ((t (:weight semi-bold)))))
+(put 'customize-variable 'disabled nil)

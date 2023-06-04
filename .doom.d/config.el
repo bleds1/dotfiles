@@ -239,9 +239,9 @@ title: ${TITLE}\n#+DATE: %U\n
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
-;; Autrevert buffers with file changes
-(global-auto-revert-mode 1)
-(setq global-auto-revert-non-file-buffers t)
+;; Autorevert buffers with file changes
+;(global-auto-revert-mode 1)
+;(setq global-auto-revert-non-file-buffers t)
 ;;
 ;; Place tags close to the right-hand side of the window - is this working?
 (add-hook 'org-finalize-agenda-hook 'place-agenda-tags)
@@ -262,6 +262,17 @@ title: ${TITLE}\n#+DATE: %U\n
 (use-package! focus)
 ;;
 (setq browse-url-browser-function 'eww-browse-url)
+;;
+;;
+;; My custom agenda function?
+(defun my-agenda-custom ()
+  (interactive)
+  (org-agenda nil "n"))
+;;
+;; map leader a (previously act on?) to my agenda view
+(map! :leader
+      :desc "My agenda custom"
+      "a" #'my-agenda-custom)
 ;;
 ;; Set keys
 ;;
@@ -354,12 +365,14 @@ title: ${TITLE}\n#+DATE: %U\n
   )
 ;; Load elfeed-org
 (require 'elfeed-org)
-
 ;; Initialize elfeed-org
 ;; This hooks up elfeed-org to read the configuration when elfeed
 ;; is started with =M-x elfeed=
 (elfeed-org)
-
+;;
+;;Highlight indent guides mode? Not working as expected..
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
