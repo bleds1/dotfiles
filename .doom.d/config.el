@@ -239,6 +239,9 @@ title: ${TITLE}\n#+DATE: %U\n
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
+;; Autrevert buffers with file changes
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
 ;;
 ;; Place tags close to the right-hand side of the window - is this working?
 (add-hook 'org-finalize-agenda-hook 'place-agenda-tags)
