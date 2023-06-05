@@ -57,19 +57,21 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias)) t))
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight semi-bold :family "variable-pitch"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#819cd6" :weight bold :foundry "variable" :family "pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
+ '(org-date ((t (:foreground "#82abab"))))
  '(org-document-title ((t (:height 1.2))))
+ '(org-sexp-date ((t (:foreground "#82abba"))))
  '(outline-1 ((t (:weight semi-bold :height 1.1))))
  '(outline-2 ((t (:weight semi-bold :height 1.1))))
  '(outline-3 ((t (:weight semi-bold :height 1.1))))
@@ -79,3 +81,4 @@
  '(outline-8 ((t (:weight semi-bold))))
  '(outline-9 ((t (:weight semi-bold)))))
 (put 'customize-variable 'disabled nil)
+(put 'customize-face 'disabled nil)
