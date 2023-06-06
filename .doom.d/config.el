@@ -55,13 +55,39 @@
 ;; Disable line-numbers in only org-mode buffers
 ;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 ;;
+;; Dashboard
+;;
 ;;Better default buffer names
-(setq doom-fallback-buffer-name "DOOM"
-      +doom-dashboard-name "DOOM")
-;;
+(setq doom-fallback-buffer-name "*dashboard*")
+;
 ;; Quick access dashboard key
-(map! :leader :desc "Dashboard" "d" #'+doom-dashboard/open)
+(map! :leader :desc "Dashboard" "d" #'dashboard-open)
 ;;
+;; Set the title
+(setq dashboard-banner-logo-title "Welcome back Bledley!")
+;; Set the banner
+(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
+;; Value can be
+;; - nil to display no banner
+;; - 'official which displays the official emacs logo
+;; - 'logo which displays an alternative emacs logo
+;; - 1, 2 or 3 which displays one of the text banners
+;; - "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
+;; - a cons of '("path/to/your/image.png" . "path/to/your/text.txt")
+(setq dashboard-items '((recents  . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        ))
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts nil)
+(setq dashboard-set-init-info t)
+(setq dashboard-set-footer nil)
+(setq dashboard-set-file-icons t)
+(setq dashboard-agenda-sort-strategy '(time-up))
+(setq dashboard-agenda-prefix-format "%i %-12:c %s ")
+(setq dashboard-agenda-tags-format 'ignore)
 ;; FONTS
 ;;
 ;; Doom exposes five (optional) variables for controlling fonts:
@@ -95,7 +121,7 @@
   (solaire-global-mode -1))
 ;;
 ;; Set splash page image
-(setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
+;;(setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
 ;;
 ;(add-to-list '+doom-dashboard-menu-sections
 ;            '("Add journal entry"
@@ -104,7 +130,7 @@
 ;           :face (:inherit (doom-dashboard-menu-title bold))
 ;          :action org-journal-new-entry))
 ;(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
-(assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
+;(assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
 ;;
 ;;tree macs font
 (setq doom-themes-treemacs-enable-variable-pitch nil)

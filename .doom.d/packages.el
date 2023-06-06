@@ -54,6 +54,8 @@
 ;;
 (package! highlight-indent-guides)
 ;;
+(package! dashboard)
+;;
 (package! beacon)
 ;
 (package! focus)
