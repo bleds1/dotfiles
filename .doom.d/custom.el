@@ -65,6 +65,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
  '(font-lock-comment-face ((t (:foreground "#757575"))))
+ '(font-lock-keyword-face ((t (:foreground "#75afae"))))
  '(font-lock-string-face ((t (:foreground "#7ebebd"))))
  '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#94E2D5" :weight bold :foundry "variable" :family "pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
