@@ -64,11 +64,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#819cd6" :weight bold :foundry "variable" :family "pitch"))))
+ '(font-lock-comment-face ((t (:foreground "#757575"))))
+ '(font-lock-string-face ((t (:foreground "#7ebebd"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#94E2D5" :weight bold :foundry "variable" :family "pitch"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.2))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.2))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
+ '(markdown-metadata-key-face ((t (:foreground "#94E2D5"))))
  '(org-date ((t (:foreground "#82abab"))))
  '(org-document-title ((t (:height 1.2))))
  '(org-sexp-date ((t (:foreground "#82abba"))))

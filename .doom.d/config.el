@@ -117,6 +117,10 @@
       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
 ;;
+;;(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'Medium)
+;;      doom-big-font (font-spec :family "Iosevka" :size 16 :weight 'Medium)
+;;      doom-variable-pitch-font (font-spec :family "Iosevka" :size 15 :weight 'Medium))
+;;
 ;; THEME & LOOK
 ;;
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -155,7 +159,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;
-(require 'org-habit)
+
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files
@@ -291,6 +295,11 @@ title: ${TITLE}\n#+DATE: %U\n
 (setq org-deadline-warning-days 0)
 ;;
 ;;
+(require 'org-habit)
+  (setq org-habit-following-days 7)
+  (setq org-habit-preceding-days 35)
+  (setq org-habit-show-habits t)
+   ; End of org-mode use-package block
 ;; Beacon global minor mode
 (use-package! beacon)
 (after! beacon (beacon-mode 1))
