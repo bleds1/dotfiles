@@ -45,7 +45,7 @@
 ;; Word count in modeline
 ;(setq doom-modeline-enable-word-count t)
 ;;
-;;Disable modeline
+(global-hide-mode-line-mode)
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
 ;;
@@ -60,6 +60,13 @@
 ;;Better default buffer names
 (setq doom-fallback-buffer-name "*dashboard*")
 ;
+; Dashboard at startup
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+;;
+;;Dashboard as initial buffer with emacsclient
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+;;
 ;; Quick access dashboard key
 (map! :leader :desc "Dashboard" "d" #'dashboard-open)
 ;;
@@ -78,6 +85,8 @@
                         (projects . 5)
                         (agenda . 5)
                         ))
+(setq dashboard-item-names '(("Recent:" . "Recently opened files:")
+                             ("Agenda for the coming week:" . "Agenda:")))
 ;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
 ;; To disable shortcut "jump" indicators for each section, set
@@ -88,6 +97,8 @@
 (setq dashboard-agenda-sort-strategy '(time-up))
 (setq dashboard-agenda-prefix-format "%i %-12:c %s ")
 (setq dashboard-agenda-tags-format 'ignore)
+;;
+(setq initial-scratch-message ";; scratch buffer\n\n")
 ;; FONTS
 ;;
 ;; Doom exposes five (optional) variables for controlling fonts:
