@@ -98,7 +98,7 @@
 (setq dashboard-agenda-prefix-format "%i %-12:c %s ")
 (setq dashboard-agenda-tags-format 'ignore)
 ;;
-(setq initial-scratch-message ";; scratch buffer\n\n")
+(setq initial-scratch-message ";; scratch buffer\n;; C-c to evaluate elisp\n")
 ;; FONTS
 ;;
 ;; Doom exposes five (optional) variables for controlling fonts:
@@ -412,11 +412,13 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Icons in dired?  ..not working
 ;;(use-package! all-the-icons-dired)
 ;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-(setq dired-open-extensions '(("gif" . "feh")
-                              ("jpg" . "feh")
-                              ("png" . "feh")
-                              ("mkv" . "mpv")
-                              ("mp4" . "mpv")))
+;;
+;; Need dired open plugin for the following to work
+;;(setq dired-open-extensions '(("gif" . "feh")
+                              ;; ("jpg" . "feh")
+                              ;; ("png" . "feh")
+                              ;; ("mkv" . "mpv")
+                              ;; ("mp4" . "mpv")))
 ;; Load elfeed-org
 (require 'elfeed-org)
 ;; Initialize elfeed-org
