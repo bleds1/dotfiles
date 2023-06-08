@@ -135,6 +135,7 @@
 (after! solaire-mode
   (solaire-global-mode -1))
 ;;
+;; Doom dashboard (currently not using)
 ;; Set splash page image
 ;;(setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
 ;;
@@ -150,7 +151,6 @@
 ;;tree macs font
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 ;;
-;;
 ;; Zen mode zoom
 (setq +zen-text-scale 0.8)
 ;;
@@ -159,7 +159,6 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;
-
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files
@@ -182,7 +181,6 @@
                                  ("archive.org" :level . 4)
                                  ("reading_list.org" :level . 4)
                                  ("someday.org" :level . 4))))
-
 (after! org-agenda
 (setq org-agenda-use-tag-inheritance t)
 (setq org-agenda-custom-commands ;then define tags, see vid
@@ -294,7 +292,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (setq org-startup-folded t)
 (setq org-deadline-warning-days 0)
 ;;
-;;
 (require 'org-habit)
   (setq org-habit-following-days 7)
   (setq org-habit-preceding-days 35)
@@ -309,7 +306,6 @@ title: ${TITLE}\n#+DATE: %U\n
 ;;
 (setq browse-url-browser-function 'eww-browse-url)
 ;;
-;;
 ;; My custom agenda function?
 (defun my-agenda-custom ()
   (interactive)
@@ -321,7 +317,6 @@ title: ${TITLE}\n#+DATE: %U\n
       "a" #'my-agenda-custom)
 ;;
 ;; Set keys
-;;
 ;; Keyboard shortcuts for regularly used files
 ;;
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -340,7 +335,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
-;(zz/add-file-keybinding "C-c g" "~/Dropbox/roam/daily_planner.org" "daily_planner.org")
 ;;
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
@@ -362,13 +356,12 @@ title: ${TITLE}\n#+DATE: %U\n
       (with-current-buffer buffer
         (org-mode)
         (setq-local doom-real-buffer-p t)))))
-
 (map! :leader
       (:prefix "n"
        :desc "New empty Org buffer" "O" #'+evil-buffer-org-new))
 ;;
 ;; Make a new md buffer easy
-
+;;
 (evil-define-command +evil-buffer-md-new (count file)
   "Creates a new markdown buffer replacing the current window, optionally
    editing a certain FILE"
@@ -381,7 +374,7 @@ title: ${TITLE}\n#+DATE: %U\n
       (with-current-buffer buffer
         (markdown-mode)
         (setq-local doom-real-buffer-p t)))))
-
+;;
 (map! :leader
       (:prefix "n"
        :desc "New empty md buffer" "M" #'+evil-buffer-md-new))
@@ -467,7 +460,6 @@ title: ${TITLE}\n#+DATE: %U\n
  (insert (format-time-string "%H:%M")
  ))
 ;;
-;;
 ;; My jekyll front matter
 ;;
 (defun my-website-front-matter ()
@@ -479,7 +471,6 @@ date: 2023-00-00 00:00:00
 categories:
 ---")
  )
-;
 ;;
 ;; md-roam
 ;;
@@ -499,8 +490,7 @@ categories:
 ;;
 ;; org timer
 (setq org-clock-sound "~/sfx/advance_ding.wav")
-
-
+;;
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
