@@ -57,7 +57,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias))))
+     (defvaralias)) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -73,8 +73,15 @@
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-metadata-key-face ((t (:foreground "#94E2D5"))))
+ '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))
  '(org-date ((t (:foreground "#82abab"))))
  '(org-document-title ((t (:height 1.2))))
+ '(org-habit-alert-face ((t (:background "#C94E3B" :weight bold))))
+ '(org-habit-clear-face ((t (:background "#151515" :weight bold))))
+ '(org-habit-clear-future-face ((t (:background "#151515" :weight bold))))
+ '(org-habit-overdue-face ((t (:background "#C280A0" :weight bold))))
+ '(org-habit-ready-face ((t (:background "#4DB6AC" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "#6CCDD5"))))
  '(org-sexp-date ((t (:foreground "#82abba"))))
  '(outline-1 ((t (:weight semi-bold :height 1.1))))
  '(outline-2 ((t (:weight semi-bold :height 1.1))))

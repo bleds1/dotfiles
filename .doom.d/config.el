@@ -262,7 +262,7 @@ org-fancy-priorities-list '("!" "M" "L")
 ;; org-roam
 (after! org
 (setq org-roam-directory "~/Dropbox/roam/")
-;(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
    '(("n" "Daily Note" plain
