@@ -183,7 +183,7 @@
                                  ("reading_list.org" :level . 4)
                                  ("someday.org" :level . 4))))
 
-(after! org
+(after! org-agenda
 (setq org-agenda-use-tag-inheritance t)
 (setq org-agenda-custom-commands ;then define tags, see vid
 (setq
@@ -212,7 +212,7 @@ org-fancy-priorities-list '("!" "M" "L")
         '(("i" "Task" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** TODO %?\n")
           ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-          "** %? %U\n")
+          "** %?\n%U\n")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
@@ -409,6 +409,14 @@ title: ${TITLE}\n#+DATE: %U\n
   (kbd "+") 'dired-create-directory
   (kbd "-") 'dired-do-kill-lines
   )
+;; Icons in dired?  ..not working
+;;(use-package! all-the-icons-dired)
+;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(setq dired-open-extensions '(("gif" . "feh")
+                              ("jpg" . "feh")
+                              ("png" . "feh")
+                              ("mkv" . "mpv")
+                              ("mp4" . "mpv")))
 ;; Load elfeed-org
 (require 'elfeed-org)
 ;; Initialize elfeed-org
