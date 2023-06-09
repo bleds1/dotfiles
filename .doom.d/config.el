@@ -5,8 +5,8 @@
 ;;
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+;; (setq user-full-name "John Doe"
+;;       user-mail-address "john@doe.com")
 ;;
 ;; BASICS
 ;;
@@ -113,13 +113,13 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept.
 ;;
-(setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
+;; (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
+;;       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
+;;       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
 ;;
-;;(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'Medium)
-;;      doom-big-font (font-spec :family "Iosevka" :size 16 :weight 'Medium)
-;;      doom-variable-pitch-font (font-spec :family "Iosevka" :size 15 :weight 'Medium))
+(setq doom-font (font-spec :family "Iosevka" :size 12 :weight 'Medium)
+     doom-big-font (font-spec :family "Iosevka" :size 16 :weight 'Medium)
+     doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
 ;;
 ;; THEME & LOOK
 ;;
@@ -166,6 +166,7 @@
               "~/Dropbox/roam/inbox.org"
               "~/Dropbox/roam/repeat.org"
               "~/Dropbox/roam/events.org"
+              "~/Dropbox/roam/shopping.org"
               "~/Dropbox/roam/goals.org")))
       ;(directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-startup-folded t)
@@ -179,7 +180,8 @@
                                  ("events.org" :level . 4)
                                  ("goals.org" :level . 4)
                                  ("archive.org" :level . 4)
-                                 ("reading_list.org" :level . 4)
+                                 ("reading.org" :level . 4)
+                                 ("shopping.org" :level . 4)
                                  ("someday.org" :level . 4))))
 (after! org-agenda
 (setq org-agenda-use-tag-inheritance t)
@@ -193,7 +195,7 @@ org-fancy-priorities-list '("!" "M" "L")
 ;;
 (set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
-(set-popup-rule! "^\\*vterm*" :side 'right :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
+(set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 ;;
 (setq
       org-journal-time-prefix " - "
@@ -218,10 +220,6 @@ org-fancy-priorities-list '("!" "M" "L")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
          "** %?")
- ;        ("p" "Daily Plan" plain (file+datetree "~/Dropbox/roam/daily_planner.org")
- ;        (file "~/Dropbox/3_Resources/templates/daily-plan.txt"))
- ;        ("d" "Daily Review" plain (file+datetree "~/Dropbox/roam/daily_planner.org")
- ;        (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt"))
         ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
@@ -232,7 +230,7 @@ org-fancy-priorities-list '("!" "M" "L")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
-         ("s" "Shopping List" plain (file "~/Dropbox/roam/shopping_list.org")
+         ("s" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
          "* TODO %?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
@@ -267,7 +265,7 @@ org-fancy-priorities-list '("!" "M" "L")
 (setq org-roam-directory "~/Dropbox/roam/")
 (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
-(setq org-roam-capture-templates
+(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
    '(("n" "Daily Note" plain
       "%?"
       :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
@@ -333,8 +331,8 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
-(zz/add-file-keybinding "C-c l" "~/Dropbox/roam/shopping_list.org" "shopping_list.org")
-(zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading_list.org" "reading_list.org")
+(zz/add-file-keybinding "C-c l" "~/Dropbox/roam/shopping.org" "shopping.org")
+(zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
 (zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
