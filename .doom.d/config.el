@@ -196,7 +196,10 @@ org-fancy-priorities-list '("!" "M" "L")
 (set-popup-rule! "^\\*vterm*" :side 'right :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 ;;
 (setq
-      org-journal-time-prefix "- "
+      org-journal-time-prefix " - "
+      org-journal-date-prefix " - "
+      org-journal-time-format "%H:%M"
+      org-journal-date-format "%Y-%m-%d"
       org-journal-file-format "%Y_%m_%d.md"
       org-journal-dir "~/Dropbox/roam/journals/")
 (setq org-ellipsis " ▾")

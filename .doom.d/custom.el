@@ -83,7 +83,7 @@
  '(org-habit-ready-face ((t (:background "#4DB6AC" :weight bold))))
  '(org-scheduled-previously ((t (:foreground "#6CCDD5"))))
  '(org-sexp-date ((t (:foreground "#82abba"))))
- '(outline-1 ((t (:weight semi-bold :height 1.1))))
+ '(outline-1 ((t (:extend t :foreground "#94e2d5" :weight semi-bold :height 1.1))))
  '(outline-2 ((t (:weight semi-bold :height 1.1))))
  '(outline-3 ((t (:weight semi-bold :height 1.1))))
  '(outline-4 ((t (:weight semi-bold :height 1.1))))
