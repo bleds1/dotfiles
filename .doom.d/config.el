@@ -221,7 +221,7 @@ org-fancy-priorities-list '("!" "M" "L")
  ;        (file "~/Dropbox/3_Resources/templates/tpl_daily_review.txt"))
         ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
-         ("f" "Finances" plain (file "~/Dropbox/roam/expenses.org")
+         ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
          "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
         ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
@@ -230,7 +230,7 @@ org-fancy-priorities-list '("!" "M" "L")
          ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
          ("s" "Shopping List" plain (file "~/Dropbox/roam/shopping_list.org")
-         "- [ ] %?" :empty-lines 0)))
+         "* TODO %?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
