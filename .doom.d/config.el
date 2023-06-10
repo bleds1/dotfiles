@@ -117,9 +117,9 @@
 ;;       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
 ;;       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
 ;;
-(setq doom-font (font-spec :family "Iosevka" :size 12 :weight 'Medium)
-     doom-big-font (font-spec :family "Iosevka" :size 16 :weight 'Medium)
-     doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
+(setq doom-font (font-spec :family "Iosevka" :size 13 :weight 'Medium)
+     doom-big-font (font-spec :family "Iosevka" :size 13 :weight 'Medium)
+     doom-variable-pitch-font (font-spec :family "Iosevka" :size 13 :weight 'Medium))
 ;;
 ;; THEME & LOOK
 ;;
@@ -433,15 +433,15 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Org mode variable headings?
 (add-hook 'org-mode-hook #'+org-pretty-mode)
 (custom-set-faces!
-  '(outline-1 :weight semi-bold :height 1.1)
-  '(outline-2 :weight semi-bold :height 1.1)
-  '(outline-3 :weight semi-bold :height 1.1)
-  '(outline-4 :weight semi-bold :height 1.1)
-  '(outline-5 :weight semi-bold :height 1.1)
-  '(outline-6 :weight semi-bold :height 1.1)
+  '(outline-1 :weight semi-bold :height 1.0)
+  '(outline-2 :weight semi-bold :height 1.0)
+  '(outline-3 :weight semi-bold :height 1.0)
+  '(outline-4 :weight semi-bold :height 1.0)
+  '(outline-5 :weight semi-bold :height 1.0)
+  '(outline-6 :weight semi-bold :height 1.0)
   '(outline-8 :weight semi-bold)
   '(outline-9 :weight semi-bold)
-  '(org-document-title :height 1.2))
+  '(org-document-title :height 1.0))
 (setq org-agenda-deadline-faces
       '((1.001 . error)
         (1.0 . org-warning)
