@@ -183,7 +183,7 @@
                                  ("reading.org" :level . 4)
                                  ("shopping.org" :level . 4)
                                  ("someday.org" :level . 4))))
-(after! org-agenda
+(after! org
 (setq org-agenda-use-tag-inheritance t)
 (setq org-agenda-custom-commands ;then define tags, see vid
 (setq
@@ -341,7 +341,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
-(global-set-key (kbd "<f5>") 'treemacs)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
 ;;
@@ -489,13 +488,21 @@ categories:
                  :unnarrowed t))
   )
 ;;
-;; org timer
-(setq org-clock-sound "~/sfx/advance_ding.wav")
-;;
 ;; Rainbow Mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
 ;;
+;; Org timer function
+;; org timer sound
+(setq org-clock-sound "~/sfx/advance_ding.wav")
+(add-hook 'org-timer-done-hook 'org-clock-out)
+;
+(defun me/clock-me-up ()
+  ;"Clocks me in to my most recent task and starts a x-minute timer." from Chris Maiorana
+ (interactive)
+ (org-timer-set-timer 15)
+ (org-clock-in-last))
+(global-set-key (kbd "<f5>") 'me/clock-me-up)
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;

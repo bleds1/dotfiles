@@ -72,6 +72,7 @@
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.0))))
+ '(markdown-link-face ((t (:foreground "#92e2d5"))))
  '(markdown-metadata-key-face ((t (:foreground "#94E2D5"))))
  '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))
  '(org-date ((t (:foreground "#82abab"))))
