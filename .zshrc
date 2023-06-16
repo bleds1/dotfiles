@@ -144,7 +144,7 @@ alias vim="nvim"
 alias oldvim="\vim"
 alias f="fzf"
 alias vf="nvim (fzf)"
-alias zat="zathura"
+#alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | f"
 alias qb="qutebrowser"
@@ -197,7 +197,7 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 # tw
-alias t="cat ~/Dropbox/roam/pages/TODO.md"
+alias t="cat ~/Dropbox/roam/tasks.org"
 
 #confirm before overwrite
 alias cp="cp -i -v"
