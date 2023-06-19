@@ -117,9 +117,9 @@
 ;;       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
 ;;       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
 ;;
-(setq doom-font (font-spec :family "Iosevka" :size 13 :weight 'Medium)
-     doom-big-font (font-spec :family "Iosevka" :size 13 :weight 'Medium)
-     doom-variable-pitch-font (font-spec :family "Iosevka" :size 13 :weight 'Medium))
+(setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
+     doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
+;;     doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
 ;;
 ;; THEME & LOOK
 ;;

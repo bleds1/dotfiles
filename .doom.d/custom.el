@@ -67,7 +67,7 @@
  '(font-lock-comment-face ((t (:foreground "#757575"))))
  '(font-lock-keyword-face ((t (:foreground "#75afae"))))
  '(font-lock-string-face ((t (:foreground "#7ebebd"))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#94E2D5" :weight bold :foundry "variable" :family "pitch"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#94E2D5" :weight bold :foundry "variable" :family "Iosevka"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.0))))
