@@ -42,8 +42,9 @@
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-buffer-encoding nil))
+;;
 ;; Word count in modeline
-;(setq doom-modeline-enable-word-count t)
+(setq doom-modeline-enable-word-count t)
 ;;
 (global-hide-mode-line-mode)
 ;; Disable quit confirmation message
@@ -226,7 +227,7 @@ org-fancy-priorities-list '("!" "M" "L")
          "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
         ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
-         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly_review.org")
+         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
@@ -337,6 +338,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
 ;;
+(global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
