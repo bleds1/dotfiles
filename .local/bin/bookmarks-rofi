@@ -6,11 +6,11 @@ myEdit=vim
 menu(){
 	printf "1. Mail\n"
 	printf "2. Calendar\n"
-	printf "3. Reddit\n"
+	printf "3. Lemmy\n"
 	printf "4. Magnetdl\n"
 	printf "5. Github\n"
 	printf "6. Mastodon\n"
-	printf "7. Twitter\n"
+	printf "7. Nitter\n"
     printf "8. Wikipedia\n"
     printf "9. Scores & Fixtures\n"
     printf "10. Crimson Daggers\n"
@@ -30,7 +30,7 @@ main(){
             firefox calendar.proton.me
             ;;
 		3)
-            firefox reddit.com
+            firefox lemmy.world
             ;;
 		4)
             firefox --private-window magnetdl.com
@@ -45,7 +45,7 @@ main(){
             ;;
 
 		7)
-            firefox --twitter.com
+            firefox nitter.net/search?q=%23lufc&f=tweets
             ;;
         8)
             firefox en.wikipedia.org/wiki/Main_Page
