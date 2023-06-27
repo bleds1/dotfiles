@@ -1,4 +1,107 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;
+;; Header at the top of config supposedly improves speed to load? you do not need to run 'doom
+;; sync' after modifying this file!
+;;
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets. It is optional.
+;; (setq user-full-name "John Doe"
+;;       user-mail-address "john@doe.com")
+;;
+;; BASICS
+;;
+;; Start Doom screen maximized
+;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+;;
+;; Ask for buffer on window split
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (consult-buffer))
+;;
+;; Delete files to trash
+(setq-default
+      delete-by-moving-to-trash t)
+;;
+;; Undo limit 80mb/More granual changes whilst in insert
+(setq undo-limit 80000000
+      evil-want-fine-undo t
+;;
+;; Scroll  Margin
+      scroll-margin 2)
+;;
+;; Display time in modeline
+(display-time-mode 1)
+;;(setq display-time-format "%H:%M")
+(setq display-time-format "%Y_%m_%d %H:%M")
+(after! doom-modeline
+  (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
+  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
+  (line-number-mode -1)
+  (setq doom-modeline-height 15)
+  (setq display-time-default-load-average nil)
+  (setq doom-modeline-buffer-encoding nil))
+;;
+;; Word count in modeline
+(setq doom-modeline-enable-word-count t)
+;;
+(global-hide-mode-line-mode)
+;; Disable quit confirmation message
+(setq confirm-kill-emacs nil)
+;;
+;; Relative line numbers
+(setq display-line-numbers-type nil)
+;;
+;; Disable line-numbers in only org-mode buffers
+;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
+;;
+;; Dashboard
+;;
+;;Better default buffer names
+(setq doom-fallback-buffer-name "*dashboard*")
+;
+; Dashboard at startup
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+;;
+;;Dashboard as initial buffer with emacsclient
+(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+;;
+;; Quick access dashboard key
+(map! :leader :desc "Dashboard" "d" #'dashboard-open)
+;;
+;; Set the title
+(setq dashboard-banner-logo-title "Welcome back Bledley!")
+;; Set the banner
+(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
+;; Value can be
+;; - nil to display no banner
+;; - 'official which displays the official emacs logo
+;; - 'logo which displays an alternative emacs logo
+;; - 1, 2 or 3 which displays one of the text banners
+;; - "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
+;; - a cons of '("path/to/your/image.png" . "path/to/your/text.txt")
+(setq dashboard-items '((recents  . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        ))
+(setq dashboard-item-names '(("Recent:" . "Recently opened files:")
+                             ("Agenda for the coming week:" . "Agenda:")))
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts nil)
+(setq dashboard-set-init-info t)
+(setq dashboard-set-footer nil)
+(setq dashboard-set-file-icons t)
+(setq dashboard-agenda-sort-strategy '(time-up))
+(setq dashboard-agenda-prefix-format "%i %-12:c %s ")
+(setq dashboard-agenda-tags-format 'ignore)
+;;
+(setq initial-scratch-message ";; scratch buffer\n;; C-c to evaluate elisp\n")
 ;;; scratch-message ";; Scratch buffer for text that is not saved\n;; C-c to evaluate elisp\n")
+;;;
 ;; FONTS
 ;;
 ;; Doom exposes five (optional) variables for controlling fonts:
