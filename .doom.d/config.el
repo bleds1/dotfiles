@@ -99,8 +99,8 @@
 (setq dashboard-agenda-prefix-format "%i %-12:c %s ")
 (setq dashboard-agenda-tags-format 'ignore)
 ;;
-(setq initial-scratch-message ";; scratch buffer\n;; C-c to evaluate elisp\n")
-;;; scratch-message ";; Scratch buffer for text that is not saved\n;; C-c to evaluate elisp\n")
+;; Scratch buffer intital text
+(setq initial-scratch-message ";; scratch buffer\n")
 ;;;
 ;; FONTS
 ;;
