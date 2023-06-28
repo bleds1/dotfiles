@@ -22,9 +22,9 @@ config.bind(',iv', 'hint images spawn feh {hint-url}')
 # open link in firefox
 config.bind(',b', 'hint links spawn firefox {hint-url}')
 ## Hiding status bar and tabs
-config.bind('xb', 'config-cycle statusbar.show always never')
-config.bind('xt', 'config-cycle tabs.show always never')
-config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
+config.bind('<Space><x><t>', 'config-cycle tabs.show always never')
+config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',b', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
 # Background color of the tab bar
@@ -44,10 +44,10 @@ c.colors.tabs.even.fg = '#5e5e5e'
 # Background color for hints
 c.colors.hints.bg = '#82ABAA'
 # Default font
-c.fonts.default_size = '9pt'
-c.fonts.completion.entry = '11pt "Terminus"'
-c.fonts.debug_console = '9pt "Terminus"'
-c.fonts.statusbar = '9pt "Terminus"' 
+c.fonts.default_size = '10pt'
+c.fonts.completion.entry = '10pt "Iosevka"'
+c.fonts.debug_console = '10pt "Iosevka"'
+c.fonts.statusbar = '10pt "Iosevka"'
 ## Background color of the completion widget category headers.
 ## Type: QssColor
 c.colors.completion.category.bg = '#151515'
@@ -127,9 +127,12 @@ c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': '
 c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
 # KEY BINDS
-config.bind('<c>', 'tab-close')
-config.bind('<n>', 'tab-next')
-config.bind('<p>', 'tab-prev')
+#config.bind('<c>', 'tab-close')
+config.bind('<Space><b><k>', 'tab-close')
+#config.bind('<n>', 'tab-next')
+config.bind('<Space><b><n>', 'tab-next')
+#'config.bind('<p>', 'tab-prev')
+config.bind('<Space><b><p>', 'tab-prev')
 config.bind('<r>', 'reload')
 config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<1>', 'tab-focus 1')
@@ -1368,14 +1371,14 @@ c.downloads.remove_finished = 120000
 ## font setting, it's replaced with the fonts listed here. If set to an
 ## empty value, a system-specific monospace default is used.
 ## Type: List of Font, or Font
-c.fonts.default_family = 'Terminus'
+c.fonts.default_family = 'Iosevka'
 
 ## Default font size to use. Whenever "default_size" is used in a font
 ## setting, it's replaced with the size listed here. Valid values are
 ## either a float value with a "pt" suffix, or an integer value with a
 ## "px" suffix.
 #Type: String
-c.fonts.default_size = '8pt'
+c.fonts.default_size = '10pt'
 
 ## Font used for the downloadbar.
 ## Type: Font
@@ -1823,7 +1826,7 @@ c.hints.leave_on_load = True
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
 ## Type: Bool
-c.scrolling.smooth = True
+##c.scrolling.smooth = True
 
 ## When to find text on a page case-insensitively.
 ## Type: IgnoreCase
@@ -2332,8 +2335,8 @@ config.bind('B', 'bookmark-add')
 # config.bind('b', 'set-cmd-text -s :quickmark-load')
 # config.bind('cd', 'download-clear')
 # config.bind('co', 'tab-only')
-config.bind('d', 'scroll-page 0 0.5')
-config.bind('u', 'scroll-page 0 -0.5')
+config.bind('Ctrl+d', 'scroll-page 0 0.5')
+config.bind('Ctrl+u', 'scroll-page 0 -0.5')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
@@ -2362,7 +2365,7 @@ config.bind('a', 'mode-enter insert')
 # config.bind('l', 'scroll right')
 # config.bind('m', 'quickmark-save')
 # config.bind('n', 'search-next')
-# config.bind('o', 'set-cmd-text -s :open')
+config.bind('<space><o>', 'set-cmd-text -s :open')
 # config.bind('pP', 'open -- {primary}')
 # config.bind('pp', 'open -- {clipboard}')
 # config.bind('q', 'macro-record')
@@ -2397,7 +2400,7 @@ config.bind('a', 'mode-enter insert')
 # config.bind('tsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
-config.bind('<Ctrl+u>', 'undo')
+config.bind('<Ctrl+z>', 'undo')
 # config.bind('v', 'mode-enter caret')
 # config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
 # config.bind('wIf', 'devtools-focus')
