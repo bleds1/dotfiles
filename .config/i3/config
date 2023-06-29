@@ -74,7 +74,8 @@ for_window [class="feh"] resize set 800 600, move position center
 # start a terminal
 bindsym $mod+t exec kitty
 # open browser
-bindsym $mod+b exec firefox
+#bindsym $mod+b exec firefox
+bindsym $mod+b exec qutebrowser
 # open bookmarks
 bindsym $mod+m exec bookmarks-rofi
 # open obsidian
@@ -236,8 +237,8 @@ bindsym $mod+Shift+End move container to workspace number $ws10
 # workspace specific launch
 exec --no-startup-id i3-msg 'workspace 1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace 1; exec kitty -e tmux'
-assign [class="kitty"] $ws1
-assign [class="firefox"] $ws2
+#assign [class="kitty"] $ws1
+#assign [class="firefox"] $ws2
 assign [class="obsidian"] $ws3
 assign [class="FreeTube"] $ws4
 # reload the configuration file

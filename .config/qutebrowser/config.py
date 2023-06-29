@@ -16,17 +16,18 @@ config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#151515'
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
-config.bind(',v', 'hint links spawn mpv {hint-url}')
-config.bind(',id', 'hint images download')
-config.bind(',iv', 'hint images spawn feh {hint-url}')
+config.bind('<space><,><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
+config.bind('<space><,><i><d>', 'hint images download')
+config.bind('<space><,><i><f>', 'hint images spawn feh {hint-url}')
 # open link in firefox
-config.bind(',b', 'hint links spawn firefox {hint-url}')
+config.bind('<space><,><b>', 'hint links spawn firefox {hint-url}')
 ## Hiding status bar and tabs
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
-config.bind('<Space><x><t>', 'config-cycle tabs.show always never')
+config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind(',b', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
+c.tabs.show = 'never'
 # Background color of the tab bar
 c.colors.tabs.bar.bg = '#151515'
 # Background color of unselected odd tabs
@@ -107,7 +108,7 @@ c.colors.completion.even.bg = '#151515'
 
 # Vim as editor TODO:not working
 c.editor.command = ['kitty', '-e', 'nvim', '{file}']
-
+#c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
 # tabs
 c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
@@ -135,6 +136,7 @@ config.bind('<Space><b><n>', 'tab-next')
 config.bind('<Space><b><p>', 'tab-prev')
 config.bind('<r>', 'reload')
 config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
+config.bind('<space><d>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<1>', 'tab-focus 1')
 config.bind('<2>', 'tab-focus 2')
 config.bind('<3>', 'tab-focus 3')
@@ -299,11 +301,11 @@ c.colors.downloads.bar.bg = '#151515'
 
 ## Background color for downloads with errors.
 ## Type: QtColor
-c.colors.downloads.error.bg = '#b84242'
+c.colors.downloads.error.bg = '#c280a0'
 
 ## Foreground color for downloads with errors.
 ## Type: QtColor
-c.colors.downloads.error.fg = '#b84242'
+c.colors.downloads.error.fg = '#c280A0'
 
 ## Color gradient start for download backgrounds.
 ## Type: QtColor
@@ -366,11 +368,11 @@ c.colors.keyhint.suffix.fg = '#82ABAA'
 
 ## Background color of an error message.
 ## Type: QssColor
-c.colors.messages.error.bg = '#b84242'
+c.colors.messages.error.bg = '#c280a0'
 
 ## Border color of an error message.
 ## Type: QssColor
-# c.colors.messages.error.border = '#bb0000'
+# c.colors.messages.error.border = '#c280a0'
 
 ## Foreground color of an error message.
 ## Type: QssColor
@@ -528,7 +530,7 @@ c.colors.statusbar.url.warn.fg = '#FFF7AD'
 
 ## Color for the tab indicator on errors.
 ## Type: QtColor
-c.colors.tabs.indicator.error = '#B84242'
+c.colors.tabs.indicator.error = '#c280a0'
 
 ## Color gradient start for the tab indicator.
 ## Type: QtColor
@@ -762,7 +764,7 @@ c.completion.cmd_history_max_items = 5000
 ## Python to format its timestamps.
 ## Type: String
 # c.completion.timestamp_format = '%Y-%m-%d %H:%M'
-c.completion.timestamp_format = '%d-%m-%Y %H:%M'
+c.completion.timestamp_format = '%Y-%m-%d %H:%M'
 ## Execute the best-matching command on a partial match.
 ## Type: Bool
 # c.completion.use_best_match = False
@@ -2242,12 +2244,14 @@ c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%
 ## Bindings for normal mode
 # config.bind("'", 'mode-enter jump_mark')
 # config.bind('+', 'zoom-in')
-config.bind('z', 'zoom-in')
+#config.bind('z', 'zoom-in')
+config.bind('<Ctrl-=>', 'zoom-in')
 # config.bind('-', 'zoom-out')
-config.bind('x', 'zoom-out')
+#config.bind('x', 'zoom-out')
+config.bind('<Ctrl-->', 'zoom-out')
 # config.bind('.', 'repeat-command')
 # config.bind('/', 'set-cmd-text /')
-# config.bind(':', 'set-cmd-text :')
+config.bind('<alt-x>', 'set-cmd-text :')
 # config.bind(';I', 'hint images tab')
 # config.bind(';O', 'hint links fill :open -t -r {hint-url}')
 # config.bind(';R', 'hint --rapid links window')
@@ -2276,6 +2280,7 @@ config.bind('x', 'zoom-out')
 # config.bind('<Ctrl-B>', 'scroll-page 0 -1')
 #config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<space><r><r>', 'restart')
 # config.bind('<Ctrl-F>', 'scroll-page 0 1')
 # config.bind('<Ctrl-N>', 'open -w')
 # config.bind('<Ctrl-PgDown>', 'tab-next')
@@ -2290,11 +2295,11 @@ config.bind('x', 'zoom-out')
 # config.bind('<Ctrl-Tab>', 'tab-focus last')
 #config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'mode-enter passthrough')
-# config.bind('<Ctrl-W>', 'tab-close')
+config.bind('<Ctrl-W>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 # config.bind('<Ctrl-h>', 'home')
-# config.bind('<Ctrl-p>', 'tab-pin')
+config.bind('<space><p>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
 # config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
 # config.bind('<F11>', 'fullscreen')
@@ -2320,20 +2325,20 @@ config.bind('B', 'bookmark-add')
 # config.bind('Pp', 'open -t -- {clipboard}')
 # config.bind('R', 'reload -f')
 # config.bind('Sb', 'bookmark-list --jump')
-# config.bind('Sh', 'history')
-# config.bind('Sq', 'bookmark-list')
+config.bind('<space><h>', 'history')
+config.bind('<space><b><l>', 'bookmark-list')
 # config.bind('Ss', 'set')
 # config.bind('T', 'set-cmd-text -sr :tab-focus')
 # config.bind('U', 'undo -w')
 # config.bind('V', 'mode-enter caret ;; selection-toggle --line')
 # config.bind('ZQ', 'quit')
-# config.bind('ZZ', 'quit --save')
+config.bind('zz', 'quit --save')
 # config.bind('[[', 'navigate prev')
 # config.bind(']]', 'navigate next')
 # config.bind('`', 'mode-enter set_mark')
 # config.bind('ad', 'download-cancel')
 # config.bind('b', 'set-cmd-text -s :quickmark-load')
-# config.bind('cd', 'download-clear')
+config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
 config.bind('Ctrl+d', 'scroll-page 0 0.5')
 config.bind('Ctrl+u', 'scroll-page 0 -0.5')
@@ -2356,7 +2361,7 @@ config.bind('gd', 'download')
 # config.bind('gi', 'hint inputs --first')
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
-# config.bind('gt', 'set-cmd-text -s :tab-select')
+config.bind('<space><b><i>', 'set-cmd-text -s :tab-select')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 config.bind('a', 'mode-enter insert')

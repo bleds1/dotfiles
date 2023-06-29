@@ -1,4 +1,4 @@
-browser "firefox %u"
+browser "qutebrowser %u"
 player "mpv"
 external-url-viewer "urlview"
 auto-reload yes
@@ -7,7 +7,7 @@ reload-threads 100
 max-items 500
 save-path ~/Downloads
 #text-width 50
-delete-read-articles-on-quit no
+delete-read-articles-on-quit yes
 confirm-exit no
 feed-sort-order lastupdated
 

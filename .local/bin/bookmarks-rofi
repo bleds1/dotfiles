@@ -24,49 +24,49 @@ main(){
 
 	case $choice in
 		1)
-            firefox account.proton.me
+            qutebrowser account.proton.me
             ;;
 		2)
-            firefox calendar.proton.me
+            qutebrowser calendar.proton.me
             ;;
 		3)
-            firefox lemmy.world
+            qutebrowser lemmy.world
             ;;
 		4)
-            firefox --private-window magnetdl.com
+            qutebrowser magnetdl.com
             ;;
 
 		5)
-            firefox github.com/bleds1
+            qutebrowser github.com/bleds1
             ;;
 
 		6)
-            firefox mastodon.art/home
+            qutebrowser mastodon.art/home
             ;;
 
 		7)
-            firefox nitter.net/search?q=%23lufc&f=tweets
+            qutebrowser nitter.net/search?q=%23lufc&f=tweets
             ;;
         8)
-            firefox en.wikipedia.org/wiki/Main_Page
+            qutebrowser en.wikipedia.org/wiki/Main_Page
             ;;
         9)
-            firefox www.bbc.co.uk/sport/football/scores-fixtures
+            qutebrowser www.bbc.co.uk/sport/football/scores-fixtures
             ;;
 
         10)
-            firefox https://crimsondaggers.com/forum/forum-10.html
+            qutebrowser https://crimsondaggers.com/forum/forum-10.html
             ;;  
 
         11)
-            firefox https://app.raindrop.io/my/0
+            qutebrowser https://app.raindrop.io/my/0
             ;;  
 
         12)
-            firefox https://omnivore.app/home
+            qutebrowser https://omnivore.app/home
             ;;
         13)
-            firefox https://libgen.rs
+            qutebrowser https://libgen.rs
             ;;
         esac
 }
