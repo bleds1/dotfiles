@@ -16,16 +16,14 @@ config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#151515'
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
-config.bind('<space><,><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
-config.bind('<space><,><i><d>', 'hint images download')
-config.bind('<space><,><i><f>', 'hint images spawn feh {hint-url}')
-# open link in firefox
-config.bind('<space><,><b>', 'hint links spawn firefox {hint-url}')
+config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
+config.bind('<space><i><d>', 'hint images download')
+config.bind('<space><i><f>', 'hint images spawn feh {hint-url}')
 ## Hiding status bar and tabs
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind('<Space><,><b>', 'hint links spawn firefox {hint-url}')
+config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
 c.tabs.show = 'never'
 # Background color of the tab bar
@@ -2360,7 +2358,7 @@ config.bind('Ctrl+u', 'scroll-page 0 -0.5')
 # config.bind('ga', 'open -t')
 # config.bind('gb', 'set-cmd-text -s :bookmark-load')
 config.bind('gd', 'download')
-# config.bind('gf', 'view-source')
+#config.bind('<space><v><s>', 'view-source')
 # config.bind('gg', 'scroll-to-perc 0')
 # config.bind('gi', 'hint inputs --first')
 # config.bind('gm', 'tab-move')
