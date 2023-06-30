@@ -9,9 +9,9 @@ config.load_autoconfig(False)
 #config.set("fileselect.handler", "external")
 #config.set("fileselect.single_file.command", ['kitty', '-e', 'ranger', '--choosefile={}'])
 #config.set("fileselect.multiple_files.command", ['kitty', '-e', 'ranger', '--choosefiles={}'])
-
+config.set('content.notifications.enabled', True, 'https://mail.proton.me')
 # Setting dark mode
-config.bind(',r', 'spawn --userscript readability')
+config.bind('<space><,><r>', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#151515'
 c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -25,7 +25,7 @@ config.bind('<space><,><b>', 'hint links spawn firefox {hint-url}')
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind(',b', 'hint links spawn firefox {hint-url}')
+config.bind('<Space><,><b>', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
 c.tabs.show = 'never'
 # Background color of the tab bar
@@ -106,22 +106,22 @@ c.colors.completion.even.bg = '#151515'
 # Default Zoom
 #c.zoom.default = '90%'
 
-# Vim as editor TODO:not working
-c.editor.command = ['kitty', '-e', 'nvim', '{file}']
+# Vim as editor
+#c.editor.command = ['kitty', '-e', 'nvim', '{file}']
 #c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
+c.editor.command = ['kitty', '-e', 'emacsclient', '{file}']
 # tabs
 c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
 
 # Download Directory
-c.downloads.location.directory = '/home/bledley/Downloads'
+c.downloads.location.directory = '/home/bledley/Dropbox/0_Inbox/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'r': 'https://teddit.net/r/{}', 'wik': 'https://wikiless.org/wiki/Main_Page?lang=en/search={}'}
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'r': 'https://libreddit.de/{}','wiki': 'https://en.wikipedia.org/wiki/{}'}
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
-
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
@@ -143,6 +143,10 @@ config.bind('<3>', 'tab-focus 3')
 config.bind('<4>', 'tab-focus 4')
 config.bind('<5>', 'tab-focus 5')
 config.bind('<6>', 'tab-focus 6')
+config.bind('<ctrl+j>', 'fake-key <down>')
+config.bind('<ctrl+k>', 'fake-key <up>')
+config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 ##
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
@@ -156,7 +160,7 @@ config.bind('<6>', 'tab-focus 6')
 ## session which was last loaded. This behavior can be customized via the
 ## `session.default_name` setting.
 #Type: Bool
-#c.auto_save.session = false
+#c.auto_save.session = true
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebEngine and QtWebKit (not
@@ -2298,7 +2302,7 @@ config.bind('<space><r><r>', 'restart')
 config.bind('<Ctrl-W>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
-# config.bind('<Ctrl-h>', 'home')
+config.bind('<Ctrl-h>', 'home')
 config.bind('<space><p>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
 # config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
@@ -2337,7 +2341,7 @@ config.bind('zz', 'quit --save')
 # config.bind(']]', 'navigate next')
 # config.bind('`', 'mode-enter set_mark')
 # config.bind('ad', 'download-cancel')
-# config.bind('b', 'set-cmd-text -s :quickmark-load')
+config.bind('<space><space>', 'set-cmd-text -s :quickmark-load')
 config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
 config.bind('Ctrl+d', 'scroll-page 0 0.5')
