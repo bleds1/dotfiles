@@ -17,6 +17,7 @@ c.colors.webpage.bg = '#151515'
 c.url.start_pages=('/home/bledley/startpage/index.html')
 # Open video in Mpv
 config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
+config.bind(',m', 'spawn --detach mpv {url}')
 config.bind('<space><i><d>', 'hint images download')
 config.bind('<space><i><f>', 'hint images spawn feh {hint-url}')
 ## Hiding status bar and tabs
@@ -105,9 +106,9 @@ c.colors.completion.even.bg = '#151515'
 #c.zoom.default = '90%'
 
 # Vim as editor
-#c.editor.command = ['kitty', '-e', 'nvim', '{file}']
+c.editor.command = ['kitty', '-e', 'nvim', '{file}']
 #c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
-c.editor.command = ['kitty', '-e', 'emacsclient', '{file}']
+#c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
 # tabs
 c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
@@ -116,14 +117,14 @@ c.tabs.title.format = '{current_title}'
 c.downloads.location.directory = '/home/bledley/Dropbox/0_Inbox/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'r': 'https://libreddit.de/{}','wiki': 'https://en.wikipedia.org/wiki/{}'}
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'lr': 'https://libreddit.de/{}','wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
-c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
+c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save','pw': 'open --private'}
 
 # KEY BINDS
 #config.bind('<c>', 'tab-close')
@@ -133,7 +134,8 @@ config.bind('<Space><b><n>', 'tab-next')
 #'config.bind('<p>', 'tab-prev')
 config.bind('<Space><b><p>', 'tab-prev')
 config.bind('<r>', 'reload')
-config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
+#config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
+config.bind('<space><n>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<space><d>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<1>', 'tab-focus 1')
 config.bind('<2>', 'tab-focus 2')
@@ -141,6 +143,7 @@ config.bind('<3>', 'tab-focus 3')
 config.bind('<4>', 'tab-focus 4')
 config.bind('<5>', 'tab-focus 5')
 config.bind('<6>', 'tab-focus 6')
+config.unbind('<d>')
 config.bind('<ctrl+j>', 'fake-key <down>')
 config.bind('<ctrl+k>', 'fake-key <up>')
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
@@ -374,7 +377,7 @@ c.colors.messages.error.bg = '#c280a0'
 
 ## Border color of an error message.
 ## Type: QssColor
-# c.colors.messages.error.border = '#c280a0'
+c.colors.messages.error.border = '#c280a0'
 
 ## Foreground color of an error message.
 ## Type: QssColor
@@ -1485,7 +1488,7 @@ c.hints.border = '1px solid #82ABAA'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
-# c.hints.chars = 'asdfghjkl'
+c.hints.chars = 'asdfghjkl'
 
 ## Dictionary file to be used by the word hints.
 ## Type: File
@@ -2358,7 +2361,8 @@ config.bind('Ctrl+u', 'scroll-page 0 -0.5')
 # config.bind('ga', 'open -t')
 # config.bind('gb', 'set-cmd-text -s :bookmark-load')
 config.bind('gd', 'download')
-#config.bind('<space><v><s>', 'view-source')
+config.bind(',vs', 'view-source')
+config.bind(',es', 'view-source --edit')
 # config.bind('gg', 'scroll-to-perc 0')
 # config.bind('gi', 'hint inputs --first')
 # config.bind('gm', 'tab-move')
@@ -2434,6 +2438,8 @@ config.bind('<Ctrl+z>', 'undo')
 # config.bind('yY', 'yank -s')
 # config.bind('yd', 'yank domain')
 # config.bind('ym', 'yank inline [{title}]({url})')
+## Yanks a markdown formatted link
+config.bind(',ym', 'yank inline [{title}]({url:pretty})')
 # config.bind('yp', 'yank pretty-url')
 # config.bind('yt', 'yank title')
 # config.bind('yy', 'yank')
