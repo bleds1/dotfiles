@@ -336,7 +336,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
 (zz/add-file-keybinding "C-c l" "~/Dropbox/roam/shopping.org" "shopping.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
-(zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
+;;(zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
 ;;
@@ -345,6 +345,8 @@ title: ${TITLE}\n#+DATE: %U\n
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
+(global-set-key (kbd "C-c b") 'browse-url-xdg-open)
+(define-key global-map (kbd "C-c f") #'elfeed)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
 ;;
