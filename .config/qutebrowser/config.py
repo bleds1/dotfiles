@@ -127,14 +127,10 @@ c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': '
 c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save','pw': 'open --private'}
 
 # KEY BINDS
-#config.bind('<c>', 'tab-close')
 config.bind('<Space><b><k>', 'tab-close')
-#config.bind('<n>', 'tab-next')
 config.bind('<Space><b><n>', 'tab-next')
-#'config.bind('<p>', 'tab-prev')
 config.bind('<Space><b><p>', 'tab-prev')
 config.bind('<r>', 'reload')
-#config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<space><n>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<space><d>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<1>', 'tab-focus 1')

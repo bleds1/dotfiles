@@ -421,15 +421,24 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Initialize elfeed-org
 ;; This hooks up elfeed-org to read the configuration when elfeed
 ;; is started with =M-x elfeed=
+;;
+(after! elfeed
 (elfeed-org)
-;;
-;;Highlight indent guides mode? Not working as expected..
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;;
+(setq elfeed-search-filter "@1-week-ago +unread"
+      elfeed-search-title-min-width 80
+      elfeed-show-entry-switch #'pop-to-buffer
+      shr-max-image-proportion 0.6)
+(add-hook! 'elfeed-show-mode-hook (hide-mode-line-mode 1))
+(add-hook! 'elfeed-search-update-hook #'hide-mode-line-mode)
+      )
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/Dropbox/roam/elfeed.org"))
+
+;;Highlight indent guides mode? Not working as expected..
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
