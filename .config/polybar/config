@@ -58,7 +58,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow 
 modules-center = 
-modules-right = session-time filesystem temperature memory pulseaudio battery bat2 wlan date
+modules-right = session-time filesystem temperature memory pulseaudio battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
@@ -506,6 +506,15 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+###################################################################################
+
+[module/bluetooth]
+
+type = custom/script
+exec = rofi-bluetooth --status
+interval = 1
+click-left = rofi-bluetooth &
 
 ###################################################################################
 
