@@ -155,7 +155,7 @@
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 ;;
 ;; Zen mode zoom
-(setq +zen-text-scale 0.8)
+(setq +zen-text-scale 0.6)
 ;;
 ;; Org
 ;;
@@ -507,6 +507,8 @@ categories:
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
 ;;
+;; vi tilde fringe
+(global-vi-tilde-fringe-mode -1)
 ;; Org timer function
 ;; org timer sound
 (setq org-clock-sound "~/sfx/advance_ding.wav")
