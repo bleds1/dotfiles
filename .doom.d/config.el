@@ -155,7 +155,7 @@
 (setq doom-themes-treemacs-enable-variable-pitch nil)
 ;;
 ;; Zen mode zoom
-(setq +zen-text-scale 0.6)
+(setq +zen-text-scale 0.3)
 ;;
 ;; Org
 ;;
