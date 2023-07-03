@@ -4,19 +4,21 @@ myTerm=kitty
 myEdit=vim
 
 menu(){
-	printf "1. Mail\n"
-	printf "2. Calendar\n"
-	printf "3. Lemmy\n"
-	printf "4. Magnetdl\n"
-	printf "5. Github\n"
-	printf "6. Mastodon\n"
-	printf "7. Nitter\n"
-    printf "8. Wikipedia\n"
-    printf "9. Scores & Fixtures\n"
-    printf "10. Crimson Daggers\n"
-    printf "11. Raindrop\n"
-    printf "12. Ominvore\n"
-    printf "13. Libgen\n"
+	printf "1. Protonmail (pm)\n"
+	printf "2. Proton Calendar (pc)\n"
+	printf "3. Lemmy.world (lm) \n"
+	printf "4. Magnetdl (md)\n"
+	printf "5. Github (gh)\n"
+	printf "6. Mastodon.art (ms) \n"
+    printf "7. Wikipedia (wi)\n"
+    printf "8. BBC Scores & Fixtures (sc)\n"
+    printf "9. Crimson Daggers (cd)\n"
+    printf "10. Raindrop.io (rd)\n"
+    printf "11. Ominvore (om) \n"
+    printf "12. Libgen (li)\n"
+    printf "13. Libreddit.de (lr)\n"
+    printf "14. Pinterest (pi)\n"
+    printf "15. Hacker News (hn)\n"
 }
 
 main(){
@@ -44,29 +46,35 @@ main(){
             qutebrowser mastodon.art/home
             ;;
 
-		7)
-            qutebrowser nitter.net/search?q=%23lufc&f=tweets
-            ;;
-        8)
+        7)
             qutebrowser en.wikipedia.org/wiki/Main_Page
             ;;
-        9)
+        8)
             qutebrowser www.bbc.co.uk/sport/football/scores-fixtures
             ;;
 
-        10)
+        9)
             qutebrowser https://crimsondaggers.com/forum/forum-10.html
             ;;  
 
-        11)
+        10)
             qutebrowser https://app.raindrop.io/my/0
             ;;  
 
-        12)
+        11)
             qutebrowser https://omnivore.app/home
             ;;
-        13)
+        12)
             qutebrowser https://libgen.rs
+            ;;
+        13)
+            qutebrowser libreddit.de
+            ;;
+        14)
+            qutebrowser pinterest.co.uk
+            ;;
+        15)
+            qutebrowser https://news.ycombinator.com/news
             ;;
         esac
 }
