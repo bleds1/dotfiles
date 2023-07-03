@@ -14,7 +14,7 @@ menu(){
     printf "8. BBC Scores & Fixtures (sc)\n"
     printf "9. Crimson Daggers (cd)\n"
     printf "10. Raindrop.io (rd)\n"
-    printf "11. Ominvore (om) \n"
+    printf "11. Omnivore (om) \n"
     printf "12. Libgen (li)\n"
     printf "13. Libreddit.de (lr)\n"
     printf "14. Pinterest (pi)\n"
