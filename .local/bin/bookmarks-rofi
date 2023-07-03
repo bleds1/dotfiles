@@ -4,21 +4,21 @@ myTerm=kitty
 myEdit=vim
 
 menu(){
-	printf "1. Protonmail (pm)\n"
-	printf "2. Proton Calendar (pc)\n"
-	printf "3. Lemmy.world (lm) \n"
-	printf "4. Magnetdl (md)\n"
-	printf "5. Github (gh)\n"
-	printf "6. Mastodon.art (ms) \n"
-    printf "7. Wikipedia (wi)\n"
-    printf "8. BBC Scores & Fixtures (sc)\n"
-    printf "9. Crimson Daggers (cd)\n"
-    printf "10. Raindrop.io (rd)\n"
-    printf "11. Omnivore (om) \n"
-    printf "12. Libgen (li)\n"
-    printf "13. Libreddit.de (lr)\n"
-    printf "14. Pinterest (pi)\n"
-    printf "15. Hacker News (hn)\n"
+    printf "1. BBC Scores & Fixtures (sc)\n"
+    printf "2. Hacker News (hn)\n"
+    printf "3. Crimson Daggers (cd)\n"
+	printf "4. Github (gh)\n"
+	printf "5. Lemmy.world (lm) \n"
+    printf "6. Libgen (li)\n"
+    printf "7. Libreddit.de (lr)\n"
+	printf "8. Magnetdl (md)\n"
+	printf "9. Mastodon.art (ms) \n"
+    printf "10. Omnivore (om) \n"
+    printf "11. Pinterest (pi)\n"
+	printf "12. Proton Calendar (pc)\n"
+	printf "13. Protonmail (pm)\n"
+    printf "14. Raindrop.io (rd)\n"
+    printf "15. Wikipedia (wi)\n"
 }
 
 main(){
@@ -26,55 +26,49 @@ main(){
 
 	case $choice in
 		1)
-            qutebrowser account.proton.me
-            ;;
-		2)
-            qutebrowser calendar.proton.me
-            ;;
-		3)
-            qutebrowser lemmy.world
-            ;;
-		4)
-            qutebrowser magnetdl.com
-            ;;
-
-		5)
-            qutebrowser github.com/bleds1
-            ;;
-
-		6)
-            qutebrowser mastodon.art/home
-            ;;
-
-        7)
-            qutebrowser en.wikipedia.org/wiki/Main_Page
-            ;;
-        8)
             qutebrowser www.bbc.co.uk/sport/football/scores-fixtures
             ;;
-
-        9)
-            qutebrowser https://crimsondaggers.com/forum/forum-10.html
-            ;;  
-
-        10)
-            qutebrowser https://app.raindrop.io/my/0
-            ;;  
-
-        11)
-            qutebrowser https://omnivore.app/home
+		2)
+            qutebrowser https://news.ycombinator.com/news
             ;;
-        12)
+		3)
+            qutebrowser https://crimsondaggers.com/forum/forum-10.html
+            ;;
+		4)
+            qutebrowser github.com/bleds1
+            ;;
+		5)
+            qutebrowser lemmy.world
+            ;;
+		6)
             qutebrowser https://libgen.rs
             ;;
-        13)
+        7)
             qutebrowser libreddit.de
             ;;
-        14)
+        8)
+            qutebrowser magnetdl.com
+            ;;
+        9)
+            qutebrowser mastodon.art/home
+            ;;
+        10)
+            qutebrowser https://omnivore.app/home
+            ;;
+        11)
             qutebrowser pinterest.co.uk
             ;;
+        12)
+            qutebrowser calendar.proton.me
+            ;;
+        13)
+            qutebrowser account.proton.me
+            ;;
+        14)
+            qutebrowser https://app.raindrop.io/my/0
+            ;;
         15)
-            qutebrowser https://news.ycombinator.com/news
+            qutebrowser en.wikipedia.org/wiki/Main_Page
             ;;
         esac
 }
