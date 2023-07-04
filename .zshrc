@@ -208,7 +208,6 @@ alias rm="rm -i -v"
 #lynx
 alias lynx='lynx -vikeys -accept_all_cookies'
 
-
 # CLI Pomodoro
 declare -A pomo_options
 pomo_options["Focus"]="30"
@@ -225,8 +224,8 @@ pomodoro () {
   fi
 }
 
-alias fo="pomodoro 'Focus'"
-alias br="pomodoro 'Break'"
+alias focus="pomodoro 'Focus'"
+alias break="pomodoro 'Break'"
 
 alias nf="c && neofetch"
 # vi mode 
