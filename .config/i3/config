@@ -44,6 +44,7 @@ exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec_always devilspie &
+exec --no-startup-id udiskie &
 exec_always --no-startup-id greenclip daemon
 #exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
 exec --no-startup-id nitrogen --restore 
