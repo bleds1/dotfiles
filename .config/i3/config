@@ -79,17 +79,17 @@ bindsym $mod+b exec qutebrowser
 # open obsidian
 bindsym $mod+o exec obsidian
 # open file manager
-bindsym $mod+n exec nautilus
+bindsym $mod+f exec nautilus
 # Rofi shortcuts
 # Open Bookmarks
 bindsym $mod+m exec bookmarks-rofi
 # Run Launcher
 bindsym $mod+x exec rofi -show run
 bindsym $mod+i exec rofi -show window
-bindsym $mod+e exec rofi -show filebrowser
+bindsym $mod+Shift+f exec rofi -show filebrowser
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+s exec searchweb
-bindsym $mod+p exec ~/.local/bin/dmenu_pass
+bindsym $mod+Mod1+p exec ~/.local/bin/dmenu_pass
 # take a screenshot
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Shift+p exec xfce4-screenshooter
@@ -123,7 +123,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Window management
 
 # fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+equal fullscreen toggle
 
 # sticky toggle
 bindsym $mod+Shift+t sticky toggle
@@ -132,10 +132,10 @@ bindsym $mod+Shift+t sticky toggle
 bindsym $mod+q kill
 
 # remove all gaps
-bindsym $mod+Shift+f gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+equal gaps inner current set 0; gaps outer current set 0
 
 # default gaps
-bindsym $mod+Shift+d gaps inner current set 6; gaps outer current set 6
+bindsym $mod+Shift+g gaps inner current set 6; gaps outer current set 6
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -167,7 +167,9 @@ bindsym $mod+Shift+l move right
 
 # left right workspace switching
 bindsym $mod+Mod1+Right workspace next
+bindsym $mod+n workspace next
 bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+p workspace prev
 
 # left right workspace switching v keys
 bindsym $mod+Mod1+l workspace next
@@ -217,7 +219,6 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 bindsym $mod+End workspace number $ws10
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -230,7 +231,6 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+End move container to workspace number $ws10
 
 # workspace specific launch
