@@ -43,10 +43,8 @@ exec_always --no-startup-id dropbox start
 exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
-#exec aw
 exec_always devilspie &
 exec_always --no-startup-id greenclip daemon
-#exec guake
 #exec_always feh --bg-scale ~/Pictures/Wallpapers/cyberpunk.png
 exec --no-startup-id nitrogen --restore 
 exec_always --no-startup-id picom --experimental-backends &
@@ -88,7 +86,8 @@ bindsym $mod+x exec rofi -show run
 # Window Switcher
 bindsym $mod+comma exec rofi -show window
 # File Browser
-bindsym $mod+Shift+period exec rofi -show filebrowser
+#bindsym $mod+Shift+period exec rofi -show filebrowser
+bindsym $mod+Shift+period exec kitty -e ranger
 # Clipboard
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # Search web
