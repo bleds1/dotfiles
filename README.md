@@ -3,17 +3,17 @@
 My config files for: 
 
 - Doom Emacs
+- Qutebrowser
+- i3 gaps
 - Kitty
-- Neovim
 - Polybar 
 - Zsh
-- Qutebrowser
+- Neovim
 - Ranger
 - Tmux
 - Dunst
 - Picom
 - Feh
-- i3 gaps
 - Zathura
 - Newsboat
 

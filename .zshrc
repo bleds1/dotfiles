@@ -154,6 +154,7 @@ alias rgr="ranger"
 alias ro="cd ~/Dropbox/roam/"
 alias in="cd ~/Dropbox/0_Inbox/"
 alias em="emacsclient -a -c 'emacs' ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
+alias e="emacsclient -nw"
 alias emt="emacsclient -nw ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
 #git
 alias gs='git status'
