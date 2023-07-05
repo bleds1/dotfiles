@@ -349,7 +349,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
-(global-set-key (kbd "C-c b") 'browse-url-xdg-open)
+(global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
 (define-key global-map (kbd "C-c f") #'elfeed)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
@@ -437,6 +437,13 @@ title: ${TITLE}\n#+DATE: %U\n
 (add-hook! 'elfeed-show-mode-hook (hide-mode-line-mode 1))
 (add-hook! 'elfeed-search-update-hook #'hide-mode-line-mode)
       )
+;; browse article in gui browser instead of eww
+(defun elfeed-show-visit-gui ()
+  "Wrapper for elfeed-show-visit to use gui browser instead of eww"
+  (interactive)
+  (let ((browse-url-generic-program "xdg-open"))
+    (elfeed-show-visit t)))
+
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
