@@ -78,7 +78,7 @@ bindsym $mod+b exec qutebrowser
 # open obsidian
 bindsym $mod+o exec obsidian
 # open file manager
-bindsym $mod+period exec nautilus
+bindsym $mod+Shift+period exec nautilus
 # Rofi shortcuts
 # Open Bookmarks
 bindsym $mod+Return exec bookmarks-rofi
@@ -88,7 +88,7 @@ bindsym $mod+x exec rofi -show run
 bindsym $mod+comma exec rofi -show window
 # File Browser
 #bindsym $mod+Shift+period exec rofi -show filebrowser
-bindsym $mod+Shift+period exec kitty -e ranger
+bindsym $mod+period exec kitty -e ranger
 # Clipboard
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # Search web

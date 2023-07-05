@@ -18,7 +18,8 @@ menu(){
 	printf "12. Proton Calendar (pc)\n"
 	printf "13. Protonmail (pm)\n"
     printf "14. Raindrop.io (rd)\n"
-    printf "15. Wikipedia (wi)\n"
+    printf "15. Substack (ss)\n"
+    printf "16. Wikipedia (wi)\n"
 }
 
 main(){
@@ -68,6 +69,9 @@ main(){
             qutebrowser https://app.raindrop.io/my/0
             ;;
         15)
+            qutebrowser https://pigmentandpixels.substack.com/
+            ;;
+        16)
             qutebrowser en.wikipedia.org/wiki/Main_Page
             ;;
         esac
