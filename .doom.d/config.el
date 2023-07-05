@@ -436,7 +436,19 @@ title: ${TITLE}\n#+DATE: %U\n
       shr-max-image-proportion 0.6)
 (add-hook! 'elfeed-show-mode-hook (hide-mode-line-mode 1))
 (add-hook! 'elfeed-search-update-hook #'hide-mode-line-mode)
-      )
+ (defadvice! +rss-elfeed-wrap-h-nicer ()
+    "Enhances an elfeed entry's readability by wrapping it to a width of
+`fill-column' and centering it with `visual-fill-column-mode'."
+    :override #'+rss-elfeed-wrap-h
+    (setq-local truncate-lines nil
+                shr-width 120
+                visual-fill-column-center-text t
+                default-text-properties '(line-height 1.1))
+    (let ((inhibit-read-only t)
+          (inhibit-modification-hooks t))
+      (visual-fill-column-mode)
+      ;; (setq-local shr-current-font '(:family "Merriweather" :height 1.2))
+      (set-buffer-modified-p nil)))     )
 ;; browse article in gui browser instead of eww
 (defun elfeed-show-visit-gui ()
   "Wrapper for elfeed-show-visit to use gui browser instead of eww"
@@ -447,10 +459,51 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/Dropbox/roam/elfeed.org"))
+(add-hook! 'elfeed-search-mode-hook #'elfeed-update)
+(after! elfeed-search
+  (set-evil-initial-state! 'elfeed-search-mode 'normal))
+(after! elfeed-show-mode
+  (set-evil-initial-state! 'elfeed-show-mode   'normal))
 
+(after! evil-snipe
+  (push 'elfeed-show-mode   evil-snipe-disabled-modes)
+  (push 'elfeed-search-mode evil-snipe-disabled-modes))
+;; Tecosaur keybinds modified
+(map! :map elfeed-search-mode-map
+      :after elfeed-search
+      [remap kill-this-buffer] "q"
+      [remap kill-buffer] "q"
+      :n doom-leader-key nil
+      :n "c" #'+rss/quit
+      :n "e" #'elfeed-update
+      :n "z" #'elfeed-search-untag-all-unread
+      :n "u" #'elfeed-search-tag-all-unread
+      :n "s" #'elfeed-search-live-filter
+      :n "x" #'elfeed-search-show-entry
+      :n "p" #'elfeed-show-pdf
+      :n "+" #'elfeed-search-tag-all
+      :n "-" #'elfeed-search-untag-all
+      :n "S" #'elfeed-search-set-filter
+      :n "b" #'elfeed-search-browse-url
+      :n "y" #'elfeed-search-yank)
+(map! :map elfeed-show-mode-map
+      :after elfeed-show
+      [remap kill-this-buffer] "q"
+      [remap kill-buffer] "q"
+      :n doom-leader-key nil
+      :nm "c" #'+rss/delete-pane
+      :nm "o" #'ace-link-elfeed
+      :nm "RET" #'org-ref-elfeed-add
+      :nm "n" #'elfeed-show-next
+      :nm "N" #'elfeed-show-prev
+      :nm "p" #'elfeed-show-pdf
+      :nm "+" #'elfeed-show-tag
+      :nm "-" #'elfeed-show-untag
+      :nm "s" #'elfeed-show-new-live-search
+      :nm "y" #'elfeed-show-yank)
 ;;Highlight indent guides mode? Not working as expected..
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
+;;
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
