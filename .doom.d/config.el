@@ -68,6 +68,10 @@
 ;;Dashboard as initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
 ;;
+;; Connect to main workspace on launch
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main"))
+;;
 ;; Quick access dashboard key
 (map! :leader :desc "Dashboard" "d" #'dashboard-open)
 ;;
