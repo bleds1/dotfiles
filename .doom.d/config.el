@@ -443,7 +443,6 @@ title: ${TITLE}\n#+DATE: %U\n
   (interactive)
   (let ((browse-url-generic-program "xdg-open"))
     (elfeed-show-visit t)))
-
 ;; Optionally specify a number of files containing elfeed
 ;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
