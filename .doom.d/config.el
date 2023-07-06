@@ -46,7 +46,7 @@
 ;; Word count in modeline
 (setq doom-modeline-enable-word-count t)
 ;;
-(global-hide-mode-line-mode)
+;;(global-hide-mode-line-mode)
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
 ;;
@@ -590,6 +590,42 @@ categories:
  (org-timer-set-timer 15)
  (org-clock-in-last))
 (global-set-key (kbd "<f5>") 'me/clock-me-up)
+;;
+;; Mu4e
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+(setq mu4e-headers-buffer-name "*mu4e-headers*")
+;;(require mu4e)
+;;  :straight nil
+;;  :defer 20 ; Wait until 20 seconds after startup
+;;  :config
+
+(setq mu4e-change-filenames-when-moving t) ; avoid sync conflicts
+(setq mu4e-update-interval 120)
+(setq mu4e-compose-format-flowed t) ; re-flow mail so it's not hard wrapped
+(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-root-maildir "~/.mail")
+(setq mu4e-drafts-folder "/Drafts")
+(setq mu4e-archive-folder "/Archive")
+(setq mu4e-sent-folder   "/Sent")
+(setq mu4e-refile-folder "/All Mail")
+(setq mu4e-trash-folder  "/Trash")
+(setq message-send-mail-function 'smtpmail-send-it)
+(setq auth-sources '("~/.authinfo")) ;need to use gpg version but only local smtp stored for now
+(setq smtpmail-smtp-server "127.0.0.1")
+(setq smtpmail-smtp-service 1025)
+(setq smtpmail-stream-type  'ssl)
+(setq mu4e-headers-date-format "%Y_%m_%d")
+(setq mu4e-headers-time-format "%H:%M")
+(setq mu4e-headers-results-limit 1000)
+(setq mu4e-index-cleanup t)
+(setq mu4e-maildir-shortcuts
+     '(("/INBOX"     . ?i)
+	("/Sent"      . ?s)
+	("/Trash"     . ?t)
+	("/Drafts"    . ?d)
+	("/All Mail"  . ?a)))
+(setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/protonmail-desktop-unofficial.svg")
+(mu4e t)
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -610,7 +646,7 @@ categories:
 ;; - `after!' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
+;;   `require' or `use-psackage'.
 ;; - `map!' for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over

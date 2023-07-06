@@ -52,12 +52,13 @@
               (org-agenda-overriding-header "Tasks (Unscheduled):"))))
       nil)))
  '(package-selected-packages '(org-roam))
+ '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types
    '((org-element-cache)
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias)) t))
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

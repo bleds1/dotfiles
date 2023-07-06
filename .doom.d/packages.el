@@ -50,6 +50,7 @@
 ;(unpin! t)
 
 ;; Disable Solaire-mode for consistent backgrounds?
+
 (package! solaire-mode :disable t)
 ;;
 (package! highlight-indent-guides)
