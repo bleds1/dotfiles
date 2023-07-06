@@ -501,6 +501,13 @@ title: ${TITLE}\n#+DATE: %U\n
       :nm "-" #'elfeed-show-untag
       :nm "s" #'elfeed-show-new-live-search
       :nm "y" #'elfeed-show-yank)
+;;
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
 ;;Highlight indent guides mode? Not working as expected..
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;;
