@@ -136,6 +136,12 @@ require('lualine').setup{
 }
 END
 
+" Hide lualine
+
+lua <<END
+require('lualine').hide()
+END
+
 "Cursor
 autocmd InsertEnter,InsertLeave * set cul!
 autocmd InsertEnter * set nocul
