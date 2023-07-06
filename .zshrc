@@ -137,6 +137,7 @@ alias ..="cd .."
 alias c="clear -x"
 alias ct="clear -x && cat ~/Dropbox/roam/tasks.org"
 alias cn="clear -x && neofetch"
+alias nf="c && neofetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
@@ -227,8 +228,7 @@ pomodoro () {
 alias focus="pomodoro 'Focus'"
 alias break="pomodoro 'Break'"
 
-alias nf="c && neofetch"
-# vi mode 
+# vi mode
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^v' edit-command-line
