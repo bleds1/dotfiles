@@ -5,8 +5,8 @@
 ;;
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+;(setq user-full-name ""
+;      user-mail-address "")
 ;;
 ;; BASICS
 ;;
@@ -195,7 +195,7 @@
 (setq org-agenda-custom-commands ;then define tags, see vid
 (setq
 org-fancy-priorities-list '("!" "M" "L")
- org-priority-faces
+ org-priority-faces ;colours not working and sometimes need second h,r,r to show?
  '((?! :foreground "#E35959" :weight bold)
    (?M :foreground "#57D1B9" :weight bold)
    (?L :foreground "#B2ABAA" :weight bold)))))
@@ -254,7 +254,7 @@ org-fancy-priorities-list '("!" "M" "L")
          "DONE(d)"
          "WAITING(w)"
          "CANCELLED(c)" )))
-      org-todo-keyword-faces
+      org-todo-keyword-faces ;these colours are not working/defined by theme?
       '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
        ("NEXT" :foreground "#009994" :weight normal :underline t)
        ("LATER" :foreground "#acb0d0" :weight normal :underline t)
@@ -346,6 +346,7 @@ title: ${TITLE}\n#+DATE: %U\n
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
+(global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
@@ -392,6 +393,10 @@ title: ${TITLE}\n#+DATE: %U\n
 (map! :leader
       (:prefix "n"
                :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
+
+(map! :leader
+      (:prefix "N"
+               :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
 ;;
 ;; Dired
 (evil-define-key 'normal dired-mode-map
@@ -447,7 +452,7 @@ title: ${TITLE}\n#+DATE: %U\n
     (let ((inhibit-read-only t)
           (inhibit-modification-hooks t))
       (visual-fill-column-mode)
-      ;; (setq-local shr-current-font '(:family "Merriweather" :height 1.2))
+      ;; (setq-local shr-current-font '(:family "Merriweather" :height 1.2)) ; I don't have this font
       (set-buffer-modified-p nil)))     )
 ;; browse article in gui browser instead of eww
 (defun elfeed-show-visit-gui ()
@@ -578,9 +583,8 @@ categories:
 (add-hook! prog-mode 'rainbow-mode)
 ;;
 ;; vi tilde fringe
-(global-vi-tilde-fringe-mode -1)
+(global-vi-tilde-fringe-mode -1) ;not working everywhere in gui
 ;; Org timer function
-;; org timer sound
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;
@@ -592,15 +596,25 @@ categories:
 (global-set-key (kbd "<f5>") 'me/clock-me-up)
 ;;
 ;; Mu4e
+(global-set-key (kbd "<f6>") 'mu4e)
+(defun my-mu4e-all-mail ()
+  "jump to mu4e all mail"
+  (interactive)
+  (mu4e~headers-jump-to-maildir "/All Mail"))
+
+(map! :leader
+      :desc "Jump to mu4e inbox"
+      "oi" 'my-mu4e-all-mail)
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (setq mu4e-headers-buffer-name "*mu4e-headers*")
-;;(require mu4e)
+;;(require mu4e) ;this is causing errors incompatible package?
 ;;  :straight nil
 ;;  :defer 20 ; Wait until 20 seconds after startup
 ;;  :config
-
+;;
+(setq mu4e-index-update-error-warning nil) ;supress [mu4e] Update process returned with non-zero exit code
 (setq mu4e-change-filenames-when-moving t) ; avoid sync conflicts
-(setq mu4e-update-interval 120)
+(setq mu4e-update-interval 120) ; refresh interval
 (setq mu4e-compose-format-flowed t) ; re-flow mail so it's not hard wrapped
 (setq mu4e-get-mail-command "mbsync -a")
 (setq mu4e-root-maildir "~/.mail")
@@ -610,7 +624,7 @@ categories:
 (setq mu4e-refile-folder "/All Mail")
 (setq mu4e-trash-folder  "/Trash")
 (setq message-send-mail-function 'smtpmail-send-it)
-(setq auth-sources '("~/.authinfo")) ;need to use gpg version but only local smtp stored for now
+(setq auth-sources '("~/.authinfo"))
 (setq smtpmail-smtp-server "127.0.0.1")
 (setq smtpmail-smtp-service 1025)
 (setq smtpmail-stream-type  'ssl)
@@ -619,13 +633,15 @@ categories:
 (setq mu4e-headers-results-limit 1000)
 (setq mu4e-index-cleanup t)
 (setq mu4e-maildir-shortcuts
-     '(("/INBOX"     . ?i)
-	("/Sent"      . ?s)
-	("/Trash"     . ?t)
-	("/Drafts"    . ?d)
-	("/All Mail"  . ?a)))
+     '((:maildir "/INBOX"     :key ?i)
+	(:maildir "/Sent"     :key ?s)
+	(:maildir "/Trash"     :key ?t)
+	(:maildir "/Drafts"    :key ?d)
+	(:maildir "/All Mail"  :key ?m)
+        (:maildir "/Archive"  :key ?a)))
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/protonmail-desktop-unofficial.svg")
 (mu4e t)
+;;
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
