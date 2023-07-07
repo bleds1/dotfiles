@@ -225,6 +225,8 @@ org-fancy-priorities-list '("!" "M" "L")
           "** %?\n%U\n")
           ("m" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
           "** TODO %a\n")
+          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+          "** TODO %a\n")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
@@ -247,10 +249,12 @@ org-fancy-priorities-list '("!" "M" "L")
          "ACTIVE (a)"
          "NEXT(n)"
          "LATER(l)"
+         "IDEA(i)"
          "GOAL(g)"
          "PROJECT(p)"
          "EVENT(e)"
-         "REPEAT(r)"
+         "REPEAT(R)"
+         "REVIEW(r)"
          "SOMEDAY(s)"
          "|"
          "DONE(d)"
@@ -260,12 +264,14 @@ org-fancy-priorities-list '("!" "M" "L")
       '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
        ("NEXT" :foreground "#009994" :weight normal :underline t)
        ("LATER" :foreground "#acb0d0" :weight normal :underline t)
+       ("IDEA" :foreground "#acb0d0" :weight normal :underline t)
        ("SOMEDAY" :foreground "#acb0d0" :weight normal :underline t)
        ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
        ("GOAL" :foreground "#acb0d0" :weight normal :underline t)
        ("PROJECT" :foreground "#acb0d0" :weight normal :underline t)
        ("EVENT" :foreground "#acb0d0" :weight normal :underline t)
        ("REPEAT" :foreground "#acb0d0" :weight normal :underline t)
+       ("REVIEW" :foreground "#acb0d0" :weight normal :underline t)
        ("DONE" :foreground "#50a14f" :weight normal :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
 ;;
