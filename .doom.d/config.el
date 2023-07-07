@@ -623,7 +623,7 @@ categories:
 (setq mu4e-sent-folder   "/Sent")
 (setq mu4e-refile-folder "/All Mail")
 (setq mu4e-trash-folder  "/Trash")
-(setq message-send-mail-function 'smtpmail-send-it)
+(setq message-send-mail-function 'smtpmail-send-it) ; not sure send is working?
 (setq auth-sources '("~/.authinfo"))
 (setq smtpmail-smtp-server "127.0.0.1")
 (setq smtpmail-smtp-service 1025)
