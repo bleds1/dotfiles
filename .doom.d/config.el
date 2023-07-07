@@ -606,6 +606,7 @@ categories:
       :desc "Jump to mu4e inbox"
       "oi" 'my-mu4e-all-mail)
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+;(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem")) ;mail sent succesfully once this was commented out??
 (setq mu4e-headers-buffer-name "*mu4e-headers*")
 ;;(require mu4e) ;this is causing errors incompatible package?
 ;;  :straight nil
@@ -624,7 +625,8 @@ categories:
 (setq mu4e-refile-folder "/All Mail")
 (setq mu4e-trash-folder  "/Trash")
 (setq message-send-mail-function 'smtpmail-send-it) ; not sure send is working?
-(setq auth-sources '("~/.authinfo"))
+(setq auth-sources '("~/.authinfo.gpg"))
+(setq smtpmail-auth-credentials "~/.authinfo.gpg")
 (setq smtpmail-smtp-server "127.0.0.1")
 (setq smtpmail-smtp-service 1025)
 (setq smtpmail-stream-type  'ssl)
