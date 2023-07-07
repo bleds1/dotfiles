@@ -223,6 +223,8 @@ org-fancy-priorities-list '("!" "M" "L")
           "** TODO %?\n")
           ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?\n%U\n")
+          ("m" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
+          "** TODO %a\n")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
@@ -231,13 +233,13 @@ org-fancy-priorities-list '("!" "M" "L")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
          "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
-        ("m" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
+        ("s" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %?" :empty-lines 1)
-         ("s" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
+         ("l" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
          "* TODO %?" :empty-lines 0)))
 (setq org-todo-keywords
       '((sequence
@@ -435,7 +437,7 @@ title: ${TITLE}\n#+DATE: %U\n
 ;;
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-week-ago +unread"
+(setq elfeed-search-filter "@1-day-ago +unread"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
