@@ -32,6 +32,7 @@
       scroll-margin 2)
 ;;
 ;; Display time in modeline
+;(setq doom-modeline-time-icon t)
 (display-time-mode 1)
 ;;(setq display-time-format "%H:%M")
 (setq display-time-format "%Y_%m_%d %H:%M")
@@ -602,6 +603,11 @@ categories:
  (org-timer-set-timer 15)
  (org-clock-in-last))
 (global-set-key (kbd "<f5>") 'me/clock-me-up)
+;;
+;; Remap space, space to recent files instead of local files
+(map! :leader
+      :desc "Find recent files"
+      "SPC" 'recentf-open-files)
 ;;
 ;; Mu4e
 (global-set-key (kbd "<f6>") 'mu4e)
