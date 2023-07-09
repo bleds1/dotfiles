@@ -11,8 +11,8 @@ map h scroll left
 map l scroll right
 map j scroll down
 map k scroll up
-map bn navigate next
-map bp navigate previous
+map L navigate next
+map H navigate previous
 map z zoom out
 map x zoom in
 map , toggle_statusbar
