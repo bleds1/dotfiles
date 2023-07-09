@@ -1,17 +1,29 @@
 set statusbar -h-padding 0
 set statusbar -v-padding 0
 set page-padding 1
-map u scroll half-up
-map d scroll half-down
+
 map i recolor
-map n navigate next
-map p navigate previous
+unmap d
+map D toggle_page_mode
+map <C-u> scroll half-up
+map <C-d> scroll half-down
+map h scroll left
+map l scroll right
+map j scroll down
+map k scroll up
+map bn navigate next
+map bp navigate previous
+map z zoom out
+map x zoom in
+map , toggle_statusbar
+map <TAB> toggle index
 map q quit
-map z zoom in
-map x zoom out
+map <C-z> quit
+map <C-p> print
+
+
 set guioptions none
-set font "terminus 9"
-unmap f
+set font "Iosevka 10"
 
 # colors
 
@@ -24,52 +36,50 @@ unmap f
 set window-title-basename "true"
 set selection-clipboard "clipboard"
 
-# Dracula color theme for Zathura (modified by me)
+# color theme for Zathura (modified by me)
 # Swaps Foreground for Background to get a light version if the user prefers
 
-#
-# Dracula color theme
 #
 
 set notification-error-bg       "#ff5555" # Red
 set notification-error-fg       "#f8f8f2" # Foreground
 set notification-warning-bg     "#ffb86c" # Orange
 set notification-warning-fg     "#44475a" # Selection
-set notification-bg             "#1d1d1d" # Background
+set notification-bg             "#151515" # Background
 set notification-fg             "#c7c7c7" # Foreground
 
-set completion-bg               "#1d1d1d" # Background
-set completion-fg               "#6272a4" # Comment
-set completion-group-bg         "#1d1d1d" # Background
-set completion-group-fg         "#6272a4" # Comment
-set completion-highlight-bg     "#44475a" # Selection
-set completion-highlight-fg     "#f8f8f2" # Foreground
+set completion-bg               "#151515" # Background
+set completion-fg               "#c7c7c7" # Comment
+set completion-group-bg         "#151515" # Background
+set completion-group-fg         "#80C2A2" # Comment
+set completion-highlight-bg     "#80C2A2" # Selection
+set completion-highlight-fg     "#151515" # Foreground
 
-set index-bg                    "#1d1d1d" # Background
+set index-bg                    "#151515" # Background
 set index-fg                    "#c7c7c7" # Foreground
-set index-active-bg             "#44475a" # Current Line
+set index-active-bg             "#151515" # Current Line
 set index-active-fg             "#c7c7c7" # Foreground
 
-set inputbar-bg                 "#1d1d1d" # Background
+set inputbar-bg                 "#151515" # Background
 set inputbar-fg                 "#c7c7c7" # Foreground
-set statusbar-bg                "#1d1d1d" # Background
+set statusbar-bg                "#151515" # Background
 set statusbar-fg                "#c7c7c7" # Foreground
 
 set highlight-color             "#82ABAA" # teal
 set highlight-active-color      "#F7C4E0" # Pink
 
-set default-bg                  "#1d1d1d" # Background
+set default-bg                  "#151515" # Background
 set default-fg                  "#c7c7c7" # Foreground
 
 set render-loading              true
-set render-loading-fg           "#1d1d1d" # Background
+set render-loading-fg           "#151515" # Background
 set render-loading-bg           "#c7c7c7" # Foreground
 
 #
 # Recolor mode settings
 #
 
-set recolor-lightcolor          "#1d1d1d" # Background
+set recolor-lightcolor          "#151515" # Background
 set recolor-darkcolor           "#c7c7c7" # Foreground
 
 #

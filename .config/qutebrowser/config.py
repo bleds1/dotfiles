@@ -461,7 +461,7 @@ c.colors.statusbar.insert.bg = '#151515'
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.fg = '#82ABAA'
+c.colors.statusbar.insert.fg = '#80C2A2'
 
 ## Background color of the statusbar.
 ## Type: QssColor

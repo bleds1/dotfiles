@@ -31,21 +31,17 @@
 ;; Scroll  Margin
       scroll-margin 2)
 ;;
-;; Display time in modeline
-;(setq doom-modeline-time-icon t)
-(display-time-mode 1)
-;;(setq display-time-format "%H:%M")
-(setq display-time-format "%Y_%m_%d %H:%M")
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
   (line-number-mode -1)
+  (display-time-mode 1)
+  (setq doom-modeline-enable-word-count t)
+;;(setq display-time-format "%H:%M")
+  (setq display-time-format "%Y_%m_%d %H:%M")
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-buffer-encoding nil))
-;;
-;; Word count in modeline
-(setq doom-modeline-enable-word-count t)
 ;;
 ;;(global-hide-mode-line-mode)
 ;; Disable quit confirmation message
@@ -620,13 +616,12 @@ categories:
       :desc "Jump to mu4e inbox"
       "oi" 'my-mu4e-all-mail)
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+
+;; Line below taken as quickfix from github https://github.com/doomemacs/doomemacs/issues/6906 C-z on mu4e-main and bookmarks work
+(defconst mu4e-headers-buffer-name "*mu4e-headers*"
+  "Name of the buffer for message headers.")
 ;(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem")) ;mail sent succesfully once this was commented out??
 (setq mu4e-headers-buffer-name "*mu4e-headers*")
-;;(require mu4e) ;this is causing errors incompatible package?
-;;  :straight nil
-;;  :defer 20 ; Wait until 20 seconds after startup
-;;  :config
-;;
 (setq mu4e-index-update-error-warning nil) ;supress [mu4e] Update process returned with non-zero exit code
 (setq mu4e-change-filenames-when-moving t) ; avoid sync conflicts
 (setq mu4e-update-interval 120) ; refresh interval
@@ -634,9 +629,8 @@ categories:
 (setq mu4e-get-mail-command "mbsync -a")
 (setq mu4e-root-maildir "~/.mail")
 (setq mu4e-drafts-folder "/Drafts")
-(setq mu4e-archive-folder "/Archive")
 (setq mu4e-sent-folder   "/Sent")
-(setq mu4e-refile-folder "/All Mail")
+(setq mu4e-refile-folder "/Archive")
 (setq mu4e-trash-folder  "/Trash")
 (setq message-send-mail-function 'smtpmail-send-it) ; not sure send is working?
 (setq auth-sources '("~/.authinfo.gpg"))
@@ -644,18 +638,24 @@ categories:
 (setq smtpmail-smtp-server "127.0.0.1")
 (setq smtpmail-smtp-service 1025)
 (setq smtpmail-stream-type  'ssl)
-(setq mu4e-headers-date-format "%Y_%m_%d")
+(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 (setq mu4e-headers-time-format "%H:%M")
+(setq mu4e-headers-fields
+      '( (:date          .  25)    ;; alternatively, use :human-date
+         (:flags         .   6)
+         (:from-or-to          .  25)
+         (:subject       .  nil))) ;; alternatively, use :thread-subject
 (setq mu4e-headers-results-limit 1000)
 (setq mu4e-index-cleanup t)
 (setq mu4e-maildir-shortcuts
      '((:maildir "/INBOX"     :key ?i)
 	(:maildir "/Sent"     :key ?s)
 	(:maildir "/Trash"     :key ?t)
+	(:maildir "/Spam"     :key ?p)
 	(:maildir "/Drafts"    :key ?d)
-	(:maildir "/All Mail"  :key ?m)
-        (:maildir "/Archive"  :key ?a)))
-(setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/protonmail-desktop-unofficial.svg")
+        (:maildir "/Archive"  :key ?r)
+	(:maildir "/All Mail"  :key ?m)))
+(setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
 (mu4e t)
 ;;
 ;;Whenever you reconfigure a package, make sure to wrap your config in an
