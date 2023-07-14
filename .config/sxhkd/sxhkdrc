@@ -71,7 +71,7 @@ super + e; n
 super + e; t
     emacsclient -c -a 'emacs' ~/Dropbox/roam/tasks.org
 super + e; i
-    emacsclient -c -a 'emacs' ~/Dropbox/roam/inbox.org
+    emacsclient -c -a 'emacs' ~/Dropbox/roam/tasks.org
 # i3 windows
 super +w; c
  i3-msg kill

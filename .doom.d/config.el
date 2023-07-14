@@ -130,8 +130,8 @@
 ;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/roam/")
 (after! org
+(setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files
       (quote ("~/Dropbox/roam/tasks.org"
               "~/Dropbox/roam/inbox.org"
@@ -629,6 +629,7 @@ categories:
         (:maildir "/Archive"  :key ?r)
 	(:maildir "/All Mail"  :key ?m)))
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
+(setq mu4e-compose--org-msg-toggle-next nil)
 (mu4e t)
 ;;
 ;;Whenever you reconfigure a package, make sure to wrap your config in an

@@ -60,6 +60,7 @@
 (package! peep-dired)
 ;;
 (package! rainbow-mode)
+;;
 (package! dashboard)
 ;;
 (package! beacon)
