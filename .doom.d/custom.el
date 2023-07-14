@@ -44,6 +44,8 @@
          (org-agenda-overriding-header "3 day view:")))
        (tags-todo ":@refile:"
                   ((org-agenda-overriding-header "Inbox (Refile):")))
+       (todo "ACTIVE"
+             ((org-agenda-overriding-header "Active:")))
        (todo "NEXT"
              ((org-agenda-overriding-header "Next Actions (Projects):")))
        (todo "TODO"

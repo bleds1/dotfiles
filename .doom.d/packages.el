@@ -53,6 +53,8 @@
 
 (package! solaire-mode :disable t)
 ;;
+(package! org-fancy-priorities)
+;;
 (package! highlight-indent-guides)
 ;;
 (package! peep-dired)

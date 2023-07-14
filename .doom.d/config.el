@@ -3,15 +3,13 @@
 ;; Header at the top of config supposedly improves speed to load? you do not need to run 'doom
 ;; sync' after modifying this file!
 ;;
+;; TODO - I'm getting some errors about mu4e being a depreciated package at startup but mostly works still despite
+;;      - Some custom faces for org do not load on initial startup, needs a second hot reload. Probably bad order of use of after blocks?
+;;
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 ;(setq user-full-name ""
 ;      user-mail-address "")
-;;
-;; BASICS
-;;
-;; Start Doom screen maximized
-;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 ;;
 ;; Ask for buffer on window split
 (setq evil-vsplit-window-right t
@@ -75,7 +73,8 @@
 ;; Set the title
 (setq dashboard-banner-logo-title "Welcome back Bledley!")
 ;; Set the banner
-(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
+;;(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
+(setq dashboard-startup-banner "~/.doom.d/splash/emacs-e-template.svg") ;; use custom image as banner
 ;; Value can be
 ;; - nil to display no banner
 ;; - 'official which displays the official emacs logo
@@ -83,12 +82,12 @@
 ;; - 1, 2 or 3 which displays one of the text banners
 ;; - "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
 ;; - a cons of '("path/to/your/image.png" . "path/to/your/text.txt")
+;;
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)
                         (agenda . 5)
                         ))
-(setq dashboard-item-names '(("Recent:" . "Recently opened files:")
-                             ("Agenda for the coming week:" . "Agenda:")))
+(setq dashboard-item-names '(("Recent:" . "Recent (r):")
+                             ("Agenda:" . "Agenda (a):")))
 ;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
 ;; To disable shortcut "jump" indicators for each section, set
@@ -103,8 +102,6 @@
 ;; Scratch buffer intital text
 (setq initial-scratch-message ";; scratch buffer\n")
 ;;;
-;; FONTS
-;;
 ;; Doom exposes five (optional) variables for controlling fonts:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -114,18 +111,9 @@
 ;; - `doom-unicode-font' -- for unicode glyphs
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept.
-;;
-;; (setq doom-font (font-spec :family "JetBrains Mono" :size 13 :weight 'Medium)
-;;       doom-big-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium)
-;;       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14 :weight 'Medium))
-;;
 (setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
-;;
-;; THEME & LOOK
 ;;
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -138,22 +126,6 @@
 ;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
   (solaire-global-mode -1))
-;;
-;; Doom dashboard (currently not using)
-;; Set splash page image
-;;(setq fancy-splash-image "~/.doom.d/splash/doom-emacs-bw-light.svg")
-;;
-;(add-to-list '+doom-dashboard-menu-sections
-;            '("Add journal entry"
-;             :icon (all-the-icons-octicon "calendar" :face 'doom-dashboard-menu-title)
-;            :when (featurep! :lang org +journal)
-;           :face (:inherit (doom-dashboard-menu-title bold))
-;          :action org-journal-new-entry))
-;(assoc-delete-all "Open project" +doom-dashboard-menu-sections)
-;(assoc-delete-all "Open private configuration" +doom-dashboard-menu-sections)
-;;
-;;tree macs font
-(setq doom-themes-treemacs-enable-variable-pitch nil)
 ;;
 ;; Zen mode zoom
 (setq +zen-text-scale 0.3)
@@ -175,6 +147,7 @@
       ;(directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-startup-folded t)
 (setq org-log-done 'time)
+(setq org-clock-into-drawer t)
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
 (setq org-refile-targets (quote (("tasks.org" :maxlevel . 4)
@@ -188,45 +161,56 @@
                                  ("shopping.org" :level . 4)
                                  ("someday.org" :level . 4))))
 (after! org
-(setq org-agenda-use-tag-inheritance t)
-(setq org-agenda-custom-commands ;then define tags, see vid
-(setq
-org-fancy-priorities-list '("!" "M" "L")
- org-priority-faces ;colours not working and sometimes need second h,r,r to show?
- '((?! :foreground "#E35959" :weight bold)
-   (?M :foreground "#57D1B9" :weight bold)
-   (?L :foreground "#B2ABAA" :weight bold)))))
+(setq! org-agenda-use-tag-inheritance t
+      org-ellipsis " ▾ "
+      org-hide-leading-stars t
+      org-priority-highest '?A
+      org-priority-lowest '?D
+      org-priority-faces '((?A :foreground "#2FF9D1")
+                           (?B :foreground "#57D1B9")
+                           (?C :foreground "#63C5B2")
+                           (?D :foreground "#5B9589"))))
+;;
+(add-hook! 'org-mode-hook 'org-fancy-priorities-mode)
+(add-hook! 'org-agenda-mode-hook 'org-fancy-priorities-mode)
+;;
+(after! org-fancy-priorities
+  (setq!
+   org-fancy-priorities-list
+   '("[A]" "[B]" "[C]" "[D]")
+   ))
 ;;
 (set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 ;;
-(setq
+(after! org
+(setq!
       org-journal-time-prefix " - "
       org-journal-date-prefix " - "
       org-journal-time-format "%H:%M"
       org-journal-date-format "%Y-%m-%d"
       org-journal-file-format "%Y_%m_%d.md"
-      org-journal-dir "~/Dropbox/roam/journals/")
-(setq org-ellipsis " ▾")
-(setq org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
-(setq org-hide-emphasis-markers t)
-(setq org-agenda-start-with-log-mode t)
-(setq org-log-into-drawer t)
-(setq org-agenda-max-todos 30)
+      org-journal-dir "~/Dropbox/roam/journals/"
+      org-superstar-headline-bullets-list '("◉" "○" "○" "○" "○" "○" "○")
+      org-hide-emphasis-markers t
+      org-agenda-start-with-log-mode t
+      org-log-into-drawer t
+      org-agenda-max-todos 30))
 ;;
-(setq org-capture-templates
-        '(("i" "Task" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+(after! org
+(setq! org-capture-templates
+        '(("i" "Task" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** TODO %?\n")
-          ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+          ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** %?\n%U\n")
           ("m" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
           "** TODO %a\n")
-          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** TODO %a\n")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
          "** %?")
         ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
@@ -236,14 +220,15 @@ org-fancy-priorities-list '("!" "M" "L")
           "* SOMEDAY %?\n %U\n" :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
-         ("r" "Reading List" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+         ("r" "Reading List" plain (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** %?" :empty-lines 1)
          ("l" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
-         "* TODO %?" :empty-lines 0)))
-(setq org-todo-keywords
+         "* TODO %?" :empty-lines 0))))
+(after! org
+(setq! org-todo-keywords
       '((sequence
          "TODO(t)"
-         "ACTIVE (a)"
+         "ACTIVE(a)"
          "NEXT(n)"
          "LATER(l)"
          "IDEA(i)"
@@ -256,21 +241,22 @@ org-fancy-priorities-list '("!" "M" "L")
          "|"
          "DONE(d)"
          "WAITING(w)"
-         "CANCELLED(c)" )))
-      org-todo-keyword-faces ;these colours are not working/defined by theme?
-      '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-       ("NEXT" :foreground "#009994" :weight normal :underline t)
-       ("LATER" :foreground "#acb0d0" :weight normal :underline t)
-       ("IDEA" :foreground "#acb0d0" :weight normal :underline t)
-       ("SOMEDAY" :foreground "#acb0d0" :weight normal :underline t)
-       ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
-       ("GOAL" :foreground "#acb0d0" :weight normal :underline t)
-       ("PROJECT" :foreground "#acb0d0" :weight normal :underline t)
-       ("EVENT" :foreground "#acb0d0" :weight normal :underline t)
-       ("REPEAT" :foreground "#acb0d0" :weight normal :underline t)
-       ("REVIEW" :foreground "#acb0d0" :weight normal :underline t)
-       ("DONE" :foreground "#50a14f" :weight normal :underline t)
-       ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
+         "CANCELLED(c)" ))))
+(setq! org-todo-keyword-faces ;these colours are not working/defined by theme?
+      '(("TODO" :foreground "#2FF9D1" :weight bold :underline t)
+       ("ACTIVE" :foreground "#57D1B9" :weight bold :underline t)
+       ("NEXT" :foreground "##57D1B9" :weight bold :underline t)
+       ("LATER" :foreground "#AAAAE1" :weight bold :underline t)
+       ("IDEA" :foreground "#AAAAE1" :weight bold :underline t)
+       ("SOMEDAY" :foreground "#AAAAE1" :weight bold :underline t)
+       ("WAITING" :foreground "#AAAAE1" :weight bold :underline t)
+       ("GOAL" :foreground "#65DDA3" :weight bold :underline t)
+       ("PROJECT" :foreground "#65DDA3" :weight bold :underline t)
+       ("EVENT" :foreground "#65DDA3" :weight bold :underline t)
+       ("REPEAT" :foreground "#57D1B9" :weight bold :underline t)
+       ("REVIEW" :foreground "#94e2d5" :weight bold :underline t)
+       ("DONE" :foreground "#757575" :weight bold :underline t)
+       ("CANCELLED" :foreground "#ff6480" :weight bold :underline t))))
 ;;
 ;; org-roam
 (after! org
@@ -286,14 +272,11 @@ title: ${TITLE}\n#+DATE: %U\n
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.md" "---\ntitle: %<%Y_%m_%d>\nid: %<%Y-%m-%d-%H%M>\ntags: #fleeting\n---\n# What's on your mind?\n# What are at least 3 things you want to get done today?\n - [ ]\n - [ ]\n - [ ]\n# Other quick tasks you could complete?\n - [ ]\n - [ ]\n - [ ]\n# Log\n -"))))
+       :if-new (file+head "%<%Y_%m_%d>.md" "---\ntitle: %<%Y_%m_%d>\nid: %<%Y-%m-%d-%H%M>\ntags: #fleeting\n---\n# What's on your mind?\n# Log\n -"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
 ;; Autosave disable/enable
 (setq auto-save-default t)
-;; Autorevert buffers with file changes
-;(global-auto-revert-mode 1)
-;(setq global-auto-revert-non-file-buffers t)
 ;;
 ;; Place tags close to the right-hand side of the window - is this working?
 (add-hook 'org-finalize-agenda-hook 'place-agenda-tags)
@@ -309,7 +292,7 @@ title: ${TITLE}\n#+DATE: %U\n
   (setq org-habit-following-days 7)
   (setq org-habit-preceding-days 35)
   (setq org-habit-show-habits t)
-   ; End of org-mode use-package block
+;;
 ;; Beacon global minor mode
 (use-package! beacon)
 (after! beacon (beacon-mode 1))
@@ -329,7 +312,6 @@ title: ${TITLE}\n#+DATE: %U\n
       :desc "My agenda custom"
       "a" #'my-agenda-custom)
 ;;
-;; Set keys
 ;; Keyboard shortcuts for regularly used files
 ;;
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -339,7 +321,7 @@ title: ${TITLE}\n#+DATE: %U\n
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
@@ -350,6 +332,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
+(global-set-key (kbd "C-c n") 'now)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
@@ -411,32 +394,25 @@ title: ${TITLE}\n#+DATE: %U\n
   (kbd "m") 'dired-mark
   (kbd "t") 'dired-toggle-marks
   (kbd "u") 'dired-unmark
-  (kbd "C") 'dired-do-copy
+  (kbd "U") 'dired-unmark-all-marks
+  (kbd "y") 'dired-do-copy
+  (kbd "c") 'dired-create-empty-file
   (kbd "D") 'dired-do-delete
   (kbd "J") 'dired-goto-file
   (kbd "M") 'dired-do-chmod
   (kbd "R") 'dired-do-rename
   (kbd "T") 'dired-do-touch
-  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring.
+  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring. 
   (kbd "Z") 'dired-do-compress
-  (kbd "+") 'dired-create-directory
+  (kbd "C") 'dired-create-directory
   (kbd "-") 'dired-do-kill-lines
+  (kbd "n") 'evil-search-next
+  (kbd "N") 'evil-search-previous
+  (kbd "q") 'kill-this-buffer
   )
-;; Icons in dired?  ..not working
-;;(use-package! all-the-icons-dired)
-;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 ;;
-;; Need dired open plugin for the following to work
-;;(setq dired-open-extensions '(("gif" . "feh")
-                              ;; ("jpg" . "feh")
-                              ;; ("png" . "feh")
-                              ;; ("mkv" . "mpv")
-                              ;; ("mp4" . "mpv")))
 ;; Load elfeed-org
 (require 'elfeed-org)
-;; Initialize elfeed-org
-;; This hooks up elfeed-org to read the configuration when elfeed
-;; is started with =M-x elfeed=
 ;;
 (after! elfeed
 (elfeed-org)
@@ -457,7 +433,6 @@ title: ${TITLE}\n#+DATE: %U\n
     (let ((inhibit-read-only t)
           (inhibit-modification-hooks t))
       (visual-fill-column-mode)
-      ;; (setq-local shr-current-font '(:family "Merriweather" :height 1.2)) ; I don't have this font
       (set-buffer-modified-p nil)))     )
 ;; browse article in gui browser instead of eww
 (defun elfeed-show-visit-gui ()
@@ -465,8 +440,6 @@ title: ${TITLE}\n#+DATE: %U\n
   (interactive)
   (let ((browse-url-generic-program "xdg-open"))
     (elfeed-show-visit t)))
-;; Optionally specify a number of files containing elfeed
-;; configuration. If not set then the location below is used.
 ;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/Dropbox/roam/elfeed.org"))
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
@@ -474,7 +447,7 @@ title: ${TITLE}\n#+DATE: %U\n
   (set-evil-initial-state! 'elfeed-search-mode 'normal))
 (after! elfeed-show-mode
   (set-evil-initial-state! 'elfeed-show-mode   'normal))
-
+;;
 (after! evil-snipe
   (push 'elfeed-show-mode   evil-snipe-disabled-modes)
   (push 'elfeed-search-mode evil-snipe-disabled-modes))
@@ -524,35 +497,33 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
-;; Org mode variable headings?
-(add-hook 'org-mode-hook #'+org-pretty-mode)
-(custom-set-faces!
-  '(outline-1 :weight semi-bold :height 1.0)
-  '(outline-2 :weight semi-bold :height 1.0)
-  '(outline-3 :weight semi-bold :height 1.0)
-  '(outline-4 :weight semi-bold :height 1.0)
-  '(outline-5 :weight semi-bold :height 1.0)
-  '(outline-6 :weight semi-bold :height 1.0)
-  '(outline-8 :weight semi-bold)
-  '(outline-9 :weight semi-bold)
-  '(org-document-title :height 1.0))
-(setq org-agenda-deadline-faces
-      '((1.001 . error)
-        (1.0 . org-warning)
-        (0.5 . org-upcoming-deadline)
-        (0.0 . org-upcoming-distant-deadline)))
-;;
+;; Org mode variable headings? ;; Think this was causing me errors and in a bad order in config
+;:(add-hook 'org-mode-hook #'+org-pretty-mode)
+;;(custom-set-faces!
+;;  '(outline-1 :weight semi-bold :height 1.0)
+;;  '(outline-2 :weight semi-bold :height 1.0)
+;;  '(outline-3 :weight semi-bold :height 1.0)
+;;  '(outline-4 :weight semi-bold :height 1.0)
+;;  '(outline-5 :weight semi-bold :height 1.0)
+;;  '(outline-6 :weight semi-bold :height 1.0)
+;;  '(outline-8 :weight semi-bold)
+;;  '(outline-9 :weight semi-bold)
+;;  '(org-document-title :height 1.0))
+;;(setq org-agenda-deadline-faces
+;;      '((1.001 . error)
+;;        (1.0 . org-warning)
+;;        (0.5 . org-upcoming-deadline)
+;;        (0.0 . org-upcoming-distant-deadline)))
 ;;
 ;; My snippet functions
 (defun my-front-matter ()
  (interactive)
  (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
  )
-;;
 ;; Timestamp
 (defun now ()
  (interactive)
- (insert (format-time-string "%H:%M")
+ (insert (format-time-string " - %H:%M")
  ))
 ;;
 ;; My jekyll front matter
@@ -587,8 +558,6 @@ categories:
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
 ;;
-;; vi tilde fringe
-(global-vi-tilde-fringe-mode -1) ;not working everywhere in gui
 ;; Org timer function
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
@@ -600,10 +569,10 @@ categories:
  (org-clock-in-last))
 (global-set-key (kbd "<f5>") 'me/clock-me-up)
 ;;
-;; Remap space, space to recent files instead of local files
+;; Remap space, space to switch to buffer instead of local files
 (map! :leader
-      :desc "Find recent files"
-      "SPC" 'recentf-open-files)
+      :desc "Switch to buffer"
+      "SPC" 'switch-to-buffer)
 ;;
 ;; Mu4e
 (global-set-key (kbd "<f6>") 'mu4e)
@@ -611,12 +580,14 @@ categories:
   "jump to mu4e all mail"
   (interactive)
   (mu4e~headers-jump-to-maildir "/All Mail"))
-
+;;
 (map! :leader
       :desc "Jump to mu4e inbox"
       "oi" 'my-mu4e-all-mail)
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
-
+;;(require 'mu4e)
+(require 'smtpmail)
+(setq starttls-use-gnutls t)
 ;; Line below taken as quickfix from github https://github.com/doomemacs/doomemacs/issues/6906 C-z on mu4e-main and bookmarks work
 (defconst mu4e-headers-buffer-name "*mu4e-headers*"
   "Name of the buffer for message headers.")
@@ -632,12 +603,13 @@ categories:
 (setq mu4e-sent-folder   "/Sent")
 (setq mu4e-refile-folder "/Archive")
 (setq mu4e-trash-folder  "/Trash")
-(setq message-send-mail-function 'smtpmail-send-it) ; not sure send is working?
+(setq message-send-mail-function 'smtpmail-send-it)
 (setq auth-sources '("~/.authinfo.gpg"))
 (setq smtpmail-auth-credentials "~/.authinfo.gpg")
 (setq smtpmail-smtp-server "127.0.0.1")
 (setq smtpmail-smtp-service 1025)
-(setq smtpmail-stream-type  'ssl)
+;;(setq smtpmail-stream-type  'ssl)
+(setq message-kill-buffer-on-exit t)
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 (setq mu4e-headers-time-format "%H:%M")
 (setq mu4e-headers-fields
@@ -650,9 +622,14 @@ categories:
 (setq mu4e-maildir-shortcuts
      '((:maildir "/INBOX"     :key ?i)
 	(:maildir "/Sent"     :key ?s)
+	(:maildir "/Drafts"    :key ?d)
+        (:maildir "/Folders/sba.com" :key ?a)
+        (:maildir "/Folders/bledspixel" :key ?b)
+        (:maildir "/Folders/Gmail" :key ?g)
+        (:maildir "/Folders/iCloud" :key ?c)
+        (:maildir "Folders/SimpleLogin" :key ?l)
 	(:maildir "/Trash"     :key ?t)
 	(:maildir "/Spam"     :key ?p)
-	(:maildir "/Drafts"    :key ?d)
         (:maildir "/Archive"  :key ?r)
 	(:maildir "/All Mail"  :key ?m)))
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
