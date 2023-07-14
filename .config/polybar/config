@@ -58,7 +58,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow 
 modules-center = 
-modules-right = session-time filesystem temperature memory pulseaudio battery bat2 bluetooth wlan date
+modules-right = filesystem temperature memory battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
@@ -116,7 +116,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = session-time filesystem temperature memory pulseaudio battery bat2 bluetooth wlan date
+modules-right = filesystem temperature memory battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
