@@ -51,8 +51,6 @@
 ;; Disable line-numbers in only org-mode buffers
 ;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 ;;
-;; Dashboard
-;;
 ;;Better default buffer names
 (setq doom-fallback-buffer-name "*dashboard*")
 ;
@@ -71,6 +69,7 @@
 (map! :leader :desc "Dashboard" "d" #'dashboard-open)
 ;;
 ;; Set the title
+(after! dashboard
 (setq dashboard-banner-logo-title "Welcome back Bledley!")
 ;; Set the banner
 ;;(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
@@ -97,13 +96,12 @@
 (setq dashboard-set-file-icons t)
 (setq dashboard-agenda-sort-strategy '(time-up))
 (setq dashboard-agenda-prefix-format "%i %-12:c %s ")
-(setq dashboard-agenda-tags-format 'ignore)
+(setq dashboard-agenda-tags-format 'ignore))
 ;;
 ;; Scratch buffer intital text
-(setq initial-scratch-message ";; scratch buffer\n")
+(setq initial-scratch-message ";; Scratch buffer ;;\n")
 ;;;
 ;; Doom exposes five (optional) variables for controlling fonts:
-;;
 ;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
@@ -130,13 +128,10 @@
 ;; Zen mode zoom
 (setq +zen-text-scale 0.3)
 ;;
-;; Org
-;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-;;
-(after! org
 (setq org-directory "~/Dropbox/roam/")
+(after! org
 (setq org-agenda-files
       (quote ("~/Dropbox/roam/tasks.org"
               "~/Dropbox/roam/inbox.org"
@@ -148,6 +143,7 @@
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
+(setq org-deadline-warning-days 0)
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
 (setq org-refile-targets (quote (("tasks.org" :maxlevel . 4)
@@ -166,6 +162,7 @@
       org-hide-leading-stars t
       org-priority-highest '?A
       org-priority-lowest '?D
+      org-default-priority '?C
       org-priority-faces '((?A :foreground "#2FF9D1")
                            (?B :foreground "#57D1B9")
                            (?C :foreground "#63C5B2")
@@ -268,13 +265,13 @@
       "%?"
       :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
 title: ${TITLE}\n#+DATE: %U\n
----")))))
+---"))))
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
        :if-new (file+head "%<%Y_%m_%d>.md" "---\ntitle: %<%Y_%m_%d>\nid: %<%Y-%m-%d-%H%M>\ntags: #fleeting\n---\n# What's on your mind?\n# Log\n -"))))
 ;;
-(setq org-roam-dailies-directory "~/Dropbox/roam/journals/")
+(setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
@@ -285,8 +282,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (setq org-agenda-tags-column (- 4 (window-width)))
 (org-agenda-align-tags))
 ;;
-(setq org-startup-folded t)
-(setq org-deadline-warning-days 0)
 ;;
 (require 'org-habit)
   (setq org-habit-following-days 7)
@@ -300,7 +295,10 @@ title: ${TITLE}\n#+DATE: %U\n
 ;; Focus
 (use-package! focus)
 ;;
-(setq browse-url-browser-function 'eww-browse-url)
+;; Set browser
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "qutebrowser")
+;;(setq browse-url-browser-function 'eww-browse-url)
 ;;
 ;; My custom agenda function?
 (defun my-agenda-custom ()
@@ -342,7 +340,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (define-key global-map (kbd "C-c f") #'elfeed)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
-;;
 (evil-define-command +evil-buffer-org-new (count file)
   "Creates a new ORG buffer replacing the current window, optionally
    editing a certain FILE"
@@ -360,7 +357,6 @@ title: ${TITLE}\n#+DATE: %U\n
        :desc "New empty Org buffer" "O" #'+evil-buffer-org-new))
 ;;
 ;; Make a new md buffer easy
-;;
 (evil-define-command +evil-buffer-md-new (count file)
   "Creates a new markdown buffer replacing the current window, optionally
    editing a certain FILE"
@@ -383,7 +379,7 @@ title: ${TITLE}\n#+DATE: %U\n
                :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
 
 (map! :leader
-      (:prefix "N"
+      (:prefix "n"
                :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
 ;;
 ;; Dired
