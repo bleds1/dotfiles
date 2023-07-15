@@ -31,9 +31,9 @@
 ;;
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
-  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
-  (line-number-mode -1)
-  (display-time-mode 1)
+;; (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
+  (line-number-mode 1)
+  (display-time-mode -1)
   (setq doom-modeline-enable-word-count t)
 ;;(setq display-time-format "%H:%M")
   (setq display-time-format "%Y_%m_%d %H:%M")
@@ -242,7 +242,7 @@
 (setq! org-todo-keyword-faces ;these colours are not working/defined by theme?
       '(("TODO" :foreground "#2FF9D1" :weight bold :underline t)
        ("ACTIVE" :foreground "#57D1B9" :weight bold :underline t)
-       ("NEXT" :foreground "##57D1B9" :weight bold :underline t)
+       ("NEXT" :foreground "#57D1B9" :weight bold :underline t)
        ("LATER" :foreground "#AAAAE1" :weight bold :underline t)
        ("IDEA" :foreground "#AAAAE1" :weight bold :underline t)
        ("SOMEDAY" :foreground "#AAAAE1" :weight bold :underline t)
