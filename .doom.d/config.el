@@ -570,6 +570,10 @@ categories:
       :desc "Switch to buffer"
       "SPC" 'switch-to-buffer)
 ;;
+;; Easier key for terminal popup
+(map! :leader
+      :desc "Vterm toggle"
+      "v" '+vterm/toggle)
 ;; Mu4e
 (global-set-key (kbd "<f6>") 'mu4e)
 (defun my-mu4e-all-mail ()
