@@ -244,7 +244,7 @@
        ("ACTIVE" :foreground "#57D1B9" :weight bold :underline t)
        ("NEXT" :foreground "#57D1B9" :weight bold :underline t)
        ("LATER" :foreground "#AAAAE1" :weight bold :underline t)
-       ("IDEA" :foreground "#AAAAE1" :weight bold :underline t)
+       ("IDEA" :foreground "#C280A0" :weight bold :underline t)
        ("SOMEDAY" :foreground "#AAAAE1" :weight bold :underline t)
        ("WAITING" :foreground "#AAAAE1" :weight bold :underline t)
        ("GOAL" :foreground "#65DDA3" :weight bold :underline t)
