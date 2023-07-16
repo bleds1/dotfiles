@@ -55,7 +55,7 @@ super +z
 
 # Emacs (super + e followed by another key)
 super + e; e
-    emacsclient -c -a 'emacs'
+    emacsclient -c -a 'emacsclient --eval "(emacs-everywhere)"'
 super + b; i
     emacsclient -c -a 'emacs' --eval '(ibuffer)'
 super + e; d

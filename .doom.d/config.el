@@ -632,6 +632,8 @@ categories:
 	(:maildir "/Spam"     :key ?p)
         (:maildir "/Archive"  :key ?r)
 	(:maildir "/All Mail"  :key ?m)))
+(add-to-list 'mu4e-bookmarks
+             '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t)
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
 (setq mu4e-compose--org-msg-toggle-next nil)
 (mu4e t)
