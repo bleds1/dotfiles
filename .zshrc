@@ -252,13 +252,13 @@ bindkey '^[[B' history-substring-search-down
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
-# Cli todo to Obsidian function
+# Cli todo function
 #function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
-function todo { echo "** TODO $1" >> ~/Dropbox/roam/inbox.org  }
+function todo { echo "** TODO $1" >> ~/Dropbox/roam/tasks.org  }
 #
 # Fleeting Obsidian function
 function note {
-    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/inbox.org
+    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/tasks.org
 }
 #suppress warnings powerlevel10k
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
