@@ -39,6 +39,8 @@
   (setq display-time-format "%Y_%m_%d %H:%M")
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
+;; Whether display the modal state icon.
+  (setq doom-modeline-modal-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 ;;
 ;;(global-hide-mode-line-mode)
@@ -323,7 +325,6 @@ title: ${TITLE}\n#+DATE: %U\n
 (zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
-(zz/add-file-keybinding "C-c l" "~/Dropbox/roam/shopping.org" "shopping.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
 ;;(zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
@@ -337,7 +338,7 @@ title: ${TITLE}\n#+DATE: %U\n
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
 (global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
-(define-key global-map (kbd "C-c f") #'elfeed)
+(define-key global-map (kbd "C-c l") #'elfeed)
 ;;
 ;; Make a new org buffer easier (from tecosaur.github.io)
 (evil-define-command +evil-buffer-org-new (count file)
@@ -407,6 +408,12 @@ title: ${TITLE}\n#+DATE: %U\n
   (kbd "q") 'kill-this-buffer
   )
 ;;
+;; Dired less details for mobile
+(defun my-dired-mode-setup ()
+  "to be run as hook for `dired-mode'."
+  (dired-hide-details-mode 1))
+
+(add-hook 'dired-mode-hook 'my-dired-mode-setup)
 ;; Load elfeed-org
 (require 'elfeed-org)
 ;;
