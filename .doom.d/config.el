@@ -43,7 +43,6 @@
   (setq doom-modeline-modal-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 ;;
-;;(global-hide-mode-line-mode)
 ;; Disable quit confirmation message
 (setq confirm-kill-emacs nil)
 ;;
@@ -101,7 +100,7 @@
 (setq dashboard-agenda-tags-format 'ignore))
 ;;
 ;; Scratch buffer intital text
-(setq initial-scratch-message ";; Scratch buffer ;;\n")
+(setq initial-scratch-message ";; scratch the surface ;;\n")
 ;;;
 ;; Doom exposes five (optional) variables for controlling fonts:
 ;; - `doom-font' -- the primary font to use
@@ -134,13 +133,14 @@
 ;; change `org-directory'. It must be set before org loads!
 (after! org
 (setq org-directory "~/Dropbox/roam/")
-(setq org-agenda-files
-      (quote ("~/Dropbox/roam/tasks.org"
-              "~/Dropbox/roam/inbox.org"
-              "~/Dropbox/roam/repeat.org"
-              "~/Dropbox/roam/events.org"
-              "~/Dropbox/roam/shopping.org"
-              "~/Dropbox/roam/goals.org")))
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/" "\\.org$"))
+;;(setq org-agenda-files
+;;      (quote ("~/Dropbox/roam/tasks.org"
+;;              "~/Dropbox/roam/inbox.org"
+;;              "~/Dropbox/roam/repeat.org"
+;;              "~/Dropbox/roam/events.org"
+;;              "~/Dropbox/roam/shopping.org"
+;;              "~/Dropbox/roam/goals.org")))
       ;(directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-startup-folded t)
 (setq org-log-done 'time)
@@ -185,11 +185,11 @@
 ;;
 (after! org
 (setq!
-      org-journal-time-prefix " - "
-      org-journal-date-prefix " - "
+      org-journal-time-prefix "** "
+      org-journal-date-prefix "* "
       org-journal-time-format "%H:%M"
       org-journal-date-format "%Y-%m-%d"
-      org-journal-file-format "%Y_%m_%d.md"
+      org-journal-file-format "%Y_%m_%d.org"
       org-journal-dir "~/Dropbox/roam/journals/"
       org-superstar-headline-bullets-list '("◉" "○" "○" "○" "○" "○" "○")
       org-hide-emphasis-markers t
@@ -197,12 +197,23 @@
       org-log-into-drawer t
       org-agenda-max-todos 30))
 ;;
+(defun org-journal-find-location ()
+  ;; Open today's journal, but specify a non-nil prefix argument in order to
+  ;; inhibit inserting the heading; org-capture will insert the heading.
+  (org-journal-new-entry t)
+  (unless (eq org-journal-file-type 'daily)
+    (org-narrow-to-subtree))
+    (goto-char (point-max)))
+
+;;
 (after! org
 (setq! org-capture-templates
         '(("i" "Task" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** TODO %?\n")
           ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
           "** %?\n%U\n")
+          ("j" "Journal entry" plain (function org-journal-find-location)
+                               "** %(format-time-string org-journal-time-format)\n  - %?")
           ("m" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
           "** TODO %a\n")
           ("t" "Text at point" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
@@ -262,16 +273,16 @@
 (setq org-roam-directory "~/Dropbox/roam/")
 (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
-(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
-   '(("n" "Daily Note" plain
-      "%?"
-      :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
-title: ${TITLE}\n#+DATE: %U\n
----"))))
+;(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
+;;   '(("n" "Daily Note" plain
+;;      "%?"
+;;      :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
+;;title: ${TITLE}\n#+DATE: %U\n
+;---"))))
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.md" "---\ntitle: %<%Y_%m_%d>\nid: %<%Y-%m-%d-%H%M>\ntags: #fleeting\n---\n# What's on your mind?\n# Log\n -"))))
+       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+id: %<%Y-%m-%d-%H%M>\n#+FILETAGS: #fleeting\n---\n* What's on your mind?\n* %<%Y-%M-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;; Autosave disable/enable
@@ -519,14 +530,14 @@ title: ${TITLE}\n#+DATE: %U\n
 ;;        (0.0 . org-upcoming-distant-deadline)))
 ;;
 ;; My snippet functions
-(defun my-front-matter ()
+(defun my-md-front-matter ()
  (interactive)
  (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
  )
 ;; Timestamp
 (defun now ()
  (interactive)
- (insert (format-time-string " - %H:%M")
+ (insert (format-time-string "** %H:%M")
  ))
 ;;
 ;; My jekyll front matter
