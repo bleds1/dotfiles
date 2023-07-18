@@ -134,14 +134,38 @@
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
-;;(setq org-agenda-files
-;;      (quote ("~/Dropbox/roam/tasks.org"
-;;              "~/Dropbox/roam/inbox.org"
-;;              "~/Dropbox/roam/repeat.org"
-;;              "~/Dropbox/roam/events.org"
-;;              "~/Dropbox/roam/shopping.org"
-;;              "~/Dropbox/roam/goals.org")))
-      ;(directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
+;;
+;; My agenda custom commands
+(defun my-agenda-custom ()
+  (interactive)
+  (org-agenda nil "n"))
+;;
+;; map leader a (previously act on?) to my agenda view
+(map! :leader
+      :desc "My agenda custom"
+      "a" #'my-agenda-custom)
+;;
+;; Org agenda custom view
+(setq org-agenda-custom-commands
+   '(("n" "3 day view with NEXT & TODO"
+      ((agenda ""
+        ((org-agenda-span '3)
+         (org-agenda-overriding-header "3 day view:")))
+       (tags-todo ":@refile:"
+                  ((org-agenda-overriding-header "Inbox (Refile):")))
+       (todo "ACTIVE"
+             ((org-agenda-overriding-header "Active:")))
+       (todo "NEXT"
+             ((org-agenda-overriding-header "Next Actions (Projects):")))
+       (todo "TODO"
+             ((org-agenda-files
+               '("~/Dropbox/roam/tasks.org"))
+              (org-agenda-overriding-header "Todo's (Unscheduled):"))))
+      nil)))
+(setq org-agenda-time-grid '((weekly today require-timed)
+                             (800 1000 1200 1400 1600 1800 2000)
+                             "---" "┈┈┈┈┈┈┈┈┈┈┈┈┈"))
+;;
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
@@ -204,7 +228,6 @@
   (unless (eq org-journal-file-type 'daily)
     (org-narrow-to-subtree))
     (goto-char (point-max)))
-
 ;;
 (after! org
 (setq! org-capture-templates
@@ -285,6 +308,7 @@
        :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+id: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
+;;
 ;; Autosave disable/enable
 (setq auto-save-default t)
 ;;
@@ -312,17 +336,6 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "qutebrowser")
 ;;(setq browse-url-browser-function 'eww-browse-url)
-;;
-;; My custom agenda function?
-(defun my-agenda-custom ()
-  (interactive)
-  (org-agenda nil "n"))
-;;
-;; map leader a (previously act on?) to my agenda view
-(map! :leader
-      :desc "My agenda custom"
-      "a" #'my-agenda-custom)
-;;
 ;; Keyboard shortcuts for regularly used files
 ;;
 (defun zz/add-file-keybinding (key file &optional desc)
