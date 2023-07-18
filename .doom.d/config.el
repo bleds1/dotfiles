@@ -133,7 +133,7 @@
 ;; change `org-directory'. It must be set before org loads!
 (after! org
 (setq org-directory "~/Dropbox/roam/")
-(setq org-agenda-files (directory-files-recursively "~/Dropbox/" "\\.org$"))
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 ;;(setq org-agenda-files
 ;;      (quote ("~/Dropbox/roam/tasks.org"
 ;;              "~/Dropbox/roam/inbox.org"
@@ -148,16 +148,16 @@
 (setq org-deadline-warning-days 0)
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
-(setq org-refile-targets (quote (("tasks.org" :maxlevel . 4)
-                                 ("inbox.org" :level . 4)
-                                 ("repeat.org" :level . 4)
-                                 ("bookmarks.org" :level . 4)
-                                 ("events.org" :level . 4)
-                                 ("goals.org" :level . 4)
-                                 ("archive.org" :level . 4)
-                                 ("reading.org" :level . 4)
-                                 ("shopping.org" :level . 4)
-                                 ("someday.org" :level . 4))))
+(setq org-refile-targets (quote (("~/Dropbox/roam/tasks.org" :maxlevel . 4)
+                                 ("~/Dropbox/roam/inbox.org" :level . 4)
+                                 ("~/Dropbox/roam/repeat.org" :level . 4)
+                                 ("~/Dropbox/roam/bookmarks.org" :level . 4)
+                                 ("~/Dropbox/roam/events.org" :level . 4)
+                                 ("~/Dropbox/roam/goals.org" :level . 4)
+                                 ("~/Dropbox/roam/archive.org" :level . 4)
+                                 ("~/Dropbox/roam/reading.org" :level . 4)
+                                 ("~/Dropbox/roam/shopping.org" :level . 4)
+                                 ("~/Dropbox/roam/someday.org" :level . 4))))
 (after! org
 (setq! org-agenda-use-tag-inheritance t
       org-ellipsis " ▾ "
@@ -282,7 +282,7 @@
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+id: %<%Y-%m-%d-%H%M>\n#+FILETAGS: #fleeting\n---\n* What's on your mind?\n* %<%Y-%M-%d>\n"))))
+       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+id: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;; Autosave disable/enable
