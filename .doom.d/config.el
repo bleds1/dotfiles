@@ -49,18 +49,19 @@
 ;; Relative line numbers
 (setq display-line-numbers-type nil)
 ;;
-;; Disable line-numbers in only org-mode buffers
-;;(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
-;;
 ;;Better default buffer names
-(setq doom-fallback-buffer-name "*dashboard*")
+;(setq doom-fallback-buffer-name "*dashboard*")
 ;
 ; Dashboard at startup
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-;;
+;(require 'dashboard)
+;(dashboard-setup-startup-hook)
+;
 ;;Dashboard as initial buffer with emacsclient
-(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+;; Scratch buffer intital text
+(setq initial-scratch-message ";; scratch the surface ;;\n")
+(setq initial-major-mode 'fundamental-mode)
+(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*doom:scratch*")))
 ;;
 ;; Connect to main workspace on launch
 (after! persp-mode
@@ -75,20 +76,11 @@
 ;; Set the banner
 ;;(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
 (setq dashboard-startup-banner "~/.doom.d/splash/emacs-e-template.svg") ;; use custom image as banner
-;; Value can be
-;; - nil to display no banner
-;; - 'official which displays the official emacs logo
-;; - 'logo which displays an alternative emacs logo
-;; - 1, 2 or 3 which displays one of the text banners
-;; - "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
-;; - a cons of '("path/to/your/image.png" . "path/to/your/text.txt")
-;;
 (setq dashboard-items '((recents  . 5)
                         (agenda . 5)
                         ))
 (setq dashboard-item-names '(("Recent:" . "Recent (r):")
                              ("Agenda:" . "Agenda (a):")))
-;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
 ;; To disable shortcut "jump" indicators for each section, set
 (setq dashboard-show-shortcuts nil)
@@ -98,25 +90,10 @@
 (setq dashboard-agenda-sort-strategy '(time-up))
 (setq dashboard-agenda-prefix-format "%i %-12:c %s ")
 (setq dashboard-agenda-tags-format 'ignore))
-;;
-;; Scratch buffer intital text
-(setq initial-scratch-message ";; scratch the surface ;;\n")
-;;;
-;; Doom exposes five (optional) variables for controlling fonts:
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-unicode-font' -- for unicode glyphs
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
+;:
 (setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
-;;
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This was the default until changed:
 ;;
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
@@ -147,25 +124,34 @@
 ;;
 ;; Org agenda custom view
 (setq org-agenda-custom-commands
-   '(("n" "3 day view with NEXT & TODO"
+   '(("n" "Overview"
       ((agenda ""
-        ((org-agenda-span '3)
-         (org-agenda-overriding-header "3 day view:")))
+        ((org-agenda-span '1)
+         (org-agenda-overriding-header "Today:")))
        (tags-todo ":@refile:"
-                  ((org-agenda-overriding-header "Inbox (Refile):")))
+                  ((org-agenda-overriding-header "Inbox (@refile):")))
+       (tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "High-priority:")))
        (todo "ACTIVE"
              ((org-agenda-overriding-header "Active:")))
        (todo "NEXT"
-             ((org-agenda-overriding-header "Next Actions (Projects):")))
-       (todo "TODO"
+             ((org-agenda-overriding-header "Next Actions:")))
+       (todo ""
              ((org-agenda-files
-               '("~/Dropbox/roam/tasks.org"))
-              (org-agenda-overriding-header "Todo's (Unscheduled):"))))
+               '("~/Dropbox/roam/tasks.org" "~/Dropbox/roam/shopping.org"))
+              (org-agenda-overriding-header "Other Todo's:"))))
       nil)))
-(setq org-agenda-time-grid '((weekly today require-timed)
-                             (800 1000 1200 1400 1600 1800 2000)
-                             "---" "┈┈┈┈┈┈┈┈┈┈┈┈┈"))
 ;;
+(setq org-agenda-block-separator ?┈
+org-agenda-time-grid
+'((daily today require-timed)
+(800 1000 1200 1400 1600 1800 2000)
+" ┈┈┈┈ " "┈┈┈┈┈┈┈┈┈┈┈┈┈")
+org-agenda-current-time-string
+"! now ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈")
+;;
+(setq org-attach-id-dir "~/Dropbox/roam/assets/")
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
@@ -219,7 +205,7 @@
       org-hide-emphasis-markers t
       org-agenda-start-with-log-mode t
       org-log-into-drawer t
-      org-agenda-max-todos 30))
+      org-agenda-max-todos 10))
 ;;
 (defun org-journal-find-location ()
   ;; Open today's journal, but specify a non-nil prefix argument in order to
@@ -268,7 +254,7 @@
          "GOAL(g)"
          "PROJECT(p)"
          "EVENT(e)"
-         "REPEAT(R)"
+         "HABIT(h)"
          "REVIEW(r)"
          "SOMEDAY(s)"
          "|"
@@ -286,7 +272,7 @@
        ("GOAL" :foreground "#65DDA3" :weight bold :underline t)
        ("PROJECT" :foreground "#768EC3" :weight bold :underline t)
        ("EVENT" :foreground "#5099DA" :weight bold :underline t)
-       ("REPEAT" :foreground "#57D1B9" :weight bold :underline t)
+       ("HABIT" :foreground "#C280A0" :weight bold :underline t)
        ("REVIEW" :foreground "#8C8DFF" :weight bold :underline t)
        ("DONE" :foreground "#757575" :weight bold :underline t)
        ("CANCELLED" :foreground "#ff6480" :weight bold :underline t))))
@@ -326,18 +312,18 @@
   (setq org-habit-show-habits t)
 ;;
 ;; Beacon global minor mode
-(use-package! beacon)
+(use-package! beacon) ;; Beacon ;; TODO Test I don't think this should be here?
 (after! beacon (beacon-mode 1))
 ;;
-;; Focus
+;; Focus ;; TODO Test I don't think this should be here?
 (use-package! focus)
 ;;
 ;; Set browser
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "qutebrowser")
 ;;(setq browse-url-browser-function 'eww-browse-url)
-;; Keyboard shortcuts for regularly used files
 ;;
+;; Keyboard shortcuts for regularly used files
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
         (file file)
@@ -348,9 +334,7 @@
 (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
-(zz/add-file-keybinding "C-c s" "~/Dropbox/roam/someday.org" "someday.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
-;;(zz/add-file-keybinding "C-c f" "~/Dropbox/roam/expenses.org" "expenses.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
 ;;
@@ -432,11 +416,10 @@
   (kbd "q") 'kill-this-buffer
   )
 ;;
-;; Dired less details for mobile
+;; Dired less details
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
-
 (add-hook 'dired-mode-hook 'my-dired-mode-setup)
 ;; Load elfeed-org
 (require 'elfeed-org)
@@ -524,24 +507,6 @@
 ;; Projectile Dir
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
-;; Org mode variable headings? ;; Think this was causing me errors and in a bad order in config
-;:(add-hook 'org-mode-hook #'+org-pretty-mode)
-;;(custom-set-faces!
-;;  '(outline-1 :weight semi-bold :height 1.0)
-;;  '(outline-2 :weight semi-bold :height 1.0)
-;;  '(outline-3 :weight semi-bold :height 1.0)
-;;  '(outline-4 :weight semi-bold :height 1.0)
-;;  '(outline-5 :weight semi-bold :height 1.0)
-;;  '(outline-6 :weight semi-bold :height 1.0)
-;;  '(outline-8 :weight semi-bold)
-;;  '(outline-9 :weight semi-bold)
-;;  '(org-document-title :height 1.0))
-;;(setq org-agenda-deadline-faces
-;;      '((1.001 . error)
-;;        (1.0 . org-warning)
-;;        (0.5 . org-upcoming-deadline)
-;;        (0.0 . org-upcoming-distant-deadline)))
-;;
 ;; My snippet functions
 (defun my-md-front-matter ()
  (interactive)
@@ -589,13 +554,6 @@ categories:
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;
-(defun me/clock-me-up ()
-  ;"Clocks me in to my most recent task and starts a x-minute timer." from Chris Maiorana
- (interactive)
- (org-timer-set-timer 15)
- (org-clock-in-last))
-(global-set-key (kbd "<f5>") 'me/clock-me-up)
-;;
 ;; Remap space, space to switch to buffer instead of local files
 (map! :leader
       :desc "Switch to buffer"
