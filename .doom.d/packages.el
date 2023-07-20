@@ -61,7 +61,7 @@
 ;;
 (package! rainbow-mode)
 ;;
-(package! dashboard)
+;;(package! dashboard)
 ;;
 (package! beacon)
 ;

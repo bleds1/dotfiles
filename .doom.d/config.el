@@ -43,14 +43,11 @@
 ;;Better default buffer names
 ;(setq doom-fallback-buffer-name "*dashboard*")
 ;
-; Dashboard at startup
-;(require 'dashboard)
-;(dashboard-setup-startup-hook)
-;
-;;Dashboard as initial buffer with emacsclient
+;; Initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ;; Scratch buffer intital text
-(setq initial-scratch-message "# This buffer is for text that is not saved or Lisp evaluation.\n# To create a file, visit with C-x C-f and enter text in it's buffer. ")
+;;(setq initial-scratch-message "# This buffer is for text that is not saved or Lisp evaluation.\n# To create a file, visit with C-x C-f and enter text in it's buffer. ")
+(setq initial-scratch-message nil)
 (setq initial-major-mode 'org-mode)
 ;;(setq initial-major-mode 'lisp-mode)
 ;;(setq initial-major-mode 'fundamental-mode)
@@ -60,28 +57,6 @@
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 ;;
-;; Quick access dashboard key
-(map! :leader :desc "Dashboard" "d" #'dashboard-open)
-;; Set the title & banner
-(after! dashboard
-(setq dashboard-banner-logo-title "Welcome back Bledley!")
-;;(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
-(setq dashboard-startup-banner "~/.doom.d/splash/emacs-e-template.svg") ;; use custom image as banner
-(setq dashboard-items '((recents  . 5)
-                        (agenda . 5)
-                        ))
-(setq dashboard-item-names '(("Recent:" . "Recent (r):")
-                             ("Agenda:" . "Agenda (a):")))
-(setq dashboard-center-content t)
-;; To disable shortcut "jump" indicators for each section, set
-(setq dashboard-show-shortcuts nil)
-(setq dashboard-set-init-info t)
-(setq dashboard-set-footer nil)
-(setq dashboard-set-file-icons t)
-(setq dashboard-agenda-sort-strategy '(time-up))
-(setq dashboard-agenda-prefix-format "%i %-12:c %s ")
-(setq dashboard-agenda-tags-format 'ignore))
-;:
 (setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
@@ -124,7 +99,7 @@
        (tags "PRIORITY=\"A\""
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                  (org-agenda-overriding-header "High Priority:")))
-       (todo "ACTIVE"
+       (todo "STARTED"
              ((org-agenda-overriding-header "Active:")))
        (todo "NEXT"
              ((org-agenda-overriding-header "Project (Next Actions):")))
@@ -150,7 +125,6 @@ org-agenda-current-time-string
 (setq org-agenda-span 5
       org-agenda-start-day "-1")
 (setq org-refile-targets (quote (("~/Dropbox/roam/tasks.org" :maxlevel . 4)
-                                 ("~/Dropbox/roam/inbox.org" :level . 4)
                                  ("~/Dropbox/roam/repeat.org" :level . 4)
                                  ("~/Dropbox/roam/bookmarks.org" :level . 4)
                                  ("~/Dropbox/roam/events.org" :level . 4)
@@ -238,27 +212,29 @@ org-agenda-current-time-string
 (setq! org-todo-keywords
       '((sequence
          "TODO(t)"
-         "ACTIVE(a)"
+         "STARTED(s)"
          "NEXT(n)"
          "IDEA(i)"
          "GOAL(g)"
+         "AREA(a)"
          "PROJECT(p)"
          "EVENT(e)"
          "HABIT(h)"
          "REVIEW(r)"
-         "SOMEDAY(s)"
+         "SOMEDAY(y)"
          "|"
          "DONE(d)"
          "WAITING(w)"
          "CANCELLED(c)" ))))
 (setq! org-todo-keyword-faces ;these colours are not working/defined by theme?
       '(("TODO" :foreground "#C280a0" :weight bold)
-       ("ACTIVE" :foreground "#66FFD6" :weight bold)
+       ("STARTED" :foreground "#66FFD6" :weight bold)
        ("NEXT" :foreground "#FFFBB8" :weight bold)
        ("IDEA" :foreground "#C280A0" :weight bold)
        ("SOMEDAY" :foreground "#AAAAE1" :weight bold)
        ("WAITING" :foreground "#AAAAE1" :weight bold)
        ("GOAL" :foreground "#65DDA3" :weight bold)
+       ("AREA" :foreground "#8C8DFF" :weight bold)
        ("PROJECT" :foreground "#8C8DFF" :weight bold)
        ("EVENT" :foreground "#5099DA" :weight bold)
        ("HABIT" :foreground "#C280A0" :weight bold)
@@ -299,7 +275,7 @@ org-agenda-current-time-string
 ;;
 (require 'org-habit)
   (setq org-habit-following-days 7)
-  (setq org-habit-preceding-days 35)
+  (setq org-habit-preceding-days 30)
   (setq org-habit-show-habits t)
 ;;
 ;; Beacon global minor mode
@@ -398,7 +374,7 @@ org-agenda-current-time-string
   (kbd "M") 'dired-do-chmod
   (kbd "R") 'dired-do-rename
   (kbd "T") 'dired-do-touch
-  (kbd "Y") 'dired-copy-filenamecopy-filename-as-kill ; copies filename to kill ring. 
+  (kbd "Y") 'dired-copy-filename-copy-filename-as-kill ; copies filename to kill ring.
   (kbd "Z") 'dired-do-compress
   (kbd "C") 'dired-create-directory
   (kbd "-") 'dired-do-kill-lines
@@ -502,6 +478,11 @@ org-agenda-current-time-string
 (defun my-md-front-matter ()
  (interactive)
  (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
+ )
+;; Org header snippet
+(defun my-org-front-matter ()
+ (interactive)
+ (insert "#+TITLE: \n#+ID: \n#+FILETAGS: \n")
  )
 ;; Timestamp
 (defun now ()
