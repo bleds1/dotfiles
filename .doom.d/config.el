@@ -1,10 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;;
-;; Header at the top of config supposedly improves speed to load? you do not need to run 'doom
-;; sync' after modifying this file!
-;;
+;; Bledley's Doom Emacs Config
 ;; TODO - I'm getting some errors about mu4e being a depreciated package at startup but mostly works still despite
-;;      - Some custom faces for org do not load on initial startup, needs a second hot reload. Probably bad order of use of after blocks?
 ;;
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
@@ -22,12 +19,9 @@
 (setq-default
       delete-by-moving-to-trash t)
 ;;
-;; Undo limit 80mb/More granual changes whilst in insert
-(setq undo-limit 80000000
-      evil-want-fine-undo t
-;;
-;; Scroll  Margin
-      scroll-margin 2)
+(setq undo-limit 80000000 ; undo limit 80mb
+      evil-want-fine-undo t ; more granual changes whilst in insert
+      scroll-margin 2) ; scroll margin
 ;;
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
@@ -39,15 +33,12 @@
   (setq display-time-format "%Y_%m_%d %H:%M")
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
-;; Whether display the modal state icon.
   (setq doom-modeline-modal-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 ;;
-;; Disable quit confirmation message
-(setq confirm-kill-emacs nil)
+(setq confirm-kill-emacs nil) ;; Disable quit confirmation message
 ;;
-;; Relative line numbers
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type nil)  ;; Relative line numbers
 ;;
 ;;Better default buffer names
 ;(setq doom-fallback-buffer-name "*dashboard*")
@@ -59,9 +50,11 @@
 ;;Dashboard as initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ;; Scratch buffer intital text
-(setq initial-scratch-message ";; scratch the surface ;;\n")
-(setq initial-major-mode 'fundamental-mode)
-(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*doom:scratch*")))
+(setq initial-scratch-message "# This buffer is for text that is not saved or Lisp evaluation.\n# To create a file, visit with C-x C-f and enter text in it's buffer. ")
+(setq initial-major-mode 'org-mode)
+;;(setq initial-major-mode 'lisp-mode)
+;;(setq initial-major-mode 'fundamental-mode)
+(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 ;;
 ;; Connect to main workspace on launch
 (after! persp-mode
@@ -69,11 +62,9 @@
 ;;
 ;; Quick access dashboard key
 (map! :leader :desc "Dashboard" "d" #'dashboard-open)
-;;
-;; Set the title
+;; Set the title & banner
 (after! dashboard
 (setq dashboard-banner-logo-title "Welcome back Bledley!")
-;; Set the banner
 ;;(setq dashboard-startup-banner "~/.doom.d/splash/doom-ascii.txt")
 (setq dashboard-startup-banner "~/.doom.d/splash/emacs-e-template.svg") ;; use custom image as banner
 (setq dashboard-items '((recents  . 5)
@@ -175,10 +166,10 @@ org-agenda-current-time-string
       org-priority-highest '?A
       org-priority-lowest '?D
       org-default-priority '?C
-      org-priority-faces '((?A :foreground "#2FF9D1")
-                           (?B :foreground "#57D1B9")
-                           (?C :foreground "#63C5B2")
-                           (?D :foreground "#5B9589"))))
+      org-priority-faces '((?A :foreground "#989DAF")
+                           (?B :foreground "#8C92A6")
+                           (?C :foreground "#80869c")
+                           (?D :foreground "#757C94"))))
 ;;
 (add-hook! 'org-mode-hook 'org-fancy-priorities-mode)
 (add-hook! 'org-agenda-mode-hook 'org-fancy-priorities-mode)
@@ -249,7 +240,6 @@ org-agenda-current-time-string
          "TODO(t)"
          "ACTIVE(a)"
          "NEXT(n)"
-         "LATER(l)"
          "IDEA(i)"
          "GOAL(g)"
          "PROJECT(p)"
@@ -262,22 +252,24 @@ org-agenda-current-time-string
          "WAITING(w)"
          "CANCELLED(c)" ))))
 (setq! org-todo-keyword-faces ;these colours are not working/defined by theme?
-      '(("TODO" :foreground "#2FF9D1" :weight bold :underline t)
-       ("ACTIVE" :foreground "#66FFD6" :weight bold :underline t)
-       ("NEXT" :foreground "#42F0C1" :weight bold :underline t)
-       ("LATER" :foreground "#AAAAE1" :weight bold :underline t)
-       ("IDEA" :foreground "#C280A0" :weight bold :underline t)
-       ("SOMEDAY" :foreground "#AAAAE1" :weight bold :underline t)
-       ("WAITING" :foreground "#AAAAE1" :weight bold :underline t)
-       ("GOAL" :foreground "#65DDA3" :weight bold :underline t)
-       ("PROJECT" :foreground "#768EC3" :weight bold :underline t)
-       ("EVENT" :foreground "#5099DA" :weight bold :underline t)
-       ("HABIT" :foreground "#C280A0" :weight bold :underline t)
-       ("REVIEW" :foreground "#8C8DFF" :weight bold :underline t)
-       ("DONE" :foreground "#757575" :weight bold :underline t)
-       ("CANCELLED" :foreground "#ff6480" :weight bold :underline t))))
-;;
-;; org-roam
+      '(("TODO" :foreground "#C280a0" :weight bold)
+       ("ACTIVE" :foreground "#66FFD6" :weight bold)
+       ("NEXT" :foreground "#FFFBB8" :weight bold)
+       ("IDEA" :foreground "#C280A0" :weight bold)
+       ("SOMEDAY" :foreground "#AAAAE1" :weight bold)
+       ("WAITING" :foreground "#AAAAE1" :weight bold)
+       ("GOAL" :foreground "#65DDA3" :weight bold)
+       ("PROJECT" :foreground "#8C8DFF" :weight bold)
+       ("EVENT" :foreground "#5099DA" :weight bold)
+       ("HABIT" :foreground "#C280A0" :weight bold)
+       ("REVIEW" :foreground "#8C8DFF" :weight bold)
+       ("DONE" :foreground "#2FF9D1" :weight bold)
+       ("CANCELLED" :foreground "#80869c" :weight bold))))
+(after! org
+(setq! org-tag-faces
+   '(("@habit" :foreground "#C280a0")
+     ("@important" :foreground "#c280a0"))))
+;; Org-roam
 (after! org
 (setq org-roam-directory "~/Dropbox/roam/")
 (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
@@ -291,7 +283,7 @@ org-agenda-current-time-string
 ;
 (setq org-roam-dailies-capture-templates
     '(("d" "default" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+id: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
+       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;;
@@ -305,17 +297,16 @@ org-agenda-current-time-string
 (setq org-agenda-tags-column (- 4 (window-width)))
 (org-agenda-align-tags))
 ;;
-;;
 (require 'org-habit)
   (setq org-habit-following-days 7)
   (setq org-habit-preceding-days 35)
   (setq org-habit-show-habits t)
 ;;
 ;; Beacon global minor mode
-(use-package! beacon) ;; Beacon ;; TODO Test I don't think this should be here?
+(use-package! beacon) ;; Beacon
 (after! beacon (beacon-mode 1))
 ;;
-;; Focus ;; TODO Test I don't think this should be here?
+;; Focus ;; TODO Test I don't think this should be here without any settings?
 (use-package! focus)
 ;;
 ;; Set browser
@@ -391,7 +382,7 @@ org-agenda-current-time-string
       (:prefix "n"
                :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
 ;;
-;; Dired
+;; Dired keybinds
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
   (kbd "h") 'dired-up-directory
@@ -416,14 +407,14 @@ org-agenda-current-time-string
   (kbd "q") 'kill-this-buffer
   )
 ;;
-;; Dired less details
+;; Less details in Dired
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
 (add-hook 'dired-mode-hook 'my-dired-mode-setup)
-;; Load elfeed-org
-(require 'elfeed-org)
 ;;
+;; Elfeed
+(require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
 (setq elfeed-search-filter "@1-day-ago +unread"
@@ -461,6 +452,7 @@ org-agenda-current-time-string
 (after! evil-snipe
   (push 'elfeed-show-mode   evil-snipe-disabled-modes)
   (push 'elfeed-search-mode evil-snipe-disabled-modes))
+;;
 ;; Tecosaur keybinds modified
 (map! :map elfeed-search-mode-map
       :after elfeed-search
@@ -501,10 +493,9 @@ org-agenda-current-time-string
 (evil-define-key 'normal elfeed-search-mode-map
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
-;;Highlight indent guides mode? Not working as expected..
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)  ;;Highlight indent guides mode? Not working as expected..
 ;;
-;; Projectile Dir
+;; Projectile Dirs
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
 ;; My snippet functions
@@ -518,8 +509,7 @@ org-agenda-current-time-string
  (insert (format-time-string "** %H:%M")
  ))
 ;;
-;; My jekyll front matter
-;;
+;; My Jekyll front matter
 (defun my-website-front-matter ()
  (interactive)
  (insert "---
@@ -530,8 +520,7 @@ categories:
 ---")
  )
 ;;
-;; md-roam
-;;
+;; Md-roam
 (use-package! md-roam
   :after org-roam
   :config
@@ -545,7 +534,6 @@ categories:
                             "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
                  :unnarrowed t))
   )
-;;
 ;; Rainbow Mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
@@ -626,35 +614,3 @@ categories:
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
 (setq mu4e-compose--org-msg-toggle-next nil)
 (mu4e t)
-;;
-;;Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-psackage'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
