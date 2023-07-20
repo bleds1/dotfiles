@@ -50,7 +50,6 @@
 ;(unpin! t)
 
 ;; Disable Solaire-mode for consistent backgrounds?
-
 (package! solaire-mode :disable t)
 ;;
 (package! org-fancy-priorities)
@@ -61,8 +60,6 @@
 ;;
 (package! rainbow-mode)
 ;;
-;;(package! dashboard)
-;;
 (package! beacon)
 ;
 (package! focus)
@@ -70,4 +67,3 @@
 (package! md-roam
   :recipe (:host github :repo "nobiot/md-roam"))
 ;;
-;;(package! org-super-agenda :pin "f4f528985397c833c870967884b013cf91a1da4a")

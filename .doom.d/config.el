@@ -40,11 +40,9 @@
 ;;
 (setq display-line-numbers-type nil)  ;; Relative line numbers
 ;;
-;;Better default buffer names
-;(setq doom-fallback-buffer-name "*dashboard*")
-;
 ;; Initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+;;
 ;; Scratch buffer intital text
 ;;(setq initial-scratch-message "# This buffer is for text that is not saved or Lisp evaluation.\n# To create a file, visit with C-x C-f and enter text in it's buffer. ")
 (setq initial-scratch-message nil)
@@ -353,7 +351,7 @@ org-agenda-current-time-string
 (map! :leader
       (:prefix "n"
                :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
-
+;
 (map! :leader
       (:prefix "n"
                :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
