@@ -123,15 +123,15 @@
                   ((org-agenda-overriding-header "Inbox (@refile):")))
        (tags "PRIORITY=\"A\""
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority:")))
+                 (org-agenda-overriding-header "High Priority:")))
        (todo "ACTIVE"
              ((org-agenda-overriding-header "Active:")))
        (todo "NEXT"
-             ((org-agenda-overriding-header "Next Actions:")))
+             ((org-agenda-overriding-header "Project (Next Actions):")))
        (todo ""
              ((org-agenda-files
                '("~/Dropbox/roam/tasks.org" "~/Dropbox/roam/shopping.org"))
-              (org-agenda-overriding-header "Other Todo's:"))))
+              (org-agenda-overriding-header "Other Tasks:"))))
       nil)))
 ;;
 (setq org-agenda-block-separator ?┈
