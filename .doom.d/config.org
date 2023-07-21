@@ -1,7 +1,7 @@
 #+TITLE: Bledley's Doom Emacs Literate Config
 #+ID: 2023_07_21_1853
 #+PROPERTY:
----
+
 * General Settings
 ** Lexical binding
 Lexical binding needs to be enabled in comments at the top of the config for certain keybinds to work.
@@ -169,6 +169,8 @@ Custom Agenda views and keybind/function
 #+end_src
 
 ** Org/Agenda Settings
+Other agenda settings. Can't for life of me get time grid to work, please send help..
+
 #+begin_src emacs-lisp
 (setq org-agenda-block-separator ?┈
 org-agenda-time-grid
@@ -228,6 +230,8 @@ org-agenda-current-time-string
 #+end_src
 
 ** Org Journal Settings
+Journal settings a little bit mingled up with agenda stuff, I may rearrange this..
+
 #+begin_src emacs-lisp
 (after! org
 (setq!
@@ -254,6 +258,8 @@ org-agenda-current-time-string
 #+end_src
 
 ** Org Capture Templates
+Quick capture templates are triggered with (SPC-n-n) and then the below prefix
+
 #+begin_src emacs-lisp
 (after! org
 (setq! org-capture-templates
@@ -286,6 +292,8 @@ org-agenda-current-time-string
 #+end_src
 
 ** Org Task keywords/faces
+Todo, task status names, colours and style.
+
 #+begin_src emacs-lisp
 (after! org
 (setq! org-todo-keywords
@@ -325,6 +333,8 @@ org-agenda-current-time-string
 #+end_src
 
 ** Org Roam
+Org roam directory and capture templates.
+
 #+begin_src emacs-lisp
 ;; Org-roam
 (after! org
@@ -445,6 +455,8 @@ Make a new org and md buffer easier (from tecosaur.github.io)
 #+end_src
 
 ** Leader Keybinds
+Take me to your leader. Convienient keybinds.
+
 #+begin_src emacs-lisp
 (map! :leader
       (:prefix "n"
@@ -467,6 +479,8 @@ Make a new org and md buffer easier (from tecosaur.github.io)
 
 * Dired
 ** Dired Keybinds
+TODO: Y for cut file isn't working correctly
+
 #+begin_src emacs-lisp
 ;; Dired keybinds
 (evil-define-key 'normal dired-mode-map
@@ -687,6 +701,7 @@ Show me colour hex codes everywhere please..
 
 * Mu4e
 This is a mess but it works (mostly)...still need to try and understand it..
+I'm getting an error warning about mu4e being a depreciated package and there is a conflict with evil bindings on it's dashboard that can be got around with C-z C-z.
 
 #+begin_src emacs-lisp
 ;; Mu4e
