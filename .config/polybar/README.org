@@ -1,3 +1,22 @@
+#+TITLE: Polybar Config
+#+ID: 2023_07_2344
+#+PROPERTY: header-args:conf :tangle ~/dotfiles/.config/polybar/config.ini
+#+OPTIONS: toc:4
+---
+** Table of Contents :toc:
+  - [[#about-polybar][About Polybar]]
+  - [[#colours][Colours]]
+  - [[#general-bar-settings-bar-1][General Bar Settings (Bar 1)]]
+  - [[#general-bar-settings-bar-2][General Bar Settings (Bar 2)]]
+  - [[#modules][Modules]]
+  - [[#other-settings][Other Settings]]
+
+** About Polybar
+
+** Colours
+Defining the colours to be used in the bars.
+
+#+begin_src conf
 [colors]
 background = #151515
 background-alt = #444
@@ -6,7 +25,10 @@ foreground-alt = #00292929
 primary = #82abaa
 secondary = #82abaa
 alert = #aa82abaa
+#+end_src
 
+** General Bar Settings (Bar 1)
+#+begin_src conf
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
@@ -60,7 +82,10 @@ tray-maxsize = 15
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+#+end_src
 
+** General Bar Settings (Bar 2)
+#+begin_src conf
 [bar/polybar2]
 
 monitor = ${env:MONITOR:HDMI-1}
@@ -116,12 +141,21 @@ tray-maxsize = 15
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+#+end_src
 
+** Modules
+*** Uptime (session-time)
+This module uses a custom script to display in text system uptime in human readable format.
+#+begin_src conf
 [module/session-time]
 type = custom/script
 exec = ~/dotfiles/.config/polybar/session.sh
 interval = 1
+#+end_src
+*** xwindow
+This module shows the active xwindow in plain text in your bar when you switch between windows and programs.
 
+#+begin_src conf
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -134,7 +168,9 @@ label-empty =  Ubuntu/Linux
 ## without colors ##
 label-empty-foreground = ${colors.foreground}
 format-foreground = ${colors.foreground}
-
+#+end_src
+*** xkeyboard
+#+begin_src conf
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -150,7 +186,10 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
-
+#+end_src
+*** filesystem
+Displays availble disk space
+#+begin_src conf
 [module/filesystem]
 type = internal/fs
 interval = 20
@@ -164,7 +203,10 @@ label-mounted =   %free%/%total%
 ;label-mounted =   %used%/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
+#+end_src
+*** i3
+Shows your i3 window/workspaces
+#+begin_src conf
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -203,7 +245,10 @@ label-urgent-padding = 1
 
 ; Separator in between workspaces
 ; label-separator = |
-
+#+end_src
+*** mpd
+Displays Now Playing music from mpd (music daemon)
+#+begin_src conf
 [module/mpd]
 host = 127.0.0.1
 port = 6600
@@ -220,7 +265,9 @@ icon-next =
 label-song-maxlen = 80
 label-song-ellipsis = true
 ;? %{A1:alacritty -e ncmpcpp:}{A}
-
+#+end_src
+*** xbacklight
+#+begin_src conf
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -237,12 +284,16 @@ bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
-
+#+end_src
+*** backlight-acpi
+#+begin_src conf
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
-
+#+end_src
+*** cpu
+#+begin_src conf
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -257,7 +308,9 @@ format-background = ${colors.background}
 format-padding = 0
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #aaff6a2a
-
+#+end_src
+*** memory
+#+begin_src conf
 [module/memory]
 type = internal/memory
 interval = 5
@@ -267,7 +320,9 @@ format-prefix-foreground = ${colors.foreground}
 #label = %percentage_used%%
 label = %gb_used%
 click-left = kitty -e btop
-
+#+end_src
+*** wlan
+#+begin_src conf
 [module/wlan]
 type = internal/network
 interface = wlp4s0
@@ -298,7 +353,9 @@ ramp-signal-3 =
 ramp-signal-4 =
 
 ;ramp-signal-foreground = ${colors.foreground-alt}
-
+#+end_src
+*** eth
+#+begin_src conf
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -314,7 +371,9 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
-
+#+end_src
+*** date
+#+begin_src conf
 [module/date]
 type = internal/date
 interval = 1
@@ -331,7 +390,9 @@ label-background = ${colors.background}
 label-padding = 1
 label-padding-right = 1
 label-padding-left = 0
-
+#+end_src
+*** pulseaudio
+#+begin_src conf
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <label-volume>
@@ -355,6 +416,9 @@ label-muted-background = ${colors.background}
 #bar-volume-empty-font = 2
 #bar-volume-empty-foreground = ${colors.foreground-alt}
 
+#+end_src
+*** alsa
+#+begin_src conf
 [module/alsa]
 type = internal/alsa
 format-volume = <label-volume>
@@ -367,7 +431,9 @@ label-volume-background = ${colors.background}
 label-muted =  muted
 label-muted-foreground = ${color.foreground}
 label-muted-background = ${color.background}
-
+#+end_src
+*** battery
+#+begin_src conf
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -404,6 +470,10 @@ animation-discharging-1 = ""
 animation-discharging-2 = ""
 animation-discharging-framerate = 750
 
+
+#+end_src
+*** bat2
+#+begin_src conf
 [module/bat2]
 type = internal/battery
 battery = BAT1
@@ -440,7 +510,9 @@ label-discharging = " %percentage%%"
 ;animation-discharging-1 = ""
 ;animation-discharging-2 = ""
 ;animation-discharging-framerate = 750
-
+#+end_src
+*** temperature
+#+begin_src conf
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -470,7 +542,9 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-font = 0
-
+#+end_src
+*** powermenu
+#+begin_src conf
 [module/powermenu]
 type = custom/menu
 
@@ -499,14 +573,18 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
+#+end_src
+*** bluetooth
+#+begin_src conf
 [module/bluetooth]
 
 type = custom/script
 exec = rofi-bluetooth --status
 interval = 1
 click-left = rofi-bluetooth &
-
+#+end_src
+** Other Settings
+#+begin_src conf
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -520,3 +598,4 @@ margin-top = 0
 margin-bottom = 0
 
 ; vim:ft=dosini
+#+end_src
