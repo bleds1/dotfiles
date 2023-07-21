@@ -1,6 +1,49 @@
 #+TITLE: Bledley's Doom Emacs Literate Config
 #+ID: 2023_07_21_1853
-#+PROPERTY:
+#+OPTIONS: toc:4
+---
+
+* Table of Contents :toc:
+- [[#general-settings][General Settings]]
+  - [[#lexical-binding][Lexical binding]]
+  - [[#ask-for-a-buffer-on-window-split][Ask for a buffer on window split]]
+  - [[#window-pop-up-rules][Window pop up rules]]
+  - [[#delete-files-to-trash-auto-revert-changed-buffers-change-undo-limit-to-80mb-and-add-scroll-margin][Delete Files to trash, Auto revert changed buffers, change undo limit to 80mb and add scroll margin.]]
+  - [[#disable-quit-confimation-line-numbers][Disable quit confimation, Line Numbers]]
+  - [[#initial-buffer-settings][Initial buffer settings]]
+  - [[#fonts][Fonts]]
+  - [[#visualtheme][Visual/Theme]]
+  - [[#modeline][Modeline]]
+- [[#org][Org]]
+  - [[#org--agenda-directories][Org & Agenda Directories]]
+  - [[#org-agenda][Org Agenda]]
+  - [[#orgagenda-settings][Org/Agenda Settings]]
+  - [[#org-journal-settings][Org Journal Settings]]
+  - [[#org-capture-templates][Org Capture Templates]]
+  - [[#org-task-keywordsfaces][Org Task keywords/faces]]
+  - [[#org-roam][Org Roam]]
+- [[#beaconfocus][Beacon/Focus]]
+  - [[#beacon][Beacon]]
+  - [[#focus][Focus]]
+- [[#browser][Browser]]
+- [[#keybinds][Keybinds]]
+  - [[#regularly-used-files][Regularly used files]]
+  - [[#make-new-buffers-orgmd-easier][Make new buffers org/md easier]]
+  - [[#leader-keybinds][Leader Keybinds]]
+- [[#dired][Dired]]
+  - [[#dired-keybinds][Dired Keybinds]]
+  - [[#simple-dired][Simple Dired]]
+- [[#elfeed][Elfeed]]
+- [[#projectile][Projectile]]
+- [[#snippet-functions][Snippet Functions]]
+  - [[#markdown-front-matter][Markdown front matter]]
+  - [[#org-headertitle][Org header/title]]
+  - [[#blog-front-matter][Blog front matter]]
+  - [[#timestamp][Timestamp]]
+- [[#md-roam][Md-roam]]
+- [[#rainbow-mode][Rainbow mode]]
+- [[#org-clock-sfx][Org clock sfx]]
+- [[#mu4e][Mu4e]]
 
 * General Settings
 ** Lexical binding
@@ -400,7 +443,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
-(zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.el" "config.el")
+(zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c n") 'now)
