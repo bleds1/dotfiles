@@ -1,26 +1,64 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+TITLE: Bledley's Doom Emacs Literate Config
+#+ID: 2023_07_21_1853
+#+PROPERTY:
+---
+* General Settings
+** Lexical binding
+Lexical binding needs to be enabled in comments at the top of the config for certain keybinds to work.
 
+#+begin_src emacs-lisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+** Ask for a buffer on window split
+When I make a new split ask which buffer I'd like displayed there.
+
+#+begin_src emacs-lisp
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
+#+end_src
 
+** Window pop up rules
+I like Org-Agenda, EWW, to pop up on the right hand side 50% of the screen.
+
+#+begin_src emacs-lisp
 (set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
+#+end_src
 
+** Delete Files to trash, Auto revert changed buffers, change undo limit to 80mb and add scroll margin.
+When I delete a file it should go to trash rather than permanent delete.
+Buffers will auto revert when they detect saved changes on disk.
+The undo limit is set to 80mb and fine-undo is a more granular way of undoing.
+
+#+begin_src emacs-lisp
 (setq-default delete-by-moving-to-trash t)
 (global-auto-revert-mode 1)
 (setq undo-limit 80000000
       evil-want-fine-undo t
       scroll-margin 2)
+#+end_src
 
+** Disable quit confimation, Line Numbers
+Ask to confirm stuff is a bit annoying.
+I enable line numbers on file by file basis with (SPC-t-l)
+Auto save is on.
+
+#+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
 (setq display-line-numbers-type nil)
 ;; Autosave disable/enable
 (setq auto-save-default t)
+#+end_src
 
+** Initial buffer settings
+I used to launch to a nice dashboard but now I realise it is only eye candy and not all that useful. Launch me into an empty scratch pad so I can just start writing something.
+
+#+begin_src emacs-lisp
 ;; Initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ;;
@@ -34,11 +72,21 @@
 ;; Connect to main workspace on launch
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
+#+end_src
 
+** Fonts
+Iosevka is a pretty & popular font ..I either use that or Jet Brains Mono
+
+ #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
      doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
+ #+end_src
 
+** Visual/Theme
+I like the base theme of wilmersdorf but I have some custom-set-faces to tweak to my liking here and in custom.el
+
+#+begin_src emacs-lisp
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
   '(default ((t (:background "#151515" :foreground "#a9b1d6")))))
@@ -51,7 +99,12 @@
 (setq +zen-text-scale 0.3)
 ;; Highlight indent guide
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)  ;;Highlight indent guides mode? Not working as expected..
+#+end_src
 
+** Modeline
+I like a pretty minimal modeline, this disables most things I don't need.
+
+#+begin_src emacs-lisp
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
 ;; (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
@@ -64,14 +117,22 @@
   (setq display-time-default-load-average nil)
   (setq doom-modeline-modal-icon nil)
   (setq doom-modeline-buffer-encoding nil))
+#+end_src
 
+* Org
+** Org & Agenda Directories
+#+begin_src emacs-lisp
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 ;;
+#+end_src
 
+** Org Agenda
+- Custom Agenda views and keybind/function
+#+begin_src emacs-lisp
 ;; My agenda custom commands
 (defun my-agenda-custom ()
   (interactive)
@@ -102,7 +163,10 @@
                '("~/Dropbox/roam/tasks.org" "~/Dropbox/roam/shopping.org"))
               (org-agenda-overriding-header "Other Tasks:"))))
       nil)))
+#+end_src
 
+** Org/Agenda Settings
+#+begin_src emacs-lisp
 (setq org-agenda-block-separator ?┈
 org-agenda-time-grid
 '((daily today require-timed)
@@ -158,7 +222,10 @@ org-agenda-current-time-string
   (setq org-habit-following-days 7)
   (setq org-habit-preceding-days 30)
   (setq org-habit-show-habits t)
+#+end_src
 
+** Org Journal Settings
+#+begin_src emacs-lisp
 (after! org
 (setq!
       org-journal-time-prefix "** "
@@ -181,7 +248,10 @@ org-agenda-current-time-string
     (org-narrow-to-subtree))
     (goto-char (point-max)))
 ;;
+#+end_src
 
+** Org Capture Templates
+#+begin_src emacs-lisp
 (after! org
 (setq! org-capture-templates
         '(("i" "Task" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
@@ -210,7 +280,10 @@ org-agenda-current-time-string
           "** %?" :empty-lines 1)
          ("l" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
          "* TODO %?" :empty-lines 0))))
+#+end_src
 
+** Org Task keywords/faces
+#+begin_src emacs-lisp
 (after! org
 (setq! org-todo-keywords
       '((sequence
@@ -246,7 +319,10 @@ org-agenda-current-time-string
 (setq! org-tag-faces
    '(("@habit" :foreground "#C280a0")
      ("@important" :foreground "#c280a0"))))
+#+end_src
 
+** Org Roam
+#+begin_src emacs-lisp
 ;; Org-roam
 (after! org
 (setq org-roam-directory "~/Dropbox/roam/")
@@ -265,21 +341,37 @@ org-agenda-current-time-string
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;;
+#+end_src
 
+* Beacon/Focus
+** Beacon
+#+begin_src emacs-lisp
 ;; Beacon global minor mode
 (use-package! beacon) ;; Beacon
 (after! beacon (beacon-mode 1))
 ;;
+#+end_src
 
+** Focus
+#+begin_src emacs-lisp
 ;; Focus ;; TODO Test I don't think this should be here without any settings?
 (use-package! focus)
 ;;
+#+end_src
 
+* Browser
+ #+begin_src emacs-lisp
 ;; Set browser
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "qutebrowser")
 ;;(setq browse-url-browser-function 'eww-browse-url)
+ #+end_src
 
+* Keybinds
+** Regularly used files
+The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/][zzamboni.org]] /"Note that this requires lexical binding to be enabled, so that the lambda creates a closure, otherwise the keybindings don’t work."/
+
+#+begin_src emacs-lisp
 ;; Keyboard shortcuts for regularly used files
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
@@ -305,7 +397,10 @@ org-agenda-current-time-string
 (global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
 (define-key global-map (kbd "C-c l") #'elfeed)
 ;;
+#+end_src
 
+** Make new buffers org/md easier
+#+begin_src emacs-lisp
 ;; Make a new org buffer easier (from tecosaur.github.io)
 (evil-define-command +evil-buffer-org-new (count file)
   "Creates a new ORG buffer replacing the current window, optionally
@@ -341,7 +436,10 @@ org-agenda-current-time-string
       (:prefix "n"
        :desc "New empty md buffer" "M" #'+evil-buffer-md-new))
 ;;
+#+end_src
 
+** Leader Keybinds
+#+begin_src emacs-lisp
 (map! :leader
       (:prefix "n"
                :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
@@ -359,7 +457,11 @@ org-agenda-current-time-string
 (map! :leader
       :desc "Vterm toggle"
       "v" '+vterm/toggle)
+#+end_src
 
+* Dired
+** Dired Keybinds
+#+begin_src emacs-lisp
 ;; Dired keybinds
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
@@ -385,14 +487,20 @@ org-agenda-current-time-string
   (kbd "q") 'kill-this-buffer
   )
 ;;
+#+end_src
 
+** Simple Dired
+#+begin_src emacs-lisp
 ;; Less details in Dired
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
 (add-hook 'dired-mode-hook 'my-dired-mode-setup)
 ;;
+#+end_src
 
+* Elfeed
+#+begin_src emacs-lisp
 ;; Elfeed
 (require 'elfeed-org)
 (after! elfeed
@@ -473,23 +581,36 @@ org-agenda-current-time-string
 (evil-define-key 'normal elfeed-search-mode-map
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
+#+end_src
 
+* Projectile
+ #+begin_src emacs-lisp
 ;; Projectile Dirs
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
 ;;
+ #+end_src
 
+* Snippet Functions
+** Markdown front matter
+#+begin_src emacs-lisp
 ;; My snippet functions
 (defun my-md-front-matter ()
  (interactive)
  (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
  )
+#+end_src
 
+** Org header/title
+#+begin_src emacs-lisp
 ;; Org header snippet
 (defun my-org-front-matter ()
  (interactive)
  (insert "#+TITLE: \n#+ID: \n#+FILETAGS: \n")
  )
+#+end_src
 
+** Blog front matter
+#+begin_src emacs-lisp
 ;; My Jekyll front matter
 (defun my-website-front-matter ()
  (interactive)
@@ -501,14 +622,20 @@ categories:
 ---")
  )
 ;;
+#+end_src
 
+** Timestamp
+#+begin_src emacs-lisp
 ;; Timestamp
 (defun now ()
  (interactive)
  (insert (format-time-string "** %H:%M")
  ))
 ;;
+#+end_src
 
+* Md-roam
+#+begin_src emacs-lisp
 ;; Md-roam
 (use-package! md-roam
   :after org-roam
@@ -523,16 +650,25 @@ categories:
                             "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
                  :unnarrowed t))
   )
+#+end_src
 
+* Rainbow mode
+#+begin_src emacs-lisp
 ;; Rainbow Mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
+#+end_src
 
+* Org clock sfx
+#+begin_src emacs-lisp
 ;; Org timer function
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;
+#+end_src
 
+* Mu4e
+#+begin_src emacs-lisp
 ;; Mu4e
 (global-set-key (kbd "<f6>") 'mu4e)
 (defun my-mu4e-all-mail ()
@@ -596,3 +732,4 @@ categories:
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
 (setq mu4e-compose--org-msg-toggle-next nil)
 (mu4e t)
+#+end_src
