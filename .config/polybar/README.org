@@ -1,6 +1,6 @@
 #+TITLE: Polybar Config
 #+ID: 2023_07_2344
-#+PROPERTY: header-args:conf :tangle ~/dotfiles/.config/polybar/config.ini
+#+PROPERTY: header-args:conf :tangle ~/dotfiles/.config/polybar/config
 #+OPTIONS: toc:4
 ---
 ** Table of Contents :toc:
@@ -12,7 +12,7 @@
   - [[#other-settings][Other Settings]]
 
 ** About Polybar
-
+[[https://github.com/polybar/polybar]]
 ** Colours
 Defining the colours to be used in the bars.
 
