@@ -121,6 +121,8 @@ I like a pretty minimal modeline, this disables most things I don't need.
 
 * Org
 ** Org & Agenda Directories
+Setting the directory for org and org agenda. I'm not sure it needs to be in an after! block but it's working fine..
+
 #+begin_src emacs-lisp
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -131,7 +133,8 @@ I like a pretty minimal modeline, this disables most things I don't need.
 #+end_src
 
 ** Org Agenda
-- Custom Agenda views and keybind/function
+Custom Agenda views and keybind/function
+
 #+begin_src emacs-lisp
 ;; My agenda custom commands
 (defun my-agenda-custom ()
@@ -360,6 +363,8 @@ org-agenda-current-time-string
 #+end_src
 
 * Browser
+Load links in Qutebrowser by default.
+
  #+begin_src emacs-lisp
 ;; Set browser
 (setq browse-url-browser-function 'browse-url-generic
@@ -400,8 +405,9 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 #+end_src
 
 ** Make new buffers org/md easier
+Make a new org and md buffer easier (from tecosaur.github.io)
+
 #+begin_src emacs-lisp
-;; Make a new org buffer easier (from tecosaur.github.io)
 (evil-define-command +evil-buffer-org-new (count file)
   "Creates a new ORG buffer replacing the current window, optionally
    editing a certain FILE"
@@ -490,6 +496,8 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 #+end_src
 
 ** Simple Dired
+I don't need to see all the info columns. I prefer the minimal look a bit like Ranger, I have 'all the icons' here too.
+
 #+begin_src emacs-lisp
 ;; Less details in Dired
 (defun my-dired-mode-setup ()
@@ -584,6 +592,8 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 #+end_src
 
 * Projectile
+Directories that show as projects in projectile,
+
  #+begin_src emacs-lisp
 ;; Projectile Dirs
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
@@ -591,6 +601,8 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
  #+end_src
 
 * Snippet Functions
+Some useful snippet functions, I also use yasnippet for this but I like it to be here too..
+
 ** Markdown front matter
 #+begin_src emacs-lisp
 ;; My snippet functions
@@ -625,6 +637,8 @@ categories:
 #+end_src
 
 ** Timestamp
+Press this all the time for journal entries. Convienient keybind is above.
+
 #+begin_src emacs-lisp
 ;; Timestamp
 (defun now ()
@@ -635,6 +649,8 @@ categories:
 #+end_src
 
 * Md-roam
+Makes roam's features also consider Markdown files as part of the database.
+
 #+begin_src emacs-lisp
 ;; Md-roam
 (use-package! md-roam
@@ -653,6 +669,8 @@ categories:
 #+end_src
 
 * Rainbow mode
+Show me colour hex codes everywhere please..
+
 #+begin_src emacs-lisp
 ;; Rainbow Mode
 (add-hook! org-mode 'rainbow-mode)
@@ -668,6 +686,8 @@ categories:
 #+end_src
 
 * Mu4e
+This is a mess but it works (mostly)...still need to try and understand it..
+
 #+begin_src emacs-lisp
 ;; Mu4e
 (global-set-key (kbd "<f6>") 'mu4e)
