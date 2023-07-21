@@ -384,7 +384,7 @@ Load links in Qutebrowser by default.
 
 * Keybinds
 ** Regularly used files
-The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/][zzamboni.org]] /"Note that this requires lexical binding to be enabled, so that the lambda creates a closure, otherwise the keybindings don’t work."/
+The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/][zzamboni.org]] "Note that this requires lexical binding to be enabled (see top of page) so that the lambda creates a closure, otherwise the keybindings don’t work."
 
 #+begin_src emacs-lisp
 ;; Keyboard shortcuts for regularly used files
@@ -415,7 +415,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 #+end_src
 
 ** Make new buffers org/md easier
-Make a new org and md buffer easier (from tecosaur.github.io)
+Make a new org and md buffer easier. Stolen from and thanks to [[https://tecosaur.github.io/emacs-config/config.html#pdf][tecosaur.github.io]]
 
 #+begin_src emacs-lisp
 (evil-define-command +evil-buffer-org-new (count file)
@@ -455,7 +455,7 @@ Make a new org and md buffer easier (from tecosaur.github.io)
 #+end_src
 
 ** Leader Keybinds
-Take me to your leader. Convienient keybinds.
+Take me to your leader. Convienient keybinds I use a lot.
 
 #+begin_src emacs-lisp
 (map! :leader
@@ -479,7 +479,7 @@ Take me to your leader. Convienient keybinds.
 
 * Dired
 ** Dired Keybinds
-TODO: Y for cut file isn't working correctly
+TODO: Y for cut file isn't working correctly. I want this to be as ranger like as possible without the weird 'ranger mode' enabled.
 
 #+begin_src emacs-lisp
 ;; Dired keybinds
@@ -510,7 +510,7 @@ TODO: Y for cut file isn't working correctly
 #+end_src
 
 ** Simple Dired
-I don't need to see all the info columns. I prefer the minimal look a bit like Ranger, I have 'all the icons' here too.
+I don't need to see all the info columns. Can enable that when needed with "(" . I prefer the minimal look a bit like Ranger, I have 'all the icons' package working here too.
 
 #+begin_src emacs-lisp
 ;; Less details in Dired
@@ -522,6 +522,8 @@ I don't need to see all the info columns. I prefer the minimal look a bit like R
 #+end_src
 
 * Elfeed
+Elfeed settings
+
 #+begin_src emacs-lisp
 ;; Elfeed
 (require 'elfeed-org)
