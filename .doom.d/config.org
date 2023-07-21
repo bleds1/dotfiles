@@ -94,25 +94,18 @@ Auto save is on.
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
 (setq display-line-numbers-type nil)
-;; Autosave disable/enable
 (setq auto-save-default t)
 #+end_src
 
 ** Initial buffer settings
 I used to launch to a nice dashboard but now I realise it is only eye candy and not all that useful. Launch me into an empty scratch pad so I can just start writing something.
+When opening a new emacsclient frame it will be on scratchpad in org mode and not make multiple frames. The main workspace is always overwritten. "C-c s" is the shortcut to '*scratch*'
 
 #+begin_src emacs-lisp
-;; Initial buffer with emacsclient
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-;;
-;; Scratch buffer intital text
 (setq initial-scratch-message nil)
 (setq initial-major-mode 'org-mode)
-;;(setq initial-major-mode 'lisp-mode)
-;;(setq initial-major-mode 'fundamental-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-;;
-;; Connect to main workspace on launch
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 #+end_src
@@ -127,21 +120,19 @@ Iosevka is a pretty & popular font ..I either use that or Jet Brains Mono
  #+end_src
 
 ** Visual/Theme
-I like the base theme of wilmersdorf but I have some custom-set-faces to tweak to my liking here and in custom.el
+I like the base theme of wilmersdorf but I have some custom-set-faces to tweak to my liking here and in custom.el. I found that solaire-mode needs to be disabled to make all the background colours consistent. It is also disables in packages.el but I'm not sure which is making it work how I like. I don't like zen, writeroom to go too crazy with the zoom/big font. Highlight indent puts little lines down your white space indentations. I'm unsure about it but trialing it out.
 
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
   '(default ((t (:background "#151515" :foreground "#a9b1d6")))))
 ;;
-;; Solaire mode needs to disabled for consistent background color
 (after! solaire-mode
   (solaire-global-mode -1))
 ;;
-;; Zen mode zoom
 (setq +zen-text-scale 0.3)
 ;; Highlight indent guide
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)  ;;Highlight indent guides mode? Not working as expected..
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 #+end_src
 
 ** Modeline
@@ -167,12 +158,9 @@ I like a pretty minimal modeline, this disables most things I don't need.
 Setting the directory for org and org agenda. I'm not sure it needs to be in an after! block but it's working fine..
 
 #+begin_src emacs-lisp
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
 (after! org
 (setq org-directory "~/Dropbox/roam/")
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
-;;
 #+end_src
 
 ** Org Agenda
@@ -355,7 +343,7 @@ Todo, task status names, colours and style.
          "DONE(d)"
          "WAITING(w)"
          "CANCELLED(c)" ))))
-(setq! org-todo-keyword-faces ;these colours are not working/defined by theme?
+(setq! org-todo-keyword-faces
       '(("TODO" :foreground "#C280a0" :weight bold)
        ("STARTED" :foreground "#66FFD6" :weight bold)
        ("NEXT" :foreground "#FFFBB8" :weight bold)
@@ -376,7 +364,7 @@ Todo, task status names, colours and style.
 #+end_src
 
 ** Org Roam
-Org roam directory and capture templates.
+Org roam and dailies directory and capture templates for daily note. Use markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
 
 #+begin_src emacs-lisp
 ;; Org-roam
@@ -401,6 +389,8 @@ Org roam directory and capture templates.
 
 * Beacon/Focus
 ** Beacon
+Flashy cursor on window switch.
+
 #+begin_src emacs-lisp
 ;; Beacon global minor mode
 (use-package! beacon) ;; Beacon
@@ -409,6 +399,8 @@ Org roam directory and capture templates.
 #+end_src
 
 ** Focus
+Greys out out of focus text in writing mode.
+
 #+begin_src emacs-lisp
 ;; Focus ;; TODO Test I don't think this should be here without any settings?
 (use-package! focus)
@@ -525,7 +517,6 @@ Take me to your leader. Convienient keybinds I use a lot.
 TODO: Y for cut file isn't working correctly. I want this to be as ranger like as possible without the weird 'ranger mode' enabled.
 
 #+begin_src emacs-lisp
-;; Dired keybinds
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
   (kbd "h") 'dired-up-directory
@@ -549,26 +540,22 @@ TODO: Y for cut file isn't working correctly. I want this to be as ranger like a
   (kbd "N") 'evil-search-previous
   (kbd "q") 'kill-this-buffer
   )
-;;
 #+end_src
 
 ** Simple Dired
 I don't need to see all the info columns. Can enable that when needed with "(" . I prefer the minimal look a bit like Ranger, I have 'all the icons' package working here too.
 
 #+begin_src emacs-lisp
-;; Less details in Dired
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
 (add-hook 'dired-mode-hook 'my-dired-mode-setup)
-;;
 #+end_src
 
 * Elfeed
 Elfeed settings
 
 #+begin_src emacs-lisp
-;; Elfeed
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
@@ -654,9 +641,7 @@ Elfeed settings
 Directories that show as projects in projectile,
 
  #+begin_src emacs-lisp
-;; Projectile Dirs
 (setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
-;;
  #+end_src
 
 * Snippet Functions
@@ -664,7 +649,6 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 
 ** Markdown front matter
 #+begin_src emacs-lisp
-;; My snippet functions
 (defun my-md-front-matter ()
  (interactive)
  (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
@@ -673,7 +657,6 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 
 ** Org header/title
 #+begin_src emacs-lisp
-;; Org header snippet
 (defun my-org-front-matter ()
  (interactive)
  (insert "#+TITLE: \n#+ID: \n#+FILETAGS: \n")
@@ -682,7 +665,6 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 
 ** Blog front matter
 #+begin_src emacs-lisp
-;; My Jekyll front matter
 (defun my-website-front-matter ()
  (interactive)
  (insert "---
@@ -708,10 +690,9 @@ Press this all the time for journal entries. Convienient keybind is above.
 #+end_src
 
 * Md-roam
-Makes roam's features also consider Markdown files as part of the database.
+Makes roam's features also consider Markdown files as part of the database. [[https://github.com/nobiot/md-roam]]
 
 #+begin_src emacs-lisp
-;; Md-roam
 (use-package! md-roam
   :after org-roam
   :config
@@ -731,14 +712,14 @@ Makes roam's features also consider Markdown files as part of the database.
 Show me colour hex codes everywhere please..
 
 #+begin_src emacs-lisp
-;; Rainbow Mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
 #+end_src
 
 * Org clock sfx
+Sound effect on completion of a timed session.
+
 #+begin_src emacs-lisp
-;; Org timer function
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;
