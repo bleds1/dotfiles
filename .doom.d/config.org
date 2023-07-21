@@ -1,7 +1,7 @@
 #+TITLE: Bledley's Doom Emacs Literate Config
 #+ID: 2023_07_21_1853
+#+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
----
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -431,7 +431,6 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/tasks.org" "tasks.org")
-(zz/add-file-keybinding "C-c t" "~/Dropbox/roam/tasks.org" "tasks.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
 (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
