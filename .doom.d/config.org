@@ -8,7 +8,7 @@
   - [[#lexical-binding][Lexical binding]]
   - [[#ask-for-a-buffer-on-window-split][Ask for a buffer on window split]]
   - [[#window-pop-up-rules][Window pop up rules]]
-  - [[#delete-files-to-trash-auto-revert-changed-buffers-change-undo-limit-to-80mb-and-add-scroll-margin][Delete Files to trash, Auto revert changed buffers, change undo limit to 80mb and add scroll margin.]]
+  - [[#delete-files-to-trash-auto-revert-changed-buffers-change-undo-limit-and-add-scroll-margin][Delete Files to trash, Auto revert changed buffers, change undo limit and add scroll margin.]]
   - [[#disable-quit-confimation-line-numbers][Disable quit confimation, Line Numbers]]
   - [[#initial-buffer-settings][Initial buffer settings]]
   - [[#fonts][Fonts]]
@@ -44,6 +44,8 @@
 - [[#rainbow-mode][Rainbow mode]]
 - [[#org-clock-sfx][Org clock sfx]]
 - [[#mu4e][Mu4e]]
+- [[#org-msg][Org-msg]]
+  - [[#visuals][Visuals]]
 
 * General Settings
 ** Lexical binding
@@ -73,7 +75,7 @@ I like Org-Agenda, EWW, to pop up on the right hand side 50% of the screen.
 (set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 #+end_src
 
-** Delete Files to trash, Auto revert changed buffers, change undo limit to 80mb and add scroll margin.
+** Delete Files to trash, Auto revert changed buffers, change undo limit and add scroll margin.
 When I delete a file it should go to trash rather than permanent delete.
 Buffers will auto revert when they detect saved changes on disk.
 The undo limit is set to 80mb and fine-undo is a more granular way of undoing.
@@ -793,4 +795,11 @@ I'm getting an error warning about mu4e being a depreciated package and there is
 (setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
 (setq mu4e-compose--org-msg-toggle-next nil)
 (mu4e t)
+#+end_src
+
+* Org-msg
+** Visuals
+By default the accent colour for headers etc. in org-msg emails are red. This changes that to a green.
+#+begin_src emacs-lisp
+(setq +org-msg-accent-color "#80C2A2")
 #+end_src
