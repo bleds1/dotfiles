@@ -340,7 +340,8 @@ Todo, task status names, colours and style.
          "AREA(a)"
          "PROJECT(p)"
          "EVENT(e)"
-         "REVIEW(r)"
+         "REVIEW(v)"
+         "RESEARCH(r)"
          "SOMEDAY(y)"
          "|"
          "DONE(d)"
@@ -350,7 +351,7 @@ Todo, task status names, colours and style.
       '(("TODO" :foreground "#C280a0" :weight bold)
        ("STARTED" :foreground "#66FFD6" :weight bold)
        ("NEXT" :foreground "#FFFBB8" :weight bold)
-       ("IDEA" :foreground "#C280A0" :weight bold)
+       ("IDEA" :foreground "#EA99C0" :weight bold)
        ("SOMEDAY" :foreground "#AAAAE1" :weight bold)
        ("WAITING" :foreground "#AAAAE1" :weight bold)
        ("GOAL" :foreground "#65DDA3" :weight bold)
@@ -358,6 +359,7 @@ Todo, task status names, colours and style.
        ("PROJECT" :foreground "#8C8DFF" :weight bold)
        ("EVENT" :foreground "#5099DA" :weight bold)
        ("REVIEW" :foreground "#8C8DFF" :weight bold)
+       ("RESEARCH" :foreground "#8C8DFF" :weight bold)
        ("DONE" :foreground "#2FF9D1" :weight bold)
        ("CANCELLED" :foreground "#80869c" :weight bold))))
 (after! org
@@ -367,23 +369,21 @@ Todo, task status names, colours and style.
 #+end_src
 
 ** Org Roam
-Org roam and dailies directory and capture templates for daily note. Use markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
+Org roam and dailies directory and capture templates for daily note. Capture templates for both org and markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
 
 #+begin_src emacs-lisp
 ;; Org-roam
 (after! org
-(setq org-roam-directory "~/Dropbox/roam/")
+(setq org-roam-directory "~/Dropbox/roam/pages/")
 (setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 (setq org-roam-completion-everywhere t)
-;(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
-;;   '(("n" "Daily Note" plain
-;;      "%?"
-;;      :if-new (file+head "${slug}-%<%Y_%m_%d>.md" "---
-;;title: ${TITLE}\n#+DATE: %U\n
-;---"))))
-;
+(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
+   '(("o" "Node.org" plain
+      "%?"
+      :if-new (file+head "${slug}.org" "
+#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling\n---"))))
 (setq org-roam-dailies-capture-templates
-    '(("d" "default" entry "* %<%I:%M %p>: %?"
+    '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
        :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
@@ -703,7 +703,7 @@ Makes roam's features also consider Markdown files as part of the database. [[ht
   (md-roam-mode 1)
   (org-roam-db-autosync-mode 1)
   (add-to-list 'org-roam-capture-templates
-               '("n" "Node" plain "" :target
+               '("m" "Node.md" plain "" :target
                  (file+head "${slug}.md"
                             "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
                  :unnarrowed t))
