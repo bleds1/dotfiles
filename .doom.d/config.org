@@ -371,7 +371,7 @@ Todo, task status names, colours and style.
 
 ** Org Roam
 Org roam and dailies directory and capture templates for daily note. Capture templates for both org and markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
-
+[[https://github.com/org-roam/org-roam]]
 #+begin_src emacs-lisp
 ;; Org-roam
 (after! org
@@ -382,7 +382,7 @@ Org roam and dailies directory and capture templates for daily note. Capture tem
    '(("o" "Node.org" plain
       "%?"
       :if-new (file+head "${slug}.org" "
-#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling\n---"))))
+#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n---"))))
 (setq org-roam-dailies-capture-templates
     '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
        :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
@@ -513,6 +513,14 @@ Take me to your leader. Convienient keybinds I use a lot.
 (map! :leader
       :desc "Vterm toggle"
       "v" '+vterm/toggle)
+;; Writeroom increase text width
+(map! :leader
+      :desc "Writeroom increase width"
+      "-" 'writeroom-increase-width)
+;; Writeroom decrease text width
+(map! :leader
+      :desc "Writeroom increase width"
+      "=" 'writeroom-decrease-width)
 #+end_src
 
 * Dired
@@ -693,7 +701,8 @@ Press this all the time for journal entries. Convienient keybind is above.
 #+end_src
 
 * Md-roam
-Makes roam's features also consider Markdown files as part of the database. [[https://github.com/nobiot/md-roam]]
+Makes roam's features also consider Markdown files as part of the database.
+[[https://github.com/nobiot/md-roam]]
 
 #+begin_src emacs-lisp
 (use-package! md-roam
@@ -807,7 +816,7 @@ By default the accent colour for headers etc. in org-msg emails are red. This ch
 
 * Org-roam UI
 Very pretty way to view your roam database. Useful for interlinking notes and ideas.
-
+[[https://github.com/org-roam/org-roam-ui]]
 #+begin_src emacs-lisp
 (use-package! websocket
     :after org-roam)
@@ -822,5 +831,5 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+          org-roam-ui-open-on-start nil))
 #+end_src
