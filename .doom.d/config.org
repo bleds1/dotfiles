@@ -46,6 +46,7 @@
 - [[#mu4e][Mu4e]]
 - [[#org-msg][Org-msg]]
   - [[#visuals][Visuals]]
+- [[#org-roam-ui][Org-roam UI]]
 
 * General Settings
 ** Lexical binding
@@ -802,4 +803,24 @@ I'm getting an error warning about mu4e being a depreciated package and there is
 By default the accent colour for headers etc. in org-msg emails are red. This changes that to a green.
 #+begin_src emacs-lisp
 (setq +org-msg-accent-color "#80C2A2")
+#+end_src
+
+* Org-roam UI
+Very pretty way to view your roam database. Useful for interlinking notes and ideas.
+
+#+begin_src emacs-lisp
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 #+end_src
