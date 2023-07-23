@@ -55,7 +55,7 @@ super +z
 
 # Emacs (super + e followed by another key)
 super + e; e
-    emacsclient -c -a 'emacsclient --eval "(emacs-everywhere)"'
+  emacsclient -c -a 'emacsclient --eval "(emacs-everywhere)"'
 super + b; i
     emacsclient -c -a 'emacs' --eval '(ibuffer)'
 super + e; d
@@ -68,8 +68,6 @@ super + e; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
 super + e; n
     emacsclient -c -a 'emacs' --eval '(org-roam-dailies-goto-today)'
-super + e; t
-    emacsclient -c -a 'emacs' ~/Dropbox/roam/tasks.org
 super + e; i
     emacsclient -c -a 'emacs' ~/Dropbox/roam/tasks.org
 # i3 windows
@@ -77,3 +75,6 @@ super +w; c
  i3-msg kill
 super + w; minus
   i3-msg move scratchpad
+
+
+#  emacsclient -c -a 'emacsclient --eval "(*scratch*)"' #
