@@ -106,9 +106,9 @@ c.colors.completion.even.bg = '#151515'
 #c.zoom.default = '90%'
 
 # Vim as editor
-c.editor.command = ['kitty', '-e', 'nvim', '{file}']
+#c.editor.command = ['kitty', '-e', 'nvim', '{file}']
 #c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
-#c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
+c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
 # tabs
 c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
