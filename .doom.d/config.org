@@ -2,6 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
+#+LAST_MOD: [2023-07-24 01:08]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -47,6 +48,7 @@
 - [[#org-msg][Org-msg]]
   - [[#visuals][Visuals]]
 - [[#org-roam-ui][Org-roam UI]]
+- [[#timestamp-1][Timestamp]]
 
 * General Settings
 ** Lexical binding
@@ -185,7 +187,7 @@ Custom Agenda views and keybind/function
 (setq org-agenda-custom-commands
    '(("n" "Overview"
       ((agenda ""
-        ((org-agenda-span '1)
+        ((org-agenda-span 'day)
          (org-agenda-overriding-header "Today:")))
        (tags-todo ":@refile:"
                   ((org-agenda-overriding-header "Inbox (@refile):")))
@@ -382,10 +384,10 @@ Org roam and dailies directory and capture templates for daily note. Capture tem
    '(("o" "Node.org" plain
       "%?"
       :if-new (file+head "${slug}.org" "
-#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n---"))))
+#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n#+LAST_MOD:\n---"))))
 (setq org-roam-dailies-capture-templates
     '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
+       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n#+LAST_MOD:\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
 (setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
 ;;
@@ -832,4 +834,14 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start nil))
+#+end_src
+
+* Timestamp
+#+begin_src emacs-lisp
+(after! org
+  (setq time-stamp-active t
+    time-stamp-start "#\\+LAST_MOD:[ \t]*"
+    time-stamp-end "$"
+    time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
+(add-hook 'before-save-hook 'time-stamp))
 #+end_src
