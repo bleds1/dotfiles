@@ -44,7 +44,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias))))
+     (defvaralias)) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,9 +67,9 @@
  '(org-scheduled-previously ((t (:foreground "#6CCDD5"))))
  '(org-sexp-date ((t (:foreground "#82abba"))))
  '(outline-1 ((t (:extend t :foreground "#94e2d5" :weight semi-bold :height 1.1))))
- '(outline-2 ((t (:weight semi-bold :height 1.0))))
+ '(outline-2 ((t (:extend t :foreground "#7ebebd" :weight semi-bold :height 1.0))))
  '(outline-3 ((t (:weight semi-bold :height 1.0))))
- '(outline-4 ((t (:weight semi-bold :height 1.0))))
+ '(outline-4 ((t (:extend t :foreground "#7EBEBD" :weight semi-bold :height 1.0))))
  '(outline-5 ((t (:weight semi-bold :height 1.0))))
  '(outline-6 ((t (:weight semi-bold :height 1.0))))
  '(outline-8 ((t (:weight semi-bold))))

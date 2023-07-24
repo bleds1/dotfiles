@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-24 01:08]
+#+LAST_MOD: [2023-07-24 09:50]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -545,7 +545,7 @@ TODO: Y for cut file isn't working correctly. I want this to be as ranger like a
   (kbd "M") 'dired-do-chmod
   (kbd "R") 'dired-do-rename
   (kbd "T") 'dired-do-touch
-  (kbd "Y") 'dired-copy-filename-copy-filename-as-kill ; copies filename to kill ring.
+  (kbd "Y") 'dired-copy-filename-as-kill ; copies filename to kill ring.
   (kbd "Z") 'dired-do-compress
   (kbd "C") 'dired-create-directory
   (kbd "-") 'dired-do-kill-lines
