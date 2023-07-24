@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-24 17:08]
+#+LAST_MOD: [2023-07-25 00:38]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -49,6 +49,7 @@
   - [[#visuals][Visuals]]
 - [[#org-roam-ui][Org-roam UI]]
 - [[#timestamp-1][Timestamp]]
+- [[#load-other-config-files][Load other config files]]
 
 * General Settings
 ** Lexical binding
@@ -112,8 +113,8 @@ When opening a new emacsclient frame it will be on scratchpad in org mode and no
 (setq initial-scratch-message nil)
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-(after! persp-mode
- (setq persp-emacsclient-init-frame-behaviour-override "main"))
+;(after! persp-mode
+; (setq persp-emacsclient-init-frame-behaviour-override "main"))
 #+end_src
 
 ** Fonts
@@ -155,6 +156,7 @@ I like a pretty minimal modeline, this disables most things I don't need.
   (setq display-time-format "%Y_%m_%d %H:%M")
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
+  (setq doom-modeline-icon t)
   (setq doom-modeline-modal-icon nil)
   (setq doom-modeline-buffer-encoding nil))
 #+end_src
@@ -844,4 +846,10 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
     time-stamp-end "$"
     time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
 (add-hook 'before-save-hook 'time-stamp))
+#+end_src
+
+* Load other config files
+#+begin_src emacs-lisp
+;; Load other config files
+(load! "+private")
 #+end_src
