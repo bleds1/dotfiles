@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-24 09:50]
+#+LAST_MOD: [2023-07-24 17:08]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -221,9 +221,9 @@ org-agenda-current-time-string
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
-(setq org-deadline-warning-days 0)
+(setq org-deadline-warning-days 2)
 (setq org-agenda-span 5
-      org-agenda-start-day "-1")
+      org-agenda-start-day "today")
 (setq org-refile-targets (quote (("~/Dropbox/roam/tasks.org" :maxlevel . 6)
                                  ("~/Dropbox/roam/repeat.org" :level . 6)
                                  ("~/Dropbox/roam/bookmarks.org" :level . 6)
