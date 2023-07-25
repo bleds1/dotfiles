@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-25 00:38]
+#+LAST_MOD: [2023-07-25 19:54]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -44,7 +44,6 @@
 - [[#md-roam][Md-roam]]
 - [[#rainbow-mode][Rainbow mode]]
 - [[#org-clock-sfx][Org clock sfx]]
-- [[#mu4e][Mu4e]]
 - [[#org-msg][Org-msg]]
   - [[#visuals][Visuals]]
 - [[#org-roam-ui][Org-roam UI]]
@@ -74,7 +73,7 @@ When I make a new split ask which buffer I'd like displayed there.
 I like Org-Agenda, EWW, to pop up on the right hand side 50% of the screen.
 
 #+begin_src emacs-lisp
-(set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
+;;(set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 #+end_src
@@ -140,6 +139,10 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 (setq +zen-text-scale 0.3)
 ;; Highlight indent guide
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;; Cursor
+(setq evil-normal-state-cursor '(box "#80C2A2")
+      evil-insert-state-cursor '(bar "#47FFE0")
+      evil-visual-state-cursor '(hollow "#c280A0"))
 #+end_src
 
 ** Modeline
@@ -157,7 +160,9 @@ I like a pretty minimal modeline, this disables most things I don't need.
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-icon t)
-  (setq doom-modeline-modal-icon nil)
+  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-major-color-icon t)
+  (setq doom-modeline-modal-icon t)
   (setq doom-modeline-buffer-encoding nil))
 #+end_src
 
@@ -168,7 +173,9 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 #+begin_src emacs-lisp
 (after! org
 (setq org-directory "~/Dropbox/roam/")
-(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
+;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
+(setq org-agenda-files
+'("~/Dropbox/roam/archive.org" "~/Dropbox/roam/events.org" "~/Dropbox/roam/goals.org" "~/Dropbox/roam/reading.org" "~/Dropbox/roam/repeat.org" "~/Dropbox/roam/shopping.org" "~/Dropbox/roam/someday.org" "~/Dropbox/roam/tasks.org")))
 #+end_src
 
 ** Org Agenda
@@ -366,7 +373,7 @@ Todo, task status names, colours and style.
        ("REVIEW" :foreground "#8C8DFF" :weight bold)
        ("RESEARCH" :foreground "#8C8DFF" :weight bold)
        ("DONE" :foreground "#2FF9D1" :weight bold)
-       ("CANCELLED" :foreground "#80869c" :weight bold))))
+       ("CANCELLED" :foreground "#80869c" :weight bold)))
 (after! org
 (setq! org-tag-faces
    '(("@habit" :foreground "#C280a0")
@@ -739,76 +746,6 @@ Sound effect on completion of a timed session.
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;
-#+end_src
-
-* Mu4e
-This is a mess but it works (mostly)...still need to try and understand it..
-I'm getting an error warning about mu4e being a depreciated package and there is a conflict with evil bindings on it's dashboard that can be got around with C-z C-z.
-
-#+begin_src emacs-lisp
-;; Mu4e
-(global-set-key (kbd "<f6>") 'mu4e)
-(defun my-mu4e-all-mail ()
-  "jump to mu4e all mail"
-  (interactive)
-  (mu4e~headers-jump-to-maildir "/All Mail"))
-;;
-(map! :leader
-      :desc "Jump to mu4e inbox"
-      "oi" 'my-mu4e-all-mail)
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
-;;(require 'mu4e)
-(require 'smtpmail)
-(setq starttls-use-gnutls t)
-;; Line below taken as quickfix from github https://github.com/doomemacs/doomemacs/issues/6906 C-z on mu4e-main and bookmarks work
-(defconst mu4e-headers-buffer-name "*mu4e-headers*"
-  "Name of the buffer for message headers.")
-;(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem")) ;mail sent succesfully once this was commented out??
-(setq mu4e-headers-buffer-name "*mu4e-headers*")
-(setq mu4e-index-update-error-warning nil) ;supress [mu4e] Update process returned with non-zero exit code
-(setq mu4e-change-filenames-when-moving t) ; avoid sync conflicts
-(setq mu4e-update-interval 120) ; refresh interval
-(setq mu4e-compose-format-flowed t) ; re-flow mail so it's not hard wrapped
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-root-maildir "~/.mail")
-(setq mu4e-drafts-folder "/Drafts")
-(setq mu4e-sent-folder   "/Sent")
-(setq mu4e-refile-folder "/Archive")
-(setq mu4e-trash-folder  "/Trash")
-(setq message-send-mail-function 'smtpmail-send-it)
-(setq auth-sources '("~/.authinfo.gpg"))
-(setq smtpmail-auth-credentials "~/.authinfo.gpg")
-(setq smtpmail-smtp-server "127.0.0.1")
-(setq smtpmail-smtp-service 1025)
-;;(setq smtpmail-stream-type  'ssl)
-(setq message-kill-buffer-on-exit t)
-(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
-(setq mu4e-headers-time-format "%H:%M")
-(setq mu4e-headers-fields
-      '( (:date          .  25)    ;; alternatively, use :human-date
-         (:flags         .   6)
-         (:from-or-to          .  25)
-         (:subject       .  nil))) ;; alternatively, use :thread-subject
-(setq mu4e-headers-results-limit 1000)
-(setq mu4e-index-cleanup t)
-(setq mu4e-maildir-shortcuts
-     '((:maildir "/INBOX"     :key ?i)
-	(:maildir "/Sent"     :key ?s)
-	(:maildir "/Drafts"    :key ?d)
-        (:maildir "/Folders/sba.com" :key ?a)
-        (:maildir "/Folders/bledspixel" :key ?b)
-        (:maildir "/Folders/Gmail" :key ?g)
-        (:maildir "/Folders/iCloud" :key ?c)
-        (:maildir "Folders/SimpleLogin" :key ?l)
-	(:maildir "/Trash"     :key ?t)
-	(:maildir "/Spam"     :key ?p)
-        (:maildir "/Archive"  :key ?r)
-	(:maildir "/All Mail"  :key ?m)))
-;;(add-to-list 'mu4e-bookmarks
- ;;            '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t) ;;error void variable? but works
-(setq mu4e-alert-icon "/usr/share/icons/Papirus/64x64/apps/mailspring.svg")
-(setq mu4e-compose--org-msg-toggle-next nil)
-(mu4e t)
 #+end_src
 
 * Org-msg

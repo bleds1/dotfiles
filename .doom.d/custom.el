@@ -51,6 +51,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
+ '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
+ '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
+ '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
+ '(doom-modeline-fly-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(font-lock-comment-face ((t (:foreground "#757575"))))
  '(font-lock-keyword-face ((t (:foreground "#75afae"))))
  '(font-lock-string-face ((t (:foreground "#7ebebd"))))
@@ -73,6 +77,7 @@
  '(outline-5 ((t (:weight semi-bold :height 1.0))))
  '(outline-6 ((t (:weight semi-bold :height 1.0))))
  '(outline-8 ((t (:weight semi-bold))))
- '(outline-9 ((t (:weight semi-bold)))))
+ '(outline-9 ((t (:weight semi-bold))))
+ '(region ((t (:extend t :background "#c280a0" :foreground "black")))))
 (put 'customize-variable 'disabled nil)
 (put 'customize-face 'disabled nil)
