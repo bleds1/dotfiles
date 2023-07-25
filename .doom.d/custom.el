@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("2078837f21ac3b0cc84167306fa1058e3199bbd12b6d5b56e3777a4125ff6851" "fbd91b2e6dc5c7912e86406226638adb014612386516e078a0447195591447d3" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" "570263442ce6735821600ec74a9b032bc5512ed4539faf61168f2fdf747e0668" default))
+ '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode org-journal-mode))
  '(elfeed-feeds
    '(("https://itsfoss.com/feed/" linux tech)
      ("https://opensource.com/feed" linux tech)
@@ -50,7 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#282B33" :foreground "#a9b1d6"))))
+ '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))

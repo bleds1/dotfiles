@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-25 21:05]
+#+LAST_MOD: [2023-07-25 22:29]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -135,6 +135,9 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 ;;
 (after! solaire-mode
   (solaire-global-mode -1))
+;;Writeroom
+(setq writeroom-mode-line t)
+(setq writeroom-width 120)
 ;;
 (setq +zen-text-scale 0.3)
 ;; Highlight indent guide
