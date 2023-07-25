@@ -44,13 +44,13 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias)) t))
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
+ '(default ((t (:background "#282B33" :foreground "#a9b1d6"))))
  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
@@ -65,6 +65,8 @@
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-link-face ((t (:foreground "#92e2d5"))))
  '(markdown-metadata-key-face ((t (:foreground "#94E2D5"))))
+ '(mode-line ((t (:background "#151515" :box nil))))
+ '(mode-line-inactive ((t (:background "#151515" :foreground "#888395" :box nil))))
  '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))
  '(org-date ((t (:foreground "#82abab"))))
  '(org-document-title ((t (:height 1.0))))

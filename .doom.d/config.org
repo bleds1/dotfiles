@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-25 19:54]
+#+LAST_MOD: [2023-07-25 21:05]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -140,6 +140,7 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 ;; Highlight indent guide
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;; Cursor
+;(after! doom-theme
 (setq evil-normal-state-cursor '(box "#80C2A2")
       evil-insert-state-cursor '(bar "#47FFE0")
       evil-visual-state-cursor '(hollow "#c280A0"))
@@ -151,8 +152,8 @@ I like a pretty minimal modeline, this disables most things I don't need.
 #+begin_src emacs-lisp
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
-;; (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
-  (line-number-mode 1)
+  (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
+  (line-number-mode -1)
   (display-time-mode -1)
   (setq doom-modeline-enable-word-count t)
 ;;(setq display-time-format "%H:%M")
