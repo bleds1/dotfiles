@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-25 22:29]
+#+LAST_MOD: [2023-07-27 23:19]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -201,7 +201,7 @@ Custom Agenda views and keybind/function
    '(("n" "Overview"
       ((agenda ""
         ((org-agenda-span 'day)
-         (org-agenda-overriding-header "Today:")))
+         (org-agenda-overriding-header "Day Overview:")))
        (tags-todo ":@refile:"
                   ((org-agenda-overriding-header "Inbox (@refile):")))
        (tags "PRIORITY=\"A\""
@@ -222,11 +222,12 @@ Custom Agenda views and keybind/function
 Other agenda settings. Can't for life of me get time grid to work, please send help..
 
 #+begin_src emacs-lisp
+(after! org
 (setq org-agenda-block-separator ?┈
-org-agenda-time-grid
-'((daily today require-timed)
-(800 1000 1200 1400 1600 1800 2000)
-" ┈┈┈┈ " "┈┈┈┈┈┈┈┈┈┈┈┈┈")
+org-agenda-use-time-grid t
+;'((daily today require-timed)
+;(800 1000 1200 1400 1600 1800 2000)
+;" ┈┈┈┈ " "┈┈┈┈┈┈┈┈┈┈┈┈┈")
 org-agenda-current-time-string
 "! now ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈")
 ;;
@@ -234,7 +235,7 @@ org-agenda-current-time-string
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
-(setq org-deadline-warning-days 2)
+(setq org-deadline-warning-days 0)
 (setq org-agenda-span 5
       org-agenda-start-day "today")
 (setq org-refile-targets (quote (("~/Dropbox/roam/tasks.org" :maxlevel . 6)
@@ -245,7 +246,7 @@ org-agenda-current-time-string
                                  ("~/Dropbox/roam/archive.org" :level . 6)
                                  ("~/Dropbox/roam/reading.org" :level . 6)
                                  ("~/Dropbox/roam/shopping.org" :level . 6)
-                                 ("~/Dropbox/roam/someday.org" :level . 6))))
+                                 ("~/Dropbox/roam/someday.org" :level . 6)))))
 (after! org
 (setq! org-agenda-use-tag-inheritance t
       org-ellipsis " ▾ "
@@ -313,30 +314,41 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 #+begin_src emacs-lisp
 (after! org
 (setq! org-capture-templates
-        '(("i" "Task" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
-          "** TODO %?\n%U\n")
-          ("n" "Quick Note" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
-          "** %?\n%U\n")
-          ("j" "Journal entry" plain (function org-journal-find-location)
+        '(("i" "TODO")
+          ("ii" "Todo" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          "** TODO %?\nCREATED:%U\n")
+         ;; ("im" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
+         ;; "** TODO %a\nCREATED:%U")
+          ("is" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
+          "** SOMEDAY %?\nCREATED:%U\n" :empty-lines 1)
+          ("ip" "Project" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          "** PROJECT %?%^{DEADLINE}p\nCREATED:%U\n" :empty-lines 1)
+          ("ig" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
+         (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
+          ("n" "Note")
+           ("nn" "Quick Note" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+           "** %?\nCREATED:%U\n")
+           ("nj" "Journal entry" plain (function org-journal-find-location)
                                "** %(format-time-string org-journal-time-format)\n  - %?")
-          ("m" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
-          "** TODO %a\n%U")
-          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
-          "** TODO %a\n%U")
+           ("ni" "Idea" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+           "** IDEA %?\nCREATED:%U\n")
+           ("m" "Mail ")
+           ("mf" "Follow Up" entry (file+olp "~/Dropbox/roam/tasks.org" "AREA EMAIL")
+          "*** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
+           ("mr" "Read Later" entry (file+olp "~/Dropbox/roam/tasks.org" "AREA EMAIL")
+          "*** REVIEW Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
+          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          "** %a\nCREATED:%U")
         ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
          "** %?")
-        ("g" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
-         (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
          ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
          "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
-        ("s" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
-          "* SOMEDAY %?\n%U\n" :empty-lines 1)
          ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
          (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
          ("r" "Reading List" plain (file+olp "~/Dropbox/roam/reading.org" "INBOX")
-          "** %?\n%U" :empty-lines 1)
+          "** %?\nCREATED:%U" :empty-lines 1)
          ("l" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
          "* TODO %?" :empty-lines 0))))
 #+end_src
