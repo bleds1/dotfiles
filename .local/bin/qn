@@ -1,3 +1,3 @@
 #!/bin/sh
 
-kitty -e nvim /home/bledley/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md
+kitty -e emacsclient -c -a /home/bledley/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).org

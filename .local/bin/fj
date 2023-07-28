@@ -4,4 +4,4 @@ zet="/home/bledley/Dropbox/roam/journals"
 
 menu=$(ls -a "$zet" | uniq -u | fzf --height=100% --reverse --header-first)
 
-nvim "$zet"/"$menu"
+emacsclient "$zet"/"$menu"

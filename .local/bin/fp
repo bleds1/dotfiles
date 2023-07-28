@@ -6,4 +6,4 @@ pdflaunch="/home/bledley/Documents/Library/pdf"
 
 menu=$(ls -a "$pdflaunch" | uniq -u | fzf --height=100% --reverse --header-first)
 
-exec nohup okular "$pdflaunch"/"$menu">/dev/null 2>&1
+exec nohup zathura "$pdflaunch"/"$menu">/dev/null 2>&1
