@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-27 23:19]
+#+LAST_MOD: [2023-07-28 23:24]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -543,11 +543,11 @@ Take me to your leader. Convienient keybinds I use a lot.
 ;; Writeroom increase text width
 (map! :leader
       :desc "Writeroom increase width"
-      "-" 'writeroom-increase-width)
+      "=" 'writeroom-increase-width)
 ;; Writeroom decrease text width
 (map! :leader
       :desc "Writeroom increase width"
-      "=" 'writeroom-decrease-width)
+      "-" 'writeroom-decrease-width)
 #+end_src
 
 * Dired
@@ -555,6 +555,7 @@ Take me to your leader. Convienient keybinds I use a lot.
 TODO: Y for cut file isn't working correctly. I want this to be as ranger like as possible without the weird 'ranger mode' enabled.
 
 #+begin_src emacs-lisp
+(after! dired
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
   (kbd "h") 'dired-up-directory
@@ -577,7 +578,7 @@ TODO: Y for cut file isn't working correctly. I want this to be as ranger like a
   (kbd "n") 'evil-search-next
   (kbd "N") 'evil-search-previous
   (kbd "q") 'kill-this-buffer
-  )
+  ))
 #+end_src
 
 ** Simple Dired
