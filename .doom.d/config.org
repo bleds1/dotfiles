@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-07-28 23:24]
+#+LAST_MOD: [2023-08-11 13:31]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -160,7 +160,7 @@ I like a pretty minimal modeline, this disables most things I don't need.
   (display-time-mode -1)
   (setq doom-modeline-enable-word-count t)
 ;;(setq display-time-format "%H:%M")
-  (setq display-time-format "%Y_%m_%d %H:%M")
+  (setq display-time-format "%Y-%m-%d %H:%M")
   (setq doom-modeline-height 15)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-icon t)
@@ -179,7 +179,7 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 (setq org-directory "~/Dropbox/roam/")
 ;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-agenda-files
-'("~/Dropbox/roam/archive.org" "~/Dropbox/roam/events.org" "~/Dropbox/roam/goals.org" "~/Dropbox/roam/reading.org" "~/Dropbox/roam/repeat.org" "~/Dropbox/roam/shopping.org" "~/Dropbox/roam/someday.org" "~/Dropbox/roam/tasks.org")))
+'("~/Dropbox/roam/archive.org" "~/Dropbox/roam/events.org" "~/Dropbox/roam/goals.org" "~/Dropbox/roam/reading.org" "~/Dropbox/roam/repeat.org" "~/Dropbox/roam/shopping.org" "~/Dropbox/roam/someday.org" "~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org")))
 #+end_src
 
 ** Org Agenda
@@ -213,7 +213,7 @@ Custom Agenda views and keybind/function
              ((org-agenda-overriding-header "Project (Next Actions):")))
        (todo ""
              ((org-agenda-files
-               '("~/Dropbox/roam/tasks.org" "~/Dropbox/roam/shopping.org"))
+               '("~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org" "~/Dropbox/roam/shopping.org"))
               (org-agenda-overriding-header "Other Tasks:"))))
       nil)))
 #+end_src
@@ -238,7 +238,9 @@ org-agenda-current-time-string
 (setq org-deadline-warning-days 0)
 (setq org-agenda-span 5
       org-agenda-start-day "today")
-(setq org-refile-targets (quote (("~/Dropbox/roam/tasks.org" :maxlevel . 6)
+(setq org-refile-targets (quote (("~/Dropbox/roam/projects.org" :maxlevel . 6)
+                                 ("~/Dropbox/roam/inbox.org" :level . 6)
+                                 ("~/Dropbox/roam/areas.org" :level . 6)
                                  ("~/Dropbox/roam/repeat.org" :level . 6)
                                  ("~/Dropbox/roam/bookmarks.org" :level . 6)
                                  ("~/Dropbox/roam/events.org" :level . 6)
@@ -246,6 +248,7 @@ org-agenda-current-time-string
                                  ("~/Dropbox/roam/archive.org" :level . 6)
                                  ("~/Dropbox/roam/reading.org" :level . 6)
                                  ("~/Dropbox/roam/shopping.org" :level . 6)
+                                 ("~/Dropbox/roam/ideas.org" :level . 6)
                                  ("~/Dropbox/roam/someday.org" :level . 6)))))
 (after! org
 (setq! org-agenda-use-tag-inheritance t
@@ -315,33 +318,33 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 (after! org
 (setq! org-capture-templates
         '(("i" "TODO")
-          ("ii" "Todo" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          ("ii" "Todo" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** TODO %?\nCREATED:%U\n")
          ;; ("im" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
          ;; "** TODO %a\nCREATED:%U")
           ("is" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
           "** SOMEDAY %?\nCREATED:%U\n" :empty-lines 1)
-          ("ip" "Project" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          ("ip" "Project" entry (file+olp "~/Dropbox/roam/projects.org" "INBOX")
           "** PROJECT %?%^{DEADLINE}p\nCREATED:%U\n" :empty-lines 1)
           ("ig" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
           ("n" "Note")
-           ("nn" "Quick Note" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+           ("nn" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
            "** %?\nCREATED:%U\n")
            ("nj" "Journal entry" plain (function org-journal-find-location)
                                "** %(format-time-string org-journal-time-format)\n  - %?")
-           ("ni" "Idea" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+           ("ni" "Idea" entry (file+olp "~/Dropbox/roam/ideas.org" "INBOX")
            "** IDEA %?\nCREATED:%U\n")
            ("m" "Mail ")
-           ("mf" "Follow Up" entry (file+olp "~/Dropbox/roam/tasks.org" "AREA EMAIL")
+           ("mf" "Follow Up" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "*** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/Dropbox/roam/tasks.org" "AREA EMAIL")
+           ("mr" "Read Later" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "*** REVIEW Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
          ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
           "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** %a\nCREATED:%U")
-        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/tasks.org" "INBOX")
+        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
          "** %?")
          ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
          "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
@@ -461,10 +464,11 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/tasks.org" "tasks.org")
+(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
-(zz/add-file-keybinding "C-c a" "~/Dropbox/roam/archive.org" "archive.org")
+(zz/add-file-keybinding "C-c a" "~/Dropbox/roam/areas.org" "areas.org")
+(zz/add-file-keybinding "C-c x" "~/Dropbox/roam/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
@@ -680,7 +684,7 @@ Elfeed settings
 Directories that show as projects in projectile,
 
  #+begin_src emacs-lisp
-(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/"))
+(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/" "~/sba/"))
  #+end_src
 
 * Snippet Functions
