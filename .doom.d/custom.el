@@ -71,7 +71,7 @@
  '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))
  '(org-date ((t (:foreground "#82abab"))))
  '(org-document-title ((t (:height 1.0))))
- '(org-scheduled-previously ((t (:foreground "#6CCDD5"))))
+ '(org-scheduled-previously ((t (:foreground "#EECA9D"))))
  '(org-sexp-date ((t (:foreground "#82abba"))))
  '(outline-1 ((t (:extend t :foreground "#94e2d5" :weight semi-bold :height 1.1))))
  '(outline-2 ((t (:extend t :foreground "#7ebebd" :weight semi-bold :height 1.0))))

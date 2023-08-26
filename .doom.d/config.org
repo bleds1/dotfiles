@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-08-11 13:31]
+#+LAST_MOD: [2023-08-11 20:06]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -210,7 +210,7 @@ Custom Agenda views and keybind/function
        (todo "STARTED"
              ((org-agenda-overriding-header "Active:")))
        (todo "NEXT"
-             ((org-agenda-overriding-header "Project (Next Actions):")))
+             ((org-agenda-overriding-header "Next Actions:")))
        (todo ""
              ((org-agenda-files
                '("~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org" "~/Dropbox/roam/shopping.org"))
@@ -318,23 +318,21 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 (after! org
 (setq! org-capture-templates
         '(("i" "TODO")
-          ("ii" "Todo" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
+          ("it" "Todo" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "** TODO %?\nCREATED:%U\n")
-         ;; ("im" "Mail" entry (file+olp "~/Dropbox/roam/tasks.org" "EMAIL")
-         ;; "** TODO %a\nCREATED:%U")
-          ("is" "Someday/Maybe" entry (file+olp "~/Dropbox/roam/someday.org" "INBOX")
-          "** SOMEDAY %?\nCREATED:%U\n" :empty-lines 1)
-          ("ip" "Project" entry (file+olp "~/Dropbox/roam/projects.org" "INBOX")
+          ("ip" "Project" entry (file "~/Dropbox/roam/projects.org")
           "** PROJECT %?%^{DEADLINE}p\nCREATED:%U\n" :empty-lines 1)
-          ("ig" "Goal" plain (file+olp "~/Dropbox/roam/goals.org" "INBOX")
+          ("is" "Someday/Maybe" entry (file "~/Dropbox/roam/someday.org")
+          "* SOMEDAY %?\nCREATED:%U\n" :empty-lines 1)
+          ("ig" "Goal" plain (file "~/Dropbox/roam/goals.org")
          (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
           ("n" "Note")
            ("nn" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
            "** %?\nCREATED:%U\n")
            ("nj" "Journal entry" plain (function org-journal-find-location)
                                "** %(format-time-string org-journal-time-format)\n  - %?")
-           ("ni" "Idea" entry (file+olp "~/Dropbox/roam/ideas.org" "INBOX")
-           "** IDEA %?\nCREATED:%U\n")
+           ("ni" "Idea" entry (file "~/Dropbox/roam/ideas.org")
+           "* IDEA %?\nCREATED:%U\n")
            ("m" "Mail ")
            ("mf" "Follow Up" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
           "*** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
@@ -614,11 +612,11 @@ Elfeed settings
     :override #'+rss-elfeed-wrap-h
     (setq-local truncate-lines nil
                 shr-width 120
-                visual-fill-column-center-text t
+        ;        visual-fill-column-center-text t
                 default-text-properties '(line-height 1.1))
     (let ((inhibit-read-only t)
           (inhibit-modification-hooks t))
-      (visual-fill-column-mode)
+ ;     (visual-fill-column-mode)
       (set-buffer-modified-p nil)))     )
 ;; browse article in gui browser instead of eww
 (defun elfeed-show-visit-gui ()

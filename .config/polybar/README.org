@@ -62,7 +62,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = filesystem temperature memory battery bat2 bluetooth wlan date
+modules-right = filesystem temperature memory battery bat2 pulseaudio bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
@@ -340,8 +340,11 @@ label-disconnected-padding = 0
 label-connected-padding-right = 0
 label-disconnected-padding-right = 0
 
-label-connected =   %essid% %{A1:kitty -e nmtui:}%{A}
-label-disconnected = %{A1:kitty -e nmtui:} Offline %{A}
+#label-connected =   %essid% %{A1:kitty -e nmtui:}%{A}
+#label-connected =   %upspeed% %downspeed%
+label-connected =   %essid%
+#label-disconnected = %{A1:kitty -e nmtui:} Offline %{A}
+label-disconnected = 睊  Offline
 # labels }睊  %downspeed%%{A} %essid% %signal%
 format-connected = <ramp-signal><label-connected>
 format-disconnected = <label-disconnected>
@@ -402,7 +405,7 @@ format-volume-prefix-background = ${colors.background}
 label-volume = "%percentage%%"
 label-volume-foreground = ${colors.foreground}
 label-volume-background = ${colors.background}
-label-muted =  muted
+label-muted = "ﱝ "
 label-muted-foreground = ${colors.foreground}
 label-muted-background = ${colors.background}
 
