@@ -6,17 +6,16 @@ super + Escape
 #super + t
 #        kitty
 # Open GUI Programs
-super + o ; {b,f,n,v,k,s,g,m,o}
-        {qutebrowser,firefox,nautilus,freetube,krita,steam,gpick,audacious,obsidian}
+super + o ; {b,n,v,k,s,g,m,o}
+        {protonmail-bridge,nautilus,freetube,krita,steam,gpick,audacious,obsidian}
+# Browser
+super + b
+      firefox
 # Ranger
 super + period; period
        kitty -e ranger
 super + period; i
        kitty -e ranger ~/Dropbox/0_Inbox
-super + period; r
-       kitty -e ranger ~/Dropbox/roam
-super + period; p
-       kitty -e ranger ~/Dropbox/roam/pages
 super + period; d
        kitty -e ranger ~/Downloads
 super + period; l
@@ -34,11 +33,8 @@ super + Return
 # Bluetooth rofi
 super b; t
       rofi-bluetooth
-# Protonmail Bridge
-super p; m
-      protonmail-bridge
 # Thunderbird
-super t; b
+super + e; m
       thunderbird
 # Window swticher
 super + comma
@@ -70,14 +66,14 @@ super + e; d
     emacsclient -c -a 'emacs' --eval '(dired nil)'
 super + e; l
     emacsclient -c -a 'emacs' --eval '(elfeed)'
-super + e; m
-    emacsclient -c -a 'emacs' --eval '(my-mu4e-all-mail)'
-super + e; c
-    emacsclient -c -a 'emacs' --eval '(compose-mail)'
-super + e; j
-    emacsclient -c -a 'emacs' --eval '(org-roam-dailies-goto-today)'
-super + e; i
-    emacsclient -c -a 'emacs' ~/Dropbox/roam/inbox.org
+#super + e; m
+#    emacsclient -c -a 'emacs' --eval '(my-mu4e-all-mail)'
+#super + e; c
+#    emacsclient -c -a 'emacs' --eval '(compose-mail)'
+#super + e; j
+#    emacsclient -c -a 'emacs' --eval '(org-roam-dailies-goto-today)'
+#super + e; i
+#    emacsclient -c -a 'emacs' ~/Dropbox/roam/inbox.org
 # i3 windows
 super +w; c
  i3-msg kill
