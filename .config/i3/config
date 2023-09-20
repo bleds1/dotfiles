@@ -46,6 +46,7 @@ exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec_always devilspie &
+exec guake
 exec --no-startup-id udiskie &
 exec_always --no-startup-id greenclip daemon
 exec_always --no-startup-id nitrogen --restore
@@ -216,12 +217,12 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+End move container to workspace number $ws10
 
 # workspace specific launch
-exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+#exec --no-startup-id i3-msg 'workspace 1; exec kitty'
 #exec --no-startup-id i3-msg 'workspace 1; exec kitty -e tmux'
 #assign [class="kitty"] $ws1
 #assign [class="firefox"] $ws2
-assign [class="obsidian"] $ws3
-assign [class="FreeTube"] $ws4
+#assign [class="obsidian"] $ws3
+#assign [class="FreeTube"] $ws4
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
