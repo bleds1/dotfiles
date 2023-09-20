@@ -27,8 +27,10 @@ smart_borders on
 font pango: JetBrains Mono Light 8
 
 # Scratchpads
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+#bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus move scratchpad
+#bindsym $mod+minus scratchpad show
+bindsym $mod+space scratchpad show
 
 # STARTUP
 # Default Terminal
@@ -165,7 +167,7 @@ bindsym $mod+Shift+s split h
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab focus mode_toggle
 
 # window floating rules 
 for_window [class="Arandr"] floating enable

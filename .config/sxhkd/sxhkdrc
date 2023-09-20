@@ -21,6 +21,9 @@ super + period; d
        kitty -e ranger ~/Downloads
 super + period; l
        kitty -e ranger ~/Documents/Library/pdf
+# vim
+super + v
+       kitty -e nvim
 # Rofi
 # Run Launcher
 super + x
@@ -31,6 +34,12 @@ super + Return
 # Bluetooth rofi
 super b; t
       rofi-bluetooth
+# Protonmail Bridge
+super p; m
+      protonmail-bridge
+# Thunderbird
+super t; b
+      thunderbird
 # Window swticher
 super + comma
        rofi -show window
@@ -46,13 +55,12 @@ super + alt + p
 # Screenshots
 Print
     xfce4-screenshooter
-
+#
 super + shift; p
       xfce4-screenshooter
 # Screenlock
 super +z
       xflock4
-
 # Emacs (super + e followed by another key)
 super + e; e
     emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
@@ -69,7 +77,7 @@ super + e; c
 super + e; j
     emacsclient -c -a 'emacs' --eval '(org-roam-dailies-goto-today)'
 super + e; i
-    emacsclient -c -a 'emacs' ~/Dropbox/roam/tasks.org
+    emacsclient -c -a 'emacs' ~/Dropbox/roam/inbox.org
 # i3 windows
 super +w; c
  i3-msg kill

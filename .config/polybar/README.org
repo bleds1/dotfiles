@@ -199,7 +199,8 @@ mount-0 = /
 format-mounted = <label-mounted>
 format-unmounted = <label-unmounted>
 
-label-mounted =   %free%/%total%
+label-mounted =   %free%
+;label-mounted =   %free%/%total%
 ;label-mounted =   %used%/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -342,7 +343,8 @@ label-disconnected-padding-right = 0
 
 #label-connected =   %essid% %{A1:kitty -e nmtui:}%{A}
 #label-connected =   %upspeed% %downspeed%
-label-connected =   %essid%
+#label-connected =   %essid%
+label-connected =   %downspeed%
 #label-disconnected = %{A1:kitty -e nmtui:} Offline %{A}
 label-disconnected = 睊  Offline
 # labels }睊  %downspeed%%{A} %essid% %signal%

@@ -178,6 +178,7 @@ alias lt="exa -aT --color=always --group-directories-first"
 
 #shortcuts
 alias bb="cd ~/bleds_blog/"
+alias sba="cd ~/sba/"
 alias doc="cd ~/Documents/"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"

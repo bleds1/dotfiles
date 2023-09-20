@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-08-26 19:22]
+#+LAST_MOD: [2023-09-19 23:20]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -807,5 +807,5 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 * Load other config files
 #+begin_src emacs-lisp
 ;; Load other config files
-(load! "+private")
+;;(load! "+private")
 #+end_src
