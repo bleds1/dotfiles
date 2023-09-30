@@ -25,7 +25,7 @@ ENABLE_CORRECTION="true"
 # editor default
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=qutebrowser
+export BROWSER=vivaldi-stable
 export TERMINAL=kitty
 
 # Set name of the theme to load --- if set to "random", it will

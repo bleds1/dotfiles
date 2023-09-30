@@ -27,52 +27,52 @@ main(){
 
 	case $choice in
 		1)
-            qutebrowser www.bbc.co.uk/sport/football/scores-fixtures
+            vivaldi-stable www.bbc.co.uk/sport/football/scores-fixtures
             ;;
 		2)
-            qutebrowser https://news.ycombinator.com/news
+            vivaldi-stable https://news.ycombinator.com/news
             ;;
 		3)
-            qutebrowser https://crimsondaggers.com/forum/forum-10.html
+            vivaldi-stable https://crimsondaggers.com/forum/forum-10.html
             ;;
 		4)
-            qutebrowser github.com/bleds1
+            vivaldi-stable github.com/bleds1
             ;;
 		5)
-            qutebrowser lemmy.world
+            vivaldi-stable lemmy.world
             ;;
 		6)
-            qutebrowser https://libgen.rs
+            vivaldi-stable https://libgen.rs
             ;;
         7)
-            qutebrowser libreddit.de
+            vivaldi-stable libreddit.de
             ;;
         8)
-            qutebrowser magnetdl.com
+            vivaldi-stable magnetdl.com
             ;;
         9)
-            qutebrowser mastodon.art/home
+            vivaldi-stable mastodon.art/home
             ;;
         10)
-            qutebrowser https://omnivore.app/home
+            vivaldi-stable https://omnivore.app/home
             ;;
         11)
-            qutebrowser pinterest.co.uk
+            vivaldi-stable pinterest.co.uk
             ;;
         12)
-            qutebrowser calendar.proton.me
+            vivaldi-stable calendar.proton.me
             ;;
         13)
-            qutebrowser account.proton.me
+            vivaldi-stable account.proton.me
             ;;
         14)
-            qutebrowser https://app.raindrop.io/my/0
+            vivaldi-stable https://app.raindrop.io/my/0
             ;;
         15)
-            qutebrowser https://pigmentandpixels.substack.com/
+            vivaldi-stableq https://pigmentandpixels.substack.com/
             ;;
         16)
-            qutebrowser en.wikipedia.org/wiki/Main_Page
+            vivaldi-stable en.wikipedia.org/wiki/Main_Page
             ;;
         esac
 }

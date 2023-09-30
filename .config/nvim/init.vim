@@ -34,7 +34,7 @@ set wrap        "wrap text
 call plug#begin('/home/bledley/.config/nvim/plugged')
 
 " Appearance
-Plug 'subnut/nvim-ghost.nvim'
+"Plug 'subnut/nvim-ghost.nvim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'arcticicestudio/nord-vim'

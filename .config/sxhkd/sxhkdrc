@@ -10,7 +10,7 @@ super + o ; {b,n,v,k,s,g,m,o}
         {protonmail-bridge,nautilus,freetube,krita,steam,gpick,audacious,obsidian}
 # Browser
 super + b
-      firefox
+      vivaldi-stable
 # Ranger
 super + period; period
        kitty -e ranger
