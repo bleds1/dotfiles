@@ -27,12 +27,6 @@ super + v
 # Run Launcher
 super + x
        rofi -show run
-# Bookmarks web
-super + Return
-       bookmarks-rofi
-# Bluetooth rofi
-super b; t
-      rofi-bluetooth
 # Thunderbird
 super + e; m
       thunderbird

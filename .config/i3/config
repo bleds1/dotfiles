@@ -150,9 +150,7 @@ bindsym $mod+Shift+l move right
 
 # left right workspace switching
 bindsym $mod+Mod1+Right workspace next
-bindsym $mod+n workspace next
 bindsym $mod+Mod1+Left workspace prev
-bindsym $mod+p workspace prev
 
 # left right workspace switching v keys
 bindsym $mod+Mod1+l workspace next
