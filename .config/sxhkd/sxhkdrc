@@ -6,8 +6,6 @@ super + Escape
 #super + t
 #        kitty
 # Open GUI Programs
-super + o ; {b,n,v,k,s,g,m,o}
-        {protonmail-bridge,nautilus,freetube,krita,steam,gpick,audacious,obsidian}
 # Browser
 super + b
       vivaldi-stable
@@ -20,6 +18,18 @@ super + period; d
        kitty -e ranger ~/Downloads
 super + period; l
        kitty -e ranger ~/Documents/Library/pdf
+# File Browser
+super + n
+      nautilus
+# Obsidian
+super + o
+      obsidian
+# Protonmail Bridge
+super + b
+      protonmail-bridge
+# Freetube
+super + y
+      freetube
 # vim
 super + v
        kitty -e nvim
@@ -71,5 +81,3 @@ super + e; l
 # i3 windows
 super +w; c
  i3-msg kill
-super + w; minus
-  i3-msg move scratchpad
