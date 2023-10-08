@@ -30,6 +30,9 @@ super + b
 # Freetube
 super + y
       freetube
+# Gpick
+super + g
+      gpick
 # vim
 super + v
        kitty -e nvim
