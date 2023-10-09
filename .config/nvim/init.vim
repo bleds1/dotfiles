@@ -2,7 +2,7 @@
 "
 "General
             
-"set noshowmode  "do not show insert msgs etc. whwen using statusline
+set noshowmode  "do not show insert msgs etc. whwen using statusline
 filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
 set expandtab   "converts tabs to white space
 set hidden      "hide buffers in background when abandoned
@@ -62,6 +62,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'jceb/vim-orgmode'
 "Plug 'jiangmiao/auto-pairs'
+"Plug 'stevedylandev/flexoki-nvim'
 " LSP Support
 "Plug 'neovim/nvim-lspconfig'
 "Plug 'williamboman/mason.nvim'
@@ -116,6 +117,7 @@ call plug#end()
 "colorscheme gruvbox
 "colorscheme xcodedarkhc
 colorscheme nord
+"colorscheme flexoki
 "colorscheme onedark
 "set background=dark
 "Cursorline
@@ -138,9 +140,9 @@ END
 
 " Hide lualine
 
-lua <<END
-require('lualine').hide()
-END
+"lua <<END
+"require('lualine').hide()
+"END
 
 "Cursor
 autocmd InsertEnter,InsertLeave * set cul!
@@ -200,7 +202,7 @@ map <leader>bk :bd<CR>
 "new buffer (space, e)
 map <leader>e :enew<CR>
 "Netrw explorer left
-map <leader>z :NvimTreeToggle<CR>  
+"map <leader>z :NvimTreeToggle<CR>  
 "FZF 
 map <leader>, :FZF<CR>
 map <leader>b :Buffers<CR>
