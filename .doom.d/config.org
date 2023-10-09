@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-09-19 23:20]
+#+LAST_MOD: [2023-10-09 20:09]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -99,7 +99,8 @@ Auto save is on.
 
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
-(setq display-line-numbers-type nil)
+;;(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 (setq auto-save-default t)
 #+end_src
 
