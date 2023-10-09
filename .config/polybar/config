@@ -6,13 +6,12 @@ foreground-alt = #00292929
 primary = #82abaa
 secondary = #82abaa
 alert = #aa82abaa
+disabled = #9c9c9c
 
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 16
-;offset-x = 1%
-;offset-y = 1%
 radius = 0
 fixed-center = true
 bottom = true
@@ -33,6 +32,9 @@ border-color = #151515
 module-margin-left = 1
 module-margin-right = 2
 
+seperator = |
+separator-foreground = ${colors.disabled}
+
 font-0 = JetBrainsMono Light:pixelsize=9;0
 font-1 = Mononoki Nerd Font:pixelsize=9;0
 font-2 = FontAwesome:pixelsize=9;0
@@ -40,7 +42,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = filesystem temperature memory battery bat2 pulseaudio bluetooth wlan date
+modules-right = pulseaudio memory temperature battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
@@ -202,6 +204,10 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
+label-empty = %name%
+label-empty-foreground = ${colors.background-alt}
+
+
 ; Separator in between workspaces
 ; label-separator = |
 
@@ -263,6 +269,7 @@ format-padding = 0
 type = internal/memory
 interval = 5
 format-prefix = "  "
+#format-prefix = "RAM  "
 format-prefix-foreground = ${colors.foreground}
 #format-underline = #aa62d171
 #label = %percentage_used%%
@@ -342,6 +349,7 @@ label-padding-left = 0
 type = internal/pulseaudio
 format-volume = <label-volume>
 format-volume-prefix = "墳 "
+#format-volume-prefix = "VOL "
 format-volume-prefix-foreground = ${colors.foreground}
 format-volume-prefix-background = ${colors.background}
 label-volume = "%percentage%%"
@@ -451,7 +459,6 @@ label-discharging = " %percentage%%"
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
-
 format = <ramp> <label>
 ;format-underline = #aabf3021
 format-warn = <ramp> <label-warn>
@@ -519,7 +526,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 0
