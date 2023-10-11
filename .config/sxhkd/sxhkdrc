@@ -67,8 +67,8 @@ super +z
 # Emacs (super + e followed by another key)
 super + e; e
     emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
-super + b; i
-    emacsclient -c -a 'emacs' --eval '(ibuffer)'
+#super + b; i
+#    emacsclient -c -a 'emacs' --eval '(ibuffer)'
 super + e; d
     emacsclient -c -a 'emacs' --eval '(dired nil)'
 super + e; l
