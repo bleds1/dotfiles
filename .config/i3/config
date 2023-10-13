@@ -171,8 +171,11 @@ bindsym $mod+Shift+s split h
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Tab focus mode_toggle
+bindsym $mod+Tab focus right
 
+# center floating window
+bindsym $mod+backslash move position center
+#
 # window floating rules 
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
