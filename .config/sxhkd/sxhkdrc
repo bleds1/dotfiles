@@ -53,7 +53,7 @@ super + c
 super + slash
       searchweb
 # Pass
-super + alt + p
+super + p
         dmenu_pass
 # Screenshots
 Print
