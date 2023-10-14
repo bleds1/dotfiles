@@ -73,6 +73,8 @@ super + e; d
     emacsclient -c -a 'emacs' --eval '(dired nil)'
 super + e; l
     emacsclient -c -a 'emacs' --eval '(elfeed)'
+super + e; n
+    emacsclient -c -a 'emacs' --eval '(denote)'
 #super + e; m
 #    emacsclient -c -a 'emacs' --eval '(my-mu4e-all-mail)'
 #super + e; c
