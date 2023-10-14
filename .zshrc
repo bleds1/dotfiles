@@ -155,7 +155,8 @@ alias ro="cd ~/Dropbox/roam/"
 alias in="cd ~/Dropbox/0_Inbox/"
 alias e="emacsclient -nw"
 alias em="emacsclient -c -a 'emacs' &"
-alias en="emacsclient -nw ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
+#alias en="emacsclient -nw ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
+alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
 #git
 alias gs='git status'
 alias ga='git add -A'
