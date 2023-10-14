@@ -1,6 +1,6 @@
 [colors]
-background = #151515
-background-alt = #444
+background = #00151515
+background-alt = #aa444
 foreground = #aac7c7c7
 foreground-alt = #00292929
 primary = #82abaa
@@ -11,7 +11,7 @@ disabled = #9c9c9c
 [bar/polybar1]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 16
+height = 18
 radius = 0
 fixed-center = true
 bottom = true
@@ -35,10 +35,10 @@ module-margin-right = 2
 seperator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = JetBrainsMono Light:pixelsize=9;0
-font-1 = Mononoki Nerd Font:pixelsize=9;0
-font-2 = FontAwesome:pixelsize=9;0
-font-3 = SourceCodePro:pixelsize=9;0
+font-0 = JetBrainsMono Light:pixelsize=9;2
+font-1 = Mononoki Nerd Font:pixelsize=9;1
+font-2 = FontAwesome:pixelsize=9;1
+font-3 = SourceCodePro:pixelsize=9;1
 
 modules-left = i3 xwindow
 modules-center =
@@ -185,8 +185,8 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-foreground = ${colors.foreground}
 #label-focused-foreground = #aa151515
-label-focused-background = #151515
-label-focused-underline= #82abaa
+label-focused-background = #aa151515
+label-focused-underline= #aa82abaa
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
