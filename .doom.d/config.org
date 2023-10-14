@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-10-09 22:12]
+#+LAST_MOD: [2023-10-14 00:25]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -42,6 +42,7 @@
   - [[#blog-front-matter][Blog front matter]]
   - [[#timestamp][Timestamp]]
 - [[#md-roam][Md-roam]]
+- [[#denote][Denote]]
 - [[#rainbow-mode][Rainbow mode]]
 - [[#org-clock-sfx][Org clock sfx]]
 - [[#org-msg][Org-msg]]
@@ -471,7 +472,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
-(global-set-key (kbd "C-c n") 'now)
+(global-set-key (kbd "C-c n") 'denote)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
@@ -693,7 +694,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 #+begin_src emacs-lisp
 (defun my-md-front-matter ()
  (interactive)
- (insert "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
+ (insert "---\nid: %<%Y_%m_%d_%H%M>\ntags: \n---\n")
  )
 #+end_src
 
@@ -751,6 +752,57 @@ Makes roam's features also consider Markdown files as part of the database.
   )
 #+end_src
 
+* Denote
+#+begin_src emacs-lisp
+;; Make Elisp files in that directory available to the user.
+(add-to-list 'load-path "~/.emacs.d/manual-packages/denote")
+
+;; Configuration
+(require 'denote)
+
+;; Remember to check the doc strings of those variables.
+(setq denote-directory (expand-file-name "~/Dropbox/Obsidian/vault/0 Fleeting Notes/"))
+(setq denote-known-keywords '(""))
+(setq denote-infer-keywords nil)
+(setq denote-sort-keywords t)
+(setq denote-file-type "markdown-yaml") ; Org is the default, set others here
+(setq denote-prompts '(nil))
+(setq denote-excluded-directories-regexp nil)
+(setq denote-excluded-keywords-regexp nil)
+
+;; Pick dates, where relevant, with Org's advanced interface:
+(setq denote-date-prompt-use-org-read-date t)
+
+
+;; Read this manual for how to specify `denote-templates'.  We do not
+;; include an example here to avoid potential confusion.
+(setq denote-id-format "%Y-%m-%d-%H%M")
+(setq denote-date-format "%Y-%m-%d-%H%M") ; read doc string
+;test
+(setq denote-yaml-front-matter
+  "---
+id:       %2$s
+tags:   %3$s
+---\n")
+;
+
+;; If you use Markdown or plain text files (Org renders links as buttons
+;; right away)
+(add-hook 'find-file-hook #'denote-link-buttonize-buffer)
+
+;; We use different ways to specify a path for demo purposes.
+(setq denote-dired-directories
+      (list denote-directory
+            (thread-last denote-directory (expand-file-name "attachments"))
+            (expand-file-name "~/Documents/books")))
+
+;; Generic (great if you rename files Denote-style in lots of places):
+;; (add-hook 'dired-mode-hook #'denote-dired-mode)
+;;
+;; OR if only want it in `denote-dired-directories':
+(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+
+#+end_src
 * Rainbow mode
 Show me colour hex codes everywhere please..
 

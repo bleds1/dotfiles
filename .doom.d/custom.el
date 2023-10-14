@@ -38,7 +38,7 @@
      ("https://edwardsnowden.substack.com/feed" substack blog)
      ("https://louisestigell.substack.com/feed" substack blog)))
  '(highlight-indent-guides-method 'character)
- '(package-selected-packages '(org-roam))
+ '(package-selected-packages '(denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types
    '((org-element-cache)
