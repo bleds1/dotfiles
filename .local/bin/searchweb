@@ -10,12 +10,12 @@ DMBROWSER="vivaldi-stable"
 # The url format must allow for the search keywords at the end of the url.
 # For example: https://www.amazon.com/s?k=XXXX searches Amazon for 'XXXX'.
 declare -a options=(
-"Amazon - https://www.amazon.co.uk/s?k="
+#"Amazon - https://www.amazon.co.uk/s?k="
 "Archwiki - https://wiki.archlinux.org/index.php?search="
 #"Bing - https://www.bing.com/search?q="
 "Brave = https://search.brave.com/search?q="
 #"Discogs - https://www.discogs.com/search/?&type=all&q="
-"Duckduckgo - https://duckduckgo.com/?q="
+#"Duckduckgo - https://duckduckgo.com/?q="
 #"Ebay - https://www.ebay.co.uk/sch/i.html?&_nkw="
 "Github - https://github.com/search?q="
 #"Gitlab - https://gitlab.com/search?search="
