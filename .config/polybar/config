@@ -42,7 +42,7 @@ font-3 = SourceCodePro:pixelsize=9;0
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = pulseaudio memory temperature battery bat2 bluetooth wlan date
+modules-right = pulseaudio filesystem memory temperature battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
