@@ -179,6 +179,7 @@ bindsym $mod+backslash move position center
 # window floating rules 
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
+for_window [instance="gpick"] floating enable
 
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
