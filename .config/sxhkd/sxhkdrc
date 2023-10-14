@@ -21,12 +21,12 @@ super + period; l
 # File Browser
 super + n
       nautilus
+# Rofi emoji
+super + m
+      rofi -modi emoji -show emoji
 # Obsidian
 super + o
       obsidian
-# Protonmail Bridge
-super + b
-      protonmail-bridge
 # Freetube
 super + y
       freetube
