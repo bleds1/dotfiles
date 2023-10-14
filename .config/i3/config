@@ -49,7 +49,7 @@ exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec_always devilspie &
-exec_always guake
+#exec_always guake
 exec --no-startup-id udiskie &
 exec_always --no-startup-id greenclip daemon
 exec_always --no-startup-id nitrogen --restore
@@ -180,7 +180,8 @@ bindsym $mod+backslash move position center
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
 for_window [instance="gpick"] floating enable
-
+for_window [instance="kitty"] floating enable
+for_window [instance="kitty"] resize set 1600 400, move position 0 0
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
