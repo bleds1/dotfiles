@@ -180,7 +180,7 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ { '.': '~/dotfiles/' },
 			\ { 'i': '~/dotfiles/.config/i3/config' },
-			\ { 'k': '~/dotfiles/.config/kitty/kitty.conf' },
+			\ { 'c': '~/dotfiles/.config/kitty/kitty.conf' },
             \ { 'n': '~/dotfiles/.config/nvim/init.vim' },
 			\ { 'p': '~/dotfiles/.config/picom/picom.conf' },
  			\ { 'm': '~/dotfiles/.tmux.conf' },
