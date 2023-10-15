@@ -200,8 +200,10 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
-# tw
-alias t="cat ~/Dropbox/roam/tasks.org"
+# tmux
+alias t="tmux"
+alias tls"tmux ls"
+alias ta="tmux attach"
 
 #confirm before overwrite
 alias cp="cp -i -v"
