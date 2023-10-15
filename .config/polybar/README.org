@@ -116,14 +116,14 @@ border-color = #151515
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = JetBrainsMono Light:pixelsize=9;0
-font-1 = Mononoki Nerd Font:pixelsize=9;0
-font-2 = FontAwesome:pixelsize=9;0
-font-3 = SourceCodePro:pixelsize=9;0
+font-0 = JetBrainsMono Light:pixelsize=9;2
+font-1 = Mononoki Nerd Font:pixelsize=9;2
+font-2 = FontAwesome:pixelsize=9;2
+font-3 = SourceCodePro:pixelsize=9;2
 
 modules-left = i3 xwindow
 modules-center =
-modules-right = filesystem temperature memory battery bat2 bluetooth wlan date
+modules-right = pulseaudio filesystem memory temperature battery bat2 bluetooth wlan date
 tray-position = none
 tray-padding = 1
 tray-scale = 1.0
