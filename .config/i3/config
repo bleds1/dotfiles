@@ -181,6 +181,7 @@ for_window [instance="gpick"] floating enable
 for_window [instance="kitty"] floating enable
 for_window [instance="kitty"] resize set 1600 400, move position 0 0
 for_window [instance="kitty"] sticky enable
+for_window [instance="transmission-gtk"] floating enable
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
