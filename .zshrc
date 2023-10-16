@@ -202,7 +202,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 # tmux
 alias t="tmux"
-alias tls"tmux ls"
 alias ta="tmux attach"
 
 #confirm before overwrite
