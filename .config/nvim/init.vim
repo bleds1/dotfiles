@@ -2,7 +2,7 @@
 "
 "General
             
-set noshowmode  "do not show insert msgs etc. whwen using statusline
+"set noshowmode  "do not show insert msgs etc. whwen using statusline
 filetype plugin indent on   "is this redundant now? allows auto-indenting depending on file type
 set expandtab   "converts tabs to white space
 set hidden      "hide buffers in background when abandoned
@@ -130,19 +130,19 @@ hi Normal ctermfg=245 ctermbg=NONE
 hi LineNr ctermfg=237 
 "hi EndOfBuffer ctermbg=16 guibg=#111317
 
-lua << END
-require('lualine').setup{
-  options = {
-    theme = 'ayu_mirage'
-  }
-}
-END
+"lua << END
+"require('lualine').setup{
+"  options = {
+"    theme = 'ayu_mirage'
+"  }
+"}
+"END
 
 " Hide lualine
 
-"lua <<END
-"require('lualine').hide()
-"END
+lua <<END
+require('lualine').hide()
+END
 
 "Cursor
 autocmd InsertEnter,InsertLeave * set cul!
@@ -228,8 +228,8 @@ map <leader>v <C-w>v
 map <leader>s <C-w>s
 nnoremap <leader>+ :vertical resize =5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
-"Open terminal
-map <leader>t :vertical topleft :terminal zsh<CR>
+map <leader>t :tabnew<CR>
+map <leader>w :tabclose<CR>
 "Yank to clipboard Ctrl+c
 vnoremap <C-c> "+y
 vnoremap <C-y> "+y
