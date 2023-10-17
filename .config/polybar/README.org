@@ -59,7 +59,7 @@ separator-foreground = ${colors.disabled}
 
 font-0 = JetBrainsMono Light:pixelsize=9;2
 font-1 = Mononoki Nerd Font:pixelsize=9;1
-font-2 = FontAwesome:pixelsize=9;1
+font-2 = FontAwesome:pixelsize=10;2
 font-3 = SourceCodePro:pixelsize=9;1
 
 modules-left = i3 xwindow
