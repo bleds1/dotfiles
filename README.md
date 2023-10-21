@@ -3,13 +3,13 @@
 ## My config files for:
 
 ## Doom Emacs
-## Qutebrowser
+## Neovim
 ## i3wm gaps
 ## Kitty
 ## Polybar
+## Qutebrowser
 ## Zsh
-## Neovim
 ## Ranger
 ## Tmux
 
-+ more
++ probably more..
