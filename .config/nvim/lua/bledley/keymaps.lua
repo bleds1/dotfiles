@@ -7,8 +7,9 @@ vim.keymap.set("n", "<leader>oo", vim.cmd.Lex)
 vim.keymap.set("n", "<leader>bn", vim.cmd.bn)
 vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
 vim.keymap.set("n", "<leader>bk", vim.cmd.bd)
+vim.keymap.set("n", "<leader>nn", vim.cmd.enew)
 --Splits
-vim.keymap.set("n", "<leader>s", vim.cmd.split)
+vim.keymap.set("n", "<leader>h", vim.cmd.split)
 vim.keymap.set("n", "<leader>v", vim.cmd.vsplit)
 --Navigate Splits
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
@@ -27,3 +28,4 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Quick exit insert
 vim.keymap.set("i", "jk", "<ESC>", opts)
 vim.keymap.set("i", "kj", "<ESC>", opts)
+vim.keymap.set("i", "<C-c>", "<Esc>")
