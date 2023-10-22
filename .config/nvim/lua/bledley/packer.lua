@@ -22,6 +22,8 @@ return require('packer').startup(function(use)
 	})
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use 'junegunn/fzf'
+    use 'junegunn/fzf.vim'
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
