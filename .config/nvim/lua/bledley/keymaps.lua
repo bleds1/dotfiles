@@ -18,7 +18,9 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 -- Tabs
 vim.keymap.set("n", "<leader>t", vim.cmd.tabnew)
-vim.keymap.set("n", "<leader>w", vim.cmd.tabclose)
+vim.keymap.set("n", "<leader>x", vim.cmd.tabclose)
+-- Quick write
+vim.keymap.set("n", "<leader>w", vim.cmd.write)
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

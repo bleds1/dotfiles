@@ -6,4 +6,3 @@ vim.keymap.set('n', '<leader>bi', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fg', function() 
 				builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
-
