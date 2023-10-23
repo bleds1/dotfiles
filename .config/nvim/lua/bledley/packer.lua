@@ -39,5 +39,12 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
+    use({
+    "epwalsh/obsidian.nvim",
+    requires = {
+        -- Required.
+        "nvim-lua/plenary.nvim",
+    },
+})
 end)
 
