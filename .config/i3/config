@@ -1,8 +1,10 @@
 ## i3 CONFIG ##
 #
 # Gaps
-gaps inner 6
-gaps outer 6
+#gaps inner 6
+#gaps outer 6
+gaps inner 0
+gaps outer 0
 #smart_gaps on
 
 #Switch focus to window on urgent
@@ -49,7 +51,6 @@ exec_always nm-applet
 exec_always xfce4-screensaver
 exec_always xfce4-notifyd
 exec_always devilspie &
-#exec_always guake
 exec --no-startup-id udiskie &
 exec_always --no-startup-id greenclip daemon
 exec_always --no-startup-id nitrogen --restore
