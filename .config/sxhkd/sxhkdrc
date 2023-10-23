@@ -35,7 +35,8 @@ super + g
       gpick
 # vim
 super + v
-    kitty -e nvim /home/bledley/Dropbox/Obsidian/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md
+       kitty -e zet
+#  kitty -e nvim /home/bledley/Dropbox/Obsidian/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md
 # Rofi
 # Run Launcher
 super + x
