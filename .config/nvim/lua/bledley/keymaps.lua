@@ -15,8 +15,8 @@ vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
 vim.keymap.set("n", "<leader>bk", vim.cmd.bd)
 vim.keymap.set("n", "<leader>nn", vim.cmd.enew)
 --Splits
-vim.keymap.set("n", "<leader>sh", vim.cmd.split)
-vim.keymap.set("n", "<leader>sv", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>wh", vim.cmd.split)
+vim.keymap.set("n", "<leader>wv", vim.cmd.vsplit)
 --Navigate Splits
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
@@ -24,9 +24,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set("n", "<leader>ww", "<C-w>w", opts)
 vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
+vim.keymap.set("n", "<leader>wc", vim.cmd.close)
 -- Tabs
-vim.keymap.set("n", "<leader>t", vim.cmd.tabnew)
-vim.keymap.set("n", "<leader>x", vim.cmd.tabclose)
+vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
+vim.keymap.set("n", "<C-w>", vim.cmd.tabclose)
 -- Quick write
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
