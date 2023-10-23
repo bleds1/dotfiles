@@ -74,10 +74,25 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  fzf = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/fzf",
+    url = "https://github.com/junegunn/fzf"
+  },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://github.com/junegunn/fzf.vim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   nord = {
     config = { "\27LJ\2\0024\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0" },
@@ -85,10 +100,30 @@ _G.packer_plugins = {
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nord",
     url = "https://github.com/shaunsingh/nord.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -115,10 +150,25 @@ _G.packer_plugins = {
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vim-maximizer"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vim-maximizer",
+    url = "https://github.com/szw/vim-maximizer"
   }
 }
 

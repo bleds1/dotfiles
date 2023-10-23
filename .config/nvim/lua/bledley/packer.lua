@@ -22,10 +22,13 @@ return require('packer').startup(function(use)
 	})
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    use('junegunn/fzf')
+    use('junegunn/fzf.vim')
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
+    use('ThePrimeagen/vim-be-good')
+    use("nvim-tree/nvim-tree.lua")
+    use("szw/vim-maximizer")
 	use('mbbill/undotree')
 	use('tpope/vim-fugitive')
     use('airblade/vim-gitgutter')
