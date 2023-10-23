@@ -3,13 +3,13 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/roam/pages}
+ZROOT=${ZET_ROOT:=~/Dropbox/Obsidian/vault/0-Fleeting-Notes}
 
-name="$ZROOT/$(date +"%Y_%m_%d_%H%M")"
+name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
 content="---\ntitle:"
 
 for word in $@; do
-  name+="_$word"
+  name+="--$word"
   content+=" ${word^}"
 done
 
