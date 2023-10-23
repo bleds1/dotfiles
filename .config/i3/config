@@ -226,7 +226,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+End move container to workspace number $ws10
 
 # workspace specific launch
-#exec --no-startup-id i3-msg 'workspace 1; exec kitty'
+exec --no-startup-id i3-msg 'workspace 1; exec kitty --start-as fullscreen'
 #exec --no-startup-id i3-msg 'workspace 1; exec kitty -e tmux'
 #assign [class="kitty"] $ws1
 #assign [class="firefox"] $ws2
