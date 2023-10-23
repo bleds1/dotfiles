@@ -179,9 +179,9 @@ for_window [class="feh"] resize set 800 600, move position center
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
 for_window [instance="gpick"] floating enable
-for_window [instance="kitty"] floating enable
-for_window [instance="kitty"] resize set 1600 500, move position 0 0
-for_window [instance="kitty"] sticky enable
+#for_window [instance="kitty"] floating enable
+#for_window [instance="kitty"] resize set 1600 500, move position 0 0
+#for_window [instance="kitty"] sticky enable
 for_window [instance="transmission-gtk"] floating enable
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
