@@ -149,13 +149,12 @@ alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | fzf"
 alias qb="qutebrowser"
-alias vn="v ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
-alias ro="cd ~/Dropbox/roam/"
+#alias ro="cd ~/Dropbox/roam/"
 alias in="cd ~/Dropbox/0_Inbox/"
 alias e="emacsclient -nw"
 alias em="emacsclient -c -a 'emacs' &"
 #alias en="emacsclient -nw ~/Dropbox/roam/journals/$(date +%Y_%m_%d_%H%M).md"
-alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
+#alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -186,7 +185,11 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
-alias jou="cd ~/Dropbox/roam/journals/"
+alias notes="cd ~/Dropbox/Obsidian/vault/0-Fleeting-Notes/"
+alias lit="cd ~/Dropbox/Obsidian/vault/1-Literature-Notes/"
+alias perm="cd ~/Dropbox/Obsidian/vault/2-Permanent-Notes/"
+alias proj="cd ~/Dropbox/Obsidian/vault/3-Project-Notes/"
+alias nn="v ~/Dropbox/Obsidian/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"

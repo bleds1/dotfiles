@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)
 vim.keymap.set("n", "<leader>bn", vim.cmd.bn)
 vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
 vim.keymap.set("n", "<leader>bk", vim.cmd.bd)
-vim.keymap.set("n", "<leader>nn", vim.cmd.enew)
+vim.keymap.set("n", "<leader>en", vim.cmd.enew)
 --Splits
 vim.keymap.set("n", "<leader>wh", vim.cmd.split)
 vim.keymap.set("n", "<leader>wv", vim.cmd.vsplit)
