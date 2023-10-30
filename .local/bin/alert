@@ -1,5 +1,6 @@
 #!/bin/sh
 
 #paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+#
 
-paplay ~/sfx/advance_ding.wav
+paplay ~/sfx/545372__stwime__up3.ogg
