@@ -10,6 +10,15 @@ gaps outer 0
 #Switch focus to window on urgent
 #for_window [urgent="latest"] focus
 
+# set caps as esc with setxkbmap
+exec --no-startup-id setxkbmap -option caps:escape
+
+# Default Terminal
+set $term kitty
+
+# set modkey
+set $mod Mod4
+
 # Window/Border Colours
 # class                 border  backgr. text    indicator child_border
 client.focused          #151515 #151515 #ffffff #82abaa   #82abaa
@@ -27,21 +36,16 @@ new_float normal
 default_floating_border pixel 1
 hide_edge_borders none
 smart_borders on
-
+workspace_auto_back_and_forth yes
 # Font for window titles. Will also be used by the bar unless a different font
 font pango: JetBrains Mono Light 8
 
 # Scratchpads
-#bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus move scratchpad
-#bindsym $mod+minus scratchpad show
-bindsym $mod+space scratchpad show
+#bindsym $mod+space scratchpad show
+bindsym $mod+plus scratchpad show
 
 # STARTUP
-# Default Terminal
-set $term kitty
-# set modkey
-set $mod Mod4
 exec_always --no-startup-id sxhkd &
 exec_always --no-startup-id launch.sh
 exec_always --no-startup-id xfce4-power-manager
@@ -63,7 +67,6 @@ exec --no-startup-id dex --autostart --environment i3
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
-
 # KEYBINDS
 
 # start a terminal
@@ -72,7 +75,6 @@ bindsym $mod+t exec kitty
 # Most keys for program launching are now in SXHKD
 #
 # Lockscreen
-
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 #
@@ -86,7 +88,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #bindsym $mod+z exec xflock4
 
 # Brightness and Volume
-
 # keys for screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
@@ -98,15 +99,15 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Window management
-
 # fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # sticky toggle
 bindsym $mod+Shift+t sticky toggle
 
-# floating toggle
-bindsym $mod+Shift+f floating toggle
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
 # kill focused window
 bindsym $mod+q kill
 
@@ -158,9 +159,6 @@ bindsym $mod+Shift+v split v
 # split in horizontal orientation
 bindsym $mod+Shift+s split h
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
 # change focus between tiling / floating windows
 bindsym $mod+Tab focus right
 
@@ -175,7 +173,6 @@ for_window [class="mpv"] sticky enable
 #feh
 for_window [class="feh"] floating enable
 for_window [class="feh"] resize set 800 600, move position center
-#for_window [class="feh"] sticky enable
 for_window [class="Arandr"] floating enable
 for_window [instance="fs-uae-launcher"] floating enable
 for_window [instance="gpick"] floating enable
@@ -186,6 +183,11 @@ for_window [instance="transmission-gtk"] floating enable
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+#
+# Scratchpad
+for_window [class=kitty instance="__text_scratchpad"] floating enable 
+for_window [class=kitty instance="__text_scratchpad"] resize set 600 300, move position center
+bindsym $mod+space exec scratchpad
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -232,16 +234,13 @@ exec --no-startup-id i3-msg 'workspace 1; exec kitty --start-as fullscreen'
 #assign [class="firefox"] $ws2
 #assign [class="obsidian"] $ws3
 #assign [class="FreeTube"] $ws4
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Keyboard Layout
-# set caps as esc with setxkbmap
-exec --no-startup-id setxkbmap -option caps:escape
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
