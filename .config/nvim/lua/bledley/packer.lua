@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
 			vim.cmd('colorscheme nord')
 		end
 	})
-
+    
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('junegunn/fzf')
     use('junegunn/fzf.vim')
@@ -34,6 +34,8 @@ return require('packer').startup(function(use)
     use('airblade/vim-gitgutter')
     use ('windwp/nvim-autopairs')
     use ('norcalli/nvim-colorizer.lua')
+    use("folke/zen-mode.nvim")
+    use('vimwiki/vimwiki')
     use ('nvim-tree/nvim-web-devicons')
     use {
         'nvim-lualine/lualine.nvim',
