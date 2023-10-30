@@ -20,7 +20,7 @@ HISTSIZE=5000
 SAVEHIST=5000
 HISTFILE=~/.zsh_history
 
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # editor default
 export EDITOR=nvim
@@ -136,6 +136,7 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 alias ..="cd .."
 alias c="clear -x"
 alias cnf="clear -x && neofetch"
+alias ct="clear -x && task"
 alias nf="c && neofetch"
 alias open="xdg-open"
 alias q="exit"
@@ -144,7 +145,7 @@ alias vim="nvim"
 alias oldvim="\vim"
 #alias f="fzf"
 alias f="ranger"
-alias vfzf="nvim (fzf)"
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias zat="zathura"
 alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | fzf"
@@ -174,7 +175,7 @@ alias lm="exa -al --color=always --sort modified --reverse"
 alias ll="exa -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
 alias la="exa -al --color=always --sort Name --group-directories-first"
 alias lt="exa -aT --color=always --group-directories-first"
-
+alias m="neomutt"
 #shortcuts
 alias bb="cd ~/bleds_blog/"
 alias sba="cd ~/sba/"
@@ -185,11 +186,14 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
-alias notes="cd ~/Dropbox/Obsidian/vault/0-Fleeting-Notes/"
-alias lit="cd ~/Dropbox/Obsidian/vault/1-Literature-Notes/"
-alias perm="cd ~/Dropbox/Obsidian/vault/2-Permanent-Notes/"
-alias proj="cd ~/Dropbox/Obsidian/vault/3-Project-Notes/"
-alias nn="v ~/Dropbox/Obsidian/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
+alias vault="cd ~/Dropbox/vault/"
+alias notes="cd ~/Dropbox/vault/0-Fleeting-Notes/"
+alias lit="cd ~/Dropbox/vault/1-Literature-Notes/"
+alias perm="cd ~/Dropbox/vault/2-Permanent-Notes/"
+alias proj="cd ~/Dropbox/vault/3-Project-Notes/"
+alias nn="v ~/Dropbox/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
+alias dia='nvim -c ":VimwikiMakeDiaryNote"'
+alias vw='nvim -c ":VimwikiIndex"'
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
@@ -203,8 +207,13 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 # tmux
-alias t="tmux"
-alias ta="tmux attach"
+alias t="task"
+alias ta="task add"
+# khal
+alias k="khal"
+alias kls="khal list"
+alias cal="khal calendar"
+alias bat="batcat"
 
 #confirm before overwrite
 alias cp="cp -i -v"
