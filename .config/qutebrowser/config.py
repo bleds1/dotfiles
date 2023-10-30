@@ -14,7 +14,8 @@ config.set('content.notifications.enabled', True, 'https://mail.proton.me')
 config.bind('<space><r><v>', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#151515'
-c.url.start_pages=('/home/bledley/startpage/index.html')
+#c.url.start_pages=('/home/bledley/startpage/index.html')
+c.url.start_pages=('/home/bledley/startpage2/index.html')
 # Open video in Mpv
 config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
 config.bind(',m', 'spawn --detach mpv {url}')
@@ -26,7 +27,8 @@ config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
 #c.statusbar.show = 'never'
-c.tabs.show = 'never'
+#c.tabs.show = 'never'
+c.tabs.show = 'always'
 # Background color of the tab bar
 c.colors.tabs.bar.bg = '#151515'
 # Background color of unselected odd tabs
@@ -106,9 +108,9 @@ c.colors.completion.even.bg = '#151515'
 #c.zoom.default = '90%'
 
 # Vim as editor
-#c.editor.command = ['kitty', '-e', 'nvim', '{file}']
+c.editor.command = ['kitty', '-e', 'nvim', '{file}']
 #c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
-c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
+#c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
 # tabs
 c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
@@ -128,13 +130,12 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 # KEY BINDS
 config.bind('<Space><b><k>', 'tab-close')
+config.bind('<x>', 'tab-close')
 config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<Space><b><n>', 'tab-next')
-config.bind('<Space><b><p>', 'tab-prev')
+config.bind('<b><n>', 'tab-next')
+config.bind('<b><p>', 'tab-prev')
 config.bind('<r>', 'reload')
-config.bind('<space><n>', 'open -t /home/bledley/startpage/index.html')
-config.bind('<space><d>', 'open -t /home/bledley/startpage/index.html')
-config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
+config.bind('<t>', 'open -t /home/bledley/startpage2/index.html')
 config.bind('<alt-1>', 'tab-focus 1')
 config.bind('<alt-2>', 'tab-focus 2')
 config.bind('<alt-3>', 'tab-focus 3')
@@ -2305,7 +2306,7 @@ config.bind('<Ctrl-W>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 config.bind('<Ctrl-h>', 'home')
-config.bind('<Ctrl-p>', 'tab-pin')
+config.bind('<Alt-p>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
 # config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
 # config.bind('<F11>', 'fullscreen')
