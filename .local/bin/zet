@@ -3,7 +3,7 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/Obsidian/vault/0-Fleeting-Notes}
+ZROOT=${ZET_ROOT:=~/Dropbox/vault/0-Fleeting-Notes}
 
 name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
 content="---\ntitle:"
