@@ -300,7 +300,7 @@ Journal settings a little bit mingled up with agenda stuff, I may rearrange this
 #+begin_src emacs-lisp
 (after! org
 (setq!
-      org-journal-time-prefix "- "
+      ;;org-journal-time-prefix "- "
       org-journal-date-prefix "# "
       org-journal-time-format "%H:%M"
       org-journal-date-format "%Y-%m-%d"
@@ -327,42 +327,13 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 
 #+begin_src emacs-lisp
 (after! org
-(setq! org-capture-templates
-        '(("i" "TODO")
-          ("ii" "Todo" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-          "** TODO %?\nCREATED:%U\n")
-          ("ip" "Project" entry (file "~/Dropbox/roam/projects.org")
-          "** PROJECT %?%^{DEADLINE}p\nCREATED:%U\n" :empty-lines 1)
-          ("is" "Someday/Maybe" entry (file "~/Dropbox/roam/someday.org")
-          "* SOMEDAY %?\nCREATED:%U\n" :empty-lines 1)
-          ("ig" "Goal" plain (file "~/Dropbox/roam/goals.org")
-         (file "~/Dropbox/3_Resources/templates/tpl-goals.txt") :empty-lines 1)
-          ("n" "Note")
-           ("nn" "Quick Note" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-           "** %?\nCREATED:%U\n")
-           ("nj" "Journal entry" plain (function org-journal-find-location)
-                               "** %(format-time-string org-journal-time-format)\n  - %?")
-           ("ni" "Idea" entry (file "~/Dropbox/roam/ideas.org")
-           "* IDEA %?\nCREATED:%U\n")
-           ("m" "Mail ")
-           ("mf" "Follow Up" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-          "*** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-          "*** REVIEW Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
-         ("e" "Event" entry (file+olp "~/Dropbox/roam/events.org" "INBOX")
-          "** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-          ("t" "Text at point" entry (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-          "** %a\nCREATED:%U")
-        ("b" "Bookmark" plain (file+olp "~/Dropbox/roam/inbox.org" "INBOX")
-         "** %?")
-         ("f" "Expenses" plain (file+olp "~/Dropbox/roam/expenses.org" "INBOX")
-         "** %U - %^{Amount} %^{Summary} %^g" :prepend t)
-         ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
-         (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1)
-         ("r" "Reading List" plain (file+olp "~/Dropbox/roam/reading.org" "INBOX")
-          "** %?\nCREATED:%U" :empty-lines 1)
-         ("l" "Shopping List" plain (file "~/Dropbox/roam/shopping.org")
-         "* TODO %?" :empty-lines 0))))
+  (setq! org-capture-templates
+         '(("t" "Todo" plain (function org-journal-find-location)
+            "\n- [ ] %? #TODO" :empty-lines 1)
+           ("n" "Journal entry" plain (function org-journal-find-location)
+            "%(format-time-string org-journal-time-format) - %?" :empty-lines 1)
+           ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
+            (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1))))
 #+end_src
 
 ** Org Task keywords/faces
@@ -573,15 +544,10 @@ Take me to your leader. Convienient keybinds I use a lot.
 (map! :leader
       :desc "consult-find file"
       "/" 'consult-find)
-;; Consult find dir
-(map! :leader
-      :desc "consult-find file"
-      "-" 'consult-find)
 ;; Writeroom mde
 (map! :leader
       :desc "writeroom-mode"
       "z" 'writeroom-mode)
-
 ;; Writeroom mde
 (map! :leader
       :desc "rgrep"
