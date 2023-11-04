@@ -174,6 +174,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vim-maximizer",
     url = "https://github.com/szw/vim-maximizer"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
+  },
+  ["zen-mode.nvim"] = {
+    loaded = true,
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
