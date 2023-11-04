@@ -64,9 +64,9 @@
 ;
 (package! focus)
 ;;
-(package! md-roam
-  :recipe (:host github :repo "nobiot/md-roam"))
+;;(package! md-roam
+;;  :recipe (:host github :repo "nobiot/md-roam"))
 ;;
-(unpin! org-roam)
-(package! org-roam-ui)
+;;(unpin! org-roam)
+;;(package! org-roam-ui)
 ;;

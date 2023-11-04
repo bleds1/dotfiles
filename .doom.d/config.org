@@ -2,7 +2,7 @@
 #+ID: 2023_07_21_1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4
-#+LAST_MOD: [2023-10-16 21:09]
+#+LAST_MOD: [2023-11-02 11:39]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -28,7 +28,7 @@
   - [[#focus][Focus]]
 - [[#browser][Browser]]
 - [[#keybinds][Keybinds]]
-  - [[#regularly-used-files][Regularly used files]]
+  - [[#regularly-used-fileskeybinds][Regularly used files/keybinds]]
   - [[#make-new-buffers-orgmd-easier][Make new buffers org/md easier]]
   - [[#leader-keybinds][Leader Keybinds]]
 - [[#dired][Dired]]
@@ -53,7 +53,7 @@
 
 * General Settings
 ** Lexical binding
-Lexical binding needs to be enabled in comments at the top of the config for certain keybinds to work.
+Lexical binding needs to be enabled in comments at e top of the config for certain keybinds to work.
 
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
@@ -141,7 +141,7 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 (setq writeroom-mode-line t)
 (setq writeroom-width 120)
 ;;
-(setq +zen-text-scale 0.3)
+(setq +zen-text-scale 0.4)
 ;; Highlight indent guide
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;; Cursor
@@ -149,6 +149,15 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 (setq evil-normal-state-cursor '(box "#80C2A2")
       evil-insert-state-cursor '(bar "#47FFE0")
       evil-visual-state-cursor '(hollow "#c280A0"))
+;;hl-todo mode
+(setq global-hl-todo-mode t)
+(setq hl-todo-keyword-faces
+      '(("TODO"   . "#c280A0")
+        ("#p1"  . "#e85960")
+        ("#p2"  . "#e87559")
+        ("#p3"  . "#5990E8")
+        ("REVIEW"  . "#80c2a2")
+        ("RESEARCH"   . "#80c2a2")))
 #+end_src
 
 ** Modeline
@@ -178,7 +187,7 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 
 #+begin_src emacs-lisp
 (after! org
-(setq org-directory "~/Dropbox/roam/")
+(setq org-directory "~/Dropbox/vault/")
 ;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-agenda-files
 '("~/Dropbox/roam/archive.org" "~/Dropbox/roam/events.org" "~/Dropbox/roam/goals.org" "~/Dropbox/roam/reading.org" "~/Dropbox/roam/repeat.org" "~/Dropbox/roam/shopping.org" "~/Dropbox/roam/someday.org" "~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org")))
@@ -291,12 +300,12 @@ Journal settings a little bit mingled up with agenda stuff, I may rearrange this
 #+begin_src emacs-lisp
 (after! org
 (setq!
-      org-journal-time-prefix "** "
-      org-journal-date-prefix "* "
+      org-journal-time-prefix "- "
+      org-journal-date-prefix "# "
       org-journal-time-format "%H:%M"
       org-journal-date-format "%Y-%m-%d"
-      org-journal-file-format "%Y_%m_%d.org"
-      org-journal-dir "~/Dropbox/roam/journals/"
+      org-journal-file-format "%Y-%m-%d.md"
+      org-journal-dir "~/Dropbox/vault/diary/"
       org-superstar-headline-bullets-list '("◉" "○" "○" "○" "○" "○" "○")
       org-hide-emphasis-markers t
       org-agenda-start-with-log-mode t
@@ -404,20 +413,20 @@ Org roam and dailies directory and capture templates for daily note. Capture tem
 [[https://github.com/org-roam/org-roam]]
 #+begin_src emacs-lisp
 ;; Org-roam
-(after! org
-(setq org-roam-directory "~/Dropbox/roam/pages/")
-(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
-(setq org-roam-completion-everywhere t)
-(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
-   '(("o" "Node.org" plain
-      "%?"
-      :if-new (file+head "${slug}.org" "
-#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n#+LAST_MOD:\n---"))))
-(setq org-roam-dailies-capture-templates
-    '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
-       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n#+LAST_MOD:\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
+;;(after! org
+;;(setq org-roam-directory "~/Dropbox/vault/")
+;;(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+;;(setq org-roam-completion-everywhere t)
+;;(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
+;;   '(("o" "Node.org" plain
+;;      "%?"
+;;      :if-new (file+head "${slug}.org" "
+;;#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n#+LAST_MOD:\n---"))))
+;;(setq org-roam-dailies-capture-templates
+;;    '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
+;;       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n#+LAST_MOD:\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
-(setq org-roam-dailies-directory "~/Dropbox/roam/journals/"))
+;;(setq org-roam-dailies-directory "~/Dropbox/vault/diary/"))
 ;;
 #+end_src
 
@@ -452,7 +461,7 @@ Load links in Qutebrowser by default.
  #+end_src
 
 * Keybinds
-** Regularly used files
+** Regularly used files/keybinds
 The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/][zzamboni.org]] "Note that this requires lexical binding to be enabled (see top of page) so that the lambda creates a closure, otherwise the keybindings don’t work."
 
 #+begin_src emacs-lisp
@@ -464,23 +473,27 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
-(zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
-(zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
-(zz/add-file-keybinding "C-c a" "~/Dropbox/roam/areas.org" "areas.org")
-(zz/add-file-keybinding "C-c x" "~/Dropbox/roam/projects.org" "projects.org")
-(zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
-;;
-(global-set-key (kbd "C-c w") 'count-words)
+;; (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
+;; (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
+;; (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
+;; (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/areas.org" "areas.org")
+;; (zz/add-file-keybinding "C-c x" "~/Dropbox/roam/projects.org" "projects.org")
+ (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
+;; ;;
+(global-set-key (kbd "C-c g") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
-(global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
-(global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
-(global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
+;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
+;; (global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
+;; (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
 (global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
 (define-key global-map (kbd "C-c l") #'elfeed)
 ;;
+(define-key evil-motion-state-map (kbd "C-h") #'evil-window-left)
+(define-key evil-motion-state-map (kbd "C-j") #'evil-window-down)
+(define-key evil-motion-state-map (kbd "C-k") #'evil-window-up)
+(define-key evil-motion-state-map (kbd "C-l") #'evil-window-right)
 #+end_src
 
 ** Make new buffers org/md easier
@@ -527,13 +540,13 @@ Make a new org and md buffer easier. Stolen from and thanks to [[https://tecosau
 Take me to your leader. Convienient keybinds I use a lot.
 
 #+begin_src emacs-lisp
-(map! :leader
-      (:prefix "n"
-               :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
-;
-(map! :leader
-      (:prefix "n"
-               :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
+;(map! :leader
+;      (:prefix "n"
+;               :desc "Go to today's Daily Note" "d" #'org-roam-dailies-goto-today))
+;;
+;(map! :leader
+;      (:prefix "n"
+;               :desc "Go to yesterday's Daily Note" "D" #'org-roam-dailies-goto-yesterday))
 ;;
 ;; Remap space, space to switch to buffer instead of local files
 (map! :leader
@@ -544,6 +557,10 @@ Take me to your leader. Convienient keybinds I use a lot.
 (map! :leader
       :desc "Vterm toggle"
       "v" '+vterm/toggle)
+;; Easier key for terminal full window
+(map! :leader
+      :desc "Vterm here"
+      "v" '+vterm/here)
 ;; Writeroom increase text width
 (map! :leader
       :desc "Writeroom increase width"
@@ -552,6 +569,23 @@ Take me to your leader. Convienient keybinds I use a lot.
 (map! :leader
       :desc "Writeroom increase width"
       "-" 'writeroom-decrease-width)
+;; Consult find file
+(map! :leader
+      :desc "consult-find file"
+      "/" 'consult-find)
+;; Consult find dir
+(map! :leader
+      :desc "consult-find file"
+      "-" 'consult-find)
+;; Writeroom mde
+(map! :leader
+      :desc "writeroom-mode"
+      "z" 'writeroom-mode)
+
+;; Writeroom mde
+(map! :leader
+      :desc "rgrep"
+      "r" 'rgrep)
 #+end_src
 
 * Dired
@@ -684,7 +718,8 @@ Elfeed settings
 Directories that show as projects in projectile,
 
  #+begin_src emacs-lisp
-(setq projectile-project-search-path '("~/dotfiles/" "~/bleds_blog/" "~/Dropbox/roam/" "~/sba/"))
+;(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/vault" "~/Dropbox/roam/" "~/sba/"))
+(setq projectile-project-search-path '("/tmp/noproject"))
  #+end_src
 
 * Snippet Functions
@@ -727,7 +762,7 @@ Press this all the time for journal entries. Convienient keybind is above.
 ;; Timestamp
 (defun now ()
  (interactive)
- (insert (format-time-string "** %H:%M")
+ (insert (format-time-string "- %H:%M")
  ))
 ;;
 #+end_src
@@ -737,19 +772,19 @@ Makes roam's features also consider Markdown files as part of the database.
 [[https://github.com/nobiot/md-roam]]
 
 #+begin_src emacs-lisp
-(use-package! md-roam
-  :after org-roam
-  :config
-  (set-company-backend! 'markdown-mode 'company-capf)
-  (setq org-roam-file-extensions '("org" "md"))
-  (md-roam-mode 1)
-  (org-roam-db-autosync-mode 1)
-  (add-to-list 'org-roam-capture-templates
-               '("m" "Node.md" plain "" :target
-                 (file+head "${slug}.md"
-                            "---\ntitle: ${title}\nid: %<%Y_%m_%d_%H%M>\ndate: %U\ntags: \n---\n")
-                 :unnarrowed t))
-  )
+;       (use-package! md-roam
+;  :after org-roam
+;  :config
+;  (set-company-backend! 'markdown-mode 'company-capf)
+;  (setq org-roam-file-extensions '("org" "md"))
+;  (md-roam-mode 1)
+;  (org-roam-db-autosync-mode 1)
+;  (add-to-list 'org-roam-capture-templates
+;               '("m" "Node.md" plain "" :target
+;                 (file+head "${slug}.md"
+;                            "---\ntitle: ${title}\nid: %<%Y-%m-%d-%H%M>\ntags: \n---\n")
+;                 :unnarrowed t))
+;  )
 #+end_src
 
 * Denote
@@ -761,7 +796,7 @@ Makes roam's features also consider Markdown files as part of the database.
 (require 'denote)
 
 ;; Remember to check the doc strings of those variables.
-(setq denote-directory (expand-file-name "~/Dropbox/Obsidian/vault/0 Fleeting Notes/"))
+(setq denote-directory (expand-file-name "~/Dropbox/vault/0-Fleeting-Notes/"))
 (setq denote-known-keywords '(""))
 (setq denote-infer-keywords nil)
 (setq denote-sort-keywords t)
@@ -831,30 +866,30 @@ By default the accent colour for headers etc. in org-msg emails are red. This ch
 Very pretty way to view your roam database. Useful for interlinking notes and ideas.
 [[https://github.com/org-roam/org-roam-ui]]
 #+begin_src emacs-lisp
-(use-package! websocket
-    :after org-roam)
-
-(use-package! org-roam-ui
-    :after org-roam ;; or :after org
+;(use-package! websocket
+;    :after org-roam)
+;
+;(use-package! org-roam-ui
+;    :after org-roam ;; or :after org
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
 ;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start nil))
+;    :config
+;    (setq org-roam-ui-sync-theme t
+;          org-roam-ui-follow t
+;          org-roam-ui-update-on-save t
+;          org-roam-ui-open-on-start nil))
 #+end_src
 
 * Timestamp
 #+begin_src emacs-lisp
-(after! org
-  (setq time-stamp-active t
-    time-stamp-start "#\\+LAST_MOD:[ \t]*"
-    time-stamp-end "$"
-    time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
-(add-hook 'before-save-hook 'time-stamp))
+;(after! org
+;  (setq time-stamp-active t
+;    time-stamp-start "#\\+LAST_MOD:[ \t]*"
+;    time-stamp-end "$"
+;    time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
+;(add-hook 'before-save-hook 'time-stamp))
 #+end_src
 
 * Load other config files
