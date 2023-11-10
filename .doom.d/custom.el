@@ -38,6 +38,8 @@
      ("https://edwardsnowden.substack.com/feed" substack blog)
      ("https://louisestigell.substack.com/feed" substack blog)))
  '(highlight-indent-guides-method 'character)
+ '(org-agenda-files
+   '("~/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types
@@ -45,7 +47,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias)) t))
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

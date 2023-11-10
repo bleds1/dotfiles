@@ -1,8 +1,9 @@
 #+TITLE: Bledley's Doom Emacs Literate Config
-#+ID: 2023_07_21_1853
+#+ID: 2023-07-21-1853
 #+PROPERTY: header-args:emacs-lisp
-#+OPTIONS: toc:4
-#+LAST_MOD: [2023-11-02 11:39]
+#+OPTIONS: toc:4 num:nil
+#+STARTUP: showeverything
+#+LAST_MOD: [2023-11-10 20:39]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -71,12 +72,12 @@ When I make a new split ask which buffer I'd like displayed there.
 #+end_src
 
 ** Window pop up rules
-I like Org-Agenda, EWW, to pop up on the right hand side 50% of the screen.
+I like certain things to pop up on the right hand side 50% of the screen.
 
 #+begin_src emacs-lisp
-;;(set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
-(set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
+(set-popup-rule! "^\\*notmuch*" :side 'bottom :size 0.50 :select t :ttl nil)
+;(set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 #+end_src
 
 ** Delete Files to trash, Auto revert changed buffers, change undo limit and add scroll margin.
@@ -86,7 +87,8 @@ The undo limit is set to 80mb and fine-undo is a more granular way of undoing.
 Scroll margin at the top and bottom of the page is 2.
 
 #+begin_src emacs-lisp
-(setq-default delete-by-moving-to-trash t)
+(setq delete-by-moving-to-trash t
+      trash-directory "~/.local/share/Trash/files/")
 (global-auto-revert-mode 1)
 (setq undo-limit 80000000
       evil-want-fine-undo t
@@ -112,19 +114,19 @@ When opening a new emacsclient frame it will be on scratchpad in org mode and no
 #+begin_src emacs-lisp
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message nil)
-(setq initial-major-mode 'markdown-mode)
+(setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 ;(after! persp-mode
 ; (setq persp-emacsclient-init-frame-behaviour-override "main"))
 #+end_src
 
 ** Fonts
-Iosevka is a pretty & popular font ..I either use that or Jet Brains Mono
+I usually use Jet Brains Mono or Iosevka..
 
  #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
-     doom-big-font (font-spec :family "Iosevka" :size 14 :weight 'Medium)
-     doom-variable-pitch-font (font-spec :family "Iosevka" :size 14 :weight 'Medium))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 13)
+     doom-big-font (font-spec :family "JetBrains Mono" :size 14)
+     doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
  #+end_src
 
 ** Visual/Theme
@@ -150,14 +152,15 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
       evil-insert-state-cursor '(bar "#47FFE0")
       evil-visual-state-cursor '(hollow "#c280A0"))
 ;;hl-todo mode
-(setq global-hl-todo-mode t)
+(after! hl-todo
+(setq global-hl-todo-mode 1)
 (setq hl-todo-keyword-faces
       '(("TODO"   . "#c280A0")
         ("#p1"  . "#e85960")
         ("#p2"  . "#e87559")
         ("#p3"  . "#5990E8")
         ("REVIEW"  . "#80c2a2")
-        ("RESEARCH"   . "#80c2a2")))
+        ("RESEARCH"   . "#80c2a2"))))
 #+end_src
 
 ** Modeline
@@ -187,10 +190,12 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 
 #+begin_src emacs-lisp
 (after! org
+(set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
 (setq org-directory "~/Dropbox/vault/")
 ;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-agenda-files
-'("~/Dropbox/roam/archive.org" "~/Dropbox/roam/events.org" "~/Dropbox/roam/goals.org" "~/Dropbox/roam/reading.org" "~/Dropbox/roam/repeat.org" "~/Dropbox/roam/shopping.org" "~/Dropbox/roam/someday.org" "~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org")))
+'("~/Dropbox/vault/todo.org"
+  "~/Dropbox/vault/events.org")))
 #+end_src
 
 ** Org Agenda
@@ -204,8 +209,7 @@ Custom Agenda views and keybind/function
 ;;
 ;; map leader a (previously act on?) to my agenda view
 (map! :leader
-      :desc "My agenda custom"
-      "a" #'my-agenda-custom)
+      :desc "My agenda custom" "a" #'my-agenda-custom)
 ;;
 ;; Org agenda custom view
 (setq org-agenda-custom-commands
@@ -213,24 +217,28 @@ Custom Agenda views and keybind/function
       ((agenda ""
         ((org-agenda-span 'day)
          (org-agenda-overriding-header "Day Overview:")))
-       (tags-todo ":@refile:"
-                  ((org-agenda-overriding-header "Inbox (@refile):")))
-       (tags "PRIORITY=\"A\""
+       (tags "p1"
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High Priority:")))
-       (todo "STARTED"
-             ((org-agenda-overriding-header "Active:")))
-       (todo "NEXT"
-             ((org-agenda-overriding-header "Next Actions:")))
-       (todo ""
+                 (org-agenda-overriding-header "#p1:")))
+       (tags "p2"
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "#p2:")))
+       (tags "p3"
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "#p3:")))
+ ;      (todo "STARTED"
+ ;            ((org-agenda-overriding-header "Active:")))
+ ;     (todo "WAITING"
+ ;           ((org-agenda-overriding-header "Waiting:")))
+        (todo ""
              ((org-agenda-files
-               '("~/Dropbox/roam/projects.org" "~/Dropbox/roam/areas.org" "~/Dropbox/roam/inbox.org" "~/Dropbox/roam/shopping.org"))
+               '("~/Dropbox/vault/todo.org"))
               (org-agenda-overriding-header "Other Tasks:"))))
       nil)))
 #+end_src
 
 ** Org/Agenda Settings
-Other agenda settings. Can't for life of me get time grid to work, please send help..
+Other agenda settings. Can't get time grid to work, would really like that... please send help..
 
 #+begin_src emacs-lisp
 (after! org
@@ -242,25 +250,17 @@ org-agenda-use-time-grid t
 org-agenda-current-time-string
 "! now ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈")
 ;;
-(setq org-attach-id-dir "~/Dropbox/roam/assets/")
+(setq org-attach-id-dir "~/Dropbox/vault/5-Resources/Assets/")
 (setq org-startup-folded t)
 (setq org-log-done 'time)
 (setq org-clock-into-drawer t)
 (setq org-deadline-warning-days 0)
 (setq org-agenda-span 5
       org-agenda-start-day "today")
-(setq org-refile-targets (quote (("~/Dropbox/roam/projects.org" :maxlevel . 6)
-                                 ("~/Dropbox/roam/inbox.org" :level . 6)
-                                 ("~/Dropbox/roam/areas.org" :level . 6)
-                                 ("~/Dropbox/roam/repeat.org" :level . 6)
-                                 ("~/Dropbox/roam/bookmarks.org" :level . 6)
-                                 ("~/Dropbox/roam/events.org" :level . 6)
-                                 ("~/Dropbox/roam/goals.org" :level . 6)
-                                 ("~/Dropbox/roam/archive.org" :level . 6)
-                                 ("~/Dropbox/roam/reading.org" :level . 6)
-                                 ("~/Dropbox/roam/shopping.org" :level . 6)
-                                 ("~/Dropbox/roam/ideas.org" :level . 6)
-                                 ("~/Dropbox/roam/someday.org" :level . 6)))))
+(setq org-refile-targets (quote (("~/Dropbox/vault/todo.org" :maxlevel . 6)
+                                 ("~/Dropbox/vault/6-Archives/archive.org" :maxlevel . 6)
+                                 ("~/Dropbox/vault/events.org" :maxlevel . 6)
+                                 ("~/Dropbox/vault/someday.org" :level . 6)))))
 (after! org
 (setq! org-agenda-use-tag-inheritance t
       org-ellipsis " ▾ "
@@ -300,16 +300,17 @@ Journal settings a little bit mingled up with agenda stuff, I may rearrange this
 #+begin_src emacs-lisp
 (after! org
 (setq!
-      ;;org-journal-time-prefix "- "
-      org-journal-date-prefix "# "
+      org-journal-time-prefix "** "
+      org-journal-date-prefix "* "
       org-journal-time-format "%H:%M"
       org-journal-date-format "%Y-%m-%d"
-      org-journal-file-format "%Y-%m-%d.md"
-      org-journal-dir "~/Dropbox/vault/diary/"
+      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-dir "~/Dropbox/vault/journal/"
       org-superstar-headline-bullets-list '("◉" "○" "○" "○" "○" "○" "○")
       org-hide-emphasis-markers t
       org-agenda-start-with-log-mode t
       org-log-into-drawer t
+      org-log-done t
       org-agenda-max-todos 10))
 ;;
 (defun org-journal-find-location ()
@@ -328,10 +329,25 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 #+begin_src emacs-lisp
 (after! org
   (setq! org-capture-templates
-         '(("t" "Todo" plain (function org-journal-find-location)
-            "\n- [ ] %? #TODO" :empty-lines 1)
-           ("n" "Journal entry" plain (function org-journal-find-location)
-            "%(format-time-string org-journal-time-format) - %?" :empty-lines 1)
+         '(("t" "Todo" entry (file "~/Dropbox/vault/todo.org")
+            "* TODO %?")
+           ("j" "Journal entry" plain (function org-journal-find-location)
+            "** %(format-time-string org-journal-time-format) %?" :empty-lines 1 :jump-to-captured t)
+           ("n" "Note (with Denote)" plain
+                 (file denote-last-path)
+                 #'denote-org-capture
+                 :no-save t
+                 :immediate-finish nil
+                 :kill-buffer t
+                 :jump-to-captured t)
+           ("s" "Someday" entry (file "~/Dropbox/vault/someday.org")
+            "* SOMEDAY %?")
+           ("b" "Text at point" entry (file "~/Dropbox/vault/todo.org")
+            "* TODO %a")
+           ("e" "Event" entry (file+olp "~/Dropbox/vault/events.org" "2023")
+            "*** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
+           ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "INBOX")
+            "** %?\nCREATED:%U" :empty-lines 1)
            ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
             (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1))))
 #+end_src
@@ -344,29 +360,25 @@ Todo, task status names, colours and style.
 (setq! org-todo-keywords
       '((sequence
          "TODO(t)"
-         "STARTED(s)"
+         "ACTIVE(a)"
          "NEXT(n)"
-         "IDEA(i)"
          "GOAL(g)"
-         "AREA(a)"
          "PROJECT(p)"
          "EVENT(e)"
          "REVIEW(v)"
          "RESEARCH(r)"
-         "SOMEDAY(y)"
+         "SOMEDAY(s)"
+         "WAITING(w)"
          "|"
          "DONE(d)"
-         "WAITING(w)"
          "CANCELLED(c)" ))))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#C280a0" :weight bold)
-       ("STARTED" :foreground "#66FFD6" :weight bold)
+       ("ACTIVE" :foreground "#66FFD6" :weight bold)
        ("NEXT" :foreground "#FFFBB8" :weight bold)
-       ("IDEA" :foreground "#EA99C0" :weight bold)
        ("SOMEDAY" :foreground "#AAAAE1" :weight bold)
        ("WAITING" :foreground "#AAAAE1" :weight bold)
        ("GOAL" :foreground "#65DDA3" :weight bold)
-       ("AREA" :foreground "#8C8DFF" :weight bold)
        ("PROJECT" :foreground "#8C8DFF" :weight bold)
        ("EVENT" :foreground "#5099DA" :weight bold)
        ("REVIEW" :foreground "#8C8DFF" :weight bold)
@@ -397,7 +409,7 @@ Org roam and dailies directory and capture templates for daily note. Capture tem
 ;;    '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
 ;;       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n#+LAST_MOD:\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
 ;;
-;;(setq org-roam-dailies-directory "~/Dropbox/vault/diary/"))
+;;(setq org-roam-dailies-directory "~/Dropbox/vault/journal/"))
 ;;
 #+end_src
 
@@ -444,27 +456,20 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-;; (zz/add-file-keybinding "C-c i" "~/Dropbox/roam/inbox.org" "inbox.org")
-;; (zz/add-file-keybinding "C-c e" "~/Dropbox/roam/events.org" "events.org")
-;; (zz/add-file-keybinding "C-c r" "~/Dropbox/roam/reading.org" "reading.org")
-;; (zz/add-file-keybinding "C-c a" "~/Dropbox/roam/areas.org" "areas.org")
-;; (zz/add-file-keybinding "C-c x" "~/Dropbox/roam/projects.org" "projects.org")
- (zz/add-file-keybinding "C-c c" "~/dotfiles/.doom.d/config.org" "config.org")
+(zz/add-file-keybinding "C-c t" "~/Dropbox/vault/todo.org" "todo.org")
+ (zz/add-file-keybinding "C-c e" "~/Dropbox/vault/events.org" "events.org")
+(zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "reading.org")
 ;; ;;
 (global-set-key (kbd "C-c g") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
-;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
-;; (global-set-key (kbd "C-c y") 'org-roam-dailies-goto-yesterday)
-;; (global-set-key (kbd "C-c m") 'global-hide-mode-line-mode)
+(global-set-key (kbd "C-c d") 'org-journal-open-current-journal-file)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
 (global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
 (define-key global-map (kbd "C-c l") #'elfeed)
-;;
-(define-key evil-motion-state-map (kbd "C-h") #'evil-window-left)
-(define-key evil-motion-state-map (kbd "C-j") #'evil-window-down)
-(define-key evil-motion-state-map (kbd "C-k") #'evil-window-up)
-(define-key evil-motion-state-map (kbd "C-l") #'evil-window-right)
+(define-key global-map (kbd "C-c c") #'org-capture)
+(define-key global-map (kbd "C-c m") #'notmuch-search)
+(define-key global-map (kbd "C-c ;") #'now)
 #+end_src
 
 ** Make new buffers org/md easier
@@ -531,7 +536,7 @@ Take me to your leader. Convienient keybinds I use a lot.
 ;; Easier key for terminal full window
 (map! :leader
       :desc "Vterm here"
-      "v" '+vterm/here)
+      "V" '+vterm/here)
 ;; Writeroom increase text width
 (map! :leader
       :desc "Writeroom increase width"
@@ -586,13 +591,13 @@ TODO: Y for cut file isn't working correctly. I want this to be as ranger like a
 #+end_src
 
 ** Simple Dired
-I don't need to see all the info columns. Can enable that when needed with "(" . I prefer the minimal look a bit like Ranger, I have 'all the icons' package working here too.
+I always need to see all the info columns. Can enable that when needed with "(" . I prefer the minimal look a bit like Ranger, especially on mobile where screen space is limited. I have 'all the icons' package working here too.
 
 #+begin_src emacs-lisp
-(defun my-dired-mode-setup ()
-  "to be run as hook for `dired-mode'."
-  (dired-hide-details-mode 1))
-(add-hook 'dired-mode-hook 'my-dired-mode-setup)
+;(defun my-dired-mode-setup ()
+;  "to be run as hook for `dired-mode'."
+;  (dired-hide-details-mode 1))
+;(add-hook 'dired-mode-hook 'my-dired-mode-setup)
 #+end_src
 
 * Elfeed
@@ -681,7 +686,7 @@ Elfeed settings
 #+end_src
 
 * Projectile
-Directories that show as projects in projectile,
+Directories that show as projects in projectile. I don't really like this feature. I don't like to get trapped in things Emacs thinks are projects..
 
  #+begin_src emacs-lisp
 ;(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/vault" "~/Dropbox/roam/" "~/sba/"))
@@ -695,7 +700,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 #+begin_src emacs-lisp
 (defun my-md-front-matter ()
  (interactive)
- (insert "---\nid: %<%Y_%m_%d_%H%M>\ntags: \n---\n")
+ (insert "---\nid: %<%Y-%m-%d-%H%M>\ntags: \n---\n")
  )
 #+end_src
 
@@ -703,7 +708,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 #+begin_src emacs-lisp
 (defun my-org-front-matter ()
  (interactive)
- (insert "#+TITLE: \n#+ID: \n#+FILETAGS: \n")
+ (insert "#+TITLE:\n#+ID: \n#+FILETAGS: \n#+OPTIONS: num:nil toc:nil author:nil\n#+STARTUP: showeverything")
  )
 #+end_src
 
@@ -728,7 +733,7 @@ Press this all the time for journal entries. Convienient keybind is above.
 ;; Timestamp
 (defun now ()
  (interactive)
- (insert (format-time-string "- %H:%M")
+ (insert (format-time-string "** %H:%M" )
  ))
 ;;
 #+end_src
@@ -766,7 +771,7 @@ Makes roam's features also consider Markdown files as part of the database.
 (setq denote-known-keywords '(""))
 (setq denote-infer-keywords nil)
 (setq denote-sort-keywords t)
-(setq denote-file-type "markdown-yaml") ; Org is the default, set others here
+(setq denote-file-type nil) ; Org is the default, set others here
 (setq denote-prompts '(nil))
 (setq denote-excluded-directories-regexp nil)
 (setq denote-excluded-keywords-regexp nil)
@@ -786,7 +791,11 @@ id:       %2$s
 tags:   %3$s
 ---\n")
 ;
-
+(setq denote-org-front-matter
+"#+TITLE:      %s
+#+ID:       %s
+#+FILETAGS:   %s
+\n")
 ;; If you use Markdown or plain text files (Org renders links as buttons
 ;; right away)
 (add-hook 'find-file-hook #'denote-link-buttonize-buffer)
@@ -829,7 +838,7 @@ By default the accent colour for headers etc. in org-msg emails are red. This ch
 #+end_src
 
 * Org-roam UI
-Very pretty way to view your roam database. Useful for interlinking notes and ideas.
+Very pretty way to view your roam database. Useful for interlinking notes and ideas. (Disabled for now - not using org-roam currently)
 [[https://github.com/org-roam/org-roam-ui]]
 #+begin_src emacs-lisp
 ;(use-package! websocket
@@ -850,12 +859,12 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 
 * Timestamp
 #+begin_src emacs-lisp
-;(after! org
-;  (setq time-stamp-active t
-;    time-stamp-start "#\\+LAST_MOD:[ \t]*"
-;    time-stamp-end "$"
-;    time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
-;(add-hook 'before-save-hook 'time-stamp))
+(after! org
+  (setq time-stamp-active t
+    time-stamp-start "#\\+LAST_MOD:[ \t]*"
+    time-stamp-end "$"
+    time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
+(add-hook 'before-save-hook 'time-stamp))
 #+end_src
 
 * Load other config files
