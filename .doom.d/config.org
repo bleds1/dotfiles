@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showeverything
-#+LAST_MOD: [2023-11-10 20:39]
+#+LAST_MOD: [2023-11-11 19:40]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -348,8 +348,8 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
             "*** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
            ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "INBOX")
             "** %?\nCREATED:%U" :empty-lines 1)
-           ("w" "Weekly Review" plain (file+datetree "~/Dropbox/roam/weekly.org")
-            (file "~/Dropbox/3_Resources/templates/tpl-weekly_review.txt") :empty-lines 1))))
+           ("w" "Weekly Review" plain (file buffer-name)
+            (file "~/Dropbox/vault/5-Resources/Templates/tpl-weekly-review.txt") :empty-lines 1))))
 #+end_src
 
 ** Org Task keywords/faces
@@ -390,6 +390,9 @@ Todo, task status names, colours and style.
    '(("@habit" :foreground "#C280a0")
      ("@important" :foreground "#c280a0"))))
 #+end_src
+
+#+RESULTS:
+: :\(@\(?:\(?:habi\|importan\)t\)\):
 
 ** Org Roam
 Org roam and dailies directory and capture templates for daily note. Capture templates for both org and markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
