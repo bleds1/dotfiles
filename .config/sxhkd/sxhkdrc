@@ -2,13 +2,9 @@ super + Escape
         pkill =USR1 -x sxhkd
 
 # Launching Programs
-# Terminal (Keeping this one in i3 just in case)
-#super + t
-#        kitty
-# Open GUI Programs
 # Browser
 super + b
-      vivaldi-stable
+      qutebrowser
 # Ranger
 super + period; period
        kitty -e ranger
@@ -26,26 +22,16 @@ super + n
 # Rofi emoji
 super + m
       rofi -modi emoji -show emoji
-# Obsidian
-super + o
-      obsidian
-# Freetube
-super + y
-      freetube
-# Gpick
-super + g
-      gpick
-# vim
-super + v
-       kitty -e zet
-#  kitty -e nvim /home/bledley/Dropbox/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md
+# # Freetube
+ super + y
+       freetube
+# # Gpick
+ super + g
+       gpick
 # Rofi
 # Run Launcher
 super + x
        rofi -show run
-# Thunderbird
-#super + e; m
-#     thunderbird
 # Window swticher
 super + comma
        rofi -show window
@@ -68,24 +54,24 @@ super + shift; p
 super +z
       xflock4
 # Emacs (super + e followed by another key)
-#super + e; e
-#  emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
-#super + b; i
-#    emacsclient -c -a 'emacs' --eval '(ibuffer)'
-#super + e; d
-#    emacsclient -c -a 'emacs' --eval '(dired nil)'
-#super + e; l
-#   emacsclient -c -a 'emacs' --eval '(elfeed)'
-#super + e; n
-#    emacsclient -c -a 'emacs' --eval '(denote)'
-#super + e; m
-#    emacsclient -c -a 'emacs' --eval '(my-mu4e-all-mail)'
-#super + e; c
-#    emacsclient -c -a 'emacs' --eval '(compose-mail)'
-#super + e; j
-#    emacsclient -c -a 'emacs' --eval '(org-roam-dailies-goto-today)'
-#super + e; i
-#    emacsclient -c -a 'emacs' ~/Dropbox/roam/inbox.org
+super + e; e
+  emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
+super + e; b
+    emacsclient -c -a 'emacs' --eval '(ibuffer)'
+super + e; d
+    emacsclient -c -a 'emacs' --eval '(dired nil)'
+super + e; l
+   emacsclient -c -a 'emacs' --eval '(elfeed)'
+super + e; n
+    emacsclient -c -a 'emacs' --eval '(denote)'
+super + e; m
+    emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
+super + e; c
+    emacsclient -c -a 'emacs' --eval '(compose-mail)'
+super + e; j
+    emacsclient -c -a 'emacs' --eval '(org-journal-open-current-journal-file)'
+#super + e; t
+#    emacsclient -c -a 'emacs' ~/Dropbox/vault/todo.org
 # i3 windows
-super +w; c
+super +w; x
  i3-msg kill
