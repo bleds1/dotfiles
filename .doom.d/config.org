@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showeverything
-#+LAST_MOD: [2023-11-16 13:37]
+#+LAST_MOD: [2023-11-16 22:30]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -49,12 +49,12 @@
 - [[#org-msg][Org-msg]]
   - [[#visuals][Visuals]]
 - [[#org-roam-ui][Org-roam UI]]
-- [[#timestamp-1][Timestamp]]
+- [[#timestamp-last-modified][Timestamp (Last modified)]]
 - [[#load-other-config-files][Load other config files]]
 
 * General Settings
 ** Lexical binding
-Lexical binding needs to be enabled in comments at e top of the config for certain keybinds to work.
+Lexical binding needs to be enabled in comments at the top of the config for certain keybinds to work.
 
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
@@ -110,19 +110,19 @@ Auto save is on.
 
 ** Initial buffer settings
 I used to launch to a nice dashboard but now I realise it is only eye candy and not all that useful. Launch me into an empty scratch pad so I can just start writing something.
-When opening a new emacsclient frame it will be on scratchpad in org mode and not make multiple frames. The main workspace is always overwritten. "C-c s" is the shortcut to '*scratch*'
+"C-c s" is the shortcut to '*scratch*'
 
 #+begin_src emacs-lisp
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message nil)
-(setq initial-major-mode 'org-mode)
+(setq initial-major-mode 'lisp-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 ;(after! persp-mode
 ; (setq persp-emacsclient-init-frame-behaviour-override "main"))
 #+end_src
 
 ** Fonts
-I usually use Jet Brains Mono or Iosevka..
+I usually use Jet Brains Mono or Iosevka..also like the variable font sizes to be pretty consistent, more like the terminal version.
 
  #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13)
@@ -234,7 +234,7 @@ Custom Agenda views and keybind/function. Simple view I use most of the time sho
        (tags "p3"
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                  (org-agenda-overriding-header "#p3:")))
- ;      (todo "STARTED"
+ ;      (todo "ACTIVE"
  ;            ((org-agenda-overriding-header "Active:")))
  ;     (todo "WAITING"
  ;           ((org-agenda-overriding-header "Waiting:")))
@@ -417,14 +417,15 @@ Org roam and dailies directory and capture templates for daily note. Capture tem
 ;;(setq org-roam-directory "~/Dropbox/vault/")
 ;;(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
 ;;(setq org-roam-completion-everywhere t)
+;;(setq org-roam-database-autosync-mode t)?? TODO Research this line before activating
 ;;(setq org-roam-capture-templates ; theres something wrong with either this or the capture template below causing an error
 ;;   '(("o" "Node.org" plain
 ;;      "%?"
 ;;      :if-new (file+head "${slug}.org" "
-;;#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: Seedling🌱\n#+LAST_MOD:\n---"))))
+;;#+TITLE: ${TITLE}\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: \n#+LAST_MOD:\n"))))
 ;;(setq org-roam-dailies-capture-templates
 ;;    '(("d" "Daily Note" entry "* %<%I:%M %p>: %?"
-;;       :if-new (file+head "%<%Y_%m_%d>.org" "#+TITLE: %<%Y_%m_%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: fleeting\n#+LAST_MOD:\n---\n* What's on your mind?\n* %<%Y-%m-%d>\n"))))
+;;       :if-new (file+head "%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n#+ID: %<%Y-%m-%d-%H%M>\n#+FILETAGS: :fleeting:dailynote:\n#+LAST_MOD:\n---\n* %<%Y-%m-%d>\n"))))
 ;;
 ;;(setq org-roam-dailies-directory "~/Dropbox/vault/journal/"))
 ;;
@@ -609,7 +610,7 @@ TODO: Y for cut file isn't working correctly. I want this to be as ranger like a
 #+end_src
 
 ** Simple Dired
-I always need to see all the info columns. Can enable that when needed with "(" . I prefer the minimal look a bit like Ranger, especially on mobile where screen space is limited. I have 'all the icons' package working here too.
+I don't always need to see all the info columns. So have this here for convienience. On Mobile I prefer the minimal look a bit like Ranger. I have 'all the icons' package working here too for folder/filetype icons in the GUI.
 
 #+begin_src emacs-lisp
 ;(defun my-dired-mode-setup ()
@@ -704,7 +705,7 @@ Elfeed settings
 #+end_src
 
 * Projectile
-Directories that show as projects in projectile. I don't really like this feature. I don't like to get trapped in things Emacs thinks are projects..
+Directories that show as projects in projectile. I don't really like this feature. A bit annoying to get trapped in things Emacs thinks are projects..
 
  #+begin_src emacs-lisp
 ;(setq projectile-project-search-path '("~/dotfiles/" "~/Dropbox/vault" "~/Dropbox/roam/" "~/sba/"))
@@ -726,7 +727,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 #+begin_src emacs-lisp
 (defun my-org-front-matter ()
  (interactive)
- (insert "#+TITLE:\n#+ID: \n#+FILETAGS: \n#+OPTIONS: num:nil toc:nil author:nil\n#+STARTUP: showeverything")
+ (insert "#+TITLE:\n#+ID: \n#+FILETAGS: \n#+OPTIONS: num:nil toc:nil author:nil\n#+STARTUP: showall")
  )
 #+end_src
 
@@ -745,7 +746,7 @@ categories:
 #+end_src
 
 ** Timestamp
-Press this all the time for journal entries. Convienient keybind is above.
+Press this all the time for journal entries. Convienient keybind is above. (C-c i)
 
 #+begin_src emacs-lisp
 ;; Timestamp
@@ -757,7 +758,7 @@ Press this all the time for journal entries. Convienient keybind is above.
 #+end_src
 
 * Md-roam
-Makes roam's features also consider Markdown files as part of the database.
+Makes roam's features also consider Markdown files as part of the database. (Disabled currently)
 [[https://github.com/nobiot/md-roam]]
 
 #+begin_src emacs-lisp
@@ -875,7 +876,8 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 ;          org-roam-ui-open-on-start nil))
 #+end_src
 
-* Timestamp
+* Timestamp (Last modified)
+I have this availible as an option but don't find it as useful as I thought I would..
 #+begin_src emacs-lisp
 (after! org
   (setq time-stamp-active t
@@ -886,6 +888,7 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 #+end_src
 
 * Load other config files
+Private email setup etc.
 #+begin_src emacs-lisp
 ;; Load other config files
 (load! "+private")
