@@ -52,7 +52,7 @@
      (:name "archive" :query "folder:Archive")
      (:name "unread" :query "tag:unread")))
  '(org-agenda-files
-   '("~/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
+   '("~/Dropbox/vault/goals.org" "/home/bledley/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types

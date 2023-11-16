@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showeverything
-#+LAST_MOD: [2023-11-15 00:01]
+#+LAST_MOD: [2023-11-16 13:37]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -202,7 +202,8 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 ;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-agenda-files
 '("~/Dropbox/vault/todo.org"
-  "~/Dropbox/vault/events.org")))
+  "~/Dropbox/vault/events.org"
+  "~/Dropbox/vault/goals.org")))
 #+end_src
 
 ** Org Agenda
@@ -266,6 +267,7 @@ org-agenda-current-time-string
       org-agenda-start-day "today")
 (setq org-refile-targets (quote (("~/Dropbox/vault/todo.org" :maxlevel . 6)
                                  ("~/Dropbox/vault/6-Archives/archive.org" :maxlevel . 6)
+                                 ("~/Dropbox/vault/goals.org" :maxlevel . 6)
                                  ("~/Dropbox/vault/events.org" :maxlevel . 6)
                                  ("~/Dropbox/vault/someday.org" :level . 6)))))
 (after! org
@@ -473,9 +475,10 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c t" "~/Dropbox/vault/todo.org" "todo.org")
  (zz/add-file-keybinding "C-c e" "~/Dropbox/vault/events.org" "events.org")
+ (zz/add-file-keybinding "C-c g" "~/Dropbox/vault/goals.org" "goals.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "reading.org")
 ;; ;;
-(global-set-key (kbd "C-c g") 'count-words)
+(global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
 (global-set-key (kbd "C-c d") 'org-journal-open-current-journal-file)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
