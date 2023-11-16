@@ -38,6 +38,19 @@
      ("https://edwardsnowden.substack.com/feed" substack blog)
      ("https://louisestigell.substack.com/feed" substack blog)))
  '(highlight-indent-guides-method 'character)
+ '(notmuch-saved-searches
+   '((:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "s")
+     (:name "new" :query "tag:new" :key "n")
+     (:name "today" :query "date:today" :key "d")
+     (:name "this week" :query "date:week" :key "w")
+     (:name "todo" :query "tag:todo" :key "t")
+     (:name "inbox" :query "folder:INBOX" :key "i")
+     (:name "reference" :query "folder:Folders/reference")
+     (:name "receipts" :query "folder:Folders/receipts")
+     (:name "readlater" :query "tag:readlater")
+     (:name "archive" :query "folder:Archive")
+     (:name "unread" :query "tag:unread")))
  '(org-agenda-files
    '("~/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
@@ -47,7 +60,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias))))
+     (defvaralias)) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
