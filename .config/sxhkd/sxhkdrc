@@ -23,10 +23,10 @@ super + n
 super + m
       rofi -modi emoji -show emoji
 # # Freetube
- super + y
+super + y
        freetube
 # # Gpick
- super + g
+super + g
        gpick
 # Rofi
 # Run Launcher
@@ -36,8 +36,8 @@ super + x
 super + comma
        rofi -show window
 # Clipboard
-super + c
-       rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+#super + ?
+#       rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # Searchweb
 super + slash
       qbrofi
@@ -54,24 +54,24 @@ super + shift; p
 super +z
       xflock4
 # Emacs (super + e followed by another key)
-super + e; e
-  emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
-super + e; b
+super + e
+    emacsclient -c -a 'emacs'
+super + c; s
+    emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
+super + c; b
     emacsclient -c -a 'emacs' --eval '(ibuffer)'
-super + e; d
+super + c; d
     emacsclient -c -a 'emacs' --eval '(dired nil)'
-super + e; l
-   emacsclient -c -a 'emacs' --eval '(elfeed)'
-super + e; n
+super + c; l
+    emacsclient -c -a 'emacs' --eval '(elfeed)'
+super + c; n
     emacsclient -c -a 'emacs' --eval '(denote)'
-super + e; m
+super + c; m
     emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
-super + e; c
+super + c; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
-super + e; j
+super + c; j
     emacsclient -c -a 'emacs' --eval '(org-journal-open-current-journal-file)'
-#super + e; t
-#    emacsclient -c -a 'emacs' ~/Dropbox/vault/todo.org
 # i3 windows
 super +w; x
  i3-msg kill
