@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showeverything
-#+LAST_MOD: [2023-11-16 22:30]
+#+LAST_MOD: [2023-11-16 23:27]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -360,7 +360,7 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
           "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
            ("e" "Event" entry (file+olp "~/Dropbox/vault/events.org" "2023")
             "*** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-           ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "INBOX")
+           ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading/reading.org" "INBOX")
             "** %?\nCREATED:%U" :empty-lines 1)
            ("w" "Weekly Review" plain (file buffer-name)
             (file "~/Dropbox/vault/5-Resources/Templates/tpl-weekly-review.txt") :empty-lines 1))))
@@ -477,7 +477,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 (zz/add-file-keybinding "C-c t" "~/Dropbox/vault/todo.org" "todo.org")
  (zz/add-file-keybinding "C-c e" "~/Dropbox/vault/events.org" "events.org")
  (zz/add-file-keybinding "C-c g" "~/Dropbox/vault/goals.org" "goals.org")
-(zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "reading.org")
+(zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading/reading.org" "reading.org")
 ;; ;;
 (global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
