@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showeverything
-#+LAST_MOD: [2023-11-11 21:54]
+#+LAST_MOD: [2023-11-15 00:01]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -39,7 +39,7 @@
 - [[#projectile][Projectile]]
 - [[#snippet-functions][Snippet Functions]]
   - [[#markdown-front-matter][Markdown front matter]]
-  - [[#org-headertitle][Org header/title]]
+  - [[#org-front-matter][Org front matter]]
   - [[#blog-front-matter][Blog front matter]]
   - [[#timestamp][Timestamp]]
 - [[#md-roam][Md-roam]]
@@ -72,11 +72,11 @@ When I make a new split ask which buffer I'd like displayed there.
 #+end_src
 
 ** Window pop up rules
-I like certain things to pop up on the right hand side 50% of the screen.
+I like certain things to pop up on the right hand side 50% of the screen. Some things work better on the bottom.
 
 #+begin_src emacs-lisp
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
-(set-popup-rule! "^\\*notmuch*" :side 'bottom :size 0.50 :select t :ttl nil)
+(set-popup-rule! "^\\*notmuch*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*Occur*" :side 'bottom :size 0.50 :select t :ttl nil)
 ;(set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 #+end_src
@@ -98,7 +98,7 @@ Scroll margin at the top and bottom of the page is 2.
 
 ** Disable quit confimation, Line Numbers
 Ask to confirm stuff is a bit annoying.
-I enable line numbers on file by file basis with (SPC-t-l)
+I use relative line numbers most of the time. I can easily toggle with (SPC-t-l)
 Auto save is on.
 
 #+begin_src emacs-lisp
@@ -133,7 +133,12 @@ I usually use Jet Brains Mono or Iosevka..
 ** Visual/Theme
 I like the base theme of wilmersdorf but I have some custom-set-faces to tweak to my liking here and in custom.el. I found that solaire-mode needs to be disabled to make all the background colours consistent. It is also disables in packages.el but I'm not sure which is making it work how I like. I don't like zen, writeroom to go too crazy with the zoom/big font. Highlight indent puts little lines down your white space indentations. I'm unsure about it but trialing it out.
 
+Cursor colours reflect my theme.
+
+hl-todo faces custom colours and terms. I'm not sure if this is loading correctly? I use the org based status most of the time anyway..
+
 #+begin_src emacs-lisp
+
 (setq doom-theme 'doom-wilmersdorf)
   (custom-set-faces
   '(default ((t (:background "#151515" :foreground "#a9b1d6")))))
@@ -146,7 +151,7 @@ I like the base theme of wilmersdorf but I have some custom-set-faces to tweak t
 ;;
 (setq +zen-text-scale 0.4)
 ;; Highlight indent guide
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;; Cursor
 ;(after! doom-theme
 (setq evil-normal-state-cursor '(box "#80C2A2")
@@ -172,11 +177,12 @@ I like a pretty minimal modeline, this disables most things I don't need.
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
   (line-number-mode -1)
-  (display-time-mode -1)
   (setq doom-modeline-enable-word-count t)
 ;;(setq display-time-format "%H:%M")
   (setq display-time-format "%Y-%m-%d %H:%M")
+  (display-time-mode +1)
   (setq doom-modeline-height 15)
+  (setq display-time-load-average nil)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-icon t)
   (setq doom-modeline-major-mode-icon t)
@@ -200,7 +206,7 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 #+end_src
 
 ** Org Agenda
-Custom Agenda views and keybind/function
+Custom Agenda views and keybind/function. Simple view I use most of the time shows priority 1, 2, 3 custom tags.
 
 #+begin_src emacs-lisp
 ;; My agenda custom commands
@@ -239,7 +245,7 @@ Custom Agenda views and keybind/function
 #+end_src
 
 ** Org/Agenda Settings
-Other agenda settings. Can't get time grid to work, would really like that... please send help..
+Other agenda settings. Can't get time grid to work, would really like that...
 
 #+begin_src emacs-lisp
 (after! org
@@ -345,6 +351,11 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
             "* SOMEDAY %?")
            ("b" "Text at point" entry (file "~/Dropbox/vault/todo.org")
             "* TODO %a")
+           ("m" "Mail ")
+           ("mf" "Follow Up" entry (file "~/Dropbox/vault/todo.org")
+          "* TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
+           ("mr" "Read Later" entry (file "~/Dropbox/vault/todo.org")
+          "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
            ("e" "Event" entry (file+olp "~/Dropbox/vault/events.org" "2023")
             "*** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
            ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading-Writing/reading-list.org" "INBOX")
@@ -392,10 +403,10 @@ Todo, task status names, colours and style.
      ("@important" :foreground "#c280a0"))))
 #+end_src
 
-#+RESULTS:
-: :\(@\(?:\(?:habi\|importan\)t\)\):
 
 ** Org Roam
+(I've deactivated org-roam currently. It was working fine though..)
+
 Org roam and dailies directory and capture templates for daily note. Capture templates for both org and markdown files in Org Roam Md-roam see > [[https://github.com/nobiot/md-roam][Md-roam by nobiot]]
 [[https://github.com/org-roam/org-roam]]
 #+begin_src emacs-lisp
@@ -473,7 +484,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 (define-key global-map (kbd "C-c l") #'elfeed)
 (define-key global-map (kbd "C-c c") #'org-capture)
 (define-key global-map (kbd "C-c m") #'notmuch-search)
-(define-key global-map (kbd "C-c ;") #'now)
+(define-key global-map (kbd "C-c i") #'now)
 #+end_src
 
 ** Make new buffers org/md easier
@@ -708,7 +719,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
  )
 #+end_src
 
-** Org header/title
+** Org front matter
 #+begin_src emacs-lisp
 (defun my-org-front-matter ()
  (interactive)
@@ -874,5 +885,5 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 * Load other config files
 #+begin_src emacs-lisp
 ;; Load other config files
-;;(load! "+private")
+(load! "+private")
 #+end_src
