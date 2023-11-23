@@ -65,8 +65,10 @@ super + o; i
     emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
 super + c; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
-# super + c; j
-#     emacsclient -c -a 'emacs' --eval '(org-journal-open-current-journal-file)'
+super + c; d
+    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/log.org")'
+super + c; t
+    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/todo.org")'
 # i3 windows
 super +w; x
  i3-msg kill
