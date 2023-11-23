@@ -47,9 +47,9 @@ c.colors.tabs.even.fg = '#5e5e5e'
 c.colors.hints.bg = '#82ABAA'
 # Default font
 c.fonts.default_size = '10pt'
-c.fonts.completion.entry = '10pt "Iosevka"'
-c.fonts.debug_console = '10pt "Iosevka"'
-c.fonts.statusbar = '10pt "Iosevka"'
+c.fonts.completion.entry = '10pt "JetBrains Mono"'
+c.fonts.debug_console = '10pt "JetBrains Mono"'
+c.fonts.statusbar = '10pt "JetBrains Mono"'
 ## Background color of the completion widget category headers.
 ## Type: QssColor
 c.colors.completion.category.bg = '#151515'
@@ -1380,7 +1380,7 @@ c.downloads.remove_finished = 120000
 ## font setting, it's replaced with the fonts listed here. If set to an
 ## empty value, a system-specific monospace default is used.
 ## Type: List of Font, or Font
-c.fonts.default_family = 'Iosevka'
+c.fonts.default_family = 'JetBrains Mono'
 
 ## Default font size to use. Whenever "default_size" is used in a font
 ## setting, it's replaced with the size listed here. Valid values are
