@@ -52,7 +52,7 @@
      (:name "archive" :query "folder:Archive")
      (:name "unread" :query "tag:unread")))
  '(org-agenda-files
-   '("~/Dropbox/vault/goals.org" "/home/bledley/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
+   '("~/Dropbox/vault/log.org" "/home/bledley/Dropbox/vault/goals.org" "/home/bledley/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types
@@ -60,7 +60,7 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias)) t))
+     (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

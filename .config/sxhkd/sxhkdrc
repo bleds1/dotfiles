@@ -10,15 +10,10 @@ super + period; period
        kitty -e ranger
 super + period; i
        kitty -e ranger ~/Dropbox/0_Inbox
-super + period; n
-       kitty -e ranger ~/Dropbox/vault/0-Fleeting-Notes
 super + period; d
        kitty -e ranger ~/Downloads
 super + period; l
-       kitty -e ranger ~/Documents/Library/pdf
-# File Browser
-super + n
-      nautilus
+       kitty -e ranger ~/Documents/Library
 # Rofi emoji
 super + m
       rofi -modi emoji -show emoji
@@ -58,20 +53,20 @@ super + e
     emacsclient -c -a 'emacs'
 super + c; s
     emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
-super + c; b
+super + c; i
     emacsclient -c -a 'emacs' --eval '(ibuffer)'
-super + c; d
+super + o; minus
     emacsclient -c -a 'emacs' --eval '(dired nil)'
 super + c; l
     emacsclient -c -a 'emacs' --eval '(elfeed)'
 super + c; n
     emacsclient -c -a 'emacs' --eval '(denote)'
-super + c; m
+super + o; i
     emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
 super + c; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
-super + c; j
-    emacsclient -c -a 'emacs' --eval '(org-journal-open-current-journal-file)'
+# super + c; j
+#     emacsclient -c -a 'emacs' --eval '(org-journal-open-current-journal-file)'
 # i3 windows
 super +w; x
  i3-msg kill
