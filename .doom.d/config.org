@@ -3,7 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: show2levels
-#+LAST_MOD: [2023-11-22 18:25]
+#+LAST_MOD: [2023-11-23 23:58]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -415,11 +415,11 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
                  :kill-buffer t
                  :jump-to-captured t)
            ("j" "Log" entry (file+datetree "~/Dropbox/vault/log.org")
-            "* %(format-time-string org-journal-time-format) %?" :empty-lines 1)
+            "* %(format-time-string org-journal-time-format) %?")
            ("y" "Someday" entry (file "~/Dropbox/vault/someday.org")
             "* SOMEDAY %?")
            ("t" "Text at point" entry (file+datetree "~/Dropbox/vault/log.org")
-            "* %(format-time-string org-journal-time-format) %? %a" :empty-lines 1)
+            "* %(format-time-string org-journal-time-format) %? %a")
            ("m" "Mail ")
            ("mf" "Follow Up" entry (file "~/Dropbox/vault/todo.org")
           "** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
