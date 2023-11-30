@@ -2,8 +2,8 @@
 #+ID: 2023-07-21-1853
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
-#+STARTUP: show2levels
-#+LAST_MOD: [2023-11-28 09:12]
+#+STARTUP: showall
+#+LAST_MOD: [2023-11-30 19:30]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -417,6 +417,8 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
                  :jump-to-captured t)
            ("j" "Log" entry (file+datetree "~/Dropbox/vault/log.org")
             "* %(format-time-string org-journal-time-format) %?")
+           ("x" "Tweet" entry (file+olp "~/Dropbox/vault/tweet.org" "Drafts")
+            "** %?")
            ("y" "Someday" entry (file "~/Dropbox/vault/someday.org")
             "* SOMEDAY %?")
            ("t" "Text at point" entry (file+datetree "~/Dropbox/vault/log.org")
@@ -542,6 +544,7 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
 (zz/add-file-keybinding "C-c g" "~/Dropbox/vault/goals.org" "goals.org")
 (zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading/reading.org" "reading.org")
 (zz/add-file-keybinding "C-c d" "~/Dropbox/vault/log.org" "log.org")
+(zz/add-file-keybinding "C-c x" "~/Dropbox/vault/tweet.org" "tweet.org")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
