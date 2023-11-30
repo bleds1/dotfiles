@@ -64,6 +64,7 @@
 ;
 (package! focus)
 ;;
+(package! nov)
 ;;(package! md-roam
 ;;  :recipe (:host github :repo "nobiot/md-roam"))
 ;;
