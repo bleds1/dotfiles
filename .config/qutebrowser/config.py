@@ -11,7 +11,7 @@ config.load_autoconfig(False)
 #config.set("fileselect.multiple_files.command", ['kitty', '-e', 'ranger', '--choosefiles={}'])
 config.set('content.notifications.enabled', True, 'https://mail.proton.me')
 # Setting dark mode
-config.bind('<space><r><v>', 'spawn --userscript readability')
+config.bind('<space><z>', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.bg = '#151515'
 #c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -119,7 +119,7 @@ c.tabs.title.format = '{current_title}'
 c.downloads.location.directory = '/home/bledley/Dropbox/0_Inbox/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'lr': 'https://libreddit.de/{}','wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
@@ -2317,7 +2317,7 @@ config.bind('<Alt-p>', 'tab-pin')
 # config.bind('=', 'zoom')
 # config.bind('?', 'set-cmd-text ?')
 # config.bind('@', 'macro-run')
-# config.bind('B', 'set-cmd-text -s :quickmark-load -t')
+config.unbind('B')
 # config.bind('D', 'tab-close -o')
 # config.bind('F', 'hint all tab')
 # config.bind('G', 'scroll-to-perc')
@@ -2325,7 +2325,8 @@ config.bind('<Alt-p>', 'tab-pin')
 config.bind('K', 'tab-next')
 config.bind('J', 'tab-prev')
 # config.bind('L', 'forward')
-config.bind('B', 'bookmark-add')
+config.bind('<space><b><m>', 'bookmark-add')
+config.bind('<space><b><d>', 'bookmark-del')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'set-cmd-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -2333,8 +2334,8 @@ config.bind('B', 'bookmark-add')
 # config.bind('R', 'reload -f')
 # config.bind('Sb', 'bookmark-list --jump')
 config.bind('<space><h>', 'history')
-config.bind('<space></>', 'history')
-config.bind('<space><.>', 'bookmark-list')
+#config.bind('<space></>', 'history')
+config.bind('<space><Return>', 'bookmark-list')
 # config.bind('Ss', 'set')
 # config.bind('T', 'set-cmd-text -sr :tab-focus')
 # config.bind('U', 'undo -w')
