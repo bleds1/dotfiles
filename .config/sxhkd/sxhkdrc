@@ -30,9 +30,6 @@ super + x
 # Window swticher
 super + comma
        rofi -show window
-# Clipboard
-#super + ?
-#       rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # Searchweb
 super + slash
       qbrofi
@@ -69,6 +66,8 @@ super + c; d
     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/log.org")'
 super + c; t
     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/todo.org")'
+super + c; y
+       rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # i3 windows
 super +w; x
  i3-msg kill
