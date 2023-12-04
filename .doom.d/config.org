@@ -3,7 +3,6 @@
 #+PROPERTY: header-args:emacs-lisp
 #+OPTIONS: toc:4 num:nil
 #+STARTUP: showall
-#+LAST_MOD: [2023-11-30 19:30]
 
 * Table of Contents :toc:
 - [[#general-settings][General Settings]]
@@ -42,15 +41,16 @@
   - [[#org-front-matter][Org front matter]]
   - [[#blog-front-matter][Blog front matter]]
   - [[#timestamp][Timestamp]]
+  - [[#quick-todo][Quick todo]]
 - [[#md-roam][Md-roam]]
 - [[#denote][Denote]]
 - [[#rainbow-mode][Rainbow mode]]
 - [[#org-clock-sfx][Org clock sfx]]
 - [[#org-msg][Org-msg]]
-  - [[#visuals][Visuals]]
 - [[#org-roam-ui][Org-roam UI]]
 - [[#novel][nov.el]]
 - [[#timestamp-last-modified][Timestamp (Last modified)]]
+- [[#emms][EMMS]]
 - [[#load-other-config-files][Load other config files]]
 
 * General Settings
@@ -150,7 +150,7 @@ hl-todo faces custom colours and terms. I'm not sure if this is loading correctl
 (setq writeroom-mode-line t)
 (setq writeroom-width 120)
 ;;
-(setq +zen-text-scale 0.4)
+(setq +zen-text-scale 0.5)
 ;; Highlight indent guide
 ;;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;; Cursor
@@ -159,13 +159,16 @@ hl-todo faces custom colours and terms. I'm not sure if this is loading correctl
       evil-insert-state-cursor '(bar "#47FFE0")
       evil-visual-state-cursor '(hollow "#c280A0"))
 ;;hl-todo mode
+(setq hl-todo-mode t)
+(setq global-hl-todo-mode t)
 (after! hl-todo
-(setq global-hl-todo-mode 1)
 (setq hl-todo-keyword-faces
       '(("TODO"   . "#c280A0")
-        ("NOTE"  . "#80c2a2")
-        ("REVIEW"  . "#80c2a2")
-        ("RESEARCH"   . "#80c2a2"))))
+        ("NOTE"  . "#c280A0")
+        ("IDEA"  . "#c280A0")
+        ("QUESTION"  . "#c280A0")
+        ("REVIEW"  . "#c280A0")
+        ("RESEARCH"   . "#c280A0"))))
 #+end_src
 
 ** Modeline
@@ -210,23 +213,23 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 Custom Agenda views and keybind/function. Simple view I use most of the time shows priority 1, 2, 3 custom tags.
 
 #+begin_src emacs-lisp
-;; My agenda custom commands
+;;My agenda custom commands
 (defun my-agenda-custom ()
   (interactive)
   (org-agenda nil "o"))
-;;
-;; map leader a (previously act on?) to my agenda view
-(map! :leader
-      :desc "My agenda custom" "a" #'my-agenda-custom)
-;;
-;; My agenda custom commands
-(defun my-agenda-custom-2 ()
-  (interactive)
-  (org-agenda nil "d"))
-;;
-;; map leader a (previously act on?) to my agenda view
-(map! :leader
-      :desc "My agenda custom" "d" #'my-agenda-custom-2)
+;; ;;
+;; ;; map leader a (previously act on?) to my agenda view
+;; (map! :leader
+;;       :desc "My agenda custom" "a" #'my-agenda-custom)
+;; ;;
+;; ;; My agenda custom commands
+;; (defun my-agenda-custom-2 ()
+;;   (interactive)
+;;   (org-agenda nil "d"))
+;; ;;
+;; ;; map leader a (previously act on?) to my agenda view
+;; (map! :leader
+;;       :desc "My agenda custom" "d" #'my-agenda-custom-2)
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
    '(("o" "Overview"
@@ -467,8 +470,10 @@ Todo, task status names, colours and style.
        ("CANCELLED" :foreground "#80869c" :weight bold)))
 (after! org
 (setq! org-tag-faces
-   '(("@habit" :foreground "#C280a0")
-     ("@important" :foreground "#c280a0"))))
+   '(("p1" :foreground "#E16161")
+     ("p2" :foreground "#E59B5D")
+     ("p3" :foreground "#FFFBB8")
+     ("p4" :foreground "#5099DA"))))
 #+end_src
 
 ** Org Roam
@@ -655,8 +660,6 @@ Take me to your leader. Convienient keybinds I use a lot.
 
 * Dired
 ** Dired Keybinds
-TODO: Y for cut file isn't working correctly. I want this to be as ranger like as possible without the weird 'ranger mode' enabled.
-
 #+begin_src emacs-lisp
 (after! dired
 (evil-define-key 'normal dired-mode-map
@@ -832,10 +835,18 @@ Press this all the time for journal entries. Convienient keybind is above. (C-c 
 ;;
 #+end_src
 
+** Quick todo
+A quick way to get a todo into my daily log with appropriate level heading. I use M-x to call it.
+#+begin_src emacs-lisp
+(defun td ()
+  (interactive)
+  (insert "**** TODO "
+  ))
+#+end_src
+
 * Md-roam
 Makes roam's features also consider Markdown files as part of the database. (Disabled currently)
 [[https://github.com/nobiot/md-roam]]
-
 #+begin_src emacs-lisp
 ;       (use-package! md-roam
 ;  :after org-roam
@@ -853,6 +864,7 @@ Makes roam's features also consider Markdown files as part of the database. (Dis
 #+end_src
 
 * Denote
+I'm still only scratching the surface of this package really. I primarily just use it for generating quick fleeting notes to a chosen directory right now.
 #+begin_src emacs-lisp
 ;; Make Elisp files in that directory available to the user.
 (add-to-list 'load-path "~/.emacs.d/manual-packages/denote")
@@ -881,14 +893,14 @@ Makes roam's features also consider Markdown files as part of the database. (Dis
 ;test
 (setq denote-yaml-front-matter
   "---
-id:       %2$s
-tags:   %3$s
+id: %2$s
+tags: %3$s
 ---\n")
 ;
 (setq denote-org-front-matter
-"#+TITLE:      %s
-#+ID:       %s
-#+FILETAGS:   %s
+"#+TITLE: %s
+#+ID: %s
+#+FILETAGS: %s
 \n")
 ;; If you use Markdown or plain text files (Org renders links as buttons
 ;; right away)
@@ -905,11 +917,9 @@ tags:   %3$s
 ;;
 ;; OR if only want it in `denote-dired-directories':
 (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
-
 #+end_src
 * Rainbow mode
 Show me colour hex codes everywhere please..
-
 #+begin_src emacs-lisp
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
@@ -917,7 +927,6 @@ Show me colour hex codes everywhere please..
 
 * Org clock sfx
 Sound effect on completion of a timed session.
-
 #+begin_src emacs-lisp
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
@@ -925,7 +934,6 @@ Sound effect on completion of a timed session.
 #+end_src
 
 * Org-msg
-** Visuals
 By default the accent colour for headers etc. in org-msg emails are red. This changes that to a green.
 #+begin_src emacs-lisp
 (setq +org-msg-accent-color "#80C2A2")
@@ -952,6 +960,7 @@ Very pretty way to view your roam database. Useful for interlinking notes and id
 #+end_src
 
 * nov.el
+For reading epubs
 #+begin_src emacs-lisp
 (use-package! nov
   :mode ("\\.epub\\'" . nov-mode)
@@ -1032,7 +1041,27 @@ I have this availible as an option but don't find it as useful as I thought I wo
     time-stamp-format "\[%Y-%m-%d %02H:%02M\]")
 (add-hook 'before-save-hook 'time-stamp))
 #+end_src
-
+* EMMS
+For playing music or video files with mpv.
+#+BEGIN_SRC emacs-lisp
+(emms-all)
+(emms-default-players)
+(emms-playing-time-mode 1)
+(setq emms-source-file-default-directory "~/Music/"
+      emms-playlist-buffer-name "*Music*"
+      emms-info-asynchronously t
+      emms-mode-line-icon-color "grey"
+      emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+(map! :leader
+      (:prefix ("e" . "EMMS audio player")
+       :desc "Go to Emms playlist"      "l" #'emms-playlist-mode-go
+       :desc "Add to playlist (Dired)"  "a" #'emms-add-dired
+       :desc "Emms modeline toggle"     "t" #'emms-mode-line-toggle
+       :desc "Emms pause track"         "x" #'emms-pause
+       :desc "Emms stop track"          "s" #'emms-stop
+       :desc "Emms play previous track" "p" #'emms-previous
+       :desc "Emms play next track"     "n" #'emms-next))
+#+END_SRC
 * Load other config files
 Private email setup etc.
 #+begin_src emacs-lisp
