@@ -214,18 +214,14 @@ Custom Agenda views and keybind/function. Simple view I use most of the time sho
 
 #+begin_src emacs-lisp
 ;;My agenda custom commands
-(defun my-agenda-custom ()
+(defun my/org-agenda-overview ()
   (interactive)
   (org-agenda nil "o"))
-;; ;;
-;; ;; map leader a (previously act on?) to my agenda view
-;; (map! :leader
-;;       :desc "My agenda custom" "a" #'my-agenda-custom)
-;; ;;
-;; ;; My agenda custom commands
-;; (defun my-agenda-custom-2 ()
-;;   (interactive)
-;;   (org-agenda nil "d"))
+;;
+;; My agenda custom commands
+(defun my/org-agenda-day-view ()
+  (interactive)
+  (org-agenda nil "d"))
 ;; ;;
 ;; ;; map leader a (previously act on?) to my agenda view
 ;; (map! :leader
@@ -649,6 +645,10 @@ Take me to your leader. Convienient keybinds I use a lot.
 (map! :leader
       :desc "rgrep"
       "r" 'rgrep)
+;; Dired alternaive
+(map! :leader
+      :desc "Dired"
+      "d" 'dired)
 ;; Quick org-tags-sparse-tags
 (map! :leader
       (:prefix ("o" . "org-tags-sparse-tree")

@@ -17,12 +17,6 @@ super + period; l
 # Rofi emoji
 super + m
       rofi -modi emoji -show emoji
-# # Freetube
-super + y
-       freetube
-# # Gpick
-super + g
-       gpick
 # Rofi
 # Run Launcher
 super + x
@@ -39,9 +33,6 @@ super + p
 # Screenshots
 Print
     xfce4-screenshooter
-#
-super + shift; p
-      xfce4-screenshooter
 # Screenlock
 super +z
       xflock4
