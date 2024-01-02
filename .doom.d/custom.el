@@ -52,7 +52,7 @@
      (:name "archive" :query "folder:Archive")
      (:name "unread" :query "tag:unread")))
  '(org-agenda-files
-   '("~/Dropbox/vault/log.org" "/home/bledley/Dropbox/vault/goals.org" "/home/bledley/Dropbox/vault/events.org" "/home/bledley/Dropbox/vault/todo.org"))
+   '("~/Dropbox/org/goals.org" "/home/bledley/Dropbox/org/events.org" "/home/bledley/Dropbox/org/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
  '(warning-suppress-types
@@ -60,13 +60,13 @@
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)
-     (defvaralias))))
+     (defvaralias)) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#151515" :foreground "#a9b1d6"))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "#151515" :foreground "#BFBFBF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "JB" :family "JetBrains Mono"))))
  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
@@ -74,13 +74,19 @@
  '(font-lock-comment-face ((t (:foreground "#757575"))))
  '(font-lock-keyword-face ((t (:foreground "#75afae"))))
  '(font-lock-string-face ((t (:foreground "#7ebebd"))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#94E2D5" :weight bold :foundry "variable" :family "JetBrains Mono"))))
- '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.0))))
+ '(markdown-header-delimiter-face ((t (:foreground "#9BAEC8" :height 0.9))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#CFCFCF" :weight extra-bold :height 1.1 :foundry "variable" :family "JetBrains Mono"))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.0))))
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.0))))
- '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.0))))
- '(markdown-link-face ((t (:foreground "#92e2d5"))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 0.9))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 0.9))))
+ '(markdown-header-face-5 ((t (:height 1.05 :foreground "#9BAEC8" :weight bold :inherit markdown-header-face))))
+ '(markdown-header-face-6 ((t (:height 1.05 :foreground "#9BAEC8" :weight semi-bold :inherit markdown-header-face))))
+ '(markdown-italic-face ((t (:inherit italic :foreground "#A6A6A6"))))
+ '(markdown-link-face ((t (:foreground "#819cd6"))))
+ '(markdown-list-face ((t (:foreground "#a9b1b6"))))
  '(markdown-metadata-key-face ((t (:foreground "#94E2D5"))))
+ '(markdown-url-face ((t (:foreground "#819cd6" :weight normal))))
  '(mode-line ((t (:background "#151515" :box nil))))
  '(mode-line-inactive ((t (:background "#151515" :foreground "#888395" :box nil))))
  '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))

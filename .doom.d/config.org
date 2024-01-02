@@ -51,6 +51,8 @@
 - [[#novel][nov.el]]
 - [[#timestamp-last-modified][Timestamp (Last modified)]]
 - [[#emms][EMMS]]
+- [[#markdownwriteroom-hook][Markdown/Writeroom hook]]
+- [[#smart-parens][Smart Parens]]
 - [[#load-other-config-files][Load other config files]]
 
 * General Settings
@@ -79,7 +81,6 @@ I like certain things to pop up on the right hand side 50% of the screen. Some t
 (set-popup-rule! "^\\*eww*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*notmuch*" :side 'right :size 0.50 :select t :ttl nil)
 (set-popup-rule! "^\\*Occur*" :side 'bottom :size 0.50 :select t :ttl nil)
-;(set-popup-rule! "^\\*vterm*" :side 'left :size 0.50 :vslot -4 :select t :quit nil :ttl nil)
 #+end_src
 
 ** Delete Files to trash, Auto revert changed buffers, change undo limit and add scroll margin.
@@ -98,20 +99,20 @@ Scroll margin at the top and bottom of the page is 2.
 #+end_src
 
 ** Disable quit confimation, Line Numbers
-Ask to confirm stuff is a bit annoying.
-I use relative line numbers most of the time. I can easily toggle with (SPC-t-l)
-Auto save is on.
+Ask to confirm quit is a bit annoying so I disable that. I don't need line numbers for most of what I do in org/markdown files so disabled but I can easily toggle on with (SPC-t-l) if needed. I use relative line numbers when it's active. Auto save is on. Deactivating highlight line mode can be confusing because there are two different modes for global and local.
 
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
-;;(setq display-line-numbers-type nil)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type nil)
+(setq global-hl-line-modes nil)
+(setq hl-line-mode nil)
+;(setq display-line-numbers-type 'relative)
 (setq auto-save-default t)
 #+end_src
 
 ** Initial buffer settings
 I used to launch to a nice dashboard but now I realise it is only eye candy and not all that useful. Launch me into an empty scratch pad so I can just start writing something.
-"C-c s" is the shortcut to '*scratch*'
+"C-c s" is a convienient shortcut to '*scratch*'. I change the default major mode for the pretty often so default to lisp for testing out lines of code.
 
 #+begin_src emacs-lisp
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
@@ -128,6 +129,7 @@ I usually use Jet Brains Mono or Iosevka..also like the variable font sizes to b
  #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13)
      doom-big-font (font-spec :family "JetBrains Mono" :size 14)
+     doom-serif-font (font-spec :family "JetBrains Mono" :size 13)
      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
  #+end_src
 
@@ -140,8 +142,6 @@ hl-todo faces custom colours and terms. I'm not sure if this is loading correctl
 
 #+begin_src emacs-lisp
  (setq doom-theme 'doom-wilmersdorf)
-   (custom-set-faces
-   '(default ((t (:background "#151515" :foreground "#a9b1d6")))))
 ;;
 (after! solaire-mode
   (solaire-global-mode -1))
@@ -150,12 +150,12 @@ hl-todo faces custom colours and terms. I'm not sure if this is loading correctl
 (setq writeroom-mode-line t)
 (setq writeroom-width 120)
 ;;
-(setq +zen-text-scale 0.5)
+(setq +zen-text-scale 0.0)
 ;; Highlight indent guide
 ;;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;; Cursor
 ;(after! doom-theme
-(setq evil-normal-state-cursor '(box "#80C2A2")
+(setq evil-normal-state-cursor '(box "#819cd6")
       evil-insert-state-cursor '(bar "#47FFE0")
       evil-visual-state-cursor '(hollow "#c280A0"))
 ;;hl-todo mode
@@ -179,15 +179,16 @@ I like a pretty minimal modeline, this disables most things I don't need.
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
   (line-number-mode -1)
-  (setq doom-modeline-enable-word-count t)
-;;(setq display-time-format "%H:%M")
-  (setq display-time-format "%Y-%m-%d %H:%M")
-  (display-time-mode +1)
+  (setq doom-modeline-enable-word-count nil)
+  (setq doom-modeline-buffer-file-name-style 'file-name)
+  (setq doom-modeline-percent-position nil)
+  (setq display-time-format "%a %Y-%m-%d %H:%M")
+  (display-time-mode -1)
   (setq doom-modeline-height 15)
   (setq display-time-load-average nil)
   (setq display-time-default-load-average nil)
   (setq doom-modeline-icon t)
-  (setq doom-modeline-major-mode-icon t)
+  (setq doom-modeline-major-mode-icon nil)
   (setq doom-modeline-major-color-icon t)
   (setq doom-modeline-modal-icon t)
   (setq doom-modeline-buffer-encoding nil))
@@ -200,13 +201,12 @@ Setting the directory for org and org agenda. I'm not sure it needs to be in an 
 #+begin_src emacs-lisp
 (after! org
 (set-popup-rule! "^\\*Org Agenda" :side 'right :size 0.50 :select t :ttl nil)
-(setq org-directory "~/Dropbox/vault/")
+(setq org-directory "~/Dropbox/org/")
 ;(setq org-agenda-files (directory-files-recursively "~/Dropbox/roam/" "\\.org$"))
 (setq org-agenda-files
-'("~/Dropbox/vault/todo.org"
-  "~/Dropbox/vault/log.org"
-  "~/Dropbox/vault/events.org"
-  "~/Dropbox/vault/goals.org")))
+'("~/Dropbox/org/todo.org"
+  "~/Dropbox/org/events.org"
+  "~/Dropbox/org/goals.org")))
 #+end_src
 
 ** Org Agenda
@@ -245,10 +245,9 @@ Custom Agenda views and keybind/function. Simple view I use most of the time sho
  ;            ((org-agenda-overriding-header "Active:")))
  ;     (todo "WAITING"
  ;           ((org-agenda-overriding-header "Waiting:")))
-        (todo ""
-             ((org-agenda-files
-               '("~/Dropbox/vault/todo.org"))
-              (org-agenda-overriding-header "Other Tasks:"))))
+        (tags "p4"
+             ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+              (org-agenda-overriding-header "#p4"))))
       )
    ("d" "Day View"
          ((agenda ""
@@ -269,7 +268,7 @@ Other agenda settings. Can't get time grid to work, would really like that...
         org-agenda-current-time-string
         "! now ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈")
   ;;
-  (setq org-attach-id-dir "~/Dropbox/vault/5-Resources/Assets/")
+  (setq org-attach-id-dir "~/Dropbox/org/assets/")
   (setq org-highlight-sparse-tree-matches nil)
   (setq org-startup-folded t)
   (setq org-log-done 'time)
@@ -277,12 +276,12 @@ Other agenda settings. Can't get time grid to work, would really like that...
   (setq org-deadline-warning-days 0)
   (setq org-agenda-span 5
         org-agenda-start-day "today")
-  (setq org-refile-targets (quote (("~/Dropbox/vault/todo.org" :maxlevel . 4)
-                                   ("~/Dropbox/vault/6-Archives/archive.org" :maxlevel . 4)
-                                   ("~/Dropbox/vault/goals.org" :maxlevel . 4)
-                                   ("~/Dropbox/vault/4-Areas/Reading/reading.org" :maxlevel . 4)
-                                   ("~/Dropbox/vault/events.org" :maxlevel . 4)
-                                   ("~/Dropbox/vault/someday.org" :level . 4)))))
+  (setq org-refile-targets (quote (("~/Dropbox/org/todo.org" :maxlevel . 4)
+                                   ("~/Dropbox/org/archive.org" :maxlevel . 4)
+                                   ("~/Dropbox/org/goals.org" :maxlevel . 4)
+                                   ("~/Dropbox/org/reading.org" :maxlevel . 4)
+                                   ("~/Dropbox/org/events.org" :maxlevel . 4)
+                                   ("~/Dropbox/org/someday.org" :level . 4)))))
 (after! org
   (setq org-tag-alist-for-agenda
         '(
@@ -309,9 +308,11 @@ Other agenda settings. Can't get time grid to work, would really like that...
         '(
              ("Budding")
              ("Evergreen")
+             ("Literature")
+             ("Fleeting")
+             ("Seedling")
              ("NA")
              ("sba")
-             ("Seedling")
              ("art")
              ("blog")
              ("draft")
@@ -319,10 +320,8 @@ Other agenda settings. Can't get time grid to work, would really like that...
              ("email")
              ("expenses")
              ("film")
-             ("fleeting")
              ("football")
              ("health")
-             ("literature")
              ("reading")
              ("refile")
              ("research")
@@ -374,12 +373,12 @@ Journal settings a little bit mingled up with agenda stuff, I may rearrange this
 #+begin_src emacs-lisp
 (after! org
 (setq!
-      org-journal-time-prefix "** "
-      org-journal-date-prefix "* "
+      org-journal-time-prefix ""
+      org-journal-date-prefix ""
       org-journal-time-format "%H:%M"
-      org-journal-date-format "%Y-%m-%d"
-      org-journal-file-format "%Y-%m-%d.org"
-      org-journal-dir "~/Dropbox/vault/journal/"
+      org-journal-date-format "%Y%m%d"
+      org-journal-file-format "%Y%m%d.org"
+      org-journal-dir "~/Dropbox/org/journals/"
       org-superstar-headline-bullets-list '("◉" "○" "○" "○" "○" "○" "○")
       org-hide-emphasis-markers t
       org-agenda-start-with-log-mode t
@@ -403,36 +402,38 @@ Quick capture templates are triggered with (SPC-n-n) and then the below prefix
 #+begin_src emacs-lisp
 (after! org
   (setq! org-capture-templates
-         '(("i" "Todo" entry (file "~/Dropbox/vault/todo.org")
+         '(("i" "Todo" entry (file+olp "~/Dropbox/org/todo.org" "INBOX")
             "** TODO %?")
-           ;; ("j" "Journal entry" plain (function org-journal-find-location)
-           ;;  "** %(format-time-string org-journal-time-format) %?" :empty-lines 1 :jump-to-captured t)
-            ("n" "Note (with Denote)" plain
-                 (file denote-last-path)
-                 #'denote-org-capture
-                 :no-save t
-                 :immediate-finish nil
-                 :kill-buffer t
-                 :jump-to-captured t)
-           ("j" "Log" entry (file+datetree "~/Dropbox/vault/log.org")
-            "* %(format-time-string org-journal-time-format) %?")
-           ("x" "Tweet" entry (file+olp "~/Dropbox/vault/tweet.org" "Drafts")
+            ;; ("j" "Journal entry" plain (function org-journal-find-location)
+            ;;  "%(format-time-string org-journal-time-format) %?" :empty-lines 1 :jump-to-captured t)
+            ;; ("n" "Note (with Denote)" plain
+            ;;      (file denote-last-path)
+            ;;      #'denote-org-capture
+            ;;      :no-save t
+            ;;      :immediate-finish nil
+            ;;      :kill-buffer t
+            ;;      :jump-to-captured t)
+           ;; ("j" "Log" entry (file+datetree "~/Dropbox/vault/log.org")
+           ;;  "* %(format-time-string org-journal-time-format) %?")
+           ;; ("j" "Log" plain (file "~/Dropbox/vault/0-Fleeting-Notes/log.md")
+           ;;  "%?")
+           ("x" "Socials" entry (file+olp "~/Dropbox/socials.org" "Drafts")
             "** %?")
-           ("y" "Someday" entry (file "~/Dropbox/vault/someday.org")
-            "* SOMEDAY %?")
-           ("t" "Text at point" entry (file+datetree "~/Dropbox/vault/log.org")
-            "* %(format-time-string org-journal-time-format) %? %a")
+           ("y" "Someday" entry (file+olp "~/Dropbox/org/todo.org" "SOMEDAY/MAYBE")
+            "** SOMEDAY %?")
+           ;; ("t" "Text at point" entry (file+datetree "~/Dropbox/vault/Journals/log.org")
+           ;;  "* %(format-time-string org-journal-time-format) %? %a")
            ("m" "Mail ")
-           ("mf" "Follow Up" entry (file "~/Dropbox/vault/todo.org")
+           ("mf" "Follow Up" entry (file+olp "~/Dropbox/org/todo.org" "INBOX")
           "** TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file "~/Dropbox/vault/todo.org")
+           ("mr" "Read Later" entry (file+olp "~/Dropbox/org/todo.org" "INBOX")
           "** TODO %:subject\nSCHEDULED:%t\n%a\n\n%i")
-           ("e" "Event" entry (file+olp "~/Dropbox/vault/events.org" "2023")
+           ("e" "Event" entry (file+olp "~/Dropbox/org/events.org" "2023")
             "*** EVENT %?%^{SCHEDULED}p" :empty-lines 1)
-           ("r" "Reading List" plain (file+olp "~/Dropbox/vault/4-Areas/Reading/reading.org" "INBOX")
+           ("r" "Reading List" plain (file+olp "~/Dropbox/org/reading.org" "INBOX")
             "** TODO %?\nCREATED:%U" :empty-lines 1)
            ("w" "Weekly Review" plain (file buffer-name)
-            (file "~/Dropbox/vault/5-Resources/Templates/tpl-weekly-review.txt") :empty-lines 1))))
+            (file "~/Dropbox/4-Resources/Templates/tpl-weekly-review.txt") :empty-lines 1))))
 #+end_src
 
 ** Org Task keywords/faces
@@ -512,7 +513,7 @@ Flashy cursor on window switch.
 Greys out out of focus text in writing mode.
 
 #+begin_src emacs-lisp
-;; Focus ;; TODO Test I don't think this should be here without any settings?
+;; Focus ;; TODO Test I don't know if this should be here without any settings..
 (use-package! focus)
 ;;
 #+end_src
@@ -540,24 +541,31 @@ The zz/function is stolen from [[https://zzamboni.org/post/my-doom-emacs-configu
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c t" "~/Dropbox/vault/todo.org" "todo.org")
-(zz/add-file-keybinding "C-c e" "~/Dropbox/vault/events.org" "events.org")
-(zz/add-file-keybinding "C-c g" "~/Dropbox/vault/goals.org" "goals.org")
-(zz/add-file-keybinding "C-c r" "~/Dropbox/vault/4-Areas/Reading/reading.org" "reading.org")
-(zz/add-file-keybinding "C-c d" "~/Dropbox/vault/log.org" "log.org")
-(zz/add-file-keybinding "C-c x" "~/Dropbox/vault/tweet.org" "tweet.org")
+(zz/add-file-keybinding "C-c t" "~/Dropbox/org/todo.org" "todo.org")
+(zz/add-file-keybinding "C-c e" "~/Dropbox/org/events.org" "events.org")
+(zz/add-file-keybinding "C-c g" "~/Dropbox/org/goals.org" "goals.org")
+(zz/add-file-keybinding "C-c r" "~/Dropbox/org/reading.org" "reading.org")
+;; (zz/add-file-keybinding "C-c j" "~/Dropbox/vault/0-Fleeting-Notes/log.md" "log.md")
+;; (zz/add-file-keybinding "C-c q" "~/Dropbox/vault/QuickNote.md" "QuickNote.md")
+(zz/add-file-keybinding "C-c x" "~/Dropbox/org/socials.org" "socials.org")
 ;;
 (global-set-key (kbd "C-c w") 'count-words)
 (global-set-key (kbd "C-c n") 'denote)
-;(global-set-key (kbd "C-c d") 'org-journal-open-current-journal-file)
+;; (global-set-key (kbd "C-c j") 'org-journal-open-current-journal-file)
 (global-set-key (kbd "<f12>") 'writeroom-mode)
 (global-set-key (kbd "<f11>") 'focus-mode)
 (define-key global-map "\C-ca" 'org-agenda)
 (global-set-key (kbd "C-c b") 'elfeed-show-visit-gui)
 (define-key global-map (kbd "C-c l") #'elfeed)
 (define-key global-map (kbd "C-c c") #'org-capture)
+(define-key global-map (kbd "C-c f") #'flyspell-mode)
 (define-key global-map (kbd "C-c m") #'notmuch-search)
 (define-key global-map (kbd "C-c i") #'now)
+;; avy search char in the open windows is kinda like qutebrowsers follow mode
+(setq avy-all-windows t)
+(map! :leader
+      :prefix "j"
+      :desc "avy-goto-char-timer" "j" #'avy-goto-char-timer)
 #+end_src
 
 ** Make new buffers org/md easier
@@ -656,6 +664,10 @@ Take me to your leader. Convienient keybinds I use a lot.
 ;; Comment lines
 (map! :leader
       :desc "Comment or uncomment lines" "#" #'comment-line)
+;; Evil write all buffers
+(map! :leader
+      (:prefix ("w" . "Write all buffers")
+               :desc "Write all buffers" "a" 'evil-write-all))
 #+end_src
 
 * Dired
@@ -729,7 +741,7 @@ Elfeed settings
   (let ((browse-url-generic-program "xdg-open"))
     (elfeed-show-visit t)))
 ;; Note: The customize interface is also supported.
-(setq rmh-elfeed-org-files (list "~/Dropbox/roam/elfeed.org"))
+(setq rmh-elfeed-org-files (list "~/Dropbox/org/elfeed.org"))
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 (after! elfeed-search
   (set-evil-initial-state! 'elfeed-search-mode 'normal))
@@ -797,7 +809,7 @@ Some useful snippet functions, I also use yasnippet for this but I like it to be
 #+begin_src emacs-lisp
 (defun my-md-front-matter ()
  (interactive)
- (insert "---\nid: %<%Y-%m-%d-%H%M>\ntags: \n---\n")
+ (insert "ID: %<%Y%m%d%H%M>\n")
  )
 #+end_src
 
@@ -840,7 +852,7 @@ A quick way to get a todo into my daily log with appropriate level heading. I us
 #+begin_src emacs-lisp
 (defun td ()
   (interactive)
-  (insert "**** TODO "
+  (insert "** TODO "
   ))
 #+end_src
 
@@ -873,11 +885,11 @@ I'm still only scratching the surface of this package really. I primarily just u
 (require 'denote)
 
 ;; Remember to check the doc strings of those variables.
-(setq denote-directory (expand-file-name "~/Dropbox/vault/0-Fleeting-Notes/"))
+(setq denote-directory (expand-file-name "~/Dropbox/vault/"))
 (setq denote-known-keywords '(""))
 (setq denote-infer-keywords nil)
 (setq denote-sort-keywords t)
-(setq denote-file-type nil) ; Org is the default, set others here
+(setq denote-file-type "markdown-yaml") ; Org is the default, set others here
 (setq denote-prompts '(nil))
 (setq denote-excluded-directories-regexp nil)
 (setq denote-excluded-keywords-regexp nil)
@@ -888,14 +900,12 @@ I'm still only scratching the surface of this package really. I primarily just u
 
 ;; Read this manual for how to specify `denote-templates'.  We do not
 ;; include an example here to avoid potential confusion.
-(setq denote-id-format "%Y-%m-%d-%H%M")
-(setq denote-date-format "%Y-%m-%d-%H%M") ; read doc string
+(setq denote-id-format "%Y%m%d%H%M")
+(setq denote-date-format "%Y%m%d%H%M") ; read doc string
 ;test
 (setq denote-yaml-front-matter
-  "---
-id: %2$s
-tags: %3$s
----\n")
+  "ID: %2$s
+#Fleeting\n")
 ;
 (setq denote-org-front-matter
 "#+TITLE: %s
@@ -1062,6 +1072,19 @@ For playing music or video files with mpv.
        :desc "Emms play previous track" "p" #'emms-previous
        :desc "Emms play next track"     "n" #'emms-next))
 #+END_SRC
+* Markdown/Writeroom hook
+When a markdown file is opened it automatically centres with writeroom mode.
+#+begin_src emacs-lisp
+(add-hook 'markdown-mode-hook 'writeroom-mode)
+;; (add-hook 'markdown-mode-hook (lambda ()
+;;                             (setq buffer-face-mode-face '(:family "Alegreya :size 18"))
+;;                             (buffer-face-mode)))
+#+end_src
+* Smart Parens
+Disable automatically closing open parenthesis, brackets, markup etc.
+#+begin_src emacs-lisp
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+#+end_src
 * Load other config files
 Private email setup etc.
 #+begin_src emacs-lisp
