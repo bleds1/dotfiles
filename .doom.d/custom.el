@@ -55,6 +55,8 @@
    '("~/Dropbox/org/goals.org" "/home/bledley/Dropbox/org/events.org" "/home/bledley/Dropbox/org/todo.org"))
  '(package-selected-packages '(vimrc-mode denote org-roam))
  '(send-mail-function 'smtpmail-send-it)
+ '(smtpmail-smtp-server "posteo.de")
+ '(smtpmail-smtp-service 25)
  '(warning-suppress-types
    '((org-element-cache)
      (org-element-cache)

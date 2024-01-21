@@ -94,11 +94,11 @@ _G.packer_plugins = {
     path = "/home/bledley/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  nord = {
-    config = { "\27LJ\2\0024\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0" },
+  monokai = {
+    config = { "\27LJ\2\0027\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\24colorscheme monokai\bcmd\bvim\0" },
     loaded = true,
-    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/nord",
-    url = "https://github.com/shaunsingh/nord.nvim"
+    path = "/home/bledley/.local/share/nvim/site/pack/packer/start/monokai",
+    url = "https://github.com/tanvirtin/monokai.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -188,10 +188,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nord
-time([[Config for nord]], true)
-try_loadstring("\27LJ\2\0024\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\21colorscheme nord\bcmd\bvim\0", "config", "nord")
-time([[Config for nord]], false)
+-- Config for: monokai
+time([[Config for monokai]], true)
+try_loadstring("\27LJ\2\0027\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\24colorscheme monokai\bcmd\bvim\0", "config", "monokai")
+time([[Config for monokai]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

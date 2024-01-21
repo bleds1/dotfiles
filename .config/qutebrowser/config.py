@@ -132,6 +132,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 config.bind('<Space><b><k>', 'tab-close')
 config.bind('<x>', 'tab-close')
 config.bind('<Ctrl-w>', 'tab-close')
+config.bind('<Space><w><n>', 'tab-give')
 config.bind('<b><n>', 'tab-next')
 config.bind('<b><p>', 'tab-prev')
 config.bind('<r>', 'reload')

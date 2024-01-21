@@ -1,3 +1,5 @@
+-- Transparent linenumbers column
+vim.cmd('hi! LineNr guibg=none ctermbg=none')
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -9,14 +11,15 @@ vim.g.nvim_tree_indent_markers = 1
 --vim.g.netrw_keepdir = 0
 --vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_browsex_viewer = 'xdg-open'
---vim.opt.laststatus = 0
-vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.laststatus = 0
+--vim.opt.nu = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 --vim.opt.cursorline = true
 --vim.opt.laststatus = 0
 --vim.opt.guicursor = ""
 --vim.opt.showtabline =2
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4

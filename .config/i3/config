@@ -10,6 +10,9 @@ gaps outer 0
 #Switch focus to window on urgent
 #for_window [urgent="latest"] focus
 
+# force floating for all new windows
+# for_window [class="[.]*"] floating enable
+
 # set caps as esc with setxkbmap
 exec --no-startup-id setxkbmap -option caps:escape
 
@@ -183,6 +186,8 @@ for_window [instance="transmission-gtk"] floating enable
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [instance="mousepad"] floating enable
+for_window [instance="okular"] floating enable
 #
 # Scratchpad
 for_window [class=kitty instance="__text_scratchpad"] floating enable 
