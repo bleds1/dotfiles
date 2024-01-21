@@ -519,12 +519,14 @@ Greys out out of focus text in writing mode.
 #+end_src
 
 * Browser
-Load links in Qutebrowser by default.
+Load links in Firefox by default.
 
  #+begin_src emacs-lisp
 ;; Set browser
+;; (setq browse-url-browser-function 'browse-url-generic
+;;       browse-url-generic-program "qutebrowser")
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "qutebrowser")
+      browse-url-generic-program "firefox")
 ;;(setq browse-url-browser-function 'eww-browse-url)
  #+end_src
 
