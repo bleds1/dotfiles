@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
     use ('norcalli/nvim-colorizer.lua')
     use("folke/zen-mode.nvim")
     use('vimwiki/vimwiki')
+    use { "catppuccin/nvim", as = "catppuccin" }
     use ('nvim-tree/nvim-web-devicons')
     use {
         'nvim-lualine/lualine.nvim',
