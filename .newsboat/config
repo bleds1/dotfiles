@@ -1,4 +1,4 @@
-#browser "qutebrowser %u"
+#browser "firefox %u"
 browser "w3m %u"`
 player "mpv"
 external-url-viewer "urlview"

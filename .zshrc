@@ -25,7 +25,7 @@ ENABLE_CORRECTION="false"
 # editor default
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=vivaldi-stable
+export BROWSER=firefox
 export TERMINAL=kitty
 
 # Set name of the theme to load --- if set to "random", it will
@@ -186,13 +186,13 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/Dropbox/vault/"
-alias notes="cd ~/Dropbox/vault/0-Fleeting-Notes/"
-alias lit="cd ~/Dropbox/vault/1-Literature-Notes/"
-alias perm="cd ~/Dropbox/vault/2-Permanent-Notes/"
-alias proj="cd ~/Dropbox/vault/3-Project-Notes/"
-alias nn="v ~/Dropbox/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
-alias dia='nvim -c ":VimwikiMakeDiaryNote"'
-alias vw='nvim -c ":VimwikiIndex"'
+#alias notes="cd ~/Dropbox/vault/0-Fleeting-Notes/"
+#alias lit="cd ~/Dropbox/vault/1-Literature-Notes/"
+#alias perm="cd ~/Dropbox/vault/2-Permanent-Notes/"
+#alias proj="cd ~/Dropbox/vault/3-Project-Notes/"
+#alias nn="v ~/Dropbox/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
+#alias dia='nvim -c ":VimwikiMakeDiaryNote"'
+#alias vw='nvim -c ":VimwikiIndex"'
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"

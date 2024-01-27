@@ -53,8 +53,8 @@ super + o; i
     emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
 super + c; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
-super + c; d
-    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/log.org")'
+# super + c; d
+#     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/log.org")'
 super + c; t
     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/todo.org")'
 super + c; y
