@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("2078837f21ac3b0cc84167306fa1058e3199bbd12b6d5b56e3777a4125ff6851" "fbd91b2e6dc5c7912e86406226638adb014612386516e078a0447195591447d3" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" "570263442ce6735821600ec74a9b032bc5512ed4539faf61168f2fdf747e0668" default))
+   '("80214de566132bf2c844b9dee3ec0599f65c5a1f2d6ff21a2c8309e6e70f9242" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "0c08a5c3c2a72e3ca806a29302ef942335292a80c2934c1123e8c732bb2ddd77" "2078837f21ac3b0cc84167306fa1058e3199bbd12b6d5b56e3777a4125ff6851" "fbd91b2e6dc5c7912e86406226638adb014612386516e078a0447195591447d3" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "7e068da4ba88162324d9773ec066d93c447c76e9f4ae711ddd0c5d3863489c52" "570263442ce6735821600ec74a9b032bc5512ed4539faf61168f2fdf747e0668" default))
  '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode org-journal-mode))
  '(elfeed-feeds
    '(("https://itsfoss.com/feed/" linux tech)
@@ -69,6 +69,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "#151515" :foreground "#BFBFBF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "JB" :family "JetBrains Mono"))))
+ '(centaur-tabs-default ((t (:background "#151515" :foreground "#1f2024" :box nil))))
+ '(centaur-tabs-selected ((t (:background "#151515" :foreground "#c6c6c6" :box nil))))
+ '(centaur-tabs-selected-modified ((t (:background "#151515" :foreground "#7ebebd"))))
+ '(centaur-tabs-unselected ((t (:inherit tab-line-tab :background "#151515" :foreground "#c9d9ff" :box nil))))
+ '(centaur-tabs-unselected-modified ((t (:background "#151515" :foreground "#7ebebd"))))
  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
@@ -92,6 +97,8 @@
  '(mode-line ((t (:background "#151515" :box nil))))
  '(mode-line-inactive ((t (:background "#151515" :foreground "#888395" :box nil))))
  '(org-agenda-dimmed-todo-face ((t (:foreground "#949494"))))
+ '(org-block ((t (:extend t :background "#212121"))))
+ '(org-block-begin-line ((t (:inherit org-block :extend t :background "#212121" :foreground "#6e7899"))))
  '(org-date ((t (:foreground "#819cd6"))))
  '(org-document-title ((t (:height 1.0))))
  '(org-scheduled-previously ((t (:foreground "#EECA9D"))))
@@ -104,6 +111,9 @@
  '(outline-6 ((t (:weight semi-bold :height 1.0))))
  '(outline-8 ((t (:weight semi-bold))))
  '(outline-9 ((t (:weight semi-bold))))
- '(region ((t (:extend t :background "#c280a0" :foreground "black")))))
+ '(region ((t (:extend t :background "#c280a0" :foreground "black"))))
+ '(tab-bar ((t (:background "#151515" :foreground "#1f2024" :box nil))))
+ '(tab-bar-tab ((t (:background "#151515" :foreground "#c6c6c6" :box nil))))
+ '(tab-bar-tab-inactive ((t (:inherit tab-line-tab :background "#151515" :foreground "#757575" :box nil)))))
 (put 'customize-variable 'disabled nil)
 (put 'customize-face 'disabled nil)
