@@ -103,10 +103,9 @@ Ask to confirm quit is a bit annoying so I disable that. I don't need line numbe
 
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 (setq global-hl-line-modes nil)
 (setq hl-line-mode nil)
-;(setq display-line-numbers-type 'relative)
 (setq auto-save-default t)
 #+end_src
 
@@ -124,7 +123,7 @@ I used to launch to a nice dashboard but now I realise it is only eye candy and 
 #+end_src
 
 ** Fonts
-I usually use Jet Brains Mono or Iosevka..also like the variable font sizes to be pretty consistent, more like the terminal version.
+I usually use Jet Brains Mono also like the variable font sizes to be pretty consistent, more like the terminal version.
 
  #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "JetBrains Mono" :size 13)
@@ -1088,6 +1087,21 @@ Disable automatically closing open parenthesis, brackets, markup etc.
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 #+end_src
 * Load other config files
+#+begin_src emacs-lisp
+;; (load-theme 'catppuccin t t)
+;; (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+;; (catppuccin-reload)
+(after! treemacs
+  (setq treemacs-follow-mode t)
+  (setq treemacs-indent-guide-mode t))
+;; minimap map
+(after! minimap
+  (minimap-mode))
+;; vterm confirm quit
+(after! vterm
+  (setq vterm-kill-buffer-on-exit t))
+#+end_src
+
 Private email setup etc.
 #+begin_src emacs-lisp
 ;; Load other config files
