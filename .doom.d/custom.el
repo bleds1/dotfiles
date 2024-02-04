@@ -69,11 +69,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "#151515" :foreground "#BFBFBF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 105 :width normal :foundry "JB" :family "JetBrains Mono"))))
- '(centaur-tabs-default ((t (:background "#151515" :foreground "#1f2024" :box nil))))
- '(centaur-tabs-selected ((t (:background "#151515" :foreground "#c6c6c6" :box nil))))
- '(centaur-tabs-selected-modified ((t (:background "#151515" :foreground "#7ebebd"))))
- '(centaur-tabs-unselected ((t (:inherit tab-line-tab :background "#151515" :foreground "#c9d9ff" :box nil))))
- '(centaur-tabs-unselected-modified ((t (:background "#151515" :foreground "#7ebebd"))))
  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
