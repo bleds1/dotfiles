@@ -1,3 +1,0 @@
-#!/bin/sh
-
-kitty -e nvim /home/bledley/Dropbox/Obsidian/vault/0\ Fleeting\ Notes/$(date +%Y-%m-%d-%H%M).md
