@@ -1,7 +1,7 @@
 #!/bin/bash
 
-myTerm=kitty
-myEdit=vim
+myTerm=gnome-terminal
+myEdit=neovim
 
 menu(){
     printf "1. BBC Scores & Fixtures (sc)\n"
@@ -10,16 +10,12 @@ menu(){
 	printf "4. Github (gh)\n"
 	printf "5. Lemmy.world (lm) \n"
     printf "6. Libgen (li)\n"
-    printf "7. Libreddit.de (lr)\n"
+    printf "7. Reddit (re)\n"
 	printf "8. Magnetdl (md)\n"
 	printf "9. Mastodon.art (ms) \n"
     printf "10. Omnivore (om) \n"
     printf "11. Pinterest (pi)\n"
-	printf "12. Proton Calendar (pc)\n"
-	printf "13. Protonmail (pm)\n"
-    printf "14. Raindrop.io (rd)\n"
-    printf "15. Substack (ss)\n"
-    printf "16. Wikipedia (wi)\n"
+    printf "12. Wikipedia (wi)\n"
 }
 
 main(){
@@ -27,52 +23,40 @@ main(){
 
 	case $choice in
 		1)
-            vivaldi-stable www.bbc.co.uk/sport/football/scores-fixtures
+            ungoogled-chromium www.bbc.co.uk/sport/football/scores-fixtures
             ;;
 		2)
-            vivaldi-stable https://news.ycombinator.com/news
+            ungoogled-chromium https://news.ycombinator.com/news
             ;;
 		3)
-            vivaldi-stable https://crimsondaggers.com/forum/forum-10.html
+            ungoogled-chromium https://crimsondaggers.com/forum/forum-10.html
             ;;
 		4)
-            vivaldi-stable github.com/bleds1
+            ungoogled-chromium github.com/bleds1
             ;;
 		5)
-            vivaldi-stable lemmy.world
+            ungoogled-chromium lemmy.world
             ;;
 		6)
-            vivaldi-stable https://libgen.rs
+            ungoogled-chromium https://libgen.rs
             ;;
         7)
-            vivaldi-stable libreddit.de
+            ungoogled-chromium reddit.com
             ;;
         8)
-            vivaldi-stable magnetdl.com
+            ungoogled-chromium magnetdl.com
             ;;
         9)
-            vivaldi-stable mastodon.art/home
+            ungoogled-chromium mastodon.art/home
             ;;
         10)
-            vivaldi-stable https://omnivore.app/home
+            ungoogled-chromium https://omnivore.app/home
             ;;
         11)
-            vivaldi-stable pinterest.co.uk
+            ungoogled-chromium pinterest.co.uk
             ;;
         12)
-            vivaldi-stable calendar.proton.me
-            ;;
-        13)
-            vivaldi-stable account.proton.me
-            ;;
-        14)
-            vivaldi-stable https://app.raindrop.io/my/0
-            ;;
-        15)
-            vivaldi-stableq https://pigmentandpixels.substack.com/
-            ;;
-        16)
-            vivaldi-stable en.wikipedia.org/wiki/Main_Page
+            ungoogled-chromium en.wikipedia.org/wiki/Main_Page
             ;;
         esac
 }
