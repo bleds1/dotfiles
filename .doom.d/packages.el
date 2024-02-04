@@ -65,6 +65,11 @@
 (package! focus)
 ;;
 (package! nov)
+
+(package! catppuccin-theme)
+
+(package! minimap)
+
 ;;(package! md-roam
 ;;  :recipe (:host github :repo "nobiot/md-roam"))
 ;;
