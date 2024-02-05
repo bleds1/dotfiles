@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script searches my ebooks directory with fzf in the terminal and opens the file in Okular
-# TODO make this script detach from the terminal instance
+# TODO make this script detach properly from the terminal instance
 
 eblaunch="/home/bledley/Documents/Library/pdf"
 
