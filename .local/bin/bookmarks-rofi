@@ -14,8 +14,7 @@ menu(){
 	printf "8. Magnetdl (md)\n"
 	printf "9. Mastodon.art (ms) \n"
     printf "10. Omnivore (om) \n"
-    printf "11. Pinterest (pi)\n"
-    printf "12. Wikipedia (wi)\n"
+    printf "11. Wikipedia (wi)\n"
 }
 
 main(){
@@ -53,9 +52,6 @@ main(){
             ungoogled-chromium https://omnivore.app/home
             ;;
         11)
-            ungoogled-chromium pinterest.co.uk
-            ;;
-        12)
             ungoogled-chromium en.wikipedia.org/wiki/Main_Page
             ;;
         esac
