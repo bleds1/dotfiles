@@ -1,6 +1,4 @@
 #!/bin/sh
-
-#paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
-#
+# Plays a sound effect - Useful for scripts or programs that notify.
 
 paplay ~/sfx/545372__stwime__up3.ogg
