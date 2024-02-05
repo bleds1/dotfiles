@@ -1,4 +1,4 @@
-#browser "firefox %u"
+#browser "ungoogled-chromium" %u"
 browser "w3m %u"`
 player "mpv"
 external-url-viewer "urlview"
