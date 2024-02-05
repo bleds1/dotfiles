@@ -1,8 +1,0 @@
-#!/bin/bash
-# This script searches my Zettelkasten/Obsidian pages with fzf and opens the file for editing in Neovim
-
-zet="/home/bledley/Dropbox/loqseq/pages/"
-
-menu=$(ls -a "$zet" | uniq -u | fzf --height=100% --reverse --header-first)
-
-nvim "$zet"/"$menu"
