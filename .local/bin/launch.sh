@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Polybar Launch Script
 
 # Terminate already running bar instances

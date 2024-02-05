@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh 
+# Screen lock for i3
 
 # icon="$HOME/.i3/lock.png"
 img=/tmp/i3lock.png

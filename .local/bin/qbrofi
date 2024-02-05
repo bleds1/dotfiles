@@ -1,6 +1,5 @@
 #!/bin/sh
-
-# this script uses rofi's dmenu mode to launch qutebrowser with search keywords
+# this script uses Rofi to display searchengine choices and then launch qutebrowser
 
 searchstr=$(echo "(aw) Arch Wiki\n(br) Brave\n(dd) Duckduckgo\n(qw) Qwant\n(sp) Startpage\n(sx) SearXNG\n(wik) Wikipedia" | rofi -dmenu -i -p "Search Qutebrowser")
 
