@@ -1,0 +1,4 @@
+#!/bin/sh
+# Making this script was the only way I found to launch the correct version of Picom with experimental backends on startup in XFCE
+
+picom --experimental-backends &
