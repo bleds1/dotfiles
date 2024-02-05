@@ -11,6 +11,7 @@
 ## Zsh
 ## Ranger
 ## Tmux
+## Some basic scripts
 
 + probably more..
 
