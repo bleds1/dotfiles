@@ -10,7 +10,10 @@
 ## Qutebrowser
 ## Zsh
 ## Ranger
+## Rofi
 ## Tmux
+## Picom
+## Conky
 ## Some basic scripts
 
 + probably more..
