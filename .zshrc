@@ -136,7 +136,6 @@ DISABLE_FZF_AUTO_COMPLETION="true'"
 alias ..="cd .."
 alias c="clear -x"
 alias cnf="clear -x && neofetch"
-alias ct="clear -x && task"
 alias nf="c && neofetch"
 alias open="xdg-open"
 alias q="exit"
@@ -154,7 +153,7 @@ alias e="emacsclient -nw"
 alias em="emacsclient -c -a 'emacs' & disown"
 alias emd="/usr/bin/emacs --daemon"
 alias dired="emacsclient -nw -c -a 'emacs' --eval '(dired nil)'"
-alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
+# alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
 #git
 alias gs='git status'
 alias ga='git add -A'
@@ -174,9 +173,8 @@ alias lm="exa -al --color=always --sort modified --reverse"
 alias ll="exa -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
 alias la="exa -al --color=always --sort Name --group-directories-first"
 alias lt="exa -aT --color=always --group-directories-first"
-alias m="neomutt"
+alias mutt="neomutt"
 #shortcuts
-alias bb="cd ~/bleds_blog/"
 alias sba="cd ~/sba/"
 alias doc="cd ~/Documents/"
 alias dl="cd ~/Downloads/"
@@ -186,13 +184,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/Dropbox/vault/"
-#alias notes="cd ~/Dropbox/vault/0-Fleeting-Notes/"
-#alias lit="cd ~/Dropbox/vault/1-Literature-Notes/"
-#alias perm="cd ~/Dropbox/vault/2-Permanent-Notes/"
-#alias proj="cd ~/Dropbox/vault/3-Project-Notes/"
-#alias nn="v ~/Dropbox/vault/0-Fleeting-Notes/$(date +%Y-%m-%d-%H%M).md"
-#alias dia='nvim -c ":VimwikiMakeDiaryNote"'
-#alias vw='nvim -c ":VimwikiIndex"'
+alias nn="v ~/Dropbox/vault/0_Inbox/$(date +%Y%m%d%H%M).md"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
@@ -205,13 +197,12 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
-# tmux
 alias t="task"
 alias ta="task add"
 # khal
-alias k="khal"
-alias kls="khal list"
-alias cal="khal calendar"
+# alias k="khal"
+# alias kls="khal list"
+# alias cal="khal calendar"
 alias bat="batcat"
 
 #confirm before overwrite
@@ -261,18 +252,17 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Ruby exports
-
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
 # Cli todo function
 #function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
-function todo { echo "** TODO $1" >> ~/Dropbox/roam/tasks.org  }
+# function todo { echo "** TODO $1" >> ~/Dropbox/roam/tasks.org  }
 #
 # Fleeting Obsidian function
-function note {
-    echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/tasks.org
-}
+# function note {
+    # echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/tasks.org
+# }
 #suppress warnings powerlevel10k
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
