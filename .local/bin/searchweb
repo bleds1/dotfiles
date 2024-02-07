@@ -21,10 +21,11 @@ declare -a options=(
 "IMDB - https://www.imdb.com/find?q="
 "Reddit - https://www.reddit.com/search/?q="
 "Stack - https://stackoverflow.com/search?q="
-"Startpage - https://www.startpage.com/do/dsearch?query="
+# "Startpage - https://www.startpage.com/do/dsearch?query="
+# TODO make Thesaurus search work correctly
 "Thesaurus - https://www.thesaurus.com/misspelling?term="
 #"Translate - https://translate.google.com/?sl=auto&tl=en&text="
-"Urban - https://www.urbandictionary.com/define.php?term="
+# "Urban - https://www.urbandictionary.com/define.php?term="
 "Wikipedia - https://en.wikipedia.org/wiki/"
 "Youtube - https://www.youtube.com/results?search_query="
 "Quit"
