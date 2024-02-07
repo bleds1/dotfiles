@@ -1,42 +1,39 @@
 super + Escape
-        pkill =USR1 -x sxhkd
-
-# Launching Programs
+    pkill =USR1 -x sxhkd
 # Browser
 super + b
-      qutebrowser
+    ungoogled-chromium
 # Ranger
 super + period; period
-       kitty -e ranger
+    kitty -e ranger
 super + period; i
-       kitty -e ranger ~/Dropbox/0_Inbox
+    kitty -e ranger ~/Dropbox/0_Inbox
 super + period; d
-       kitty -e ranger ~/Downloads
+    kitty -e ranger ~/Downloads
 super + period; l
-       kitty -e ranger ~/Documents/Library
+    kitty -e ranger ~/Documents/Library
 # Rofi emoji
 super + m
-      rofi -modi emoji -show emoji
-# Rofi
+    rofi -modi emoji -show emoji
 # Run Launcher
 super + x
-       rofi -show run
+    rofi -show run
 # Window swticher
 super + comma
-       rofi -show window
+    rofi -show window
 # Searchweb
 super + slash
-      qbrofi
+    qbrofi
 # Pass
 super + p
-        dmenu_pass
+    dmenu_pass
 # Screenshots
 Print
     xfce4-screenshooter
 # Screenlock
 super +z
-      xflock4
-# Emacs (super + e followed by another key)
+    xflock4
+# Emacs
 super + e
     emacsclient -c -a 'emacs'
 super + c; s
@@ -54,11 +51,11 @@ super + o; i
 super + c; c
     emacsclient -c -a 'emacs' --eval '(compose-mail)'
 # super + c; d
-#     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/log.org")'
+#     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/org/log.org")'
 super + c; t
-    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/vault/todo.org")'
+    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/org/todo.org")'
 super + c; y
-       rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # i3 windows
 super +w; x
- i3-msg kill
+    i3-msg kill

@@ -13,9 +13,9 @@ space
 toggle_fullscreen f
 next_img space
 prev_img BackSpace
-scroll_left Left
-scroll_right Right
-scroll_up Up
-scroll_down Down
+scroll_left h
+scroll_right l
+scroll_up k
+scroll_down j
 zoom_in z
 zoom_out x 
