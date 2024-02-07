@@ -74,15 +74,15 @@ color.due.today=color43
 color.uda.priority.H=color43
 #color.uda.priority.M=color252
 #color.uda.priority.L=color247
-#   news.version=2.6.0
 
 # Priority
 urgency.user.tag.urgent.coefficient=5.0
 urgency.uda.priority.H.coefficient=3.0
-urgency.uda.priority.M.coefficient=1.0
+urgency.uda.priority.M.coefficient=1.5
 urgency.uda.priority.L.coefficient=-2.0
 urgency.user.project.Next.coefficient=2.5
 urgency.user.project.Upcoming.coefficient=0.6
-urgency.user.project.Someday.coefficient=-2.5
+urgency.user.project.Backburner.coefficient=-2.5
+urgency.user.project.Someday.coefficient=-3.0
 
 news.version=2.6.0
