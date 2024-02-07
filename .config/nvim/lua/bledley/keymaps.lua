@@ -15,6 +15,8 @@ vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
 vim.keymap.set("n", "<leader>bk", vim.cmd.bd)
 vim.keymap.set("n", "<leader>en", vim.cmd.enew)
 --Splits
+vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
+vim.keymap.set("n", "<C-w>", vim.cmd.tabclose)
 vim.keymap.set("n", "<leader>wh", vim.cmd.split)
 vim.keymap.set("n", "<leader>wv", vim.cmd.vsplit)
 --Navigate Splits
