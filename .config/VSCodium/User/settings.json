@@ -1,0 +1,61 @@
+// ~/.config/VSCodium/User/settings.json
+{
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace",
+    "editor.codeLensFontFamily": "'JetBrains Mono'",
+    "editor.cursorStyle": "block",
+    "window.menuBarVisibility": "toggle",
+    "editor.fontSize": 12,
+    "editor.codeLensFontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "keyboard.dispatch": "keyCode",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["Esc"]
+        }
+    ],
+    "vim.cursorStylePerMode.insert": "line-thin",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    // Github Dark Dimmed
+    "workbench.colorCustomizations": 
+    {
+    "editorCursor.foreground": "#63C5B2",
+    "editor.selectionBackground": "#C280A0",
+    "sideBar.background": "#22262F",
+    "activityBar.border": "#22262F",
+    "statusBar.border": "#22262F",
+    "sideBar.border": "#22262F",
+    "sideBarSectionHeader.background": "#22262F",
+    "scrollbarSlider.activeBackground": "#292D37",
+    "scrollbarSlider.hoverBackground": "#292D37",
+    "terminal.background": "#22262F",
+    "actionBar.toggledBackground": "#22262F",
+    "panel.background": "#22262F",
+    "panel.border": "#22262F"
+    },
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#D19FB7",
+    "vim.highlightedyank.duration": 250,
+    "dateTime.customFormat": "HH:mm",
+    "editor.cursorBlinking": "phase",
+    "editor.defaultColorDecorators": true,
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "explorer.compactFolders": false,
+    "editor.lineHeight": 18,
+    "files.defaultLanguage": "markdown",
+    "workbench.editor.showTabs": "none",
+    "workbench.sideBar.location": "right",
+    "editor.scrollbar.vertical": "auto",
+    "editor.scrollbar.horizontal": "auto",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.location": "hidden",
+}
