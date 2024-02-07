@@ -14,6 +14,8 @@
 ## Tmux
 ## Picom
 ## Conky
+## VSCodium
+## Taskwarrior
 ## Some basic scripts
 
 + probably more..
