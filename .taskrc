@@ -1,0 +1,88 @@
+# [Created by task 2.6.2 9/28/2022 22:02:16]
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=/home/bledley/.task
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+include no-color.theme
+
+# Date default
+weekstart=Monday
+
+# Default Project
+default.project=Inbox
+
+# Limit no of tasks being shown
+report.next.filter=+PENDING -BLOCKING limit:10
+
+# Sort columns
+#report.list.columns=
+#report.list.labels= 
+#report.next.labels=
+#report.next.columns=
+
+# Search is case insensitive
+search.case.sensitive=no
+
+# Daily burndown 
+alias.burndown=burndown.daily
+
+# Custom colors
+color.active=color50
+#   color.today=color50
+color.overdue=color43
+#   color.due=color50
+color.due.today=color43
+#   color.waiting=color240
+#   color.completed=color237
+#   color.scheduled=color250
+#   color.summary.bar=on color250
+#   color.recurring=color250
+color.uda.priority.H=color43
+#color.uda.priority.M=color252
+#color.uda.priority.L=color247
+#   news.version=2.6.0
+
+# Priority
+urgency.user.tag.urgent.coefficient=5.0
+urgency.uda.priority.H.coefficient=3.0
+urgency.uda.priority.M.coefficient=1.0
+urgency.uda.priority.L.coefficient=-2.0
+urgency.user.project.Next.coefficient=2.5
+urgency.user.project.Upcoming.coefficient=0.6
+urgency.user.project.Someday.coefficient=-2.5
+
+news.version=2.6.0
