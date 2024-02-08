@@ -1,6 +1,6 @@
 #root>div {
     --ls-primary-background-color: #292D37;
-    --ls-secondary-background-color: #262b37;
+    --ls-secondary-background-color: #1C2029;
     --ls-tertiary-background-color: #292D37;
     --ls-quaternary-background-color: #292D37;
     --ls-border-color: #394351;
@@ -9,9 +9,9 @@
     --ls-page-inline-code-bg-color: #22262f;
     --ls-title-text-color: #ffffff;
     --ls-primary-text-color: #cacaca;
-    --ls-tag-text-color: #6daad5;
+    /* --ls-tag-text-color: #6daad5;
     --ls-link-ref-text-color: #6daad5;
-    --ls-link-text-color: #6daad5;
+    --ls-link-text-color: #6daad5; */
     --ls-block-ref-link-text-color: #292D37;
     --ls-block-highlight-color: #373f4e;
     --ls-block-bullet-border-color: #556b8b;
@@ -26,7 +26,7 @@
     }
 
     .references-blocks-item {
-      background-color: #303644;
+      background-color: #2D313C;
     }
 
     .page.ref {
@@ -35,9 +35,8 @@
     }
 
     a.tag {
-    color: var(--ls-tag-text,var(--lx-accent-11,var(--ls-tag-text-color,#6daad5)));
+     color: var(--ls-tag-text,var(--lx-accent-11,var(--ls-tag-text-color,#6daad5)));
     }
-
 /* Custom Font Styles */
     body {
      font-family: 'Cantarell', sans-serif;
