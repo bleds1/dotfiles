@@ -85,4 +85,6 @@
     "panel.background": "#22262F",
     "panel.border": "#22262F"
     },
+    "workbench.activityBar.location": "hidden",
+    "workbench.startupEditor": "newUntitledFile",
 }
