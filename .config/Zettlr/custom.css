@@ -1,0 +1,120 @@
+/* Enter your custom CSS here */
+/*--- THIN SCROLLBAR ---*/
+
+    ::-webkit-scrollbar {
+        width: 6px;
+  }
+
+    body ::-webkit-scrollbar-thumb {
+        background-color: var(--grey-2) !important;
+  }
+
+    body.dark ::-webkit-scrollbar-thumb {
+        background-color: var(--grey-5) !important;
+  }
+/*--- TEXT WIDTH --- */
+
+.main-editor-wrapper .cm-content {
+  max-width: 60em;  /* change value to your preferred width */
+  margin-right: auto;
+  margin-left: auto;
+  }
+
+
+/*--- INTERFACE COLORS DARK MODE --- */
+
+  body.dark .main-editor-wrapper {
+    background-color: #151515 !important;
+  }
+
+  body.linux.dark #file-tree {
+  background-color: #151515 !important;
+  }
+
+  body.linux.dark div.tab-container {
+  background-color: #151515 !important;  
+  }
+
+  body:not(.darwin).dark ::-webkit-scrollbar {
+  background-color: #151515 !important;  
+  }
+
+  body:not(.darwin).dark ::-webkit-scrollbar-thumb {
+  background-color: #232323 !important;  
+  }
+
+  body.dark ::-webkit-scrollbar-thumb {
+  background-color: #151515 !important;  
+  }
+
+  body.linux.dark #menubar {
+  background-color: #232323 !important;  
+  }
+
+  body.linux.dark div#toolbar {
+  background-color: #232323 !important;  
+  }
+
+  body.dark div.split-view div.view.view-border {
+  border-color: #232323 !important;  
+  }
+
+  body.dark div.tab-container {
+  border-color: #232323 !important;  
+  }
+
+  body.linux.dark #file-tree #directories-dirs-header, body.linux #file-tree #directories-files-header {
+  border-color: #151515 !important;  
+  }
+
+  body.linux.dark input, body.linux.dark select, body.linux.dark textarea, body.linux.dark button {
+  background-color: #151515 !important;  
+  }
+
+  body.linux.dark div.tab-container div[role="tab"] {
+  background-color: #151515 !important;
+  border-color: #232323 !important;
+  }
+
+  .ͼ1 .cm-foldPlaceholder {
+   background-color: #151515 !important;
+   border-color: #151515 !important;
+  }
+
+  body.linux.dark div.document-tablist-wrapper div.scroller.left {
+  background-color: #151515 !important;
+  border-color: #151515 !important;
+  }
+
+  body.linux.dark div.document-tablist-wrapper div.scroller.right {
+  background-color: #151515 !important;
+  border-color: #151515 !important;
+  }
+
+  :root {
+    --system-accent-color: #98BADC !important;
+   } 
+
+  .ͼ1d .cm-code-mark {
+  color: #8ABAEA !important;
+   }
+
+  .ͼ1e .cm-url, .ͼ1e .cm-link, .ͼ1e .cm-code-mark, .ͼ1e .cm-zkn-tag, .ͼ1e .cm-zkn-link {
+  color: #8ABAEA;
+   }
+
+ .cm-editor .cm-cursor {
+    background-color: #8ABAEA;
+  }
+ 
+  .ͼ1e.cm-focused .cm-scroller .cm-layer.cm-selectionLayer .cm-selectionBackground, .ͼ1e ::selection {
+   background:  #C280A0;
+  }
+
+  .ͼ1e .citeproc-citation.error, .ͼ1e .mermaid-chart.error {
+  color: #C280A0;
+  }
+
+  .ͼ1e .citeproc-citation, .ͼ1e .code-block-line-background, .ͼ1e .inline-code-background {
+   background-color: transparent; 
+  }
