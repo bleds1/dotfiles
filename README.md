@@ -48,6 +48,4 @@
 
 + probably more..
 
-*TODO:* Flesh out this readme and add screenshots/links/system info/descriptions
-
-*TODO:* Symlink and push latest Polybar
+*TODO:* Flesh out this readme and add screenshots/system info/descriptions
