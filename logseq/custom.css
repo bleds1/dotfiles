@@ -1,6 +1,6 @@
 #root>div {
     --ls-primary-background-color: #292D37;
-    --ls-secondary-background-color: #292D37;
+    --ls-secondary-background-color: #262b37;
     --ls-tertiary-background-color: #292D37;
     --ls-quaternary-background-color: #292D37;
     --ls-border-color: #394351;
@@ -39,15 +39,14 @@
     }
 
 /* Custom Font Styles */
-  body {
-    font-family: 'Cantarell', sans-serif;
-  }
+    body {
+     font-family: 'Cantarell', sans-serif;
+    }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cantarell', sans-serif;
-  }
+    h1, h2, h3, h4, h5, h6 {
+     font-family: 'Cantarell', sans-serif;
+    }
 
-  p {
-    font-family: 'Cantarell', sans-serif;
-  }
-/* Add more styles as needed */
+    p {
+     font-family: 'Cantarell', sans-serif;
+    }
