@@ -87,4 +87,8 @@
     },
     "workbench.activityBar.location": "hidden",
     "workbench.startupEditor": "newUntitledFile",
+    "cSpell.userWords": [
+        "watercolour",
+        "Watercolours"
+    ],
 }
