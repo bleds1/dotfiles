@@ -103,7 +103,7 @@ Ask to confirm quit is a bit annoying so I disable that. I don't need line numbe
 
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type t)
 (setq global-hl-line-modes nil)
 (setq hl-line-mode nil)
 (setq auto-save-default t)
@@ -126,10 +126,10 @@ I used to launch to a nice dashboard but now I realise it is only eye candy and 
 I usually use Jet Brains Mono also like the variable font sizes to be pretty consistent, more like the terminal version.
 
  #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 13)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
      doom-big-font (font-spec :family "JetBrains Mono" :size 14)
-     doom-serif-font (font-spec :family "JetBrains Mono" :size 13)
-     doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
+     doom-serif-font (font-spec :family "JetBrains Mono" :size 14)
+     doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
  #+end_src
 
 ** Visual/Theme
@@ -1088,9 +1088,9 @@ Disable automatically closing open parenthesis, brackets, markup etc.
 #+end_src
 * Load other config files
 #+begin_src emacs-lisp
-;; (load-theme 'catppuccin t t)
-;; (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
-;; (catppuccin-reload)
+(load-theme 'catppuccin t t)
+(setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha, 'frappe
+(catppuccin-reload)
 (after! treemacs
   (setq treemacs-follow-mode t)
   (setq treemacs-indent-guide-mode t))
