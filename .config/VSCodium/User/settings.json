@@ -1,7 +1,7 @@
 // ~/.config/VSCodium/User/settings.json
 {
     "workbench.colorTheme": "GitHub Dark Dimmed",
-    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "editor.fontFamily": "'Geist Mono', 'monospace', monospace",
     "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace",
     "editor.codeLensFontFamily": "'JetBrains Mono'",
     "editor.cursorStyle": "block",
@@ -10,7 +10,6 @@
     "editor.codeLensFontSize": 14,
     "terminal.integrated.fontSize": 14,
     "keyboard.dispatch": "keyCode",
-    "dateTime.customFormat": "HH:mm",
     "editor.cursorBlinking": "phase",
     "editor.defaultColorDecorators": true,
     "explorer.confirmDelete": false,
@@ -71,7 +70,7 @@
     // Github Dark Dimmed
     "workbench.colorCustomizations": 
     {
-    "editorCursor.foreground": "#63C5B2",
+    "editorCursor.foreground": "#5993A3",
     "editor.selectionBackground": "#C280A0",
     "sideBar.background": "#22262F",
     "activityBar.border": "#22262F",
@@ -85,11 +84,15 @@
     "panel.background": "#22262F",
     "panel.border": "#22262F"
     },
-    "workbench.activityBar.location": "hidden",
     "workbench.startupEditor": "newUntitledFile",
+
+    // Code Spell Checker
     "cSpell.enabled": false,
+    "cSpell.language": "en-GB",
     "cSpell.userWords": [
         "watercolour",
         "Watercolours"
     ],
+    "breadcrumbs.enabled": false,
+    "workbench.activityBar.location": "hidden",
 }
