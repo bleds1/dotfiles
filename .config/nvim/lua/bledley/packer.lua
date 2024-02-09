@@ -12,14 +12,6 @@ return require('packer').startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-
-	use ({
-		'tanvirtin/monokai.nvim',
-		as = 'monokai',
-		config = function()
-			vim.cmd('colorscheme monokai')
-		end
-	})
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('junegunn/fzf')
     use('junegunn/fzf.vim')
@@ -37,6 +29,7 @@ return require('packer').startup(function(use)
     use('vimwiki/vimwiki')
     use { "catppuccin/nvim", as = "catppuccin" }
     use ('nvim-tree/nvim-web-devicons')
+    use {'projekt0n/github-nvim-theme'}
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -48,5 +41,19 @@ return require('packer').startup(function(use)
         "nvim-lua/plenary.nvim",
     },
 })
+
+-- Lua
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 end)
 
