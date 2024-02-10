@@ -26,7 +26,7 @@ ENABLE_CORRECTION="false"
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=ungoogled-chromium
-export TERMINAL=gnome-terminal
+export TERMINAL=kitty
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -162,6 +162,7 @@ alias gpo='git push origin main'
 alias gplo='git pull origin'
 alias gb='git branch '
 alias gc='git commit'
+alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log'
 alias glog='git log --pretty="oneline"'
