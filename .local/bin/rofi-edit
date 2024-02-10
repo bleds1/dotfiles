@@ -4,6 +4,7 @@ myTerm=kitty
 myEdit=vim
 
 menu(){
+    printf "0. dotfiles\n"
 	printf "1. i3\n"
 	printf "2. kitty\n"
 	printf "3. .zsh\n"
@@ -17,6 +18,10 @@ main(){
     choice=$(menu | rofi -dmenu | cut -d. -f1)
 
 	case $choice in
+
+		0)
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/"
+            ;;
 		1)
 			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/i3/config"
             ;;
