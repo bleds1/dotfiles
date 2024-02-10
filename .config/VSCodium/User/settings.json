@@ -1,7 +1,7 @@
 // ~/.config/VSCodium/User/settings.json
 {
     "workbench.colorTheme": "GitHub Dark Dimmed",
-    "editor.fontFamily": "'Geist Mono', 'monospace', monospace",
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
     "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace",
     "editor.codeLensFontFamily": "'JetBrains Mono'",
     "editor.cursorStyle": "block",
@@ -65,6 +65,14 @@
             "before":["leader","f","s"],
             "commands":[":w!"]
         },
+        {
+            "before":["leader","w"],
+            "commands":[":w!"]
+        },
+ {
+            "before":["leader","w","a"],
+            "commands":[":wa!"]
+        },
     ],
 
     // Github Dark Dimmed
@@ -90,8 +98,6 @@
     "cSpell.enabled": false,
     "cSpell.language": "en-GB",
     "cSpell.userWords": [
-        "watercolour",
-        "Watercolours"
     ],
     "breadcrumbs.enabled": false,
     "workbench.activityBar.location": "hidden",
