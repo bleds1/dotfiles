@@ -30,10 +30,10 @@ return require('packer').startup(function(use)
     use { "catppuccin/nvim", as = "catppuccin" }
     use ('nvim-tree/nvim-web-devicons')
     use {'projekt0n/github-nvim-theme'}
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+--    use {
+--        'nvim-lualine/lualine.nvim',
+--        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+--}
     use({
     "epwalsh/obsidian.nvim",
     requires = {

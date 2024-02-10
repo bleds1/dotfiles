@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
 -- File Explorer
---vim.keymap.set("n", "<leader>o-", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>o-", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 --vim.keymap.set("n", "<leader>ol", vim.cmd.Hex)
---vim.keymap.set("n", "<leader>oo", vim.cmd.Lex)
+vim.keymap.set("n", "<leader>oo", vim.cmd.Lex)
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>,", vim.cmd.Files)
 vim.keymap.set("n", "<leader>.", vim.cmd.Buffers)
@@ -61,3 +61,8 @@ vim.keymap.set("n", "<leader>vwg", vim.cmd.VimwikiGenerateLinks)
 vim.keymap.set("n", "<leader>vwc", vim.cmd.VimwikiColorize)
 vim.keymap.set("n", "<leader>vws", vim.cmd.VimwikiUISelect)
 vim.keymap.set("n", "<C-Shift-Space>", vim.cmd.VimwikiToggleListItem)
+--Shift lines
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
