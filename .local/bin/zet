@@ -3,10 +3,10 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/vault/0-Fleeting-Notes}
+ZROOT=${ZET_ROOT:=~/Dropbox/0-Inbox/}
 
-name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
-content="---\ntitle:"
+name="$ZROOT/$(date +"%Y%m%d%H%M")"
+content="#"
 
 for word in $@; do
   name+="--$word"
@@ -14,7 +14,7 @@ for word in $@; do
 done
 
 if [ ! -e "$name.md" ]; then
-    echo -e "$content\nid: $(date +"%Y-%m-%d-%H%M")\ntags:\n    fleeting\n---\n" > $name.md
+    echo -e "$content\nID: $(date +"%Y%m%d%H%M")\n#fleeting\n" > $name.md
 fi
 
 nvim -n $name.md
