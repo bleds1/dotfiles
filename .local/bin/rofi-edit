@@ -5,12 +5,13 @@ myEdit=vim
 
 menu(){
     printf "0. dotfiles\n"
-	printf "1. i3\n"
+	printf "1. nvim\n"
 	printf "2. kitty\n"
 	printf "3. .zsh\n"
 	printf "4. picom\n"
     printf "5. tmux\n"
     printf "6. qutebrowser\n"
+    printf "7. doom\n"
 
 }
 
@@ -23,7 +24,7 @@ main(){
 			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/"
             ;;
 		1)
-			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/i3/config"
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/nvim/"
             ;;
 		2)
 			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/kitty/kitty.conf"
@@ -42,6 +43,10 @@ main(){
 
 		6)
 			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.config/qutebrowser/config.py"
+            ;;
+
+		7)
+			$myTerm -e sh -c "sleep 0.2 ; $myEdit $HOME/dotfiles/.doom.d/"
             ;;
         esac
 }
