@@ -44,7 +44,7 @@
 ## Taskwarrior
 [https://github.com/GothenburgBitFactory/taskwarrior]
 
-## Some basic scripts
+## Some basic scripts & custom css
 
 + probably more..
 
