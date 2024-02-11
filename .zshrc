@@ -200,6 +200,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 alias t="task"
 alias ta="task add"
+alias next="task project:Next"
 # khal
 # alias k="khal"
 # alias kls="khal list"
