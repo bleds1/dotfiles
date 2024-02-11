@@ -41,6 +41,3 @@ vim.o.updatetime = 100
 vim.o.clipboard = "unnamedplus"
 vim.o.mouse = 'a'
 vim.o.breakindent = true
--- vimwiki 
-vim.g.vimwiki_list = {{path = '~/Dropbox/vault/', syntax = 'markdown', ext = '.md'}}
---vim.g.vimwiki_markdown_link_ext = true
