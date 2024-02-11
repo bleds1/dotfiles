@@ -7,7 +7,7 @@ super + b
 super + period; period
     kitty -e ranger
 super + period; i
-    kitty -e ranger ~/Dropbox/0_Inbox
+    kitty -e ranger ~/Dropbox/0-Inbox
 super + period; d
     kitty -e ranger ~/Downloads
 super + period; l
