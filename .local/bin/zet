@@ -3,18 +3,18 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/0-Inbox/}
+ZROOT=${ZET_ROOT:=~/Dropbox/vault/}
 title=""
 read -p "Enter a title: " title
 name="$ZROOT/$(date +"%Y%m%d%H%M")-$(echo "$title" | tr ' ' '-')"
-content="# $title\n"
+content="# $title"
 for word in "${@:2}"; do
   name+="--$word"
   content+=" ${word^}"
 done
 
 if [ ! -e "$name.md" ]; then
-    echo -e "$content\nID: $(date +"%Y%m%d%H%M")\n#Fleeting\n" > "$name.md"
+    echo -e "$content\nID: $(date +"%Y%m%d%H%M")\n#Fleeting #Inbox\n" > "$name.md"
 fi
 
 nvim -n "$name.md"
