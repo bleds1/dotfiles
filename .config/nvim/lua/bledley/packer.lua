@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
 				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 				ts_update()
 			end,}
+    use ("nvim-lua/plenary.nvim")
     use ('junegunn/fzf')
     use ('junegunn/fzf.vim')
 	use ('nvim-treesitter/playground')
@@ -55,6 +56,27 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+       })
+    use {
+        "folke/twilight.nvim",
+            opts = {
+        }
+        }
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*",  -- recommended, use latest release instead of latest commit
+        requires = {
+        "nvim-lua/plenary.nvim",
+        },
+        })
+    use{
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        }
 
 end)
 
