@@ -185,7 +185,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/Dropbox/vault/"
-alias nn="v ~/Dropbox/vault/0-Inbox/$(date +%Y%m%d%H%M).md"
+#alias nn="v ~/Dropbox/vault/0-Inbox/$(date +%Y%m%d%H%M).md"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
@@ -200,7 +200,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 alias t="task"
 alias ta="task add"
-alias next="task project:Next"
+alias n="task project:Next"
 # khal
 # alias k="khal"
 # alias kls="khal list"
