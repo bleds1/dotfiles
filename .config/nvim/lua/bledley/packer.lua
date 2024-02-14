@@ -32,8 +32,9 @@ return require('packer').startup(function(use)
     use { "catppuccin/nvim", as = "catppuccin" }
     use ('nvim-tree/nvim-web-devicons')
     use ('projekt0n/github-nvim-theme')
+    use ("nvim-lua/popup.nvim")
+    use ("lifer0se/ezbookmarks.nvim")
     use ('j-hui/fidget.nvim')
-    use ("folke/which-key.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
