@@ -1,9 +1,10 @@
+-- Leader key
 vim.g.mapleader = " "
 -- File Explorer (nvimtree)
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
-vim.keymap.set("n", "<leader>,", vim.cmd.Files)
-vim.keymap.set("n", "<leader>.", vim.cmd.Buffers)
+vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
+--vim.keymap.set("n", "<leader>,", vim.cmd.Files)
+-- vim.keymap.set("n", "<leader>.", vim.cmd.Buffers)
 vim.keymap.set("n", "<leader>/", vim.cmd.BLines)
 vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)
 -- Buffers
@@ -83,3 +84,16 @@ vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>nt", ":! task project:Next<CR>")
 vim.keymap.set("n", "<leader>t", ":! task<CR>")
 vim.keymap.set("n", "<leader>at", ":! task add ")
+-- Go to vault dir
+vim.keymap.set("n", "<leader>gv", ":cd ~/Dropbox/vault/<CR>")
+-- Go to dotfiles dir
+vim.keymap.set("n", "<leader>g.", ":cd ~/dotfiles/<CR>")
+-- Go to blog dir
+vim.keymap.set("n", "<leader>gb", ":cd ~/sba/<CR>")
+-- Go to home dir
+vim.keymap.set("n", "<leader>gh", ":cd<CR>")
+--exbookmarks
+vim.api.nvim_set_keymap('n', '<leader>bb', ':lua require"ezbookmarks".OpenBookmark()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bm', ':lua require"ezbookmarks".AddBookmark()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBookmark()<CR>', { noremap = true, silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
