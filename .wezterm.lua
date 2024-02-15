@@ -7,6 +7,7 @@ return {
     adjust_window_size_when_changing_font_size = false,
     font_size = 11.4,
     font = wezterm.font ('JetBrains Mono'),
+    command_palette_bg_color = '#22262f',
     colors = { foreground = '#6daad5', background = '#22262f', cursor_bg = '#5993a3', selection_fg = '#ff92d0',
         tab_bar = { background = '#22262f', inactive_tab_edge = '#2b313c',
         active_tab = { bg_color = '#2B313c', fg_color = '#909090', italic = true,},
@@ -14,8 +15,8 @@ return {
         new_tab = { bg_color = '#22262f', fg_color = '#808080', italic = true, },
         new_tab_hover = { bg_color = '#22262f', fg_color = '#909090', },
         inactive_tab_hover = { bg_color = '#22262f', fg_color = '#909090',} },
-        ansi = {"#22262f", "#ff5555", "#6daad5", "#f9ffb8", "#bd93f9", "#ff79c6", "#8be9fd", "#cacaca"},
-        brights = {"#4d4d4d", "#ff6e67", "#7bbcea", "#f8ffa8", "#caa9fa", "#ff92d0", "#9aedfe", "#ffffff"}, },
+        ansi = {"#22262f", "#ff5555", "#6daad5","#f8ffa8", "#bd93f9", "#ff79c6", "#8be9fd", "#cacaca"},
+        brights = {"#4d4d4d", "#ff6e67", "#7bbcea", "#f9ffb8", "#caa9fa", "#ff92d0", "#9aedfe", "#ffffff"}, },
     keys = {
     {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     {key="Tab", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},
@@ -30,5 +31,3 @@ return {
 	{key="8", mods="ALT", action=wezterm.action{ActivateTab=5}},
     {key="w", mods="CTRL", action=wezterm.action{CloseCurrentTab={confirm=true}}}, }
 }
-
-
