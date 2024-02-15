@@ -35,6 +35,8 @@ return require('packer').startup(function(use)
     use ("nvim-lua/popup.nvim")
     use ("lifer0se/ezbookmarks.nvim")
     use ('j-hui/fidget.nvim')
+    use ("SmiteshP/nvim-navic")
+    use ("LunarVim/breadcrumbs.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
