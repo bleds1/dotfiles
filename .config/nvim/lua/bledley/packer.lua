@@ -80,6 +80,12 @@ return require('packer').startup(function(use)
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         }
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 
 end)
 
