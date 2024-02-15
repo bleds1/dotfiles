@@ -102,4 +102,5 @@
     ],
     "breadcrumbs.enabled": false,
     "workbench.activityBar.location": "hidden",
+    "git.confirmSync": false,
 }
