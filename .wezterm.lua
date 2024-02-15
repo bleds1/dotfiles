@@ -14,8 +14,8 @@ return {
         new_tab = { bg_color = '#22262f', fg_color = '#808080', italic = true, },
         new_tab_hover = { bg_color = '#22262f', fg_color = '#909090', },
         inactive_tab_hover = { bg_color = '#22262f', fg_color = '#909090',} },
-        ansi = {"#22262f", "#ff5555", "#6daad5", "#f1fa8c", "#bd93f9", "#ff79c6", "#8be9fd", "#cacaca"},
-        brights = {"#4d4d4d", "#ff6e67", "#7bbcea", "#f4f99d", "#caa9fa", "#ff92d0", "#9aedfe", "#ffffff"}, },
+        ansi = {"#22262f", "#ff5555", "#6daad5", "#f9ffb8", "#bd93f9", "#ff79c6", "#8be9fd", "#cacaca"},
+        brights = {"#4d4d4d", "#ff6e67", "#7bbcea", "#f8ffa8", "#caa9fa", "#ff92d0", "#9aedfe", "#ffffff"}, },
     keys = {
     {key="t", mods="CTRL", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
     {key="Tab", mods="CTRL", action=wezterm.action{ActivateTabRelative=1}},
@@ -26,6 +26,8 @@ return {
 	{key="4", mods="ALT", action=wezterm.action{ActivateTab=3}},
 	{key="5", mods="ALT", action=wezterm.action{ActivateTab=4}},
 	{key="6", mods="ALT", action=wezterm.action{ActivateTab=5}},
+	{key="7", mods="ALT", action=wezterm.action{ActivateTab=5}},
+	{key="8", mods="ALT", action=wezterm.action{ActivateTab=5}},
     {key="w", mods="CTRL", action=wezterm.action{CloseCurrentTab={confirm=true}}}, }
 }
 
