@@ -14,6 +14,9 @@
 ## Kitty
 [https://github.com/kovidgoyal/kitty]
 
+## Wezterm
+[https://github.com/wez/wezterm]
+
 ## Polybar
 [https://github.com/polybar/polybar]
 
