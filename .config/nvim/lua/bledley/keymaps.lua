@@ -21,8 +21,7 @@ vim.keymap.set("n", "<leader>wv", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>wr", "<C-w>r")
 vim.keymap.set("n", "<leader>wh", "<C-w>h")
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
-vim.keymap.set("n", "<leader>wj", "<C-w>j")
-vim.keymap.set("n", "<leader>wk", "<C-w>k")
+vim.keymap.set("n", "<leader>wj", "<C-w>j") vim.keymap.set("n", "<leader>wk", "<C-w>k")
 vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>")
 vim.keymap.set("n", "<leader>wc", vim.cmd.close)
 --Keep cursor in place for Ctrl d? -- does it work?
@@ -70,11 +69,12 @@ end
 -- Set a keybinding to call the get_word_count function
 vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { noremap = true, silent = true })
 -- Obsidian.nvim
-vim.keymap.set("n", "<leader>j", ":ObsidianToday<CR>")
-vim.keymap.set("n", "<leader>y", ":ObsidianYesterday<CR>")
-vim.keymap.set("n", "<leader>nn", ":ObsidianNew<CR>")
-vim.keymap.set("n", "<leader>r", ":ObsidianRename<CR>")
-vim.keymap.set("n", "<leader>is", ":ObsidianTemplate<CR>")
+vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
+vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
+vim.keymap.set("n", "<leader>ot", ":ObsidianTomorrow<CR>")
+vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>")
+vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>")
+vim.keymap.set("n", "<leader>oi", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>")
 -- Markdown Preview
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
@@ -97,86 +97,3 @@ vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBook
 --vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
 --git push
 vim.keymap.set("n", '<leader>gp', ":Git push<CR>")
--- harpoon
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>ha", mark.add_file)
-vim.keymap.set("n", "<leader>`", ui.toggle_quick_menu)
-vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
-vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
-vim.keymap.set("n", "<leader>6", function() ui.nav_file(6) end)
-vim.keymap.set("n", "<leader>7", function() ui.nav_file(7) end)
-vim.keymap.set("n", "<leader>8", function() ui.nav_file(8) end)
-vim.keymap.set("n", "<leader>9", function() ui.nav_file(9) end)
-vim.keymap.set("n", "<leader>0", function() ui.nav_file(10) end)
-vim.keymap.set("n", "<leader>hn", require('harpoon.ui').nav_next)
-vim.keymap.set("n", "<leader>hp", require('harpoon.ui').nav_prev)
--- Which-Key
-local wk = require("which-key")
-wk.register({
-  b = {
-    name = "buffers & bookmarks", -- optional group name
-    b = "Bookmark list",
-    m = "Bookmark add",
-    M = "Bookmark remove",
-    i = "Buffer list",
-    n = "Buffer next",
-    p = "Buffer previous",
-    k = "Buffer kill",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  f = {
-    name = "file", -- optional group name
-    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
-    g = "Grep",
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false,}, -- additional options for creating the keymap
-    s = "Save File", -- same as above
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  g = {
-    name = "goto & git", -- optional group name
-    h = "cd ~",
-    p = "Git push",
-    s = "GitStatus",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  o = {
-    name = "open & obsidian", -- optional group name
-    o = "Toggle Tree ~",
-    s = "ObsidianSearch",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  n = {
-    name = "", -- optional group name
-    l = "set nolinebreak",
-    t = "Task project:Next",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  w = {
-    name = "window & write", -- optional group name
-    c = "Window close",
-    h = "Window left",
-    j = "Window down",
-    k = "Window up",
-    l = "Window right",
-    m = "Window maximizer",
-    s = "Window split below",
-    r = "Window rotate",
-    w = "Window switch",
-    v = "Window split right",
-    q = "Write quit!",
-  },
-}, { prefix = "<leader>" })

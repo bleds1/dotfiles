@@ -88,3 +88,93 @@ require("which-key").setup {
   },
 }
 }
+
+-- Which-Key
+local wk = require("which-key")
+wk.register({
+  b = {
+    name = "buffers & bookmarks", -- optional group name
+    b = "Bookmark list",
+    m = "Bookmark add",
+    M = "Bookmark remove",
+    i = "Buffer list",
+    n = "Buffer next",
+    p = "Buffer previous",
+    k = "Buffer kill",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  h = {
+    name = "harpoon & hunks", -- optional group name
+    a = "Harpoon add",
+    n = "Harpoon next",
+    p = "Harpoon previous",
+    s = "GitGutterStageHunk",
+    u = "GitGutterUndoHunk",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  i = {
+    name = "insert template", -- optional group name
+    t = "ObsidianTemplate",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  f = {
+    name = "file",
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    g = "Grep",
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false,},
+    s = "Save File",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  g = {
+    name = "goto & git",
+    h = "cd ~",
+    p = "Git push",
+    s = "GitStatus",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  o = {
+    name = "open & obsidian",
+    d = "ObsidianToday(daily)",
+    n = "ObsidianNew",
+    o = "Toggle Tree",
+    r = "ObsidianRename",
+    s = "ObsidianSearch",
+    i = "ObsidianTemplate(insert)",
+    y = "ObsidianYesterday",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  n = {
+    name = "",
+    l = "set nolinebreak",
+    t = "Task project:Next",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  w = {
+    name = "window & write",
+    c = "Window close",
+    h = "Window left",
+    j = "Window down",
+    k = "Window up",
+    l = "Window right",
+    m = "Window maximizer",
+    s = "Window split below",
+    r = "Window rotate",
+    w = "Window switch",
+    v = "Window split right",
+    q = "Write quit!",
+  },
+}, { prefix = "<leader>" })
