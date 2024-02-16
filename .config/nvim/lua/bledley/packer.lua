@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
     use ('j-hui/fidget.nvim')
     use ("SmiteshP/nvim-navic")
     use ("LunarVim/breadcrumbs.nvim")
+    use ("hrsh7th/cmp-cmdline")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
