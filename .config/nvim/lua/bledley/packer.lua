@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
     use ("SmiteshP/nvim-navic")
     use ("LunarVim/breadcrumbs.nvim")
     use ("hrsh7th/cmp-cmdline")
+    use ("folke/which-key.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -58,8 +59,8 @@ return require('packer').startup(function(use)
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
+	    }
+        }
 
     use({
         "iamcco/markdown-preview.nvim",
