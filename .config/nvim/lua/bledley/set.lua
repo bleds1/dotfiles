@@ -51,3 +51,5 @@ vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.ruler = false
+--nvim tree
+vim.g.nvim_tree_side = ''
