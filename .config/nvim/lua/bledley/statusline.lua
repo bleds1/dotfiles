@@ -4,7 +4,7 @@ function GetGitStatus()
   local git_dir = vim.fn.finddir('.git', vim.fn.expand('%:p:h') .. ';')
   if git_dir ~= '' then
     local branch = vim.fn.systemlist('git -C ' .. vim.fn.fnameescape(vim.fn.expand('%:p:h')) .. ' rev-parse --abbrev-ref HEAD')[1]
-    local icon = ''  -- Unicode character for branch icon
+    local icon = '' -- Unicode character for branch icon
     return string.format('%s %s', icon, branch)
   else
     return ''
@@ -16,35 +16,35 @@ end
    if mode == 'n' then
      return 'NORMAL'
    elseif mode == 'i' then
-     return 'INSERT'
+     return '--INSERT--'
    elseif mode == 'v' then
-     return 'VISUAL'
+     return '--VISUAL--'
    elseif mode == 'V' then
-     return 'V-LINE'
+     return '--V-LINE--'
    elseif mode == '^V' then
-     return 'V-BLOCK'
+     return '--V-BLOCK--'
    elseif mode == 'R' then
-     return 'REPLACE'
+     return '--REPLACE--'
    elseif mode == 'c' then
-     return 'COMMAND'
+     return '--COMMAND--'
    else
      return mode
    end
  end
 -- StatusLine (Must match autocmd below to stay consistent on buffer change)
-vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")} %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' '
+vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")}  %f %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
 -- Statusline with autocommand that updates on file change
  vim.cmd([[
    augroup StatusLineUpdate
      autocmd!
-     autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")} %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' '
+     autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")}  %f %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
   augroup END
 ]])
 -- Set status bar colors on InsertEnter
 vim.cmd([[
   augroup StatusBarColors
     autocmd!
-    autocmd InsertEnter * hi statusline guifg='#2b313C' guibg=#5099DA 
+    autocmd InsertEnter * hi statusline guifg='#2b313C' guibg=#6B95B8
     autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#2b313C
   augroup END
 ]])
