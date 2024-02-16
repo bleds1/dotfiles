@@ -97,3 +97,5 @@ vim.api.nvim_set_keymap('n', '<leader>bb', ':lua require"ezbookmarks".OpenBookma
 vim.api.nvim_set_keymap('n', '<leader>bm', ':lua require"ezbookmarks".AddBookmark()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBookmark()<CR>', { noremap = true, silent = true })
 --vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
+--git push
+vim.keymap.set("n", '<leader>gp', ":Git push<CR>")
