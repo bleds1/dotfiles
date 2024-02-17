@@ -11,7 +11,6 @@ vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
 vim.keymap.set("n", "<leader>sg", ":Telescope git_status<CR>")
 vim.keymap.set("n", "<leader>sm", ":Telescope man_pages<CR>")
 vim.keymap.set("n", "<leader>tt", ":Twilight<CR>")
-
 -- rgrep
 vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)
 -- Buffers
@@ -84,6 +83,8 @@ vim.keymap.set("n", "<leader>lb", ":set linebreak<CR>")
 vim.keymap.set("n", "<leader>nlb", ":set nolinebreak<CR>")
 -- Toggle linenumbers 
 vim.keymap.set("n", "<leader>tl", ":set nu!<CR>")
+-- Toggle terminal
+vim.keymap.set("n", "<leader>v", ":ToggleTerm<CR>")
 -- Define a Lua function to get the word count
 function Get_word_count()
   local word_count = vim.fn.wordcount().words

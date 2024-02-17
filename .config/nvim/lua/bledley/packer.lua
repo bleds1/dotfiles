@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
     use ("hrsh7th/cmp-cmdline")
     use ("folke/which-key.nvim")
     use ("lukas-reineke/indent-blankline.nvim")
+    use ("akinsho/toggleterm.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -87,7 +88,7 @@ return require('packer').startup(function(use)
     config = function()
         require('Comment').setup()
     end
-}
+        }
 
 end)
 
