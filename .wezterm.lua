@@ -1,3 +1,4 @@
+-- TODO: More scrollback
 local wezterm = require 'wezterm';
 
 return {
