@@ -113,7 +113,8 @@ wk.register({
 
 wk.register({
   c = {
-    name = "Count",
+    name = "Count & check",
+    b = "Check box",
     w = "Count Words",
   },
 }, { prefix = "<leader>" })
@@ -242,5 +243,5 @@ wk.register({
     w = "Window switch",
     v = "Window split right",
     q = "Write & quit!",
-  },
+    },
 }, { prefix = "<leader>" })
