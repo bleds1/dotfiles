@@ -55,7 +55,7 @@ require("which-key").setup {
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
-  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
   show_help = true, -- show a help message in the command line for using WhichKey
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
@@ -92,24 +92,38 @@ require("which-key").setup {
 -- Which-Key
 local wk = require("which-key")
 wk.register({
+  a = {
+    name = "Add",
+    t = "Add Task",
+  },
+}, { prefix = "<leader>" })
+
+
+wk.register({
   b = {
-    name = "buffers & bookmarks", -- optional group name
-    b = "Bookmark list",
+    name = "Buffers & Bookmarks",
     m = "Bookmark add",
     M = "Bookmark remove",
     i = "Buffer list",
-    n = "Buffer next",
-    p = "Buffer previous",
-    k = "Buffer kill",
+    n = "Next buffer ",
+    p = "Previous buffer",
+    k = "Kill buffer ",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  c = {
+    name = "Count",
+    w = "Count Words",
   },
 }, { prefix = "<leader>" })
 
 wk.register({
   h = {
-    name = "harpoon & hunks", -- optional group name
-    a = "Harpoon add",
-    n = "Harpoon next",
-    p = "Harpoon previous",
+    name = "Harpoon & Hunks",
+    a = "Add mark to Harpoon",
+    n = "Next mark Harpoon",
+    p = "Previous mark Harpoon ",
     s = "GitGutterStageHunk",
     u = "GitGutterUndoHunk",
   },
@@ -117,40 +131,35 @@ wk.register({
 
 wk.register({
   i = {
-    name = "insert template", -- optional group name
-    t = "ObsidianTemplate",
+    name = "Insert template", -- optional group name
+    t = "Insert Obsidian template",
   },
 }, { prefix = "<leader>" })
 
 wk.register({
   f = {
-    name = "file",
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    name = "File",
+    f = { "<cmd>Telescope find_files<cr>", "Find file" },
     g = "Grep",
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false,},
-    s = "Save File",
+    r = { "<cmd>Telescope oldfiles<cr>", "Open recent file", noremap=false,},
+    s = "Save file",
   },
 }, { prefix = "<leader>" })
 
 wk.register({
   g = {
-    name = "goto & git",
-    h = "cd ~",
+    name = "Goto & Git",
+    h = "cd home",
     p = "Git push",
-    s = "GitStatus",
+    s = "Git status",
   },
 }, { prefix = "<leader>" })
 
 wk.register({
-  o = {
-    name = "open & obsidian",
-    d = "ObsidianToday(daily)",
-    n = "ObsidianNew",
-    o = "Toggle Tree",
-    r = "ObsidianRename",
-    s = "ObsidianSearch",
-    i = "ObsidianTemplate(insert)",
-    y = "ObsidianYesterday",
+  m = {
+    name = "Markdown",
+    p = "Preview Markdown in browser",
+    x = "Stop Markdown preview",
   },
 }, { prefix = "<leader>" })
 
@@ -158,13 +167,70 @@ wk.register({
   n = {
     name = "",
     l = "set nolinebreak",
-    t = "Task project:Next",
+    t = "Tasks in project:Next",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  o = {
+    name = "Open & Obsidian",
+    d = "Go to daily note",
+    i = "Insert Obsidian template",
+    n = "New Obsidian note",
+    o = "Toggle file explorer",
+    r = "Rename Obsidian note",
+    s = "Search Obsidian vault",
+    t = "Search Obsidian tags",
+    T = "Go to tomorrow's daily note",
+    y = "Go to yesterday's daily note",
+  },
+}, { prefix = "<leader>" })
+
+
+wk.register({
+  p = {
+    name = "Packer",
+    c = "Packer Clean",
+    i = "Packer Install",
+    s = "Packer Sync",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  s = {
+    name = "Search & source",
+    b = "Search buffer",
+    B = "Search open buffers",
+    c = "Search Commands",
+    f = "Search files in current dir",
+    F = "Search current dir with FZF",
+    g = "Search Git status",
+    G = "Search current dir with grep",
+    h = "Search Help",
+    m = "Search Man pages",
+    o = "Search Obsidian vault",
+    p = "Search Git project files",
+    r = "Search recent files",
+    s = "Search with Telescope",
+    t = "Search Todo list in dir",
+    T = "Search Todo in dir",
+    v = "Source init.lua",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  t = {
+    name = "Toggle",
+    l = "Line numbers",
+    t = "Twilight",
+    z = "Zen mode",
   },
 }, { prefix = "<leader>" })
 
 wk.register({
   w = {
-    name = "window & write",
+    name = "Window & write",
+    a = "Write all open buffers",
     c = "Window close",
     h = "Window left",
     j = "Window down",
@@ -175,6 +241,6 @@ wk.register({
     r = "Window rotate",
     w = "Window switch",
     v = "Window split right",
-    q = "Write quit!",
+    q = "Write & quit!",
   },
 }, { prefix = "<leader>" })

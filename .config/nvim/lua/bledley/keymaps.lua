@@ -4,9 +4,14 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
 -- fzf find files
-vim.keymap.set("n", "<leader>.", vim.cmd.Files)
+vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
 -- vim.keymap.set("n", "<leader>,", vim.cmd.Buffers)
-vim.keymap.set("n", "<leader>/", vim.cmd.BLines)
+vim.keymap.set("n", "<leader>sb", vim.cmd.BLines)
+vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
+vim.keymap.set("n", "<leader>sg", ":Telescope git_status<CR>")
+vim.keymap.set("n", "<leader>sm", ":Telescope man_pages<CR>")
+vim.keymap.set("n", "<leader>tt", ":Twilight<CR>")
+
 -- rgrep
 vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)
 -- Buffers
@@ -29,6 +34,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Write, Quit, Close, Source
 vim.keymap.set("n", "<leader>w", ":w!<CR>")
+vim.keymap.set("n", "<leader>wa", ":wa<CR>")
 vim.keymap.set("n", "<leader>wq", ":wq!<CR>")
 vim.keymap.set("n", "<leader>fs", ":w!<CR>")
 vim.keymap.set("n", "<leader>sv", ":so<CR>")
@@ -48,6 +54,7 @@ vim.keymap.set("i", "kj", "<ESC>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Zen mode
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
+vim.keymap.set("n", "<leader>tz", vim.cmd.ZenMode)
 --Shift lines
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")     -- move line up(n)
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")     -- move line down(n)
@@ -71,13 +78,25 @@ vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { norema
 -- Obsidian.nvim
 vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
 vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
-vim.keymap.set("n", "<leader>ot", ":ObsidianTomorrow<CR>")
+vim.keymap.set("n", "<leader>oT", ":ObsidianTomorrow<CR>")
+vim.keymap.set("n", "<leader>ot", ":ObsidianTag<CR>")
 vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>")
 vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>")
 vim.keymap.set("n", "<leader>oi", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>")
+vim.keymap.set("n", "<leader>so", ":ObsidianSearch<CR>")
+-- Packer
+vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>")
+vim.keymap.set("n", "<leader>pc", ":PackerClean<CR>")
+vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>")
+-- Todo's 
+vim.keymap.set("n", "<leader>sT", ":TodoTelescope<CR>")
+vim.keymap.set("n", "<leader>st", ":TodoLocList<CR>")
+-- Telescope
+vim.keymap.set("n", "<leader>ss", ":Telescope<CR>")
 -- Markdown Preview
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
+vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
 -- Taskwarrior terminal popup
 vim.keymap.set("n", "<leader>nt", ":! task project:Next<CR>")
 vim.keymap.set("n", "<leader>t", ":! task<CR>")
@@ -91,7 +110,7 @@ vim.keymap.set("n", "<leader>gb", ":cd ~/sba/<CR>")
 -- Go to home dir
 vim.keymap.set("n", "<leader>gh", ":cd<CR>")
 -- exbookmarks
-vim.api.nvim_set_keymap('n', '<leader>bb', ':lua require"ezbookmarks".OpenBookmark()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require"ezbookmarks".OpenBookmark()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bm', ':lua require"ezbookmarks".AddBookmark()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBookmark()<CR>', { noremap = true, silent = true })
 --vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
