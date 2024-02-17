@@ -54,6 +54,7 @@ vim.keymap.set("n", "<leader>wq", ":wq!<CR>")
 vim.keymap.set("n", "<leader>fs", ":w!<CR>")
 vim.keymap.set("n", "<leader>sv", ":so<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>Q", ":q!<CR>")
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -84,7 +85,7 @@ vim.keymap.set("n", "<leader>nlb", ":set nolinebreak<CR>")
 -- Toggle linenumbers 
 vim.keymap.set("n", "<leader>tl", ":set nu!<CR>")
 -- Toggle terminal
-vim.keymap.set("n", "<leader>v", ":ToggleTerm<CR>")
+-- vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>")
 -- Define a Lua function to get the word count
 function Get_word_count()
   local word_count = vim.fn.wordcount().words
