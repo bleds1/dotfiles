@@ -29,7 +29,6 @@ return require('packer').startup(function(use)
     use ('windwp/nvim-autopairs')
     use ('norcalli/nvim-colorizer.lua')
     use ("folke/zen-mode.nvim")
-    use { "catppuccin/nvim", as = "catppuccin" }
     use ('nvim-tree/nvim-web-devicons')
     use ('projekt0n/github-nvim-theme')
     use ("nvim-lua/popup.nvim")
@@ -39,6 +38,7 @@ return require('packer').startup(function(use)
     use ("LunarVim/breadcrumbs.nvim")
     use ("hrsh7th/cmp-cmdline")
     use ("folke/which-key.nvim")
+    use ("lukas-reineke/indent-blankline.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
