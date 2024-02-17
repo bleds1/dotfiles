@@ -102,12 +102,21 @@ wk.register({
 wk.register({
   b = {
     name = "Buffers & Bookmarks",
-    m = "Bookmark add",
-    M = "Bookmark remove",
+    m = "Set bookmark",
+    M = "Delete bookmark",
     i = "Buffer list",
-    n = "Next buffer ",
+    n = "Next buffer",
+    N = "New empty buffer",
+    O = "Kill other buffers",
     p = "Previous buffer",
-    k = "Kill buffer ",
+    k = "Kill buffer",
+    K = "Kill all buffers",
+    s = "Save buffer",
+    S = "Save all buffers",
+    y = "Yank buffer",
+    x = "Pop up scratch buffer",
+    X = "Switch to scratch buffer",
+
   },
 }, { prefix = "<leader>" })
 
@@ -116,6 +125,13 @@ wk.register({
     name = "Count & check",
     b = "Check box",
     w = "Count Words",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  e = {
+    name = "edit/new",
+    e = "edit new buffer",
   },
 }, { prefix = "<leader>" })
 
@@ -231,13 +247,13 @@ wk.register({
 wk.register({
   w = {
     name = "Window & write",
-    a = "Write all open buffers",
+    a = "Write all buffers",
     c = "Window close",
     h = "Window left",
     j = "Window down",
     k = "Window up",
     l = "Window right",
-    m = "Window maximizer",
+    m = "maximize",
     s = "Window split below",
     r = "Window rotate",
     w = "Window switch",
