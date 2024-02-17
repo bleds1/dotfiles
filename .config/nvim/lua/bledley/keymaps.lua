@@ -1,5 +1,7 @@
 -- Leader key
 vim.g.mapleader = " "
+-- Meta x for commands
+vim.keymap.set("n", "<A-x>", ":")
 -- File Explorer (nvimtree)
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
@@ -47,6 +49,11 @@ vim.keymap.set("n", "<leader>wc", vim.cmd.close)
 --Keep cursor in place for Ctrl d? -- does it work?
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Start at beginning/end of line
+vim.keymap.set("n", "H", "0")
+vim.keymap.set("n", "L", "$")
+-- U to redo
+vim.keymap.set("n", "U", "<C-r>")
 -- Write, Quit, Close, Source
 vim.keymap.set("n", "<leader>w", ":w!<CR>")
 vim.keymap.set("n", "<leader>wa", ":wa<CR>")
@@ -68,6 +75,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("i", "kj", "<ESC>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
+--spell check
+vim.keymap.set("n", "<leader>sS", ":Telescope spell_suggest<CR>")
 -- Zen mode
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
 vim.keymap.set("n", "<leader>tz", vim.cmd.ZenMode)
@@ -99,6 +108,8 @@ vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
 vim.keymap.set("n", "<leader>oT", ":ObsidianTomorrow<CR>")
 vim.keymap.set("n", "<leader>ot", ":ObsidianTag<CR>")
 vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>")
+vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>")
+vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<CR>")
 vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>")
 vim.keymap.set("n", "<leader>oi", ":ObsidianTemplate<CR>")
 vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>")
