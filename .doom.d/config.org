@@ -140,7 +140,7 @@ Cursor colours reflect my theme.
 hl-todo faces custom colours and terms. I'm not sure if this is loading correctly? I use the org based status most of the time anyway..
 
 #+begin_src emacs-lisp
- (setq doom-theme 'doom-wilmersdorf)
+(setq doom-theme 'doom-wilmersdorf)
 ;;
 (after! solaire-mode
   (solaire-global-mode -1))
@@ -1088,9 +1088,9 @@ Disable automatically closing open parenthesis, brackets, markup etc.
 #+end_src
 * Load other config files
 #+begin_src emacs-lisp
-(load-theme 'catppuccin t t)
-(setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha, 'frappe
-(catppuccin-reload)
+;; (load-theme 'catppuccin t t)
+;; (setq catppuccin-flavor 'macchiato) ;; or 'latte, 'macchiato, or 'mocha, 'frappe
+;; (catppuccin-reload)
 (after! treemacs
   (setq treemacs-follow-mode t)
   (setq treemacs-indent-guide-mode t))
