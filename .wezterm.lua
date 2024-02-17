@@ -1,7 +1,7 @@
--- TODO: More scrollback
 local wezterm = require 'wezterm';
 
 return {
+    scrollback_lines = 10000,
     window_padding = { left = 0, right = 0, top = 0, bottom = 0, },
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
