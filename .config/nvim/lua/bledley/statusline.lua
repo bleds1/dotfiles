@@ -32,12 +32,12 @@ end
    end
  end
 -- StatusLine (Must match autocmd below to stay consistent on buffer change)
-vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
+vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) %{luaeval("GetGitStatus()")} ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
 -- Statusline with autocommand that updates on file change
  vim.cmd([[
    augroup StatusLineUpdate
      autocmd!
-     autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
+     autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) %{luaeval("GetGitStatus()")} ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
   augroup END
 ]])
 -- Set status bar colors on InsertEnter
