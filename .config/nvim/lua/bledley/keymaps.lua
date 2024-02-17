@@ -1,7 +1,7 @@
 -- Leader key
 vim.g.mapleader = " "
 -- Meta x for commands
-vim.keymap.set("n", "<A-x>", ":")
+vim.keymap.set("n", "<M-x>", ":")
 -- File Explorer (nvimtree)
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
