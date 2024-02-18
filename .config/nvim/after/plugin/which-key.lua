@@ -241,6 +241,8 @@ wk.register({
 wk.register({
   t = {
     name = "Toggle",
+    d = "todo.md popup",
+    D = "todo.md buffer",
     l = "Line numbers",
     t = "Twilight",
     z = "Zen mode",
