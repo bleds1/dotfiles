@@ -2,7 +2,7 @@
 # This script searches my Zettelkasten/Obsidian pages with fzf and opens the file for editing in Neovim
 # TODO Not sure why this isn't working anymore. Directory not found even though it is correct?
 
-zet="/home/bledley/Dropbox/loqseq/pages"
+zet="/home/bledley/vault/"
 
 menu=$(ls -a "$zet" | uniq -u | fzf --height=100% --reverse --header-first)
 

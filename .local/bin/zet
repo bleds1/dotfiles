@@ -3,7 +3,7 @@
 
 set -e
 
-ZROOT=${ZET_ROOT:=~/Dropbox/vault/}
+ZROOT=${ZET_ROOT:=~/vault/}
 title=""
 read -p "Enter a title: " title
 name="$ZROOT/$(date +"%Y%m%d%H%M")-$(echo "$title" | tr ' ' '-')"
