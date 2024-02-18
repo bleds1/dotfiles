@@ -158,6 +158,7 @@ alias dired="emacsclient -nw -c -a 'emacs' --eval '(dired nil)'"
 alias gs='git status'
 alias ga='git add -A'
 alias gp='git push'
+alias gpull='git pull'
 alias gpo='git push origin main'
 alias gplo='git pull origin'
 alias gb='git branch '
