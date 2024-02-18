@@ -29,9 +29,12 @@ vim.keymap.set('n', '<leader>bO',":%bd|e#<CR>")
 vim.keymap.set('n', '<leader>bK',":%bd<CR>")
 vim.keymap.set('n', '<leader>by',":%y+<CR>")
 vim.keymap.set('n', '<leader>bx',":split /tmp/*scratch*<CR>")
-vim.keymap.set('n', '<leader>bX',":split /tmp/*scratch*<CR>")
+vim.keymap.set('n', '<leader>bX',":e /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>x',":split /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>X',":e /tmp/*scratch*<CR>")
+-- todo.md
+vim.keymap.set('n', '<leader>td',":split ~/Dropbox/vault/todo.md<CR>")
+vim.keymap.set('n', '<leader>tD',":e ~/Dropbox/vault/todo.md<CR>")
 --Splits/Windows
 vim.keymap.set("n", "<leader>ww", "<C-w>w")
 vim.keymap.set("n", "<leader>ws", vim.cmd.split)
@@ -127,9 +130,9 @@ vim.keymap.set("n", "<leader>ss", ":Telescope<CR>")
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
 -- Taskwarrior terminal popup
-vim.keymap.set("n", "<leader>nt", ":! task project:Next<CR>")
-vim.keymap.set("n", "<leader>t", ":! task<CR>")
-vim.keymap.set("n", "<leader>at", ":! task add ")
+-- vim.keymap.set("n", "<leader>nt", ":! task project:Next<CR>")
+-- vim.keymap.set("n", "<leader>T", ":! task<CR>")
+-- vim.keymap.set("n", "<leader>ta", ":! task add ")
 -- Go to vault dir
 vim.keymap.set("n", "<leader>gv", ":cd ~/Dropbox/vault/<CR>")
 -- Go to dotfiles dir
