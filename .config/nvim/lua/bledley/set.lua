@@ -56,3 +56,5 @@ vim.g.nvim_tree_side = ''
 --which-key
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+-- set spelling automatically for markdown files
+vim.cmd('autocmd FileType markdown setlocal spell')

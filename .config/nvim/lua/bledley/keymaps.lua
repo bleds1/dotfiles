@@ -33,8 +33,8 @@ vim.keymap.set('n', '<leader>bX',":e /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>x',":split /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>X',":e /tmp/*scratch*<CR>")
 -- todo.md
-vim.keymap.set('n', '<leader>td',":split ~/Dropbox/vault/todo.md<CR>")
-vim.keymap.set('n', '<leader>tD',":e ~/Dropbox/vault/todo.md<CR>")
+vim.keymap.set('n', '<leader>td',":split ~/vault/todo.md<CR>")
+vim.keymap.set('n', '<leader>tD',":e ~/vault/todo.md<CR>")
 --Splits/Windows
 vim.keymap.set("n", "<leader>ww", "<C-w>w")
 vim.keymap.set("n", "<leader>ws", vim.cmd.split)
@@ -134,7 +134,7 @@ vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
 -- vim.keymap.set("n", "<leader>T", ":! task<CR>")
 -- vim.keymap.set("n", "<leader>ta", ":! task add ")
 -- Go to vault dir
-vim.keymap.set("n", "<leader>gv", ":cd ~/Dropbox/vault/<CR>")
+vim.keymap.set("n", "<leader>gv", ":cd ~/vault/<CR>")
 -- Go to dotfiles dir
 vim.keymap.set("n", "<leader>g.", ":cd ~/dotfiles/<CR>")
 -- Go to blog dir
