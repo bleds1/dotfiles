@@ -43,6 +43,7 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.termguicolors = true
+vim.g.termguicolors = true
 vim.o.updatetime = 100
 vim.o.clipboard = "unnamedplus"
 vim.o.mouse = 'a'
