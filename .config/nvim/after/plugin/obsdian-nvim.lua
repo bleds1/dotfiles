@@ -31,11 +31,19 @@ require("obsidian").setup({
     -- 2. Whether to add the note path during completion.
     -- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
     -- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-    prepend_note_path = false,
+    wiki_link_func = function(opts)
+      if opts.id == nil then
+        return string.format("[[%s]]", opts.label)
+      elseif opts.label ~= opts.id then
+        return string.format("[[%s|%s]]", opts.id, opts.label)
+      else
+        return string.format("[[%s]]", opts.id)
+      end
+    end,
     -- 3. Whether to only use paths during completion.
     -- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
     -- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-    use_path_only = false,
+    -- use_path_only = false,
       },
     disable_frontmatter = true,
  -- Optional, for templates (see below).
