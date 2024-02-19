@@ -39,6 +39,17 @@ return require('packer').startup(function(use)
     use ("hrsh7th/cmp-cmdline")
     use ("folke/which-key.nvim")
     use ("lukas-reineke/indent-blankline.nvim")
+    use {"folke/twilight.nvim"}
+    use {
+        'goolord/alpha-nvim',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+            'nvim-lua/plenary.nvim'
+            },
+            config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+            end
+            }
     use ("akinsho/toggleterm.nvim")
     use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -67,11 +78,6 @@ return require('packer').startup(function(use)
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
        })
-    use {
-        "folke/twilight.nvim",
-            opts = {
-        }
-        }
     use({
         "epwalsh/obsidian.nvim",
         tag = "*",  -- recommended, use latest release instead of latest commit
