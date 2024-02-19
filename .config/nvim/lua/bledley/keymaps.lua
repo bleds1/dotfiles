@@ -107,7 +107,8 @@ end
 vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { noremap = true, silent = true })
 -- Obsidian.nvim
 vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
-vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
+vim.keymap.set("n", "<leader>oy", ":ObsidianToday -1<CR>")
+-- vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
 vim.keymap.set("n", "<leader>oT", ":ObsidianTomorrow<CR>")
 vim.keymap.set("n", "<leader>ot", ":ObsidianTag<CR>")
 vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>")
@@ -148,3 +149,5 @@ vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBook
 --vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
 --git push
 vim.keymap.set("n", '<leader>gp', ":Git push<CR>")
+-- Alpha dashboard
+vim.keymap.set("n", "<leader>d", ":Alpha<CR>")
