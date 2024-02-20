@@ -1,5 +1,9 @@
 local hop = require('hop')
-require'hop'.setup { keys = 'asdfghjklzxcvbnm' }
+require'hop'.setup {
+    keys = 'asdfghjklzxcvbnm',
+    multi_windows = true,
+    -- hint_position = require'hop.hint'.HintPosition.END, -- end of word
+}
 
 local directions = require('hop.hint').HintDirection
 vim.keymap.set('', 'f', function()

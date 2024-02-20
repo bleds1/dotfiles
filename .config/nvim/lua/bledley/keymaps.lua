@@ -149,3 +149,4 @@ vim.keymap.set("n", '<leader>gp', ":Git push<CR>")
 vim.keymap.set("n", "<leader>d", ":Alpha<CR>")
 -- Hop
 vim.keymap.set("n", "<leader>j", ":HopWord<CR>")
+vim.keymap.set("n", "<leader>l", ":HopLineStart<CR>")

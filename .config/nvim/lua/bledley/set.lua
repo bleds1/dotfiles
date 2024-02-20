@@ -18,10 +18,8 @@ vim.o.laststatus = 2
 vim.o.nu = true
 vim.o.relativenumber = false
 vim.o.cursorline = true
---vim.o.signcolumn = "yes"
---vim.o.guicursor = ""
 --vim.o.showtabline =2
---See Insert etc.
+--see Insert/Normal under statusline
 vim.o.showmode = false
 --tabs and indent
 vim.o.tabstop = 4
