@@ -9,7 +9,8 @@ require('telescope').setup({
 
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>sf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
 vim.keymap.set('n', '<leader>sr', builtin.oldfiles, {})
