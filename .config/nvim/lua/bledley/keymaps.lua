@@ -9,8 +9,7 @@ vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
 vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
 -- vim.keymap.set('n', '<leader>ff', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
 -- vim.keymap.set('n', '<leader>sf', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
--- vim.keymap.set("n", "<leader>,", vim.cmd.Buffers)
-vim.keymap.set("n", "<leader>sb", vim.cmd.BLines)
+vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
 vim.keymap.set("n", "<leader>sg", ":Telescope git_status<CR>")
 vim.keymap.set("n", "<leader>sm", ":Telescope man_pages<CR>")
@@ -132,10 +131,6 @@ vim.keymap.set("n", "<leader>ss", ":Telescope<CR>")
 -- Markdown Preview
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
--- Taskwarrior terminal popup
--- vim.keymap.set("n", "<leader>nt", ":! task project:Next<CR>")
--- vim.keymap.set("n", "<leader>T", ":! task<CR>")
--- vim.keymap.set("n", "<leader>ta", ":! task add ")
 -- Go to vault dir
 vim.keymap.set("n", "<leader>gv", ":cd ~/vault/<CR>")
 -- Go to dotfiles dir
@@ -148,8 +143,9 @@ vim.keymap.set("n", "<leader>gh", ":cd<CR>")
 vim.api.nvim_set_keymap('n', '<leader><CR>', ':lua require"ezbookmarks".OpenBookmark()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bm', ':lua require"ezbookmarks".AddBookmark()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bM', ':lua require"ezbookmarks".RemoveBookmark()<CR>', { noremap = true, silent = true })
---vim.api.nvim_set_keymap('n', '<leader>bd', ':lua require"ezbookmarks".AddBookmarkDirectory()<CR>', { noremap = true, silent = true })
 --git push
 vim.keymap.set("n", '<leader>gp', ":Git push<CR>")
 -- Alpha dashboard
 vim.keymap.set("n", "<leader>d", ":Alpha<CR>")
+-- Hop
+vim.keymap.set("n", "<leader>j", ":HopWord<CR>")

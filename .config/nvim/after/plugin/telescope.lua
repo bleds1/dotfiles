@@ -27,6 +27,7 @@ vim.keymap.set('n', '<leader>sr', builtin.oldfiles, {})
 vim.keymap.set('n', '<leader>sp', builtin.git_files, {})
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>bi', builtin.buffers, {})
+vim.keymap.set('n', '<leader>bb', builtin.buffers, {})
 vim.keymap.set('n', '<leader><leader>', builtin.oldfiles, {})
 vim.keymap.set('n', '<leader>fg', function() --  FIX: swapped this with git status - update whichkey
 				builtin.grep_string({ search = vim.fn.input("Grep > ") });

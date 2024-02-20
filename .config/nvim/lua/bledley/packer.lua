@@ -95,6 +95,11 @@ return require('packer').startup(function(use)
         require('Comment').setup()
     end
         }
+    use {
+      'smoka7/hop.nvim',
+      tag = '*', -- optional but strongly recommended
+  }
+
 
 end)
 
