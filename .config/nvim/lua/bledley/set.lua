@@ -59,3 +59,8 @@ vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 -- set spelling automatically for markdown files
 vim.cmd('autocmd FileType markdown setlocal spell')
+-- Disables statusline on dashboard
+vim.api.nvim_create_autocmd("User", {
+    pattern = "AlphaReady",
+    command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
+})
