@@ -7,6 +7,8 @@ vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
 -- fzf find files
 vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
+-- vim.keymap.set('n', '<leader>ff', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
+-- vim.keymap.set('n', '<leader>sf', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
 -- vim.keymap.set("n", "<leader>,", vim.cmd.Buffers)
 vim.keymap.set("n", "<leader>sb", vim.cmd.BLines)
 vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
