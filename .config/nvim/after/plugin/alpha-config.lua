@@ -17,16 +17,19 @@ dashboard.section.header.val = {
 }
 
  dashboard.section.buttons.val = {
-   dashboard.button("f f", "  Find file", ":Telescope find_files <CR>"),
+   dashboard.button("f f", "  Find file", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>"),
    -- dashboard.button("e n", "  Edit new file", ":ene <BAR> startinsert <CR>"),
+   dashboard.button("n n", "  New Obsidian note", ":ObsidianNew<CR>"),
+   dashboard.button("o d", "󱓧  Journal", ":ObsidianToday<CR>"),
    dashboard.button("t d", "  Todo", ":split ~/vault/todo.md<CR>"),
-   dashboard.button("o d", "󱓧  Daily note", ":ObsidianToday<CR>"),
-   dashboard.button("g .",  "  dotfiles", ":e ~/dotfiles/<CR>"),
+   dashboard.button("g .",  "  Dotfiles", ":e ~/dotfiles/<CR>"),
    dashboard.button("s o", "󰧑  Search vault", ":ObsidianSearch<CR>"),
    dashboard.button("f r", "  Recent files", ":Telescope oldfiles <CR>"),
-   dashboard.button("f g", "  Grep Project", ":Telescope live_grep <CR>"),
+   dashboard.button("f g", "󱩾  Grep Project", ":Telescope live_grep <CR>"),
+   dashboard.button("g s", "󰊤  Git Status", ":Git<CR>"),
+   dashboard.button("SPC 󰌑 ", "  Bookmarks", "<leader><CR>"),
    -- dashboard.button("rs", "󰈚  Restore Session", ":SessionRestore<cr>"),
-   dashboard.button("q  ",  "󰿅  Quit", ":qa<CR>"),
+   dashboard.button("SPC q",  "󰗼  Quit", ":qa<CR>"),
 }
 
 local function footer()
@@ -35,9 +38,9 @@ end
 
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "markdownH1"
-dashboard.section.header.opts.hl = "markdownH1"
-dashboard.section.buttons.opts.hl = "markdownH1"
+dashboard.section.footer.opts.hl = "DevIconCP"
+dashboard.section.header.opts.hl = "DevIconCP"
+dashboard.section.buttons.opts.hl = "DevIconCP"
 
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
