@@ -27,6 +27,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=ungoogled-chromium
 export TERMINAL=wezterm
+# export MANPAGER='nvim +Man!'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -168,6 +169,7 @@ alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias glol='git log --graph --oneline --decorate'
+alias tms="tmux-sessionizer.sh"
 #ls exa
 alias l="exa -a --color=always --sort Name"
 alias ls="exa -al --color=always --sort name --group-directories-first"
