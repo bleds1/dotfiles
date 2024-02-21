@@ -31,6 +31,7 @@ end
      return mode
    end
  end
+--fnction
 -- StatusLine (Must match autocmd below to stay consistent on buffer change)
 vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) %{luaeval("GetGitStatus()")} ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
 -- Statusline with autocommand that updates on file change
