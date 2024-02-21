@@ -1,11 +1,15 @@
 -- Function to get git branch and icon in the statusline
--- TODO:Show changes
+-- TODO:Show changes -- Improved to not show fatal when in non file buffers
 function GetGitStatus()
   local git_dir = vim.fn.finddir('.git', vim.fn.expand('%:p:h') .. ';')
   if git_dir ~= '' then
-    local branch = vim.fn.systemlist('git -C ' .. vim.fn.fnameescape(vim.fn.expand('%:p:h')) .. ' rev-parse --abbrev-ref HEAD')[1]
-    local icon = '' -- Unicode character for branch icon
-    return string.format('%s %s', icon, branch)
+    local branch = vim.fn.systemlist('git -C ' .. vim.fn.fnameescape(vim.fn.expand('%:p:h')) .. ' rev-parse --abbrev-ref HEAD 2>/dev/null')[1]
+    if branch ~= nil and branch ~= '' then
+      local icon = '' -- Unicode character for branch icon
+      return string.format('%s %s', icon, branch)
+    else
+      return ''
+    end
   else
     return ''
   end
