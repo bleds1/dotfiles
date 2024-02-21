@@ -31,17 +31,33 @@ end
      return mode
    end
  end
---fnction
--- StatusLine (Must match autocmd below to stay consistent on buffer change)
-vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) %{luaeval("GetGitStatus()")} ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
+-- testing
+vim.o.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")} %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")} %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] %(%{luaeval("GetScrollPercentage()")}%%%) '
+--
+function GetScrollPercentage()
+  local current_line = vim.fn.line('.')
+  local total_lines = vim.fn.line('$')
+  local percentage = math.floor((current_line / total_lines) * 100)
+  return tostring(percentage)
+end
 -- Statusline with autocommand that updates on file change
- vim.cmd([[
-   augroup StatusLineUpdate
-     autocmd!
-     autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) %{luaeval("GetGitStatus()")} ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] '
-  augroup END
-]])
--- Set status bar colors on InsertEnter
+  vim.cmd([[
+    augroup StatusLineUpdate
+      autocmd!
+      autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")} %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")} %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] %(%{luaeval("GetScrollPercentage()")}%%%) '
+   augroup END
+ ]])
+-- Define the GetTmuxSession() function
+function GetTmuxSession()
+  if vim.fn.exists('$TMUX') == 1 then
+    local tmux_session = vim.fn.system('tmux display-message -p "#S"')
+    tmux_session = string.gsub(tmux_session, "%s*$", "")  -- Remove trailing whitespace
+    return '[' .. tmux_session .. ']'
+  else
+    return ''
+  end
+end
+--Set status bar colors on InsertEnter
 vim.cmd([[
   augroup StatusBarColors
     autocmd!
