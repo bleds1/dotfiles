@@ -1,5 +1,6 @@
 require("zen-mode").setup(
 {
+
   window = {
     backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
     -- height and width can be:
@@ -12,7 +13,7 @@ require("zen-mode").setup(
     -- uncomment any of the options below, or add other vim.wo options you want to apply
     options = {
        signcolumn = "no", -- disable signcolumn
-       number = true, -- disable number column
+       number = false, -- disable number column
        relativenumber = false, -- disable relative numbers
       -- cursorline = false, -- disable cursorline
       -- cursorcolumn = false, -- disable cursor column
@@ -56,6 +57,7 @@ require("zen-mode").setup(
       -- can be either an absolute font size or the number of incremental steps
       font = "+4", -- (10% increase per step)
     },
+
   },
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
@@ -63,6 +65,4 @@ require("zen-mode").setup(
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
   end,
-}
-)
-
+})

@@ -21,7 +21,7 @@ dashboard.section.header.val = {
    -- dashboard.button("e n", "  Edit new file", ":ene <BAR> startinsert <CR>"),
    dashboard.button("f r", "  Recent files", ":Telescope oldfiles <CR>"),
    dashboard.button("n n", "  New Obsidian note", ":ObsidianNew<CR>"),
-   dashboard.button("o d", "󱓧  Journal", ":ObsidianToday<CR>"),
+   dashboard.button(", ,", "󱓧  Log", ":e ~/vault/log.md<CR>"),
    dashboard.button("t d", "  Todo", ":split ~/vault/todo.md<CR>"),
    -- dashboard.button("g .",  "  Dotfiles", ":e ~/dotfiles/<CR>"),
    dashboard.button("s o", "󰧑  Search vault", ":ObsidianSearch<CR>"),

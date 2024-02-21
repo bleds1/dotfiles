@@ -193,15 +193,14 @@ wk.register({
     name = "Open & Obsidian",
     b = "Show backlinks",
     l = "Show links",
-    d = "Go to daily note",
+    d = "Quick log entry",
+    D = "Open daily log",
     i = "Insert template",
     n = "New Obsidian note",
     o = "Toggle file explorer",
     r = "Rename Obsidian note",
     s = "Search vault",
     t = "Search tags",
-    T = "Go to tomorrow's daily note",
-    y = "Go to yesterday's daily note",
   },
 }, { prefix = "<leader>" })
 
