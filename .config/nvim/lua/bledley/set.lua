@@ -56,7 +56,7 @@ vim.g.nvim_tree_side = ''
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 -- set spelling automatically for markdown files
-vim.cmd('autocmd FileType markdown setlocal spell')
+vim.cmd('autocmd FileType markdown setlocal spell linebreak')
 -- Spell lang
 vim.opt.spelllang = 'en_gb'
 -- Disables statusline on dashboard
@@ -65,10 +65,10 @@ vim.api.nvim_create_autocmd("User", {
     command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
 })
 -- Define the autocmd to turn off line numbers for 'log.md' file
-vim.cmd([[
-  augroup ToggleLineNumbers
-    autocmd!
-    autocmd BufEnter log.md setlocal nonumber linebreak
-    autocmd BufLeave log.md setlocal number
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup ToggleLineNumbers
+--     autocmd!
+--     autocmd BufEnter log.md setlocal nonumber linebreak
+--     autocmd BufLeave log.md setlocal number
+--   augroup END
+-- ]])
