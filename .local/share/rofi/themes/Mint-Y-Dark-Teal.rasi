@@ -6,7 +6,7 @@
 * {
     scrollbar : false;
 	background:                      #292D37;
-    text-color:                      #f5f5f5;
+    text-color:                      #DDDDDD;
 	bordercolor:                     #292D37;
 	separatorcolor:                  #8c8c8c;
 	normal-background:               #292D37;
