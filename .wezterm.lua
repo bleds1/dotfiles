@@ -10,6 +10,7 @@ return {
     font = wezterm.font_with_fallback {
       'OperatorMono-Medium',
       'OperatorMono-LightItalic',
+      'OperatorMono-Bold',
       'JetBrains Mono',
     },
     command_palette_bg_color = '#22262f',

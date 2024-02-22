@@ -4,10 +4,6 @@ vim.cmd('hi! LineNr guibg=none ctermbg=none')
 -- Disable netrw at start of init.lua for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- GUI font --NOTE:Is this working?
-if vim.fn.has('gui_running') == 1 then
-    vim.o.guifont = "JetBrains Mono:h13"
-end
 -- Nvim tree
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_side = 'right'
