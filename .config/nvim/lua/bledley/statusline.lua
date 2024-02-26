@@ -31,6 +31,8 @@ end
      return '--REPLACE--'
    elseif mode == 'c' then
      return '--COMMAND--'
+   elseif mode == 't' then
+     return '--SHELL--'
    else
      return mode
    end

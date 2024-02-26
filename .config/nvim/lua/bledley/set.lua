@@ -60,11 +60,7 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "AlphaReady",
     command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
 })
--- Define the autocmd to turn off line numbers for 'log.md' file
--- vim.cmd([[
---   augroup ToggleLineNumbers
---     autocmd!
---     autocmd BufEnter log.md setlocal nonumber linebreak
---     autocmd BufLeave log.md setlocal number
---   augroup END
--- ]])
+-- Toggle linenumbers in inbuilt terminal
+vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
+-- Start inbuilt terminal in Insert mode
+vim.cmd('autocmd TermOpen * startinsert')

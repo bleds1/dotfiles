@@ -1,9 +1,9 @@
 // ~/.config/VSCodium/User/settings.json
 {
     "workbench.colorTheme": "GitHub Dark Dimmed",
-    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
-    "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace",
-    "editor.codeLensFontFamily": "'JetBrains Mono'",
+    "editor.fontFamily": "'OperatorMono-Medium', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "'OperatorMono-Medium', 'monospace",
+    "editor.codeLensFontFamily": "'OperatorMono-Medium'",
     "editor.cursorStyle": "block",
     "window.menuBarVisibility": "toggle",
     "editor.fontSize": 15,

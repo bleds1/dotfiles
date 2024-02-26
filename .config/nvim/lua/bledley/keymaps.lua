@@ -7,13 +7,13 @@ vim.keymap.set("n", "<leader>o-", ":e.<CR>")
 vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
 -- fzf find files
 vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
--- vim.keymap.set('n', '<leader>ff', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
--- vim.keymap.set('n', '<leader>sf', ":Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>") --testing alternate find command
 vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
 vim.keymap.set("n", "<leader>sg", ":Telescope git_status<CR>")
 vim.keymap.set("n", "<leader>sm", ":Telescope man_pages<CR>")
-vim.keymap.set("n", "<leader>tt", ":Twilight<CR>")
+vim.keymap.set("n", "<leader>tw", ":Twilight<CR>")
+-- Inbuilt terminal
+vim.keymap.set("n", "<leader>tt", ":term<CR>")
 -- rgrep
 vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)
 -- Buffers
@@ -97,8 +97,6 @@ vim.keymap.set("n", "<leader>lb", ":set linebreak<CR>")
 vim.keymap.set("n", "<leader>nlb", ":set nolinebreak<CR>")
 -- Toggle linenumbers 
 vim.keymap.set("n", "<leader>tl", ":set nu!<CR>")
--- Toggle terminal
--- vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>")
 -- Define a Lua function to get the word count
 function Get_word_count()
   local word_count = vim.fn.wordcount().words
@@ -152,3 +150,5 @@ vim.keymap.set("n", "<leader>d", ":Alpha<CR>")
 -- Hop
 vim.keymap.set("n", "<leader>j", ":HopWord<CR>")
 vim.keymap.set("n", "<leader>l", ":HopLineStart<CR>")
+-- Exit inbuilt terminal (Insert)
+vim.keymap.set('t', '<esc><esc>', "<C-\\><C-n>") -- esc to exit insert mode
