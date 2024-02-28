@@ -104,8 +104,8 @@ Ask to confirm quit is a bit annoying so I disable that. I don't need line numbe
 #+begin_src emacs-lisp
 (setq confirm-kill-emacs nil)
 (setq display-line-numbers-type t)
-(setq global-hl-line-modes nil)
-(setq hl-line-mode nil)
+(setq global-hl-line-modes t)
+(setq hl-line-mode t)
 (setq auto-save-default t)
 #+end_src
 
@@ -127,9 +127,9 @@ I usually use Jet Brains Mono also like the variable font sizes to be pretty con
 
  #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-     doom-big-font (font-spec :family "JetBrains Mono" :size 14)
-     doom-serif-font (font-spec :family "JetBrains Mono" :size 14)
-     doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
+      doom-big-font (font-spec :family "JetBrains Mono" :size 14)
+      doom-serif-font (font-spec :family "JetBrains Mono" :size 14)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14))
  #+end_src
 
 ** Visual/Theme

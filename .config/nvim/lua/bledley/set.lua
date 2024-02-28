@@ -64,3 +64,11 @@ vim.api.nvim_create_autocmd("User", {
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
 -- Start inbuilt terminal in Insert mode
 vim.cmd('autocmd TermOpen * startinsert')
+-- eol char
+-- vim.opt.list = true
+-- vim.opt.listchars = {
+--   eol = "󰌑",
+--   trail="*",
+--   tab="󰌒 ",
+--   extends="▸",
+-- }

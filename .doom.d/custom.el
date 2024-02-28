@@ -75,7 +75,7 @@
  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
  '(doom-modeline-fly-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
  '(markdown-header-delimiter-face ((t (:foreground "#9BAEC8" :height 0.9))))
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#CFCFCF" :weight extra-bold :height 1.1 :foundry "variable" :family "JetBrains Mono"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :foreground "#CFCFCF" :weight extra-bold :height 1.1 :foundry "variable" :family "Noto Sans CJK SC"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.0))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 0.9))))

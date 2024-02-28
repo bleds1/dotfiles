@@ -123,6 +123,7 @@ vim.keymap.set("n", "<leader>so", ":ObsidianSearch<CR>")
 vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>")
 vim.keymap.set("n", "<leader>pc", ":PackerClean<CR>")
 vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>")
+vim.keymap.set("n", "<leader>pu", ":PackerUpdate<CR>")
 -- Todo's 
 vim.keymap.set("n", "<leader>sT", ":TodoTelescope<CR>")
 vim.keymap.set("n", "<leader>st", ":TodoLocList<CR>")

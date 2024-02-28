@@ -91,12 +91,12 @@ require("which-key").setup {
 
 -- Which-Key
 local wk = require("which-key")
-wk.register({
-  a = {
-    name = "Add",
-    t = "Add Task",
-  },
-}, { prefix = "<leader>" })
+-- wk.register({
+--   a = {
+--     name = "Add",
+--     t = "Add Task",
+--   },
+-- }, { prefix = "<leader>" })
 
 
 wk.register({
@@ -124,7 +124,7 @@ wk.register({
   c = {
     name = "Count & check",
     b = "Check box",
-    w = "Count Words",
+    w = "Count words",
   },
 }, { prefix = "<leader>" })
 
@@ -136,11 +136,34 @@ wk.register({
 }, { prefix = "<leader>" })
 
 wk.register({
+  f = {
+    name = "File",
+    f = "Find files",
+    b = "File browser",
+    g = "Grep Project",
+    r = "Find recent files",
+    s = "Save file",
+  },
+}, { prefix = "<leader>" })
+
+wk.register({
+  g = {
+    name = "Goto & Git",
+    b = "cd ~/sba",
+    h = "cd ~/",
+    p = "Git push",
+    s = "Git status",
+    v = "cd ~/vault",
+  },
+}, { prefix = "<leader>" })
+
+
+wk.register({
   h = {
     name = "Harpoon & Hunks",
     a = "Add mark to Harpoon",
     n = "Next mark Harpoon",
-    p = "Previous mark Harpoon ",
+    p = "Previous mark Harpoon",
     s = "GitGutterStageHunk",
     u = "GitGutterUndoHunk",
   },
@@ -150,25 +173,6 @@ wk.register({
   i = {
     name = "Insert template", -- optional group name
     t = "Insert Obsidian template",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  f = {
-    name = "File",
-    f = { "<cmd>Telescope find_files<cr>", "Find file" },
-    g = "Grep",
-    r = { "<cmd>Telescope oldfiles<cr>", "Open recent file", noremap=false,},
-    s = "Save file",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  g = {
-    name = "Goto & Git",
-    h = "cd home",
-    p = "Git push",
-    s = "Git status",
   },
 }, { prefix = "<leader>" })
 
@@ -184,7 +188,7 @@ wk.register({
   n = {
     name = "",
     l = "set nolinebreak",
-    t = "Tasks in project:Next",
+    -- t = "Tasks in project:Next",
   },
 }, { prefix = "<leader>" })
 
@@ -192,10 +196,10 @@ wk.register({
   o = {
     name = "Open & Obsidian",
     b = "Show backlinks",
-    l = "Show links",
     d = "Quick log entry",
     D = "Open daily log",
     i = "Insert template",
+    l = "Show links",
     n = "New Obsidian note",
     o = "Toggle file explorer",
     r = "Rename Obsidian note",
@@ -208,9 +212,10 @@ wk.register({
 wk.register({
   p = {
     name = "Packer",
-    c = "Packer Clean",
-    i = "Packer Install",
-    s = "Packer Sync",
+    c = "Packer clean",
+    i = "Packer install",
+    s = "Packer sync",
+    u = "Packer update",
   },
 }, { prefix = "<leader>" })
 
@@ -243,7 +248,8 @@ wk.register({
     d = "todo.md popup",
     D = "todo.md buffer",
     l = "Line numbers",
-    t = "Twilight",
+    t = "Terminal",
+    w = "Twilight",
     z = "Zen mode",
   },
 }, { prefix = "<leader>" })

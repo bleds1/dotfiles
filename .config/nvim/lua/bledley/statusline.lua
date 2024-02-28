@@ -15,6 +15,7 @@ function GetGitStatus()
   end
 end
 -- Function to get full name for the statusline
+-- Place this in the statusline without quotes --> "%{luaeval("GetFullModeName()")}"
  function GetFullModeName()
    local mode = vim.fn.mode()
    if mode == 'n' then
@@ -32,13 +33,13 @@ end
    elseif mode == 'c' then
      return '--COMMAND--'
    elseif mode == 't' then
-     return 'SHELL'
+     return 'TERMINAL'
    else
      return mode
    end
  end
 -- StatusLine layout
-vim.o.statusline ='%#StatusLine# %{luaeval("GetFullModeName()")} %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] %(%{luaeval("GetScrollPercentage()")}%%%) '
+vim.o.statusline ='%#StatusLine# %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
 -- Function to get scroll percentage
 function GetScrollPercentage()
   local current_line = vim.fn.line('.')
@@ -50,7 +51,7 @@ end
   vim.cmd([[
     augroup StatusLineUpdate
       autocmd!
-      autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetFullModeName()")} %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) ['..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..'] %(%{luaeval("GetScrollPercentage()")}%%%) '
+      autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
    augroup END
  ]])
 -- Define the GetTmuxSession() function
