@@ -2,26 +2,17 @@
 
 ## My config files for:
 
-## Doom Emacs
-[https://github.com/doomemacs/doomemacs]
-
 ## Neovim
 [https://github.com/neovim/neovim]
 
-## i3wm gaps
-[https://github.com/Airblader/i3]
-
-## Kitty
-[https://github.com/kovidgoyal/kitty]
-
-## Wezterm
-[https://github.com/wez/wezterm]
-
-## Polybar
-[https://github.com/polybar/polybar]
+## Doom Emacs
+[https://github.com/doomemacs/doomemacs]
 
 ## Qutebrowser
 [https://github.com/qutebrowser/qutebrowser]
+
+## Wezterm
+[https://github.com/wez/wezterm]
 
 ## Zsh
 [https://github.com/zsh-users/zsh]
@@ -34,6 +25,15 @@
 
 ## Tmux
 [https://github.com/tmux/tmux]
+
+## i3wm gaps
+[https://github.com/Airblader/i3]
+
+## Kitty
+[https://github.com/kovidgoyal/kitty]
+
+## Polybar
+[https://github.com/polybar/polybar]
 
 ## Picom
 [https://github.com/yshui/picom]
