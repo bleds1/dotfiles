@@ -4,9 +4,9 @@
 config.load_autoconfig(False)
 
 ## Ranger as file picker
-#config.set("fileselect.handler", "external")
-#config.set("fileselect.single_file.command", ['kitty', '-e', 'ranger', '--choosefile={}'])
-#config.set("fileselect.multiple_files.command", ['kitty', '-e', 'ranger', '--choosefiles={}'])
+config.set("fileselect.handler", "external")
+config.set("fileselect.single_file.command", ['wezterm', '-e', 'ranger', '--choosefile={}'])
+config.set("fileselect.multiple_files.command", ['wezterm', '-e', 'ranger', '--choosefiles={}'])
 
 ## Notifications
 config.set('content.notifications.enabled', True, 'https://mail.proton.me')
@@ -14,10 +14,10 @@ config.set('content.notifications.enabled', True, 'https://mail.proton.me')
 ## Setting dark mode
 config.bind('<space><z>', 'spawn --userscript readability')
 config.set("colors.webpage.darkmode.enabled", True)
-c.colors.webpage.bg = '#151515'
+c.colors.webpage.bg = '#1c2128'
 
 ## Startpage
-c.url.start_pages=('/home/bledley/startpage2/index.html')
+c.url.start_pages=('/home/bledley/startpage/index.html')
 
 ## Open video in Mpv
 config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
@@ -32,20 +32,21 @@ config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
+config.bind('<Space><c><f>', 'hint links spawn ungoogled-chromium {hint-url}')
 #c.statusbar.show = 'never'
 
 ## Tabs
 c.tabs.show = 'always'
 # Background color of the tab bar
-c.colors.tabs.bar.bg = '#151515'
+c.colors.tabs.bar.bg = '#1A1A1B'
 # Background color of unselected odd tabs
-c.colors.tabs.odd.bg = '#151515'
+c.colors.tabs.odd.bg = '#1A1A1B'
 # Background color of unselected even tabs
-c.colors.tabs.even.bg = '#151515'
+c.colors.tabs.even.bg = '#1A1A1B'
 # Background color of selected odd tabs
-c.colors.tabs.selected.odd.bg = '#151515'
+c.colors.tabs.selected.odd.bg = '#1A1A1B'
 # Background color of selected even tabs
-c.colors.tabs.selected.even.bg = '#151515'
+c.colors.tabs.selected.even.bg = '#1A1A1B'
 c.colors.tabs.selected.odd.fg = '#adadad'
 c.colors.tabs.selected.even.fg = '#adadad'
 c.colors.tabs.odd.fg = '#5e5e5e'
@@ -54,25 +55,25 @@ c.tabs.favicons.show = 'never'
 c.tabs.title.format = '{current_title}'
 
 ## Background color for hints
-c.colors.hints.bg = '#82ABAA'
+c.colors.hints.bg = '#6B95B8'
 
 ## Default font
 c.fonts.default_size = '10pt'
-c.fonts.completion.entry = '10pt "JetBrains Mono"'
+c.fonts.completion.entry = '11pt "JetBrains Mono"'
 c.fonts.debug_console = '10pt "JetBrains Mono"'
 c.fonts.statusbar = '10pt "JetBrains Mono"'
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.bg = '#151515'
+c.colors.completion.category.bg = '#22272E'
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.bottom = '#151515'
+c.colors.completion.category.border.bottom = '#22272E'
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.top = '#151515'
+c.colors.completion.category.border.top = '#22272E'
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
@@ -80,28 +81,28 @@ c.colors.completion.category.fg = '#cccccc'
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-c.colors.completion.even.bg = '#151515'
+c.colors.completion.even.bg = '#22272E'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
 ## Type: List of QtColor, or QtColor
-c.colors.completion.fg = ['#BBBBBB', '#ffffff', '#BBBBBB']
+c.colors.completion.fg = ['#6b95b8', '#ffffff', '#BBBBBB']
 
 ## Background color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.bg = '#82ABAA'
+c.colors.completion.item.selected.bg = '#6B95B8'
 
 ## Bottom border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#82ABAA'
+c.colors.completion.item.selected.border.bottom = '#6B95B8'
 
 ## Top border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.top = '#82ABAA'
+c.colors.completion.item.selected.border.top = '#6b95b8'
 
 ## Foreground color of the selected completion item.
 ## Type: QtColor
-c.colors.completion.item.selected.fg = '#151515'
+c.colors.completion.item.selected.fg = '#22272E'
 
 ## Foreground color of the matched text in the selected completion item.
 ## Type: QtColor
@@ -109,26 +110,24 @@ c.colors.completion.item.selected.match.fg = '#ffffff'
 
 ## Foreground color of the matched text in the completion.
 ## Type: QtColor
-c.colors.completion.match.fg = '#ffffff'
+c.colors.completion.match.fg = '#e8716c'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = '#151515'
-c.colors.completion.even.bg = '#151515'
+c.colors.completion.odd.bg = '#22272E'
+c.colors.completion.even.bg = '#22272E'
 
 ## Default Zoom
 #c.zoom.default = '90%'
 
 ## Vim as editor
-c.editor.command = ['kitty', '-e', 'nvim', '{file}']
-#c.editor.command = ['kitty', '-e', 'emacsclient', '{}']
-#c.editor.command = ['kitty', '-e', 'emacsclient', '{file}'] #This one works but vim is faster#
+c.editor.command = ['wezterm', '-e', 'nvim', '{file}']
 
 # Download Directory
 c.downloads.location.directory = '/home/bledley/Downloads/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'dd': 'https://duckduckgo.com/?q={}','aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
@@ -144,22 +143,345 @@ config.bind('<Ctrl-w>', 'tab-close')
 config.bind('<Space><w><n>', 'tab-give')
 config.bind('<b><n>', 'tab-next')
 config.bind('<b><p>', 'tab-prev')
+config.bind('<ctrl+shift+tab>', 'tab-prev')
 config.bind('<r>', 'reload')
-config.bind('<t>', 'open -t /home/bledley/startpage2/index.html')
+config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
 config.bind('<alt-1>', 'tab-focus 1')
 config.bind('<alt-2>', 'tab-focus 2')
 config.bind('<alt-3>', 'tab-focus 3')
 config.bind('<alt-4>', 'tab-focus 4')
 config.bind('<alt-5>', 'tab-focus 5')
 config.bind('<alt-6>', 'tab-focus 6')
-config.bind('<alt-7>', 'tab-focus 6')
-config.bind('<alt-8>', 'tab-focus 6')
-config.bind('<alt-9>', 'tab-focus 6')
+config.bind('<alt-7>', 'tab-focus 7')
+config.bind('<alt-8>', 'tab-focus 8')
+config.bind('<alt-9>', 'tab-focus 9')
 config.unbind('<d>')
+config.unbind('<u>')
 config.bind('<ctrl+j>', 'fake-key <down>')
 config.bind('<ctrl+k>', 'fake-key <up>')
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
 config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
+
+## Bindings for normal mode
+# config.bind("'", 'mode-enter jump_mark')
+config.bind('<Ctrl-=>', 'zoom-in')
+config.bind('<Ctrl-->', 'zoom-out')
+# config.bind('.', 'repeat-command')
+config.bind('<alt-x>', 'cmd-set-text :')
+# config.bind(';I', 'hint images tab')
+# config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+# config.bind(';R', 'hint --rapid links window')
+# config.bind(';Y', 'hint links yank-primary')
+# config.bind(';b', 'hint all tab-bg')
+# config.bind(';d', 'hint links download')
+# config.bind(';f', 'hint all tab-fg')
+# config.bind(';h', 'hint all hover')
+# config.bind(';i', 'hint images')
+# config.bind(';o', 'hint links fill :open {hint-url}')
+# config.bind(';r', 'hint --rapid links tab-bg')
+# config.bind(';t', 'hint inputs')
+# config.bind(';y', 'hint links yank')
+# config.bind('<Alt-m>', 'tab-mute')
+# config.bind('<Ctrl-A>', 'navigate increment')
+# config.bind('<Ctrl-Alt-p>', 'print')
+# config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+#config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+# config.bind('<Ctrl-F5>', 'reload -f')
+config.bind('<space><r><r>', 'restart')
+# config.bind('<Ctrl-F>', 'scroll-page 0 1')
+# config.bind('<Ctrl-N>', 'open -w')
+# config.bind('<Ctrl-Q>', 'quit')
+# config.bind('<Ctrl-Return>', 'selection-follow -t')
+# config.bind('<Ctrl-Shift-N>', 'open -p')
+# config.bind('<Ctrl-Shift-T>', 'undo')
+# config.bind('<Ctrl-Shift-Tab>', 'nop')
+# config.bind('<Ctrl-Shift-W>', 'close')
+# config.bind('<Ctrl-T>', 'open -t')
+# config.bind('<Ctrl-Tab>', 'tab-focus last')
+#config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+# config.bind('<Ctrl-V>', 'mode-enter passthrough')
+config.bind('<Ctrl-w>', 'tab-close')
+config.bind('<space><w><x>', 'tab-close')
+config.bind('<space><w><c>', 'tab-close')
+# config.bind('<Ctrl-X>', 'navigate decrement')
+# config.bind('<Ctrl-^>', 'tab-focus last')
+config.bind('<Ctrl-h>', 'home')
+config.bind('<space><t><p>', 'tab-pin')
+# config.bind('<Ctrl-s>', 'stop')
+# config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
+# config.bind('<F11>', 'fullscreen')
+# config.bind('<F5>', 'reload')
+# config.bind('<Return>', 'selection-follow')
+# config.bind('?', 'cmd-set-text ?')
+# config.bind('@', 'macro-run')
+config.unbind('B')
+# config.bind('D', 'tab-close -o')
+# config.bind('F', 'hint all tab')
+# config.bind('G', 'scroll-to-perc')
+# config.bind('H', 'back')
+config.bind('K', 'tab-next')
+config.bind('J', 'tab-prev')
+config.bind('<space><b><n>', 'tab-next')
+config.bind('<space><b><p>', 'tab-prev')
+# config.bind('L', 'forward')
+config.bind('<space><b><m>', 'bookmark-add')
+config.bind('<space><d><b>', 'bookmark-del')
+# config.bind('N', 'search-prev')
+# config.bind('O', 'cmd-set-text -s :open -t')
+# config.bind('PP', 'open -t -- {primary}')
+# config.bind('Pp', 'open -t -- {clipboard}')
+# config.bind('R', 'reload -f')
+# config.bind('Sb', 'bookmark-list --jump')
+config.bind('<space><h>', 'history')
+config.bind('<space><Return>', 'bookmark-list')
+# config.bind('Ss', 'set')
+# config.bind('T', 'cmd-set-text -sr :tab-focus')
+# config.bind('U', 'undo -w')
+# config.bind('V', 'mode-enter caret ;; selection-toggle --line')
+# config.bind('ZQ', 'quit')
+config.bind('zz', 'quit --save')
+config.bind('<space><q>', 'quit --save')
+config.bind('<space><w><q>', 'quit --save')
+# config.bind('[[', 'navigate prev')
+# config.bind(']]', 'navigate next')
+# config.bind('`', 'mode-enter set_mark')
+# config.bind('ad', 'download-cancel')
+config.bind('<space><,>', 'cmd-set-text -s :quickmark-load')
+config.bind('<space><p><w>', 'open --private')
+config.bind('<space><c><d>', 'download-clear')
+# config.bind('co', 'tab-only')
+# config.bind('Ctrl+d', 'scroll-page 0 0.5')
+# config.bind('Ctrl+u', 'scroll-page 0 -0.5')
+config.bind('d', 'scroll-page 0 0.5')
+config.bind('u', 'scroll-page 0 -0.5')
+# config.bind('f', 'hint')
+# config.bind('g$', 'tab-focus -1')
+# config.bind('g0', 'tab-focus 1')
+# config.bind('gB', 'set-cmd-text -s :bookmark-load -t')
+# config.bind('gC', 'tab-clone')
+# config.bind('gD', 'tab-give')
+# config.bind('gJ', 'tab-move +')
+# config.bind('gK', 'tab-move -')
+# config.bind('gO', 'set-cmd-text :open -t -r {url:pretty}')
+# config.bind('gU', 'navigate up -t')
+# config.bind('g^', 'tab-focus 1')
+# config.bind('ga', 'open -t')
+# config.bind('gb', 'set-cmd-text -s :bookmark-load')
+config.bind('gd', 'download')
+config.bind('<space><v><s>', 'view-source')
+config.bind('<space><e><s>', 'view-source --edit')
+# config.bind('gg', 'scroll-to-perc 0')
+# config.bind('gi', 'hint inputs --first')
+# config.bind('gm', 'tab-move')
+# config.bind('go', 'set-cmd-text :open {url:pretty}')
+config.bind('<space><b><i>', 'cmd-set-text -s :tab-select')
+config.bind('<space><space>', 'cmd-set-text -s :tab-select')
+# config.bind('gu', 'navigate up')
+# config.bind('h', 'scroll left')
+config.bind('a', 'mode-enter insert')
+# config.bind('j', 'scroll down')
+# config.bind('k', 'scroll up')
+# config.bind('l', 'scroll right')
+config.unbind('m')
+config.bind('<space><s><m>', 'quickmark-save')
+# config.bind('n', 'search-next')
+config.bind('<space><o>', 'cmd-set-text -s :open')
+# config.bind('pP', 'open -- {primary}')
+# config.bind('pp', 'open -- {clipboard}')
+# config.bind('q', 'macro-record')
+# config.bind('r', 'reload')
+# config.bind('sf', 'save')
+# config.bind('sk', 'set-cmd-text -s :bind')
+# config.bind('sl', 'set-cmd-text -s :set -t')
+# config.bind('ss', 'set-cmd-text -s :set')
+# config.bind('tCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('tCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('tCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('tIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
+# config.bind('tIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
+# config.bind('tIu', 'config-cycle -p -u {url} content.images ;; reload')
+# config.bind('tPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
+# config.bind('tPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
+# config.bind('tPu', 'config-cycle -p -u {url} content.plugins ;; reload')
+# config.bind('tSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+# config.bind('tSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
+# config.bind('tSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
+# config.bind('tcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('tch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('tcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
+# config.bind('th', 'back -t')
+# config.bind('tiH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
+# config.bind('tih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
+# config.bind('tiu', 'config-cycle -p -t -u {url} content.images ;; reload')
+# config.bind('tl', 'forward -t')
+# config.bind('tpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
+# config.bind('tph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
+# config.bind('tpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
+# config.bind('tsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+# config.bind('tsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
+# config.bind('tsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
+config.bind('<Ctrl+z>', 'undo')
+# config.bind('v', 'mode-enter caret')
+# config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
+# config.bind('wIf', 'devtools-focus')
+# config.bind('wIh', 'devtools left')
+# config.bind('wIj', 'devtools bottom')
+# config.bind('wIk', 'devtools top')
+# config.bind('wIl', 'devtools right')
+# config.bind('wIw', 'devtools window')
+# config.bind('wO', 'set-cmd-text :open -w {url:pretty}')
+# config.bind('wP', 'open -w -- {primary}')
+# config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
+# config.bind('wf', 'hint all window')
+# config.bind('wh', 'back -w')
+# config.bind('wi', 'devtools')
+# config.bind('wl', 'forward -w')
+# config.bind('wo', 'set-cmd-text -s :open -w')
+# config.bind('wp', 'open -w -- {clipboard}')
+# config.bind('xO', 'set-cmd-text :open -b -r {url:pretty}')
+# config.bind('xo', 'set-cmd-text -s :open -b')
+# config.bind('yD', 'yank domain -s')
+# config.bind('yM', 'yank inline [{title}]({url}) -s')
+# config.bind('yP', 'yank pretty-url -s')
+# config.bind('yT', 'yank title -s')
+# config.bind('yY', 'yank -s')
+# config.bind('yd', 'yank domain')
+# config.bind('ym', 'yank inline [{title}]({url})')
+## Yanks a markdown formatted link
+config.bind(',ym', 'yank inline [{title}]({url:pretty})')
+# config.bind('yp', 'yank pretty-url')
+# config.bind('yt', 'yank title')
+# config.bind('yy', 'yank')
+# config.bind('{{', 'navigate prev -t')
+# config.bind('}}', 'navigate next -t')
+
+## Bindings for caret mode
+# config.bind('$', 'move-to-end-of-line', mode='caret')
+# config.bind('0', 'move-to-start-of-line', mode='caret')
+# config.bind('<Ctrl-Space>', 'selection-drop', mode='caret')
+# config.bind('<Escape>', 'mode-leave', mode='caret')
+# config.bind('<Return>', 'yank selection', mode='caret')
+# config.bind('<Space>', 'selection-toggle', mode='caret')
+# config.bind('G', 'move-to-end-of-document', mode='caret')
+# config.bind('H', 'scroll left', mode='caret')
+# config.bind('J', 'scroll down', mode='caret')
+# config.bind('K', 'scroll up', mode='caret')
+# config.bind('L', 'scroll right', mode='caret')
+# config.bind('V', 'selection-toggle --line', mode='caret')
+# config.bind('Y', 'yank selection -s', mode='caret')
+# config.bind('[', 'move-to-start-of-prev-block', mode='caret')
+# config.bind(']', 'move-to-start-of-next-block', mode='caret')
+# config.bind('b', 'move-to-prev-word', mode='caret')
+# config.bind('c', 'mode-enter normal', mode='caret')
+# config.bind('e', 'move-to-end-of-word', mode='caret')
+# config.bind('gg', 'move-to-start-of-document', mode='caret')
+# config.bind('h', 'move-to-prev-char', mode='caret')
+# config.bind('j', 'move-to-next-line', mode='caret')
+# config.bind('k', 'move-to-prev-line', mode='caret')
+# config.bind('l', 'move-to-next-char', mode='caret')
+# config.bind('o', 'selection-reverse', mode='caret')
+# config.bind('v', 'selection-toggle', mode='caret')
+# config.bind('w', 'move-to-next-word', mode='caret')
+# config.bind('y', 'yank selection', mode='caret')
+# config.bind('{', 'move-to-end-of-prev-block', mode='caret')
+# config.bind('}', 'move-to-end-of-next-block', mode='caret')
+
+## Bindings for command mode
+# config.bind('<Alt-B>', 'rl-backward-word', mode='command')
+# config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
+# config.bind('<Alt-D>', 'rl-kill-word', mode='command')
+# config.bind('<Alt-F>', 'rl-forward-word', mode='command')
+# config.bind('<Ctrl-?>', 'rl-delete-char', mode='command')
+# config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='command')
+# config.bind('<Ctrl-B>', 'rl-backward-char', mode='command')
+# config.bind('<Ctrl-C>', 'completion-item-yank', mode='command')
+# config.bind('<Ctrl-D>', 'completion-item-del', mode='command')
+# config.bind('<Ctrl-E>', 'rl-end-of-line', mode='command')
+# config.bind('<Ctrl-F>', 'rl-forward-char', mode='command')
+# config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='command')
+# config.bind('<Ctrl-K>', 'rl-kill-line', mode='command')
+# config.bind('<Ctrl-N>', 'command-history-next', mode='command')
+# config.bind('<Ctrl-P>', 'command-history-prev', mode='command')
+# config.bind('<Ctrl-Return>', 'command-accept --rapid', mode='command')
+# config.bind('<Ctrl-Shift-C>', 'completion-item-yank --sel', mode='command')
+# config.bind('<Ctrl-Shift-Tab>', 'completion-item-focus prev-category', mode='command')
+# config.bind('<Ctrl-Shift-W>', 'rl-filename-rubout', mode='command')
+# config.bind('<Ctrl-Tab>', 'completion-item-focus next-category', mode='command')
+# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='command')
+# config.bind('<Ctrl-W>', 'rl-rubout " "', mode='command')
+# config.bind('<Ctrl-Y>', 'rl-yank', mode='command')
+# config.bind('<Down>', 'completion-item-focus --history next', mode='command')
+# config.bind('<Escape>', 'mode-leave', mode='command')
+# config.bind('<PgDown>', 'completion-item-focus next-page', mode='command')
+# config.bind('<PgUp>', 'completion-item-focus prev-page', mode='command')
+# config.bind('<Return>', 'command-accept', mode='command')
+# config.bind('<Shift-Delete>', 'completion-item-del', mode='command')
+# config.bind('<Shift-Tab>', 'completion-item-focus prev', mode='command')
+# config.bind('<Tab>', 'completion-item-focus next', mode='command')
+# config.bind('<Up>', 'completion-item-focus --history prev', mode='command')
+
+## Bindings for hint mode
+# config.bind('<Ctrl-B>', 'hint all tab-bg', mode='hint')
+# config.bind('<Ctrl-F>', 'hint links', mode='hint')
+# config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
+# config.bind('<Escape>', 'mode-leave', mode='hint')
+# config.bind('<Return>', 'hint-follow', mode='hint')
+
+## Bindings for insert mode
+# config.bind('<Ctrl-E>', 'edit-text', mode='insert')
+# config.bind('<Escape>', 'mode-leave', mode='insert')
+# config.bind('<Shift-Escape>', 'fake-key <Escape>', mode='insert')
+# config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
+
+## Bindings for passthrough mode
+# config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
+
+## Bindings for prompt mode
+# config.bind('<Alt-B>', 'rl-backward-word', mode='prompt')
+# config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
+# config.bind('<Alt-D>', 'rl-kill-word', mode='prompt')
+# config.bind('<Alt-F>', 'rl-forward-word', mode='prompt')
+# config.bind('<Alt-Shift-Y>', 'prompt-yank --sel', mode='prompt')
+# config.bind('<Alt-Y>', 'prompt-yank', mode='prompt')
+# config.bind('<Ctrl-?>', 'rl-delete-char', mode='prompt')
+# config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='prompt')
+# config.bind('<Ctrl-B>', 'rl-backward-char', mode='prompt')
+# config.bind('<Ctrl-E>', 'rl-end-of-line', mode='prompt')
+# config.bind('<Ctrl-F>', 'rl-forward-char', mode='prompt')
+# config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='prompt')
+# config.bind('<Ctrl-K>', 'rl-kill-line', mode='prompt')
+# config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
+# config.bind('<Ctrl-Shift-W>', 'rl-filename-rubout', mode='prompt')
+# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='prompt')
+# config.bind('<Ctrl-W>', 'rl-rubout " "', mode='prompt')
+# config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
+# config.bind('<Ctrl-Y>', 'rl-yank', mode='prompt')
+# config.bind('<Down>', 'prompt-item-focus next', mode='prompt')
+# config.bind('<Escape>', 'mode-leave', mode='prompt')
+# config.bind('<Return>', 'prompt-accept', mode='prompt')
+# config.bind('<Shift-Tab>', 'prompt-item-focus prev', mode='prompt')
+# config.bind('<Tab>', 'prompt-item-focus next', mode='prompt')
+# config.bind('<Up>', 'prompt-item-focus prev', mode='prompt')
+
+## Bindings for register mode
+# config.bind('<Escape>', 'mode-leave', mode='register')
+
+## Bindings for yesno mode
+# config.bind('<Alt-Shift-Y>', 'prompt-yank --sel', mode='yesno')
+# config.bind('<Alt-Y>', 'prompt-yank', mode='yesno')
+# config.bind('<Escape>', 'mode-leave', mode='yesno')
+# config.bind('<Return>', 'prompt-accept', mode='yesno')
+# config.bind('N', 'prompt-accept --save no', mode='yesno')
+# config.bind('Y', 'prompt-accept --save yes', mode='yesno')
+# config.bind('n', 'prompt-accept no', mode='yesno')
+# config.bind('y', 'prompt-accept yes', mode='yesno')
+# Bindings for cycling through CSS stylesheets from Solarized Everything CSS:
+# https://github.com/alphapapa/solarized-everything-css
+config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+config.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+config.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
@@ -248,7 +570,7 @@ config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 
 ## Background color of the selected completion item.
 ## Type: QssColor
-# c.colors.completion.item.selected.bg = '#e8c000'
+# c.colors.completion.item.selected.bg = '#c280a0'
 
 ## Bottom border color of the selected completion item.
 ## Type: QssColor
@@ -295,7 +617,7 @@ config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
 ## Background color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.bg = '#151515'
+c.colors.contextmenu.menu.bg = '#22272E'
 
 ## Foreground color of the context menu. If set to null, the Qt default
 ## is used.
@@ -305,16 +627,16 @@ c.colors.contextmenu.menu.fg = '#8a8a8a'
 ## Background color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.bg = '#82ABAA'
+c.colors.contextmenu.selected.bg = '#6b95b8'
 
 ## Foreground color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.fg = '#151515'
+c.colors.contextmenu.selected.fg = '#22272E'
 
 ## Background color for the download bar.
 ## Type: QssColor
-c.colors.downloads.bar.bg = '#151515'
+c.colors.downloads.bar.bg = '#22272E'
 
 ## Background color for downloads with errors.
 ## Type: QtColor
@@ -334,7 +656,7 @@ c.colors.downloads.start.bg = '#6272a4'
 
 ## Color gradient stop for download backgrounds.
 ## Type: QtColor
-c.colors.downloads.stop.bg = '#82ABAA'
+c.colors.downloads.stop.bg = '#6272a4'
 
 ## Color gradient end for download text.
 ## Type: QtColor
@@ -369,7 +691,7 @@ c.colors.downloads.stop.bg = '#82ABAA'
 
 ## Font color for the matched part of hints.
 ## Type: QtColor
-# c.colors.hints.match.fg = 'green'
+c.colors.hints.match.fg = '#e8716c'
 
 ## Background color of the keyhint widget.
 ## Type: QssColor
@@ -381,7 +703,7 @@ c.colors.downloads.stop.bg = '#82ABAA'
 
 ## Highlight color for keys to complete the current keychain.
 ## Type: QssColor
-c.colors.keyhint.suffix.fg = '#82ABAA'
+c.colors.keyhint.suffix.fg = '#e8716c'
 
 ## Background color of an error message.
 ## Type: QssColor
@@ -421,7 +743,7 @@ c.colors.messages.error.border = '#c280a0'
 
 ## Background color for prompts.
 ## Type: QssColor
-c.colors.prompts.bg = '#151515'
+c.colors.prompts.bg = '#22272E'
 
 ## Border used around UI elements in prompts.
 ## Type: String
@@ -441,27 +763,27 @@ c.colors.prompts.fg = '#7d7d7d'
 
 ## Background color of the statusbar in caret mode.
 ## Type: QssColor
-c.colors.statusbar.caret.bg = '#151515'
+c.colors.statusbar.caret.bg = '#c280a0'
 
 ## Foreground color of the statusbar in caret mode.
 ## Type: QssColor
-c.colors.statusbar.caret.fg = '#a488ce'
+c.colors.statusbar.caret.fg = '#22272E'
 
 ## Background color of the statusbar in caret mode with a selection.
 ## Type: QssColor
-c.colors.statusbar.caret.selection.bg = '#151515'
+c.colors.statusbar.caret.selection.bg = '#c280a0'
 
 ## Foreground color of the statusbar in caret mode with a selection.
 ## Type: QssColor
-c.colors.statusbar.caret.selection.fg = '#7d7d7d'
+c.colors.statusbar.caret.selection.fg = '#22272E'
 
 ## Background color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.bg = '#151515'
+c.colors.statusbar.command.bg = '#22272E'
 
 ## Foreground color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.fg = '#7d7d7d'
+c.colors.statusbar.command.fg = '#9da7b4'
 
 ## Background color of the statusbar in private browsing + command mode.
 ## Type: QssColor
@@ -473,19 +795,19 @@ c.colors.statusbar.command.fg = '#7d7d7d'
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = '#151515'
+c.colors.statusbar.insert.bg = '#6B95B8'
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.fg = '#80C2A2'
+c.colors.statusbar.insert.fg = '#22272E'
 
 ## Background color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.bg = '#151515'
+c.colors.statusbar.normal.bg = '#22272E'
 
 ## Foreground color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.fg = '#7d7d7d'
+c.colors.statusbar.normal.fg = '#9da7b4'
 
 ## Background color of the statusbar in passthrough mode.
 ## Type: QssColor
@@ -497,11 +819,11 @@ c.colors.statusbar.normal.fg = '#7d7d7d'
 
 ## Background color of the statusbar in private browsing mode.
 ## Type: QssColor
-c.colors.statusbar.private.bg = '#151515'
+c.colors.statusbar.private.bg = '#675d99'
 
 ## Foreground color of the statusbar in private browsing mode.
 ## Type: QssColor
-# c.colors.statusbar.private.fg = 'white'
+c.colors.statusbar.private.fg = '#22272E'
 
 ## Background color of the progress bar.
 ## Type: QssColor
@@ -513,7 +835,7 @@ c.colors.statusbar.url.error.fg = '#fff7Ad'
 
 ## Default foreground color of the URL in the statusbar.
 ## Type: QssColor
-c.colors.statusbar.url.fg = '#7d7d7d'
+c.colors.statusbar.url.fg = '#aeb6c1'
 
 ## Foreground color of the URL in the statusbar for hovered links.
 ## Type: QssColor
@@ -522,12 +844,12 @@ c.colors.statusbar.url.hover.fg = '#BBCCDD'
 ## Foreground color of the URL in the statusbar on successful load
 ## (http).
 ## Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#7d7d7d'
+c.colors.statusbar.url.success.http.fg = '#ededed'
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (https).
 ## Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#7d7d7d'
+c.colors.statusbar.url.success.https.fg = '#ededed'
 
 ## Foreground color of the URL in the statusbar when there's a warning.
 ## Type: QssColor
@@ -551,11 +873,11 @@ c.colors.tabs.indicator.error = '#c280a0'
 
 ## Color gradient start for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.start = '#82ABAA'
+c.colors.tabs.indicator.start = '#6b95b8'
 
 ## Color gradient end for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.stop = '#82ABAA'
+c.colors.tabs.indicator.stop = '#6d95b8'
 
 ## Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -576,7 +898,7 @@ c.colors.tabs.indicator.stop = '#82ABAA'
 
 ## Background color of pinned unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.even.bg = '#151515'
+c.colors.tabs.pinned.even.bg = '#22272E'
 
 ## Foreground color of pinned unselected even tabs.
 ## Type: QtColor
@@ -584,7 +906,7 @@ c.colors.tabs.pinned.even.fg = '#7d7d7d'
 
 ## Background color of pinned unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.odd.bg = '#151515'
+c.colors.tabs.pinned.odd.bg = '#22272E'
 
 ## Foreground color of pinned unselected odd tabs.
 ## Type: QtColor
@@ -894,7 +1216,7 @@ c.content.blocking.enabled = True
 ## Allow websites to read canvas elements. Note this is needed for some
 ## websites to work properly.
 ## Type: Bool
-# c.content.canvas_reading = True
+c.content.canvas_reading = True
 
 ## Which cookies to accept. With QtWebEngine, this setting also controls
 ## other features with tracking capabilities similar to those of cookies;
@@ -1251,7 +1573,7 @@ c.content.notifications.presenter = 'auto'
 
 ## Enable WebGL.
 ## Type: Bool
-# c.content.webgl = True
+c.content.webgl = True
 
 ## Which interfaces to expose via WebRTC.
 ## Type: String
@@ -1496,7 +1818,7 @@ c.fonts.web.family.cursive = ''
 
 ## CSS border value for hints.
 ## Type: String
-c.hints.border = '1px solid #82ABAA'
+c.hints.border = '1px solid #6b95b8'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
@@ -1900,7 +2222,7 @@ c.hints.leave_on_load = True
 ##   - always: Always show the statusbar.
 ##   - never: Always hide the statusbar.
 ##   - in-mode: Show the statusbar when in modes other than normal mode.
-# c.statusbar.show = 'always'
+c.statusbar.show = 'in-mode'
 
 ## List of widgets displayed in the statusbar.
 ## Type: List of StatusbarWidget
@@ -2216,342 +2538,3 @@ c.zoom.levels = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%
 ## Apply the zoom factor on a frame only to the text or to all content.
 ## Type: Bool
 # c.zoom.text_only = False
-
-## Bindings for normal mode
-# config.bind("'", 'mode-enter jump_mark')
-# config.bind('+', 'zoom-in')
-#config.bind('z', 'zoom-in')
-config.bind('<Ctrl-=>', 'zoom-in')
-# config.bind('-', 'zoom-out')
-#config.bind('x', 'zoom-out')
-config.bind('<Ctrl-->', 'zoom-out')
-# config.bind('.', 'repeat-command')
-# config.bind('/', 'set-cmd-text /')
-config.bind('<alt-x>', 'set-cmd-text :')
-# config.bind(';I', 'hint images tab')
-# config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-# config.bind(';R', 'hint --rapid links window')
-# config.bind(';Y', 'hint links yank-primary')
-# config.bind(';b', 'hint all tab-bg')
-# config.bind(';d', 'hint links download')
-# config.bind(';f', 'hint all tab-fg')
-# config.bind(';h', 'hint all hover')
-# config.bind(';i', 'hint images')
-# config.bind(';o', 'hint links fill :open {hint-url}')
-# config.bind(';r', 'hint --rapid links tab-bg')
-# config.bind(';t', 'hint inputs')
-# config.bind(';y', 'hint links yank')
-# config.bind('<Alt-1>', 'tab-focus 1')
-# config.bind('<Alt-2>', 'tab-focus 2')
-# config.bind('<Alt-3>', 'tab-focus 3')
-# config.bind('<Alt-4>', 'tab-focus 4')
-# config.bind('<Alt-5>', 'tab-focus 5')
-# config.bind('<Alt-6>', 'tab-focus 6')
-# config.bind('<Alt-7>', 'tab-focus 7')
-# config.bind('<Alt-8>', 'tab-focus 8')
-# config.bind('<Alt-9>', 'tab-focus -1')
-# config.bind('<Alt-m>', 'tab-mute')
-# config.bind('<Ctrl-A>', 'navigate increment')
-# config.bind('<Ctrl-Alt-p>', 'print')
-# config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-#config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
-# config.bind('<Ctrl-F5>', 'reload -f')
-config.bind('<space><r><r>', 'restart')
-# config.bind('<Ctrl-F>', 'scroll-page 0 1')
-# config.bind('<Ctrl-N>', 'open -w')
-# config.bind('<Ctrl-PgDown>', 'tab-next')
-# config.bind('<Ctrl-PgUp>', 'tab-prev')
-# config.bind('<Ctrl-Q>', 'quit')
-# config.bind('<Ctrl-Return>', 'selection-follow -t')
-# config.bind('<Ctrl-Shift-N>', 'open -p')
-# config.bind('<Ctrl-Shift-T>', 'undo')
-# config.bind('<Ctrl-Shift-Tab>', 'nop')
-# config.bind('<Ctrl-Shift-W>', 'close')
-# config.bind('<Ctrl-T>', 'open -t')
-# config.bind('<Ctrl-Tab>', 'tab-focus last')
-#config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
-# config.bind('<Ctrl-V>', 'mode-enter passthrough')
-config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<space><w><x>', 'tab-close')
-config.bind('<space><w><c>', 'tab-close')
-# config.bind('<Ctrl-X>', 'navigate decrement')
-# config.bind('<Ctrl-^>', 'tab-focus last')
-config.bind('<Ctrl-h>', 'home')
-config.bind('<space><t><p>', 'tab-pin')
-# config.bind('<Ctrl-s>', 'stop')
-# config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
-# config.bind('<F11>', 'fullscreen')
-# config.bind('<F5>', 'reload')
-# config.bind('<Return>', 'selection-follow')
-# config.bind('<back>', 'back')
-# config.bind('<forward>', 'forward')
-# config.bind('=', 'zoom')
-# config.bind('?', 'set-cmd-text ?')
-# config.bind('@', 'macro-run')
-config.unbind('B')
-# config.bind('D', 'tab-close -o')
-# config.bind('F', 'hint all tab')
-# config.bind('G', 'scroll-to-perc')
-# config.bind('H', 'back')
-config.bind('K', 'tab-next')
-config.bind('J', 'tab-prev')
-config.bind('<space><b><n>', 'tab-next')
-config.bind('<space><b><p>', 'tab-prev')
-# config.bind('L', 'forward')
-config.bind('<space><b><m>', 'bookmark-add')
-config.bind('<space><b><M>', 'bookmark-del')
-# config.bind('N', 'search-prev')
-# config.bind('O', 'set-cmd-text -s :open -t')
-# config.bind('PP', 'open -t -- {primary}')
-# config.bind('Pp', 'open -t -- {clipboard}')
-# config.bind('R', 'reload -f')
-# config.bind('Sb', 'bookmark-list --jump')
-config.bind('<space><h>', 'history')
-#config.bind('<space></>', 'history')
-config.bind('<space><Return>', 'bookmark-list')
-# config.bind('Ss', 'set')
-# config.bind('T', 'set-cmd-text -sr :tab-focus')
-# config.bind('U', 'undo -w')
-# config.bind('V', 'mode-enter caret ;; selection-toggle --line')
-# config.bind('ZQ', 'quit')
-config.bind('zz', 'quit --save')
-config.bind('<w><q>', 'quit --save')
-# config.bind('[[', 'navigate prev')
-# config.bind(']]', 'navigate next')
-# config.bind('`', 'mode-enter set_mark')
-# config.bind('ad', 'download-cancel')
-config.bind('<space><,>', 'set-cmd-text -s :quickmark-load')
-config.bind('<space><p><w>', 'open --private')
-config.bind('<space><c><d>', 'download-clear')
-# config.bind('co', 'tab-only')
-config.bind('Ctrl+d', 'scroll-page 0 0.5')
-config.bind('Ctrl+u', 'scroll-page 0 -0.5')
-# config.bind('f', 'hint')
-# config.bind('g$', 'tab-focus -1')
-# config.bind('g0', 'tab-focus 1')
-# config.bind('gB', 'set-cmd-text -s :bookmark-load -t')
-# config.bind('gC', 'tab-clone')
-# config.bind('gD', 'tab-give')
-# config.bind('gJ', 'tab-move +')
-# config.bind('gK', 'tab-move -')
-# config.bind('gO', 'set-cmd-text :open -t -r {url:pretty}')
-# config.bind('gU', 'navigate up -t')
-# config.bind('g^', 'tab-focus 1')
-# config.bind('ga', 'open -t')
-# config.bind('gb', 'set-cmd-text -s :bookmark-load')
-config.bind('gd', 'download')
-config.bind('<space><v><s>', 'view-source')
-config.bind('<space><e><s>', 'view-source --edit')
-# config.bind('gg', 'scroll-to-perc 0')
-# config.bind('gi', 'hint inputs --first')
-# config.bind('gm', 'tab-move')
-# config.bind('go', 'set-cmd-text :open {url:pretty}')
-config.bind('<space><b><i>', 'set-cmd-text -s :tab-select')
-config.bind('<space><space>', 'set-cmd-text -s :tab-select')
-# config.bind('gu', 'navigate up')
-# config.bind('h', 'scroll left')
-config.bind('a', 'mode-enter insert')
-# config.bind('j', 'scroll down')
-# config.bind('k', 'scroll up')
-# config.bind('l', 'scroll right')
-config.unbind('m')
-config.bind('<space><q><m>', 'quickmark-save')
-# config.bind('n', 'search-next')
-config.bind('<space><o>', 'set-cmd-text -s :open')
-# config.bind('pP', 'open -- {primary}')
-# config.bind('pp', 'open -- {clipboard}')
-# config.bind('q', 'macro-record')
-# config.bind('r', 'reload')
-# config.bind('sf', 'save')
-# config.bind('sk', 'set-cmd-text -s :bind')
-# config.bind('sl', 'set-cmd-text -s :set -t')
-# config.bind('ss', 'set-cmd-text -s :set')
-# config.bind('tCH', 'config-cycle -p -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('tCh', 'config-cycle -p -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('tCu', 'config-cycle -p -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('tIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
-# config.bind('tIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
-# config.bind('tIu', 'config-cycle -p -u {url} content.images ;; reload')
-# config.bind('tPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
-# config.bind('tPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
-# config.bind('tPu', 'config-cycle -p -u {url} content.plugins ;; reload')
-# config.bind('tSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-# config.bind('tSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
-# config.bind('tSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
-# config.bind('tcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('tch', 'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('tcu', 'config-cycle -p -t -u {url} content.cookies.accept all no-3rdparty never ;; reload')
-# config.bind('th', 'back -t')
-# config.bind('tiH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
-# config.bind('tih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
-# config.bind('tiu', 'config-cycle -p -t -u {url} content.images ;; reload')
-# config.bind('tl', 'forward -t')
-# config.bind('tpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
-# config.bind('tph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
-# config.bind('tpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
-# config.bind('tsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
-# config.bind('tsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
-# config.bind('tsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
-config.bind('<Ctrl+z>', 'undo')
-# config.bind('v', 'mode-enter caret')
-# config.bind('wB', 'set-cmd-text -s :bookmark-load -w')
-# config.bind('wIf', 'devtools-focus')
-# config.bind('wIh', 'devtools left')
-# config.bind('wIj', 'devtools bottom')
-# config.bind('wIk', 'devtools top')
-# config.bind('wIl', 'devtools right')
-# config.bind('wIw', 'devtools window')
-# config.bind('wO', 'set-cmd-text :open -w {url:pretty}')
-# config.bind('wP', 'open -w -- {primary}')
-# config.bind('wb', 'set-cmd-text -s :quickmark-load -w')
-# config.bind('wf', 'hint all window')
-# config.bind('wh', 'back -w')
-# config.bind('wi', 'devtools')
-# config.bind('wl', 'forward -w')
-# config.bind('wo', 'set-cmd-text -s :open -w')
-# config.bind('wp', 'open -w -- {clipboard}')
-# config.bind('xO', 'set-cmd-text :open -b -r {url:pretty}')
-# config.bind('xo', 'set-cmd-text -s :open -b')
-# config.bind('yD', 'yank domain -s')
-# config.bind('yM', 'yank inline [{title}]({url}) -s')
-# config.bind('yP', 'yank pretty-url -s')
-# config.bind('yT', 'yank title -s')
-# config.bind('yY', 'yank -s')
-# config.bind('yd', 'yank domain')
-# config.bind('ym', 'yank inline [{title}]({url})')
-## Yanks a markdown formatted link
-config.bind(',ym', 'yank inline [{title}]({url:pretty})')
-# config.bind('yp', 'yank pretty-url')
-# config.bind('yt', 'yank title')
-# config.bind('yy', 'yank')
-# config.bind('{{', 'navigate prev -t')
-# config.bind('}}', 'navigate next -t')
-
-## Bindings for caret mode
-# config.bind('$', 'move-to-end-of-line', mode='caret')
-# config.bind('0', 'move-to-start-of-line', mode='caret')
-# config.bind('<Ctrl-Space>', 'selection-drop', mode='caret')
-# config.bind('<Escape>', 'mode-leave', mode='caret')
-# config.bind('<Return>', 'yank selection', mode='caret')
-# config.bind('<Space>', 'selection-toggle', mode='caret')
-# config.bind('G', 'move-to-end-of-document', mode='caret')
-# config.bind('H', 'scroll left', mode='caret')
-# config.bind('J', 'scroll down', mode='caret')
-# config.bind('K', 'scroll up', mode='caret')
-# config.bind('L', 'scroll right', mode='caret')
-# config.bind('V', 'selection-toggle --line', mode='caret')
-# config.bind('Y', 'yank selection -s', mode='caret')
-# config.bind('[', 'move-to-start-of-prev-block', mode='caret')
-# config.bind(']', 'move-to-start-of-next-block', mode='caret')
-# config.bind('b', 'move-to-prev-word', mode='caret')
-# config.bind('c', 'mode-enter normal', mode='caret')
-# config.bind('e', 'move-to-end-of-word', mode='caret')
-# config.bind('gg', 'move-to-start-of-document', mode='caret')
-# config.bind('h', 'move-to-prev-char', mode='caret')
-# config.bind('j', 'move-to-next-line', mode='caret')
-# config.bind('k', 'move-to-prev-line', mode='caret')
-# config.bind('l', 'move-to-next-char', mode='caret')
-# config.bind('o', 'selection-reverse', mode='caret')
-# config.bind('v', 'selection-toggle', mode='caret')
-# config.bind('w', 'move-to-next-word', mode='caret')
-# config.bind('y', 'yank selection', mode='caret')
-# config.bind('{', 'move-to-end-of-prev-block', mode='caret')
-# config.bind('}', 'move-to-end-of-next-block', mode='caret')
-
-## Bindings for command mode
-# config.bind('<Alt-B>', 'rl-backward-word', mode='command')
-# config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='command')
-# config.bind('<Alt-D>', 'rl-kill-word', mode='command')
-# config.bind('<Alt-F>', 'rl-forward-word', mode='command')
-# config.bind('<Ctrl-?>', 'rl-delete-char', mode='command')
-# config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='command')
-# config.bind('<Ctrl-B>', 'rl-backward-char', mode='command')
-# config.bind('<Ctrl-C>', 'completion-item-yank', mode='command')
-# config.bind('<Ctrl-D>', 'completion-item-del', mode='command')
-# config.bind('<Ctrl-E>', 'rl-end-of-line', mode='command')
-# config.bind('<Ctrl-F>', 'rl-forward-char', mode='command')
-# config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='command')
-# config.bind('<Ctrl-K>', 'rl-kill-line', mode='command')
-# config.bind('<Ctrl-N>', 'command-history-next', mode='command')
-# config.bind('<Ctrl-P>', 'command-history-prev', mode='command')
-# config.bind('<Ctrl-Return>', 'command-accept --rapid', mode='command')
-# config.bind('<Ctrl-Shift-C>', 'completion-item-yank --sel', mode='command')
-# config.bind('<Ctrl-Shift-Tab>', 'completion-item-focus prev-category', mode='command')
-# config.bind('<Ctrl-Shift-W>', 'rl-filename-rubout', mode='command')
-# config.bind('<Ctrl-Tab>', 'completion-item-focus next-category', mode='command')
-# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='command')
-# config.bind('<Ctrl-W>', 'rl-rubout " "', mode='command')
-# config.bind('<Ctrl-Y>', 'rl-yank', mode='command')
-# config.bind('<Down>', 'completion-item-focus --history next', mode='command')
-# config.bind('<Escape>', 'mode-leave', mode='command')
-# config.bind('<PgDown>', 'completion-item-focus next-page', mode='command')
-# config.bind('<PgUp>', 'completion-item-focus prev-page', mode='command')
-# config.bind('<Return>', 'command-accept', mode='command')
-# config.bind('<Shift-Delete>', 'completion-item-del', mode='command')
-# config.bind('<Shift-Tab>', 'completion-item-focus prev', mode='command')
-# config.bind('<Tab>', 'completion-item-focus next', mode='command')
-# config.bind('<Up>', 'completion-item-focus --history prev', mode='command')
-
-## Bindings for hint mode
-# config.bind('<Ctrl-B>', 'hint all tab-bg', mode='hint')
-# config.bind('<Ctrl-F>', 'hint links', mode='hint')
-# config.bind('<Ctrl-R>', 'hint --rapid links tab-bg', mode='hint')
-# config.bind('<Escape>', 'mode-leave', mode='hint')
-# config.bind('<Return>', 'hint-follow', mode='hint')
-
-## Bindings for insert mode
-# config.bind('<Ctrl-E>', 'edit-text', mode='insert')
-# config.bind('<Escape>', 'mode-leave', mode='insert')
-# config.bind('<Shift-Escape>', 'fake-key <Escape>', mode='insert')
-# config.bind('<Shift-Ins>', 'insert-text -- {primary}', mode='insert')
-
-## Bindings for passthrough mode
-# config.bind('<Shift-Escape>', 'mode-leave', mode='passthrough')
-
-## Bindings for prompt mode
-# config.bind('<Alt-B>', 'rl-backward-word', mode='prompt')
-# config.bind('<Alt-Backspace>', 'rl-backward-kill-word', mode='prompt')
-# config.bind('<Alt-D>', 'rl-kill-word', mode='prompt')
-# config.bind('<Alt-F>', 'rl-forward-word', mode='prompt')
-# config.bind('<Alt-Shift-Y>', 'prompt-yank --sel', mode='prompt')
-# config.bind('<Alt-Y>', 'prompt-yank', mode='prompt')
-# config.bind('<Ctrl-?>', 'rl-delete-char', mode='prompt')
-# config.bind('<Ctrl-A>', 'rl-beginning-of-line', mode='prompt')
-# config.bind('<Ctrl-B>', 'rl-backward-char', mode='prompt')
-# config.bind('<Ctrl-E>', 'rl-end-of-line', mode='prompt')
-# config.bind('<Ctrl-F>', 'rl-forward-char', mode='prompt')
-# config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='prompt')
-# config.bind('<Ctrl-K>', 'rl-kill-line', mode='prompt')
-# config.bind('<Ctrl-P>', 'prompt-open-download --pdfjs', mode='prompt')
-# config.bind('<Ctrl-Shift-W>', 'rl-filename-rubout', mode='prompt')
-# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='prompt')
-# config.bind('<Ctrl-W>', 'rl-rubout " "', mode='prompt')
-# config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
-# config.bind('<Ctrl-Y>', 'rl-yank', mode='prompt')
-# config.bind('<Down>', 'prompt-item-focus next', mode='prompt')
-# config.bind('<Escape>', 'mode-leave', mode='prompt')
-# config.bind('<Return>', 'prompt-accept', mode='prompt')
-# config.bind('<Shift-Tab>', 'prompt-item-focus prev', mode='prompt')
-# config.bind('<Tab>', 'prompt-item-focus next', mode='prompt')
-# config.bind('<Up>', 'prompt-item-focus prev', mode='prompt')
-
-## Bindings for register mode
-# config.bind('<Escape>', 'mode-leave', mode='register')
-
-## Bindings for yesno mode
-# config.bind('<Alt-Shift-Y>', 'prompt-yank --sel', mode='yesno')
-# config.bind('<Alt-Y>', 'prompt-yank', mode='yesno')
-# config.bind('<Escape>', 'mode-leave', mode='yesno')
-# config.bind('<Return>', 'prompt-accept', mode='yesno')
-# config.bind('N', 'prompt-accept --save no', mode='yesno')
-# config.bind('Y', 'prompt-accept --save yes', mode='yesno')
-# config.bind('n', 'prompt-accept no', mode='yesno')
-# config.bind('y', 'prompt-accept yes', mode='yesno')
-# Bindings for cycling through CSS stylesheets from Solarized Everything CSS:
-# https://github.com/alphapapa/solarized-everything-css
-config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
-
