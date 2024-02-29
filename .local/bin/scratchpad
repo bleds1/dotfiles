@@ -1,6 +1,11 @@
 #!/bin/bash
-# Can't remember where I found this but very useful. Keybind this script and a Vim scratchpad will pop up anywhere. Write and quit and the text is copied to register to be pasted in web browser for example. A poor mans Vim-everywhere.
-# FIX: This has stopped working for some reason..errors out. Could be do with deactivating xfce clip on autostart recently?
+# Can't remember where I found this but very useful. Keybind this script and a Vim scratchpad will pop up anywhere. Write and quit and the text is copied to register to be pasted in web browser or any other text entry box. A poor mans Vim-everywhere.
+
+## Commented was the original command. This stopped working recently..the edited below works mostly as expected.
+
+# tmp_file=$(mktemp)
+# kitty --name="__text_scratchpad" -e $SHELL -lc "sleep 0.1 && nvim -c startinsert -c 'setlocal spell' ${tmp_file}" && xclip -selection clipboard < $tmp_file
 
 tmp_file=$(mktemp)
-wezterm --name="__text_scratchpad" -e $SHELL -lc "sleep 0.1 && nvim -c startinsert -c 'setlocal spell' ${tmp_file}" && xclip -selection clipboard < $tmp_file
+wezterm -e nvim ${tmp_file} && xclip -selection clipboard < $tmp_file
+
