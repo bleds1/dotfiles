@@ -16,7 +16,7 @@ vim.o.relativenumber = false
 vim.o.cursorline = true
 --vim.o.showtabline =2
 --see Insert/Normal under statusline
-vim.o.showmode = false
+vim.o.showmode = true
 --tabs and indent
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
