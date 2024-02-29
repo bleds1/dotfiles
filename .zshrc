@@ -155,7 +155,7 @@ alias emc="emacsclient -c -a 'emacs' & disown"
 alias emd="/usr/bin/emacs --daemon"
 alias dired="emacsclient -nw -c -a 'emacs' --eval '(dired nil)'"
 # alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
-#git
+# git
 alias gs='git status'
 alias ga='git add -A'
 alias gp='git push'
@@ -169,9 +169,11 @@ alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias glol='git log --graph --oneline --decorate'
+# tmux
 alias ts="tmux-sessionizer.sh"
 alias t="tmux"
 alias ta="tmux attach"
+alias td="tmux detach"
 alias tls="tmux ls"
 #ls exa
 alias l="exa -a --color=always --sort Name"
@@ -181,7 +183,7 @@ alias ll="exa -al --color=always --sort Name --group-directories-first --no-perm
 alias la="exa -al --color=always --sort Name --group-directories-first"
 alias lt="exa -aT --color=always --group-directories-first"
 alias mutt="neomutt"
-#shortcuts
+# dir shortcuts
 alias sba="cd ~/sba/"
 alias doc="cd ~/Documents/"
 alias dl="cd ~/Downloads/"
@@ -207,7 +209,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
 # alias t="task"
 # alias ta="task add"
-alias n="task project:Next"
+# alias n="task project:Next"
 # khal
 # alias k="khal"
 # alias kls="khal list"
@@ -265,13 +267,8 @@ export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
 
 # Cli todo function
-#function todo { echo "- [ ] $1" >> ~/Dropbox/roam/pages/TODO.md  }
-# function todo { echo "** TODO $1" >> ~/Dropbox/roam/tasks.org  }
-#
-# Fleeting Obsidian function
-# function note {
-    # echo "** $(date +%Y-%m-%d-%H:%M)\n-$@" >> ~/Dropbox/roam/tasks.org
-# }
+function todo { echo "TODO: $1" >> ~/vault/todo.md  }
+
 #suppress warnings powerlevel10k
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
