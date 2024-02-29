@@ -169,7 +169,10 @@ alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias glol='git log --graph --oneline --decorate'
-alias tms="tmux-sessionizer.sh"
+alias ts="tmux-sessionizer.sh"
+alias t="tmux"
+alias ta="tmux attach"
+alias tls="tmux ls"
 #ls exa
 alias l="exa -a --color=always --sort Name"
 alias ls="exa -al --color=always --sort name --group-directories-first"
@@ -202,8 +205,8 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse'
-alias t="task"
-alias ta="task add"
+# alias t="task"
+# alias ta="task add"
 alias n="task project:Next"
 # khal
 # alias k="khal"
