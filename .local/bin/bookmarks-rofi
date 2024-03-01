@@ -1,8 +1,9 @@
 #!/bin/bash
 # Lists regularly used bookmarks in Rofi and opens them in the browser.
 
-myTerm=kitty
+myTerm=wezterm
 myEdit=neovim
+myBrowser=qutebrowser
 
 menu(){
     printf "1. BBC Scores & Fixtures (sc)\n"
@@ -23,37 +24,37 @@ main(){
 
 	case $choice in
 		1)
-            ungoogled-chromium www.bbc.co.uk/sport/football/scores-fixtures
+            $myBrowser www.bbc.co.uk/sport/football/scores-fixtures
             ;;
 		2)
-            ungoogled-chromium https://news.ycombinator.com/news
+            $myBrowser https://news.ycombinator.com/news
             ;;
 		3)
-            ungoogled-chromium https://crimsondaggers.com/forum/forum-10.html
+            $myBrowser https://crimsondaggers.com/forum/forum-10.html
             ;;
 		4)
-            ungoogled-chromium github.com/bleds1
+            $myBrowser github.com/bleds1
             ;;
 		5)
-            ungoogled-chromium lemmy.world
+            $myBrowser lemmy.world
             ;;
 		6)
-            ungoogled-chromium https://libgen.rs
+            $myBrowser https://libgen.rs
             ;;
         7)
-            ungoogled-chromium reddit.com
+            $myBrowser reddit.com
             ;;
         8)
-            ungoogled-chromium magnetdl.com
+            $myBrowser magnetdl.com
             ;;
         9)
-            ungoogled-chromium mastodon.art/home
+            $myBrowser mastodon.art/home
             ;;
         10)
-            ungoogled-chromium https://omnivore.app/home
+            $myBrowser https://omnivore.app/home
             ;;
         11)
-            ungoogled-chromium en.wikipedia.org/wiki/Main_Page
+            $myBrowser en.wikipedia.org/wiki/Main_Page
             ;;
         esac
 }
