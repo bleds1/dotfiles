@@ -1165,7 +1165,15 @@ c.content.blocking.enabled = True
 ## lists.  The file `~/.config/qutebrowser/blocked-hosts` is always read
 ## if it exists.
 ## Type: List of Url
-# c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
+c.content.blocking.hosts.lists = [
+    'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
+    'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext'
+    'https://www.malwaredomainlist.com/hostslist/hosts.txt',
+    'http://someonewhocares.org/hosts/hosts',
+    'http://winhelp2002.mvps.org/hosts.zip',
+    'http://malwaredomains.lehigh.edu/files/justdomains.zip',
+]
+# c.content.blocking.whitelist = []
 
 ## Which method of blocking ads should be used.  Support for Adblock Plus
 ## (ABP) syntax blocklists using Brave's Rust library requires the
@@ -1178,7 +1186,7 @@ c.content.blocking.enabled = True
 ##   - adblock: Use Brave's ABP-style adblocker
 ##   - hosts: Use hosts blocking
 ##   - both: Use both hosts blocking and Brave's ABP-style adblocker
-# c.content.blocking.method = 'auto'
+c.content.blocking.method = 'auto'
 
 ## A list of patterns that should always be loaded, despite being blocked
 ## by the ad-/host-blocker. Local domains are always exempt from
