@@ -1,61 +1,53 @@
+# sxhkd reload configuration files:
 super + Escape
-    pkill =USR1 -x sxhkd
+	pkill -USR1 -x sxhkd
+# Terminal
+super + Return
+    wezterm
 # Browser
 super + b
-    ungoogled-chromium
+    qutebrowser
 # Ranger
-super + period; period
-    kitty -e ranger
-super + period; i
-    kitty -e ranger ~/Dropbox/0-Inbox
-super + period; d
-    kitty -e ranger ~/Downloads
-super + period; l
-    kitty -e ranger ~/Documents/Library
+super + period
+    wezterm -e ranger
 # Rofi emoji
 super + m
     rofi -modi emoji -show emoji
 # Run Launcher
 super + x
     rofi -show run
-# Window swticher
-super + comma
+# Window switcher
+super + grave
     rofi -show window
 # Searchweb
 super + slash
-    qbrofi
+    searchweb
+# rofi bookmarks
+super + shift + slash
+    bookmarks-rofi
 # Pass
 super + p
     dmenu_pass
-# Screenshots
+# Screenshot
 Print
     xfce4-screenshooter
 # Screenlock
 super +z
     xflock4
-# Emacs
-super + e
-    emacsclient -c -a 'emacs'
-super + c; s
-    emacsclient -c -a 'emacsclient --eval "(*scratch*)"'
-super + c; i
-    emacsclient -c -a 'emacs' --eval '(ibuffer)'
-super + o; minus
-    emacsclient -c -a 'emacs' --eval '(dired nil)'
-super + c; l
-    emacsclient -c -a 'emacs' --eval '(elfeed)'
-super + c; n
-    emacsclient -c -a 'emacs' --eval '(denote)'
-super + o; i
-    emacsclient -c -a 'emacs' --eval '(my-mu4e-inbox)'
-super + c; c
-    emacsclient -c -a 'emacs' --eval '(compose-mail)'
-# super + c; d
-#     emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/org/log.org")'
-super + c; t
-    emacsclient -c -a 'emacs' --eval '(find-file "~/Dropbox/org/todo.org")'
-super + c; y
-    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-# i3 windows
-super +w; x
-    i3-msg kill
+# bash clock
+super + c
+    bash -c "notify-send -t 5000 \"$(date +'%Y-%m-%d  %H:%M')\" -u normal"
+super + space
+    scratchpad
+# GUI File mananger
+super + n
+    thunar
+# Settings
+super + s 
+    xfce4-settings-manager
+# Zet
+super + shift + n
+    wezterm -e zet
+# Log out
+ctrl + alt + Delete
+    xfce4-session-logout
