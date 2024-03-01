@@ -17,7 +17,7 @@ super + m
 super + x
     rofi -show run
 # Window switcher
-super + grave
+alt + grave
     rofi -show window
 # Searchweb
 super + slash

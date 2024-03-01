@@ -19,7 +19,7 @@ declare -a options=(
 "Reddit - https://www.reddit.com/search/?q="
 "Stack - https://stackoverflow.com/search?q="
 # "Startpage - https://www.startpage.com/do/dsearch?query="
-# TODO make Thesaurus search work correctly
+# TODO: make Thesaurus search work correctly
 "Thesaurus - https://www.thesaurus.com/misspelling?term="
 # "Urban - https://www.urbandictionary.com/define.php?term="
 "Wikipedia - https://en.wikipedia.org/wiki/"
