@@ -22,6 +22,7 @@ bindsym $mod+b exec qutebrowser
 bindsym $mod+x exec rofi -show run
 bindsym $mod+m exec rofi -modi emoji -show emoji
 bindsym Mod1+grave exec rofi -show window
+bindsym $mod+p exec passmenu
 # FIX: Only showing date?
 bindsym $mod+c exec bash -c "notify-send -t 5000 \"$(date +'%Y-%m-%d %H:%M')\" -u normal"
 bindsym Mod1+Tab workspace back_and_forth

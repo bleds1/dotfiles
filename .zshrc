@@ -137,7 +137,7 @@ function todo { echo "TODO: $1" >> ~/vault/todo.md  }
 
 # Aliases
 alias ..="cd .."
-# alias c="clear -x"
+alias c="clear -x"
 alias cl="clear -x"
 alias nf="c && neofetch"
 alias open="xdg-open"
@@ -205,8 +205,21 @@ alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
 
+# # vi mode
+# bindkey -v
+# export KEYTIMEOUT=1
+# bindkey '^v' edit-command-line
+#
+# # use vim keys in tab complete menu
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey "^?" backward-delete-char
+
 # auto add ssh
-ssh-add -K ~/.ssh/id\_rsa 2>/dev/null
+# ssh-add -K ~/.ssh/id\_rsa 2>/dev/null
+eval "$(ssh-agent -s)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
