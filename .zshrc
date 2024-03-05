@@ -79,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting history-substring-search fzf)
 
-plugins=(git zsh-autosuggestions history-substring-search fzf)
+plugins=(git ssh-agent zsh-autosuggestions history-substring-search fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -216,10 +216,6 @@ alias rm="rm -i -v"
 # bindkey -M menuselect 'l' vi-forward-char
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey "^?" backward-delete-char
-
-# auto add ssh
-# ssh-add -K ~/.ssh/id\_rsa 2>/dev/null
-eval "$(ssh-agent -s)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
