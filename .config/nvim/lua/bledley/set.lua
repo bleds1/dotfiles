@@ -56,10 +56,10 @@ vim.cmd('autocmd FileType markdown setlocal spell linebreak')
 -- Spell lang
 vim.opt.spelllang = 'en_gb'
 -- Disables statusline on dashboard
-vim.api.nvim_create_autocmd("User", {
-    pattern = "AlphaReady",
-    command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
-})
+-- vim.api.nvim_create_autocmd("User", {
+--     pattern = "AlphaReady",
+--     command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
+-- })
 -- Toggle linenumbers in inbuilt terminal
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
 -- Start inbuilt terminal in Insert mode
@@ -72,3 +72,10 @@ vim.cmd('autocmd TermOpen * startinsert')
 --   tab="󰌒 ",
 --   extends="▸",
 -- }
+-- Disable completions in markdown
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "markdown" },
+--     callback = function()
+--         require("cmp").setup({ enabled = false })
+--     end,
+-- })

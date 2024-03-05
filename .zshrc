@@ -6,28 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Adding Doom Emacs to path
-export PATH="$HOME/.emacs.d/bin:$PATH"
-# Doom Emacs alias
-#alias emacs="emacsclient -c -a 'emacs'"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-# History in cache directory:
-HISTSIZE=5000
-SAVEHIST=5000
-HISTFILE=~/.zsh_history
-
-ENABLE_CORRECTION="false"
-
-# editor default
-export EDITOR=nvim
-export VISUAL=nvim
-export BROWSER=ungoogled-chromium
-export TERMINAL=wezterm
-# export MANPAGER='nvim +Man!'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -49,7 +31,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
- zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
@@ -72,7 +54,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -90,21 +72,24 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-
-# PLUGINS
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting history-substring-search fzf)
+#plugins=(git ssh-agent zsh-autosuggestions zsh-syntax-highlighting history-substring-search fzf)
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# User configuration
+plugins=(git zsh-autosuggestions history-substring-search fzf)
+
+source $ZSH/oh-my-zsh.sh
+
+##FZF
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_OPTS='--layout=reverse'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#364949'
 
+# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -121,28 +106,43 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#364949'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-#FZF - TODO alt-c show hidden directories?
-#
-export FZF_BASE="$HOME/.fzf.zsh"
-DISABLE_FZF_AUTO_COMPLETION="true'"
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
-##aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=5000
+setopt extendedglob
+unsetopt autocd beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/bledley/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+## show hidden in tab completion
+setopt globdots
+
+# Cli todo function
+function todo { echo "TODO: $1" >> ~/vault/todo.md  }
+
+# Aliases
 alias ..="cd .."
-alias c="clear -x"
-alias cnf="clear -x && neofetch"
+# alias c="clear -x"
+alias cl="clear -x"
 alias nf="c && neofetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
-alias vim="nvim"
-alias oldvim="\vim"
 alias f="ranger"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias zat="zathura"
@@ -150,11 +150,6 @@ alias zrc="$EDITOR $HOME/.zshrc"
 alias h="history | fzf"
 alias qb="qutebrowser"
 alias in="cd ~/Dropbox/0-Inbox/"
-alias em="emacsclient -nw"
-alias emc="emacsclient -c -a 'emacs' & disown"
-alias emd="/usr/bin/emacs --daemon"
-alias dired="emacsclient -nw -c -a 'emacs' --eval '(dired nil)'"
-# alias nn="emacsclient -nw -c -a 'emacs' --eval '(denote)'"
 # git
 alias gs='git status'
 alias ga='git add -A'
@@ -194,7 +189,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/vault/"
-#alias nn="v ~/vault/0-Inbox/$(date +%Y%m%d%H%M).md"
+#alias nn="v ~/vault/$(date +%Y%m%d%H%M).md"
 alias glo=glow
 #grep color
 alias grep="grep --color=auto"
@@ -204,77 +199,14 @@ alias fgrep="fgrep --color=auto"
 #screen caffinate
 alias cafon="xset s off -dpms && echo "Caffeine_ON""
 alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
-##FZF
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_OPTS='--layout=reverse'
-# alias t="task"
-# alias ta="task add"
-# alias n="task project:Next"
-# khal
-# alias k="khal"
-# alias kls="khal list"
-# alias cal="khal calendar"
-alias bat="batcat"
-
+#
 #confirm before overwrite
 alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
 
-#lynx
-alias lynx='lynx -vikeys -accept_all_cookies'
-
-# CLI Pomodoro
-declare -A pomo_options
-pomo_options["Focus"]="30"
-pomo_options["Break"]="15"
-
-pomodoro () {
-  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
-  val=$1
-  echo $val | lolcat
-  timer ${pomo_options["$val"]}m
-  alert
-  echo "Session Complete"
-  notify-send "Session Complete"
-  fi
-}
-
-alias focus="pomodoro 'Focus'"
-alias break="pomodoro 'Break'"
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-bindkey '^v' edit-command-line
-
-# use vim keys in tab complete menu
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey "^?" backward-delete-char
-
-# show hidden in tab completion
-setopt globdots
-
-#history-substring-search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# Ruby exports
-export GEM_HOME=$HOME/gems
-export PATH=$HOME/gems/bin:$PATH
-
-# Cli todo function
-function todo { echo "TODO: $1" >> ~/vault/todo.md  }
-
-#suppress warnings powerlevel10k
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# auto add ssh
+ssh-add -K ~/.ssh/id\_rsa 2>/dev/null
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# clear && neofetch
