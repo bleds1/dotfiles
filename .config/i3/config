@@ -18,16 +18,21 @@ bindsym $mod+Return exec wezterm
 bindsym $mod+period exec wezterm -e ranger
 # start browser
 bindsym $mod+b exec qutebrowser
+bindsym $mod+shift+b exec firefox
 # rofi
 bindsym $mod+x exec rofi -show run
 bindsym $mod+m exec rofi -modi emoji -show emoji
 bindsym Mod1+grave exec rofi -show window
-bindsym $mod+p exec passmenu
+bindsym $mod+p exec ~/.scripts/rofi_pass
+bindsym $mod+slash exec ~/.scripts/searchweb
+bindsym $mod+shift+slash exec ~/.scripts/bookmarks-rofi
+bindsym $mod+shift+z exec ~/.scripts/lock
 # FIX: Only showing date?
 bindsym $mod+c exec bash -c "notify-send -t 5000 \"$(date +'%Y-%m-%d %H:%M')\" -u normal"
 bindsym Mod1+Tab workspace back_and_forth
-bindsym $mod+grave focus left
-bindsym $mod+w focus right
+bindsym Mod1+shift+Tab workspace prev
+bindsym $mod+w focus left
+bindsym $mod+shift+w focus right
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -51,16 +56,9 @@ smart_borders on
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -78,10 +76,6 @@ tiling_drag modifier titlebar
 
 # kill focused window
 bindsym $mod+q kill
-
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -114,8 +108,19 @@ bindsym $mod+Mod1+Left workspace prev
 # Left Right workspace switching v keys
 bindsym $mod+Mod1+l workspace next
 bindsym $mod+Mod1+h workspace prev
+
+# gaps 
+bindsym $mod+s gaps inner current plus 5
+bindsym $mod+shift+s gaps inner current minus 5
+
+# remove all gaps
+bindsym $mod+g gaps inner current set 0; gaps outer current set 0
+
+# default gaps
+bindsym $mod+Shift+g gaps inner current set 6; gaps outer current set 6
+
 # split in horizontal orientation
-bindsym $mod+s split h
+# bindsym $mod+s split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -197,7 +202,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
