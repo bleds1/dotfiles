@@ -1,13 +1,14 @@
-#browser "ungoogled-chromium" %u"
-browser "w3m %u"`
+# browser "w3m %u"
+browser "qutebrowser %u"
 player "mpv"
 external-url-viewer "urlview"
+# or url-scan?
 auto-reload yes
 reload-time 30
 reload-threads 100
 max-items 500
 save-path ~/Downloads
-#text-width 50
+# text-width 80
 delete-read-articles-on-quit yes
 confirm-exit no
 feed-sort-order lastupdated
@@ -15,9 +16,11 @@ feed-sort-order lastupdated
 # Unbind keys
 unbind-key b
 unbind-key B
+unbind-key C
 unbind-key g
 unbind-key G
 unbind-key o
+unbind-key O
 unbind-key U
 unbind-key n
 unbind-key d
@@ -26,46 +29,48 @@ unbind-key N
 unbind-key P
 unbind-key K
 unbind-key J
+unbind-key z
 # Bind keys
-bind-key b open-in-browser-and-mark-read
-bind-key B open-in-browser
+bind-key c toggle-show-read-feeds
+bind-key d pagedown
 bind-key g home
 bind-key G end
 bind-key h quit
 bind-key j down
-bind-key k up
-bind-key l open
-bind-key U show-urls
-bind-key K prev-feed
 bind-key J next-feed
+bind-key k up
+bind-key K prev-feed
+bind-key l open
 bind-key N next-unread
 bind-key P prev-unread
-bind-key d pagedown
+bind-key o open-in-browser-and-mark-read
+bind-key O open-in-browser
+bind-key U show-urls
 bind-key u pageup
-bind-key c toggle-show-read-feeds
-bind-key n toggle-article-read
+bind-key x open
+bind-key z toggle-article-read
+
 # Notifications
 notify-always yes
-#notify-program /usr/bin/dunst
-notify-format "Newsboat: %n unread articles in #f feeds"
+notify-program /usr/bin/notify-send
+notify-format "🗞  Newsboat: %d new articles (%n unread)"
 
 # Macros
 #macro v set browser "mpv %u" ; open-in-browser ; set browser "w3m %u"
 #macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser firefox"
 #browser xdg-open
-macro v set browser "yt-dlp -qo - %u | mpv --no-terminal -"; open-in-browser; set browser "w3m %u"
+# macro v set browser "yt-dlp -qo - %u | mpv --no-terminal -"; open-in-browser; set browser "w3m %u"
 
 # Appearance
-
 show-title-bar no
-articlelist-format "%4i %t"
+# articlelist-format "%4i %t"
 
 # Colors
-
-color listnormal color15 default
-color listnormal_unread color15 default bold
-color listfocus color15 default reverse
-color listfocus_unread color15 default reverse
-color info color15 default 
+color listnormal blue default
+color listnormal_unread blue default bold
+color listfocus blue default reverse
+color listfocus_unread blue default reverse
+color info blue default 
 color background color15 default
 color article color15 default
+
