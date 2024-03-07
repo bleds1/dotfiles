@@ -127,7 +127,7 @@ c.editor.command = ['wezterm', '-e', 'nvim', '{file}']
 c.downloads.location.directory = '/home/bledley/Downloads/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}' }
+c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
