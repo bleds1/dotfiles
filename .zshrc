@@ -10,7 +10,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:~/.scripts
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -82,7 +82,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git ssh-agent zsh-autosuggestions history-substring-search fzf)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 ##FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
