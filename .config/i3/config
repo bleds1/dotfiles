@@ -12,6 +12,7 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id xfce4-volumed-pulse &
 exec --no-startup-id udiskie &
+# exec_always --no-startup-id autotiling
 
 # Launching programs
 bindsym $mod+Return exec wezterm
@@ -27,8 +28,10 @@ bindsym $mod+p exec ~/.scripts/rofi_pass
 bindsym $mod+slash exec ~/.scripts/searchweb
 bindsym $mod+shift+slash exec ~/.scripts/bookmarks-rofi
 bindsym $mod+shift+z exec ~/.scripts/lock
+bindsym $mod+e exec ~/.scripts/mail-sync.sh
+bindsym $mod+shift+e exec wezterm -e neomutt
 # FIX: Only showing date?
-bindsym $mod+c exec bash -c "notify-send -t 5000 \"$(date +'%Y-%m-%d %H:%M')\" -u normal"
+bindsym $mod+c exec ~/.scripts/bash-clock.sh
 bindsym Mod1+Tab workspace back_and_forth
 bindsym Mod1+shift+Tab workspace prev
 bindsym $mod+w focus left
