@@ -1,7 +1,8 @@
 :root {
     --font: "monospace";
     --font-family: "monospace";
-    --background: #22272E;
+    /* --background: #22272E; */
+    --background: #151515;
     --foreground: #B9C9B8;
     --green: #82abba;
     --red: #5993A3;
@@ -10,7 +11,7 @@
 }
 
 html {
-    font-size: 14;
+    font-size: 16;
 }
 
 body {
