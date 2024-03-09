@@ -3,10 +3,10 @@
 ## Get rid of Auto Load Dialogue
 config.load_autoconfig(False)
 
-## Ranger as file picker
-config.set("fileselect.handler", "external")
-config.set("fileselect.single_file.command", ['wezterm', '-e', 'ranger', '--choosefile={}'])
-config.set("fileselect.multiple_files.command", ['wezterm', '-e', 'ranger', '--choosefiles={}'])
+## Ranger as file picker (having problems with attachments using this..)
+# config.set("fileselect.handler", "external")
+# config.set("fileselect.single_file.command", ['wezterm', '-e', 'ranger', '--choosefile={}'])
+# config.set("fileselect.multiple_files.command", ['wezterm', '-e', 'ranger', '--choosefiles={}'])
 
 ## Notifications
 config.set('content.notifications.enabled', True, 'https://mail.proton.me')
