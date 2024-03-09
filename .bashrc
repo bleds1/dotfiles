@@ -15,15 +15,16 @@ HISTSIZE=100000
 # vi mode
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
+# wrap on window resize
+shopt -s checkwinsize
 
-# Cli todo function FIX: bash isn't liking this function..
+# Cli todo function FIX: bash isn't liking this function from zsh..
 # function todo { echo "TODO: $1" >> ~/vault/todo.md  }
 
 # Aliases
 alias ..="cd .."
-alias c="clear -x"
 alias cl="clear -x"
-alias nf="c && neofetch"
+alias nf="clear && neofetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
@@ -32,7 +33,7 @@ alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias zat="zathura"
 alias h="history | fzf"
 alias qb="qutebrowser"
-alias in="cd ~/Dropbox/0-Inbox/"
+alias sdn="shutdown -h now"
 # git
 alias gs='git status'
 alias ga='git add -A'
@@ -46,7 +47,7 @@ alias gd='git diff -M'
 alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
-alias glol='git log --graph --oneline --decorate'
+alias glog='git log --graph --oneline --decorate'
 # tmux
 alias ts="tmux-sessionizer.sh"
 alias t="tmux"
@@ -63,17 +64,17 @@ alias lt="exa -aT --color=always --group-directories-first"
 alias mutt="neomutt"
 # dir shortcuts
 alias sba="cd ~/sba/"
-alias doc="cd ~/Documents/"
+ alias doc="cd ~/Library/"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
 alias .="cd ~/dotfiles/"
-alias termux="cd ~/dotfiles-termux/"
+# alias termux="cd ~/dotfiles-termux/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/vault/"
 #alias nn="v ~/vault/$(date +%Y%m%d%H%M).md"
-alias glo=glow
+# alias glo=glow
 #grep color
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -87,4 +88,6 @@ alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
-#
+
+# is this working?
+source /usr/share/bash-completion/bash_completion
