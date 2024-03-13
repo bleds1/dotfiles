@@ -12,11 +12,13 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id xfce4-volumed-pulse &
 exec --no-startup-id udiskie &
-# exec_always --no-startup-id autotiling
+exec_always --no-startup-id autotiling
 
 # Launching programs
-bindsym $mod+Return exec wezterm
-bindsym $mod+period exec wezterm -e ranger
+# bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec st
+# bindsym $mod+period exec wezterm -e ranger
+bindsym $mod+period exec st -e ranger
 # start browser
 bindsym $mod+b exec qutebrowser
 bindsym $mod+shift+b exec firefox
@@ -27,9 +29,10 @@ bindsym Mod1+grave exec rofi -show window
 bindsym $mod+p exec ~/.scripts/rofi_pass
 bindsym $mod+slash exec ~/.scripts/searchweb
 bindsym $mod+shift+slash exec ~/.scripts/bookmarks-rofi
-bindsym $mod+shift+z exec ~/.scripts/lock
+bindsym $mod+z exec i3lock --color=000000
 bindsym $mod+e exec ~/.scripts/mail-sync.sh
-bindsym $mod+shift+e exec wezterm -e neomutt
+# bindsym $mod+shift+e exec wezterm -e neomutt
+bindsym $mod+shift+e exec st -e neomutt
 # FIX: Only showing date?
 bindsym $mod+c exec ~/.scripts/bash-clock.sh
 bindsym Mod1+Tab workspace back_and_forth
@@ -61,7 +64,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -113,17 +116,17 @@ bindsym $mod+Mod1+l workspace next
 bindsym $mod+Mod1+h workspace prev
 
 # gaps 
-bindsym $mod+s gaps inner current plus 5
-bindsym $mod+shift+s gaps inner current minus 5
+bindsym $mod+minus gaps inner current plus 5
+bindsym $mod+plus gaps inner current minus 5
 
 # remove all gaps
-bindsym $mod+g gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+plus gaps inner current set 0; gaps outer current set 0
 
 # default gaps
-bindsym $mod+Shift+g gaps inner current set 6; gaps outer current set 6
+bindsym $mod+Shift+minus gaps inner current set 6; gaps outer current set 6
 
 # split in horizontal orientation
-# bindsym $mod+s split h
+bindsym $mod+s split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -158,7 +161,6 @@ for_window [class="feh"] floating enable
 for_window [class="feh"] resize set 800 600, move position center
 # for_window [class="Arandr"] floating enable
 for_window [instance="gpick"] floating enable
-for_window [instance="transmission-gtk"] floating enable
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
