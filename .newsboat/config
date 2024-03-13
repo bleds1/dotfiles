@@ -54,11 +54,12 @@ bind-key z toggle-article-read
 # Notifications
 notify-always yes
 notify-program /usr/bin/notify-send
-notify-format "🗞  Newsboat: %d new articles (%n unread)"
+# notify-format "🗞  Newsboat: %d new articles (%n unread)"
+notify-format "🗞  Newsboat: %d new articles"
 
 # Macros
-#macro v set browser "mpv %u" ; open-in-browser ; set browser "w3m %u"
-macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser firefox"
+macro v set browser "mpv %u" ; open-in-browser ; set browser "qutebrowser %u"
+# macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser #; set browser firefox"
 #browser xdg-open
 # macro v set browser "yt-dlp -qo - %u | mpv --no-terminal -"; open-in-browser; set browser "w3m %u"
 
