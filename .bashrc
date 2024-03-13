@@ -73,7 +73,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/vault/"
-#alias nn="v ~/vault/$(date +%Y%m%d%H%M).md"
+alias nn="v ~/vault/$(date +%Y%m%d%H%M).md"
 # alias glo=glow
 #grep color
 alias grep="grep --color=auto"
