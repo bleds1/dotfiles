@@ -4,10 +4,8 @@
 [[ $- != *i* ]] && return
 
 # Prompt
-# PS1='[\u@\h \W]\$ '
-# PS1="\u@\h:\w $ "
-# PS1="\w\n$ "
-PS1="\w\n\e[1;34m$\e[m "
+ PS1='[\u@\h \W]\$ '
+#! PS1="\w\n\e[1;34m$\e[m "
 # PS1="\e[1;34m$\e[m "
 
 HISTSIZE=100000
@@ -64,7 +62,8 @@ alias lt="exa -aT --color=always --group-directories-first"
 alias mutt="neomutt"
 # dir shortcuts
 alias sba="cd ~/sba/"
- alias doc="cd ~/Library/"
+alias scripts="cd ~/.scripts/"
+alias doc="cd ~/Library/"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
 alias .="cd ~/dotfiles/"
