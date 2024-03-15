@@ -59,21 +59,21 @@ c.colors.hints.bg = '#6B95B8'
 
 ## Default font
 c.fonts.default_size = '10pt'
-c.fonts.completion.entry = '11pt "JetBrains Mono"'
+c.fonts.completion.entry = '10pt "JetBrains Mono"'
 c.fonts.debug_console = '10pt "JetBrains Mono"'
 c.fonts.statusbar = '10pt "JetBrains Mono"'
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.bg = '#22272E'
+c.colors.completion.category.bg = '#1a1a1b'
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.bottom = '#22272E'
+c.colors.completion.category.border.bottom = '#1a1a1b'
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.top = '#22272E'
+c.colors.completion.category.border.top = '#1a1a1b'
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
@@ -81,7 +81,7 @@ c.colors.completion.category.fg = '#cccccc'
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-c.colors.completion.even.bg = '#22272E'
+c.colors.completion.even.bg = '#1a1a1b'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
@@ -114,14 +114,14 @@ c.colors.completion.match.fg = '#e8716c'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = '#22272E'
-c.colors.completion.even.bg = '#22272E'
+c.colors.completion.odd.bg = '#1a1a1b'
+c.colors.completion.even.bg = '#1a1a1b'
 
 ## Default Zoom
 #c.zoom.default = '90%'
 
 ## Vim as editor
-c.editor.command = ['wezterm', '-e', 'nvim', '{file}']
+c.editor.command = ['st', '-e', 'nvim', '{file}']
 
 # Download Directory
 c.downloads.location.directory = '/home/bledley/Downloads/'
@@ -477,11 +477,11 @@ config.bind(',ym', 'yank inline [{title}]({url:pretty})')
 # config.bind('y', 'prompt-accept yes', mode='yesno')
 # Bindings for cycling through CSS stylesheets from Solarized Everything CSS:
 # https://github.com/alphapapa/solarized-everything-css
-config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
-config.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
-config.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+# config.bind(',ap', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""')
+# config.bind(',dr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""')
+# config.bind(',gr', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+# config.bind(',sd', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+# config.bind(',sl', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
