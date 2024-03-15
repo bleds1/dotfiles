@@ -3,26 +3,22 @@
 set $mod Mod4
 
 # Startup programs
-exec_always --no-startup-id setxkbmap -option caps:escape
-exec_always --no-startup-id picom &
-exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id unclutter &
-exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
-exec --no-startup-id xfce4-power-manager &
-exec --no-startup-id xfce4-volumed-pulse &
-exec --no-startup-id udiskie &
-exec_always --no-startup-id autotiling
+# exec_always --no-startup-id setxkbmap -option caps:escape
+# exec_always --no-startup-id picom &
+# exec_always --no-startup-id nitrogen --restore &
+# exec --no-startup-id unclutter &
+# exec --no-startup-id nm-applet &
+# exec --no-startup-id blueman-applet &
+# exec --no-startup-id xfce4-power-manager &
+# exec --no-startup-id xfce4-volumed-pulse &
+# exec --no-startup-id udiskie &
+exec_always --no-startup-id autotiling &
 
 # Launching programs
-# bindsym $mod+Return exec wezterm
 bindsym $mod+Return exec st
-# bindsym $mod+period exec wezterm -e ranger
 bindsym $mod+period exec st -e ranger
-# start browser
 bindsym $mod+b exec qutebrowser
 bindsym $mod+shift+b exec firefox
-# rofi
 bindsym $mod+x exec rofi -show run
 bindsym $mod+m exec rofi -modi emoji -show emoji
 bindsym Mod1+grave exec rofi -show window
@@ -31,9 +27,7 @@ bindsym $mod+slash exec ~/.scripts/searchweb
 bindsym $mod+shift+slash exec ~/.scripts/bookmarks-rofi
 bindsym $mod+z exec i3lock --color=000000
 bindsym $mod+e exec ~/.scripts/mail-sync.sh
-# bindsym $mod+shift+e exec wezterm -e neomutt
 bindsym $mod+shift+e exec st -e neomutt
-# FIX: Only showing date?
 bindsym $mod+c exec ~/.scripts/bash-clock.sh
 bindsym Mod1+Tab workspace back_and_forth
 bindsym Mod1+shift+Tab workspace prev
@@ -108,12 +102,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Left Right workspace switching
-bindsym $mod+Mod1+Right workspace next
-bindsym $mod+Mod1+Left workspace prev
-
-# Left Right workspace switching v keys
-bindsym $mod+Mod1+l workspace next
-bindsym $mod+Mod1+h workspace prev
+bindsym $mod+bracketright workspace next
+bindsym $mod+bracketleft workspace prev
 
 # gaps 
 bindsym $mod+minus gaps inner current plus 5
@@ -207,20 +197,14 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym l resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
