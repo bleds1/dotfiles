@@ -1,8 +1,17 @@
+# TODO: something is giving an error to many :set arguments. Need to work out what?
+set database sqlite
 set statusbar -h-padding 0
 set statusbar -v-padding 0
 set page-padding 1
+set guioptions none
+set window-title-basename "true"
+set selection-clipboard "clipboard"
+set adjust-open width
+set recolor true
 
 map i recolor
+
+# Keybinds
 unmap d
 map D toggle_page_mode
 map <C-u> scroll half-up
@@ -16,30 +25,14 @@ map H navigate previous
 map z zoom out
 map x zoom in
 map , toggle_statusbar
-map <TAB> toggle index
+# map <TAB> toggle index
 map q quit
 map <C-z> quit
 map <C-p> print
 
 
-set guioptions none
-set font "Iosevka 10"
-
-# colors
-
-#set recolor true
-#set recolor-darkcolor #121419"
-#set recolor-lightcolor #7d7d7d"
-#set statusbar-fg "#c9c9c9"
-#set statusbar-bg "#121419"
-
-set window-title-basename "true"
-set selection-clipboard "clipboard"
-
-# color theme for Zathura (modified by me)
+# color theme for Zathura (modified)
 # Swaps Foreground for Background to get a light version if the user prefers
-
-#
 
 set notification-error-bg       "#ff5555" # Red
 set notification-error-fg       "#f8f8f2" # Foreground
@@ -51,39 +44,31 @@ set notification-fg             "#c7c7c7" # Foreground
 set completion-bg               "#151515" # Background
 set completion-fg               "#c7c7c7" # Comment
 set completion-group-bg         "#151515" # Background
-set completion-group-fg         "#80C2A2" # Comment
-set completion-highlight-bg     "#80C2A2" # Selection
+set completion-group-fg         "#62829D" # Comment
+set completion-highlight-bg     "#62829D" # Selection
 set completion-highlight-fg     "#151515" # Foreground
 
 set index-bg                    "#151515" # Background
-set index-fg                    "#c7c7c7" # Foreground
+set index-fg                    "#cacaca" # Foreground
 set index-active-bg             "#151515" # Current Line
-set index-active-fg             "#c7c7c7" # Foreground
+set index-active-fg             "#cacaca" # Foreground
 
-set inputbar-bg                 "#151515" # Background
-set inputbar-fg                 "#c7c7c7" # Foreground
-set statusbar-bg                "#151515" # Background
-set statusbar-fg                "#c7c7c7" # Foreground
+set inputbar-bg                 "#151515"
+set inputbar-fg                 "#cacaca"
+set statusbar-bg                "#151515"
+set statusbar-fg                "#cacaca"
 
-set highlight-color             "#82ABAA" # teal
-set highlight-active-color      "#F7C4E0" # Pink
+#set highlight-color             "#F4BF75" #0A
+#set highlight-active-color      "#6A9FB5" #0D
 
-set default-bg                  "#151515" # Background
-set default-fg                  "#c7c7c7" # Foreground
+set default-bg                  "#151515"
+set default-fg                  "#cacaca"
 
 set render-loading              true
 set render-loading-fg           "#151515" # Background
-set render-loading-bg           "#c7c7c7" # Foreground
+set render-loading-bg           "#cacaca" # Foreground
 
 #
 # Recolor mode settings
-#
-
 set recolor-lightcolor          "#151515" # Background
-set recolor-darkcolor           "#c7c7c7" # Foreground
-
-#
-# Startup options
-#
-set adjust-open width
-set recolor true
+set recolor-darkcolor           "#cacaca" # Foreground
