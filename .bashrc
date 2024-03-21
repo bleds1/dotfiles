@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 # Prompt
- PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \W]\$ '
 #! PS1="\w\n\e[1;34m$\e[m "
 # PS1="\e[1;34m$\e[m "
 
