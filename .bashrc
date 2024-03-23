@@ -94,3 +94,4 @@ alias rm="rm -i -v"
 
 # is this working?
 source /usr/share/bash-completion/bash_completion
+eval "$(starship init bash)"
