@@ -7,7 +7,8 @@ $git_state\
 $git_status\
 $git_metrics\
 $fill\
-$cmd_duration $jobs $time\
+$jobs\
+$cmd_duration\
 $line_break\
 $character"""
 
@@ -57,6 +58,10 @@ style = "yellow"
 
 [fill]
 symbol = " "
+
+[jobs]
+symbol = "+ "
+style = "bold #8AFFD0"
 
 [package]
 disabled = true
