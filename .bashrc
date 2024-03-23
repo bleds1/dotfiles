@@ -16,8 +16,10 @@ bind -m vi-insert "\C-l":clear-screen
 # wrap on window resize
 shopt -s checkwinsize
 
-# Cli todo function FIX: bash isn't liking this function from zsh..
-# function todo { echo "TODO: $1" >> ~/vault/todo.md  }
+# add to todo function todo "text"
+todo() {
+  echo "TODO: $1" >> ~/vault/todo.md
+}
 
 # Aliases
 alias ..="cd .."
@@ -96,3 +98,4 @@ alias rm="rm -i -v"
 # is this working?
 source /usr/share/bash-completion/bash_completion
 eval "$(starship init bash)"
+
