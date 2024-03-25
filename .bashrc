@@ -103,5 +103,7 @@ alias rm="rm -i -v"
 
 # is this working?
 source /usr/share/bash-completion/bash_completion
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
 eval "$(starship init bash)"
 
