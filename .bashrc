@@ -7,6 +7,9 @@
 PS1='[\u@\h \W]\$ '
 #! PS1="\w\n\e[1;34m$\e[m "
 # PS1="\e[1;34m$\e[m "
+#
+# Add Emacs/Doom to path
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 HISTSIZE=100000
 
@@ -37,6 +40,7 @@ alias tac="task active"
 alias tc="task end.after:yesterday completed"
 alias tn="task proj:Next"
 alias tls="task list"
+alias emacs="emacsclient -c -a 'emacs'"
 # alias sxiv="/usr/local/bin/nsxiv"
 # alias nsxiv="/usr/local/bin/nsxiv"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
