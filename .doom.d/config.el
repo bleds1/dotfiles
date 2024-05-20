@@ -75,6 +75,8 @@
   (setq! org-capture-templates
          '(("i" " Todo" entry (file+olp "~/org/todo.org" "INBOX")
             "** TODO %?")
+           ("c" " Contact" plain (file "~/org/contacts.org")
+            "* %?")
            ("e" " Event" entry (file+olp "~/org/events.org")
             "*** %?%^{SCHEDULED}p")
            ("m" " Mail" entry (file+olp "~/org/todo.org" "INBOX")
@@ -267,23 +269,23 @@
       org-id-method 'ts
       org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
-      '(("s" "fleeting" plain
+      '(("s" "󰟷 Fleeting" plain
          "%?"
          :if-new (file+head "${slug}.org"
                             "#+title: ${title}\n#+filetags: :fleeting:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("r" "reference" plain "%?"
+        ("r" " Reference" plain "%?"
          :if-new
          (file+head "${title}.org" "#+title: ${title}\n#+filetags: :reference:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("p" "permanent" plain "%?"
+        ("p" " Permanent" plain "%?"
          :if-new
          (file+head "${title}.org" "#+title: ${title}\n#+filetags: :permanent:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("a" "article" plain "%?"
+        ("a" " Article" plain "%?"
          :if-new
          (file+head "${title}.org" "#+title: ${title}\n#+filetags: :article:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
