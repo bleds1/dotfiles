@@ -21,8 +21,6 @@
       evil-want-fine-undo t
       scroll-margin 2)
 
-; Line Numbers
-(setq display-line-numbers-type t)
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
@@ -60,8 +58,6 @@
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("WAITING" :foreground "#B0B0B0" :weight bold)
        ("CANCELLED" :foreground "#80869c" :weight bold))))
-;; (setq
-;;     org-superstar-headline-bullets-list '("⁖" "⁖" "⁖" "⁖" "⁖"))
 (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
 (setq org-superstar-prettify-item-bullets nil)
@@ -77,10 +73,12 @@
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
-         '(("i" "Todo" entry (file+olp "~/org/todo.org" "INBOX")
+         '(("i" " Todo" entry (file+olp "~/org/todo.org" "INBOX")
             "** TODO %?")
-           ("e" "Event" entry (file+olp "~/org/events.org")
+           ("e" " Event" entry (file+olp "~/org/events.org")
             "*** %?%^{SCHEDULED}p")
+           ("m" " Mail" entry (file+olp "~/org/todo.org" "INBOX")
+          "** TODO %a :email: \nSCHEDULED:%t\n\n%i")
             )
            ))
 ;; Keybinds
@@ -223,7 +221,6 @@
         doom-modeline-buffer-encoding nil))
 ;; Theme
 (setq doom-theme 'modus-mono)
-(setq display-line-numbers-type nil)
 ;; Cursor
 (setq evil-normal-state-cursor '(box "#819cd6")
       evil-insert-state-cursor '(bar "#47FFE0")
@@ -484,8 +481,10 @@
 
   (add-to-list 'doom-modeline-mode-alist '(nov-mode . nov)))
 
+;; hl-line mode
 (setq hl-line-mode nil)
 (setq global-hl-line-mode nil)
+
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
 ;; Timestamp function
@@ -493,3 +492,27 @@
  (interactive)
  (insert (format-time-string " %H:%M" )
  ))
+;; Online lookup provider list
+(setq +lookup-provider-url-alist
+      '(("Doom issues"       "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
+        ("Brave Search"      "https://search.brave.com/search?q")
+        ("DuckDuckGo"        +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
+        ("Github"            "https://github.com/search?ref=simplesearch&q=%s")
+        ("StackOverflow"     "https://stackoverflow.com/search?q=%s")
+        ("Youtube"           "https://youtube.com/results?aq=f&oq=&search_query=%s")
+        ("Wikipedia"         "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
+        ("Arch Wiki"         "https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch&wprov=acrw1")
+        ("AUR"               "https://aur.archlinux.org/packages?O=0&K=%s")))
+;; Escape insert mode with jk kj
+(setq evil-escape-unordered-key-sequence t)
+;; Line numbers with exceptions
+(setq display-line-numbers-type 'relative)
+(dolist (mode '(org-mode-hook
+                markdown-mode-hook
+                vterm-mode-hook
+                shell-mode-hook))
+ (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main"))
