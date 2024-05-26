@@ -39,6 +39,7 @@
 ; Org Mode
 (after! org
 (setq org-log-done 'time
+      org-log-into-drawer t
       org-agenda-start-with-log-mode t
       org-deadline-warning-days 1
       org-ellipsis " ▾ "
@@ -48,15 +49,27 @@
       '((sequence
          "TODO(t)"
          "DOING(a)"
+         "NEXT(n)"
+         "UPCOMING(u)"
          "WAITING(w)"
+         "REPEAT(r)"
+         "PROJECT(p)"
+         "DELEGATED(g)"
+         "SOMEDAY(s)"
          "|"
          "DONE(d)"
          "CANCELLED(c)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#ff7462" :weight bold)
        ("DOING" :foreground "#07b0a2" :weight bold)
-       ("DONE" :foreground "#2b8c63" :weight bold)
+       ("NEXT" :foreground "#ff7462" :weight bold)
+       ("UPCOMING" :foreground "#ffc561" :weight bold)
        ("WAITING" :foreground "#B0B0B0" :weight bold)
+       ("REPEAT" :foreground "#ff7462" :weight bold)
+       ("PROJECT" :foreground "#845bc8" :weight bold)
+       ("DELEGATED" :foreground "#B0B0B0" :weight bold)
+       ("SOMEDAY" :foreground "#B0B0B0" :weight bold)
+       ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#80869c" :weight bold))))
 (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
@@ -73,16 +86,60 @@
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
-         '(("i" " Todo" entry (file+olp "~/org/todo.org" "INBOX")
+         '(("i" " Todo" entry (file "~/org/inbox.org")
             "** TODO %?")
            ("c" " Contact" plain (file "~/org/contacts.org")
             "* %?")
+           ("d" " Daily Plan" plain (file+datetree "~/org/daily.org")
+            (file "~/org/tpl-daily.txt") :immediate-finish t)
            ("e" " Event" entry (file+olp "~/org/events.org")
-            "*** %?%^{SCHEDULED}p")
-           ("m" " Mail" entry (file+olp "~/org/todo.org" "INBOX")
+            "** %?%^{SCHEDULED}p")
+           ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
           "** TODO %a :email: \nSCHEDULED:%t\n\n%i")
+           ("w" " Weekly Review" plain (file buffer-name)
+            (file "~/org/tpl-weekly.txt") :empty-lines 1)
             )
            ))
+;; Org Agenda Custom Commands
+(setq org-agenda-custom-commands
+ '(
+
+   ("i" "Inbox"
+    ((tags "refile"
+           ((org-agenda-overriding-header "Inbox needs refiling/scheduling"))
+           )))
+
+   ("d" "Doing"
+    ((todo "DOING"
+           ((org-agenda-overriding-header "Actively working on"))
+           )))
+
+   ("n" "Next"
+    ((todo "NEXT"
+           ((org-agenda-overriding-header "Next Actions"))
+           )))
+
+   ("o" "Todo"
+    ((todo "TODO"
+           ((org-agenda-overriding-header "Todo's"))
+           )))
+
+   ("u" "Upcoming"
+    ((todo "UPCOMING"
+           ((org-agenda-overriding-header "Upcoming: Needs to be done soon"))
+           )))
+
+   ("l" "Someday"
+    ((todo "SOMEDAY"
+           ((org-agenda-overriding-header "Someday/Maybe"))
+           )))
+
+   ("w" "Waiting On"
+    ((todo "WAITING"
+           ((org-agenda-overriding-header "Waiting: Tasks on hold"))
+           )))
+
+      ))
 ;; Keybinds
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -92,8 +149,13 @@
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
+(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c n a" "~/org/na.org" "na.org")
+(zz/add-file-keybinding "C-c b" "~/org/sba.org" "sba.org")
+(zz/add-file-keybinding "C-c t" "~/org/personal.org" "personal.org")
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
+(zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
+(zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)

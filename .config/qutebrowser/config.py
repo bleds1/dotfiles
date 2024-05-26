@@ -5,16 +5,16 @@ config.load_autoconfig(False)
 
 ## Ranger as file picker (having problems with attachments using this..)
 # config.set("fileselect.handler", "external")
-# config.set("fileselect.single_file.command", ['wezterm', '-e', 'ranger', '--choosefile={}'])
-# config.set("fileselect.multiple_files.command", ['wezterm', '-e', 'ranger', '--choosefiles={}'])
+# config.set("fileselect.single_file.command", ['st', '-e', 'ranger', '--choosefile={}'])
+# config.set("fileselect.multiple_files.command", ['st', '-e', 'ranger', '--choosefiles={}'])
 
 ## Notifications
 config.set('content.notifications.enabled', True, 'https://mail.proton.me')
 
 ## Setting dark mode
 config.bind('<space><z>', 'spawn --userscript readability')
-config.set("colors.webpage.darkmode.enabled", True)
-c.colors.webpage.bg = '#1c2128'
+# config.set("colors.webpage.darkmode.enabled", True)
+# c.colors.webpage.bg = '#1c2128'
 
 ## Startpage
 c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -23,20 +23,20 @@ c.url.start_pages=('/home/bledley/startpage/index.html')
 config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
 config.bind(',m', 'spawn --detach mpv {url}')
 
-## Open/Download images in external program (Feh)
+## Open/Download images in external program
 config.bind('<space><i><d>', 'hint images download')
-config.bind('<space><i><f>', 'hint images spawn feh {hint-url}')
+config.bind('<space><i><v>', 'hint images spawn feh {hint-url}')
 
 ## Hiding status bar and tabs
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
-config.bind('<Space><c><f>', 'hint links spawn ungoogled-chromium {hint-url}')
 #c.statusbar.show = 'never'
 
 ## Tabs
-c.tabs.show = 'always'
+# c.tabs.show = 'always'
+c.tabs.show = 'never'
 # Background color of the tab bar
 c.colors.tabs.bar.bg = '#1A1A1B'
 # Background color of unselected odd tabs
@@ -118,10 +118,11 @@ c.colors.completion.odd.bg = '#1a1a1b'
 c.colors.completion.even.bg = '#1a1a1b'
 
 ## Default Zoom
-#c.zoom.default = '90%'
+c.zoom.default = '90%'
 
-## Vim as editor
-c.editor.command = ['st', '-e', 'nvim', '{file}']
+## External editor command
+# c.editor.command = ['st', '-e', 'nvim', '{file}']
+c.editor.command = ["emacsclient", "-c", "{}"]
 
 # Download Directory
 c.downloads.location.directory = '/home/bledley/Downloads/'
@@ -141,8 +142,8 @@ config.bind('<Space><b><k>', 'tab-close')
 config.bind('<x>', 'tab-close')
 config.bind('<Ctrl-w>', 'tab-close')
 config.bind('<Space><w><n>', 'tab-give')
-config.bind('<b><n>', 'tab-next')
-config.bind('<b><p>', 'tab-prev')
+config.bind('<Space><b><n>', 'tab-next')
+config.bind('<Space><b><p>', 'tab-prev')
 config.bind('<ctrl+shift+tab>', 'tab-prev')
 config.bind('<r>', 'reload')
 config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
@@ -201,7 +202,6 @@ config.bind('<space><r><r>', 'restart')
 #config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'mode-enter passthrough')
 config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<space><w><x>', 'tab-close')
 config.bind('<space><w><c>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
@@ -225,7 +225,7 @@ config.bind('<space><b><n>', 'tab-next')
 config.bind('<space><b><p>', 'tab-prev')
 # config.bind('L', 'forward')
 config.bind('<space><b><m>', 'bookmark-add')
-config.bind('<space><d><b>', 'bookmark-del')
+config.bind('<space><d><m>', 'bookmark-del')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'cmd-set-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -240,7 +240,7 @@ config.bind('<space><Return>', 'bookmark-list')
 # config.bind('V', 'mode-enter caret ;; selection-toggle --line')
 # config.bind('ZQ', 'quit')
 config.bind('zz', 'quit --save')
-config.bind('<space><q>', 'quit --save')
+config.bind('<space><q><q>', 'quit --save')
 config.bind('<space><w><q>', 'quit --save')
 # config.bind('[[', 'navigate prev')
 # config.bind(']]', 'navigate next')
@@ -2170,7 +2170,7 @@ c.hints.leave_on_load = True
 ##   - never: Never show the scrollbar.
 ##   - when-searching: Show the scrollbar when searching for text in the webpage. With the QtWebKit backend, this is equal to `never`.
 ##   - overlay: Show an overlay scrollbar. On macOS, this is unavailable and equal to `when-searching`; with the QtWebKit backend, this is equal to `never`. Enabling/disabling overlay scrollbars requires a restart.
-# c.scrolling.bar = 'overlay'
+c.scrolling.bar = 'never'
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
@@ -2465,7 +2465,7 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-# c.url.default_page = 'https://start.duckduckgo.com/'
+c.url.default_page = 'https://search.brave.com'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
