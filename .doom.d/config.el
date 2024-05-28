@@ -312,8 +312,8 @@
 ;; Theme
 (setq doom-theme 'modus-mono)
 ;; Cursor
-(setq evil-normal-state-cursor '(box "#819cd6")
-      evil-insert-state-cursor '(bar "#47FFE0")
+(setq evil-normal-state-cursor '(box "#1c1c1c")
+      evil-insert-state-cursor '(bar "#1c1c1c")
       evil-visual-state-cursor '(hollow "#c280A0"))
 (after! solaire-mode
   (solaire-global-mode -1))
@@ -381,9 +381,11 @@
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
          :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n"))))
+
 ;; (defun jethro/tag-new-node-as-seedling ()
 ;;   (org-roam-tag-add '("seedling")))
 ;; (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-seedling)
+;;
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
