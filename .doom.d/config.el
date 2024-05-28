@@ -41,6 +41,7 @@
 (setq org-log-done 'time
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
+      org-log-reschedule 'time
       org-deadline-warning-days 1
       org-ellipsis " ▾ "
       org-hide-emphasis-markers t
@@ -52,9 +53,9 @@
          "NEXT(n)"
          "UPCOMING(u)"
          "WAITING(w)"
-         "REPEAT(r)"
+         "GOAL(g)"
          "PROJECT(p)"
-         "DELEGATED(g)"
+         "DELEGATED(/)"
          "SOMEDAY(s)"
          "|"
          "DONE(d)"
@@ -65,7 +66,7 @@
        ("NEXT" :foreground "#ff7462" :weight bold)
        ("UPCOMING" :foreground "#ffc561" :weight bold)
        ("WAITING" :foreground "#B0B0B0" :weight bold)
-       ("REPEAT" :foreground "#ff7462" :weight bold)
+       ("GOAL" :foreground "#ff7462" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
        ("DELEGATED" :foreground "#B0B0B0" :weight bold)
        ("SOMEDAY" :foreground "#B0B0B0" :weight bold)
@@ -87,17 +88,19 @@
 (after! org
   (setq! org-capture-templates
          '(("i" " Todo" entry (file "~/org/inbox.org")
-            "** TODO %?")
+            (file "~/org/tpl/tpl-todo.txt") :empty-lines-before 1)
            ("c" " Contact" plain (file "~/org/contacts.org")
-            "* %?")
+            (file "~/org/tpl/tpl-contact.txt"))
            ("d" " Daily Plan" plain (file+datetree "~/org/daily.org")
-            (file "~/org/tpl-daily.txt") :immediate-finish t)
+            (file "~/org/tpl/tpl-daily.txt") :immediate-finish t)
            ("e" " Event" entry (file+olp "~/org/events.org")
             "** %?%^{SCHEDULED}p")
+           ("g" " Goal" entry (file+headline "~/org/goals.org"
+            "Capture") (file "~/org/tpl/tpl-goal.txt"))
            ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
-          "** TODO %a :email: \nSCHEDULED:%t\n\n%i")
+          "** TODO %a :@email:@computer: \nSCHEDULED:%t\n\n%i")
            ("w" " Weekly Review" plain (file buffer-name)
-            (file "~/org/tpl-weekly.txt") :empty-lines 1)
+            (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
            ))
 ;; Org Agenda Custom Commands
@@ -112,6 +115,11 @@
    ("d" "Doing"
     ((todo "DOING"
            ((org-agenda-overriding-header "Actively working on"))
+           )))
+
+   ("g" "Goals"
+    ((todo "GOAL"
+           ((org-agenda-overriding-header "Goals"))
            )))
 
    ("n" "Next"
@@ -140,6 +148,19 @@
            )))
 
       ))
+(after! org
+  (setq org-tag-alist-for-agenda
+        '(
+             ("@art")
+             ("@computer")
+             ("@domestic")
+             ("@email")
+             ("@errands")
+             ("@health")
+             ("@read")
+             ("@socials")
+             ("@watch")
+               )))
 ;; Keybinds
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -156,6 +177,7 @@
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
 (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
+(global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
@@ -230,6 +252,10 @@
 (map! :leader
       (:prefix ("o" . "org-tags-sparse-tree")
                 :desc "org-tags-sparse-tree" "s" #'org-tags-sparse-tree))
+;; Quick org-agenda-filter
+(map! :leader
+      (:prefix ("o" . "org-agenda-filter")
+                :desc "org-agenda-filter" "l" #'org-agenda-filter))
 ;; leader keys for org-roam-dailies
 (map! :leader
       (:prefix ("n" . "org-roam-dailies-capture-today")
@@ -334,30 +360,30 @@
       '(("s" "󰟷 Fleeting" plain
          "%?"
          :if-new (file+head "${slug}.org"
-                            "#+title: ${title}\n#+filetags: :fleeting:\n#+options: toc:nil num:nil author:nil\n")
+                            "#+title: ${title}\n#+filetags: fleeting seedling:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("r" " Reference" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: :reference:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: reference seedling:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("p" " Permanent" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: :permanent:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: permanent seedling:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("a" " Article" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: :article:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article seedling:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: :fleeting:\n#+options: toc:nil num:nil author:nil\n"))))
-(defun jethro/tag-new-node-as-seedling ()
-  (org-roam-tag-add '("seedling")))
-(add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-seedling)
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n"))))
+;; (defun jethro/tag-new-node-as-seedling ()
+;;   (org-roam-tag-add '("seedling")))
+;; (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-seedling)
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
