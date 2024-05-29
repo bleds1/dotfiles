@@ -12,11 +12,14 @@ Terminal: st
 
 Shell: bash
 
-## Neovim
-[https://github.com/neovim/neovim]
+## Doom Emacs
+[https://github.com/doomemacs/doomemacs]
 
 ## Qutebrowser
 [https://github.com/qutebrowser/qutebrowser]
+
+## Neovim
+[https://github.com/neovim/neovim]
 
 ## Ranger
 [https://github.com/ranger/ranger]
@@ -39,8 +42,6 @@ Shell: bash
 
 ## I keep a lot of inactive stuff in here that I used to use and may need again in the future. 
 
-## Doom Emacs
-[https://github.com/doomemacs/doomemacs]
 
 ## Wezterm
 [https://github.com/wez/wezterm]
@@ -66,6 +67,6 @@ Shell: bash
 ## Taskwarrior
 [https://github.com/GothenburgBitFactory/taskwarrior]
 
-+ probably more..
++ Probably more..
 
 *TODO:* Flesh out this readme and add screenshots/system info/descriptions
