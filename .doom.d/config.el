@@ -24,9 +24,7 @@
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
-;; (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-(setq initial-buffer-choice "/home/bledley/")
-;; Scratch buffer & hotkey
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message ";; scratch buffer ;;")
 (setq initial-major-mode 'lisp-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -290,6 +288,13 @@
 (map! :leader
       :prefix "j"
       :desc "avy-goto-char-timer" "j" #'avy-goto-char-timer)
+;; org agenda week/day view
+(map! :leader
+      :prefix "o"
+      :desc "org-agenda-day-view" "1" #'org-agenda-day-view)
+(map! :leader
+      :prefix "o"
+      :desc "org-agenda-week-view" "2" #'org-agenda-week-view)
 ;; Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
@@ -360,22 +365,22 @@
       '(("s" "󰟷 Fleeting" plain
          "%?"
          :if-new (file+head "${slug}.org"
-                            "#+title: ${title}\n#+filetags: fleeting seedling:\n#+options: toc:nil num:nil author:nil\n")
+                            "#+title: ${title}\n#+filetags: fleeting seedling\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("r" " Reference" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: reference seedling:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: reference seedling\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("p" " Permanent" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: permanent seedling:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: permanent seedling\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("a" " Article" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article seedling:\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article seedling\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
