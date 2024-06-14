@@ -91,8 +91,8 @@
             (file "~/org/tpl/tpl-contact.txt"))
            ("d" " Daily Plan" plain (file+datetree "~/org/daily.org")
             (file "~/org/tpl/tpl-daily.txt") :immediate-finish t)
-           ("e" " Event" entry (file+olp "~/org/events.org")
-            "** %?%^{SCHEDULED}p")
+           ("e" " Event" entry (file "~/org/events.org")
+            "** %?")
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
            ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
