@@ -20,9 +20,9 @@ bind -m vi-insert "\C-l":clear-screen
 shopt -s checkwinsize
 
 # add to todo function todo "text"
-todo() {
-  echo "TODO: $1" >> ~/vault/todo.md
-}
+# todo() {
+#   echo "TODO: $1" >> ~/vault/todo.md
+# }
 
 # Aliases
 alias ..="cd .."
@@ -101,7 +101,7 @@ alias mv="mv -i -v"
 alias rm="rm -i -v"
 
 # is this working?
-source /usr/share/bash-completion/bash_completion
+# source /usr/share/bash-completion/bash_completion
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
