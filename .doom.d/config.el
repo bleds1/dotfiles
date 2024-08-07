@@ -1,9 +1,14 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-(setq doom-font (font-spec :family "JetBrains Mono" :size 16)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 16)
-      doom-serif-font (font-spec :family "IBM Plex Mono" :size 18 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "Overpass" :size 19))
+; Topaz a600a1200a400:size=9
+(setq
+      doom-font (font-spec :family "Topaz a600a1200a400" :size 15)
+      doom-big-font (font-spec :family "Topaz a600a1200a400" :size 16)
+      doom-serif-font (font-spec :family "Topaz a600a1200a400" :size 15)
+      doom-variable-pitch-font (font-spec :family "Topaz a600a1200a400" :size 16))
+      ;; doom-big-font (font-spec :family "JetBrains Mono" :size 16)
+      ;; doom-serif-font (font-spec :family "IBM Plex Mono" :size 18 :weight 'light)
+      ;; doom-variable-pitch-font (font-spec :family "Overpass" :size 20))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
@@ -24,7 +29,7 @@
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
-(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+;; (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message ";; scratch buffer ;;")
 (setq initial-major-mode 'lisp-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -66,10 +71,10 @@
        ("WAITING" :foreground "#B0B0B0" :weight bold)
        ("GOAL" :foreground "#ff7462" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
-       ("DELEGATED" :foreground "#B0B0B0" :weight bold)
-       ("SOMEDAY" :foreground "#B0B0B0" :weight bold)
+       ("DELEGATED" :foreground "#83898d" :weight bold)
+       ("SOMEDAY" :foreground "#83898d" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
-       ("CANCELLED" :foreground "#80869c" :weight bold))))
+       ("CANCELLED" :foreground "#83898d" :weight bold))))
 (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
 (setq org-superstar-prettify-item-bullets nil)
@@ -77,9 +82,9 @@
   (setq
    org-fancy-priorities-list '("[A]" "[B]" "[C]")
    org-priority-faces
-   '((?A :foreground "red" :weight bold)
-     (?B :foreground "green" :weight bold)
-     (?C :foreground "grey" :weight bold))
+   '((?A :foreground "#ff7462" :weight bold)
+     (?B :foreground "#07b0a2" :weight bold)
+     (?C :foreground "#83898d" :weight bold))
    ))
 
 ; Org Capture Templates
@@ -182,6 +187,7 @@
 (global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c n f") 'org-roam-node-find)
+(global-set-key (kbd "C-c n h") 'now)
 (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
 (global-set-key (kbd "C-c n I") 'org-roam-node-insert-immediate)
 (global-set-key (kbd "C-c n c") 'org-roam-capture)
@@ -262,6 +268,9 @@
       (:prefix ("n" . "org-roam-dailies-goto-today")
                 :desc "org-roam-dailies-goto-today" "d" #'org-roam-dailies-goto-today))
 (map! :leader
+      (:prefix ("n" . "now header")
+                :desc "now header" "h" #'now))
+(map! :leader
       (:prefix ("n" . "org-roam-dailies-goto-yesterday")
                 :desc "org-roam-dailies-goto-yesterday" "y" #'org-roam-dailies-goto-yesterday))
 (map! :leader
@@ -324,38 +333,11 @@
 (after! solaire-mode
   (solaire-global-mode -1))
 ;;
-;; (custom-set-faces
-;;  '(default ((t (:background "#f4f4f4"))))
-;;  ;; '(org-document-title ((t (:inherit modus-themes-heading-0 :foreground "#000000" :weight bold :height 1.2))))
-;;  '(font-lock-doc-face ((t (:foreground "#878787" ))))
-;;  '(org-tag ((t (:foreground "#595959"))))
-;;  '(org-level-1 ((t (:foreground "#1c1c1c" :weight bold))))
-;;  '(org-level-2 ((t (:foreground "#1c1c1c" :weight bold))))
-;;  '(modus-themes-heading-3 ((t (:foreground "#1c1c1c" :weight regular))))
-;;  '(org-level-3 ((t (:inherit modus-themes-heading-3 :extend t :foreground "#1c1c1c" :weight bold :height 1.0))))
-;;  '(org-level-4 ((t (:foreground "#1c1c1c" :weight bold))))
-;;  '(font-lock-keyword-face ((t (:foreground "#FF553D"))))
-;;  '(font-lock-builtin-face ((t (:foreground "#4d4d4d"))))
-;;  '(font-lock-variable-name-face ((t (:foreground "#363636"))))
-;;  '(font-lock-constant-face ((t (:foreground "#595959"))))
-;;  '(font-lock-string-face ((t (:foreground "#595959"))))
-;;  '(highlight-quoted-symbol ((t (:foreground "#878787"))))
-;;  '(highlight-numbers-number ((t (:foreground "#878787"))))
-;;  '(mode-line-buffer-id ((t (:foreground "#545454"))))
-;;  '(font-lock-function-name-face ((t (:foreground "#ff7462"))))
-;;  '(hl-line ((t (:foreground "#1c1c1c"))))
-;;  '(highlight ((t (:background "#878787" :foreground "#1c1c1c"))))
-;;  '(modus-themes-completion-selected ((t (:background "#d4d4d4"))))
-;;  '(doom-modeline-evil-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold))))
-;;  '(doom-modeline-evil-normal-state ((t (:foreground "#768EC3"))))
-;;  '(doom-modeline-evil-visual-state ((t (:foreground "#FF85C0" :weight ultra-bold))))
-;;  '(doom-modeline-fly-insert-state ((t (:foreground "#47FFE0" :weight ultra-bold)))))
-
 ;; Writeroom Zen mode appearance
 ;; (add-hook 'writeroom-mode-hook (lambda () (display-line-numbers-mode -1)))
 (setq writeroom-mode-line t
       writeroom-width 120
-      +zen-text-scale 0.2)
+      +zen-text-scale 0.3)
 
 ;; Org roam
 (setq org-roam-db-autosync-mode t
@@ -386,7 +368,8 @@
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n"))))
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
+         :empty-lines-before 1)))
 
 ;; (defun jethro/tag-new-node-as-seedling ()
 ;;   (org-roam-tag-add '("seedling")))
@@ -588,7 +571,7 @@
 ;; Timestamp function
 (defun now ()
  (interactive)
- (insert (format-time-string " %H:%M" )
+ (insert (format-time-string "* %H:%M" )
  ))
 ;; Online lookup provider list
 (setq +lookup-provider-url-alist
@@ -614,3 +597,6 @@
 ;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
+;; Global hl line mode
+(setq hl-line-mode nil)
+(setq global-hl-line-mode nil)

@@ -1,7 +1,8 @@
 configuration {
 /*	modi: "window,run,ssh";*/
 /*	font: "Noto Sans CJK SC Regular 11";*/
-	font: "JetBrainsMono Nerd Font Regular 10";
+/*font: "JetBrainsMono Nerd Font Regular 10";*/
+    font: "Topaz a600a1200a400 10";
 /*  location: 6;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
