@@ -1,14 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-; Topaz a600a1200a400:size=9
-(setq
-      doom-font (font-spec :family "Topaz a600a1200a400" :size 15)
-      doom-big-font (font-spec :family "Topaz a600a1200a400" :size 16)
-      doom-serif-font (font-spec :family "Topaz a600a1200a400" :size 15)
-      doom-variable-pitch-font (font-spec :family "Topaz a600a1200a400" :size 16))
-      ;; doom-big-font (font-spec :family "JetBrains Mono" :size 16)
-      ;; doom-serif-font (font-spec :family "IBM Plex Mono" :size 18 :weight 'light)
-      ;; doom-variable-pitch-font (font-spec :family "Overpass" :size 20))
+(setq doom-font (font-spec :family "Pragmata" :size 13)
+      doom-big-font (font-spec :family "Pragmata" :size 15)
+      doom-serif-font (font-spec :family "Pragmata" :size 15)
+      doom-variable-pitch-font (font-spec :family "Pragmata" :size 16))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
@@ -64,17 +59,17 @@
          "DONE(d)"
          "CANCELLED(c)" )))
 (setq! org-todo-keyword-faces
-      '(("TODO" :foreground "#ff7462" :weight bold)
-       ("DOING" :foreground "#07b0a2" :weight bold)
-       ("NEXT" :foreground "#ff7462" :weight bold)
+      '(("TODO" :foreground "#cc4d3e" :weight bold)
+       ("DOING" :foreground "#1c7870" :weight bold)
+       ("NEXT" :foreground "#cc4d3e" :weight bold)
        ("UPCOMING" :foreground "#ffc561" :weight bold)
-       ("WAITING" :foreground "#B0B0B0" :weight bold)
-       ("GOAL" :foreground "#ff7462" :weight bold)
+       ("WAITING" :foreground "#83898d" :weight bold)
+       ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
-       ("DELEGATED" :foreground "#83898d" :weight bold)
-       ("SOMEDAY" :foreground "#83898d" :weight bold)
+       ("DELEGATED" :foreground "#5d6265" :weight bold)
+       ("SOMEDAY" :foreground "#5d6265" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
-       ("CANCELLED" :foreground "#83898d" :weight bold))))
+       ("CANCELLED" :foreground "#5d6265" :weight bold))))
 (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
 (setq org-superstar-prettify-item-bullets nil)
@@ -82,9 +77,9 @@
   (setq
    org-fancy-priorities-list '("[A]" "[B]" "[C]")
    org-priority-faces
-   '((?A :foreground "#ff7462" :weight bold)
-     (?B :foreground "#07b0a2" :weight bold)
-     (?C :foreground "#83898d" :weight bold))
+   '((?A :foreground "#cc4d3e" :weight bold)
+     (?B :foreground "#1c7870" :weight bold)
+     (?C :foreground "#5d6265" :weight bold))
    ))
 
 ; Org Capture Templates
@@ -102,6 +97,8 @@
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
            ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
           "** TODO %a :@email:@computer: \nSCHEDULED:%t\n\n%i")
+           ("s" " Someday" entry (file "~/org/someday.org")
+             (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
            ("w" " Weekly Review" plain (file buffer-name)
             (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
@@ -110,19 +107,33 @@
 (setq org-agenda-custom-commands
  '(
 
+   ("1" "10min"
+    ((tags-todo "+10min-@goal-@someday-@refile")))
+
+   ("3" "30min"
+    ((tags-todo "+30min-@goal-@someday-@refile")))
+
+   ("0" "1hr"
+    ((tags-todo "+1hr-@goal-@someday-@refile")))
+
+   ("b" "@art"
+    ((tags-todo "+@art-@goal-@someday-@refile")))
+
+   ("c" "@computer"
+    ((tags-todo "+@computer-@goal-@someday-@refile")))
+
+   ("d" "@domestic"
+    ((tags-todo "+@domestic-@goal-@someday-@refile")))
+
+   ("E" "@errands"
+    ((tags-todo "+@errands-@goal-@someday-@refile")))
+
+   ("h" "@health"
+    ((tags-todo "+@health-@goal-@someday-@refile")))
+
    ("i" "Inbox"
-    ((tags "refile"
+    ((tags "@refile-@someday"
            ((org-agenda-overriding-header "Inbox needs refiling/scheduling"))
-           )))
-
-   ("d" "Doing"
-    ((todo "DOING"
-           ((org-agenda-overriding-header "Actively working on"))
-           )))
-
-   ("g" "Goals"
-    ((todo "GOAL"
-           ((org-agenda-overriding-header "Goals"))
            )))
 
    ("n" "Next"
@@ -135,23 +146,50 @@
            ((org-agenda-overriding-header "Todo's"))
            )))
 
-   ("u" "Upcoming"
+   ("p" "Upcoming"
     ((todo "UPCOMING"
            ((org-agenda-overriding-header "Upcoming: Needs to be done soon"))
            )))
 
-   ("l" "Someday"
-    ((todo "SOMEDAY"
-           ((org-agenda-overriding-header "Someday/Maybe"))
-           )))
+   ("r" "@read"
+    ((tags-todo "+@read-@goal-@someday-@refile")))
 
-   ("w" "Waiting On"
-    ((todo "WAITING"
-           ((org-agenda-overriding-header "Waiting: Tasks on hold"))
-           )))
+   ("l" "@socials"
+    ((tags-todo "+@socials-@goal-@someday-@refile")))
+
+   ("u" "Untagged"
+    ((tags-todo "-@goal-@someday-{.*}")))
+
+   ("v" "@video"
+    ((tags-todo "+@video-@goal-@someday-@refile")))
+
+   ("w" "@work"
+    ((tags-todo "+@work-@goal-@someday-@refile")))
+
+   ("W" "@website"
+    ((tags-todo "+@website-@goal-@someday-@refile")))
+
 
       ))
 (after! org
+  (setq org-tag-alist
+        '(
+             ("@art")
+             ("@computer")
+             ("@domestic")
+             ("@email")
+             ("@errands")
+             ("@health")
+             ("@read")
+             ("@socials")
+             ("@video")
+             ("@watch")
+             ("@website")
+             ("@work")
+             ("10min")
+             ("30min")
+             ("1hr")
+               ))
   (setq org-tag-alist-for-agenda
         '(
              ("@art")
@@ -162,7 +200,13 @@
              ("@health")
              ("@read")
              ("@socials")
+             ("@video")
              ("@watch")
+             ("@website")
+             ("@work")
+             ("10min")
+             ("30min")
+             ("1hr")
                )))
 ;; Keybinds
 ;; Function to find files with keybind
@@ -324,10 +368,10 @@
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
 ;; Theme
-;; (setq doom-theme 'modus-mono)
-(setq doom-theme 'doom-one)
+(setq doom-theme 'modus-mono)
+;; (setq doom-theme 'doom-one)
 ;; Cursor
-(setq evil-normal-state-cursor '(box "#679FC7")
+(setq evil-normal-state-cursor '(box "#000000")
       evil-insert-state-cursor '(bar "#679FC7")
       evil-visual-state-cursor '(hollow "#c280A0"))
 (after! solaire-mode
