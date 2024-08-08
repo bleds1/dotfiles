@@ -61,7 +61,7 @@
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
        ("DOING" :foreground "#1c7870" :weight bold)
-       ("NEXT" :foreground "#cc4d3e" :weight bold)
+       ("NEXT" :foreground "#845bc8" :weight bold)
        ("UPCOMING" :foreground "#ffc561" :weight bold)
        ("WAITING" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
@@ -107,6 +107,9 @@
 (setq org-agenda-custom-commands
  '(
 
+   ("A" "Priority A"
+    ((tags-todo "+PRIORITY=\"A\"")))
+
    ("1" "10min"
     ((tags-todo "+10min-@goal-@someday-@refile")))
 
@@ -138,17 +141,17 @@
 
    ("n" "Next"
     ((todo "NEXT"
-           ((org-agenda-overriding-header "Next Actions"))
+           ((org-agenda-overriding-header "Next Actions in Projects"))
+           )))
+
+   ("p" "Upcoming"
+    ((todo "UPCOMING"
+           ((org-agenda-overriding-header "Upcoming"))
            )))
 
    ("o" "Todo"
     ((todo "TODO"
            ((org-agenda-overriding-header "Todo's"))
-           )))
-
-   ("p" "Upcoming"
-    ((todo "UPCOMING"
-           ((org-agenda-overriding-header "Upcoming: Needs to be done soon"))
            )))
 
    ("r" "@read"
