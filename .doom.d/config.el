@@ -1,9 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-(setq doom-font (font-spec :family "Pragmata" :size 13)
-      doom-big-font (font-spec :family "Pragmata" :size 15)
-      doom-serif-font (font-spec :family "Pragmata" :size 15)
-      doom-variable-pitch-font (font-spec :family "Pragmata" :size 16))
+(setq doom-font (font-spec :family "FreeMono" :size 13)
+      doom-big-font (font-spec :family "FreeMono" :size 13)
+      doom-serif-font (font-spec :family "FreeMono" :size 13)
+      doom-variable-pitch-font (font-spec :family "FreeMono" :size 13))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
@@ -107,8 +107,14 @@
 (setq org-agenda-custom-commands
  '(
 
-   ("A" "Priority A"
-    ((tags-todo "+PRIORITY=\"A\"")))
+   ("Ph" "High Priority"
+    ((tags-todo "+H-DONE-@someday")))
+
+   ("Pm" "Medium Priority"
+    ((tags-todo "+M-DONE-@someday")))
+
+   ("Pl" "Low Priority"
+    ((tags-todo "+L-DONE-@someday")))
 
    ("1" "10min"
     ((tags-todo "+10min-@goal-@someday-@refile")))
@@ -177,6 +183,9 @@
 (after! org
   (setq org-tag-alist
         '(
+             ("H")
+             ("M")
+             ("L")
              ("@art")
              ("@computer")
              ("@domestic")
@@ -195,6 +204,9 @@
                ))
   (setq org-tag-alist-for-agenda
         '(
+             ("H")
+             ("M")
+             ("L")
              ("@art")
              ("@computer")
              ("@domestic")

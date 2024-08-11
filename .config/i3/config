@@ -18,10 +18,12 @@ bindsym $mod+w layout toggle splith splitv
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+e exec emacsclient -c -a emacs
 bindsym $mod+Shift+Return exec st
-bindsym $mod+o exec xfce4-popup-whiskermenu
-bindsym $mod+r exec rofi -show run
+bindsym $mod+Shift+o exec xfce4-popup-whiskermenu
+bindsym $mod+o exec obsidian
+bindsym $mod+p exec rofi -show run
+bindsym $mod+s exec subl
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+p exec ~/.scripts/rofi_pass
+bindsym $mod+Shift+p exec ~/.scripts/rofi_pass
 bindsym $mod+period exec thunar
 bindsym $mod+Shift+z exec i3lock --color=000000
 bindsym $mod+slash exec catfish
