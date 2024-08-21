@@ -233,9 +233,7 @@
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
-(zz/add-file-keybinding "C-c n a" "~/org/na.org" "na.org")
-(zz/add-file-keybinding "C-c b" "~/org/sba.org" "sba.org")
-(zz/add-file-keybinding "C-c t" "~/org/personal.org" "personal.org")
+(zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
 (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")

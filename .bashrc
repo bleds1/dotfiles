@@ -37,8 +37,6 @@ alias lg="lazygit"
 alias emacs="emacsclient -c -a 'emacs'"
 alias e="emacs -nw"
 alias dired="emacsclient -c -a 'emacs' --eval '(dired nil)' & disown"
-# alias sxiv="/usr/local/bin/nsxiv"
-# alias nsxiv="/usr/local/bin/nsxiv"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias zat="zathura"
 alias h="history | fzf"
@@ -58,6 +56,10 @@ alias gf='git fetch'
 alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias glog='git log --graph --oneline --decorate'
+#set
+alias setus='setxkbmap -layout us'
+alias setuk='setxkbmap -layout gb'
+alias setcap='setxkbmap -option caps:escape'
 # tmux
 alias tms="tmux-sessionizer.sh"
 alias tm="tmux"
