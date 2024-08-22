@@ -68,7 +68,7 @@ end
 vim.cmd([[
   augroup StatusBarColors
     autocmd!
-    autocmd InsertEnter * hi statusline guifg='#2b313C' guibg=#6B95B8
-    autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#2b313C
+    autocmd InsertEnter * hi statusline guifg='#232323' guibg=#6B95B8
+    autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#232323
   augroup END
 ]])
