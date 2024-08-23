@@ -1,7 +1,7 @@
 function ColorMyPencils(color)
 			color = color or "github_dark_dimmed"
 			vim.cmd.colorscheme(color)
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none"}) -- needed for certain themes
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none", fg = "#acacac"}) -- needed for certain themes
 			 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"}) -- needed for certain themes
 			vim.api.nvim_set_hl(0, "StatusLine", { bg = "#232323", fg = "#9da7b4"})
             vim.api.nvim_set_hl(0.,"CursorLine", { bg = "#232323"})

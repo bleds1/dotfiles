@@ -48,7 +48,7 @@ require("obsidian").setup({
     disable_frontmatter = true,
  -- Optional, for templates (see below).
     templates = {
-    subdir = "Archive/Templates/",
+    subdir = "Templates",
     date_format = "%Y%m%d%H%M",
     time_format = "%H:%M",
     -- A map for custom variables, the key should be the variable and the value a function
@@ -70,7 +70,7 @@ require("obsidian").setup({
   }
   },
     ui = {
-    enable = true,  -- set to false to disable all additional syntax features
+    enable = false,  -- set to false to disable all additional syntax features
     update_debounce = 200,  -- update delay after a text change (in milliseconds)
     -- Define how various check-boxes are displayed
     checkboxes = {

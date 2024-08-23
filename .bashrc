@@ -19,11 +19,6 @@ bind -m vi-insert "\C-l":clear-screen
 # wrap on window resize
 shopt -s checkwinsize
 
-# add to todo function todo "text"
-# todo() {
-#   echo "TODO: $1" >> ~/vault/todo.md
-# }
-
 # Aliases
 alias ..="cd .."
 alias cl="clear -x"
@@ -61,11 +56,11 @@ alias setus='setxkbmap -layout us'
 alias setuk='setxkbmap -layout gb'
 alias setcap='setxkbmap -option caps:escape'
 # tmux
-alias tms="tmux-sessionizer.sh"
-alias tm="tmux"
-alias tma="tmux attach"
-alias tmd="tmux detach"
-alias tmls="tmux ls"
+alias ts="tmux-sessionizer.sh"
+alias t="tmux"
+alias ta="tmux attach"
+alias td="tmux detach"
+alias tls="tmux ls"
 #ls exa
 alias dir="exa -a --color=always --sort Name"
 alias l="exa -a --color=always --sort Name"
@@ -79,7 +74,7 @@ alias mutt="neomutt"
 alias sba="cd ~/sba/"
 alias scripts="cd ~/.scripts/"
 alias suck="cd ~/.config/suckless/"
-alias doc="cd ~/Library/"
+alias doc="cd ~/Documents//"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
 alias .="cd ~/dotfiles/"
@@ -88,7 +83,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias vault="cd ~/vault/"
-alias nn="v ~/vault/$(date +%Y%m%d%H%M).md"
+alias nn="v ~/vault/Fleeting/$(date +%Y%m%d%H%M).md"
 # alias glo=glow
 #grep color
 alias grep="grep --color=auto"

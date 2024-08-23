@@ -106,8 +106,8 @@ end
 vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { noremap = true, silent = true })
 -- Obsidian.nvim
 -- vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
-vim.keymap.set("n", "<leader>,", ":e ~/vault/log.md<CR>")
-vim.keymap.set("n", "<leader>,,", ":split ~/vault/log.md<CR>")
+vim.keymap.set("n", "<leader>,", ":e ~/vault/Fleeting/<CR>")
+-- vim.keymap.set("n", "<leader>,,", ":split ~/vault/log.md<CR>")
 -- vim.keymap.set("n", "<leader>oy", ":ObsidianToday -1<CR>")
 -- vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
 -- vim.keymap.set("n", "<leader>oT", ":ObsidianTomorrow<CR>")
