@@ -18,7 +18,8 @@ bindsym $mod+w layout toggle splith splitv
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+e exec emacsclient -c -a emacs
 bindsym $mod+Shift+m exec rofi -modi emoji -show emoji
-bindsym $mod+Shift+Return exec st
+# bindsym $mod+Shift+Return exec st
+bindsym $mod+Shift+Return exec wezterm
 #bindsym $mod+Shift+o exec xfce4-popup-whiskermenu
 bindsym $mod+o exec obsidian
 bindsym $mod+p exec rofi -show run

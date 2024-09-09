@@ -17,7 +17,7 @@ return {
       'JetBrains Mono',
     },
     command_palette_bg_color = '#22262f',
-    colors = { foreground = '#6daad5', background = '#22262f', cursor_bg = '#6B95B8', selection_fg = '#ff92d0',
+    colors = { foreground = '#6daad5', background = '#303446', cursor_bg = '#6B95B8', selection_fg = '#ff92d0',
         tab_bar = { background = '#22262f', inactive_tab_edge = '#2b313c',
         active_tab = { bg_color = '#2B313c', fg_color = '#909090', italic = true,},
         inactive_tab = { bg_color = '#22262f', fg_color = '#808080', italic = true },
