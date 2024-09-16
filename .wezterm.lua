@@ -14,6 +14,7 @@ return {
     font = wezterm.font_with_fallback {
       'JetBrains Mono',
     },
+    -- NOTE When not using Catppuccin (above) comment out these for usual color scheme
     -- colors = {
     --     foreground = '#6daad5',
     --     background = '#2a2e3a',
