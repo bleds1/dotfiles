@@ -1,9 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-(setq doom-font (font-spec :family "FreeMono" :size 13)
-      doom-big-font (font-spec :family "FreeMono" :size 13)
-      doom-serif-font (font-spec :family "FreeMono" :size 13)
-      doom-variable-pitch-font (font-spec :family "FreeMono" :size 13))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 13)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 13)
+      doom-serif-font (font-spec :family "JetBrains Mono" :size 13)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
@@ -381,10 +381,12 @@
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
 ;; Theme
-(setq doom-theme 'modus-mono)
+;; (setq doom-theme 'modus-mono)
 ;; (setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
 ;; Cursor
-(setq evil-normal-state-cursor '(box "#000000")
+(setq
+      evil-normal-state-cursor '(box "#679FC7")
       evil-insert-state-cursor '(bar "#679FC7")
       evil-visual-state-cursor '(hollow "#c280A0"))
 (after! solaire-mode
