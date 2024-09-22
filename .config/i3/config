@@ -4,6 +4,7 @@ set $mod Mod4
 set $layout 'AB=-350 AC=220 BD=252'
 font pango:topaz a600a1200a400 7
 hide_edge_borders both
+# for window decorations comment out the 2 below
 default_border pixel 0
 default_floating_border pixel 0
 
@@ -18,16 +19,14 @@ exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id autotiling &
 
 bindsym $mod+w layout toggle splith splitv
-# bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+b exec brave
 bindsym $mod+e exec emacsclient -c -a emacs
 bindsym $mod+Shift+m exec rofi -modi emoji -show emoji
-# bindsym $mod+Shift+Return exec st
 bindsym $mod+Shift+Return exec wezterm
-#bindsym $mod+Shift+o exec xfce4-popup-whiskermenu
-bindsym $mod+o exec obsidian
+bindsym $mod+o exec emacsclient -c -a 'emacs' --eval '(dired nil)'
+
 bindsym $mod+p exec rofi -show run
-bindsym $mod+s exec subl
+# bindsym $mod+s exec subl
 bindsym $mod+Tab exec rofi -show window
 bindsym $mod+Shift+p exec ~/.scripts/rofi_pass
 bindsym $mod+period exec thunar

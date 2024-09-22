@@ -2,6 +2,7 @@ local wezterm = require 'wezterm';
 
 return {
     color_scheme = "Catppuccin Mocha", -- Mocha, Macchiato, Frappe, Latte
+    -- color_scheme = 'Solarized (dark) (terminal.sexy)',
     default_cursor_style = "SteadyBlock",
     cursor_blink_rate = 800,
     -- scrollback_lines = 10000,

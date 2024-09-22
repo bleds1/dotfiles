@@ -6,26 +6,31 @@ Arch Linux
 
 Thinkpad T460
 
-Window manager: dwm
+Window manager: i3
 
-Terminal: st 
+DE: xfce
+
+Terminal: wezterm
 
 Shell: bash
 
 ## Doom Emacs
 [https://github.com/doomemacs/doomemacs]
 
-## Qutebrowser
-[https://github.com/qutebrowser/qutebrowser]
+## Wezterm
+[https://github.com/wez/wezterm]
 
-## Neovim
-[https://github.com/neovim/neovim]
+## i3wm
+[https://github.com/Airblader/i3]
+
+## Rofi
+[ https://github.com/davatorium/rofi]
 
 ## Ranger
 [https://github.com/ranger/ranger]
 
-## Rofi
-[ https://github.com/davatorium/rofi]
+## Neovim
+[https://github.com/neovim/neovim]
 
 ## Tmux
 [https://github.com/tmux/tmux]
@@ -42,15 +47,11 @@ Shell: bash
 
 ## I keep a lot of inactive stuff in here that I used to use and may need again in the future. 
 
-
-## Wezterm
-[https://github.com/wez/wezterm]
+## Qutebrowser
+[https://github.com/qutebrowser/qutebrowser]
 
 ## Zsh
 [https://github.com/zsh-users/zsh]
-
-## i3wm gaps
-[https://github.com/Airblader/i3]
 
 ## Kitty
 [https://github.com/kovidgoyal/kitty]
