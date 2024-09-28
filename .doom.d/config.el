@@ -24,9 +24,9 @@
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
-;; (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-(setq initial-scratch-message ";; scratch buffer ;;")
-(setq initial-major-mode 'lisp-mode)
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+(setq initial-scratch-message "# org-mode scratch buffer")
+(setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -116,30 +116,6 @@
    ("Pl" "Low Priority"
     ((tags-todo "+L-DONE-@someday")))
 
-   ("1" "10min"
-    ((tags-todo "+10min-@goal-@someday-@refile")))
-
-   ("3" "30min"
-    ((tags-todo "+30min-@goal-@someday-@refile")))
-
-   ("0" "1hr"
-    ((tags-todo "+1hr-@goal-@someday-@refile")))
-
-   ("b" "@art"
-    ((tags-todo "+@art-@goal-@someday-@refile")))
-
-   ("c" "@computer"
-    ((tags-todo "+@computer-@goal-@someday-@refile")))
-
-   ("d" "@domestic"
-    ((tags-todo "+@domestic-@goal-@someday-@refile")))
-
-   ("E" "@errands"
-    ((tags-todo "+@errands-@goal-@someday-@refile")))
-
-   ("h" "@health"
-    ((tags-todo "+@health-@goal-@someday-@refile")))
-
    ("i" "Inbox"
     ((tags "@refile-@someday"
            ((org-agenda-overriding-header "Inbox needs refiling/scheduling"))
@@ -160,24 +136,8 @@
            ((org-agenda-overriding-header "Todo's"))
            )))
 
-   ("r" "@read"
-    ((tags-todo "+@read-@goal-@someday-@refile")))
-
-   ("l" "@socials"
-    ((tags-todo "+@socials-@goal-@someday-@refile")))
-
    ("u" "Untagged"
     ((tags-todo "-@goal-@someday-{.*}")))
-
-   ("v" "@video"
-    ((tags-todo "+@video-@goal-@someday-@refile")))
-
-   ("w" "@work"
-    ((tags-todo "+@work-@goal-@someday-@refile")))
-
-   ("W" "@website"
-    ((tags-todo "+@website-@goal-@someday-@refile")))
-
 
       ))
 (after! org
@@ -186,42 +146,36 @@
              ("H")
              ("M")
              ("L")
-             ("@art")
-             ("@computer")
+             ("@admin")
+             ("@comms")
+             ("@creative")
              ("@domestic")
-             ("@email")
              ("@errands")
              ("@health")
              ("@read")
-             ("@socials")
-             ("@video")
+             ("@research")
+             ("@system")
              ("@watch")
              ("@website")
-             ("@work")
-             ("10min")
-             ("30min")
-             ("1hr")
+             ("@youtube")
                ))
   (setq org-tag-alist-for-agenda
         '(
              ("H")
              ("M")
              ("L")
-             ("@art")
-             ("@computer")
+             ("@admin")
+             ("@comms")
+             ("@creative")
              ("@domestic")
-             ("@email")
              ("@errands")
              ("@health")
              ("@read")
-             ("@socials")
-             ("@video")
+             ("@research")
+             ("@system")
              ("@watch")
              ("@website")
-             ("@work")
-             ("10min")
-             ("30min")
-             ("1hr")
+             ("@youtube")
                )))
 ;; Keybinds
 ;; Function to find files with keybind
@@ -407,7 +361,7 @@
       '(("s" "󰟷 Fleeting" plain
          "%?"
          :if-new (file+head "${slug}.org"
-                            "#+title: ${title}\n#+filetags: fleeting seedling\n#+options: toc:nil num:nil author:nil\n")
+                            "#+title: ${title}\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("r" " Reference" plain "%?"
@@ -535,13 +489,13 @@
 (after! vterm
   (setq vterm-kill-buffer-on-exit t))
 ;; Function to run my mail sync script
-(defun mail-sync-script ()
-  "Run my custom shell script"
-  (interactive)
-  (call-process "~/.scripts/mail-sync.sh" nil 0))
+;; (defun mail-sync-script ()
+;;   "Run my custom shell script"
+;;   (interactive)
+;;   (call-process "~/.scripts/mail-sync.sh" nil 0))
 
-(map! :leader
-      :desc "mail sync script" "m s" #'mail-sync-script)
+;; (map! :leader
+;;       :desc "mail sync script" "m s" #'mail-sync-script)
 ;;
 (defun notmuch-inbox-search ()
   "Search for emails with the tag:inbox using notmuch"
@@ -656,6 +610,9 @@
 ;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
-;; Global hl line mode
+;; Global hl line mode NOTE: This doesn't seem to stick..
 (setq hl-line-mode nil)
 (setq global-hl-line-mode nil)
+;; Let the desktop background show through
+(set-frame-parameter (selected-frame) 'alpha '(97 . 100))
+(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
