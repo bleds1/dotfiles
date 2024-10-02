@@ -48,8 +48,6 @@
       '((sequence
          "TODO(t)"
          "DOING(a)"
-         "NEXT(n)"
-         "UPCOMING(u)"
          "WAITING(w)"
          "GOAL(g)"
          "PROJECT(p)"
@@ -61,8 +59,6 @@
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
        ("DOING" :foreground "#1c7870" :weight bold)
-       ("NEXT" :foreground "#845bc8" :weight bold)
-       ("UPCOMING" :foreground "#ffc561" :weight bold)
        ("WAITING" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
@@ -70,6 +66,22 @@
        ("SOMEDAY" :foreground "#5d6265" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
+; Function to clock in on DOING
+(defun org-clock-todo-change ()
+  (if (string= org-state "DOING")
+      (org-clock-in)
+    (org-clock-out-if-current)))
+;; https://www.philnewton.net/blog/automatic-org-keyword-changes/
+;; Always change the task to DOING
+(setq org-clock-in-switch-to-state "DOING")
+;; Use a function to decide what to change the state to.
+(setq org-clock-in-switch-to-state #'sodaware/switch-task-on-clock-start)
+(defun sodaware/switch-task-on-clock-start (task-state)
+  "Change a task to 'DOING' when TASK-STATE is 'TODO'."
+  (if (string= task-state "TODO")
+      "DOING"
+      task-state))
+; Org Priorities
 (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
 (setq org-superstar-prettify-item-bullets nil)
@@ -85,18 +97,20 @@
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
-         '(("i" " Todo" entry (file "~/org/inbox.org")
+          '(("i" " Inbox" entry (file "~/org/inbox.org")
+            (file "~/org/tpl/tpl-inbox.txt") :empty-lines-before 1)
+           ("t" " Todo" entry (file "~/org/inbox.org")
             (file "~/org/tpl/tpl-todo.txt") :empty-lines-before 1)
-           ("c" " Contact" plain (file "~/org/contacts.org")
-            (file "~/org/tpl/tpl-contact.txt"))
+           ;; ("c" " Contact" plain (file "~/org/contacts.org")
+           ;;  (file "~/org/tpl/tpl-contact.txt"))
            ("d" " Daily Plan" plain (file+datetree "~/org/daily.org")
             (file "~/org/tpl/tpl-daily.txt") :immediate-finish t)
-           ("e" " Event" entry (file "~/org/events.org")
-            "** %?")
+           ;; ("e" " Event" entry (file "~/org/events.org")
+           ;;  "** %?")
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
-           ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
-          "** TODO %a :@email:@computer: \nSCHEDULED:%t\n\n%i")
+          ;;  ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
+          ;; "** TODO %a :@email:@computer: \nSCHEDULED:%t\n\n%i")
            ("s" " Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
            ("w" " Weekly Review" plain (file buffer-name)
@@ -107,28 +121,18 @@
 (setq org-agenda-custom-commands
  '(
 
-   ("Ph" "High Priority"
-    ((tags-todo "+H-DONE-@someday")))
+   ("p1" "High Priority"
+    ((tags-todo "+p1-DONE-@someday")))
 
-   ("Pm" "Medium Priority"
-    ((tags-todo "+M-DONE-@someday")))
+   ("p2" "Medium Priority"
+    ((tags-todo "+p2-DONE-@someday")))
 
-   ("Pl" "Low Priority"
-    ((tags-todo "+L-DONE-@someday")))
+   ("p3" "Low Priority"
+    ((tags-todo "+p3-DONE-@someday")))
 
    ("i" "Inbox"
     ((tags "@refile-@someday"
            ((org-agenda-overriding-header "Inbox needs refiling/scheduling"))
-           )))
-
-   ("n" "Next"
-    ((todo "NEXT"
-           ((org-agenda-overriding-header "Next Actions in Projects"))
-           )))
-
-   ("p" "Upcoming"
-    ((todo "UPCOMING"
-           ((org-agenda-overriding-header "Upcoming"))
            )))
 
    ("o" "Todo"
@@ -143,9 +147,9 @@
 (after! org
   (setq org-tag-alist
         '(
-             ("H")
-             ("M")
-             ("L")
+             ("p1")
+             ("p2")
+             ("p3")
              ("@admin")
              ("@comms")
              ("@creative")
@@ -161,9 +165,9 @@
                ))
   (setq org-tag-alist-for-agenda
         '(
-             ("H")
-             ("M")
-             ("L")
+             ("p1")
+             ("p2")
+             ("p3")
              ("@admin")
              ("@comms")
              ("@creative")
