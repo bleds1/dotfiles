@@ -10,9 +10,9 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     adjust_window_size_when_changing_font_size = false,
-    font_size = 10,
+    font_size = 12,
     font = wezterm.font_with_fallback {
-      'JetBrains Mono',
+      'Ubuntu Mono',
     },
     -- NOTE When not using Catppuccin (above) comment out these for usual color scheme
     -- colors = {

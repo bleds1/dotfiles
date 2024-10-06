@@ -54,7 +54,7 @@ alias glog='git log --graph --oneline --decorate'
 #set
 alias setus='setxkbmap -layout us'
 alias setuk='setxkbmap -layout gb'
-alias setcap='setxkbmap -option caps:escape'
+# alias setcap='setxkbmap -option caps:escape'
 # tmux
 alias ts="tmux-sessionizer.sh"
 alias t="tmux"

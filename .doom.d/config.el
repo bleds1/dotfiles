@@ -1,9 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-(setq doom-font (font-spec :family "JetBrains Mono" :size 13)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 13)
-      doom-serif-font (font-spec :family "JetBrains Mono" :size 13)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
+(setq doom-font (font-spec :family "Ubuntu Mono" :size 15)
+      doom-big-font (font-spec :family "Ubuntu Mono" :size 15)
+      doom-serif-font (font-spec :family "Ubuntu Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 15))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
@@ -156,12 +156,17 @@
              ("@domestic")
              ("@errands")
              ("@health")
+             ("@na")
              ("@read")
              ("@research")
              ("@system")
              ("@watch")
              ("@website")
+             ("@work")
              ("@youtube")
+             ("watched")
+             ("post")
+             ("posted")
                ))
   (setq org-tag-alist-for-agenda
         '(
@@ -174,12 +179,17 @@
              ("@domestic")
              ("@errands")
              ("@health")
+             ("@na")
              ("@read")
              ("@research")
              ("@system")
              ("@watch")
              ("@website")
+             ("@work")
              ("@youtube")
+             ("watched")
+             ("post")
+             ("posted")
                )))
 ;; Keybinds
 ;; Function to find files with keybind
@@ -192,7 +202,7 @@
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
-(zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
+;; (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
 (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
@@ -209,7 +219,7 @@
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
-(global-set-key (kbd "C-c n m") 'notmuch-search)
+;; (global-set-key (kbd "C-c n m") 'notmuch-search)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
@@ -312,7 +322,7 @@
 (map! :leader
       :prefix "j"
       :desc "avy-goto-char-timer" "j" #'avy-goto-char-timer)
-;; org agenda week/day view
+;; org agenda week/day view (must be in agenda view)
 (map! :leader
       :prefix "o"
       :desc "org-agenda-day-view" "1" #'org-agenda-day-view)
@@ -378,19 +388,20 @@
          (file+head "${title}.org" "#+title: ${title}\n#+filetags: permanent seedling\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
+        ("P" " Project" plain "%?"
+         :if-new
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: project\n#+options: toc:nil num:nil author:nil\n")
+         :immediate-finish t
+         :unnarrowed t)
         ("a" " Article" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article seedling\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
          :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
          :empty-lines-before 1)))
-
-;; (defun jethro/tag-new-node-as-seedling ()
-;;   (org-roam-tag-add '("seedling")))
-;; (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-seedling)
 ;;
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
@@ -489,9 +500,6 @@
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 ;;
-;; Vterm confirm quit
-(after! vterm
-  (setq vterm-kill-buffer-on-exit t))
 ;; Function to run my mail sync script
 ;; (defun mail-sync-script ()
 ;;   "Run my custom shell script"
@@ -580,7 +588,7 @@
   (add-to-list 'doom-modeline-mode-alist '(nov-mode . nov)))
 
 ;; hl-line mode
-(setq hl-line-mode nil)
+(setq hl-line-mode -1)
 (setq global-hl-line-mode nil)
 
 ;; Load other config files
@@ -614,9 +622,6 @@
 ;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
-;; Global hl line mode NOTE: This doesn't seem to stick..
-(setq hl-line-mode nil)
-(setq global-hl-line-mode nil)
 ;; Let the desktop background show through
 (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
 (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
