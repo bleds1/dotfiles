@@ -1,9 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ; Fonts
-(setq doom-font (font-spec :family "Ubuntu Mono" :size 15)
-      doom-big-font (font-spec :family "Ubuntu Mono" :size 15)
-      doom-serif-font (font-spec :family "Ubuntu Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 15))
+(setq doom-font (font-spec :family "Ubuntu Mono" :size 16)
+      doom-big-font (font-spec :family "Ubuntu Mono" :size 16)
+      doom-serif-font (font-spec :family "Ubuntu Mono" :size 16)
+      doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 16))
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 ; Split behaviour Always right & below and ask for buffer choice
