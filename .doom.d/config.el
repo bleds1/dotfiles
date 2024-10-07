@@ -514,8 +514,8 @@
   (interactive)
   (notmuch-search "tag:inbox"))
 
-(map! :leader
-      :desc "Search inbox" "o i" #'notmuch-inbox-search)
+;; (map! :leader
+;;       :desc "Search inbox" "o i" #'notmuch-inbox-search)
 
 ; nov (epub reader)
 (use-package! nov
