@@ -22,7 +22,7 @@ bindsym $mod+w layout toggle splith splitv
 bindsym $mod+Shift+b exec brave
 bindsym $mod+e exec emacsclient -c -a emacs
 bindsym $mod+Shift+m exec rofi -modi emoji -show emoji
-bindsym $mod+Shift+Return exec wezterm
+bindsym $mod+Shift+Return exec st
 bindsym $mod+o exec emacsclient -c -a 'emacs' --eval '(dired nil)'
 
 bindsym $mod+p exec rofi -show run
@@ -159,7 +159,7 @@ bindsym $mod+Control+c reload
 bindsym $mod+Control+r restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+q exec xfce4-session-logout
+# bindsym $mod+Shift+q exec xfce4-session-logout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
