@@ -32,7 +32,6 @@ bindsym $mod+Shift+p exec ~/.scripts/rofi_pass
 bindsym $mod+period exec thunar
 bindsym $mod+Shift+period exec st -e ranger
 bindsym $mod+Shift+z exec i3lock --color=000000
-bindsym $mod+slash exec catfish
 
 bindsym Mod1+Tab workspace back_and_forth
 bindsym Mod1+shift+Tab workspace prev
