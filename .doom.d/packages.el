@@ -71,3 +71,5 @@
 (package! focus)
 
 (package! nov)
+
+(package! org-alert)

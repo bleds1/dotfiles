@@ -517,6 +517,19 @@
 ;; (map! :leader
 ;;       :desc "Search inbox" "o i" #'notmuch-inbox-search)
 
+;; Loads the pass package installed from MELPA
+(use-package! pass)
+
+;; org alert package
+(use-package! org-alert
+  :ensure t
+  :custom (alert-default-style 'libnotify)
+  :config
+  (setq org-alert-interval 1800
+        org-alert-notify-cutoff 15
+        org-alert-notification-title "Upcoming Task")
+  (org-alert-enable))
+;;
 ; nov (epub reader)
 (use-package! nov
   :mode ("\\.epub\\'" . nov-mode)
