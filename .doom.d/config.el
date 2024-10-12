@@ -25,7 +25,7 @@
 
 ; Initial buffer
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-(setq initial-scratch-message "# org-mode scratch buffer")
+(setq initial-scratch-message " ")
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 
@@ -637,4 +637,4 @@
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 ;; Let the desktop background show through
 (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
