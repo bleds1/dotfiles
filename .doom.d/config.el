@@ -67,6 +67,7 @@
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 ; Function to clock in on DOING
+(after! org
 (defun org-clock-todo-change ()
   (if (string= org-state "DOING")
       (org-clock-in)
@@ -81,8 +82,10 @@
   (if (string= task-state "TODO")
       "DOING"
       task-state))
+)
 ; Org Priorities
-(setq
+(after! org
+ (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
 (setq org-superstar-prettify-item-bullets nil)
 (after! org-fancy-priorities
@@ -93,7 +96,7 @@
      (?B :foreground "#1c7870" :weight bold)
      (?C :foreground "#5d6265" :weight bold))
    ))
-
+)
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
@@ -522,7 +525,6 @@
 
 ;; org alert package
 (use-package! org-alert
-  :ensure t
   :custom (alert-default-style 'libnotify)
   :config
   (setq org-alert-interval 1800
