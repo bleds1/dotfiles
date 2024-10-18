@@ -24,11 +24,33 @@
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+;
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+;
+; Make markdown buffer easier
+(evil-define-command +evil-buffer-markdown-new (_count file)
+  "Creates a new markdown buffer replacing the current window, optionally
+   editing a certain FILE"
+  :repeat nil
+  (interactive "P<f>")
+  (if file
+      (evil-edit file)
+    (let ((buffer (generate-new-buffer "*new md*")))
+      (set-window-buffer nil buffer)
+      (with-current-buffer buffer
+        (markdown-mode)
+        (setq-local doom-real-buffer-p t)))))
 
+(map! :leader
+      (:prefix "n"
+       :desc "New empty Markdown buffer" "M" #'+evil-buffer-markdown-new))
+;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
@@ -40,7 +62,7 @@
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
       org-log-reschedule 'time
-      org-deadline-warning-days 1
+      org-deadline-warning-days 0
       org-ellipsis " ▾ "
       org-hide-emphasis-markers t
       org-clock-into-drawer t)
@@ -299,6 +321,9 @@
       (:prefix ("n" . "now header")
                 :desc "now header" "h" #'now))
 (map! :leader
+      (:prefix ("n" . "narrow markdown block")
+               :desc "narrow markdown block" "b" #'markdown-narrow-to-block))
+(map! :leader
       (:prefix ("n" . "org-roam-dailies-goto-yesterday")
                 :desc "org-roam-dailies-goto-yesterday" "y" #'org-roam-dailies-goto-yesterday))
 (map! :leader
@@ -366,7 +391,7 @@
 ;; Writeroom Zen mode appearance
 ;; (add-hook 'writeroom-mode-hook (lambda () (display-line-numbers-mode -1)))
 (setq writeroom-mode-line t
-      writeroom-width 120
+      writeroom-width 110
       +zen-text-scale 0.3)
 
 ;; Org roam
@@ -638,5 +663,8 @@
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 ;; Let the desktop background show through
-(set-frame-parameter (selected-frame) 'alpha '(97 . 100))
-(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+;; (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
+;; (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+
+(set-frame-parameter (selected-frame) 'alpha '(100 . 100))
+(add-to-list 'default-frame-alist '(alpha . (100 . 100)))
