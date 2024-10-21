@@ -28,7 +28,8 @@
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 ;
-(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+;; (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+(setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -248,6 +249,10 @@
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
+;; Switch between vterm buffer and previous
+(global-set-key (kbd "C-c 0") (lambda ()
+                              (interactive)
+                              (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 ;; # Dired
 (after! dired
 (evil-define-key 'normal dired-mode-map
