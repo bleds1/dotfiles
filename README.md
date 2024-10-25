@@ -6,19 +6,19 @@ Arch Linux
 
 Thinkpad T460
 
-Window manager: i3
+Window manager: Mutter
 
-DE: xfce
+DE: Gnome
 
-Terminal: wezterm
+Terminal: st
 
 Shell: bash
 
+## st
+(see my other repo for suckless tools)
+
 ## Doom Emacs
 [https://github.com/doomemacs/doomemacs]
-
-## Wezterm
-[https://github.com/wez/wezterm]
 
 ## i3wm
 [https://github.com/Airblader/i3]
@@ -42,13 +42,13 @@ Shell: bash
 [https://github.com/starship/starship]
 
 
-(see my other repos for suckless tools & scripts)
-
-
-## I keep a lot of inactive stuff in here that I used to use and may need again in the future. 
+## I keep a lot of inactive stuff in here that I used to use and may need again in the future.
 
 ## Qutebrowser
 [https://github.com/qutebrowser/qutebrowser]
+
+## Wezterm
+[https://github.com/wez/wezterm]
 
 ## Zsh
 [https://github.com/zsh-users/zsh]
@@ -70,4 +70,4 @@ Shell: bash
 
 + Probably more..
 
-*TODO:* Flesh out this readme and add screenshots/system info/descriptions
+TODO: Flesh out this readme and add screenshots/system info/descriptions
