@@ -1,11 +1,14 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
 ; Fonts
-(setq doom-font (font-spec :family "Ubuntu Mono" :size 16)
-      doom-big-font (font-spec :family "Ubuntu Mono" :size 16)
-      doom-serif-font (font-spec :family "Ubuntu Mono" :size 16)
-      doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 16))
+(setq doom-font (font-spec :family "Fira Code" :size 15)
+      doom-big-font (font-spec :family "Fira Code" :size 15)
+      doom-serif-font (font-spec :family "Fira Code" :size 15)
+      doom-variable-pitch-font (font-spec :family "Fira Code" :size 15))
+
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
+
 ; Split behaviour Always right & below and ask for buffer choice
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
@@ -21,6 +24,7 @@
       evil-want-fine-undo t
       scroll-margin 2)
 
+; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)
 
 ; Initial buffer
@@ -33,7 +37,7 @@
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-;
+
 ; Make markdown buffer easier
 (evil-define-command +evil-buffer-markdown-new (_count file)
   "Creates a new markdown buffer replacing the current window, optionally
@@ -51,9 +55,9 @@
 (map! :leader
       (:prefix "n"
        :desc "New empty Markdown buffer" "M" #'+evil-buffer-markdown-new))
-;
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+
+;; Org
+;; NOTE: `org-directory' Must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-roam-directory "~/org/roam/")
 (setq org-roam-dailies-directory "~/org/roam/daily/")
@@ -89,6 +93,7 @@
        ("SOMEDAY" :foreground "#5d6265" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
+
 ; Function to clock in on DOING
 (after! org
 (defun org-clock-todo-change ()
@@ -106,6 +111,7 @@
       "DOING"
       task-state))
 )
+
 ; Org Priorities
 (after! org
  (setq
@@ -120,6 +126,7 @@
      (?C :foreground "#5d6265" :weight bold))
    ))
 )
+
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
@@ -143,6 +150,7 @@
             (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
            ))
+
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
  '(
@@ -170,6 +178,8 @@
     ((tags-todo "-@goal-@someday-{.*}")))
 
       ))
+
+; Org tag alist
 (after! org
   (setq org-tag-alist
         '(
@@ -217,6 +227,7 @@
              ("post")
              ("posted")
                )))
+
 ;; Keybinds
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -278,6 +289,7 @@
   (kbd "N") 'evil-search-previous
   (kbd "q") 'kill-this-buffer
   ))
+
 ;; Leader Keybinds
 ;; Easier key for terminal popup
 (map! :leader
@@ -381,10 +393,10 @@
         doom-modeline-modal nil
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
+
 ;; Theme
-;; (setq doom-theme 'modus-mono)
-;; (setq doom-theme 'doom-one)
 (setq doom-theme 'catppuccin)
+
 ;; Cursor
 (setq
       evil-normal-state-cursor '(box "#679FC7")
@@ -392,12 +404,12 @@
       evil-visual-state-cursor '(hollow "#c280A0"))
 (after! solaire-mode
   (solaire-global-mode -1))
-;;
+
 ;; Writeroom Zen mode appearance
 ;; (add-hook 'writeroom-mode-hook (lambda () (display-line-numbers-mode -1)))
 (setq writeroom-mode-line t
       writeroom-width 110
-      +zen-text-scale 0.3)
+      +zen-text-scale 0.1)
 
 ;; Org roam
 (setq org-roam-db-autosync-mode t
@@ -634,7 +646,7 @@
 
 ;; hl-line mode
 (setq hl-line-mode -1)
-(setq global-hl-line-mode nil)
+(setq global-hl-line-mode -1)
 
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
@@ -643,6 +655,7 @@
  (interactive)
  (insert (format-time-string "* %H:%M" )
  ))
+
 ;; Online lookup provider list
 (setq +lookup-provider-url-alist
       '(("Doom issues"       "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
@@ -654,8 +667,10 @@
         ("Wikipedia"         "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
         ("Arch Wiki"         "https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch&wprov=acrw1")
         ("AUR"               "https://aur.archlinux.org/packages?O=0&K=%s")))
+
 ;; Escape insert mode with jk kj
 (setq evil-escape-unordered-key-sequence t)
+
 ;; Line numbers with exceptions
 (setq display-line-numbers-type 'relative)
 (dolist (mode '(org-mode-hook
@@ -667,9 +682,12 @@
 ;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
-;; Let the desktop background show through
+
+;; Transparency
 ;; (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
 ;; (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
 (set-frame-parameter (selected-frame) 'alpha '(100 . 100))
 (add-to-list 'default-frame-alist '(alpha . (100 . 100)))
+;;
+;;: config.el ends here
