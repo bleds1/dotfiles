@@ -50,9 +50,6 @@ Shell: bash
 ## Wezterm
 [https://github.com/wez/wezterm]
 
-## Zsh
-[https://github.com/zsh-users/zsh]
-
 ## Kitty
 [https://github.com/kovidgoyal/kitty]
 
@@ -61,9 +58,6 @@ Shell: bash
 
 ## Conky
 [https://github.com/brndnmtthws/conky]
-
-## VSCodium
-[https://github.com/VSCodium/vscodium]
 
 ## Taskwarrior
 [https://github.com/GothenburgBitFactory/taskwarrior]
