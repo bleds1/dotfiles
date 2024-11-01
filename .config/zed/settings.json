@@ -1,0 +1,59 @@
+{
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "scroll_beyond_last_line": "off",
+  "vertical_scroll_margin": 0,
+  "confirm_quit": false,
+  "indent_guides": {
+    "enabled": false
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "features": {
+    "inline_completion_provider": "none",
+    "copilot": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "dock": "left",
+    "button": false
+  },
+  "terminal": {
+    "dock": "bottom",
+    "font_family": "Fira Code",
+    "font_size": 13
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "assistant": {
+    "enabled": false,
+    "version": "2",
+    "button": false
+  },
+  "assistant_v2": {
+    "enabled": false
+  },
+  "cursor_blink": false,
+  "soft_wrap": "editor_width",
+  "scrollbar": { "show": "never" },
+  "format_on_save": "off",
+  "tab_size": 2,
+  "ui_font_size": 14,
+  "ui_font_family": "Ubuntu",
+  "buffer_font_size": 14,
+  "buffer_font_family": "Fira Code",
+  "theme": {
+    "mode": "system",
+    "light": "Adwaita Pastel Light",
+    "dark": "Adwaita Pastel Dark"
+  }
+}
