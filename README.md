@@ -20,6 +20,9 @@ Shell: bash
 ## Doom Emacs
 [https://github.com/doomemacs/doomemacs]
 
+## Zed
+[https://github.com/zed-industries/zed]
+
 ## i3wm
 [https://github.com/Airblader/i3]
 
