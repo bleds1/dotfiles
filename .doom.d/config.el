@@ -445,7 +445,7 @@
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n* Today's Tasks\n - [ ]\n - [ ]\n - [ ]\n")
          :empty-lines-before 1)))
 ;;
 ;; This function from System Crafters allows you to make empty node/links to detail out later
