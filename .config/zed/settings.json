@@ -1,4 +1,11 @@
 {
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -15,10 +22,10 @@
     "breadcrumbs": false,
     "quick_actions": false
   },
-  "features": {
-    "inline_completion_provider": "none",
-    "copilot": false
-  },
+  // "features": {
+  //   "inline_completion_provider": "none",
+  //   "copilot": false
+  // },
   "collaboration_panel": {
     "button": false
   },
@@ -34,14 +41,14 @@
   "chat_panel": {
     "button": false
   },
-  "assistant": {
-    "enabled": false,
-    "version": "2",
-    "button": false
-  },
-  "assistant_v2": {
-    "enabled": false
-  },
+  // "assistant": {
+  //   "enabled": false,
+  //   "version": "2",
+  //   "button": false
+  // },
+  // "assistant_v2": {
+  //   "enabled": false
+  // },
   "cursor_blink": false,
   "soft_wrap": "editor_width",
   "scrollbar": { "show": "never" },
