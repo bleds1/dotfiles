@@ -4,7 +4,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<M-x>", ":")
 -- File Explorer (nvimtree)
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
-vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
+-- vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 -- fzf find files
 vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
 vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>")
@@ -106,7 +107,7 @@ end
 vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { noremap = true, silent = true })
 -- Obsidian.nvim
 -- vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
-vim.keymap.set("n", "<leader>,", ":e ~/vault/Fleeting/<CR>")
+-- vim.keymap.set("n", "<leader>,", ":e ~/vault/Fleeting/<CR>")
 -- vim.keymap.set("n", "<leader>,,", ":split ~/vault/log.md<CR>")
 -- vim.keymap.set("n", "<leader>oy", ":ObsidianToday -1<CR>")
 -- vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
@@ -133,7 +134,7 @@ vim.keymap.set("n", "<leader>ss", ":Telescope<CR>")
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
 -- Go to vault dir
-vim.keymap.set("n", "<leader>gv", ":cd ~/vault/<CR>")
+-- vim.keymap.set("n", "<leader>gv", ":cd ~/vault/<CR>")
 -- Go to dotfiles dir
 vim.keymap.set("n", "<leader>g.", ":cd ~/dotfiles/<CR>")
 -- Go to blog dir

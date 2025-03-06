@@ -85,4 +85,4 @@ urgency.user.project.Upcoming.coefficient=0.6
 urgency.user.project.Backburner.coefficient=-2.5
 urgency.user.project.Someday.coefficient=-3.0
 
-news.version=2.6.0
+news.version=3.3.0
