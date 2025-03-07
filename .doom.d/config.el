@@ -92,7 +92,7 @@
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
-; Function to clock in on DOING
+; Function to clock in on DOING (Don't think this is working)
 (after! org
 (defun org-clock-todo-change ()
   (if (string= org-state "DOING")
@@ -132,16 +132,8 @@
             (file "~/org/tpl/tpl-inbox.txt") :empty-lines-before 1)
            ("t" " Todo" entry (file "~/org/inbox.org")
             (file "~/org/tpl/tpl-todo.txt") :empty-lines-before 1)
-           ;; ("c" " Contact" plain (file "~/org/contacts.org")
-           ;;  (file "~/org/tpl/tpl-contact.txt"))
-           ("d" " Daily Plan" plain (file+datetree "~/org/daily.org")
-            (file "~/org/tpl/tpl-daily.txt") :immediate-finish t)
-           ;; ("e" " Event" entry (file "~/org/events.org")
-           ;;  "** %?")
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
-          ;;  ("m" " Mail" entry (file+olp "~/org/inbox.org" "INBOX")
-          ;; "** TODO %a :@email:@computer: \nSCHEDULED:%t\n\n%i")
            ("s" " Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
            ("w" " Weekly Review" plain (file buffer-name)
@@ -316,10 +308,14 @@
 (map! :leader
       (:prefix ("n" . "Insert node immediate")
                 :desc "Insert node immediate" "r I" #'org-roam-node-insert-immediate))
-;; dashboard
+;; dashboard (old)
+;; (map! :leader
+;;       :desc "+doom-dashboard/open"
+;;       "d" '+doom-dashboard/open)
+; Replaced dashboard with daily note
 (map! :leader
-      :desc "+doom-dashboard/open"
-      "d" '+doom-dashboard/open)
+      :desc "org-roram-dailies-goto-today"
+      "d" #'org-roam-dailies-goto-today)
 ;; Evil write all buffers
 (map! :leader
       (:prefix ("w" . "Write all buffers")
@@ -344,6 +340,7 @@
 (map! :leader
       :prefix "o"
       :desc "org-agenda-week-view" "2" #'org-agenda-week-view)
+
 ;; Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
@@ -364,10 +361,10 @@
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
 
-;; Theme
+;; Theme (base but with many tweaks in custom.el)
 (setq doom-theme 'catppuccin)
 
-;; Cursor
+;; Cursor colours
 (setq
       evil-normal-state-cursor '(box "#679FC7")
       evil-insert-state-cursor '(bar "#679FC7")
@@ -387,7 +384,7 @@
       org-id-method 'ts
       org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
-      '(("s" "󰟷 Fleeting" plain
+      '(("f" "󰟷 Fleeting" plain
          "%?"
          :if-new (file+head "${slug}.org"
                             "#+title: ${title}\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
@@ -407,12 +404,8 @@
          :if-new
          (file+head "${title}.org" "#+title: ${title}\n#+filetags: project\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
-         :unnarrowed t)
-        ("a" " Article" plain "%?"
-         :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: article\n#+options: toc:nil num:nil author:nil\n")
-         :immediate-finish t
          :unnarrowed t)))
+
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
          :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n")
@@ -514,7 +507,7 @@
 ;; Org Clock SFX
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
-;;
+
 ;; Function to run my mail sync script
 ;; (defun mail-sync-script ()
 ;;   "Run my custom shell script"
@@ -523,11 +516,11 @@
 
 ;; (map! :leader
 ;;       :desc "mail sync script" "m s" #'mail-sync-script)
-;;
-(defun notmuch-inbox-search ()
-  "Search for emails with the tag:inbox using notmuch"
-  (interactive)
-  (notmuch-search "tag:inbox"))
+
+;; (defun notmuch-inbox-search ()
+;;   "Search for emails with the tag:inbox using notmuch"
+;;   (interactive)
+;;   (notmuch-search "tag:inbox"))
 
 ;; (map! :leader
 ;;       :desc "Search inbox" "o i" #'notmuch-inbox-search)
@@ -579,6 +572,7 @@
 
   (add-hook 'nov-mode-hook #'+nov-mode-setup))
 
+;; nov modeline
 (after! doom-modeline
   (defvar doom-modeline-nov-title-max-length 20)
   (doom-modeline-def-segment nov-author
@@ -616,6 +610,7 @@
 
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
+
 ;; Timestamp function
 (defun now ()
  (interactive)
@@ -649,12 +644,12 @@
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
-;; hl-line mode
+;; highlight line mode
 (setq hl-line-mode -1)
 (setq global-hl-line-mode -1)
 
 ;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(97 . 100))
-(add-to-list 'default-frame-alist '(alpha . (97 . 97)))
+(set-frame-parameter (selected-frame) 'alpha '(95 . 100))
+(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;;
 ;;: config.el ends here

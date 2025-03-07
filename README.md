@@ -10,7 +10,7 @@ Window manager: Mutter
 
 DE: Gnome
 
-Terminal: st
+Terminal: st or ghostty
 
 Shell: bash
 
@@ -20,14 +20,11 @@ Shell: bash
 ## Doom Emacs
 [https://github.com/doomemacs/doomemacs]
 
+## Ghostty
+[https://github.com/ghostty-org/ghostty]
+
 ## Zed
 [https://github.com/zed-industries/zed]
-
-## i3wm
-[https://github.com/Airblader/i3]
-
-## Rofi
-[ https://github.com/davatorium/rofi]
 
 ## Ranger
 [https://github.com/ranger/ranger]
@@ -38,14 +35,20 @@ Shell: bash
 ## Tmux
 [https://github.com/tmux/tmux]
 
-## Picom
-[https://github.com/yshui/picom]
-
 ## Starship
 [https://github.com/starship/starship]
 
 
 ## I keep a lot of inactive stuff in here that I used to use and may need again in the future.
+
+## i3wm
+[https://github.com/Airblader/i3]
+
+## Rofi
+[ https://github.com/davatorium/rofi]
+
+## Picom
+[https://github.com/yshui/picom]
 
 ## Qutebrowser
 [https://github.com/qutebrowser/qutebrowser]
