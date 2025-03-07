@@ -7,9 +7,12 @@
 PS1='[\u@\h \W]\$ '
 #! PS1="\w\n\e[1;34m$\e[m "
 # PS1="\e[1;34m$\e[m "
-#
+
 # Add Emacs/Doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
+
+# neovim as man page reader
+export MANPAGER="nvim +Man!"
 
 HISTSIZE=100000
 
@@ -39,9 +42,9 @@ alias zat="zathura"
 
 # Emacs
 # Emacs always launches client if open (if not just emacs)
-alias emacs="emacsclient -c -a 'emacs'"
+# alias emacs="emacsclient -c -a 'emacs'"
 # Emacs terminal mode
-alias e="emacs -nw"
+alias e="emacsclient -nw"
 # Access dired directly from terminal
 alias dired="emacsclient -c -a 'emacs' --eval '(dired nil)' & disown"
 

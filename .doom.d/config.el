@@ -1,10 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ; Fonts
-(setq doom-font (font-spec :family "Fira Code" :size 15)
-      doom-big-font (font-spec :family "Fira Code" :size 15)
-      doom-serif-font (font-spec :family "Fira Code" :size 15)
-      doom-variable-pitch-font (font-spec :family "Fira Code" :size 15))
+(setq doom-font (font-spec :family "Fira Code" :size 16)
+      doom-big-font (font-spec :family "Fira Code" :size 16)
+      doom-serif-font (font-spec :family "Fira Code" :size 16)
+      doom-variable-pitch-font (font-spec :family "Fira Code" :size 16))
 
 ; Dashboard
 (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
@@ -32,8 +32,8 @@
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 ;
-;; (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-(setq initial-buffer-choice 'vterm)
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+;; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'org-mode)
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -79,7 +79,6 @@
          "GOAL(g)"
          "PROJECT(p)"
          "DELEGATED(/)"
-         "SOMEDAY(s)"
          "|"
          "DONE(d)"
          "CANCELLED(c)" )))
@@ -90,7 +89,6 @@
        ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
        ("DELEGATED" :foreground "#5d6265" :weight bold)
-       ("SOMEDAY" :foreground "#5d6265" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
@@ -186,46 +184,18 @@
              ("p1")
              ("p2")
              ("p3")
-             ("@admin")
-             ("@comms")
-             ("@creative")
-             ("@domestic")
-             ("@errands")
-             ("@health")
              ("@na")
-             ("@read")
-             ("@research")
-             ("@system")
-             ("@watch")
-             ("@website")
              ("@work")
-             ("@youtube")
-             ("watched")
-             ("post")
-             ("posted")
+             ("@personal")
                ))
   (setq org-tag-alist-for-agenda
         '(
              ("p1")
              ("p2")
              ("p3")
-             ("@admin")
-             ("@comms")
-             ("@creative")
-             ("@domestic")
-             ("@errands")
-             ("@health")
              ("@na")
-             ("@read")
-             ("@research")
-             ("@system")
-             ("@watch")
-             ("@website")
              ("@work")
-             ("@youtube")
-             ("watched")
-             ("post")
-             ("posted")
+             ("@personal")
                )))
 
 ;; Keybinds
@@ -261,9 +231,9 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
 ;; Switch between vterm buffer and previous
-(global-set-key (kbd "C-c 0") (lambda ()
-                              (interactive)
-                              (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
+;; (global-set-key (kbd "C-c 0") (lambda ()
+;;                               (interactive)
+;;                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 ;; # Dired
 (after! dired
 (evil-define-key 'normal dired-mode-map
@@ -445,9 +415,9 @@
          :unnarrowed t)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n* Today's Tasks\n - [ ]\n - [ ]\n - [ ]\n")
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n")
          :empty-lines-before 1)))
-;;
+
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
@@ -644,10 +614,6 @@
 
   (add-to-list 'doom-modeline-mode-alist '(nov-mode . nov)))
 
-;; hl-line mode
-(setq hl-line-mode -1)
-(setq global-hl-line-mode -1)
-
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
 ;; Timestamp function
@@ -683,10 +649,11 @@
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
-;; Transparency
-;; (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
-;; (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+;; hl-line mode
+(setq hl-line-mode -1)
+(setq global-hl-line-mode -1)
 
+;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(97 . 100))
 (add-to-list 'default-frame-alist '(alpha . (97 . 97)))
 ;;

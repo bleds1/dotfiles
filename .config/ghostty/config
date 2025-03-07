@@ -1,0 +1,31 @@
+# Ghostty config  /home/bledley/.config/ghostty/config
+
+# # following line uncommented launches a script to attach to tmux session on opening a window
+# command = ~/.scripts/ghostmux.sh
+
+font-family = JetBrainsMono
+font-size = 13
+background = #000000
+background-opacity = 0.9
+bold-is-bright = true
+
+cursor-style = block
+cursor-style-blink =false
+cursor-color = #6b95b8
+
+window-decoration = true
+window-padding-y = 5
+window-padding-x = 5
+window-width = 140
+window-height = 40
+gtk-titlebar-hide-when-maximized = true
+#gtk-titlebar = false
+window-save-state = always
+
+confirm-close-surface = false
+
+keybind = ctrl+enter=unbind
+keybind = ctrl+shift+h=new_split:left
+keybind = ctrl+shift+j=new_split:down
+keybind = ctrl+shift+k=new_split:up
+keybind = ctrl+shift+l=new_split:right
