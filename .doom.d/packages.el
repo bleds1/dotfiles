@@ -73,3 +73,5 @@
 (package! nov)
 
 (package! org-alert)
+
+(package! org-roam-ui)

@@ -7,7 +7,7 @@
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 16))
 
 ; Dashboard
-(setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
+;; (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
 
 ; Split behaviour Always right & below and ask for buffer choice
 (setq evil-vsplit-window-right t
@@ -74,21 +74,21 @@
 (setq! org-todo-keywords
       '((sequence
          "TODO(t)"
-         "DOING(a)"
-         "WAITING(w)"
+         "DOING(a!)"
+         "NEXT(n)"
+         "WAITING(w!)"
          "GOAL(g)"
          "PROJECT(p)"
-         "DELEGATED(/)"
          "|"
-         "DONE(d)"
-         "CANCELLED(c)" )))
+         "DONE(d!)"
+         "CANCELLED(c!)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
        ("DOING" :foreground "#1c7870" :weight bold)
+       ("NEXT" :foreground "#ff7f50" :weight bold)
        ("WAITING" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJECT" :foreground "#845bc8" :weight bold)
-       ("DELEGATED" :foreground "#5d6265" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
@@ -128,14 +128,19 @@
 ; Org Capture Templates
 (after! org
   (setq! org-capture-templates
-          '(("i" " Inbox" entry (file "~/org/inbox.org")
-            (file "~/org/tpl/tpl-inbox.txt") :empty-lines-before 1)
-           ("t" " Todo" entry (file "~/org/inbox.org")
-            (file "~/org/tpl/tpl-todo.txt") :empty-lines-before 1)
-           ("g" " Goal" entry (file+headline "~/org/goals.org"
-            "Capture") (file "~/org/tpl/tpl-goal.txt"))
+
+        '(("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
+         "** TODO %? :p2:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\")) \n")
+
+           ("q" " Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
+            (file "~/org/tpl/tpl-todo.txt"))
+
            ("s" " Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
+
+           ("g" " Goal" entry (file+headline "~/org/goals.org"
+            "Capture") (file "~/org/tpl/tpl-goal.txt"))
+
            ("w" " Weekly Review" plain (file buffer-name)
             (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
@@ -145,23 +150,39 @@
 (setq org-agenda-custom-commands
  '(
 
-   ("p1" "High Priority"
-    ((tags-todo "+p1-DONE-@someday")))
+   ("1" "High Priority"
+    ((tags-todo "+p1-DONE-@someday"
+           ((org-agenda-overriding-header "High Priority Todos"))
+                )))
 
-   ("p2" "Medium Priority"
-    ((tags-todo "+p2-DONE-@someday")))
+   ("2" "Medium Priority"
+    ((tags-todo "+p2-DONE-@someday"
+           ((org-agenda-overriding-header "Medium Priority Todos"))
+                )))
 
-   ("p3" "Low Priority"
-    ((tags-todo "+p3-DONE-@someday")))
+   ("3" "Low Priority"
+    ((tags-todo "+p3-DONE-@someday"
+           ((org-agenda-overriding-header "Low Priority Todos"))
+                )))
 
-   ("i" "Inbox"
-    ((tags "@refile-@someday"
-           ((org-agenda-overriding-header "Inbox needs refiling/scheduling"))
+   ("p" "Personal"
+    ((tags-todo "+sb-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "Personal Todos"))
+           )))
+
+   ("n" "Navigators"
+    ((tags-todo "+na-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "Navigators Todos"))
+           )))
+
+   ("w" "Work"
+    ((tags-todo "+work-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "Work Todos"))
            )))
 
    ("o" "Todo"
     ((todo "TODO"
-           ((org-agenda-overriding-header "Todo's"))
+           ((org-agenda-overriding-header "All Todos"))
            )))
 
    ("u" "Untagged"
@@ -176,18 +197,20 @@
              ("p1")
              ("p2")
              ("p3")
-             ("@na")
-             ("@work")
-             ("@personal")
+             ("p4")
+             ("na")
+             ("work")
+             ("sb")
                ))
   (setq org-tag-alist-for-agenda
         '(
              ("p1")
              ("p2")
              ("p3")
-             ("@na")
-             ("@work")
-             ("@personal")
+             ("p4")
+             ("na")
+             ("work")
+             ("sb")
                )))
 
 ;; Keybinds
@@ -199,11 +222,11 @@
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
+;; (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 ;; (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-(zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
-(zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
+;; (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
+;; (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
@@ -218,6 +241,7 @@
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
+(global-set-key (kbd "C-s") 'save-buffer)
 ;; (global-set-key (kbd "C-c n m") 'notmuch-search)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -386,29 +410,28 @@
 (setq org-roam-capture-templates
       '(("f" "󰟷 Fleeting" plain
          "%?"
-         :if-new (file+head "${slug}.org"
-                            "#+title: ${title}\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
+         :if-new (file+head "fleeting/${title}.org" "#+title: ${title}\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
         ("r" " Reference" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: reference seedling\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "reference/${title}.org" "#+title: ${title}\n#+filetags: reference\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("p" " Permanent" plain "%?"
+        ("z" " Zettel" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: permanent seedling\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "zk/${title}.org" "#+title: ${title}\n#+filetags: zk\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("P" " Project" plain "%?"
+        ("p" " Project" plain "%?"
          :if-new
-         (file+head "${title}.org" "#+title: ${title}\n#+filetags: project\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "projects/${title}.org" "#+title: ${title}\n#+filetags: project\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n")
+         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+options: toc:nil num:nil author:nil timestamp:nil\n")
          :empty-lines-before 1)))
 
 ;; This function from System Crafters allows you to make empty node/links to detail out later
@@ -418,6 +441,23 @@
         (org-roam-capture-templates (list (append (car org-roam-capture-templates)
                                                   '(:immediate-finish t)))))
     (apply #'org-roam-node-insert args)))
+
+;; Org Roam UI
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
 
 ;; Elfeed
 (require 'elfeed-org)
