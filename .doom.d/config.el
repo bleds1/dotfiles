@@ -689,7 +689,7 @@
 (setq global-hl-line-mode -1)
 
 ;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(95 . 100))
+(set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;;
 ;;: config.el ends here
