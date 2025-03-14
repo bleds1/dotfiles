@@ -12,7 +12,14 @@ PS1='[\u@\h \W]\$ '
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # neovim as man page reader
-export MANPAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
+
+### "less" as manpager
+export MANPAGER "less"
+
+
+# hyprshot dir env
+export HYPRSHOT_DIR=/home/bledley/Pictures/Screenshots
 
 HISTSIZE=100000
 
@@ -96,7 +103,7 @@ alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias notes="cd ~/Documents/zk/"
-alias nn="v ~/Documents/zk/$(date +%Y%m%d%H%M).md"
+# alias nn="v ~/Documents/zk/$(date +%Y%m%d%H%M).md"
 
 # Grep colours
 alias grep="grep --color=auto"
