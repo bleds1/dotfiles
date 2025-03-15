@@ -65,10 +65,10 @@ function GetTmuxSession()
   end
 end
 --Set status bar colors on InsertEnter
-vim.cmd([[
-  augroup StatusBarColors
-    autocmd!
-    autocmd InsertEnter * hi statusline guifg='#282828' guibg=#6B95B8
-    autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#1c1c1c
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup StatusBarColors
+--     autocmd!
+--     autocmd InsertEnter * hi statusline guifg='#282828' guibg=#6B95B8
+--     autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#1c1c1c
+--   augroup END
+-- ]])
