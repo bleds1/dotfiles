@@ -6,11 +6,9 @@ Arch Linux
 
 Thinkpad T460
 
-Window manager: Mutter
+Window manager: Hyprland (dots soon..)
 
-DE: Gnome
-
-Terminal: st or ghostty
+Terminal: st
 
 Shell: bash
 
@@ -20,17 +18,14 @@ Shell: bash
 ## Doom Emacs
 [https://github.com/doomemacs/doomemacs]
 
-## Ghostty
-[https://github.com/ghostty-org/ghostty]
-
-## Zed
-[https://github.com/zed-industries/zed]
-
 ## Ranger
 [https://github.com/ranger/ranger]
 
 ## Neovim
 [https://github.com/neovim/neovim]
+
+## Zed
+[https://github.com/zed-industries/zed]
 
 ## Tmux
 [https://github.com/tmux/tmux]
@@ -52,6 +47,9 @@ Shell: bash
 
 ## Qutebrowser
 [https://github.com/qutebrowser/qutebrowser]
+
+## Ghostty
+[https://github.com/ghostty-org/ghostty]
 
 ## Wezterm
 [https://github.com/wez/wezterm]

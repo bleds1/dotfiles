@@ -37,7 +37,7 @@ alias f="ranger"
 alias h="history | fzf"
 alias iv="nsxiv"
 alias lg="lazygit"
-alias nf="clear && neofetch"
+alias ff="clear && fastfetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
@@ -48,10 +48,8 @@ alias sdn="shutdown -h now"
 alias zat="zathura"
 
 # Emacs
-# Emacs always launches client if open (if not just emacs)
 # alias emacs="emacsclient -c -a 'emacs'"
-# Emacs terminal mode
-alias e="emacsclient -nw"
+alias e="emacsclient"
 # Access dired directly from terminal
 alias dired="emacsclient -c -a 'emacs' --eval '(dired nil)' & disown"
 
