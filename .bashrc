@@ -5,8 +5,6 @@
 
 # Prompt
 PS1='[\u@\h \W]\$ '
-#! PS1="\w\n\e[1;34m$\e[m "
-# PS1="\e[1;34m$\e[m "
 
 # Add Emacs/Doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -16,7 +14,6 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 ### "less" as manpager
 export MANPAGER "less"
-
 
 # hyprshot dir env
 export HYPRSHOT_DIR=/home/bledley/Pictures/Screenshots
@@ -68,11 +65,6 @@ alias gco='git checkout '
 alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias glog='git log --graph --oneline --decorate'
 
-# set keyboard x
-alias setus='setxkbmap -layout us'
-alias setuk='setxkbmap -layout gb'
-# alias setcap='setxkbmap -option caps:escape'
-
 # tmux
 alias ts="tmux-sessionizer.sh"
 alias t="tmux"
@@ -80,18 +72,18 @@ alias ta="tmux attach"
 alias td="tmux detach"
 alias tls="tmux ls"
 
-# ls command to exa for colours etc
-alias dir="exa -a --color=always --sort Name"
-alias l="exa -a --color=always --sort Name"
-alias ls="exa -al --color=always --sort name --group-directories-first"
-alias lm="exa -al --color=always --sort modified --reverse"
-alias ll="exa -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
-alias la="exa -al --color=always --sort Name --group-directories-first"
-alias lt="exa -aT --color=always --group-directories-first"
+# ls command to eza for colours
+alias dir="eza -a --color=always --sort Name"
+alias l="eza -a --color=always --sort Name"
+alias ls="eza -al --color=always --sort name --group-directories-first"
+alias lm="eza -al --color=always --sort modified --reverse"
+alias ll="eza -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
+alias la="eza -al --color=always --sort Name --group-directories-first"
+alias lt="eza -aT --color=always --group-directories-first"
 
 # Directory Shortcuts
 alias sba="cd ~/sba/"
-alias scripts="cd ~/.scripts/"
+alias scrip="cd ~/.scripts/"
 alias suck="cd ~/.config/suckless/"
 alias doc="cd ~/Documents//"
 alias dl="cd ~/Downloads/"
@@ -100,17 +92,12 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
-alias notes="cd ~/Documents/zk/"
-# alias nn="v ~/Documents/zk/$(date +%Y%m%d%H%M).md"
+alias nn="e ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
 
 # Grep colours
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-
-# Screen on (Caffinate)
-alias cafon="xset s off -dpms && echo "Caffeine_ON""
-alias cafoff="xset s on +dpms && echo "Caffeine_OFF""
 
 # Confirmation before overwrite
 alias cp="cp -i -v"
