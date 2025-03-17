@@ -24,6 +24,8 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 
 ## CLI/TUI
 
+![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "Screenshot4")
+
 - Btop (process monitor)
 - Ranger (file manager)
 - Lazygit (git tool)
@@ -45,8 +47,7 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 - Yaru Prussian Green Dark (Folders)
 - Bibata Modern Ice (Cursor)
 
-
-![Desktop Screenshot2](/assets/Screenshot2.jpg?raw=true "Screenshot2")
+![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
 
 ## GUI
 
@@ -76,6 +77,8 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 
 ### App Launcher
 - Rofi-wayland
+
+![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
 
 ### File Manager
 - Nautilus
@@ -120,4 +123,3 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 - FS-UAE
 - Pcsx2
 
-![Desktop Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
