@@ -45,6 +45,9 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 - Yaru Prussian Green Dark (Folders)
 - Bibata Modern Ice (Cursor)
 
+
+![Desktop Screenshot2](/assets/Screenshot2.jpg?raw=true "Screenshot2")
+
 ## GUI
 
 ### Login Manager
@@ -116,3 +119,5 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 - Retroarch
 - FS-UAE
 - Pcsx2
+
+![Desktop Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
