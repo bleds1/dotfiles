@@ -75,13 +75,15 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 ### Lockscreen
 - Hyprlock
 
+![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
+
 ### App Launcher
 - Rofi-wayland
 
-![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
-
 ### File Manager
 - Nautilus
+
+![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
 
 ### Browser
 - Firefox (default)
@@ -101,6 +103,8 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 
 ### Video Player
 - Celluloid (mpv)
+
+![Celluloid video](/assets/Screenshot7.jpg?raw=true "Screenshot7")
 
 ### Video/Audio Editor
 - Kdenlive
