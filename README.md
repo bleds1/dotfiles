@@ -1,7 +1,7 @@
 # Bledley's System
 ![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
 
-NOTE: This is a bit of a run through of what I use. I don't push dots for everything and I keep a lot of inactive unused config stuff in this repo that I may need again in the future.
+NOTE: This is a bit of a run through of what I use for reference mostly. I don't push dots for everything.
 
 ## Machine
 - Thinkpad T460
