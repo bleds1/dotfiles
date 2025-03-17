@@ -32,11 +32,10 @@ config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
-#c.statusbar.show = 'never'
 
 ## Tabs
 # c.tabs.show = 'always'
-c.tabs.show = 'never'
+c.tabs.show = 'always'
 # Background color of the tab bar
 c.colors.tabs.bar.bg = '#1A1A1B'
 # Background color of unselected odd tabs
@@ -128,7 +127,7 @@ c.editor.command = ["emacsclient", "-c", "{}"]
 c.downloads.location.directory = '/home/bledley/Downloads/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://search.brave.com/search?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://4get.ca/web?s={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
@@ -252,8 +251,8 @@ config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
 # config.bind('Ctrl+d', 'scroll-page 0 0.5')
 # config.bind('Ctrl+u', 'scroll-page 0 -0.5')
-config.bind('d', 'scroll-page 0 0.5')
-config.bind('u', 'scroll-page 0 -0.5')
+config.bind('Ctrl+d', 'scroll-page 0 0.5')
+config.bind('Ctrl+u', 'scroll-page 0 -0.5')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
@@ -2230,7 +2229,7 @@ c.scrolling.bar = 'never'
 ##   - always: Always show the statusbar.
 ##   - never: Always hide the statusbar.
 ##   - in-mode: Show the statusbar when in modes other than normal mode.
-c.statusbar.show = 'in-mode'
+c.statusbar.show = 'never'
 
 ## List of widgets displayed in the statusbar.
 ## Type: List of StatusbarWidget
@@ -2465,7 +2464,7 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-c.url.default_page = 'https://search.brave.com'
+c.url.default_page = 'https://4get.ca'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.

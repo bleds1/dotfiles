@@ -1,71 +1,118 @@
-# Bledley's Dotfiles
+# Bledley's System
+![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
 
-## Config files for current setup:
+NOTE: This is a bit of a run through of what I use. I don't push dots for everything and I keep a lot of inactive unused config stuff in this repo that I may need again in the future.
 
-Arch Linux
+## Machine
+- Thinkpad T460
 
-Thinkpad T460
+## Distro
+- Arch Linux
 
-Window manager: Hyprland (dots soon..)
+## Terminal
+- St
+- Vterm (in Emacs)
 
-Terminal: st
+## Shell
+- Bash
 
-Shell: bash
+## Editor
+- Doom Emacs (default)
+- Neovim
+- Zed (occasions)
+- Libreoffice (occasions)
 
-## st
-(see my other repo for suckless tools)
+## CLI/TUI
 
-## Doom Emacs
-[https://github.com/doomemacs/doomemacs]
+- Btop (process monitor)
+- Ranger (file manager)
+- Lazygit (git tool)
+- Fastfetch (system info)
+- Starship (prompt)
+- Eza (ls colouring)
+- Tmux (session manager)
+- Fzf (fuzzy file finder)
+- Hugo (web/blog)
+- + many more
 
-## Ranger
-[https://github.com/ranger/ranger]
+## Fonts
+- JetBrains Mono (terminal/editors)
+- Ubuntu (interface)
 
-## Neovim
-[https://github.com/neovim/neovim]
+## Theme
+- Adwaita Dark (gtk)
+- Papirus (Icons)
+- Yaru Prussian Green Dark (Folders)
+- Bibata Modern Ice (Cursor)
 
-## Zed
-[https://github.com/zed-industries/zed]
+## GUI
 
-## Tmux
-[https://github.com/tmux/tmux]
+### Login Manager
+- GDM
 
-## Starship
-[https://github.com/starship/starship]
+### Window Manager
+- Hyprland
 
+### Status Bar
+- Waybar
 
-## I keep a lot of inactive stuff in here that I used to use and may need again in the future.
+### Notifications
+- Swaync
 
-## i3wm
-[https://github.com/Airblader/i3]
+### Color Picker
+- Hyprpicker
 
-## Rofi
-[ https://github.com/davatorium/rofi]
+### Wallpaper Utility
+- Hyprpaper
 
-## Picom
-[https://github.com/yshui/picom]
+### Screenshots
+- Hyprshot
 
-## Qutebrowser
-[https://github.com/qutebrowser/qutebrowser]
+### Lockscreen
+- Hyprlock
 
-## Ghostty
-[https://github.com/ghostty-org/ghostty]
+### App Launcher
+- Rofi-wayland
 
-## Wezterm
-[https://github.com/wez/wezterm]
+### File Manager
+- Nautilus
 
-## Kitty
-[https://github.com/kovidgoyal/kitty]
+### Browser
+- Firefox (default)
+- Brave/Qutebrowser (occasions)
 
-## Polybar
-[https://github.com/polybar/polybar]
+### Image Viewer
+- Nsxiv
+- Darktable
 
-## Conky
-[https://github.com/brndnmtthws/conky]
+### Image Editing
+- GIMP
 
-## Taskwarrior
-[https://github.com/GothenburgBitFactory/taskwarrior]
+### Art
+- Krita
+- Heavy Paint
+- Grafx2
 
-+ Probably more..
+### Video Player
+- Celluloid (mpv)
 
-TODO: Flesh out this readme and add screenshots/system info/descriptions
+### Video/Audio Editor
+- Kdenlive
+
+### Screen/Audio recording
+- Obs
+- Audacity
+
+### Music 
+- Audacious
+- Rhythmbox (radio/podcasts)
+
+### Reading
+- Evince
+- Zathura
+- Calibre
+
+### Gaming
+- Retroarch
+- FS-UAE
+- Pcsx2
