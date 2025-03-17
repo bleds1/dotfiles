@@ -113,6 +113,8 @@ NOTE: This is a bit of a run through of what I use for reference mostly. I don't
 - Audacious
 - Rhythmbox (radio/podcasts)
 
+![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
+
 ### Reading
 - Evince
 - Zathura
