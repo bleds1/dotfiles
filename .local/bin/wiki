@@ -1,3 +1,0 @@
-#/usr/bin/env zsh
-
-    lynx -vikeys -accept_all_cookies "https://en.wikipedia.org/wiki?search=$@"

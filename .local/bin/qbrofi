@@ -1,6 +1,0 @@
-#!/bin/sh
-# this script uses Rofi to display searchengine choices and then launch qutebrowser
-
-searchstr=$(echo "(aw) Arch Wiki\n(br) Brave\n(dd) Duckduckgo\n(qw) Qwant\n(sp) Startpage\n(sx) SearXNG\n(wik) Wikipedia" | rofi -dmenu -i -p "Search Qutebrowser")
-
-[ -z "$searchstr" ] || qutebrowser ":open $searchstr" &> /dev/null

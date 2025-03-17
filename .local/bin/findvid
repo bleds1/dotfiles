@@ -1,8 +1,0 @@
-#!/bin/bash
-# Search my Videos directory for videos to launch with MPV
-
-watch="/home/bledley/Videos"
-
-menu=$(ls -a "$watch" | uniq -u | fzf --height=100% --reverse --header-first)
-
-exec nohup mpv "$watch"/"$menu">/dev/null 2>&1

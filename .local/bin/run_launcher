@@ -1,9 +1,0 @@
-#!/bin/bash
-# This script searches for programs to run from the terminal with FZF
-
-DIR1="/usr/bin/"
-DIR2="/bin/"
-
-Menu="$(find "$DIR1" "$DIR2" -mindepth 1 -executable | cut -d / -f 3 | uniq -u | sort | fzf --prompt="Run : " --margin=5% --height 100% --reverse --header="                    Run " --info=hidden --header-first)" 
-
-exec nohup "$Menu" >/dev/null 2>&1

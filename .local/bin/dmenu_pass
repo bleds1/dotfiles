@@ -1,6 +1,0 @@
-#!/bin/sh
-# Converted dmenu script. Shows entries from pass in Rofi and copis to the clipboard.
-
-password=$(find ~/.password-store/ -type f -name '*.gpg' |
-	sed 's/.*\/\(.*\)\.gpg$/\1/' | rofi -dmenu -i -p "Pass")
-[ -n "$password" ] && pass show -c "$password"
