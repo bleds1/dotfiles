@@ -131,7 +131,7 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
+        "format-full": "󱐥",
         "format-charging": "{capacity}% ",
         "format-plugged": "󱐥",
         "format-alt": "{time} {icon}",
