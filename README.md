@@ -10,7 +10,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Arch Linux
 
 ## Terminal
-- St
+- St or Foot
 - Vterm (in Emacs)
 
 ## Shell

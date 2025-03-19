@@ -104,6 +104,9 @@ alias cp="cp -i -v"
 alias mv="mv -i -v"
 alias rm="rm -i -v"
 
+# cmatrix
+alias neo="neo --color=cyan"
+
 # fzf key bindings/fuzzy completion
 eval "$(fzf --bash)"
 
