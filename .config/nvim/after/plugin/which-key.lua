@@ -1,273 +1,199 @@
-require("which-key").setup {
-{
-  plugins = {
-    marks = true, -- shows a list of your marks on ' and `
-    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-    -- No actual key bindings are created
-    spelling = {
-      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-      suggestions = 20, -- how many suggestions should be shown in the list?
-    },
-    presets = {
-      operators = true, -- adds help for operators like d, y, ...
-      motions = true, -- adds help for motions
-      text_objects = true, -- help for text objects triggered after entering an operator
-      windows = true, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
-      z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
-    },
-  },
-  -- add operators that will trigger motion and text object completion
-  -- to enable all native operators, set the preset / operators plugin above
-  operators = { gc = "Comments" },
-  key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
-    -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
-  },
-  motions = {
-    count = true,
-  },
-  icons = {
-    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
-  },
-  popup_mappings = {
-    scroll_down = "<c-d>", -- binding to scroll down inside the popup
-    scroll_up = "<c-u>", -- binding to scroll up inside the popup
-  },
-  window = {
-    border = "none", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
-    padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-    zindex = 1000, -- positive value to position WhichKey above other floating windows.
-  },
-  layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
-  },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
-  show_help = true, -- show a help message in the command line for using WhichKey
-  show_keys = true, -- show the currently pressed key and its label as a message in the command line
-  triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specifiy a list manually
-  -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
-  triggers_nowait = {
-    -- marks
-    "`",
-    "'",
-    "g`",
-    "g'",
-    -- registers
-    '"',
-    "<c-r>",
-    -- spelling
-    "z=",
-  },
-  triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for keymaps that start with a native binding
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
-  -- disable the WhichKey popup for certain buf types and file types.
-  -- Disabled by default for Telescope
-  disable = {
-    buftypes = {},
-    filetypes = {},
-  },
-}
-}
-
--- Which-Key
-local wk = require("which-key")
--- wk.register({
---   a = {
---     name = "Add",
---     t = "Add Task",
+-- require("which-key").setup {
+-- {
+--   plugins = {
+--     marks = true, -- shows a list of your marks on ' and `
+--     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+--     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+--     -- No actual key bindings are created
+--     spelling = {
+--       enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+--       suggestions = 20, -- how many suggestions should be shown in the list?
+--     },
+--     presets = {
+--       operators = true, -- adds help for operators like d, y, ...
+--       motions = true, -- adds help for motions
+--       text_objects = true, -- help for text objects triggered after entering an operator
+--       windows = true, -- default bindings on <c-w>
+--       nav = true, -- misc bindings to work with windows
+--       z = true, -- bindings for folds, spelling and others prefixed with z
+--       g = true, -- bindings for prefixed with g
+--     },
 --   },
--- }, { prefix = "<leader>" })
-
-
-wk.register({
-  b = {
-    name = "Buffers & Bookmarks",
-    m = "Set bookmark",
-    M = "Delete bookmark",
-    i = "Buffer list",
-    n = "Next buffer",
-    N = "New empty buffer",
-    O = "Kill other buffers",
-    p = "Previous buffer",
-    k = "Kill buffer",
-    K = "Kill all buffers",
-    s = "Save buffer",
-    S = "Save all buffers",
-    y = "Yank buffer",
-    x = "Pop up scratch buffer",
-    X = "Switch to scratch buffer",
-
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  c = {
-    name = "Count & check",
-    b = "Check box",
-    w = "Count words",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  e = {
-    name = "edit/new",
-    e = "edit new buffer",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  f = {
-    name = "File",
-    f = "Find files",
-    b = "File browser",
-    g = "Grep Project",
-    r = "Find recent files",
-    s = "Save file",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  g = {
-    name = "Goto & Git",
-    b = "cd ~/sba",
-    h = "cd ~/",
-    p = "Git push",
-    s = "Git status",
-    v = "cd ~/vault",
-  },
-}, { prefix = "<leader>" })
-
-
-wk.register({
-  h = {
-    name = "Harpoon & Hunks",
-    a = "Add mark to Harpoon",
-    n = "Next mark Harpoon",
-    p = "Previous mark Harpoon",
-    s = "GitGutterStageHunk",
-    u = "GitGutterUndoHunk",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  i = {
-    name = "Insert template", -- optional group name
-    t = "Insert Obsidian template",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  m = {
-    name = "Markdown",
-    p = "Preview Markdown in browser",
-    x = "Stop Markdown preview",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  n = {
-    name = "",
-    l = "set nolinebreak",
-    -- t = "Tasks in project:Next",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  o = {
-    name = "Open & Obsidian",
-    b = "Show backlinks",
-    d = "Quick log entry",
-    D = "Open daily log",
-    i = "Insert template",
-    l = "Show links",
-    n = "New Obsidian note",
-    o = "Toggle file explorer",
-    r = "Rename Obsidian note",
-    s = "Search vault",
-    t = "Search tags",
-  },
-}, { prefix = "<leader>" })
-
-
-wk.register({
-  p = {
-    name = "Packer",
-    c = "Packer clean",
-    i = "Packer install",
-    s = "Packer sync",
-    u = "Packer update",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  s = {
-    name = "Search & source",
-    b = "Search buffer",
-    B = "Search open buffers",
-    c = "Search Commands",
-    f = "Search files in project",
-    F = "Search current dir with FZF",
-    g = "Search Git status",
-    G = "Grep current project",
-    h = "Search Help",
-    m = "Search Man pages",
-    o = "Search Obsidian vault",
-    p = "Search Git project files",
-    r = "Search recent files",
-    s = "Search with Telescope",
-    S = "Spelling suggestions",
-    t = "Search Todo list in project",
-    T = "Search Todo in project",
-    v = "Source file",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  t = {
-    name = "Toggle",
-    d = "todo.md popup",
-    D = "todo.md buffer",
-    l = "Line numbers",
-    t = "Terminal",
-    w = "Twilight",
-    z = "Zen mode",
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  w = {
-    name = "Window & write",
-    a = "Write all buffers",
-    c = "Window close",
-    h = "Window left",
-    j = "Window down",
-    k = "Window up",
-    l = "Window right",
-    m = "maximize",
-    s = "Window split below",
-    r = "Window rotate",
-    w = "Window switch",
-    v = "Window split right",
-    q = "Write & quit!",
-    },
-}, { prefix = "<leader>" })
+--   -- add operators that will trigger motion and text object completion
+--   -- to enable all native operators, set the preset / operators plugin above
+--   operators = { gc = "Comments" },
+--   key_labels = {
+--     -- override the label used to display some keys. It doesn't effect WK in any other way.
+--     -- For example:
+--     -- ["<space>"] = "SPC",
+--     -- ["<cr>"] = "RET",
+--     -- ["<tab>"] = "TAB",
+--   },
+--   motions = {
+--     count = true,
+--   },
+--   icons = {
+--     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+--     separator = "➜", -- symbol used between a key and it's label
+--     group = "+", -- symbol prepended to a group
+--   },
+--   popup_mappings = {
+--     scroll_down = "<c-d>", -- binding to scroll down inside the popup
+--     scroll_up = "<c-u>", -- binding to scroll up inside the popup
+--   },
+--   window = {
+--     border = "none", -- none, single, double, shadow
+--     position = "bottom", -- bottom, top
+--     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+--     padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+--     winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+--     zindex = 1000, -- positive value to position WhichKey above other floating windows.
+--   },
+--   layout = {
+--     height = { min = 4, max = 25 }, -- min and max height of the columns
+--     width = { min = 20, max = 50 }, -- min and max width of the columns
+--     spacing = 3, -- spacing between columns
+--     align = "left", -- align columns left, center or right
+--   },
+--   ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+--   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
+--   show_help = true, -- show a help message in the command line for using WhichKey
+--   show_keys = true, -- show the currently pressed key and its label as a message in the command line
+--   triggers = "auto", -- automatically setup triggers
+--   -- triggers = {"<leader>"} -- or specifiy a list manually
+--   -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
+--   triggers_nowait = {
+--     -- marks
+--     "`",
+--     "'",
+--     "g`",
+--     "g'",
+--     -- registers
+--     '"',
+--     "<c-r>",
+--     -- spelling
+--     "z=",
+--   },
+--   triggers_blacklist = {
+--     -- list of mode / prefixes that should never be hooked by WhichKey
+--     -- this is mostly relevant for keymaps that start with a native binding
+--     i = { "j", "k" },
+--     v = { "j", "k" },
+--   },
+--   -- disable the WhichKey popup for certain buf types and file types.
+--   -- Disabled by default for Telescope
+--   disable = {
+--     buftypes = {},
+--     filetypes = {},
+--   },
+-- }
+-- }
+--
+-- -- Which-Key
+-- local wk = require("which-key")
+-- -- wk.register({
+-- --   a = {
+-- --     name = "Add",
+-- --     t = "Add Task",
+-- --   },
+-- -- }, { prefix = "<leader>" })
+--
+-- wk.register {
+--    { "<leader>b", group = "Buffers & Bookmarks" },
+--    { "<leader>bm", desc = "Set bookmark" },
+--    { "<leader>bM", desc = "Delete bookmark" },
+--    { "<leader>bi", desc = "Buffer list" },
+--    { "<leader>bn", desc = "Next buffer" },
+--    { "<leader>bN", desc = "New empty buffer" },
+--    { "<leader>bO", desc = "Kill other buffers" },
+--    { "<leader>bp", desc = "Previous buffer" },
+--    { "<leader>bk", desc = "Kill buffer" },
+--    { "<leader>bK", desc = "Kill all buffers" },
+--    { "<leader>bs", desc = "Save buffer" },
+--    { "<leader>bS", desc = "Save all buffers" },
+--    { "<leader>by", desc = "Yank buffer" },
+--    { "<leader>bx", desc = "Pop up scratch buffer" },
+--    { "<leader>bX", desc = "Switch to scratch buffer" },
+--    { "<leader>c", group = "Count & check"},
+--    { "<leader>cb", desc = "Check box"},
+--    { "<leader>cw", desc = "Count words"},
+--    { "<leader>e", group = "Edit"},
+--    { "<leader>ee", desc = "Edit/new"},
+--    { "<leader>f", group = "Files"},
+--    { "<leader>ff", desc = "Find files"},
+--    { "<leader>fb", desc = "File browser"},
+--    { "<leader>fg", desc = "Grep Project"},
+--    { "<leader>fr", desc = "Find recent files"},
+--    { "<leader>fs", desc = "Save File"},
+--    { "<leader>g", group = "Go to & Git"},
+--    { "<leader>gb", desc = "cd ~/sba"},
+--    { "<leader>gh", desc = "cd ~/"},
+--    { "<leader>gp", desc = "Git push"},
+--    { "<leader>gs", desc = "Git status"},
+--    { "<leader>gv", desc = "cd ~/vault"},
+--    { "<leader>h", group = "Harpoon & Hunks"},
+--    { "<leader>ha", desc = "Add mark to Harpoon"},
+--    { "<leader>hn", desc = "Next mark Harpoon"},
+--    { "<leader>hp", desc = "Previous mark Harpoon"},
+--    { "<leader>hs", desc = "GitGutterStageHunk"},
+--    { "<leader>hu", desc = "GitGutterUndoHunk"},
+--    { "<leader>i", group = "Insert template"},
+--    { "<leader>it", desc = "Insert Obsidian template"},
+--    { "<leader>m", group = "Markdown"},
+--    { "<leader>mp", desc = "Preview Markdown in browser"},
+--    { "<leader>mx", desc = "Stop Markdown preview"},
+--    { "<leader>n", group = ""},
+--    { "<leader>nl", desc = "set nolinebreak"},
+--    { "<leader>o", group = "Open & Obsidian"},
+--    { "<leader>ob", desc = "Show backlinks"},
+--    { "<leader>od", desc = "Quick log entry"},
+--    { "<leader>oD", desc = "Open daily log"},
+--    { "<leader>oi", desc = "Insert template"},
+--    { "<leader>ol", desc = "Show links"},
+--    { "<leader>on", desc = "New Obsidian note"},
+--    { "<leader>os", desc = "Search vault"},
+--    { "<leader>ot", desc = "Search tags"},
+--    { "<leader>p", group = "Packer"},
+--    { "<leader>pc", desc = "Packer clean"},
+--    { "<leader>pi", desc = "Packer install"},
+--    { "<leader>ps", desc = "Packer sync"},
+--    { "<leader>pu", desc = "Packer update"},
+--    { "<leader>s", group = "Search & source"},
+--    { "<leader>sb", desc = "Search buffer"},
+--    { "<leader>sB", desc = "Search open buffers"},
+--    { "<leader>sc", desc = "Search Commands"},
+--    { "<leader>sf", desc = "Search files in project"},
+--    { "<leader>sF", desc = "Search current dir with FZF"},
+--    { "<leader>sg", desc = "Search Git status"},
+--    { "<leader>sG", desc = "Grep current project"},
+--    { "<leader>sh", desc = "Search Help"},
+--    { "<leader>sm", desc = "Search Man pages"},
+--    { "<leader>so", desc = "Search Obsidian vault"},
+--    { "<leader>sp", desc = "Search Git project files"},
+--    { "<leader>sr", desc = "Search recent files"},
+--    { "<leader>ss", desc = "Search with Telescope"},
+--    { "<leader>sS", desc = "Spelling suggestions"},
+--    { "<leader>st", desc = "Search Todo list in project"},
+--    { "<leader>sT", desc = "Search Todo in project"},
+--    { "<leader>sv", desc = "Source file"},
+--    { "<leader>t", group = "Toggle"},
+--    { "<leader>td", desc = "todo.md popup"},
+--    { "<leader>tD", desc = "todo.md buffer"},
+--    { "<leader>tl", desc = "Line numbers"},
+--    { "<leader>tt", desc = "Terminal"},
+--    { "<leader>tw", desc = "Twilight"},
+--    { "<leader>tz", desc = "Zen mode"},
+--    { "<leader>w", group = "Window & write"},
+--    { "<leader>wa", group = "Write all buffers"},
+--    { "<leader>wc", group = "Window close"},
+--    { "<leader>wh", group = "Window left"},
+--    { "<leader>wj", group = "Window down"},
+--    { "<leader>wk", group = "Window up"},
+--    { "<leader>wl", group = "Window right"},
+--    { "<leader>wm", group = "Window maximize"},
+--    { "<leader>ws", group = "Window split below"},
+--    { "<leader>wr", group = "Window rotate"},
+--    { "<leader>ww", group = "Window switch"},
+--    { "<leader>wv", group = "Window split right"},
+--    { "<leader>wq", group = "Write & quit!"},
+--   }

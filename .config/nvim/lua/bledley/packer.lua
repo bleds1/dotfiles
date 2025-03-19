@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
    use ("lifer0se/ezbookmarks.nvim")
    use ("SmiteshP/nvim-navic")
    use ("hrsh7th/cmp-cmdline")
-   use ("folke/which-key.nvim")
+   -- use ("folke/which-key.nvim")
    -- use ("lukas-reineke/indent-blankline.nvim")
    use {"folke/twilight.nvim"}
    use {
