@@ -39,7 +39,7 @@ return require('packer').startup(function(use)
    use ("SmiteshP/nvim-navic")
    use ("hrsh7th/cmp-cmdline")
    use ("folke/which-key.nvim")
-   use ("lukas-reineke/indent-blankline.nvim")
+   -- use ("lukas-reineke/indent-blankline.nvim")
    use {"folke/twilight.nvim"}
    use {
        'goolord/alpha-nvim',
@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
            require'alpha'.setup(require'alpha.themes.dashboard'.config)
            end
            }
-   use ("akinsho/toggleterm.nvim")
+   -- use ("akinsho/toggleterm.nvim")
    use {
      'VonHeikemen/lsp-zero.nvim',
      branch = 'v1.x',

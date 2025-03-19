@@ -1,33 +1,33 @@
-require("toggleterm").setup({
-    size = 10,
-    hide_numbers = true,
-    start_in_insert = true,
-    open_mapping = [[<leader>v]],
-    insert_mappings = false,
-    close_on_exit = true,
-    autochdir = true,
-    shade_terminals = false,
-    highlights = {
-    -- highlights which map to a highlight group name and a table of it's values
-    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
-    Normal = {
-      guibg = "#22262f",
-    },
-    NormalFloat = {
-      link = 'Normal'
-    },
-    FloatBorder = {
-      guibg = "#22262f",
-    },
-    winbar = {
-    enabled = false,
-    name_formatter = function(term) --  term: Terminal
-      return term.name
-    end
-  },
-  },
-
-})
+-- require("toggleterm").setup({
+--     size = 10,
+--     hide_numbers = true,
+--     start_in_insert = true,
+--     open_mapping = [[<leader>v]],
+--     insert_mappings = false,
+--     close_on_exit = true,
+--     autochdir = true,
+--     shade_terminals = false,
+--     highlights = {
+--     -- highlights which map to a highlight group name and a table of it's values
+--     -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+--     Normal = {
+--       guibg = "#22262f",
+--     },
+--     NormalFloat = {
+--       link = 'Normal'
+--     },
+--     FloatBorder = {
+--       guibg = "#22262f",
+--     },
+--     winbar = {
+--     enabled = false,
+--     name_formatter = function(term) --  term: Terminal
+--       return term.name
+--     end
+--   },
+--   },
+--
+-- })
 
 -- function _G.set_terminal_keymaps()
 --   local opts = {noremap = true}
