@@ -47,8 +47,6 @@ alias zat="zathura"
 # Emacs
 # alias emacs="emacsclient -c -a 'emacs'"
 alias e="emacsclient"
-# Access dired directly from terminal
-alias dired="emacsclient -c -a 'emacs' --eval '(dired nil)' & disown"
 
 # git abbrevs
 alias gs='git status'
