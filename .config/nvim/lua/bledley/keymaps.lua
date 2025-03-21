@@ -13,7 +13,10 @@ vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>")
 vim.keymap.set("n", "<leader>sg", ":Telescope git_status<CR>")
 vim.keymap.set("n", "<leader>sm", ":Telescope man_pages<CR>")
 vim.keymap.set("n", "<leader>tw", ":Twilight<CR>")
--- Inbuilt terminal
+-- Save
+vim.keymap.set("n", "<C-s>", "<esc>:w<cr>")
+vim.keymap.set("i", "<C-s>", "<esc>:w<cr>")
+-- terminal
 vim.keymap.set("n", "<leader>tt", ":term<CR>")
 -- rgrep
 vim.keymap.set("n", "<leader>rg", vim.cmd.Rg)

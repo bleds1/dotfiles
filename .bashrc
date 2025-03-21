@@ -10,10 +10,10 @@ PS1='[\u@\h \W]\$ '
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # neovim as man page reader
-# export MANPAGER="nvim +Man!"
+export MANPAGER="nvim +Man!"
 
 ### "less" as manpager
-export MANPAGER "less"
+# export MANPAGER "less"
 
 # hyprshot dir env
 export HYPRSHOT_DIR=/home/bledley/Pictures/Screenshots
@@ -30,7 +30,7 @@ shopt -s checkwinsize
 # Aliases
 alias ..="cd .."
 alias cl="clear -x"
-alias f="ranger"
+alias f="lf"
 alias h="history | fzf"
 alias iv="nsxiv"
 alias lg="lazygit"
@@ -104,6 +104,14 @@ alias rm="rm -i -v"
 
 # cmatrix
 alias neo="neo --color=cyan"
+
+# lf change directory
+lf() {
+    tmp="$(mktemp)"
+    command lf -last-dir-path="$tmp" "$@"
+    cd "$(cat "$tmp")"
+    rm -f "$tmp" >/dev/null 2>&1
+}
 
 # fzf key bindings/fuzzy completion
 eval "$(fzf --bash)"
