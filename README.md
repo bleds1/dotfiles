@@ -27,7 +27,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "Screenshot4")
 
 - Btop (process monitor)
-- lf or Ranger (file manager)
+- lf (file manager)
 - Lazygit (git tool)
 - Fastfetch (system info)
 - Starship (prompt)
