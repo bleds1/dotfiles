@@ -10,7 +10,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Arch Linux
 
 ## Terminal
-- St or Foot
+- Foot or st
 - Vterm (in Emacs)
 
 ## Shell
@@ -27,7 +27,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "Screenshot4")
 
 - Btop (process monitor)
-- Ranger (file manager)
+- lf or Ranger (file manager)
 - Lazygit (git tool)
 - Fastfetch (system info)
 - Starship (prompt)
@@ -86,8 +86,8 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
 
 ### Browser
-- Firefox (default)
-- Brave/Qutebrowser (occasions)
+- Firefox or Brave (default)
+- Qutebrowser (occasions)
 
 ### Image Viewer
 - Nsxiv
@@ -99,6 +99,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ### Art
 - Krita
 - Heavy Paint
+- Aseprite
 - Grafx2
 
 ### Video Player

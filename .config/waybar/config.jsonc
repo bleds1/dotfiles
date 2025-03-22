@@ -20,19 +20,15 @@
         "network",
         "battery",
         "clock",
+        "custom/notifications"
     ],
     // Modules configuration
     // "hyprland/workspaces": {
-    //     "disable-scroll": true,
+    //     "disable-scroll": false,
     //     "all-outputs": true,
     //     "warp-on-scroll": false,
     //     "format": "{name}: {icon}",
     //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
     //         "urgent": "",
     //         "focused": "",
     //         "default": ""
@@ -55,13 +51,24 @@
     "hyprland/window": {
         "format": " {}"
     },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
+    "custom/notifications": {
+            "format": "{icon}",
+            "format-icons": {
+                "notification": "<sup></sup>  ",
+                "none": "  ",
+                "dnd-notification": "<sup></sup>  ",
+                "dnd-none": "  ",
+                "inhibited-notification": "<sup></sup>  ",
+                "inhibited-none": "  ",
+                "dnd-inhibited-notification": "<sup></sup>  ",
+                "dnd-inhibited-none": "  "
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "escape": true
+        },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -137,7 +144,6 @@
         "format-alt": "{time} {icon}",
         "tooltip-format": "{capacity}%",
         // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
