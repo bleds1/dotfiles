@@ -1,0 +1,117 @@
+# Basic settings #
+##################
+
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 8
+set icons
+set hidden!
+set info size
+set autoquit true
+set preview true
+set previewer ~/.local/bin/pv.sh
+# set sixel true
+set ignorecase true
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+set incsearch true
+# set number
+# set relativenumber
+
+# fzf find
+map <c-f> ${{
+    selected="$(fzf)"
+    [ -d "$selected" ] && cmd=cd || cmd=select
+    lf -remote "send $id $cmd '$selected'"
+}}
+# Define custom commands #
+##########################
+cmd open &{{
+	case $(file --mime-type -Lb $f) in
+		text/*) lf -remote "send $id \$nvim \$fx";;
+		*) xdg-open "$f"
+	esac
+}}
+# move current or selected files to trash folder
+# (also see 'man mv' for backup/overwrite options)
+cmd trash %set -f; mv -t ~/Trash/files/ $fx
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;; *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+
+# Bindings #
+############
+# Show the result of execution of previous commands
+map ` !true
+# Execute current file (must be executable)
+map x $$f
+map X !$f
+# Dedicated keys for file opener actions
+# map o &mimeopen $f
+# map O $mimeopen --ask $f
+map o open
+# mkdir command
+map C :push %mkdir<space>
+# Trash or delete command
+map T trash
+map D delete
+map d #unmaps default d to cut
+map dd cut
+map y copy
+map p paste; clear
+map <enter> open
+map m :toggle; down
+map r :rename; cmd-right # after extension
+map R :rename; cmd-end # at the very end
+map E extract
+# Clear the files in the copy/cut buffer.
+map <esc> clear
+map n
+map n push %touch<space>
+
+# Quick move to dir #
+#####################
+
+map gb cd ~/.local/bin/
+map gc cd ~/.config/
+map gd cd ~/Documents/
+map ge cd /run/media/bledley/SEAGATE-2TB/
+map gl cd ~/Downloads/
+map gm cd ~/Music/
+map go cd ~/org/
+map gp cd ~/Pictures/
+map gs cd ~/.scripts/
+map gw cd ~/sba/
+map gt cd ~/Trash/files/
+map gv cd ~/Videos/
+map g. cd ~/dotfiles/
