@@ -133,17 +133,17 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "󱐥",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "󱐥",
+        "format": "{icon}",
+        "format-full": "",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "",
         "format-alt": "{time} {icon}",
         "tooltip-format": "{capacity}%",
-        // "format-good": "", // An empty format will hide the module
+        "format-good": "", // An empty format will hide the module
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {

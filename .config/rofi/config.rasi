@@ -6,7 +6,7 @@ font: "JetBrainsMono Nerd Font Regular 10";
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
     show-icons: false;
-    terminal: "st";
+    terminal: "foot";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
