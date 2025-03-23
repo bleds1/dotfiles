@@ -22,8 +22,6 @@ map j scroll down
 map k scroll up
 map L navigate next
 map H navigate previous
-map z zoom out
-map x zoom in
 map , toggle_statusbar
 # map <TAB> toggle index
 map q quit
