@@ -1,8 +1,0 @@
-#!/bin/bash
-# Terminal command for search journal entries and editing on selection
-
-zet="/home/bledley/org/roam/daily/"
-
-menu=$(ls -a "$zet" | uniq -u | fzf --height=100% --reverse --header-first)
-
-nvim "$zet"/"$menu"

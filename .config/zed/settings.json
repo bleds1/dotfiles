@@ -38,11 +38,11 @@
   },
   "terminal": {
     "dock": "bottom",
-    "font_family": "Fira Code",
+    "font_family": "JetBrains Mono",
     "font_size": 13
   },
   "chat_panel": {
-    "button": false
+    "button": "never"
   },
   // "assistant": {
   //   "enabled": false,
@@ -60,7 +60,7 @@
   "ui_font_size": 14,
   "ui_font_family": "Ubuntu",
   "buffer_font_size": 14,
-  "buffer_font_family": "Fira Code",
+  "buffer_font_family": "JetBrains Mono",
   "theme": {
     "mode": "system",
     "light": "Adwaita Pastel Light",
