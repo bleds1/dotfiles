@@ -44,6 +44,7 @@ alias z="zeditor"
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sdn="shutdown -h now"
 alias zat="zathura"
+alias tree="tree -C" #colour for tree
 
 # Emacs
 # alias emacs="emacsclient -c -a 'emacs'"
