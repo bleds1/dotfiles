@@ -71,7 +71,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #FF85C0;
 }
 
 #mode {
@@ -138,7 +138,7 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: #FF85C0;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -246,7 +246,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #FF85C0;
 }
 
 #idle_inhibitor {
@@ -264,7 +264,7 @@ label:focus {
 }
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+    background-color: #FF85C0;
 }
 
 #mpd.stopped {

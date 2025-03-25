@@ -17,13 +17,13 @@ dashboard.section.header.val = {
 }
 
  dashboard.section.buttons.val = {
+   dashboard.button("f r", "  Recent files", ":Telescope oldfiles <CR>"),
    dashboard.button("f f", "  Find file", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files,--glob,!.git<CR>"),
    -- dashboard.button("e n", "  Edit new file", ":ene <BAR> startinsert <CR>"),
-   dashboard.button("f r", "  Recent files", ":Telescope oldfiles <CR>"),
-   dashboard.button("n n", "  New Obsidian note", ":ObsidianNew<CR>"),
-   dashboard.button(", ,", "󱓧  Fleeting Notes", ":e ~/vault/Fleeting/<CR>"),
+   -- dashboard.button("n n", "  New Obsidian note", ":ObsidianNew<CR>"),
+   -- dashboard.button(", ,", "󱓧  Fleeting Notes", ":e ~/vault/Fleeting/<CR>"),
    dashboard.button("g .",  "  Dotfiles", ":e ~/dotfiles/<CR>"),
-   dashboard.button("s o", "󰧑  Search vault", ":ObsidianSearch<CR>"),
+   -- dashboard.button("s o", "󰧑  Search vault", ":ObsidianSearch<CR>"),
    dashboard.button("f g", "󱩾  Grep Project", ":Telescope live_grep <CR>"),
    dashboard.button("g s", "󰊤  Git Status", ":Git<CR>"),
    dashboard.button("SPC 󰌑 ", "  Bookmarks", "<leader><CR>"),

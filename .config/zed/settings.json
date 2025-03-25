@@ -38,7 +38,7 @@
   },
   "terminal": {
     "dock": "bottom",
-    "font_family": "JetBrains Mono",
+    "font_family": "JetBrainsMono Nerd Font",
     "font_size": 13
   },
   "chat_panel": {
@@ -60,7 +60,7 @@
   "ui_font_size": 14,
   "ui_font_family": "Ubuntu",
   "buffer_font_size": 14,
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "theme": {
     "mode": "system",
     "light": "Adwaita Pastel Light",

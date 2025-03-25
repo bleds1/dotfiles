@@ -9,6 +9,8 @@ PS1='[\u@\h \W]\$ '
 
 # Add Emacs/Doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
+# Add .scripts dir to path
+export PATH="$HOME/.scripts:$PATH"
 
 # neovim as man page reader
 export MANPAGER="nvim +Man!"

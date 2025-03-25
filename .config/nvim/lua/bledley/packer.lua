@@ -79,13 +79,13 @@ return require('packer').startup(function(use)
        "iamcco/markdown-preview.nvim",
        run = function() vim.fn["mkdp#util#install"]() end,
       })
-   use({
-       "epwalsh/obsidian.nvim",
-       tag = "*",  -- recommended, use latest release instead of latest commit
-       requires = {
-       "nvim-lua/plenary.nvim",
-       },
-       })
+   -- use({
+   --     "epwalsh/obsidian.nvim",
+   --     tag = "*",  -- recommended, use latest release instead of latest commit
+   --     requires = {
+   --     "nvim-lua/plenary.nvim",
+   --     },
+   --     })
    use{
        "folke/todo-comments.nvim",
        dependencies = { "nvim-lua/plenary.nvim" },
