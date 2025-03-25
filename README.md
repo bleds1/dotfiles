@@ -11,7 +11,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## Terminal
 - Foot or st
-- Vterm (in Emacs)
+- vterm (in Emacs)
 
 ## Shell
 - Bash
@@ -26,14 +26,14 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "Screenshot4")
 
-- Btop (process monitor)
 - lf (file manager)
-- Lazygit (git tool)
-- Fastfetch (system info)
-- Starship (prompt)
-- Eza (ls colouring)
-- Tmux (session manager)
-- Fzf (fuzzy file finder)
+- btop (process monitor)
+- lazygit (git tool)
+- fastfetch (system info)
+- starship (prompt)
+- eza (ls colouring)
+- tmux (session manager)
+- fzf (fuzzy file finder)
 - Hugo (web/blog)
 - + many more
 
@@ -86,7 +86,8 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
 
 ### Browser
-- Firefox or Brave (default)
+- Brave (default)
+- Firefox 
 - Qutebrowser (occasions)
 
 ### Image Viewer
