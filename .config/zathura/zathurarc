@@ -1,7 +1,5 @@
-# TODO: something is giving an error to many :set arguments. Need to work out what?
+# zathurarc
 set database sqlite
-set statusbar -h-padding 0
-set statusbar -v-padding 0
 set page-padding 1
 set guioptions none
 set window-title-basename "true"

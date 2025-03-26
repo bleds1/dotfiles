@@ -138,6 +138,9 @@
            ("s" " Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
 
+           ("d" "󰟶 Writing Inbox" entry (file+headline "~/org/drafts.org" "QUEUED:")
+            "** TODO %?")
+
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
 
@@ -222,14 +225,14 @@
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-;; (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c d" "~/org/drafts.org" "drafts.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 ;; (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 ;; (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
 ;; (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
-(global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
+;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
 (global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
