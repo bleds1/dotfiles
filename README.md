@@ -10,7 +10,8 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Arch Linux
 
 ## Terminal
-- Foot or st
+- Foot (default)
+- st (backup)
 - vterm (in Emacs)
 
 ## Shell
@@ -31,9 +32,10 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - lazygit (git tool)
 - fastfetch (system info)
 - starship (prompt)
-- eza (ls colouring)
+- eza, bat (colouring)
 - tmux (session manager)
 - fzf (fuzzy file finder)
+- chafa (image previews)
 - Hugo (web/blog)
 - + many more
 
@@ -81,7 +83,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Rofi-wayland
 
 ### File Manager
-- Nautilus
+- Nautilus (w/Sushi previewer)
 
 ![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
 
@@ -122,9 +124,9 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
 
 ### Reading
-- Evince
-- Zathura
-- Calibre
+- Zathura (default)
+- Evince (for annotations/highlights)
+- Calibre (sync ebooks to Kindle)
 
 ### Gaming
 - Retroarch

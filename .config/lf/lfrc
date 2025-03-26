@@ -10,8 +10,8 @@ set hidden!
 set info size
 set autoquit true
 set preview true
-set previewer ~/.local/bin/pv.sh
-# set sixel true
+set previewer ~/.config/lf/pv.sh
+set sixel true
 set ignorecase true
 # Use the `dim` attribute instead of underline for the cursor in the preview pane
 set cursorpreviewfmt "\033[7;2m"
