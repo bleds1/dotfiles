@@ -4,8 +4,8 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
- use {
+   use 'wbthomason/packer.nvim'
+   use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
@@ -27,7 +27,18 @@ return require('packer').startup(function(use)
    use ('norcalli/nvim-colorizer.lua')
    use ("folke/zen-mode.nvim")
    use ('nvim-tree/nvim-web-devicons')
-   use ('projekt0n/github-nvim-theme')
+   use ({
+       'projekt0n/github-nvim-theme',
+    require('github-theme').setup({
+    options = {
+    styles = {
+      comments = 'italic',
+      keywords = 'bold',
+      types = 'italic,bold',
+    }
+  }
+})
+   })
    use ("nvim-lua/popup.nvim")
    use ("lifer0se/ezbookmarks.nvim")
    use ("SmiteshP/nvim-navic")

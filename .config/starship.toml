@@ -33,12 +33,17 @@ style = 'bold dimmed green'
 style = 'bold #98C6EC'
 
 [character]
-success_symbol = '[](bold #98C6EC)'
-error_symbol = '[](bold red)'
-vicmd_symbol = '[<](bold blue)' # not working
+success_symbol = '[❯](bold #98C6EC)'
+error_symbol = '[❯](bold red)'
+vicmd_symbol = '[❮](bold blue)'
+
+# [character]
+# success_symbol = '[](bold #98C6EC)'
+# error_symbol = '[](bold red)'
+# vicmd_symbol = '[<](bold blue)' # not working
 
 [git_branch]
-symbol = " "
+symbol = " "
 format = "[$symbol$branch]($style) "
 
 [git_status]
