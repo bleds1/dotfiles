@@ -92,7 +92,7 @@
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
-; Function to clock in on DOING (Don't think this is working)
+; Function to clock in on DOING (NOTE: Don't think this is working)
 (after! org
 (defun org-clock-todo-change ()
   (if (string= org-state "DOING")
@@ -227,12 +227,10 @@
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c d" "~/org/drafts.org" "drafts.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
-;; (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-;; (zz/add-file-keybinding "C-c y" "~/org/daily.org" "daily.org")
 ;; (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
-;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
+;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today) ;; reset to drafts
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
 (global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
@@ -335,13 +333,8 @@
 (map! :leader
       (:prefix ("n" . "Insert node immediate")
                 :desc "Insert node immediate" "r I" #'org-roam-node-insert-immediate))
-;; dashboard (old)
-;; (map! :leader
-;;       :desc "+doom-dashboard/open"
-;;       "d" '+doom-dashboard/open)
-; Replaced dashboard with daily note
 (map! :leader
-      :desc "org-roram-dailies-goto-today"
+      :desc "org-roam-dailies-goto-today"
       "d" #'org-roam-dailies-goto-today)
 ;; Evil write all buffers
 (map! :leader
@@ -551,7 +544,7 @@
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
 
-;; Function to run my mail sync script
+;; Function to run my mail sync script (Not using currently)
 ;; (defun mail-sync-script ()
 ;;   "Run my custom shell script"
 ;;   (interactive)
