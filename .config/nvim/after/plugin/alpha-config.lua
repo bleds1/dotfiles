@@ -5,16 +5,16 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.header.val = {
-    [[     █  █     ]],
-    [[     ██ ██     ]],
-    [[     █████     ]],
-    [[     ██ ███     ]],
-    [[     █  █     ]],
-    [[]],
-    [[N  E  O   V  I  M]],
-
-}
+-- dashboard.section.header.val = {
+--     [[     █  █     ]],
+--     [[     ██ ██     ]],
+--     [[     █████     ]],
+--     [[     ██ ███     ]],
+--     [[     █  █     ]],
+--     [[]],
+--     [[N  E  O   V  I  M]],
+--
+-- }
 
  dashboard.section.buttons.val = {
    dashboard.button("f r", "  Recent files", ":Telescope oldfiles <CR>"),

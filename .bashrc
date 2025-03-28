@@ -94,7 +94,9 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
-alias nn="e ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
+alias roam="cd ~/org/roam/"
+alias day="cd ~/org/roam/daily/"
+alias nn="v ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
 
 # Grep colours
 alias grep="grep --color=auto"

@@ -1,14 +1,14 @@
 {
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
-    "version": "2"
-  },
+  // "features": {
+    // "edit_prediction_provider": "zed"
+  // },
+  // "assistant": {
+  //   "default_model": {
+  //     "provider": "zed.dev",
+  //     "model": "claude-3-5-sonnet-latest"
+  //   },
+  //   "version": "2"
+  // },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -25,10 +25,10 @@
     "breadcrumbs": false,
     "quick_actions": false
   },
-  // "features": {
-  //   "inline_completion_provider": "none",
-  //   "copilot": false
-  // },
+  "features": {
+    "edit_prediction_provider": "none",
+    "copilot": false
+  },
   "collaboration_panel": {
     "button": false
   },
@@ -44,14 +44,14 @@
   "chat_panel": {
     "button": "never"
   },
-  // "assistant": {
-  //   "enabled": false,
-  //   "version": "2",
-  //   "button": false
-  // },
-  // "assistant_v2": {
-  //   "enabled": false
-  // },
+  "assistant": {
+    "enabled": false,
+    "version": "2",
+    "button": false
+  },
+  "assistant_v2": {
+    "enabled": false
+  },
   "cursor_blink": false,
   "soft_wrap": "editor_width",
   "scrollbar": { "show": "never" },
@@ -63,7 +63,7 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "theme": {
     "mode": "system",
-    "light": "Adwaita Pastel Light",
-    "dark": "Adwaita Pastel Dark"
+    "light": "Github Light",
+    "dark": "Github Dark Dimmed"
   }
 }

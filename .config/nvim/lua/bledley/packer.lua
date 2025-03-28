@@ -11,10 +11,6 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
    use {
-       "nvim-telescope/telescope-file-browser.nvim",
-       requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-       }
-   use {
    		'nvim-treesitter/nvim-treesitter',
    		run = function()
    			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
@@ -24,8 +20,6 @@ return require('packer').startup(function(use)
    use ('junegunn/fzf')
    use ('junegunn/fzf.vim')
    use ('nvim-treesitter/playground')
-   use ('theprimeagen/harpoon')
-   use ("nvim-tree/nvim-tree.lua")
    use ("szw/vim-maximizer")
    use ('tpope/vim-fugitive')
    use ('airblade/vim-gitgutter')
@@ -39,7 +33,6 @@ return require('packer').startup(function(use)
    use ("SmiteshP/nvim-navic")
    use ("hrsh7th/cmp-cmdline")
    -- use ("folke/which-key.nvim")
-   -- use ("lukas-reineke/indent-blankline.nvim")
    use {"folke/twilight.nvim"}
    use {
        'goolord/alpha-nvim',
@@ -51,7 +44,6 @@ return require('packer').startup(function(use)
            require'alpha'.setup(require'alpha.themes.dashboard'.config)
            end
            }
-   -- use ("akinsho/toggleterm.nvim")
    use {
      'VonHeikemen/lsp-zero.nvim',
      branch = 'v1.x',
@@ -79,13 +71,6 @@ return require('packer').startup(function(use)
        "iamcco/markdown-preview.nvim",
        run = function() vim.fn["mkdp#util#install"]() end,
       })
-   -- use({
-   --     "epwalsh/obsidian.nvim",
-   --     tag = "*",  -- recommended, use latest release instead of latest commit
-   --     requires = {
-   --     "nvim-lua/plenary.nvim",
-   --     },
-   --     })
    use{
        "folke/todo-comments.nvim",
        dependencies = { "nvim-lua/plenary.nvim" },

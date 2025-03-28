@@ -2,10 +2,9 @@
 vim.g.mapleader = " "
 -- Meta x for commands
 vim.keymap.set("n", "<M-x>", ":")
--- File Explorer (nvimtree)
+-- File Explorer 
 vim.keymap.set("n", "<leader>o-", ":e.<CR>")
--- vim.keymap.set("n", "<leader>oo", vim.cmd.NvimTreeToggle)
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>e", ":Lexplore<CR>")
 -- fzf find files
 vim.keymap.set("n", "<leader>sF", vim.cmd.Files)
 vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>")
@@ -37,9 +36,6 @@ vim.keymap.set('n', '<leader>bx',":split /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>bX',":e /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>x',":split /tmp/*scratch*<CR>")
 vim.keymap.set('n', '<leader>X',":e /tmp/*scratch*<CR>")
--- todo.md
-vim.keymap.set('n', '<leader>td',":split ~/vault/todo.md<CR>")
-vim.keymap.set('n', '<leader>tD',":e ~/vault/todo.md<CR>")
 --Splits/Windows
 vim.keymap.set("n", "<leader>ww", "<C-w>w")
 vim.keymap.set("n", "<leader>ws", vim.cmd.split)
@@ -67,7 +63,7 @@ vim.keymap.set("n", "<leader>w", ":w!<CR>")
 vim.keymap.set("n", "<leader>wa", ":wa<CR>")
 vim.keymap.set("n", "<leader>wq", ":wq!<CR>")
 vim.keymap.set("n", "<leader>fs", ":w!<CR>")
-vim.keymap.set("n", "<leader>sv", ":so<CR>")
+vim.keymap.set("n", "<leader>so", ":so<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>Q", ":q!<CR>")
 -- Move lines in visual mode
@@ -108,21 +104,6 @@ function Get_word_count()
 end
 -- Set a keybinding to call the get_word_count function
 vim.api.nvim_set_keymap('n', '<leader>cw', ':lua Get_word_count()<CR>', { noremap = true, silent = true })
--- Obsidian.nvim
--- vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>")
--- vim.keymap.set("n", "<leader>,", ":e ~/vault/Fleeting/<CR>")
--- vim.keymap.set("n", "<leader>,,", ":split ~/vault/log.md<CR>")
--- vim.keymap.set("n", "<leader>oy", ":ObsidianToday -1<CR>")
--- vim.keymap.set("n", "<leader>oy", ":ObsidianYesterday<CR>")
--- vim.keymap.set("n", "<leader>oT", ":ObsidianTomorrow<CR>")
--- vim.keymap.set("n", "<leader>ot", ":ObsidianTag<CR>")
--- vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>")
--- vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>")
--- vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<CR>")
--- vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>")
--- vim.keymap.set("n", "<leader>oi", ":ObsidianTemplate<CR>")
--- vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>")
--- vim.keymap.set("n", "<leader>so", ":ObsidianSearch<CR>")
 -- Packer
 vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>")
 vim.keymap.set("n", "<leader>pc", ":PackerClean<CR>")
@@ -136,8 +117,6 @@ vim.keymap.set("n", "<leader>ss", ":Telescope<CR>")
 -- Markdown Preview
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 vim.keymap.set("n", "<leader>mx", ":MarkdownStop<CR>")
--- Go to vault dir
--- vim.keymap.set("n", "<leader>gv", ":cd ~/vault/<CR>")
 -- Go to dotfiles dir
 vim.keymap.set("n", "<leader>g.", ":cd ~/dotfiles/<CR>")
 -- Go to blog dir

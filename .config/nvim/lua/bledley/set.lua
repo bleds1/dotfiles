@@ -1,12 +1,8 @@
 vim.cmd('autocmd VimEnter * silent! :intro')
 -- Transparent linenumbers column
 vim.cmd('hi! LineNr guibg=none ctermbg=none')
--- Disable netrw at start of init.lua for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- Nvim tree
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_side = 'right'
+-- netrw
+vim.g.netrw_banner = 0
 vim.g.netrw_browsex_viewer = 'xdg-open'
 -- status bar/line
 vim.o.laststatus = 2
@@ -46,8 +42,6 @@ vim.opt.conceallevel = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.ruler = false
---nvim tree
-vim.g.nvim_tree_side = ''
 --which-key
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
@@ -55,23 +49,10 @@ vim.opt.timeoutlen = 300
 vim.cmd('autocmd FileType markdown setlocal spell linebreak')
 -- Spell lang
 vim.opt.spelllang = 'en_gb'
--- Disables statusline on dashboard
--- vim.api.nvim_create_autocmd("User", {
---     pattern = "AlphaReady",
---     command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=2",
--- })
 -- Toggle linenumbers in inbuilt terminal
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
 -- Start inbuilt terminal in Insert mode
 vim.cmd('autocmd TermOpen * startinsert')
--- eol char
--- vim.opt.list = true
--- vim.opt.listchars = {
---   eol = "󰌑",
---   trail="*",
---   tab="󰌒 ",
---   extends="▸",
--- }
 -- Disable completions in markdown
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "markdown" },
