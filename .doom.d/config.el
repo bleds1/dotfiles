@@ -251,6 +251,12 @@
 ;; (global-set-key (kbd "C-c 0") (lambda ()
 ;;                               (interactive)
 ;;                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
+;; Dired go to fleeting notes
+(global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
+(global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
+(global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
+(global-set-key (kbd "C-c y") (lambda () (interactive) (dired "~/org/roam/daily")))
+(global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
 ;; # Dired
 (after! dired
 (evil-define-key 'normal dired-mode-map
