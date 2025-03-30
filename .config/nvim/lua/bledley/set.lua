@@ -8,7 +8,7 @@ vim.g.netrw_browsex_viewer = 'xdg-open'
 vim.o.laststatus = 2
 -- linenumbers
 vim.o.nu = true
-vim.o.relativenumber = false
+vim.o.relativenumber = true
 vim.o.cursorline = true
 -- vim.opt.guicursor = "a:blinkon900"
 --vim.o.showtabline =2
