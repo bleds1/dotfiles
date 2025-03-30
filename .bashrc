@@ -68,11 +68,15 @@ alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %
 alias glog='git log --graph --oneline --decorate'
 
 # tmux
-alias ts="tmux-sessionizer.sh"
-alias t="tmux"
-alias ta="tmux attach"
-alias td="tmux detach"
-alias tls="tmux ls"
+alias tms="tmux-sessionizer.sh"
+alias tm="tmux"
+alias tma="tmux attach"
+alias tmd="tmux detach"
+alias tmls="tmux ls"
+
+alias t="task"
+alias ta="task add"
+alias tt="taskwarrior-tui"
 
 # ls command to eza for colours
 alias dir="eza -a --color=always --sort Name"
