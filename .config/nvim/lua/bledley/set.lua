@@ -10,6 +10,7 @@ vim.o.laststatus = 2
 vim.o.nu = true
 vim.o.relativenumber = false
 vim.o.cursorline = true
+-- vim.opt.guicursor = "a:blinkon900"
 --vim.o.showtabline =2
 --see Insert/Normal under statusline
 vim.o.showmode = true

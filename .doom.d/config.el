@@ -690,6 +690,9 @@
 (setq hl-line-mode -1)
 (setq global-hl-line-mode -1)
 
+;; Disable smartparens (autopairs)
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
