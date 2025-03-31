@@ -96,5 +96,13 @@ return require('packer').startup(function(use)
      'smoka7/hop.nvim',
      tag = '*', -- optional but strongly recommended
  }
-
+   use {
+   'nvim-orgmode/orgmode',
+     config = function()
+       require('orgmode').setup({
+         org_agenda_files = '~/org/**/*',
+         org_default_notes_file = '~/org/todo.org',
+       })
+     end
+  }
 end)

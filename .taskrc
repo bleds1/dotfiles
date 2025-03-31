@@ -44,7 +44,7 @@ include no-color.theme
 weekstart=Monday
 
 # Default Project
-default.project=Inbox
+default.project=inbox
 
 # Limit no of tasks being shown
 report.next.filter=+PENDING -BLOCKING limit:10

@@ -61,3 +61,11 @@ vim.cmd('autocmd TermOpen * startinsert')
 --         require("cmp").setup({ enabled = false })
 --     end,
 -- })
+-- no linenumbers in org or md
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.org", "*.md"},
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+})
