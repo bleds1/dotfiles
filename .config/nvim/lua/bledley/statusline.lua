@@ -39,7 +39,7 @@ end
    end
  end
 -- StatusLine layout
-vim.o.statusline ='%#StatusLine# %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
+vim.o.statusline ='%#StatusLine# %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
 -- Function to get scroll percentage
 function GetScrollPercentage()
   local current_line = vim.fn.line('.')
@@ -51,24 +51,6 @@ end
   vim.cmd([[
     augroup StatusLineUpdate
       autocmd!
-      autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetTmuxSession()")} %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
+      autocmd BufEnter * lua vim.wo.statusline = '%#StatusLine# %{luaeval("GetGitStatus()")}  %t %w %r %m%=%-14.(Ln %l, Col %c%) '..vim.bo.filetype:sub(1,1):upper()..vim.bo.filetype:sub(2)..' %(%{luaeval("GetScrollPercentage()")}%%%) '
    augroup END
  ]])
--- Define the GetTmuxSession() function
-function GetTmuxSession()
-  if vim.fn.exists('$TMUX') == 1 then
-    local tmux_session = vim.fn.system('tmux display-message -p "#S"')
-    tmux_session = string.gsub(tmux_session, "%s*$", "")  -- Remove trailing whitespace
-    return '[' .. tmux_session .. ']'
-  else
-    return ''
-  end
-end
---Set status bar colors on InsertEnter
--- vim.cmd([[
---   augroup StatusBarColors
---     autocmd!
---     autocmd InsertEnter * hi statusline guifg='#282828' guibg=#6B95B8
---     autocmd InsertLeave * hi statusline guifg='#9da7b4' guibg=#1c1c1c
---   augroup END
--- ]])

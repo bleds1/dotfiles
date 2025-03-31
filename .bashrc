@@ -68,12 +68,12 @@ alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %
 alias glog='git log --graph --oneline --decorate'
 
 # tmux
-alias tms="tmux-sessionizer.sh"
-alias tm="tmux"
-alias tma="tmux attach"
-alias tmd="tmux detach"
-alias tmls="tmux ls"
+alias tmuxs="tmux-sessionizer.sh"
+alias tmuxa="tmux attach"
+alias tmuxd="tmux detach"
+alias tmuxls="tmux ls"
 
+# taskwarrior & tui
 alias t="task"
 alias ta="task add"
 alias tt="taskwarrior-tui"
@@ -98,6 +98,7 @@ alias .="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
+alias org="cd ~/org/"
 alias roam="cd ~/org/roam/"
 alias day="cd ~/org/roam/daily/"
 alias nn="v ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
