@@ -18,10 +18,10 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Bash
 
 ## Editor
-- Doom Emacs (default)
-- Neovim
+- Doom Emacs (gui default)
+- Neovim (cli default)
 - Zed (occasions)
-- Libreoffice (occasions)
+- Libreoffice (work)
 
 ## CLI/TUI
 
@@ -46,7 +46,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ## Theme
 - Adwaita Dark (gtk)
 - Papirus (Icons)
-- Yaru Prussian Green Dark (Folders)
+- Papirus Dark Nordic (Folders NOTE:Screenshots show Yaru - not updated)
 - Bibata Modern Ice (Cursor)
 
 ![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
@@ -90,7 +90,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ### Browser
 - Brave (default)
 - Firefox 
-- Qutebrowser (occasions)
+- Qutebrowser (occasional)
 
 ### Image Viewer
 - Nsxiv
