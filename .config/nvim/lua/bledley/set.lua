@@ -21,8 +21,11 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
-vim.o.scrolloff = 8 -- line wrapping
-vim.o.wrap = true
+vim.o.scrolloff = 8
+-- line wrapping
+vim.wo.wrap = true
+vim.wo.linebreak = true
+vim.wo.list = false -- extra option I set in addition to the ones in your question
 --tilde fringe off
 vim.opt.fillchars = { eob = ' ' }
 vim.o.swapfile = false
