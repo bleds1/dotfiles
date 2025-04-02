@@ -10,8 +10,6 @@ vim.o.laststatus = 2
 vim.o.nu = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
--- vim.opt.guicursor = "a:blinkon900"
---vim.o.showtabline =2
 --see Insert/Normal under statusline
 vim.o.showmode = true
 --tabs and indent
@@ -25,7 +23,7 @@ vim.o.scrolloff = 8
 -- line wrapping
 vim.wo.wrap = true
 vim.wo.linebreak = true
-vim.wo.list = false -- extra option I set in addition to the ones in your question
+vim.wo.list = false
 --tilde fringe off
 vim.opt.fillchars = { eob = ' ' }
 vim.o.swapfile = false
@@ -70,5 +68,24 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
+  end,
+})
+
+-- Function to clear the minbuffer message
+local function clear_minibuffer_message()
+  vim.api.nvim_echo({}, false, {}) -- Clear the message
+end
+
+-- Function to handle minbuffer messages and schedule clearing
+local function handle_minibuffer_message()
+  vim.defer_fn(clear_minibuffer_message, 3000) -- Clear after 3000 milliseconds
+end
+
+-- Setup autocmds
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.api.nvim_create_autocmd("CmdlineEnter", {
+      callback = handle_minibuffer_message,
+    })
   end,
 })
