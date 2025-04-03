@@ -165,19 +165,34 @@
            ((org-agenda-overriding-header "Low Priority Todos"))
                 )))
 
-   ("p" "Personal"
+   ("h" "home"
+    ((tags-todo "+home-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "Domestic"))
+           )))
+
+   ("p" "sb"
     ((tags-todo "+sb-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Personal Todos"))
+           ((org-agenda-overriding-header "Personal"))
            )))
 
-   ("n" "Navigators"
+   ("n" "na"
     ((tags-todo "+na-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Navigators Todos"))
+           ((org-agenda-overriding-header "Navigators"))
            )))
 
-   ("w" "Work"
+   ("r" "errand"
+    ((tags-todo "+errand-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "Errands"))
+           )))
+
+   ("w" "work"
     ((tags-todo "+work-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Work Todos"))
+           ((org-agenda-overriding-header "Work"))
+           )))
+
+   ("y" "sys"
+    ((tags-todo "+sys-DONE-p4-@someday-@goal"
+           ((org-agenda-overriding-header "System"))
            )))
 
    ("o" "Todo"
@@ -198,9 +213,12 @@
              ("p2")
              ("p3")
              ("p4")
+             ("errand")
+             ("home")
              ("na")
-             ("work")
              ("sb")
+             ("sys")
+             ("work")
                ))
   (setq org-tag-alist-for-agenda
         '(
@@ -208,9 +226,12 @@
              ("p2")
              ("p3")
              ("p4")
+             ("errand")
+             ("home")
              ("na")
-             ("work")
              ("sb")
+             ("sys")
+             ("work")
                )))
 
 ;; Keybinds
@@ -245,9 +266,9 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
 ;; Switch between vterm buffer and previous
-;; (global-set-key (kbd "C-c 0") (lambda ()
-;;                               (interactive)
-;;                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
+(global-set-key (kbd "C-c 0") (lambda ()
+                              (interactive)
+                              (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 ;; Dired go to fleeting notes
 (global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
