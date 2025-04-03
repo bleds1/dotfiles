@@ -269,6 +269,9 @@
 (global-set-key (kbd "C-c 0") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
+(global-set-key (kbd "C-c 9") (lambda ()
+                              (interactive)
+                              (if (string= (buffer-name) "*Org Agenda*") (previous-buffer) (switch-to-buffer "*Org Agenda*"))))
 ;; Dired go to fleeting notes
 (global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
