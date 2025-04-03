@@ -50,7 +50,7 @@ alias tree="tree -C" #colour for tree
 
 # Emacs
 # alias emacs="emacsclient -c -a 'emacs'"
-alias e="emacsclient"
+alias e="emacsclient -nw"
 
 # git abbrevs
 alias gs='git status'

@@ -6,9 +6,6 @@
       doom-serif-font (font-spec :family "JetBrains Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 17))
 
-; Dashboard
-;; (setq fancy-splash-image (concat doom-user-dir "emacs-e-template.svg"))
-
 ; Split behaviour Always right & below and ask for buffer choice
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
@@ -282,7 +279,12 @@
   (kbd "N") 'evil-search-previous
   (kbd "q") 'kill-this-buffer
   ))
+;; Dired less details
+(defun my-dired-mode-setup ()
+  "to be run as hook for `dired-mode'."
+  (dired-hide-details-mode 1))
 
+(add-hook 'dired-mode-hook 'my-dired-mode-setup)
 ;; Leader Keybinds
 ;; Easier key for terminal popup
 (map! :leader
@@ -387,14 +389,22 @@
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
 
-;; Theme (base but with many tweaks in custom.el)
-(setq doom-theme 'catppuccin)
+;; THEME
+;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
+(setq doom-theme 'doom-nord)
+(custom-set-faces
+  '(default ((t (:background "#0f0f0f"))))
+  '(hl-line ((t (:extend t :background "#0f0f0f"))))
+  '(mode-line ((t (:background "#0f0f0f"))))
+  '(mode-line-inactive ((t (:background "#0f0f0f"))))
+  '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
+ )
 
 ;; Cursor colours
 (setq
-      evil-normal-state-cursor '(box "#679FC7")
-      evil-insert-state-cursor '(bar "#679FC7")
-      evil-visual-state-cursor '(hollow "#c280A0"))
+      evil-normal-state-cursor '(box "#88aaee")
+      evil-insert-state-cursor '(bar "#88aaee")
+      evil-visual-state-cursor '(hollow "#A98AAD"))
 (after! solaire-mode
   (solaire-global-mode -1))
 
@@ -459,7 +469,6 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
-
 
 ;; Elfeed
 (require 'elfeed-org)
@@ -697,4 +706,4 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;;
-;;: config.el ends here
+;;; config.el ends here
