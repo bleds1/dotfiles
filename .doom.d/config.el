@@ -6,7 +6,41 @@
       doom-serif-font (font-spec :family "JetBrains Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 17))
 
-; Split behaviour Always right & below and ask for buffer choice
+; Theme
+; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
+(setq doom-theme 'doom-nord)
+
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+
+(custom-set-faces
+  '(default ((t (:background "#0f0f0f"))))
+  '(hl-line ((t (:extend t :background "#0f0f0f"))))
+  '(mode-line ((t (:background "#0f0f0f"))))
+  '(mode-line-inactive ((t (:background "#0f0f0f"))))
+  '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
+ )
+
+; Cursor
+(setq
+      evil-normal-state-cursor '(box "#88aaee")
+      evil-insert-state-cursor '(bar "#88aaee")
+      evil-visual-state-cursor '(hollow "#A98AAD"))
+(after! solaire-mode
+  (solaire-global-mode -1))
+
+; Initial buffer
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+;
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+; (setq initial-buffer-choice 'vterm)
+(setq initial-scratch-message " ")
+(setq initial-major-mode 'org-mode)
+
+; Split behaviour (Always right & below and ask for buffer choice)
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 (defadvice! prompt-for-buffer (&rest _)
@@ -20,38 +54,6 @@
 (setq undo-limit 80000000
       evil-want-fine-undo t
       scroll-margin 2)
-
-; Suppress confirm to exit messages
-(setq confirm-kill-emacs nil)
-
-; Initial buffer
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
-;
-(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-;; (setq initial-buffer-choice 'vterm)
-(setq initial-scratch-message " ")
-(setq initial-major-mode 'org-mode)
-(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-
-; Make markdown buffer easier
-(evil-define-command +evil-buffer-markdown-new (_count file)
-  "Creates a new markdown buffer replacing the current window, optionally
-   editing a certain FILE"
-  :repeat nil
-  (interactive "P<f>")
-  (if file
-      (evil-edit file)
-    (let ((buffer (generate-new-buffer "*new md*")))
-      (set-window-buffer nil buffer)
-      (with-current-buffer buffer
-        (markdown-mode)
-        (setq-local doom-real-buffer-p t)))))
-
-(map! :leader
-      (:prefix "n"
-       :desc "New empty Markdown buffer" "M" #'+evil-buffer-markdown-new))
 
 ;; Org
 ;; NOTE: `org-directory' Must be set before org loads!
@@ -88,24 +90,6 @@
        ("PROJECT" :foreground "#845bc8" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
-
-; Function to clock in on DOING (NOTE: Don't think this is working)
-(after! org
-(defun org-clock-todo-change ()
-  (if (string= org-state "DOING")
-      (org-clock-in)
-    (org-clock-out-if-current)))
-;; https://www.philnewton.net/blog/automatic-org-keyword-changes/
-;; Always change the task to DOING
-(setq org-clock-in-switch-to-state "DOING")
-;; Use a function to decide what to change the state to.
-(setq org-clock-in-switch-to-state #'sodaware/switch-task-on-clock-start)
-(defun sodaware/switch-task-on-clock-start (task-state)
-  "Change a task to 'DOING' when TASK-STATE is 'TODO'."
-  (if (string= task-state "TODO")
-      "DOING"
-      task-state))
-)
 
 ; Org Priorities
 (after! org
@@ -234,8 +218,8 @@
              ("work")
                )))
 
-;; Keybinds
-;; Function to find files with keybind
+; Keybinds
+; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
         (file file)
@@ -245,10 +229,8 @@
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c d" "~/org/drafts.org" "drafts.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
-;; (zz/add-file-keybinding "C-c w" "~/org/weekly.org" "weekly.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
-;; (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today) ;; reset to drafts
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
 (global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
@@ -261,24 +243,44 @@
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-s") 'save-buffer)
-;; (global-set-key (kbd "C-c n m") 'notmuch-search)
+; (global-set-key (kbd "C-c n m") 'notmuch-search)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
-;; Switch between vterm buffer and previous
+; Switch between vterm buffer and previous
 (global-set-key (kbd "C-c 0") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 (global-set-key (kbd "C-c 9") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*Org Agenda*") (previous-buffer) (switch-to-buffer "*Org Agenda*"))))
-;; Dired go to fleeting notes
+; Dired go to fleeting notes
 (global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
 (global-set-key (kbd "C-c y") (lambda () (interactive) (dired "~/org/roam/daily")))
 (global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
-;; # Dired
+(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+
+; Make markdown buffer easier
+(evil-define-command +evil-buffer-markdown-new (_count file)
+  "Creates a new markdown buffer replacing the current window, optionally
+   editing a certain FILE"
+  :repeat nil
+  (interactive "P<f>")
+  (if file
+      (evil-edit file)
+    (let ((buffer (generate-new-buffer "*new md*")))
+      (set-window-buffer nil buffer)
+      (with-current-buffer buffer
+        (markdown-mode)
+        (setq-local doom-real-buffer-p t)))))
+
+(map! :leader
+      (:prefix "n"
+       :desc "New empty Markdown buffer" "M" #'+evil-buffer-markdown-new))
+
+; Dired
 (after! dired
 (evil-define-key 'normal dired-mode-map
   (kbd "M-RET") 'dired-display-file
@@ -303,50 +305,51 @@
   (kbd "N") 'evil-search-previous
   (kbd "q") 'kill-this-buffer
   ))
-;; Dired less details
+
+; Dired less details NOTE: not working?
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
-
 (add-hook 'dired-mode-hook 'my-dired-mode-setup)
-;; Leader Keybinds
-;; Easier key for terminal popup
+
+; Leader Keybinds
+; Easier key for terminal popup
 (map! :leader
       :desc "Vterm toggle"
       "v" '+vterm/toggle)
-;; Easier key for terminal full window
+; Easier key for terminal full window
 (map! :leader
       :desc "Vterm here"
       "V" '+vterm/here)
-;; Writeroom increase text width
+; Writeroom increase text width
 (map! :leader
       :desc "Writeroom increase width"
       "=" 'writeroom-increase-width)
-;; Writeroom decrease text width
+; Writeroom decrease text width
 (map! :leader
       :desc "Writeroom increase width"
       "-" 'writeroom-decrease-width)
-;; Consult find file
+; Consult find file
 (map! :leader
       :desc "consult-find file"
       "/" 'consult-find)
-;; Writeroom mode
+; Writeroom mode
 (map! :leader
       :desc "writeroom-mode"
       "z" 'writeroom-mode)
-;; rip grep
+; rip grep
 (map! :leader
       :desc "rgrep"
       "r" 'rgrep)
-;; Quick org-tags-sparse-tags
+; Quick org-tags-sparse-tags
 (map! :leader
       (:prefix ("o" . "org-tags-sparse-tree")
                 :desc "org-tags-sparse-tree" "s" #'org-tags-sparse-tree))
-;; Quick org-agenda-filter
+; Quick org-agenda-filter
 (map! :leader
       (:prefix ("o" . "org-agenda-filter")
                 :desc "org-agenda-filter" "l" #'org-agenda-filter))
-;; leader keys for org-roam-dailies
+; leader keys for org-roam-dailies
 (map! :leader
       (:prefix ("n" . "org-roam-dailies-capture-today")
                 :desc "org-roam-dailies-capture-today" "j" #'org-roam-dailies-capture-today))
@@ -368,19 +371,19 @@
 (map! :leader
       :desc "org-roam-dailies-goto-today"
       "d" #'org-roam-dailies-goto-today)
-;; Evil write all buffers
+; Evil write all buffers
 (map! :leader
       (:prefix ("w" . "Write all buffers")
                :desc "Write all buffers" "a" 'evil-write-all))
-;; Eval Buffer
+; Eval Buffer
 (map! :leader
       (:prefix ("e" . "Eval")
                :desc "Eval buffer" "b" 'eval-buffer))
-;; Focus Mode
+; Focus Mode
 (map! :leader
       (:prefix ("f")
                :desc "Focus Mode" "m" 'focus-mode))
-;; avy search char in the open windows is kinda like qutebrowsers follow mode
+; avy search char in the open windows is kinda like qutebrowsers follow mode
 (setq avy-all-windows t)
 (map! :leader
       :prefix "j"
@@ -393,7 +396,7 @@
       :prefix "o"
       :desc "org-agenda-week-view" "2" #'org-agenda-week-view)
 
-;; Doom modeline
+; Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
@@ -413,29 +416,10 @@
         doom-modeline-modal-icon nil
         doom-modeline-buffer-encoding nil))
 
-;; THEME
-;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
-(setq doom-theme 'doom-nord)
-(custom-set-faces
-  '(default ((t (:background "#0f0f0f"))))
-  '(hl-line ((t (:extend t :background "#0f0f0f"))))
-  '(mode-line ((t (:background "#0f0f0f"))))
-  '(mode-line-inactive ((t (:background "#0f0f0f"))))
-  '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
- )
-
-;; Cursor colours
-(setq
-      evil-normal-state-cursor '(box "#88aaee")
-      evil-insert-state-cursor '(bar "#88aaee")
-      evil-visual-state-cursor '(hollow "#A98AAD"))
-(after! solaire-mode
-  (solaire-global-mode -1))
-
 ;; Writeroom Zen mode appearance
 ;; (add-hook 'writeroom-mode-hook (lambda () (display-line-numbers-mode -1)))
 (setq writeroom-mode-line t
-      writeroom-width 110
+      writeroom-width 120
       +zen-text-scale 0.1)
 
 ;; Org roam
@@ -498,30 +482,34 @@
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-week-ago +unread"
+(setq elfeed-search-filter "@1-day-ago +unread"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
 (add-hook! 'elfeed-show-mode-hook (hide-mode-line-mode 1))
 (add-hook! 'elfeed-search-update-hook #'hide-mode-line-mode)
+;; Tecosaur elfeed settings
  (defadvice! +rss-elfeed-wrap-h-nicer ()
     "Enhances an elfeed entry's readability by wrapping it to a width of
 `fill-column' and centering it with `visual-fill-column-mode'."
     :override #'+rss-elfeed-wrap-h
     (setq-local truncate-lines nil
                 shr-width 120
-        ;        visual-fill-column-center-text t
-                default-text-properties '(line-height 1.0))
+                visual-fill-column-center-text t
+                default-text-properties '(line-height 0.8))
     (let ((inhibit-read-only t)
           (inhibit-modification-hooks t))
- ;     (visual-fill-column-mode)
+     (writeroom-mode)
       (set-buffer-modified-p nil)))     )
-;; browse article in gui browser instead of eww
-(defun elfeed-show-visit-gui ()
-  "Wrapper for elfeed-show-visit to use gui browser instead of eww"
-  (interactive)
-  (let ((browse-url-generic-program "xdg-open"))
-    (elfeed-show-visit t)))
+;; Browse article in gui browser instead of eww
+;; (defun elfeed-show-visit-gui ()
+;;   "Wrapper for elfeed-show-visit to use gui browser instead of eww"
+;;   (interactive)
+;;   (let ((browse-url-generic-program "xdg-open"))
+
+;;     (elfeed-show-visit t)))
+;;
+(setq browse-url-browser-function 'eww-browse-url)
 ;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
@@ -729,5 +717,8 @@
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
-;;
-;;; config.el ends here
+
+; Suppress confirm to exit messages
+(setq confirm-kill-emacs nil)
+
+;;; config.el ends here ;;;
