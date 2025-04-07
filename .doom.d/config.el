@@ -20,8 +20,18 @@
   '(mode-line ((t (:background "#0f0f0f"))))
   '(mode-line-inactive ((t (:background "#0f0f0f"))))
   '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
+  '(org-level-2 ((t (:foreground "#c0d0e0"))))
+  '(org-level-3 ((t (:foreground "#ECEFF4"))))
+  '(org-level-4 ((t (:foreground "#ECEFF4"))))
+  '(org-level-5 ((t (:foreground "#ECEFF4"))))
+  '(org-level-6 ((t (:foreground "#ECEFF4"))))
+  '(org-level-7 ((t (:foreground "#ECEFF4"))))
+  '(org-level-8 ((t (:foreground "#ECEFF4"))))
+  '(org-scheduled-previously ((t (:foreground "#ffdead"))))
+  '(org-warning ((t (:foreground "#ffe7ba"))))
+  '(org-date ((t (:foreground "#ffdead"))))
+  '(org-agenda-clocking ((t (:background "#0f0f0f"))))
  )
-
 ; Cursor
 (setq
       evil-normal-state-cursor '(box "#88aaee")
@@ -38,7 +48,7 @@
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
-(setq initial-major-mode 'org-mode)
+(setq initial-major-mode 'lisp-mode)
 
 ; Split behaviour (Always right & below and ask for buffer choice)
 (setq evil-vsplit-window-right t
@@ -83,7 +93,7 @@
          "CANCELLED(c!)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
-       ("DOING" :foreground "#1c7870" :weight bold)
+       ("DOING" :foreground "#85C7A1" :weight bold)
        ("NEXT" :foreground "#ff7f50" :weight bold)
        ("WAITING" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
@@ -110,23 +120,26 @@
 (after! org
   (setq! org-capture-templates
 
-        '(("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
+        '(("i" " Inbox" entry (file "~/org/inbox.org")
+           "** %?")
+
+          ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
          "** TODO %? :p2:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\")) \n")
 
-           ("q" " Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
+           ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
             (file "~/org/tpl/tpl-todo.txt"))
 
-           ("s" " Someday" entry (file "~/org/someday.org")
+           ("s" "󰨹 Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
 
-           ("d" "󰟶 Writing Inbox" entry (file+headline "~/org/drafts.org" "QUEUED:")
+           ("d" "󰟶 Drafts" entry (file+headline "~/org/drafts.org" "QUEUED:")
             "** TODO %?")
 
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
 
-           ("w" " Weekly Review" plain (file buffer-name)
-            (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
+           ;; ("w" " Weekly Review" plain (file buffer-name)
+           ;;  (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
            ))
 
@@ -134,58 +147,64 @@
 (setq org-agenda-custom-commands
  '(
 
-   ("1" "High Priority"
-    ((tags-todo "+p1-DONE-@someday"
+   ("1" "+p1"
+    ((tags-todo "+p1-DONE-@someday-@refile"
            ((org-agenda-overriding-header "High Priority Todos"))
                 )))
 
-   ("2" "Medium Priority"
-    ((tags-todo "+p2-DONE-@someday"
+   ("2" "+p2"
+    ((tags-todo "+p2-DONE-@someday-@refile"
            ((org-agenda-overriding-header "Medium Priority Todos"))
                 )))
 
-   ("3" "Low Priority"
-    ((tags-todo "+p3-DONE-@someday"
+   ("3" "+p3"
+    ((tags-todo "+p3-DONE-@someday-@refile"
            ((org-agenda-overriding-header "Low Priority Todos"))
                 )))
 
-   ("h" "home"
-    ((tags-todo "+home-DONE-p4-@someday-@goal"
+   ("h" "+home"
+    ((tags-todo "+home-DONE-p4-@someday-@goal-@refile"
            ((org-agenda-overriding-header "Domestic"))
            )))
 
-   ("p" "sb"
-    ((tags-todo "+sb-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Personal"))
+   ("i" "Inbox"
+    ((tags "-@someday+@refile"
+           ((org-agenda-overriding-header "Unprocessed inbox items"))
            )))
 
-   ("n" "na"
-    ((tags-todo "+na-DONE-p4-@someday-@goal"
+   ("n" "+na"
+    ((tags-todo "+na-DONE-p4-@someday-@goal-@refile"
            ((org-agenda-overriding-header "Navigators"))
            )))
 
-   ("r" "errand"
-    ((tags-todo "+errand-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Errands"))
-           )))
-
-   ("w" "work"
-    ((tags-todo "+work-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "Work"))
-           )))
-
-   ("y" "sys"
-    ((tags-todo "+sys-DONE-p4-@someday-@goal"
-           ((org-agenda-overriding-header "System"))
-           )))
-
    ("o" "Todo"
-    ((todo "TODO"
+    ((tags-todo "TODO-@refile"
            ((org-agenda-overriding-header "All Todos"))
+           )))
+
+   ("p" "+sb"
+    ((tags-todo "+sb-DONE-p4-@someday-@goal-@refile"
+           ((org-agenda-overriding-header "Personal"))
+           )))
+
+
+   ("r" "+errand"
+    ((tags-todo "+errand-DONE-p4-@someday-@goal-@refile"
+           ((org-agenda-overriding-header "Errands"))
            )))
 
    ("u" "Untagged"
     ((tags-todo "-@goal-@someday-{.*}")))
+
+   ("w" "+work"
+    ((tags-todo "+work-DONE-p4-@someday-@goal-@refile"
+           ((org-agenda-overriding-header "Work"))
+           )))
+
+   ("y" "+sys"
+    ((tags-todo "+sys-DONE-p4-@someday-@goal-@refile"
+           ((org-agenda-overriding-header "System"))
+           )))
 
       ))
 
@@ -228,6 +247,8 @@
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c d" "~/org/drafts.org" "drafts.org")
+(zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
+(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
@@ -247,15 +268,18 @@
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
-; Switch between vterm buffer and previous
+;; Switch back and forth between some commonly used
 (global-set-key (kbd "C-c 0") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 (global-set-key (kbd "C-c 9") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*Org Agenda*") (previous-buffer) (switch-to-buffer "*Org Agenda*"))))
+(global-set-key (kbd "C-c 8") (lambda ()
+                              (interactive)
+                              (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
 ; Dired go to fleeting notes
-(global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
+(global-set-key (kbd "C-c f") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
 (global-set-key (kbd "C-c y") (lambda () (interactive) (dired "~/org/roam/daily")))
@@ -375,10 +399,16 @@
 (map! :leader
       (:prefix ("w" . "Write all buffers")
                :desc "Write all buffers" "a" 'evil-write-all))
-; Eval Buffer
+;; Leader e
 (map! :leader
       (:prefix ("e" . "Eval")
                :desc "Eval buffer" "b" 'eval-buffer))
+(map! :leader
+      (:prefix ("e" . "Elfeed")
+               :desc "Elfeed" "f" 'elfeed))
+(map! :leader
+      (:prefix ("e" . "eww")
+               :desc "eww" "w" 'eww))
 ; Focus Mode
 (map! :leader
       (:prefix ("f")
@@ -395,6 +425,9 @@
 (map! :leader
       :prefix "o"
       :desc "org-agenda-week-view" "2" #'org-agenda-week-view)
+(map! :leader
+      :prefix "o"
+      :desc "org-agenda-month-view" "3" #'org-agenda-month-view)
 
 ; Doom modeline
 (after! doom-modeline
@@ -614,13 +647,16 @@
     (face-remap-add-relative 'variable-pitch
                              :family "Bookerly"
                              :height 1.0
-                             :width 'semi-expanded)
-    (face-remap-add-relative 'default :height 1.0)
+                             :width 'semi-expanded
+                             :foreground "#acacac")
+    (face-remap-add-relative 'default
+                             :height 1.0
+                             :foreground "#acacac")
     (variable-pitch-mode 1)
     (setq-local line-spacing 0.2
                 next-screen-context-lines 4
                 shr-use-colors nil
-                nov-text-width 120)
+                nov-text-width 126)
     ;; (when (require 'visual-fill-column nil t)
     ;; (setq-local visual-fill-column-center-text t)
       ;;             visual-fill-column-width 64

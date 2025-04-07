@@ -1,0 +1,36 @@
+# Cyan/Blues Based Theme - foot terminal color config
+# Converted from Base16 teal 256
+# Dominant blue/cyan around #88aaee
+[colors]
+background = 000000
+foreground = d0e8f2  # Lighter blue/cyan for good contrast
+
+# Normal colors
+regular0 = 102027  # Darker blue/black
+regular1 = 4f83bd  # Blue
+regular2 = 66aaff  # Brighter Blue
+regular3 = 88aaee  # Dominant Blue/Cyan
+regular4 = 77ccee  # Cyan
+regular5 = 99ddff  # Lighter Cyan
+regular6 = 5fa8d3  # Slightly darker Cyan
+regular7 = d0e8f2  # Lightest blue/white
+
+# Bright colors
+bright0 = 5f83bd   # Bright dark blue
+bright1 = 66aaff   # Bright blue
+bright2 = 88aaee   # Bright dominant blue/cyan
+bright3 = 77ccee   # Bright cyan
+bright4 = 99ddff   # Bright lighter cyan
+bright5 = aaddff   # Even brighter cyan
+bright6 = 77ccee   # Bright slightly darker cyan
+bright7 = e0f8ff   # Brightest blue/white
+
+# Indexed colors (first 16 - often map to dim colors)
+dim0 = 102027
+dim1 = 4f83bd
+dim2 = 66aaff
+dim3 = 88aaee
+dim4 = 77ccee
+dim5 = 99ddff
+dim6 = 5fa8d3
+dim7 = d0e8f2

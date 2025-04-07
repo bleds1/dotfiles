@@ -1,0 +1,35 @@
+# Base16 teal 256 - foot terminal color config
+# Default colors
+[colors]
+background = 000000
+foreground = c4e2ca
+
+# Normal colors
+regular0 = 161616  # black
+regular1 = 548f6f  # red
+regular2 = 3d6950  # green
+regular3 = 85c7a1  # yellow
+regular4 = 70b48d  # blue
+regular5 = 85c7a1  # magenta
+regular6 = 548f6f  # cyan
+regular7 = c4e2ca  # white
+
+# Bright colors
+bright0 = 548f6f   # bright black
+bright1 = 548f6f   # bright red
+bright2 = 3d6950   # bright green
+bright3 = 85c7a1   # bright yellow
+bright4 = 70b48d   # bright blue
+bright5 = 85c7a1   # bright magenta
+bright6 = 548f6f   # bright cyan
+bright7 = a5d2b5   # bright white
+
+# Indexed colors (first 16 - often map to dim colors)
+dim0 = 161616
+dim1 = 548f6f
+dim2 = 3d6950
+dim3 = 85c7a1
+dim4 = 70b48d
+dim5 = 85c7a1
+dim6 = 548f6f
+dim7 = c4e2ca
