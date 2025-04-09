@@ -1,7 +1,10 @@
 {
-  // "features": {
-    // "edit_prediction_provider": "zed"
-  // },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
   // "assistant": {
   //   "default_model": {
   //     "provider": "zed.dev",
@@ -38,7 +41,7 @@
   },
   "terminal": {
     "dock": "bottom",
-    "font_family": "JetBrainsMono Nerd Font",
+    "font_family": "JetBrains Mono",
     "font_size": 13
   },
   "chat_panel": {
@@ -59,8 +62,8 @@
   "tab_size": 2,
   "ui_font_size": 14,
   "ui_font_family": "Ubuntu",
-  "buffer_font_size": 14,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_size": 15,
+  "buffer_font_family": "JetBrains Mono",
   "theme": {
     "mode": "system",
     "light": "Github Light",

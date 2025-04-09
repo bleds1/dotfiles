@@ -1,13 +1,13 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-; Fonts
+;; Fonts
 (setq doom-font (font-spec :family "JetBrains Mono" :size 17)
       doom-big-font (font-spec :family "JetBrains Mono" :size 17)
       doom-serif-font (font-spec :family "JetBrains Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 17))
 
-; Theme
-; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
+;; Theme
+;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
 (setq doom-theme 'doom-nord)
 
 (after! doom-themes
@@ -32,11 +32,14 @@
   '(org-date ((t (:foreground "#ffdead"))))
   '(org-agenda-clocking ((t (:background "#0f0f0f"))))
  )
-; Cursor
+
+;; Cursor colours
 (setq
       evil-normal-state-cursor '(box "#88aaee")
       evil-insert-state-cursor '(bar "#88aaee")
       evil-visual-state-cursor '(hollow "#A98AAD"))
+
+;; Disabling solaire-mode neccessary for consistent custom background colour
 (after! solaire-mode
   (solaire-global-mode -1))
 
@@ -44,20 +47,19 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
-;
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-; (setq initial-buffer-choice 'vterm)
+;; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'lisp-mode)
 
-; Split behaviour (Always right & below and ask for buffer choice)
+;; Split behaviour (Always right & below and ask for buffer choice)
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
 
-; Trash, revert, undo, scroll
+;; Trash, revert, undo, scroll
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
 (global-auto-revert-mode 1)
@@ -65,12 +67,11 @@
       evil-want-fine-undo t
       scroll-margin 2)
 
-;; Org
+;; Org mode
 ;; NOTE: `org-directory' Must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-roam-directory "~/org/roam/")
 (setq org-roam-dailies-directory "~/org/roam/daily/")
-; Org Mode
 (after! org
 (setq org-log-done 'time
       org-log-into-drawer t
@@ -101,7 +102,7 @@
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
-; Org Priorities
+;; Org Bullets and Priorities
 (after! org
  (setq
     org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
@@ -116,7 +117,7 @@
    ))
 )
 
-; Org Capture Templates
+;; Org Capture Templates
 (after! org
   (setq! org-capture-templates
 
@@ -124,7 +125,7 @@
            "** %?")
 
           ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
-         "** TODO %? :p2:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\")) \n")
+         "** TODO %? :p3:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\")) \n")
 
            ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
             (file "~/org/tpl/tpl-todo.txt"))
@@ -208,7 +209,14 @@
 
       ))
 
-; Org tag alist
+(defun my-org-agenda-export-to-agenda-html ()
+  "Exports the current org-agenda view to a HTML file named 'agenda.html' in the ~/org/ directory."
+  (interactive)
+  (let ((export-directory "~/org/"))
+    (unless (file-directory-p export-directory)
+      (make-directory export-directory t)) ;; Create directory if it doesn't exist
+
+;; Org tag-alist
 (after! org
   (setq org-tag-alist
         '(
@@ -237,8 +245,8 @@
              ("work")
                )))
 
-; Keybinds
-; Function to find files with keybind
+;; Keybinds
+;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
         (file file)
@@ -264,7 +272,7 @@
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-s") 'save-buffer)
-; (global-set-key (kbd "C-c n m") 'notmuch-search)
+;; (global-set-key (kbd "C-c n m") 'notmuch-search)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
@@ -330,7 +338,7 @@
   (kbd "q") 'kill-this-buffer
   ))
 
-; Dired less details NOTE: not working?
+; Dired less details TODO: not working?
 (defun my-dired-mode-setup ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
@@ -429,7 +437,7 @@
       :prefix "o"
       :desc "org-agenda-month-view" "3" #'org-agenda-month-view)
 
-; Doom modeline
+;; Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
@@ -534,7 +542,7 @@
           (inhibit-modification-hooks t))
      (writeroom-mode)
       (set-buffer-modified-p nil)))     )
-;; Browse article in gui browser instead of eww
+;; TODO: Browse article in gui browser instead of eww
 ;; (defun elfeed-show-visit-gui ()
 ;;   "Wrapper for elfeed-show-visit to use gui browser instead of eww"
 ;;   (interactive)
@@ -542,8 +550,6 @@
 
 ;;     (elfeed-show-visit t)))
 ;;
-(setq browse-url-browser-function 'eww-browse-url)
-;; Note: The customize interface is also supported.
 (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 (after! elfeed-search
@@ -596,6 +602,18 @@
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
 
+;; TODO: sometimes pane is not opening at bottom, below doesn't seem to help
+(after! elfeed
+  (setq
+    elfeed-goodies/powerline-default-separator 'contour
+    elfeed-goodies/tag-column-width '20
+    elfeed-goodies/entry-pane-size '0.50
+    elfeed-goodies/entry-pane-position 'bottom
+    ))
+
+;; EWW is set as the default browser
+(setq browse-url-browser-function 'eww-browse-url)
+
 ;; Rainbow mode
 (add-hook! org-mode 'rainbow-mode)
 (add-hook! prog-mode 'rainbow-mode)
@@ -624,7 +642,7 @@
 ;; Loads the pass package installed from MELPA
 (use-package! pass)
 
-;; org alert package
+;; Org alert package
 (use-package! org-alert
   :custom (alert-default-style 'libnotify)
   :config
@@ -633,7 +651,7 @@
         org-alert-notification-title "Upcoming Task")
   (org-alert-enable))
 ;;
-; nov (epub reader)
+; Nov epub reader (see Tecosaur)
 (use-package! nov
   :mode ("\\.epub\\'" . nov-mode)
   :config
@@ -657,21 +675,20 @@
                 next-screen-context-lines 4
                 shr-use-colors nil
                 nov-text-width 126)
-    ;; (when (require 'visual-fill-column nil t)
-    ;; (setq-local visual-fill-column-center-text t)
-      ;;             visual-fill-column-width 64
-      ;;             nov-text-width 106)
-       (hl-line-mode -1)
-      ;; (visual-fill-column-mode 1))
-    ;; (when (featurep 'hl-line-mode)
-    ;; Re-render with new display settings
+ ;; (when (require 'visual-fill-column nil t)
+ ;; (setq-local visual-fill-column-center-text t)
+ ;;             visual-fill-column-width 64
+ ;;             nov-text-width 106)
+    (hl-line-mode -1)
+ ;; (visual-fill-column-mode 1))
+ ;; (when (featurep 'hl-line-mode)
+ ;; Re-render with new display settings
     (nov-render-document)
-    ;; Look up words with the dictionary.
+ ;; Look up words with the dictionary.
     (add-to-list '+lookup-definition-functions #'+lookup/dictionary-definition))
+    (add-hook 'nov-mode-hook #'+nov-mode-setup))
 
-  (add-hook 'nov-mode-hook #'+nov-mode-setup))
-
-;; nov modeline
+;; nov modeline (see Tecosaur)
 (after! doom-modeline
   (defvar doom-modeline-nov-title-max-length 20)
   (doom-modeline-def-segment nov-author
@@ -707,16 +724,13 @@
 
   (add-to-list 'doom-modeline-mode-alist '(nov-mode . nov)))
 
-;; Load other config files
-(load! (concat doom-user-dir "private"))
-
 ;; Timestamp function
 (defun now ()
  (interactive)
  (insert (format-time-string "* %H:%M" )
  ))
 
-;; Online lookup provider list
+;; Online lookup search provider list
 (setq +lookup-provider-url-alist
       '(("Doom issues"       "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
         ("Brave Search"      "https://search.brave.com/search?q")
@@ -731,7 +745,7 @@
 ;; Escape insert mode with jk kj
 (setq evil-escape-unordered-key-sequence t)
 
-;; Line numbers with exceptions
+;; Line numbers with exceptions for certain modes
 (setq display-line-numbers-type 'relative)
 (dolist (mode '(org-mode-hook
                 markdown-mode-hook
@@ -739,11 +753,11 @@
                 shell-mode-hook))
  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;;When connecting with emacsclient -nc, don't open a new workspace. Simply connect to "main"
+;; When connecting with emacsclient -nc, don't open a new workspace, connect to "main"
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
-;; highlight line mode
+;; Highlight line mode
 (setq hl-line-mode -1)
 (setq global-hl-line-mode -1)
 
@@ -754,7 +768,10 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
-; Suppress confirm to exit messages
+;; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)
+
+;; Load other config files
+(load! (concat doom-user-dir "private"))
 
 ;;; config.el ends here ;;;

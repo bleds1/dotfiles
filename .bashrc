@@ -13,10 +13,10 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/.scripts:$PATH"
 
 # neovim as man page reader
-export MANPAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
 
 ### "less" as manpager
-# export MANPAGER "less"
+export MANPAGER "less"
 
 # hyprshot dir env
 export HYPRSHOT_DIR=/home/bledley/Pictures/Screenshots
@@ -51,6 +51,7 @@ alias tree="tree -C" #colour for tree
 # Emacs
 # alias emacs="emacsclient -c -a 'emacs'"
 alias e="emacsclient -nw"
+alias ec='emacsclient -c -a ""'
 
 # git abbrevs
 alias gs='git status'
