@@ -59,6 +59,9 @@
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
 
+;; Behaviour of certain modules
+(set-popup-rule! "^\\*notmuch-hello*" :side 'right :size 0.50 :select t :ttl nil)
+
 ;; Trash, revert, undo, scroll
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
@@ -98,7 +101,7 @@
        ("NEXT" :foreground "#ff7f50" :weight bold)
        ("WAITING" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
-       ("PROJECT" :foreground "#845bc8" :weight bold)
+       ("PROJECT" :foreground "#896ccc" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANCELLED" :foreground "#5d6265" :weight bold))))
 
@@ -125,16 +128,19 @@
            "** %?")
 
           ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
-         "** TODO %? :p3:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\")) \n")
+            (file "~/org/tpl/tpl-next.txt"))
 
            ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
-            (file "~/org/tpl/tpl-todo.txt"))
+            (file "~/org/tpl/tpl-queued.txt"))
 
            ("s" "󰨹 Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
 
            ("d" "󰟶 Drafts" entry (file+headline "~/org/drafts.org" "QUEUED:")
             "** TODO %?")
+
+           ("m" " Mail > Task" entry (file "~/org/inbox.org")
+            "** TODO %a :email:p3:\nSCHEDULED: %^t\n:PROPERTIES:\n:CATEGORY: email\n:END:")
 
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
@@ -209,13 +215,6 @@
 
       ))
 
-(defun my-org-agenda-export-to-agenda-html ()
-  "Exports the current org-agenda view to a HTML file named 'agenda.html' in the ~/org/ directory."
-  (interactive)
-  (let ((export-directory "~/org/"))
-    (unless (file-directory-p export-directory)
-      (make-directory export-directory t)) ;; Create directory if it doesn't exist
-
 ;; Org tag-alist
 (after! org
   (setq org-tag-alist
@@ -224,6 +223,7 @@
              ("p2")
              ("p3")
              ("p4")
+             ("email")
              ("errand")
              ("home")
              ("na")
@@ -237,6 +237,7 @@
              ("p2")
              ("p3")
              ("p4")
+             ("email")
              ("errand")
              ("home")
              ("na")
@@ -258,6 +259,8 @@
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
+(zz/add-file-keybinding "C-c p j" "~/org/projects.org" "projects.org")
+(zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
@@ -272,7 +275,6 @@
 (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-s") 'save-buffer)
-;; (global-set-key (kbd "C-c n m") 'notmuch-search)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map (kbd "C-c c") #'org-capture)
@@ -286,13 +288,28 @@
 (global-set-key (kbd "C-c 8") (lambda ()
                               (interactive)
                               (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
-; Dired go to fleeting notes
+;; Dired go to org roam dirs
 (global-set-key (kbd "C-c f") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
 (global-set-key (kbd "C-c y") (lambda () (interactive) (dired "~/org/roam/daily")))
 (global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
+;; Keybind for scratchbuffer
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+
+;; Keybind for notmuch search
+(global-set-key (kbd "C-c n s") 'notmuch-search)
+(global-set-key (kbd "C-c n m") 'notmuch)
+
+;; FIX: function for notmuch search tag:inbox
+(defun notmuch-inbox-search ()
+  (interactive)
+  (notmuch-search "tag:inbox"))
+
+;; FIX: keybind for above function
+(map! :leader
+      (:prefix "o"
+      :desc "Search inbox" "i" #'notmuch-inbox-search))
 
 ; Make markdown buffer easier
 (evil-define-command +evil-buffer-markdown-new (_count file)
@@ -338,13 +355,7 @@
   (kbd "q") 'kill-this-buffer
   ))
 
-; Dired less details TODO: not working?
-(defun my-dired-mode-setup ()
-  "to be run as hook for `dired-mode'."
-  (dired-hide-details-mode 1))
-(add-hook 'dired-mode-hook 'my-dired-mode-setup)
-
-; Leader Keybinds
+;; Leader Keybinds
 ; Easier key for terminal popup
 (map! :leader
       :desc "Vterm toggle"
@@ -411,6 +422,9 @@
 (map! :leader
       (:prefix ("e" . "Eval")
                :desc "Eval buffer" "b" 'eval-buffer))
+(map! :leader
+      (:prefix ("e" . "Eval")
+               :desc "Eval buffer" "r" 'eval-region))
 (map! :leader
       (:prefix ("e" . "Elfeed")
                :desc "Elfeed" "f" 'elfeed))
@@ -602,15 +616,6 @@
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
 
-;; TODO: sometimes pane is not opening at bottom, below doesn't seem to help
-(after! elfeed
-  (setq
-    elfeed-goodies/powerline-default-separator 'contour
-    elfeed-goodies/tag-column-width '20
-    elfeed-goodies/entry-pane-size '0.50
-    elfeed-goodies/entry-pane-position 'bottom
-    ))
-
 ;; EWW is set as the default browser
 (setq browse-url-browser-function 'eww-browse-url)
 
@@ -621,23 +626,6 @@
 ;; Org Clock SFX
 (setq org-clock-sound "~/sfx/advance_ding.wav")
 (add-hook 'org-timer-done-hook 'org-clock-out)
-
-;; Function to run my mail sync script (Not using currently)
-;; (defun mail-sync-script ()
-;;   "Run my custom shell script"
-;;   (interactive)
-;;   (call-process "~/.scripts/mail-sync.sh" nil 0))
-
-;; (map! :leader
-;;       :desc "mail sync script" "m s" #'mail-sync-script)
-
-;; (defun notmuch-inbox-search ()
-;;   "Search for emails with the tag:inbox using notmuch"
-;;   (interactive)
-;;   (notmuch-search "tag:inbox"))
-
-;; (map! :leader
-;;       :desc "Search inbox" "o i" #'notmuch-inbox-search)
 
 ;; Loads the pass package installed from MELPA
 (use-package! pass)

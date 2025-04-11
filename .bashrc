@@ -87,6 +87,7 @@ alias lm="eza -al --color=always --sort modified --reverse"
 alias ll="eza -al --color=always --sort Name --group-directories-first --no-permissions --no-filesize --no-user --no-time"
 alias la="eza -al --color=always --sort Name --group-directories-first"
 alias lt="eza -aT --color=always --group-directories-first"
+alias nmtrash="notmuch search --format=text0 --output=files tag:trash | xargs -0 --no-run-if-empty rm"
 
 # Directory Shortcuts
 alias sba="cd ~/sba/"
