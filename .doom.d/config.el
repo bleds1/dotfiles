@@ -59,9 +59,6 @@
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
 
-;; Behaviour of certain modules
-(set-popup-rule! "^\\*notmuch-hello*" :side 'right :size 0.50 :select t :ttl nil)
-
 ;; Trash, revert, undo, scroll
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
@@ -124,7 +121,7 @@
 (after! org
   (setq! org-capture-templates
 
-        '(("i" " Inbox" entry (file "~/org/inbox.org")
+        '(("i" " Refile" entry (file "~/org/refile.org")
            "** %?")
 
           ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
@@ -136,10 +133,7 @@
            ("s" "󰨹 Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
 
-           ("d" "󰟶 Drafts" entry (file+headline "~/org/drafts.org" "QUEUED:")
-            "** TODO %?")
-
-           ("m" " Mail > Task" entry (file "~/org/inbox.org")
+           ("m" " Mail Capture" entry (file "~/org/refile.org")
             "** TODO %a :email:p3:\nSCHEDULED: %^t\n:PROPERTIES:\n:CATEGORY: email\n:END:")
 
            ("g" " Goal" entry (file+headline "~/org/goals.org"
@@ -155,61 +149,61 @@
  '(
 
    ("1" "+p1"
-    ((tags-todo "+p1-DONE-@someday-@refile"
+    ((tags-todo "+p1-DONE-someday-refile"
            ((org-agenda-overriding-header "High Priority Todos"))
                 )))
 
    ("2" "+p2"
-    ((tags-todo "+p2-DONE-@someday-@refile"
+    ((tags-todo "+p2-DONE-someday-refile"
            ((org-agenda-overriding-header "Medium Priority Todos"))
                 )))
 
    ("3" "+p3"
-    ((tags-todo "+p3-DONE-@someday-@refile"
+    ((tags-todo "+p3-DONE-someday-refile"
            ((org-agenda-overriding-header "Low Priority Todos"))
                 )))
 
    ("h" "+home"
-    ((tags-todo "+home-DONE-p4-@someday-@goal-@refile"
+    ((tags-todo "+home-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Domestic"))
            )))
 
    ("i" "Inbox"
-    ((tags "-@someday+@refile"
+    ((tags "-someday+refile"
            ((org-agenda-overriding-header "Unprocessed inbox items"))
            )))
 
    ("n" "+na"
-    ((tags-todo "+na-DONE-p4-@someday-@goal-@refile"
+    ((tags-todo "+na-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Navigators"))
            )))
 
    ("o" "Todo"
-    ((tags-todo "TODO-@refile"
+    ((tags-todo "TODO-refile"
            ((org-agenda-overriding-header "All Todos"))
            )))
 
-   ("p" "+sb"
-    ((tags-todo "+sb-DONE-p4-@someday-@goal-@refile"
+   ("p" "+per"
+    ((tags-todo "+per-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Personal"))
            )))
 
 
    ("r" "+errand"
-    ((tags-todo "+errand-DONE-p4-@someday-@goal-@refile"
+    ((tags-todo "+errand-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Errands"))
            )))
 
    ("u" "Untagged"
-    ((tags-todo "-@goal-@someday-{.*}")))
+    ((tags-todo "-goal-someday-{.*}")))
 
    ("w" "+work"
-    ((tags-todo "+work-DONE-p4-@someday-@goal-@refile"
+    ((tags-todo "+work-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Work"))
            )))
 
    ("y" "+sys"
-    ((tags-todo "+sys-DONE-p4-@someday-@goal-@refile"
+    ((tags-todo "+sys-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "System"))
            )))
 
@@ -223,11 +217,13 @@
              ("p2")
              ("p3")
              ("p4")
+             ("draft")
              ("email")
              ("errand")
+             ("free")
              ("home")
              ("na")
-             ("sb")
+             ("per")
              ("sys")
              ("work")
                ))
@@ -237,11 +233,13 @@
              ("p2")
              ("p3")
              ("p4")
+             ("draft")
              ("email")
              ("errand")
+             ("free")
              ("home")
              ("na")
-             ("sb")
+             ("per")
              ("sys")
              ("work")
                )))
@@ -255,14 +253,13 @@
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c d" "~/org/drafts.org" "drafts.org")
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
+(zz/add-file-keybinding "C-c i" "~/org/refile.org" "refile.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (zz/add-file-keybinding "C-c p j" "~/org/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
-(global-set-key (kbd "C-c n d") 'org-roam-dailies-goto-today)
+(global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
 (global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
@@ -636,6 +633,7 @@
   :config
   (setq org-alert-interval 1800
         org-alert-notify-cutoff 15
+        org-alert-notify-after-event-cutoff 60
         org-alert-notification-title "Upcoming Task")
   (org-alert-enable))
 ;;
