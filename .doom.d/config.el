@@ -122,7 +122,7 @@
   (setq! org-capture-templates
 
         '(("i" " Refile" entry (file "~/org/refile.org")
-           "** %?")
+          (file "~/org/tpl/tpl-inbox.txt"))
 
           ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
