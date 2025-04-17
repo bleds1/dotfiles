@@ -7,7 +7,7 @@
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "custom/logo",
+        // "custom/logo",
         "hyprland/workspaces",
         "hyprland/window",
     ],
@@ -35,7 +35,7 @@
     //     }
     // },
     "custom/logo": {
-        "format": "  ",
+        "format": "󰣇",
         "tooltip": false,
     },
 
@@ -54,14 +54,14 @@
     "custom/notifications": {
             "format": "{icon}",
             "format-icons": {
-                "notification": "<sup></sup>  ",
-                "none": "  ",
-                "dnd-notification": "<sup></sup>  ",
-                "dnd-none": "  ",
-                "inhibited-notification": "<sup></sup>  ",
-                "inhibited-none": "  ",
-                "dnd-inhibited-notification": "<sup></sup>  ",
-                "dnd-inhibited-none": "  "
+                "notification": "<sup></sup>  ",
+                "none": " ",
+                "dnd-notification": "<sup></sup>  ",
+                "dnd-none": " ",
+                "inhibited-notification": "<sup></sup>  ",
+                "inhibited-none": "",
+                "dnd-inhibited-notification": "<sup></sup>  ",
+                "dnd-inhibited-none": " "
             },
             "return-type": "json",
             "exec-if": "which swaync-client",
@@ -109,8 +109,9 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format-alt": "{:%Y-%m-%d %a %H:%M}",
-            "format": "{:%a %d %b %H:%M}"
+            "format": "{:%Y-%m-%d %H:%M}",
+            // "format": "{:%a %d %b %H:%M}"
+            "format-alt": "{:%H:%M}",
     },
     "cpu": {
         "format": "{usage}% ",
