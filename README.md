@@ -130,6 +130,9 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
 
 ### Reading
+
+![Pdf reader](/assets/Screenshot9.jpg?raw=true "Screenshot9")
+
 - Zathura (default)
 - Evince (for annotations/highlights)
 - Calibre (sync ebooks to Kindle)
