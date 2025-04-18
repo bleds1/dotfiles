@@ -10,7 +10,7 @@ window#waybar {
     /* background-color: rgba(43, 48, 59, 0.5); */
     background-color: rgba(0, 0, 0, 0.0);
     /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
-    /* color: #acacac; */
+    /* color: #ffffff; */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -258,7 +258,7 @@ label:focus {
 
 #idle_inhibitor.activated {
     background-color: transparent;
-    color: #acacac;
+    color: #ffffff;
 }
 
 #mpd {

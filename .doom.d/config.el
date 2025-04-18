@@ -84,23 +84,23 @@
 (setq! org-todo-keywords
       '((sequence
          "TODO(t)"
-         "DOING(a!)"
+         "STRT(s!)"
          "NEXT(n)"
-         "WAITING(w!)"
+         "WAIT(w!)"
          "GOAL(g)"
-         "PROJECT(p)"
+         "PROJ(p)"
          "|"
          "DONE(d!)"
-         "CANCELLED(c!)" )))
+         "CANC(c!)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
-       ("DOING" :foreground "#85C7A1" :weight bold)
+       ("STRT" :foreground "#85C7A1" :weight bold)
        ("NEXT" :foreground "#ff7f50" :weight bold)
-       ("WAITING" :foreground "#83898d" :weight bold)
+       ("WAIT" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
-       ("PROJECT" :foreground "#896ccc" :weight bold)
+       ("PROJ" :foreground "#896ccc" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
-       ("CANCELLED" :foreground "#5d6265" :weight bold))))
+       ("CANC" :foreground "#5d6265" :weight bold))))
 
 ;; Org Bullets and Priorities
 (after! org
@@ -217,14 +217,18 @@
              ("p2")
              ("p3")
              ("p4")
+             ("call")
              ("draft")
              ("email")
              ("errand")
              ("free")
              ("home")
+             ("listen")
              ("na")
              ("per")
+             ("read")
              ("sys")
+             ("watch")
              ("work")
                ))
   (setq org-tag-alist-for-agenda
@@ -233,14 +237,18 @@
              ("p2")
              ("p3")
              ("p4")
+             ("call")
              ("draft")
              ("email")
              ("errand")
              ("free")
              ("home")
+             ("listen")
              ("na")
              ("per")
+             ("read")
              ("sys")
+             ("watch")
              ("work")
                )))
 
