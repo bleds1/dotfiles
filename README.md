@@ -1,5 +1,4 @@
 # Bledley's System
-![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
 
 NOTE: This is a bit of a run through of what I use for reference and as a backup solution. I don't push the dots for everything. I'm not accepting issues or pull requests. Feel free to use and modify stuff but I can't guarantee things are going to work successfully on your system.
 
@@ -10,6 +9,9 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Arch Linux
 
 ## Terminal
+
+![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
+
 - Foot (default)
 - st (backup)
 - vterm (in Emacs)
@@ -18,6 +20,9 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Bash
 
 ## Editor
+
+![Editor](/assets/Screenshot8.jpg?raw=true "Screenshot8")
+
 - Doom Emacs (gui default)
 - Neovim (cli default)
 - Zed (occasions)
