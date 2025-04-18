@@ -49,12 +49,14 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Ubuntu (interface)
 
 ## Theme
+
+![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
+
 - Adwaita Dark (gtk)
 - Papirus (Icons)
 - Papirus Dark Nordic (folders)
 - Bibata Modern Ice (cursor)
 
-![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
 
 ## GUI
 
@@ -82,15 +84,17 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ### Lockscreen
 - Hyprlock
 
+### App Launcher
+
 ![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
 
-### App Launcher
 - Rofi-wayland
 
 ### File Manager
-- Nautilus (w/Sushi previewer)
 
 ![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
+
+- Nautilus (w/Sushi previewer)
 
 ### Browser
 - Brave (default)
@@ -111,9 +115,11 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Grafx2
 
 ### Video Player
-- Celluloid (mpv)
 
 ![Celluloid video](/assets/Screenshot7.jpg?raw=true "Screenshot7")
+
+- Celluloid (mpv)
+
 
 ### Video/Audio Editor
 - Kdenlive
@@ -123,11 +129,13 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Audacity
 
 ### Music 
+
+![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
+
 - Audacious
 - cava (visualizer)
 - Rhythmbox (radio/podcasts)
 
-![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
 
 ### Reading
 
