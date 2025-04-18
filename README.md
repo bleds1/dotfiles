@@ -46,8 +46,8 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ## Theme
 - Adwaita Dark (gtk)
 - Papirus (Icons)
-- Papirus Dark Nordic (Folders NOTE:Screenshots show Yaru - not updated)
-- Bibata Modern Ice (Cursor)
+- Papirus Dark Nordic (folders)
+- Bibata Modern Ice (cursor)
 
 ![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
 
@@ -119,6 +119,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Music 
 - Audacious
+- cava (visualizer)
 - Rhythmbox (radio/podcasts)
 
 ![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
