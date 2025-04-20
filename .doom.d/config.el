@@ -31,6 +31,11 @@
   '(org-warning ((t (:foreground "#ffe7ba"))))
   '(org-date ((t (:foreground "#ffdead"))))
   '(org-agenda-clocking ((t (:background "#0f0f0f"))))
+  '(markdown-header-face-1 ((t (:foreground "#81A1C1"))))
+  '(markdown-header-face-2 ((t (:foreground "#81A1C1"))))
+  '(markdown-header-face-3 ((t (:foreground "#81A1C1"))))
+  '(markdown-header-face-4 ((t (:foreground "#81A1C1"))))
+  '(markdown-header-face-5 ((t (:foreground "#81A1C1"))))
  )
 
 ;; Cursor colours
@@ -264,7 +269,6 @@
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
 (zz/add-file-keybinding "C-c i" "~/org/refile.org" "refile.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
-(zz/add-file-keybinding "C-c p j" "~/org/projects.org" "projects.org")
 (zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)

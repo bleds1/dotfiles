@@ -55,13 +55,13 @@
             "format": "{icon}",
             "format-icons": {
                 "notification": "<sup></sup>  ",
-                "none": " ",
+                "none": "  ",
                 "dnd-notification": "<sup></sup>  ",
-                "dnd-none": " ",
+                "dnd-none": "  ",
                 "inhibited-notification": "<sup></sup>  ",
-                "inhibited-none": "",
+                "inhibited-none": "  ",
                 "dnd-inhibited-notification": "<sup></sup>  ",
-                "dnd-inhibited-none": " "
+                "dnd-inhibited-none": "  "
             },
             "return-type": "json",
             "exec-if": "which swaync-client",
