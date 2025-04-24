@@ -129,7 +129,7 @@
         '(("i" " Refile" entry (file "~/org/refile.org")
           (file "~/org/tpl/tpl-inbox.txt"))
 
-          ("n" " Next" entry (file+headline "~/org/todo.org" "NEXT:")
+          ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
 
            ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
@@ -137,6 +137,9 @@
 
            ("s" "󰨹 Someday" entry (file "~/org/someday.org")
              (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
+
+           ("d" " Done" entry (file+headline "~/org/todo.org" "NEXT:")
+             (file "~/org/tpl/tpl-done.txt"))
 
            ("m" " Mail Capture" entry (file "~/org/refile.org")
             "** TODO %a :email:p3:\nSCHEDULED: %^t\n:PROPERTIES:\n:CATEGORY: email\n:END:")
