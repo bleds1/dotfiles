@@ -112,7 +112,8 @@
             "format": "{:%Y-%m-%d %H:%M}",
             // "format": "{:%a %d %b %H:%M}"
             "format-alt": "{:%H:%M}",
-            "format-alt": "{:%H:%M | %d/%m}",
+            "format-alt": "{:%H:%M | %d/%m %a}",
+            "format-alt": "{:%d/%m %a | %H:%M }",
     },
     "cpu": {
         "format": "{usage}% ",
