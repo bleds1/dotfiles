@@ -1,18 +1,22 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Ubuntu;
-    font-size: 13px;
+    font-family: FontAwesome, monospace;
+    font-size: 12px;
+    min-height: 0;
     border: none;
     border-radius: 0;
 }
 
 window#waybar {
-    /* background-color: rgba(43, 48, 59, 0.5); */
-    background-color: rgba(0, 0, 0, 0.0);
+    /* background-color: rgba(22, 24, 26, 0.9); /\* 80% opacity *\/ */
+    background-color: rgba(0, 0, 0, 0.9);
     /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
-    /* color: #ffffff; */
+    /* color: #e3e3e3; */
     transition-property: background-color;
     transition-duration: .5s;
+    /* added below padding and margins to allow smaller font/bar height */
+    padding: 0;
+    margin: 0
 }
 
 window#waybar.hidden {
@@ -24,7 +28,7 @@ window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
-    background-color: #ffffff;
+    background-color: #e3e3e3;
 }
 */
 
@@ -48,18 +52,19 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -1px #ffffff;
+    /* box-shadow: inset 0 -1px #e3e3e3; */
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #64727D;
-}
+/* #pulseaudio:hover { */
+/*     background-color: #64727D; */
+/* } */
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 4px;
     background-color: transparent;
-    color: #ffffff; /* Dimmed color */
+    /* color: #e3e3e3; /\* Dimmed color *\/ */
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #workspaces button:hover {
@@ -68,18 +73,24 @@ button:hover {
 
 #workspaces button.focused {
     background-color: #62727D;
-    color: #ffffff; /* Brighter color */
-    box-shadow: inset 0 -1px #ffffff;
+    /* color: #e3e3e3; /\* Brighter color *\/ */
+    color: rgba(227, 227, 227, 1); /* Example: 70% opacity */
+    box-shadow: inset 0 0px #e3e3e3;
+}
+
+#workspaces button.active {
+    background-color: #285577;
+    color: #ffffff; /* Example: 70% opacity */
 }
 
 #workspaces button.urgent {
-    background-color: #FF85C0;
-    color: #ffffff; /* Ensure urgent is still bright */
+    background-color: #A98AAD;
+    color: #e3e3e3; /* Ensure urgent is still bright */
 }
 
 #mode {
     background-color: #64727D;
-    box-shadow: inset 0 -1px #ffffff;
+    box-shadow: inset 0 -1px #e3e3e3;
 }
 
 #clock,
@@ -100,7 +111,8 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    /* color: #e3e3e3; */
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #window,
@@ -120,29 +132,34 @@ button:hover {
 
 #clock {
     background-color: transparent;
+    /* color: #A3BE8C; */
+    color: rgba(227, 227, 227, 1); /* Example: 70% opacity */
 }
 
 #battery {
     background-color: transparent;
-    color: #ffffff;
+    /* color: #e3e3e3; */
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
+    color: #e3e3e3;
     background-color: transparent;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        /* background-color: #e3e3e3; */
+        background-color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
         color: #000000;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #FF85C0;
-    color: #ffffff;
+    background-color: #A98AAD;
+    /* color: #e3e3e3; */
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -156,12 +173,13 @@ button:hover {
 
 #power-profiles-daemon.performance {
     background-color: transparent;
-    color: #ffffff;
+    color: #e3e3e3;
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #power-profiles-daemon.balanced {
     background-color: transparent;
-    color: #ffffff;
+    color: #e3e3e3;
 }
 
 #power-profiles-daemon.power-saver {
@@ -200,12 +218,14 @@ label:focus {
 
 #pulseaudio {
     background-color: transparent;
-    color: #fff0f5;
+    /* color: #fff0f5; */
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #pulseaudio.muted {
     background-color: transparent;
-    color: #fff0f5;
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
+    /* color: #fff0f5; */
 }
 
 #wireplumber {
@@ -249,11 +269,12 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #FF85C0;
+    background-color: #A98AAD;
 }
 
 #idle_inhibitor {
     background-color: transparent;
+    color: rgba(227, 227, 227, 0.7); /* Example: 70% opacity */
 }
 
 #idle_inhibitor.activated {
@@ -267,7 +288,7 @@ label:focus {
 }
 
 #mpd.disconnected {
-    background-color: #FF85C0;
+    background-color: #A98AAD;
 }
 
 #mpd.stopped {

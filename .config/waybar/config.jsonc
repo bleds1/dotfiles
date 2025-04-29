@@ -1,15 +1,15 @@
 // -*- mode: jsonc -*-
 {
     // "layer": "top", // Waybar at top layer
-    // "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 22, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         // "custom/logo",
-        "hyprland/workspaces",
-        "hyprland/window",
+        "hyprland/workspaces"
+        // "hyprland/window",
     ],
     "modules-center": [
     ],
@@ -19,20 +19,20 @@
         "pulseaudio",
         "network",
         "battery",
-        "clock",
-        "custom/notifications"
+        "clock"
+        // "custom/notifications"
     ],
     // Modules configuration
     // "hyprland/workspaces": {
     //     "disable-scroll": false,
-    //     "all-outputs": true,
+    //     "all-outputs": false,
     //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
+        // "format": "{name}: {icon}",
+        // "format-icons": {
+        //     "urgent": "",
+        //     "focused": "",
+        //     "default": ""
+        // }
     // },
     "custom/logo": {
         "format": "󰣇",
@@ -98,8 +98,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": "󰒲"
         }
     },
     "tray": {
@@ -109,11 +109,10 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format": "{:%Y-%m-%d %H:%M}",
+        "format": "  {:%Y-%m-%d %H:%M}",
             // "format": "{:%a %d %b %H:%M}"
-            "format-alt": "{:%H:%M}",
-            "format-alt": "{:%H:%M | %d/%m %a}",
-            "format-alt": "{:%d/%m %a | %H:%M }",
+            // "format-alt": "  {:%d/%m %a %H:%M }",
+        "format-alt": "  {:%H:%M}",
     },
     "cpu": {
         "format": "{usage}% ",
