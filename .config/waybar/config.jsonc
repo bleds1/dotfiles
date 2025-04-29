@@ -14,12 +14,12 @@
     "modules-center": [
     ],
     "modules-right": [
-        "tray",
         "idle_inhibitor",
         "pulseaudio",
         "network",
         "battery",
-        "clock"
+        "clock",
+        "tray"
         // "custom/notifications"
     ],
     // Modules configuration
