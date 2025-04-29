@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, monospace;
-    font-size: 12px;
+    font-size: 10px;
     min-height: 0;
     border: none;
     border-radius: 0;
@@ -9,7 +9,7 @@
 
 window#waybar {
     /* background-color: rgba(22, 24, 26, 0.9); /\* 80% opacity *\/ */
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 1);
     /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
     /* color: #e3e3e3; */
     transition-property: background-color;
@@ -61,7 +61,7 @@ button:hover {
 /* } */
 
 #workspaces button {
-    padding: 0 4px;
+    padding: 0 2px;
     background-color: #222222;
     color: rgba(227, 227, 227, 0.7); /* 70% opacity */
     border: 0.5px solid #333333;
