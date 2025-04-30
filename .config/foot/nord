@@ -7,7 +7,8 @@
 # https://github.com/arcticicestudio/nord-alacritty/blob/develop/src/nord.yml
 
 [cursor]
-color = 2e3440 d8dee9
+color = 2e3440 81a1c1
+# 81a1c1 was originally d8dee9
 
 [colors]
 foreground = d8dee9
