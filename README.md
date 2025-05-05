@@ -118,7 +118,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ![Celluloid video](/assets/Screenshot7.jpg?raw=true "Screenshot7")
 
-- Celluloid (mpv)
+- Celluloid/mpv
 
 
 ### Video/Audio Editor
@@ -149,4 +149,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Retroarch
 - FS-UAE
 - Pcsx2
+- Steam
+- Lutris
 
