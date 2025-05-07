@@ -25,7 +25,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 - Doom Emacs (gui default)
 - Neovim (cli default)
-- Zed (occasions)
 - Libreoffice (work)
 
 ## CLI/TUI
@@ -110,7 +109,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Art
 - Krita
-- Heavy Paint
 - Aseprite
 - Grafx2
 
