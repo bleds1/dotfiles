@@ -75,3 +75,5 @@
 (package! org-alert)
 
 (package! org-roam-ui)
+
+(package! mastodon)

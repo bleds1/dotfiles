@@ -309,6 +309,13 @@
 ;; Keybind for scratchbuffer
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
 
+;; Keybinds for mastodon.el
+(global-set-key (kbd "C-c m t") 'mastodon-toot)
+(global-set-key (kbd "C-c m h") 'mastodon-tl-get-home-timeline)
+(global-set-key (kbd "C-c m f") 'mastodon-tl-get-federated-timeline)
+(global-set-key (kbd "C-c m l") 'mastodon-tl-get-local-timeline)
+(global-set-key (kbd "C-c m n") 'mastodon-notifications-get)
+(global-set-key (kbd "C-c m s") 'mastodon-search-query)
 ;; Keybind for notmuch search
 (global-set-key (kbd "C-c n s") 'notmuch-search)
 (global-set-key (kbd "C-c n m") 'notmuch)
