@@ -171,11 +171,6 @@
            ((org-agenda-overriding-header "Low Priority Todos"))
                 )))
 
-   ("h" "+home"
-    ((tags-todo "+home-DONE-p4-someday-goal-refile"
-           ((org-agenda-overriding-header "Domestic"))
-           )))
-
    ("i" "Inbox"
     ((tags "-someday+refile"
            ((org-agenda-overriding-header "Unprocessed inbox items"))
@@ -196,23 +191,12 @@
            ((org-agenda-overriding-header "Personal"))
            )))
 
-
-   ("r" "+errand"
-    ((tags-todo "+errand-DONE-p4-someday-goal-refile"
-           ((org-agenda-overriding-header "Errands"))
-           )))
-
    ("u" "Untagged"
     ((tags-todo "-goal-someday-{.*}")))
 
    ("w" "+work"
     ((tags-todo "+work-DONE-p4-someday-goal-refile"
            ((org-agenda-overriding-header "Work"))
-           )))
-
-   ("y" "+sys"
-    ((tags-todo "+sys-DONE-p4-someday-goal-refile"
-           ((org-agenda-overriding-header "System"))
            )))
 
       ))
@@ -228,14 +212,10 @@
              ("call")
              ("draft")
              ("email")
-             ("errand")
-             ("free")
-             ("home")
              ("listen")
              ("na")
              ("per")
              ("read")
-             ("sys")
              ("watch")
              ("work")
                ))
@@ -248,14 +228,10 @@
              ("call")
              ("draft")
              ("email")
-             ("errand")
-             ("free")
-             ("home")
              ("listen")
              ("na")
              ("per")
              ("read")
-             ("sys")
              ("watch")
              ("work")
                )))
