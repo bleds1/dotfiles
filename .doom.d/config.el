@@ -20,13 +20,13 @@
   '(mode-line ((t (:background "#0f0f0f"))))
   '(mode-line-inactive ((t (:background "#0f0f0f"))))
   '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
-  '(org-level-2 ((t (:foreground "#c0d0e0"))))
-  '(org-level-3 ((t (:foreground "#ECEFF4"))))
-  '(org-level-4 ((t (:foreground "#ECEFF4"))))
-  '(org-level-5 ((t (:foreground "#ECEFF4"))))
-  '(org-level-6 ((t (:foreground "#ECEFF4"))))
-  '(org-level-7 ((t (:foreground "#ECEFF4"))))
-  '(org-level-8 ((t (:foreground "#ECEFF4"))))
+  '(org-level-2 ((t (:foreground "#81A1C1"))))
+  '(org-level-3 ((t (:foreground "#81A1C1"))))
+  '(org-level-4 ((t (:foreground "#81A1C1"))))
+  '(org-level-5 ((t (:foreground "#81A1C1"))))
+  '(org-level-6 ((t (:foreground "#81A1C1"))))
+  '(org-level-7 ((t (:foreground "#81A1C1"))))
+  '(org-level-8 ((t (:foreground "#81A1C1"))))
   '(org-scheduled-previously ((t (:foreground "#ffdead"))))
   '(org-warning ((t (:foreground "#ffe7ba"))))
   '(org-date ((t (:foreground "#ffdead"))))
@@ -36,6 +36,7 @@
   '(markdown-header-face-3 ((t (:foreground "#81A1C1"))))
   '(markdown-header-face-4 ((t (:foreground "#81A1C1"))))
   '(markdown-header-face-5 ((t (:foreground "#81A1C1"))))
+  '(secondary-selection ((t (:background "#232323"))))
  )
 
 ;; Cursor colours
@@ -79,6 +80,7 @@
 (setq org-roam-dailies-directory "~/org/roam/daily/")
 (after! org
 (setq org-log-done 'time
+      org-agenda-span 'day
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
       org-log-reschedule 'time
@@ -95,6 +97,7 @@
          "GOAL(g)"
          "PROJ(p)"
          "|"
+         "DELG(e!)"
          "DONE(d!)"
          "CANC(c!)" )))
 (setq! org-todo-keyword-faces
@@ -104,6 +107,7 @@
        ("WAIT" :foreground "#83898d" :weight bold)
        ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJ" :foreground "#896ccc" :weight bold)
+       ("DELG" :foreground "#83898d" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANC" :foreground "#5d6265" :weight bold))))
 
@@ -126,8 +130,8 @@
 (after! org
   (setq! org-capture-templates
 
-        '(("i" " Refile" entry (file "~/org/refile.org")
-          (file "~/org/tpl/tpl-inbox.txt"))
+        '(("i" " Inbox" entry (file "~/org/inbox.org")
+          (file "~/org/tpl/tpl-inbox.txt") :empty-lines-before 1)
 
           ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
@@ -141,8 +145,8 @@
            ("d" " Done" entry (file+headline "~/org/todo.org" "NEXT:")
              (file "~/org/tpl/tpl-done.txt"))
 
-           ("m" " Mail Capture" entry (file "~/org/refile.org")
-            "** TODO %a :email:p3:\nSCHEDULED: %^t\n:PROPERTIES:\n:CATEGORY: email\n:END:")
+           ("m" " Mail Capture" entry (file+headline "~/org/todo.org" "NEXT:")
+            "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
 
            ("g" " Goal" entry (file+headline "~/org/goals.org"
             "Capture") (file "~/org/tpl/tpl-goal.txt"))
@@ -157,18 +161,23 @@
  '(
 
    ("1" "+p1"
-    ((tags-todo "+p1-DONE-someday-refile"
-           ((org-agenda-overriding-header "High Priority Todos"))
+    ((tags-todo "+p1"
+           ((org-agenda-overriding-header "Priority Objectives"))
                 )))
 
    ("2" "+p2"
-    ((tags-todo "+p2-DONE-someday-refile"
-           ((org-agenda-overriding-header "Medium Priority Todos"))
+    ((tags-todo "+p2"
+           ((org-agenda-overriding-header "Secondary Objectives"))
                 )))
 
    ("3" "+p3"
-    ((tags-todo "+p3-DONE-someday-refile"
-           ((org-agenda-overriding-header "Low Priority Todos"))
+    ((tags-todo "+p3"
+           ((org-agenda-overriding-header "Bonus Objectives"))
+                )))
+
+   ("4" "+p4"
+    ((tags-todo "+p4"
+           ((org-agenda-overriding-header "Low Priority"))
                 )))
 
    ("i" "Inbox"
@@ -177,17 +186,12 @@
            )))
 
    ("n" "+na"
-    ((tags-todo "+na-DONE-p4-someday-goal-refile"
+    ((tags-todo "+na-DONE-PROJ-someday-goal"
            ((org-agenda-overriding-header "Navigators"))
            )))
 
-   ("o" "Todo"
-    ((tags-todo "TODO-refile"
-           ((org-agenda-overriding-header "All Todos"))
-           )))
-
    ("p" "+per"
-    ((tags-todo "+per-DONE-p4-someday-goal-refile"
+    ((tags-todo "+per-DONE-someday-goal"
            ((org-agenda-overriding-header "Personal"))
            )))
 
@@ -195,7 +199,7 @@
     ((tags-todo "-goal-someday-{.*}")))
 
    ("w" "+work"
-    ((tags-todo "+work-DONE-p4-someday-goal-refile"
+    ((tags-todo "+work-DONE-PROJ-someday-goal"
            ((org-agenda-overriding-header "Work"))
            )))
 
@@ -209,14 +213,19 @@
              ("p2")
              ("p3")
              ("p4")
+             ("blog")
              ("call")
-             ("draft")
              ("email")
+             ("fleeting")
              ("listen")
              ("na")
              ("per")
+             ("post")
+             ("posted")
              ("read")
+             ("research")
              ("watch")
+             ("watched")
              ("work")
                ))
   (setq org-tag-alist-for-agenda
@@ -225,18 +234,54 @@
              ("p2")
              ("p3")
              ("p4")
+             ("blog")
              ("call")
-             ("draft")
              ("email")
+             ("fleeting")
              ("listen")
              ("na")
              ("per")
+             ("post")
+             ("posted")
              ("read")
+             ("research")
              ("watch")
+             ("watched")
              ("work")
                )))
 
 ;; Keybinds
+(defun jethro/org-capture-inbox ()
+  (interactive)
+  (org-capture nil "i"))
+
+(defun jethro/org-agenda ()
+  (interactive)
+  (org-agenda nil "a"))
+
+(defun me/p1 ()
+  (interactive)
+  (org-agenda nil "1"))
+
+(defun me/p2 ()
+  (interactive)
+  (org-agenda nil "2"))
+
+(defun me/p3 ()
+  (interactive)
+  (org-agenda nil "3"))
+
+(defun me/p4 ()
+  (interactive)
+  (org-agenda nil "4"))
+
+(bind-key "C-c SPC" #'jethro/org-capture-inbox)
+(bind-key "C-c <tab>" #'jethro/org-agenda)
+(bind-key "C-c 1" #'me/p1)
+(bind-key "C-c 2" #'me/p2)
+(bind-key "C-c 3" #'me/p3)
+(bind-key "C-c 4" #'me/p4)
+
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
@@ -246,7 +291,7 @@
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-(zz/add-file-keybinding "C-c i" "~/org/refile.org" "refile.org")
+(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
@@ -277,10 +322,7 @@
                               (interactive)
                               (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
 ;; Dired go to org roam dirs
-(global-set-key (kbd "C-c f") (lambda () (interactive) (dired "~/org/roam/fleeting")))
-(global-set-key (kbd "C-c k") (lambda () (interactive) (dired "~/org/roam/projects")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
-(global-set-key (kbd "C-c y") (lambda () (interactive) (dired "~/org/roam/daily")))
 (global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
 ;; Keybind for scratchbuffer
 (global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
@@ -479,26 +521,22 @@
       org-id-method 'ts
       org-roam-completion-everywhere t)
 (setq org-roam-capture-templates
-      '(("f" "󰟷 Fleeting" plain
-         "%?"
-         :if-new (file+head "fleeting/${title}.org" "#+title: ${title}\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
-         :immediate-finish t
-         :unnarrowed t)
-        ("r" " Reference" plain "%?"
+      '(("r" " Reference" plain "%?"
          :if-new
          (file+head "reference/${title}.org" "#+title: ${title}\n#+filetags: reference\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("z" " Zettel" plain "%?"
+        ("p" " Permanent" plain "%?"
          :if-new
          (file+head "zk/${title}.org" "#+title: ${title}\n#+filetags: zk\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
-        ("p" " Project" plain "%?"
+        ("a" "󰧮 Article" plain "%?"
          :if-new
-         (file+head "projects/${title}.org" "#+title: ${title}\n#+filetags: project\n#+options: toc:nil num:nil author:nil\n")
+         (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags: :article:draft:\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
-         :unnarrowed t)))
+         :unnarrowed t))
+        )
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry "* %<%H:%M> %?"
