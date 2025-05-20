@@ -139,8 +139,8 @@
            ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
             (file "~/org/tpl/tpl-queued.txt"))
 
-           ("s" "󰨹 Someday" entry (file "~/org/someday.org")
-             (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
+           ;; ("s" "󰨹 Someday" entry (file "~/org/someday.org")
+           ;;   (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
 
            ("d" " Done" entry (file+headline "~/org/todo.org" "NEXT:")
              (file "~/org/tpl/tpl-done.txt"))
@@ -148,10 +148,16 @@
            ("m" " Mail Capture" entry (file+headline "~/org/todo.org" "NEXT:")
             "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
 
-           ("g" " Goal" entry (file+headline "~/org/goals.org"
-            "Capture") (file "~/org/tpl/tpl-goal.txt"))
+           ;; ("g" " Goal" entry (file+headline "~/org/goals.org"
+           ;;  "Capture") (file "~/org/tpl/tpl-goal.txt"))
 
-           ;; ("w" " Weekly Review" plain (file buffer-name)
+           ("t" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
+            (file "~/org/tpl/tpl-towatch.txt"))
+
+           ("w" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
+            (file "~/org/tpl/tpl-watched.txt") :prepend t)
+
+           ;; ("r" " Weekly Review" plain (file buffer-name)
            ;;  (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
             )
            ))
@@ -294,6 +300,7 @@
 (zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
+(zz/add-file-keybinding "C-c w" "~/org/watch.org" "watch.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
