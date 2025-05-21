@@ -77,7 +77,7 @@
 ;; NOTE: `org-directory' Must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-roam-directory "~/org/roam/")
-(setq org-roam-dailies-directory "~/org/roam/daily/")
+(setq org-roam-dailies-directory "~/org/")
 (after! org
 (setq org-log-done 'time
       org-agenda-span 'day
@@ -545,10 +545,14 @@
          :unnarrowed t))
         )
 
+;; (setq org-roam-dailies-capture-templates
+;;       '(("d" "default" entry "* %<%H:%M> %?"
+;;          :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+options: toc:nil num:nil author:nil timestamp:nil\n")
+;;          :empty-lines-before 1)))
 (setq org-roam-dailies-capture-templates
-      '(("d" "default" entry "* %<%H:%M> %?"
-         :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+options: toc:nil num:nil author:nil timestamp:nil\n")
-         :empty-lines-before 1)))
+      '(("d" "default" entry
+         "* %<%H:%M> %?"
+         :target (file+datetree "log.org" week))))
 
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
