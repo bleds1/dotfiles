@@ -131,7 +131,7 @@
   (setq! org-capture-templates
 
         '(("i" " Inbox" entry (file "~/org/inbox.org")
-          (file "~/org/tpl/tpl-inbox.txt") :empty-lines-before 1)
+          (file "~/org/tpl/tpl-inbox.txt"))
 
           ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
@@ -157,8 +157,14 @@
            ("w" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
             (file "~/org/tpl/tpl-watched.txt") :prepend t)
 
-           ;; ("r" " Weekly Review" plain (file buffer-name)
-           ;;  (file "~/org/tpl/tpl-weekly.txt") :empty-lines 1)
+           ("p" "󰃶 Daily Plan" plain (file buffer-name)
+            (file "~/org/tpl/tpl-bod.txt"))
+
+           ("r" "󰱄 Daily Review" plain (file buffer-name)
+            (file "~/org/tpl/tpl-eod.txt"))
+
+           ("R" "󱛡 Weekly Review" plain (file buffer-name)
+            (file "~/org/tpl/tpl-weekly.txt"))
             )
            ))
 
