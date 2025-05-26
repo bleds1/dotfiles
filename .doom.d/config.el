@@ -157,13 +157,13 @@
            ("w" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
             (file "~/org/tpl/tpl-watched.txt") :prepend t)
 
-           ("p" "󰃶 Daily Plan" plain (file buffer-name)
+           ("p" "󰃶 Day Plan" plain (file buffer-name)
             (file "~/org/tpl/tpl-bod.txt"))
 
-           ("r" "󰱄 Daily Review" plain (file buffer-name)
+           ("r" "󰱄 EOD Review" plain (file buffer-name)
             (file "~/org/tpl/tpl-eod.txt"))
 
-           ("R" "󱛡 Weekly Review" plain (file buffer-name)
+           ("R" "󱛡 EOW Review" plain (file buffer-name)
             (file "~/org/tpl/tpl-weekly.txt"))
             )
            ))
