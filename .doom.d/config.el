@@ -1,9 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Fonts
-(setq doom-font (font-spec :family "Aporetic Serif Mono" :size 17)
-      doom-big-font (font-spec :family "Aporetic Serif Mono" :size 21)
-      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 21 :weight 'light )
+(setq doom-font (font-spec :family "Aporetic Sans Mono" :size 17)
+      doom-big-font (font-spec :family "Aporetic Sans Mono" :size 21)
+      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 21)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 21))
 
 ;; Theme
