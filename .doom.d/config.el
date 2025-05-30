@@ -1,10 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Fonts
-(setq doom-font (font-spec :family "JetBrains Mono" :size 17)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 17)
-      doom-serif-font (font-spec :family "JetBrains Mono" :size 17)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 17))
+(setq doom-font (font-spec :family "Aporetic Serif Mono" :size 17)
+      doom-big-font (font-spec :family "Aporetic Serif Mono" :size 21)
+      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 21 :weight 'light )
+      doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 21))
 
 ;; Theme
 ;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
@@ -20,13 +20,16 @@
   '(mode-line ((t (:background "#0f0f0f"))))
   '(mode-line-inactive ((t (:background "#0f0f0f"))))
   '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
-  '(org-level-2 ((t (:foreground "#81A1C1"))))
-  '(org-level-3 ((t (:foreground "#81A1C1"))))
-  '(org-level-4 ((t (:foreground "#81A1C1"))))
-  '(org-level-5 ((t (:foreground "#81A1C1"))))
-  '(org-level-6 ((t (:foreground "#81A1C1"))))
-  '(org-level-7 ((t (:foreground "#81A1C1"))))
-  '(org-level-8 ((t (:foreground "#81A1C1"))))
+  '(org-level-1 ((t (:foreground "#81A1C1" :height 1.25))))
+  '(org-level-2 ((t (:foreground "#81A1C1" :height 1.2))))
+  '(org-level-3 ((t (:foreground "#81A1C1" :height 1.15))))
+  '(org-level-4 ((t (:foreground "#81A1C1" :height 1.1))))
+  '(org-level-5 ((t (:foreground "#81A1C1" :height 1.1))))
+  '(org-level-6 ((t (:foreground "#81A1C1" :height 1.1))))
+  '(org-level-7 ((t (:foreground "#81A1C1" :height 1.1))))
+  '(org-level-8 ((t (:foreground "#81A1C1" :height 1.1))))
+  '(org-document-title ((t (,@headline ,@variable-tuple :height 1.35 :underline nil))))
+  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight light :height 0.9))))
   '(org-scheduled-previously ((t (:foreground "#ffdead"))))
   '(org-warning ((t (:foreground "#ffe7ba"))))
   '(org-date ((t (:foreground "#ffdead"))))
@@ -38,6 +41,12 @@
   '(markdown-header-face-5 ((t (:foreground "#81A1C1"))))
   '(secondary-selection ((t (:background "#232323"))))
  )
+
+; Org mode documents are always centred
+(add-hook 'org-mode-hook 'writeroom-mode)
+; Avoid spacing issues? source: https://sophiebos.io/posts/beautifying-emacs-org-mode/
+(require 'org-indent)
+(set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
 
 ;; Cursor colours
 (setq
@@ -130,8 +139,9 @@
 (after! org
   (setq! org-capture-templates
 
-        '(("i" " Inbox" entry (file "~/org/inbox.org")
-          (file "~/org/tpl/tpl-inbox.txt"))
+        '(
+          ;; ("i" " Inbox" entry (file "~/org/inbox.org")
+          ;; (file "~/org/tpl/tpl-inbox.txt"))
 
           ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
@@ -265,7 +275,8 @@
 ;; Keybinds
 (defun jethro/org-capture-inbox ()
   (interactive)
-  (org-capture nil "i"))
+  (org-roam-dailies-capture-today))
+  ;; (org-capture nil "i"))
 
 (defun jethro/org-agenda ()
   (interactive)
@@ -318,8 +329,8 @@
 (global-set-key (kbd "C-c n I") 'org-roam-node-insert-immediate)
 (global-set-key (kbd "C-c n c") 'org-roam-capture)
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
-(global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
-(global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
+;; (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
+;; (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-c g") 'count-words)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -352,15 +363,32 @@
 (global-set-key (kbd "C-c n s") 'notmuch-search)
 (global-set-key (kbd "C-c n m") 'notmuch)
 
-;; FIX: function for notmuch search tag:inbox
+;; function for notmuch search tag:inbox
 (defun notmuch-inbox-search ()
   (interactive)
   (notmuch-search "tag:inbox"))
 
-;; FIX: keybind for above function
 (map! :leader
       (:prefix "o"
       :desc "Search inbox" "i" #'notmuch-inbox-search))
+
+;; function for notmuch search tag:flagged
+(defun notmuch-flagged-search ()
+  (interactive)
+  (notmuch-search "tag:flagged"))
+
+(map! :leader
+      (:prefix "o"
+      :desc "Search inbox" "o" #'notmuch-flagged-search))
+
+;; function for notmuch search tag:unread
+(defun notmuch-unread-search ()
+  (interactive)
+  (notmuch-search "tag:unread"))
+
+(map! :leader
+      (:prefix "o"
+      :desc "Search inbox" "u" #'notmuch-unread-search))
 
 ; Make markdown buffer easier
 (evil-define-command +evil-buffer-markdown-new (_count file)
@@ -444,12 +472,12 @@
       (:prefix ("o" . "org-agenda-filter")
                 :desc "org-agenda-filter" "l" #'org-agenda-filter))
 ; leader keys for org-roam-dailies
-(map! :leader
-      (:prefix ("n" . "org-roam-dailies-capture-today")
-                :desc "org-roam-dailies-capture-today" "j" #'org-roam-dailies-capture-today))
-(map! :leader
-      (:prefix ("n" . "org-roam-dailies-goto-today")
-                :desc "org-roam-dailies-goto-today" "d" #'org-roam-dailies-goto-today))
+;; (map! :leader
+;;       (:prefix ("n" . "org-roam-dailies-capture-today")
+;;                 :desc "org-roam-dailies-capture-today" "j" #'org-roam-dailies-capture-today))
+;; (map! :leader
+;;       (:prefix ("n" . "org-roam-dailies-goto-today")
+;;                 :desc "org-roam-dailies-goto-today" "d" #'org-roam-dailies-goto-today))
 (map! :leader
       (:prefix ("n" . "now header")
                 :desc "now header" "h" #'now))
