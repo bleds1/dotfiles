@@ -13,7 +13,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
 
 - Foot (default)
-- st (backup)
 - vterm (in Emacs)
 
 ## Shell
@@ -44,8 +43,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - + many more
 
 ## Fonts
-- JetBrains Mono (terminal/editors)
-- Ubuntu (interface)
+- Aporetic 
 
 ## Theme
 
@@ -148,5 +146,3 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - FS-UAE
 - Pcsx2
 - Steam
-- Lutris
-
