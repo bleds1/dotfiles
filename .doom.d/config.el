@@ -2,9 +2,9 @@
 
 ;; Fonts
 (setq doom-font (font-spec :family "Aporetic Sans Mono" :size 17)
-      doom-big-font (font-spec :family "Aporetic Sans Mono" :size 21)
-      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 21)
-      doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 21))
+      doom-big-font (font-spec :family "Aporetic Sans Mono" :size 19)
+      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
+      doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
 ;; Theme
 ;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
@@ -551,7 +551,6 @@
         doom-modeline-buffer-encoding nil))
 
 ;; Writeroom Zen mode appearance
-;; (add-hook 'writeroom-mode-hook (lambda () (display-line-numbers-mode -1)))
 (setq writeroom-mode-line t
       writeroom-width 120
       +zen-text-scale 0.1)
