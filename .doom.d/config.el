@@ -202,9 +202,9 @@
            ((org-agenda-overriding-header "Low Priority"))
                 )))
 
-   ("i" "Inbox"
-    ((tags "-someday+refile"
-           ((org-agenda-overriding-header "Unprocessed inbox items"))
+   ("f" "+fleeting"
+    ((tags "+fleeting-someday"
+           ((org-agenda-overriding-header "Fleeting"))
            )))
 
    ("n" "+na"
