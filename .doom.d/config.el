@@ -140,9 +140,6 @@
   (setq! org-capture-templates
 
         '(
-          ;; ("i" " Inbox" entry (file "~/org/inbox.org")
-          ;; (file "~/org/tpl/tpl-inbox.txt"))
-
           ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
             (file "~/org/tpl/tpl-next.txt"))
 
@@ -314,7 +311,6 @@
           key
           (lambda () (interactive) (find-file file)))))
 (zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-(zz/add-file-keybinding "C-c i" "~/org/inbox.org" "inbox.org")
 (zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
 (zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
 (zz/add-file-keybinding "C-c w" "~/org/watch.org" "watch.org")
