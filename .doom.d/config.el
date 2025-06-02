@@ -146,9 +146,6 @@
            ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
             (file "~/org/tpl/tpl-queued.txt"))
 
-           ;; ("s" "󰨹 Someday" entry (file "~/org/someday.org")
-           ;;   (file "~/org/tpl/tpl-someday.txt") :empty-lines-before 1)
-
            ("d" " Done" entry (file+headline "~/org/todo.org" "NEXT:")
              (file "~/org/tpl/tpl-done.txt"))
 
@@ -790,7 +787,7 @@
 ;; Timestamp function
 (defun now ()
  (interactive)
- (insert (format-time-string "* %H:%M" )
+ (insert (format-time-string "**** %H:%M" )
  ))
 
 ;; Online lookup search provider list
