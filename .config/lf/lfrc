@@ -104,14 +104,18 @@ map n push %touch<space>
 
 map gb cd ~/.local/bin/
 map gc cd ~/.config/
-map gd cd ~/Documents/
-map ge cd /run/media/bledley/SEAGATE-2TB/
-map gl cd ~/Downloads/
+map gd cd ~/Downloads/
+map gD cd ~/Documents/
+map gf cd ~/Documents/FS-UAE/
+map gl cd ~/Documents/Library/
 map gm cd ~/Music/
+map gM cd /run/media/
 map go cd ~/org/
 map gp cd ~/Pictures/
+map gP cd ~/Projects/
+map gr cd ~/roms/
 map gs cd ~/.scripts/
-map gw cd ~/sba/
+map gS cd ~/sba/
 map gt cd ~/Trash/files/
 map gv cd ~/Videos/
 map g. cd ~/dotfiles/
