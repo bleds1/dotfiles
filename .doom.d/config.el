@@ -716,32 +716,18 @@
   :mode ("\\.epub\\'" . nov-mode)
   :config
   (map! :map nov-mode-map
-        :n "RET" #'nov-scroll-up)
+        :n "J" #'nov-scroll-up)
 
   (advice-add 'nov-render-title :override #'ignore)
 
   (defun +nov-mode-setup ()
-    "Tweak nov-mode to our liking."
-    (face-remap-add-relative 'variable-pitch
-                             :family "Bookerly"
-                             :height 1.0
-                             :width 'semi-expanded
-                             :foreground "#acacac")
-    (face-remap-add-relative 'default
-                             :height 1.0
-                             :foreground "#acacac")
-    (variable-pitch-mode 1)
+    (writeroom-mode 1)
     (setq-local line-spacing 0.2
                 next-screen-context-lines 4
                 shr-use-colors nil
+                writeroom-width 126
                 nov-text-width 126)
- ;; (when (require 'visual-fill-column nil t)
- ;; (setq-local visual-fill-column-center-text t)
- ;;             visual-fill-column-width 64
- ;;             nov-text-width 106)
     (hl-line-mode -1)
- ;; (visual-fill-column-mode 1))
- ;; (when (featurep 'hl-line-mode)
  ;; Re-render with new display settings
     (nov-render-document)
  ;; Look up words with the dictionary.
@@ -779,7 +765,7 @@
                  'help-echo "Buffer percentage")))
 
   (doom-modeline-def-modeline 'nov
-    '(workspace-name window-number nov-author nov-title nov-current-page scroll-percentage-subtle)
+    '(nov-title nov-current-page scroll-percentage-subtle)
     '(misc-info major-mode time))
 
   (add-to-list 'doom-modeline-mode-alist '(nov-mode . nov)))
