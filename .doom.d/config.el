@@ -65,7 +65,7 @@
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ;; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
-(setq initial-major-mode 'lisp-mode)
+(setq initial-major-mode 'org-mode)
 
 ;; Split behaviour (Always right & below and ask for buffer choice)
 (setq evil-vsplit-window-right t
