@@ -339,6 +339,7 @@
                               (interactive)
                               (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
 ;; Dired go to org roam dirs
+(global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
 (global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
 ;; Keybind for scratchbuffer
@@ -559,6 +560,11 @@
          (file+head "reference/${title}.org" "#+title: ${title}\n#+filetags: reference\n#+options: toc:nil num:nil author:nil\n")
          :immediate-finish t
          :unnarrowed t)
+        ("f" "󰟷 Fleeting" plain "%?"
+         :if-new
+         (file+head "fleeting/%<%Y%m%d%H%M>${slug}.org" "#+title: %<%Y%m%d%H%M>\n#+filetags: fleeting\n#+options: toc:nil num:nil author:nil\n")
+         :immediate-finish t
+         :unnarrowed t)
         ("p" " Permanent" plain "%?"
          :if-new
          (file+head "zk/${title}.org" "#+title: ${title}\n#+filetags: zk\n#+options: toc:nil num:nil author:nil\n")
@@ -578,7 +584,8 @@
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %<%H:%M> %?"
-         :target (file+datetree "log.org" week))))
+         :target (file+datetree "log.org" week)))
+      )
 
 ;; This function from System Crafters allows you to make empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
