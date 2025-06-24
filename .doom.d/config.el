@@ -6,53 +6,90 @@
       doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
-;; Theme
-;; NOTE: The custom-set-faces get written to custom.el and may also need changing there.
-(setq doom-theme 'doom-nord)
+;; Light mode custom faces based off doom-one-light default theme
+(setq doom-theme 'doom-one-light)
+
+(custom-set-faces
+  '(default ((t (:background "#efefef"))))
+  '(font-lock-builtin-face ((t (:foreground "#E45B4F"))))
+  '(diredfl-date-time ((t (:foreground "#adadad"))))
+  '(diredfl-number ((t (:foreground "#adadad"))))
+  '(hl-line ((t (:extend t :background "#dddddd"))))
+  '(line-number ((t (:extend t :foreground "#adadad"))))
+  '(mode-line ((t (:background "#c4c4c4"))))
+  '(doom-modeline-project-dir ((t (:foreground "#0f0f0f"))))
+  '(doom-modeline-buffer-path ((t (:foreground "#0f0f0f"))))
+  '(doom-modeline-buffer-modified ((t (:foreground "#666666" :weight bold))))
+  '(doom-modeline-notification ((t (:foreground "#666666"))))
+  '(doom-modeline-warning ((t (:foreground "#666666"))))
+  '(doom-modeline-buffer-major-mode ((t (:foreground "#666666"))))
+  '(doom-modeline-info ((t (:foreground "#666666"))))
+  '(doom-modeline-fly-insert-state ((t (:foreground "#666666"))))
+  '(doom-modeline-urgent ((t (:foreground "#666666"))))
+  '(doom-modeline-bar ((t (:background "#666666"))))
+  '(highlight ((t (:background "#c4c4c4"))))
+  '(header-line ((t (:background "#efefef" :forground "#0f0f0f" :weight bold :height 1.2))))
+  '(mu4e-header-key-face ((t (:foreground "#666666"))))
+  '(mu4e-modeline-face ((t (:foreground "#666666"))))
+  '(mu4e-unread-face ((t (:foreground "#666666"))))
+  '(mode-line-inactive ((t (:background "#c4c4c4" :foreground "#adadad"))))
+  '(org-agenda-clocking ((t (:background "#c4c4c4"))))
+  '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
+  '(org-agenda-done ((t (:foreground "#adadad"))))
+  '(region ((t (:extend t :background "#adadad"))))
+  '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
+  '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
+  '(org-level-2 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-3 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-4 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-5 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-6 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-7 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-level-8 ((t (:foreground "#383a42" :height 1.0))))
+  '(org-document-title ((t (,@headline ,@variable-tuple :foreground "#0f0f0f" :height 1.35 :underline nil))))
+  '(org-checkbox ((t (:foreground "#adadad"))))
+  '(org-checkbox-statistics-todo ((t (:foreground "#E45B4F"))))
+  '(org-checkbox-statistics-done ((t (:foreground "#2b8c63"))))
+  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight light :height 0.9))))
+  '(org-scheduled-previously ((t (:foreground "#d1a07d"))))
+  '(org-scheduled-today ((t (:foreground "#2b8c63"))))
+  '(org-warning ((t (:foreground "#d1a07d"))))
+  '(org-date ((t (:foreground "#adadad"))))
+  '(org-agenda-clocking ((t (:background "#0f0f0f"))))
+  '(markdown-header-face-1 ((t (:foreground "#0f0f0f" :height 1.25))))
+  '(markdown-header-face-2 ((t (:foreground "#0f0f0f" :height 1.2))))
+  '(markdown-header-face-3 ((t (:foreground "#0f0f0f" :height 1.15))))
+  '(markdown-header-face-4 ((t (:foreground "#0f0f0f" :height 1.1))))
+  '(markdown-header-face-5 ((t (:foreground "#0f0f0f" :height 1.1))))
+  '(secondary-selection ((t (:background "#232323"))))
+ )
+
+;; Always display workspace/tab labels
+ ;; (after! persp-mode
+ ;;  (defun display-workspaces-in-minibuffer ()
+ ;;    (with-current-buffer " *Minibuf-0*"
+ ;;      (erase-buffer)
+ ;;      (insert (+workspace--tabline))))
+ ;;  (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
+ ;;  (+workspace/display))
+
+;; Cursor colours
+(setq
+      evil-normal-state-cursor '(box "#232323")
+      evil-insert-state-cursor '(bar "#232323")
+      evil-visual-state-cursor '(hollow "#A98AAD"))
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 
-(custom-set-faces
-  '(default ((t (:background "#0f0f0f"))))
-  '(hl-line ((t (:extend t :background "#0f0f0f"))))
-  '(mode-line ((t (:background "#0f0f0f"))))
-  '(mode-line-inactive ((t (:background "#0f0f0f"))))
-  '(region ((t (:extend t :background "#A98AAD" :foreground "#0f0f0f"))))
-  '(org-level-1 ((t (:foreground "#81A1C1" :height 1.25))))
-  '(org-level-2 ((t (:foreground "#81A1C1" :height 1.2))))
-  '(org-level-3 ((t (:foreground "#81A1C1" :height 1.15))))
-  '(org-level-4 ((t (:foreground "#81A1C1" :height 1.1))))
-  '(org-level-5 ((t (:foreground "#81A1C1" :height 1.1))))
-  '(org-level-6 ((t (:foreground "#81A1C1" :height 1.1))))
-  '(org-level-7 ((t (:foreground "#81A1C1" :height 1.1))))
-  '(org-level-8 ((t (:foreground "#81A1C1" :height 1.1))))
-  '(org-document-title ((t (,@headline ,@variable-tuple :height 1.35 :underline nil))))
-  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight light :height 0.9))))
-  '(org-scheduled-previously ((t (:foreground "#ffdead"))))
-  '(org-warning ((t (:foreground "#ffe7ba"))))
-  '(org-date ((t (:foreground "#ffdead"))))
-  '(org-agenda-clocking ((t (:background "#0f0f0f"))))
-  '(markdown-header-face-1 ((t (:foreground "#81A1C1"))))
-  '(markdown-header-face-2 ((t (:foreground "#81A1C1"))))
-  '(markdown-header-face-3 ((t (:foreground "#81A1C1"))))
-  '(markdown-header-face-4 ((t (:foreground "#81A1C1"))))
-  '(markdown-header-face-5 ((t (:foreground "#81A1C1"))))
-  '(secondary-selection ((t (:background "#232323"))))
- )
-
+;; Save on idle
+(run-with-idle-timer 6 t #'save-some-buffers t)
 ; Org mode documents are always centred
 (add-hook 'org-mode-hook 'writeroom-mode)
 ; Avoid spacing issues? source: https://sophiebos.io/posts/beautifying-emacs-org-mode/
 (require 'org-indent)
 (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
-
-;; Cursor colours
-(setq
-      evil-normal-state-cursor '(box "#88aaee")
-      evil-insert-state-cursor '(bar "#88aaee")
-      evil-visual-state-cursor '(hollow "#A98AAD"))
 
 ;; Disabling solaire-mode neccessary for consistent custom background colour
 (after! solaire-mode
@@ -74,6 +111,9 @@
   :after '(evil-window-split evil-window-vsplit)
   (consult-buffer))
 
+;; Increase line spacing
+(setq-default line-spacing 2)
+
 ;; Trash, revert, undo, scroll
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
@@ -90,6 +130,8 @@
 (after! org
 (setq org-log-done 'time
       org-agenda-span 'day
+      org-agenda-start-on-weekday nil
+      org-agenda-start-day nil
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
       org-log-reschedule 'time
@@ -140,34 +182,43 @@
   (setq! org-capture-templates
 
         '(
-          ("n" "󱐋 Next" entry (file+headline "~/org/todo.org" "NEXT:")
-            (file "~/org/tpl/tpl-next.txt"))
+          ("t" " Todo")
+          ("tp" "󰭕 Personal" entry (file+headline "~/org/personal.org" "INBOX:")
+            (file "~/org/tpl/tpl-todo.txt"))
 
-           ("q" "󰍃 Queued" entry (file+headline "~/org/todo.org" "QUEUED:")
-            (file "~/org/tpl/tpl-queued.txt"))
+           ("tn" " NA" entry (file+headline "~/org/na.org" "INBOX:")
+            (file "~/org/tpl/tpl-todo.txt"))
 
-           ("d" " Done" entry (file+headline "~/org/todo.org" "NEXT:")
+           ("tw" " Work" entry (file+headline "~/org/work.org" "INBOX:")
+            (file "~/org/tpl/tpl-todo.txt"))
+
+           ("td" " Done" entry (file "~/org/archive.org")
              (file "~/org/tpl/tpl-done.txt"))
 
-           ("m" " Mail Capture" entry (file+headline "~/org/todo.org" "NEXT:")
-            "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
+           ("e" " Event" entry (file "~/org/events.org")
+             "* %? \n %^t")
+
+           ;; ("m" " Mail" entry (file+headline "~/org/todo.org" "NEXT:")
+           ;;  "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
 
            ;; ("g" " Goal" entry (file+headline "~/org/goals.org"
            ;;  "Capture") (file "~/org/tpl/tpl-goal.txt"))
 
-           ("t" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
+          ("w" " Watch")
+           ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
             (file "~/org/tpl/tpl-towatch.txt"))
 
-           ("w" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
+           ("wd" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
             (file "~/org/tpl/tpl-watched.txt") :prepend t)
 
-           ("p" "󰃶 Day Plan" plain (file buffer-name)
+           ("p" " Plan")
+           ("pd" "󰃶 Daily Plan" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-bod.txt"))
 
-           ("r" "󰱄 EOD Review" plain (file buffer-name)
+           ("pr" "󰱄 Daily Review" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-eod.txt"))
 
-           ("R" "󱛡 EOW Review" plain (file buffer-name)
+           ("pw" "󱛡 Weekly Review" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-weekly.txt"))
             )
            ))
@@ -175,6 +226,9 @@
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
  '(
+    ("A" "Agenda and all TODOs"
+      ((agenda " " nil)
+       (alltodo " " nil)))
 
    ("1" "+p1"
     ((tags-todo "+p1"
@@ -197,25 +251,30 @@
                 )))
 
    ("f" "+fleeting"
-    ((tags "+fleeting-someday"
+    ((tags "+fleeting"
            ((org-agenda-overriding-header "Fleeting"))
            )))
 
    ("n" "+na"
-    ((tags-todo "+na-DONE-PROJ-someday-goal"
+    ((tags-todo "+na"
            ((org-agenda-overriding-header "Navigators"))
            )))
 
    ("p" "+per"
-    ((tags-todo "+per-DONE-someday-goal"
+    ((tags-todo "+per"
            ((org-agenda-overriding-header "Personal"))
+           )))
+
+   ("r" "+refile"
+    ((tags-todo "+refile"
+           ((org-agenda-overriding-header "Refile"))
            )))
 
    ("u" "Untagged"
     ((tags-todo "-goal-someday-{.*}")))
 
    ("w" "+work"
-    ((tags-todo "+work-DONE-PROJ-someday-goal"
+    ((tags-todo "+work"
            ((org-agenda-overriding-header "Work"))
            )))
 
@@ -232,6 +291,8 @@
              ("blog")
              ("call")
              ("email")
+             ("games")
+             ("home")
              ("fleeting")
              ("listen")
              ("na")
@@ -239,10 +300,14 @@
              ("post")
              ("posted")
              ("read")
+             ("refile")
+             ("recur")
              ("research")
+             ("sys")
              ("watch")
              ("watched")
              ("work")
+             ("yt")
                ))
   (setq org-tag-alist-for-agenda
         '(
@@ -253,6 +318,8 @@
              ("blog")
              ("call")
              ("email")
+             ("games")
+             ("home")
              ("fleeting")
              ("listen")
              ("na")
@@ -260,10 +327,14 @@
              ("post")
              ("posted")
              ("read")
+             ("refile")
+             ("recur")
              ("research")
+             ("sys")
              ("watch")
              ("watched")
              ("work")
+             ("yt")
                )))
 
 ;; Keybinds
@@ -292,12 +363,41 @@
   (interactive)
   (org-agenda nil "4"))
 
+(bind-key "<f6>" #'org-capture)
 (bind-key "C-c SPC" #'jethro/org-capture-inbox)
 (bind-key "C-c <tab>" #'jethro/org-agenda)
 (bind-key "C-c 1" #'me/p1)
 (bind-key "C-c 2" #'me/p2)
 (bind-key "C-c 3" #'me/p3)
 (bind-key "C-c 4" #'me/p4)
+
+;; Rainer Konig copy org id link
+(defun my/copy-idlink-to-clipboard() "Copy an ID link with the
+headline to killring, if no ID is there then create a new unique
+ID.  This function works only in org-mode or org-agenda buffers.
+
+The purpose of this function is to easily construct id:-links to
+org-mode items. If its assigned to a key it saves you marking the
+text and copying to the killring."
+       (interactive)
+       (when (eq major-mode 'org-agenda-mode) ;switch to orgmode
+     (org-agenda-show)
+     (org-agenda-goto))
+       (when (eq major-mode 'org-mode) ; do this only in org-mode buffers
+     (setq mytmphead (nth 4 (org-heading-components)))
+         (setq mytmpid (funcall 'org-id-get-create))
+     (setq mytmplink (format "[[id:%s][%s]]" mytmpid mytmphead))
+     (kill-new mytmplink)
+     (message "Copied %s to killring (clipboard)" mytmplink)
+       ))
+
+(global-set-key (kbd "<f5>") 'my/copy-idlink-to-clipboard)
+
+; Make org emphasis bold/italic etc a simpler keybind
+(global-set-key (kbd "C-c b") 'org-emphasize)
+
+(global-set-key (kbd "C-c e") 'emoji-search)
+
 
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
@@ -307,9 +407,9 @@
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c e" "~/org/events.org" "events.org")
-(zz/add-file-keybinding "C-c t" "~/org/todo.org" "todo.org")
-(zz/add-file-keybinding "C-c o" "~/org/recur.org" "recur.org")
+(zz/add-file-keybinding "C-c t" "~/org/personal.org" "personal.org")
+(zz/add-file-keybinding "C-c y" "~/org/work.org" "work.org")
+(zz/add-file-keybinding "C-c u" "~/org/na.org" "na.org")
 (zz/add-file-keybinding "C-c w" "~/org/watch.org" "watch.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
@@ -318,8 +418,8 @@
 (global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c n f") 'org-roam-node-find)
 (global-set-key (kbd "C-c n h") 'now)
-(global-set-key (kbd "C-c n i") 'org-roam-node-insert)
-(global-set-key (kbd "C-c n I") 'org-roam-node-insert-immediate)
+(global-set-key (kbd "C-c i") 'org-roam-node-insert)
+(global-set-key (kbd "C-c I") 'org-roam-node-insert-immediate)
 (global-set-key (kbd "C-c n c") 'org-roam-capture)
 (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
 ;; (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
@@ -339,7 +439,7 @@
                               (interactive)
                               (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
 ;; Dired go to org roam dirs
-(global-set-key (kbd "C-c i") (lambda () (interactive) (dired "~/org/roam/fleeting")))
+(global-set-key (kbd "C-c f") (lambda () (interactive) (dired "~/org/roam/fleeting")))
 (global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
 (global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
 ;; Keybind for scratchbuffer
@@ -694,8 +794,9 @@
   (kbd "J") 'elfeed-goodies/split-show-next
   (kbd "K") 'elfeed-goodies/split-show-prev)
 
-;; EWW is set as the default browser
-(setq browse-url-browser-function 'eww-browse-url)
+;;  Default browser
+;; (setq browse-url-browser-function 'eww-browse-url)
+(setq browse-url-browser-function 'browse-url-xdg-open)
 
 ;; Rainbow mode
 (add-hook! org-mode 'rainbow-mode)
@@ -789,7 +890,6 @@
         ("Brave Search"      "https://search.brave.com/search?q")
         ("DuckDuckGo"        +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
         ("Github"            "https://github.com/search?ref=simplesearch&q=%s")
-        ("StackOverflow"     "https://stackoverflow.com/search?q=%s")
         ("Youtube"           "https://youtube.com/results?aq=f&oq=&search_query=%s")
         ("Wikipedia"         "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
         ("Arch Wiki"         "https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch&wprov=acrw1")
@@ -802,6 +902,7 @@
 (setq display-line-numbers-type 'relative)
 (dolist (mode '(org-mode-hook
                 markdown-mode-hook
+                mu4e-compose-mode-hook
                 vterm-mode-hook
                 shell-mode-hook))
  (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -811,15 +912,17 @@
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
 ;; Highlight line mode
-(setq hl-line-mode -1)
-(setq global-hl-line-mode -1)
+(add-hook 'text-mode-hook (lambda () (hl-line-mode -1)))
+
+;; Disable long minibuffer messages about place in outline in org-mode
+(add-hook 'org-mode-hook (lambda () (eldoc-mode nil)))
 
 ;; Disable smartparens (autopairs)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(95 . 95))
-(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+;; (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
+;; (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
 ;; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)

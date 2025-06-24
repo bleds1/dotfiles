@@ -52,17 +52,7 @@
 ;;
 (package! solaire-mode :disable t)
 
-(package! catppuccin-theme)
-
 (package! modus-themes)
-
-(package! almost-mono-themes)
-
-(package! minimal-theme)
-
-(package! base16-theme)
-
-(package! brutalist-theme)
 
 (package! peep-dired)
 
@@ -73,6 +63,8 @@
 (package! nov)
 
 (package! org-alert)
+
+(package! org-caldav)
 
 (package! org-roam-ui)
 
