@@ -17,6 +17,7 @@
   '(hl-line ((t (:extend t :background "#dddddd"))))
   '(line-number ((t (:extend t :foreground "#adadad"))))
   '(mode-line ((t (:background "#c4c4c4"))))
+  '(doom-themes-org-at-tag ((t (:foreground "#84888b"))))
   '(doom-modeline-project-dir ((t (:foreground "#0f0f0f"))))
   '(doom-modeline-buffer-path ((t (:foreground "#0f0f0f"))))
   '(doom-modeline-buffer-modified ((t (:foreground "#666666" :weight bold))))
@@ -36,6 +37,7 @@
   '(org-agenda-clocking ((t (:background "#c4c4c4"))))
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
+  '(org-headline-done ((t (:foreground "#adadad"))))
   '(region ((t (:extend t :background "#adadad"))))
   '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
   '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
@@ -143,37 +145,30 @@
       '((sequence
          "TODO(t)"
          "STRT(s!)"
-         "NEXT(n)"
          "WAIT(w!)"
-         "GOAL(g)"
          "PROJ(p)"
          "|"
-         "DELG(e!)"
          "DONE(d!)"
          "CANC(c!)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
        ("STRT" :foreground "#85C7A1" :weight bold)
-       ("NEXT" :foreground "#ff7f50" :weight bold)
        ("WAIT" :foreground "#83898d" :weight bold)
-       ("GOAL" :foreground "#cc4d3e" :weight bold)
        ("PROJ" :foreground "#896ccc" :weight bold)
-       ("DELG" :foreground "#83898d" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
        ("CANC" :foreground "#5d6265" :weight bold))))
 
 ;; Org Bullets and Priorities
 (after! org
- (setq
-    org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
-(setq org-superstar-prettify-item-bullets nil)
-(after! org-fancy-priorities
+  (setq org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
+  (setq org-superstar-prettify-item-bullets nil)
+  (after! org-fancy-priorities
   (setq
    org-fancy-priorities-list '("[A]" "[B]" "[C]")
    org-priority-faces
    '((?A :foreground "#cc4d3e" :weight bold)
-     (?B :foreground "#1c7870" :weight bold)
-     (?C :foreground "#5d6265" :weight bold))
+     (?B :foreground "#ff7f50" :weight bold)
+     (?C :foreground "#d1a07d" :weight bold))
    ))
 )
 
@@ -183,7 +178,7 @@
 
         '(
           ("t" " Todo")
-          ("tp" "󰭕 Personal" entry (file+headline "~/org/personal.org" "INBOX:")
+          ("tp" "󰭕 Personal" entry (file+headline "~/org/per.org" "INBOX:")
             (file "~/org/tpl/tpl-todo.txt"))
 
            ("tn" " NA" entry (file+headline "~/org/na.org" "INBOX:")
@@ -200,9 +195,6 @@
 
            ;; ("m" " Mail" entry (file+headline "~/org/todo.org" "NEXT:")
            ;;  "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
-
-           ;; ("g" " Goal" entry (file+headline "~/org/goals.org"
-           ;;  "Capture") (file "~/org/tpl/tpl-goal.txt"))
 
           ("w" " Watch")
            ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
@@ -225,44 +217,9 @@
 
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
- '(
-    ("A" "Agenda and all TODOs"
-      ((agenda " " nil)
-       (alltodo " " nil)))
-
-   ("1" "+p1"
-    ((tags-todo "+p1"
-           ((org-agenda-overriding-header "Priority Objectives"))
-                )))
-
-   ("2" "+p2"
-    ((tags-todo "+p2"
-           ((org-agenda-overriding-header "Secondary Objectives"))
-                )))
-
-   ("3" "+p3"
-    ((tags-todo "+p3"
-           ((org-agenda-overriding-header "Bonus Objectives"))
-                )))
-
-   ("4" "+p4"
-    ((tags-todo "+p4"
-           ((org-agenda-overriding-header "Low Priority"))
-                )))
-
-   ("f" "+fleeting"
+ '(("f" "+fleeting"
     ((tags "+fleeting"
            ((org-agenda-overriding-header "Fleeting"))
-           )))
-
-   ("n" "+na"
-    ((tags-todo "+na"
-           ((org-agenda-overriding-header "Navigators"))
-           )))
-
-   ("p" "+per"
-    ((tags-todo "+per"
-           ((org-agenda-overriding-header "Personal"))
            )))
 
    ("r" "+refile"
@@ -273,68 +230,53 @@
    ("u" "Untagged"
     ((tags-todo "-goal-someday-{.*}")))
 
-   ("w" "+work"
-    ((tags-todo "+work"
-           ((org-agenda-overriding-header "Work"))
-           )))
-
-      ))
+           ))
 
 ;; Org tag-alist
 (after! org
   (setq org-tag-alist
         '(
-             ("p1")
-             ("p2")
-             ("p3")
-             ("p4")
-             ("blog")
-             ("call")
-             ("email")
-             ("games")
-             ("home")
-             ("fleeting")
-             ("listen")
-             ("na")
+             ("@call")
+             ("@email")
+             ("@errand")
+             ("@games")
+             ("@home")
+             ("@listen")
+             ("@post")
+             ("@read")
+             ("@research")
+             ("@sys")
+             ("@watch")
+             ("@web")
              ("per")
-             ("post")
+             ("na")
+             ("work")
+             ("fleeting")
              ("posted")
-             ("read")
              ("refile")
              ("recur")
-             ("research")
-             ("sys")
-             ("watch")
-             ("watched")
-             ("work")
-             ("yt")
                ))
   (setq org-tag-alist-for-agenda
         '(
-             ("p1")
-             ("p2")
-             ("p3")
-             ("p4")
-             ("blog")
-             ("call")
-             ("email")
-             ("games")
-             ("home")
-             ("fleeting")
-             ("listen")
-             ("na")
+             ("@call")
+             ("@email")
+             ("@errand")
+             ("@games")
+             ("@home")
+             ("@listen")
+             ("@post")
+             ("@read")
+             ("@research")
+             ("@sys")
+             ("@watch")
+             ("@web")
              ("per")
-             ("post")
+             ("na")
+             ("work")
+             ("fleeting")
              ("posted")
-             ("read")
              ("refile")
              ("recur")
-             ("research")
-             ("sys")
-             ("watch")
-             ("watched")
-             ("work")
-             ("yt")
                )))
 
 ;; Keybinds
@@ -407,7 +349,7 @@ text and copying to the killring."
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c t" "~/org/personal.org" "personal.org")
+(zz/add-file-keybinding "C-c t" "~/org/per.org" "per.org")
 (zz/add-file-keybinding "C-c y" "~/org/work.org" "work.org")
 (zz/add-file-keybinding "C-c u" "~/org/na.org" "na.org")
 (zz/add-file-keybinding "C-c w" "~/org/watch.org" "watch.org")
@@ -565,13 +507,6 @@ text and copying to the killring."
 (map! :leader
       (:prefix ("o" . "org-agenda-filter")
                 :desc "org-agenda-filter" "l" #'org-agenda-filter))
-; leader keys for org-roam-dailies
-;; (map! :leader
-;;       (:prefix ("n" . "org-roam-dailies-capture-today")
-;;                 :desc "org-roam-dailies-capture-today" "j" #'org-roam-dailies-capture-today))
-;; (map! :leader
-;;       (:prefix ("n" . "org-roam-dailies-goto-today")
-;;                 :desc "org-roam-dailies-goto-today" "d" #'org-roam-dailies-goto-today))
 (map! :leader
       (:prefix ("n" . "now header")
                 :desc "now header" "h" #'now))
