@@ -63,7 +63,7 @@
   '(markdown-header-face-3 ((t (:foreground "#0f0f0f" :height 1.15))))
   '(markdown-header-face-4 ((t (:foreground "#0f0f0f" :height 1.1))))
   '(markdown-header-face-5 ((t (:foreground "#0f0f0f" :height 1.1))))
-  '(secondary-selection ((t (:background "#232323"))))
+  '(secondary-selection ((t (:background "#dddddd"))))
  )
 
 ;; Always display workspace/tab labels
