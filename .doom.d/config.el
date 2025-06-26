@@ -39,7 +39,7 @@
   '(mu4e-modeline-face ((t (:foreground "#666666"))))
   '(mu4e-unread-face ((t (:foreground "#666666"))))
   '(mode-line-inactive ((t (:background "#c4c4c4" :foreground "#adadad"))))
-  '(org-agenda-clocking ((t (:background "#0f0f0f" :foreground "#c4c4c4")))) ;;NOTE: not working
+  '(org-agenda-clocking ((t (:background "#c4c4c4")))) ;;NOTE: not working
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
   '(org-headline-done ((t (:foreground "#adadad"))))
