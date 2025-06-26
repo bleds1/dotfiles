@@ -39,7 +39,7 @@
   '(mu4e-modeline-face ((t (:foreground "#666666"))))
   '(mu4e-unread-face ((t (:foreground "#666666"))))
   '(mode-line-inactive ((t (:background "#c4c4c4" :foreground "#adadad"))))
-  '(org-agenda-clocking ((t (:background "#c4c4c4"))))
+  '(org-agenda-clocking ((t (:background "#0f0f0f" :foreground "#c4c4c4")))) ;;NOTE: not working
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
   '(org-headline-done ((t (:foreground "#adadad"))))
@@ -55,6 +55,7 @@
   '(org-level-8 ((t (:foreground "#383a42" :height 1.0))))
   '(org-document-title ((t (,@headline ,@variable-tuple :foreground "#0f0f0f" :height 1.35 :underline nil))))
   '(org-checkbox ((t (:foreground "#adadad"))))
+  '(org-list-dt ((t (:foreground "#adadad"))))
   '(org-checkbox-statistics-todo ((t (:foreground "#E45B4F"))))
   '(org-checkbox-statistics-done ((t (:foreground "#2b8c63"))))
   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight light :height 0.9))))
@@ -92,7 +93,7 @@
         doom-themes-enable-italic t))
 
 ;; Save on idle
-(run-with-idle-timer 6 t #'save-some-buffers t)
+;; (run-with-idle-timer 6 t #'save-some-buffers t)
 ; Org mode documents are always centred
 (add-hook 'org-mode-hook 'writeroom-mode)
 ; Avoid spacing issues? source: https://sophiebos.io/posts/beautifying-emacs-org-mode/
@@ -166,7 +167,7 @@
 
 ;; Org Bullets and Priorities
 (after! org
-  (setq org-superstar-headline-bullets-list '("•" "•" "•" "•" "•"))
+  (setq org-superstar-headline-bullets-list '("•" "•" "•" "•" "•" "•"))
   (setq org-superstar-prettify-item-bullets nil)
   (after! org-fancy-priorities
   (setq
