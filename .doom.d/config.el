@@ -6,10 +6,14 @@
       doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
+; Blink Cursor mode
+(setq blink-cursor-mode t)
+
 ;; Light mode custom faces based off doom-one-light default theme
 (setq doom-theme 'doom-one-light)
 
 (custom-set-faces
+  '(cursor ((t (:background "#232323"))))
   '(default ((t (:background "#efefef"))))
   '(font-lock-builtin-face ((t (:foreground "#E45B4F"))))
   '(diredfl-date-time ((t (:foreground "#adadad"))))
@@ -23,6 +27,7 @@
   '(doom-modeline-buffer-modified ((t (:foreground "#666666" :weight bold))))
   '(doom-modeline-notification ((t (:foreground "#666666"))))
   '(doom-modeline-warning ((t (:foreground "#666666"))))
+  '(doom-modeline-emphasis ((t (:foreground "#666666"))))
   '(doom-modeline-buffer-major-mode ((t (:foreground "#666666"))))
   '(doom-modeline-info ((t (:foreground "#666666"))))
   '(doom-modeline-fly-insert-state ((t (:foreground "#666666"))))
@@ -79,7 +84,8 @@
 (setq
       evil-normal-state-cursor '(box "#232323")
       evil-insert-state-cursor '(bar "#232323")
-      evil-visual-state-cursor '(hollow "#A98AAD"))
+      evil-motion-state-cursor '("#232323")
+      evil-visual-state-cursor '(hollow "#232323"))
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -104,7 +110,7 @@
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 ;; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
-(setq initial-major-mode 'org-mode)
+(setq initial-major-mode 'lisp-mode)
 
 ;; Split behaviour (Always right & below and ask for buffer choice)
 (setq evil-vsplit-window-right t
@@ -222,9 +228,9 @@
            ((org-agenda-overriding-header "Fleeting"))
            )))
 
-   ("r" "+refile"
-    ((tags-todo "+refile"
-           ((org-agenda-overriding-header "Refile"))
+   ("i" "+@inbox"
+    ((tags-todo "+@inbox"
+           ((org-agenda-overriding-header "@inbox"))
            )))
 
    ("u" "Untagged"
@@ -253,8 +259,8 @@
              ("work")
              ("fleeting")
              ("posted")
-             ("refile")
-             ("recur")
+             ("@inbox")
+             ("@recur")
                ))
   (setq org-tag-alist-for-agenda
         '(
@@ -275,8 +281,8 @@
              ("work")
              ("fleeting")
              ("posted")
-             ("refile")
-             ("recur")
+             ("@inbox")
+             ("@recur")
                )))
 
 ;; Keybinds
