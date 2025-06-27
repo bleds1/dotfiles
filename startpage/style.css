@@ -2,12 +2,12 @@
     --font: "monospace";
     --font-family: "monospace";
     /* --background: #22272E; */
-    --background: #151515;
-    --foreground: #B9C9B8;
-    --green: #82abba;
-    --red: #5993A3;
+    --background: #efefef;
+    --foreground: #4078F2;
+    --green:'#4078F2';
+    --red: #666666;
     --orange: #545f78;
-    --branch: 1px solid #B9C9B8;
+    --branch: 1px solid #E45B4F;
 }
 
 html {

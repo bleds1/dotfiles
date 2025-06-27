@@ -24,7 +24,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 - Doom Emacs (gui default)
 - Neovim (cli default)
-- Libreoffice (work)
+- Libreoffice (some work)
 
 ## CLI/TUI
 
@@ -94,9 +94,9 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Nautilus (w/Sushi previewer)
 
 ### Browser
-- Brave (default)
-- Firefox 
-- Qutebrowser (occasional)
+- Librewolf 
+- Qutebrowser
+- Brave
 
 ### Image Viewer
 - Nsxiv
@@ -114,7 +114,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ![Celluloid video](/assets/Screenshot7.jpg?raw=true "Screenshot7")
 
-- Celluloid/mpv
+- mpv
 
 
 ### Video/Audio Editor

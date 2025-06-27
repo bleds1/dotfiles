@@ -3,13 +3,14 @@
 ## Get rid of Auto Load Dialogue
 config.load_autoconfig(False)
 
-## Ranger as file picker (having problems with attachments using this..)
+## lf as file picker (having problems with attachments using this..)
 # config.set("fileselect.handler", "external")
-# config.set("fileselect.single_file.command", ['st', '-e', 'ranger', '--choosefile={}'])
-# config.set("fileselect.multiple_files.command", ['st', '-e', 'ranger', '--choosefiles={}'])
+# config.set("fileselect.single_file.command", ['foot', '-e', 'lf', '--choosefile={}'])
+# config.set("fileselect.multiple_files.command", ['foot', '-e', 'lf', '--choosefiles={}'])
 
 ## Notifications
-config.set('content.notifications.enabled', True, 'https://mail.proton.me')
+config.set('content.notifications.enabled', True, 'https://lemmy.world')
+config.set('content.notifications.enabled', True, 'https://mastodon.social')
 
 ## Setting dark mode
 config.bind('<space><z>', 'spawn --userscript readability')
@@ -20,84 +21,84 @@ config.bind('<space><z>', 'spawn --userscript readability')
 c.url.start_pages=('/home/bledley/startpage/index.html')
 
 ## Open video in Mpv
-config.bind('<space><v>', 'hint links spawn /usr/bin/mpv {hint-url}')
-config.bind(',m', 'spawn --detach mpv {url}')
+config.bind('<Ctrl-m>', 'hint links spawn mpv {hint-url}')
+config.bind('<Ctrl-Shift-m>', 'spawn mpv {url}')
 
-## Open/Download images in external program
-config.bind('<space><i><d>', 'hint images download')
-config.bind('<space><i><v>', 'hint images spawn feh {hint-url}')
+## Open/Download images in external program NOTE: Fix "No valid image file given"
+config.bind('<Ctrl-Shift-i>', 'hint images download')
+config.bind('<Ctrl-i>', 'hint images spawn feh {hint-url}')
 
 ## Hiding status bar and tabs
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind('<Space><f><f>', 'hint links spawn firefox {hint-url}')
+config.bind('<Space><f><f>', 'hint links spawn librewolf {hint-url}')
 
 ## Tabs
 # c.tabs.show = 'always'
 c.tabs.show = 'always'
 # Background color of the tab bar
-c.colors.tabs.bar.bg = '#1A1A1B'
+c.colors.tabs.bar.bg = '#adadad'
 # Background color of unselected odd tabs
-c.colors.tabs.odd.bg = '#1A1A1B'
+c.colors.tabs.odd.bg = '#adadad'
 # Background color of unselected even tabs
-c.colors.tabs.even.bg = '#1A1A1B'
+c.colors.tabs.even.bg = '#adadad'
 # Background color of selected odd tabs
-c.colors.tabs.selected.odd.bg = '#1A1A1B'
+c.colors.tabs.selected.odd.bg = '#c4c4c4'
 # Background color of selected even tabs
-c.colors.tabs.selected.even.bg = '#1A1A1B'
-c.colors.tabs.selected.odd.fg = '#adadad'
-c.colors.tabs.selected.even.fg = '#adadad'
-c.colors.tabs.odd.fg = '#5e5e5e'
-c.colors.tabs.even.fg = '#5e5e5e'
-c.tabs.favicons.show = 'never'
+c.colors.tabs.selected.even.bg = '#c4c4c4'
+c.colors.tabs.selected.odd.fg = '#000000'
+c.colors.tabs.selected.even.fg = '#000000'
+c.colors.tabs.odd.fg = '#0f0f0f'
+c.colors.tabs.even.fg = '#0f0f0f'
+c.tabs.favicons.show = 'always'
 c.tabs.title.format = '{current_title}'
 
 ## Background color for hints
-c.colors.hints.bg = '#6B95B8'
+c.colors.hints.bg = '#C2D3F7'
 
 ## Default font
 c.fonts.default_size = '10pt'
-c.fonts.completion.entry = '10pt "JetBrains Mono"'
-c.fonts.debug_console = '10pt "JetBrains Mono"'
-c.fonts.statusbar = '10pt "JetBrains Mono"'
+c.fonts.completion.entry = '10pt "Aporetic Serif"'
+c.fonts.debug_console = '10pt "Aporetic Serif"'
+c.fonts.statusbar = '10pt "Aporetic Serif"'
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.bg = '#1a1a1b'
+c.colors.completion.category.bg = '#c4c4c4'
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.bottom = '#1a1a1b'
+c.colors.completion.category.border.bottom = '#c4c4c4'
 
 ## Top border color of the completion widget category headers.
 ## Type: QssColor
-c.colors.completion.category.border.top = '#1a1a1b'
+c.colors.completion.category.border.top = '#c4c4c4'
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
-c.colors.completion.category.fg = '#cccccc'
+c.colors.completion.category.fg = '#0f0f0f'
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-c.colors.completion.even.bg = '#1a1a1b'
+c.colors.completion.even.bg = '#adadad'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
 ## Type: List of QtColor, or QtColor
-c.colors.completion.fg = ['#6b95b8', '#ffffff', '#BBBBBB']
+c.colors.completion.fg = ['#4078F2', '#0f0f0f', '#84888b']
 
 ## Background color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.bg = '#6B95B8'
+c.colors.completion.item.selected.bg = '#4078F2'
 
 ## Bottom border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#6B95B8'
+c.colors.completion.item.selected.border.bottom = '#4078F2'
 
 ## Top border color of the selected completion item.
 ## Type: QssColor
-c.colors.completion.item.selected.border.top = '#6b95b8'
+c.colors.completion.item.selected.border.top = '#4078F2'
 
 ## Foreground color of the selected completion item.
 ## Type: QtColor
@@ -105,16 +106,16 @@ c.colors.completion.item.selected.fg = '#22272E'
 
 ## Foreground color of the matched text in the selected completion item.
 ## Type: QtColor
-c.colors.completion.item.selected.match.fg = '#ffffff'
+c.colors.completion.item.selected.match.fg = '#000000'
 
 ## Foreground color of the matched text in the completion.
 ## Type: QtColor
-c.colors.completion.match.fg = '#e8716c'
+c.colors.completion.match.fg = '#E45b4f'
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-c.colors.completion.odd.bg = '#1a1a1b'
-c.colors.completion.even.bg = '#1a1a1b'
+c.colors.completion.odd.bg = '#efefef'
+c.colors.completion.even.bg = '#efefef'
 
 ## Default Zoom
 c.zoom.default = '90%'
@@ -127,7 +128,7 @@ c.editor.command = ["emacsclient", "-c", "{}"]
 c.downloads.location.directory = '/home/bledley/Downloads/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://4get.ca/web?s={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
 
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig(True)
@@ -183,7 +184,7 @@ config.bind('<alt-x>', 'cmd-set-text :')
 # config.bind(';y', 'hint links yank')
 # config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
-# config.bind('<Ctrl-Alt-p>', 'print')
+config.bind('<Ctrl-p>', 'print')
 # config.bind('<Ctrl-B>', 'scroll-page 0 -1')
 #config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
@@ -205,7 +206,7 @@ config.bind('<space><w><c>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 config.bind('<Ctrl-h>', 'home')
-config.bind('<space><t><p>', 'tab-pin')
+config.bind('<Ctrl-P>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
 # config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
 # config.bind('<F11>', 'fullscreen')
@@ -231,6 +232,7 @@ config.bind('<space><d><m>', 'bookmark-del')
 # config.bind('Pp', 'open -t -- {clipboard}')
 # config.bind('R', 'reload -f')
 # config.bind('Sb', 'bookmark-list --jump')
+config.bind('<Ctrl-h>', 'history')
 config.bind('<space><h>', 'history')
 config.bind('<space><Return>', 'bookmark-list')
 # config.bind('Ss', 'set')
@@ -238,21 +240,21 @@ config.bind('<space><Return>', 'bookmark-list')
 # config.bind('U', 'undo -w')
 # config.bind('V', 'mode-enter caret ;; selection-toggle --line')
 # config.bind('ZQ', 'quit')
-config.bind('zz', 'quit --save')
+config.bind('ZZ', 'quit --save')
 config.bind('<space><q><q>', 'quit --save')
 config.bind('<space><w><q>', 'quit --save')
 # config.bind('[[', 'navigate prev')
 # config.bind(']]', 'navigate next')
 # config.bind('`', 'mode-enter set_mark')
 # config.bind('ad', 'download-cancel')
-config.bind('<space><,>', 'cmd-set-text -s :quickmark-load')
+config.bind('<space><.>', 'cmd-set-text -s :quickmark-load')
 config.bind('<space><p><w>', 'open --private')
 config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
 # config.bind('Ctrl+d', 'scroll-page 0 0.5')
 # config.bind('Ctrl+u', 'scroll-page 0 -0.5')
-config.bind('Ctrl+d', 'scroll-page 0 0.5')
-config.bind('Ctrl+u', 'scroll-page 0 -0.5')
+config.bind('d', 'scroll-page 0 0.5')
+config.bind('u', 'scroll-page 0 -0.5')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
@@ -274,7 +276,7 @@ config.bind('<space><e><s>', 'view-source --edit')
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
 config.bind('<space><b><i>', 'cmd-set-text -s :tab-select')
-config.bind('<space><space>', 'cmd-set-text -s :tab-select')
+config.bind('<space><,>', 'cmd-set-text -s :tab-select')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 config.bind('a', 'mode-enter insert')
@@ -282,7 +284,7 @@ config.bind('a', 'mode-enter insert')
 # config.bind('k', 'scroll up')
 # config.bind('l', 'scroll right')
 config.unbind('m')
-config.bind('<space><s><m>', 'quickmark-save')
+config.bind('<space><s><q>', 'quickmark-save')
 # config.bind('n', 'search-next')
 config.bind('<space><o>', 'cmd-set-text -s :open')
 # config.bind('pP', 'open -- {primary}')
@@ -616,26 +618,26 @@ config.bind(',ym', 'yank inline [{title}]({url:pretty})')
 ## Background color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.bg = '#22272E'
+c.colors.contextmenu.menu.bg = '#adadad'
 
 ## Foreground color of the context menu. If set to null, the Qt default
 ## is used.
 ## Type: QssColor
-c.colors.contextmenu.menu.fg = '#8a8a8a'
+c.colors.contextmenu.menu.fg = '#232323'
 
 ## Background color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.bg = '#6b95b8'
+c.colors.contextmenu.selected.bg = '#4078F2'
 
 ## Foreground color of the context menu's selected item. If set to null,
 ## the Qt default is used.
 ## Type: QssColor
-c.colors.contextmenu.selected.fg = '#22272E'
+c.colors.contextmenu.selected.fg = '#0f0f0f'
 
 ## Background color for the download bar.
 ## Type: QssColor
-c.colors.downloads.bar.bg = '#22272E'
+c.colors.downloads.bar.bg = '#adadad'
 
 ## Background color for downloads with errors.
 ## Type: QtColor
@@ -690,7 +692,7 @@ c.colors.downloads.stop.bg = '#6272a4'
 
 ## Font color for the matched part of hints.
 ## Type: QtColor
-c.colors.hints.match.fg = '#e8716c'
+c.colors.hints.match.fg = '#E45B4F'
 
 ## Background color of the keyhint widget.
 ## Type: QssColor
@@ -702,7 +704,7 @@ c.colors.hints.match.fg = '#e8716c'
 
 ## Highlight color for keys to complete the current keychain.
 ## Type: QssColor
-c.colors.keyhint.suffix.fg = '#e8716c'
+c.colors.keyhint.suffix.fg = '#E45B4F'
 
 ## Background color of an error message.
 ## Type: QssColor
@@ -742,7 +744,7 @@ c.colors.messages.error.border = '#c280a0'
 
 ## Background color for prompts.
 ## Type: QssColor
-c.colors.prompts.bg = '#22272E'
+c.colors.prompts.bg = '#adadad'
 
 ## Border used around UI elements in prompts.
 ## Type: String
@@ -750,7 +752,7 @@ c.colors.prompts.bg = '#22272E'
 
 ## Foreground color for prompts.
 ## Type: QssColor
-c.colors.prompts.fg = '#7d7d7d'
+c.colors.prompts.fg = '#0f0f0f'
 
 ## Background color for the selected item in filename prompts.
 ## Type: QssColor
@@ -778,11 +780,11 @@ c.colors.statusbar.caret.selection.fg = '#22272E'
 
 ## Background color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.bg = '#22272E'
+c.colors.statusbar.command.bg = '#adadad'
 
 ## Foreground color of the statusbar in command mode.
 ## Type: QssColor
-c.colors.statusbar.command.fg = '#9da7b4'
+c.colors.statusbar.command.fg = '#0f0f0f'
 
 ## Background color of the statusbar in private browsing + command mode.
 ## Type: QssColor
@@ -794,7 +796,7 @@ c.colors.statusbar.command.fg = '#9da7b4'
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = '#6B95B8'
+c.colors.statusbar.insert.bg = '#88AAEE'
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
@@ -802,11 +804,11 @@ c.colors.statusbar.insert.fg = '#22272E'
 
 ## Background color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.bg = '#22272E'
+c.colors.statusbar.normal.bg = '#adadad'
 
 ## Foreground color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.fg = '#9da7b4'
+c.colors.statusbar.normal.fg = '#0f0f0f'
 
 ## Background color of the statusbar in passthrough mode.
 ## Type: QssColor
@@ -843,12 +845,12 @@ c.colors.statusbar.url.hover.fg = '#BBCCDD'
 ## Foreground color of the URL in the statusbar on successful load
 ## (http).
 ## Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#ededed'
+c.colors.statusbar.url.success.http.fg = '#666666'
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (https).
 ## Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#ededed'
+c.colors.statusbar.url.success.https.fg = '#666666'
 
 ## Foreground color of the URL in the statusbar when there's a warning.
 ## Type: QssColor
@@ -872,11 +874,11 @@ c.colors.tabs.indicator.error = '#c280a0'
 
 ## Color gradient start for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.start = '#6b95b8'
+c.colors.tabs.indicator.start = '#4078F2'
 
 ## Color gradient end for the tab indicator.
 ## Type: QtColor
-c.colors.tabs.indicator.stop = '#6d95b8'
+c.colors.tabs.indicator.stop = '#4078F2'
 
 ## Color gradient interpolation system for the tab indicator.
 ## Type: ColorSystem
@@ -893,23 +895,23 @@ c.colors.tabs.indicator.stop = '#6d95b8'
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
-#c.colors.tabs.odd.fg = '#1e1e1e'
+c.colors.tabs.odd.fg = '#0f0f0f'
 
 ## Background color of pinned unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.even.bg = '#22272E'
+c.colors.tabs.pinned.even.bg = '#c4c4c4'
 
 ## Foreground color of pinned unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.even.fg = '#7d7d7d'
+c.colors.tabs.pinned.even.fg = '#000000'
 
 ## Background color of pinned unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.odd.bg = '#22272E'
+c.colors.tabs.pinned.odd.bg = '#adadad'
 
 ## Foreground color of pinned unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.odd.fg = '#7d7d7d'
+c.colors.tabs.pinned.odd.fg = '#000000'
 
 ## Background color of pinned selected even tabs.
 ## Type: QtColor
@@ -917,7 +919,7 @@ c.colors.tabs.pinned.odd.fg = '#7d7d7d'
 
 ## Foreground color of pinned selected even tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.selected.even.fg = '#7d7d7d'
+c.colors.tabs.pinned.selected.even.fg = '#000000'
 
 ## Background color of pinned selected odd tabs.
 ## Type: QtColor
@@ -925,7 +927,7 @@ c.colors.tabs.pinned.selected.even.fg = '#7d7d7d'
 
 ## Foreground color of pinned selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.pinned.selected.odd.fg = '#7d7d7d'
+c.colors.tabs.pinned.selected.odd.fg = '#000000'
 
 ## Background color of selected even tabs.
 ## Type: QtColor
@@ -1142,7 +1144,30 @@ c.completion.timestamp_format = '%Y-%m-%d %H:%M'
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
-# c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = [
+  "https://easylist.to/easylist/easylist.txt",
+  "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+  "https://easylist.to/easylist/easyprivacy.txt",
+  "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+  "https://easylist.to/easylist/fanboy-social.txt"
+  "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
 
 ## Enable the ad/host blocker
 #Type: Bool
@@ -1167,10 +1192,8 @@ c.content.blocking.enabled = True
 c.content.blocking.hosts.lists = [
     'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
     'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext'
-    'https://www.malwaredomainlist.com/hostslist/hosts.txt',
     'http://someonewhocares.org/hosts/hosts',
     'http://winhelp2002.mvps.org/hosts.zip',
-    'http://malwaredomains.lehigh.edu/files/justdomains.zip',
 ]
 # c.content.blocking.whitelist = []
 
@@ -1334,7 +1357,7 @@ c.content.geolocation = 'ask'
 ## between 5.12 and 5.14 (inclusive), changing the value exposed to
 ## JavaScript requires a restart.
 ## Type: FormatString
-# c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
 
 ## Enable hyperlink auditing (`<a ping>`).
 ## Type: Bool
@@ -1719,7 +1742,7 @@ c.downloads.remove_finished = 120000
 ## font setting, it's replaced with the fonts listed here. If set to an
 ## empty value, a system-specific monospace default is used.
 ## Type: List of Font, or Font
-c.fonts.default_family = 'JetBrains Mono'
+c.fonts.default_family = 'Aporetic Serif'
 
 ## Default font size to use. Whenever "default_size" is used in a font
 ## setting, it's replaced with the size listed here. Valid values are
@@ -1825,7 +1848,7 @@ c.fonts.web.family.cursive = ''
 
 ## CSS border value for hints.
 ## Type: String
-c.hints.border = '1px solid #6b95b8'
+c.hints.border = '1px solid #C2D3F7'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
@@ -2229,7 +2252,7 @@ c.scrolling.bar = 'never'
 ##   - always: Always show the statusbar.
 ##   - never: Always hide the statusbar.
 ##   - in-mode: Show the statusbar when in modes other than normal mode.
-c.statusbar.show = 'never'
+c.statusbar.show = 'always'
 
 ## List of widgets displayed in the statusbar.
 ## Type: List of StatusbarWidget
@@ -2464,7 +2487,7 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-c.url.default_page = 'https://4get.ca'
+c.url.default_page = 'https://duckduckgo.com'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
