@@ -144,4 +144,5 @@ font: "Aporetic Sans Mono 11";
       sorting-method:    "name";
   }
 }
-@theme "/home/bledley/.local/share/rofi/themes/Mint-Y-Dark-Teal.rasi"
+
+@theme "/home/bledley/.local/share/rofi/themes/mono-theme.rasi"
