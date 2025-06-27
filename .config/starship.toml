@@ -30,7 +30,7 @@ disabled = false
 style = '#2b8c63'
 
 [directory]
-style = 'bold #98C6EC'
+style = 'bold #4078f2'
 
 [character]
 success_symbol = '[❯](bold #4078f2)'
