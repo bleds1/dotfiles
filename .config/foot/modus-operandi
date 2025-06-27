@@ -1,0 +1,25 @@
+# -*- conf -*-
+#
+# modus-operandi but modified by me to match emacs
+# See: https://protesilaos.com/emacs/modus-themes
+#
+
+[colors]
+background=efefef
+foreground=0f0f0f
+regular0=000000
+regular1=E45B4F
+regular2=2B8C63
+regular3=d1a07d
+regular4=4078F2
+regular5=6B1A69
+regular6=00538b
+regular7=c4c4c4
+bright0=84888b
+bright1=972500
+bright2=50A14F
+bright3=70480f
+bright4=2544bb
+bright5=5317ac
+bright6=005a5f
+bright7=ffffff
