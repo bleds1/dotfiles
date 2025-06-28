@@ -27,12 +27,23 @@ map <c-f> ${{
 }}
 # Define custom commands #
 ##########################
-cmd open &{{
-	case $(file --mime-type -Lb $f) in
-		text/*) lf -remote "send $id \$nvim \$fx";;
-		*) xdg-open "$f"
-	esac
+# cmd open &{{
+# 	case $(file --mime-type -Lb $f) in
+# 		text/*) lf -remote "send $id \$nvim \$fx";;
+# 		*) xdg-open "$f"
+# 	esac
+# }}
+cmd open ${{
+    test -L $f && f=$(readlink -f $f)
+    case "$(file --mime-type "$f" -b)" in
+        text/*) emacsclient -nw $fx;;
+        application/pdf/*) zathura $f;;
+        image/*) nsxiv $f ;;
+        audio/*) mpv --audio-display=no $f ;;
+        *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
+    esac
 }}
+
 # move current or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
 cmd trash %set -f; mv -t ~/Trash/files/ $fx

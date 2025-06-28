@@ -53,8 +53,8 @@ format = '([\[$all_status$ahead_behind\]]($style) )'
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_metrics]
-added_style = 'bold #8AFFD0'
-deleted_style = 'bold red'
+added_style = 'bold #2b8c63'
+deleted_style = 'bold #E45B4F'
 disabled = false
 
 [cmd_duration]
@@ -66,7 +66,7 @@ symbol = " "
 
 [jobs]
 symbol = "+ "
-style = "bold #8AFFD0"
+style = "bold #2b8c63"
 
 [package]
 disabled = true
