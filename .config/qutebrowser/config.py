@@ -3,41 +3,75 @@
 ## Get rid of Auto Load Dialogue
 config.load_autoconfig(False)
 
-## lf as file picker (having problems with attachments using this..)
+## Default Zoom
+c.zoom.default = '90%'
+
+## External editor command
+c.editor.command = ["emacsclient", "-c", "{}"]
+
+# Download Directory
+c.downloads.location.directory = '/home/bledley/Downloads/'
+
+# Default search engines
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
+
+## Page to open if :open -t/-b/-w is used without URL. or use `about:blank`
+c.url.default_page = 'https://duckduckgo.com'
+
+## Aliases for commands. The keys of the given dictionary are the
+## aliases, while the values are the commands they map to.
+## Type: Dict
+c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save','pw': 'open --private'}
+
+# File picker lf needs an extra command for choosing file/dir not working
+config.set("fileselect.handler", "default")
 # config.set("fileselect.handler", "external")
-# config.set("fileselect.single_file.command", ['foot', '-e', 'lf', '--choosefile={}'])
-# config.set("fileselect.multiple_files.command", ['foot', '-e', 'lf', '--choosefiles={}'])
+# config.set("fileselect.folder.command", ['foot', '-e', 'lf' ])
+# config.set("fileselect.single_file.command", ['foot', '-e', 'lf' ])
+# config.set("fileselect.multiple_files.command", ['foot', '-e', 'lf' ])
 
 ## Notifications
 config.set('content.notifications.enabled', True, 'https://lemmy.world')
 config.set('content.notifications.enabled', True, 'https://mastodon.social')
 
-## Setting dark mode
+# Reader mode (external readability script)
 config.bind('<space><z>', 'spawn --userscript readability')
+
+## Dark mode
 # config.set("colors.webpage.darkmode.enabled", True)
 # c.colors.webpage.bg = '#1c2128'
 
 ## Startpage
 c.url.start_pages=('/home/bledley/startpage/index.html')
 
-## Open video in Mpv
+## Open video in mpv
 config.bind('<Ctrl-m>', 'hint links spawn mpv {hint-url}')
 config.bind('<Ctrl-Shift-m>', 'spawn mpv {url}')
 
-## Open/Download images in external program NOTE: Fix "No valid image file given"
+## Open images w/external nsxiv not working, feh does
 config.bind('<Ctrl-Shift-i>', 'hint images download')
 config.bind('<Ctrl-i>', 'hint images spawn feh {hint-url}')
 
-## Hiding status bar and tabs
+## Hiding status bar and tabs key
 config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
 config.bind('<Space><t>', 'config-cycle tabs.show always never')
 config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+
+## Hint links to open with alternate browser
 config.bind('<Space><f><f>', 'hint links spawn librewolf {hint-url}')
 
+## Default fonts
+c.fonts.default_size = '10pt'
+c.fonts.completion.entry = '10pt "Aporetic Serif"'
+c.fonts.debug_console = '10pt "Aporetic Sans"'
+c.fonts.statusbar = '10pt "Aporetic Serif"'
+
 ## Tabs
-# c.tabs.show = 'always'
 c.tabs.show = 'always'
-# Background color of the tab bar
+c.tabs.favicons.show = 'always'
+c.tabs.title.format = '{current_title}'
+
+# Tab colours
 c.colors.tabs.bar.bg = '#adadad'
 # Background color of unselected odd tabs
 c.colors.tabs.odd.bg = '#adadad'
@@ -51,91 +85,50 @@ c.colors.tabs.selected.odd.fg = '#000000'
 c.colors.tabs.selected.even.fg = '#000000'
 c.colors.tabs.odd.fg = '#0f0f0f'
 c.colors.tabs.even.fg = '#0f0f0f'
-c.tabs.favicons.show = 'always'
-c.tabs.title.format = '{current_title}'
 
 ## Background color for hints
-c.colors.hints.bg = '#C2D3F7'
-
-## Default font
-c.fonts.default_size = '10pt'
-c.fonts.completion.entry = '10pt "Aporetic Serif"'
-c.fonts.debug_console = '10pt "Aporetic Serif"'
-c.fonts.statusbar = '10pt "Aporetic Serif"'
+c.colors.hints.bg = '#c4c4c4'
 
 ## Background color of the completion widget category headers.
-## Type: QssColor
 c.colors.completion.category.bg = '#c4c4c4'
 
 ## Bottom border color of the completion widget category headers.
-## Type: QssColor
 c.colors.completion.category.border.bottom = '#c4c4c4'
 
 ## Top border color of the completion widget category headers.
-## Type: QssColor
 c.colors.completion.category.border.top = '#c4c4c4'
 
 ## Foreground color of completion widget category headers.
-## Type: QtColor
 c.colors.completion.category.fg = '#0f0f0f'
 
 ## Background color of the completion widget for even rows.
-## Type: QssColor
 c.colors.completion.even.bg = '#adadad'
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
-## Type: List of QtColor, or QtColor
 c.colors.completion.fg = ['#4078F2', '#0f0f0f', '#84888b']
 
 ## Background color of the selected completion item.
-## Type: QssColor
 c.colors.completion.item.selected.bg = '#4078F2'
 
 ## Bottom border color of the selected completion item.
-## Type: QssColor
 c.colors.completion.item.selected.border.bottom = '#4078F2'
 
 ## Top border color of the selected completion item.
-## Type: QssColor
 c.colors.completion.item.selected.border.top = '#4078F2'
 
 ## Foreground color of the selected completion item.
-## Type: QtColor
 c.colors.completion.item.selected.fg = '#22272E'
 
 ## Foreground color of the matched text in the selected completion item.
-## Type: QtColor
 c.colors.completion.item.selected.match.fg = '#000000'
 
 ## Foreground color of the matched text in the completion.
-## Type: QtColor
 c.colors.completion.match.fg = '#E45b4f'
 
 ## Background color of the completion widget for odd rows.
-## Type: QssColor
 c.colors.completion.odd.bg = '#efefef'
 c.colors.completion.even.bg = '#efefef'
-
-## Default Zoom
-c.zoom.default = '90%'
-
-## External editor command
-# c.editor.command = ['st', '-e', 'nvim', '{file}']
-c.editor.command = ["emacsclient", "-c", "{}"]
-
-# Download Directory
-c.downloads.location.directory = '/home/bledley/Downloads/'
-
-# Default search engines
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
-
-## Remove it to not load settings done via the GUI.
-# config.load_autoconfig(True)
-## Aliases for commands. The keys of the given dictionary are the
-## aliases, while the values are the commands they map to.
-## Type: Dict
-c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save','pw': 'open --private'}
 
 # Key Binds
 config.bind('<Space><b><k>', 'tab-close')
@@ -1153,11 +1146,13 @@ c.content.blocking.adblock.lists = [
   "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-general.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+  "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2025.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
@@ -1177,7 +1172,7 @@ c.content.blocking.enabled = True
 ## blocked but should be allowed, consider using
 ## `content.blocking.whitelist` instead.
 #Type: Bool
-#c.content.blocking.hosts.block_subdomains = True
+c.content.blocking.hosts.block_subdomains = True
 
 ## List of URLs to host blocklists for the host blocker.  Only used when
 ## the simple host-blocker is used (see `content.blocking.method`).  The
@@ -1848,7 +1843,7 @@ c.fonts.web.family.cursive = ''
 
 ## CSS border value for hints.
 ## Type: String
-c.hints.border = '1px solid #C2D3F7'
+c.hints.border = '1px solid #c4c4c4'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
@@ -2277,7 +2272,7 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ##   - right: Close tabs on right-click.
 ##   - middle: Close tabs on middle-click.
 ##   - none: Don't close tabs using the mouse.
-# c.tabs.close_mouse_button = 'middle'
+c.tabs.close_mouse_button = 'none'
 
 ## How to behave when the close mouse button is pressed on the tab bar.
 ## Type: String
@@ -2292,16 +2287,6 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ## so big favicons also require extra `tabs.padding`.
 ## Type: Float
 # c.tabs.favicons.scale = 1.0
-
-## When to show favicons in the tab bar. When switching this from never
-## to always/pinned, note that favicons might not be loaded yet, thus
-## tabs might require a reload to display them.
-## Type: String
-## Valid values:
-##   - always: Always show favicons.
-##   - never: Always hide favicons.
-##   - pinned: Show favicons only on pinned tabs.
-# c.tabs.favicons.show = 'always'
 
 ## Maximum stack size to remember for tab switches (-1 for no maximum).
 ## Type: Int
@@ -2409,23 +2394,10 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ##   - last-used: Select the previously selected tab.
 # c.tabs.select_on_remove = 'next'
 
-## When to show the tab bar.
-## Type: String
-## Valid values:
-##   - always: Always show the tab bar.
-##   - never: Always hide the tab bar.
-##   - multiple: Hide the tab bar if only one tab is open.
-##   - switching: Show the tab bar when switching tabs.
-# c.tabs.show = 'always'
-
 ## Duration (in milliseconds) to show the tab bar before hiding it when
 ## tabs.show is set to 'switching'.
 ## Type: Int
 # c.tabs.show_switching_delay = 800
-
-## Open a new window for every tab.
-## Type: Bool
-# c.tabs.tabs_are_windows = False
 
 ## Alignment of the text inside of tabs.
 ## Type: TextAlignment
@@ -2484,11 +2456,6 @@ c.statusbar.widgets = ['url', 'scroll', 'progress']
 ##   - schemeless: Always search automatically unless URL explicitly contains a scheme.
 # c.url.auto_search = 'naive'
 
-## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
-## for a blank page.
-## Type: FuzzyUrl
-c.url.default_page = 'https://duckduckgo.com'
-
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
 ## Type: FlagList
@@ -2504,31 +2471,6 @@ c.url.default_page = 'https://duckduckgo.com'
 ## invoked without parameters.
 ## Type: Bool
 # c.url.open_base_url = False
-
-## Search engines which can be used via the address bar.  Maps a search
-## engine name (such as `DEFAULT`, or `ddg`) to a URL with a `{}`
-## placeholder. The placeholder will be replaced by the search term, use
-## `{{` and `}}` for literal `{`/`}` braces.  The following further
-## placeholds are defined to configure how special characters in the
-## search terms are replaced by safe characters (called 'quoting'):  *
-## `{}` and `{semiquoted}` quote everything except slashes; this is the
-## most   sensible choice for almost all search engines (for the search
-## term   `slash/and&amp` this placeholder expands to `slash/and%26amp`).
-## * `{quoted}` quotes all characters (for `slash/and&amp` this
-## placeholder   expands to `slash%2Fand%26amp`). * `{unquoted}` quotes
-## nothing (for `slash/and&amp` this placeholder   expands to
-## `slash/and&amp`). * `{0}` means the same as `{}`, but can be used
-## multiple times.  The search engine named `DEFAULT` is used when
-## `url.auto_search` is turned on and something else than a URL was
-## entered to be opened. Other search engines can be used by prepending
-## the search engine name to the search term, e.g. `:open google
-## qutebrowser`.
-## Type: Dict
-# c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
-
-## Page(s) to open at the start.
-## Type: List of FuzzyUrl, or FuzzyUrl
-# c.url.start_pages = ['https://start.duckduckgo.com']
 
 ## URL parameters to strip with `:yank url`.
 ## Type: List of String
@@ -2552,10 +2494,6 @@ c.url.default_page = 'https://duckduckgo.com'
 ## this setting only affects windows opened after setting it.
 ## Type: Bool
 # c.window.transparent = False
-
-## Default zoom level.
-## Type: Perc
-# c.zoom.default = '100%'
 
 ## Available zoom levels.
 ## Type: List of Perc
