@@ -74,11 +74,6 @@ alias tmuxa="tmux attach"
 alias tmuxd="tmux detach"
 alias tmuxls="tmux ls"
 
-# taskwarrior & tui
-alias t="task"
-alias ta="task add"
-alias tt="taskwarrior-tui"
-
 # ls command to eza for colours
 alias dir="eza -a --color=always --sort Name"
 alias l="eza -a --color=always --sort Name"
