@@ -13,7 +13,7 @@ c.editor.command = ["emacsclient", "-c", "{}"]
 c.downloads.location.directory = '/home/bledley/Downloads/'
 
 # Default search engines
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}','sp': 'https://www.startpage.com/do/dsearch?query={}', 'sx': 'https://search.ononoki.org/?q={}','qw': 'https://lite.qwant.com/?q={}', 'gh': 'https://github.com/search?q={}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','br': 'https://search.brave.com/search?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'wik': 'https://en.wikipedia.org/wiki/{}', 'gh': 'https://github.com/search?q={}'}
 
 ## Page to open if :open -t/-b/-w is used without URL. or use `about:blank`
 c.url.default_page = 'https://duckduckgo.com'
@@ -1203,7 +1203,7 @@ c.content.blocking.hosts.lists = [
 ##   - adblock: Use Brave's ABP-style adblocker
 ##   - hosts: Use hosts blocking
 ##   - both: Use both hosts blocking and Brave's ABP-style adblocker
-c.content.blocking.method = 'auto'
+c.content.blocking.method = 'both'
 
 ## A list of patterns that should always be loaded, despite being blocked
 ## by the ad-/host-blocker. Local domains are always exempt from
