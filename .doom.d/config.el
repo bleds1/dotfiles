@@ -26,6 +26,7 @@
   '(doom-modeline-buffer-path ((t (:foreground "#0f0f0f"))))
   '(doom-modeline-buffer-modified ((t (:foreground "#666666" :weight bold))))
   '(doom-modeline-notification ((t (:foreground "#666666"))))
+  '(doom-modeline-panel ((t (:foreground "#666666"))))
   '(doom-modeline-warning ((t (:foreground "#666666"))))
   '(doom-modeline-emphasis ((t (:foreground "#666666"))))
   '(doom-modeline-buffer-major-mode ((t (:foreground "#666666"))))
