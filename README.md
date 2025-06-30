@@ -10,7 +10,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## Terminal
 
-![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Screenshot1")
+![Desktop Screenshot](/assets/.jpg?raw=true "Screenshot1")
 
 - Foot (default)
 - vterm (in Emacs)
@@ -45,17 +45,15 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 ## Fonts
 - Aporetic 
 
+
 ## Theme
 
 ![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
 
-- Adwaita Dark (gtk)
+- Adwaita (gtk)
 - Papirus (Icons)
-- Papirus Dark Nordic (folders)
+- Papirus Dark Gray (folders)
 - Bibata Modern Ice (cursor)
-
-
-## GUI
 
 ### Login Manager
 - GDM
@@ -94,9 +92,13 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Nautilus (w/Sushi previewer)
 
 ### Browser
+- Qutebrowser (main)
 - Librewolf 
-- Qutebrowser
 - Brave
+
+## Email
+- notmuch/mu4e
+- Thunderbird
 
 ### Image Viewer
 - Nsxiv
@@ -112,30 +114,28 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Video Player
 
-![Celluloid video](/assets/Screenshot7.jpg?raw=true "Screenshot7")
+![mpv video](/assets/.jpg?raw=true "Screenshot7")
 
 - mpv
-
 
 ### Video/Audio Editor
 - Kdenlive
 
 ### Screen/Audio recording
-- Obs
+- OBS
 - Audacity
 
 ### Music 
 
-![Music player with visualizer](/assets/Screenshot5.jpg?raw=true "Screenshot5")
+![Music player with visualizer](/assets/.jpg?raw=true "Screenshot5")
 
 - Audacious
-- cava (visualizer)
 - Rhythmbox (radio/podcasts)
 
 
 ### Reading
 
-![Pdf reader](/assets/Screenshot9.jpg?raw=true "Screenshot9")
+![Pdf reader](/assets/.jpg?raw=true "Screenshot9")
 
 - Zathura (default)
 - Evince (for annotations/highlights)

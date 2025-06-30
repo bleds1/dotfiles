@@ -64,7 +64,7 @@ config.bind('<Space><f><f>', 'hint links spawn librewolf {hint-url}')
 c.fonts.default_size = '10pt'
 c.fonts.completion.entry = '10pt "Aporetic Serif"'
 c.fonts.debug_console = '10pt "Aporetic Sans"'
-c.fonts.statusbar = '10pt "Aporetic Serif"'
+c.fonts.statusbar = '9 "Aporetic Serif"'
 
 ## Tabs
 c.tabs.show = 'always'
@@ -171,10 +171,12 @@ config.bind('<alt-x>', 'cmd-set-text :')
 # config.bind(';f', 'hint all tab-fg')
 # config.bind(';h', 'hint all hover')
 # config.bind(';i', 'hint images')
+# config.bind(';i', 'hint images')
 # config.bind(';o', 'hint links fill :open {hint-url}')
 # config.bind(';r', 'hint --rapid links tab-bg')
 # config.bind(';t', 'hint inputs')
 # config.bind(';y', 'hint links yank')
+config.bind('<space><y>', 'hint links yank')
 # config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
 config.bind('<Ctrl-p>', 'print')
@@ -800,7 +802,6 @@ c.colors.statusbar.insert.fg = '#22272E'
 c.colors.statusbar.normal.bg = '#adadad'
 
 ## Foreground color of the statusbar.
-## Type: QssColor
 c.colors.statusbar.normal.fg = '#0f0f0f'
 
 ## Background color of the statusbar in passthrough mode.
@@ -812,65 +813,44 @@ c.colors.statusbar.normal.fg = '#0f0f0f'
 # c.colors.statusbar.passthrough.fg = 'white'
 
 ## Background color of the statusbar in private browsing mode.
-## Type: QssColor
 c.colors.statusbar.private.bg = '#675d99'
 
 ## Foreground color of the statusbar in private browsing mode.
-## Type: QssColor
 c.colors.statusbar.private.fg = '#22272E'
 
 ## Background color of the progress bar.
-## Type: QssColor
-c.colors.statusbar.progress.bg = '#7d7d7d'
+c.colors.statusbar.progress.bg = '#BBCCDD'
 
 ## Foreground color of the URL in the statusbar on error.
-## Type: QssColor
-c.colors.statusbar.url.error.fg = '#fff7Ad'
+c.colors.statusbar.url.error.fg = '#E45B4F'
 
 ## Default foreground color of the URL in the statusbar.
-## Type: QssColor
-c.colors.statusbar.url.fg = '#aeb6c1'
+c.colors.statusbar.url.fg = '#666666'
 
 ## Foreground color of the URL in the statusbar for hovered links.
-## Type: QssColor
-c.colors.statusbar.url.hover.fg = '#BBCCDD'
+c.colors.statusbar.url.hover.fg = '#4078F2'
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (http).
-## Type: QssColor
 c.colors.statusbar.url.success.http.fg = '#666666'
 
 ## Foreground color of the URL in the statusbar on successful load
 ## (https).
-## Type: QssColor
 c.colors.statusbar.url.success.https.fg = '#666666'
 
 ## Foreground color of the URL in the statusbar when there's a warning.
-## Type: QssColor
-c.colors.statusbar.url.warn.fg = '#FFF7AD'
+c.colors.statusbar.url.warn.fg = '#d1a07d'
 
 ## Background color of the tab bar.
-## Type: QssColor
 # c.colors.tabs.bar.bg = '#555555'
 
-## Background color of unselected even tabs.
-## Type: QtColor
-# c.colors.tabs.even.bg = 'darkgrey'
-
-## Foreground color of unselected even tabs.
-## Type: QtColor
-# c.colors.tabs.even.fg = 'white'
-
 ## Color for the tab indicator on errors.
-## Type: QtColor
 c.colors.tabs.indicator.error = '#c280a0'
 
 ## Color gradient start for the tab indicator.
-## Type: QtColor
 c.colors.tabs.indicator.start = '#4078F2'
 
 ## Color gradient end for the tab indicator.
-## Type: QtColor
 c.colors.tabs.indicator.stop = '#4078F2'
 
 ## Color gradient interpolation system for the tab indicator.
@@ -887,60 +867,46 @@ c.colors.tabs.indicator.stop = '#4078F2'
 # c.colors.tabs.odd.bg = 'grey'
 
 ## Foreground color of unselected odd tabs.
-## Type: QtColor
 c.colors.tabs.odd.fg = '#0f0f0f'
 
 ## Background color of pinned unselected even tabs.
-## Type: QtColor
 c.colors.tabs.pinned.even.bg = '#c4c4c4'
 
 ## Foreground color of pinned unselected even tabs.
-## Type: QtColor
 c.colors.tabs.pinned.even.fg = '#000000'
 
 ## Background color of pinned unselected odd tabs.
-## Type: QtColor
 c.colors.tabs.pinned.odd.bg = '#adadad'
 
 ## Foreground color of pinned unselected odd tabs.
-## Type: QtColor
 c.colors.tabs.pinned.odd.fg = '#000000'
 
 ## Background color of pinned selected even tabs.
-## Type: QtColor
 # c.colors.tabs.pinned.selected.even.bg = 'black'
 
 ## Foreground color of pinned selected even tabs.
-## Type: QtColor
 c.colors.tabs.pinned.selected.even.fg = '#000000'
 
 ## Background color of pinned selected odd tabs.
-## Type: QtColor
 # c.colors.tabs.pinned.selected.odd.bg = 'black'
 
 ## Foreground color of pinned selected odd tabs.
-## Type: QtColor
 c.colors.tabs.pinned.selected.odd.fg = '#000000'
 
 ## Background color of selected even tabs.
-## Type: QtColor
 # c.colors.tabs.selected.even.bg = 'black'
 
 ## Foreground color of selected even tabs.
-## Type: QtColor
 # c.colors.tabs.selected.even.fg = 'white'
 
 ## Background color of selected odd tabs.
-## Type: QtColor
 # c.colors.tabs.selected.odd.bg = 'black'
 
 ## Foreground color of selected odd tabs.
-## Type: QtColor
 # c.colors.tabs.selected.odd.fg = 'white'
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
-## Type: QtColor
 # c.colors.webpage.bg = 'white'
 
 ## Which algorithm to use for modifying how colors are rendered with

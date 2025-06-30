@@ -6,8 +6,8 @@
       doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
-; Blink Cursor mode
-(setq blink-cursor-mode t)
+; Blink Cursor mode NOTE: doesn't stick
+;; (setq blink-cursor-mode t)
 
 ;; Light mode custom faces based off doom-one-light default theme
 (setq doom-theme 'doom-one-light)
