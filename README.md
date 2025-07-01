@@ -119,7 +119,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Video Player
 
-![mpv video](/assets/.jpg?raw=true "Screenshot7")
+<!-- ![mpv video](/assets/.jpg?raw=true "Screenshot7") -->
 
 - mpv
 
@@ -132,7 +132,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Music 
 
-![Music player with visualizer](/assets/.jpg?raw=true "Screenshot5")
+<!-- ![Music player with visualizer](/assets/.jpg?raw=true "Screenshot5") -->
 
 - Audacious
 - Rhythmbox (radio/podcasts)
@@ -140,7 +140,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ### Reading
 
-![Pdf reader](/assets/.jpg?raw=true "Screenshot9")
+<!-- ![Pdf reader](/assets/.jpg?raw=true "Screenshot9") -->
 
 - Zathura (default)
 - Evince (for annotations/highlights)
