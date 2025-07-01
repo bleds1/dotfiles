@@ -170,7 +170,9 @@
        ("WAIT" :foreground "#83898d" :weight bold)
        ("PROJ" :foreground "#896ccc" :weight bold)
        ("DONE" :foreground "#2b8c63" :weight bold)
-       ("CANC" :foreground "#5d6265" :weight bold))))
+       ("CANC" :foreground "#5d6265" :weight bold)))
+      (set-popup-rule! "^\\*Org Agenda*" :side 'top :size 0.40 :select t :ttl nil)
+)
 
 ;; Org Bullets and Priorities
 (after! org

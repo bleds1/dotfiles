@@ -40,7 +40,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - fzf (fuzzy file finder)
 - chafa (image previews)
 - Hugo (web/blog)
-- + many more
 
 ## Fonts
 - Aporetic 
