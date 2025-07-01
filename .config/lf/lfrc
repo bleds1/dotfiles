@@ -41,7 +41,8 @@ cmd open ${{
         image/*) nsxiv $f ;;
         doc|docx|xls|xlsx|odt|ppt|pptx) setsid -f libreoffice $fx >/dev/null 2>&1 ;;
         image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
-        audio/*) mpv --audio-display=no $f ;;
+#        audio/*) mpv --audio-display=no $f ;;
+        vide0/*) mpv $f ;;
         *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
 }}

@@ -102,6 +102,8 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Brave
 
 ## Email
+
+![Notmuch Screenshot](/assets/notmuch-shot.jpg?raw=true "Notmuch mail")
 - notmuch/mu4e
 - Thunderbird
 
