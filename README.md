@@ -10,7 +10,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## Terminal
 
-![Desktop Screenshot](/assets/.jpg?raw=true "Screenshot1")
+![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Foot terminal")
 
 - Foot (default)
 - vterm (in Emacs)
@@ -20,7 +20,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## Editor
 
-![Editor](/assets/Screenshot8.jpg?raw=true "Screenshot8")
+![Editor](/assets/Screenshot8.jpg?raw=true "Doom Emacs")
 
 - Doom Emacs (gui default)
 - Neovim (cli default)
@@ -28,7 +28,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## CLI/TUI
 
-![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "Screenshot4")
+![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "lf file manager")
 
 - lf (file manager)
 - btop (process monitor)
@@ -44,7 +44,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ## Fonts
 - Aporetic 
-
 
 ## Theme
 
@@ -77,21 +76,27 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Hyprshot
 
 ### Lockscreen
+
+![Hyprlock Screenshot](/assets/hyprlock-shot.jpg?raw=true "Hyprlock")
+
 - Hyprlock
 
 ### App Launcher
 
-![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Screenshot3")
+![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Rofi Wayland (Launcher)")
 
 - Rofi-wayland
 
-### File Manager
+### GUI File Manager
 
-![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Screenshot6")
+![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Nautilus File Manager")
 
 - Nautilus (w/Sushi previewer)
 
 ### Browser
+
+![Qutebrowser Screenshot](/assets/qutebrowser-shot.jpg?raw=true "Qutebrowser")
+
 - Qutebrowser (main)
 - Librewolf 
 - Brave
