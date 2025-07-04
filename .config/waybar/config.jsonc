@@ -105,14 +105,13 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 12,
         "spacing": 10
     },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "  {:%Y-%m-%d %H:%M}",
-            // "format": "{:%a %d %b %H:%M}"
             // "format-alt": "  {:%d/%m %a %H:%M }",
             "format-alt": "{:%a, %d %b %Y - %H:%M}"
         // "format-alt": "  {:%H:%M}",

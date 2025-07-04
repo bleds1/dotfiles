@@ -41,7 +41,6 @@ alias ff="clear && fastfetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
-alias z="zeditor"
 # search for directory to cd into with fzf
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sdn="shutdown -h now"
@@ -49,7 +48,6 @@ alias zat="zathura"
 alias tree="tree -C" #colour for tree
 
 # Emacs
-# alias emacs="emacsclient -c -a 'emacs'"
 alias e="emacsclient -nw"
 alias ec='emacsclient -c -a ""'
 
@@ -87,7 +85,6 @@ alias nmtrash="notmuch search --format=text0 --output=files tag:trash | xargs -0
 # Directory Shortcuts
 alias sba="cd ~/sba/"
 alias scrip="cd ~/.scripts/"
-alias suck="cd ~/.config/suckless/"
 alias doc="cd ~/Documents//"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
@@ -97,7 +94,6 @@ alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias org="cd ~/org/"
 alias roam="cd ~/org/roam/"
-alias day="cd ~/org/roam/daily/"
 alias nn="v ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
 
 # Grep colours

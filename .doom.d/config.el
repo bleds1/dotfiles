@@ -50,7 +50,7 @@
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
   '(org-headline-done ((t (:foreground "#adadad"))))
-  '(region ((t (:extend t :background "#adadad"))))
+  '(region ((t (:extend t :background "#dddddd"))))
   '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
   '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
   '(org-level-2 ((t (:foreground "#383a42" :height 1.0))))
@@ -208,17 +208,10 @@
            ("e" " Event" entry (file "~/org/events.org")
              "* %? \n %^t")
 
-           ;; ("m" " Mail" entry (file+headline "~/org/todo.org" "NEXT:")
-           ;;  "** TODO %a :email:p3:\nSCHEDULED: %^t\n/Created:/ %U\n:PROPERTIES:\n:CATEGORY: email\n:END:")
+           ("l" " Log" plain (file "~/org/log.org")
+            (file "~/org/tpl/tpl-default.txt"))
 
-          ("w" " Watch")
-           ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
-            (file "~/org/tpl/tpl-towatch.txt"))
-
-           ("wd" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
-            (file "~/org/tpl/tpl-watched.txt") :prepend t)
-
-           ("p" " Plan")
+           ("p" "󰢧 Plan")
            ("pd" "󰃶 Daily Plan" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-bod.txt"))
 
@@ -227,6 +220,13 @@
 
            ("pw" "󱛡 Weekly Review" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-weekly.txt"))
+
+          ("w" " Watch")
+           ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
+            (file "~/org/tpl/tpl-towatch.txt"))
+
+           ("wd" "󰎁 Watched" entry (file+headline "~/org/watch.org" "WATCHED:")
+            (file "~/org/tpl/tpl-watched.txt") :prepend t)
             )
            ))
 
@@ -251,6 +251,7 @@
 (after! org
   (setq org-tag-alist
         '(
+             ("@art")
              ("@call")
              ("@email")
              ("@errand")
@@ -263,9 +264,9 @@
              ("@sys")
              ("@watch")
              ("@web")
-             ("per")
-             ("na")
-             ("work")
+             ("@per")
+             ("@na")
+             ("@work")
              ("fleeting")
              ("posted")
              ("@inbox")
@@ -273,6 +274,7 @@
                ))
   (setq org-tag-alist-for-agenda
         '(
+             ("@art")
              ("@call")
              ("@email")
              ("@errand")
@@ -285,9 +287,9 @@
              ("@sys")
              ("@watch")
              ("@web")
-             ("per")
-             ("na")
-             ("work")
+             ("@per")
+             ("@na")
+             ("@work")
              ("fleeting")
              ("posted")
              ("@inbox")
@@ -633,7 +635,7 @@ text and copying to the killring."
 ;;          :empty-lines-before 1)))
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
-         "* %<%H:%M> %?"
+         "* %?"
          :target (file+datetree "log.org" week)))
       )
 
@@ -851,6 +853,7 @@ text and copying to the killring."
 ;; Line numbers with exceptions for certain modes
 (setq display-line-numbers-type 'relative)
 (dolist (mode '(org-mode-hook
+                text-mode
                 markdown-mode-hook
                 mu4e-compose-mode-hook
                 vterm-mode-hook
@@ -876,6 +879,38 @@ text and copying to the killring."
 
 ;; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)
+
+ ;;;; Prot: Run commands in a popup frame
+ ;;;; https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
+
+(defun prot-window-delete-popup-frame (&rest _)
+  "Kill selected selected frame if it has parameter `prot-window-popup-frame'.
+Use this function via a hook."
+  (when (frame-parameter nil 'prot-window-popup-frame)
+    (delete-frame)))
+
+(defmacro prot-window-define-with-popup-frame (command)
+  "Define interactive function which calls COMMAND in a new frame.
+Make the new frame have the `prot-window-popup-frame' parameter."
+  `(defun ,(intern (format "prot-window-popup-%s" command)) ()
+     ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
+Also see `prot-window-delete-popup-frame'." command)
+     (interactive)
+     (let ((frame (make-frame '((prot-window-popup-frame . t)))))
+       (select-frame frame)
+       (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
+       (condition-case nil
+           (call-interactively ',command)
+         ((quit error user-error)
+          (delete-frame frame))))))
+
+(declare-function org-capture "org-capture" (&optional goto keys))
+(defvar org-capture-after-finalize-hook)
+
+;;;###autoload (autoload 'prot-window-popup-org-capture "prot-window")
+(prot-window-define-with-popup-frame org-capture)
+
+(add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
 
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
