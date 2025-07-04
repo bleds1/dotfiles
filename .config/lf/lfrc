@@ -110,8 +110,7 @@ map R :rename; cmd-end # at the very end
 map E extract
 # Clear the files in the copy/cut buffer.
 map <esc> clear
-map n
-map n push %touch<space>
+map c push %touch<space>
 
 # Quick move to dir #
 #####################

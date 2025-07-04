@@ -50,7 +50,7 @@
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
   '(org-headline-done ((t (:foreground "#adadad"))))
-  '(region ((t (:extend t :background "#dddddd"))))
+  '(region ((t (:extend t :background "#c4c4c4"))))
   '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
   '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
   '(org-level-2 ((t (:foreground "#383a42" :height 1.0))))
@@ -77,6 +77,7 @@
   '(markdown-header-face-4 ((t (:foreground "#0f0f0f" :height 1.1))))
   '(markdown-header-face-5 ((t (:foreground "#0f0f0f" :height 1.1))))
   '(secondary-selection ((t (:background "#dddddd"))))
+  '(widget-button ((t (:weight "regular"))))
  )
 
 ;; Always display workspace/tab labels
