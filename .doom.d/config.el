@@ -357,7 +357,7 @@ text and copying to the killring."
 (global-set-key (kbd "C-x w x") 'window-swap-states)
 (global-set-key (kbd "C-c b n") 'next-buffer)
 (global-set-key (kbd "C-c b i") 'ibuffer)
-(global-set-key (kbd "C-c ,") 'switch-to-buffer)
+(global-set-key (kbd "C-c ,") 'ido-switch-buffer)
 (global-set-key (kbd "C-c b p") 'previous-buffer)
 (global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-c k") 'doom/kill-this-buffer-in-all-windows)
