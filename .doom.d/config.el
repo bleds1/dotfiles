@@ -358,10 +358,13 @@ text and copying to the killring."
 (global-set-key (kbd "C-c b n") 'next-buffer)
 (global-set-key (kbd "C-c b i") 'ibuffer)
 (global-set-key (kbd "C-c ,") 'ido-switch-buffer)
+(global-set-key (kbd "C-c .") 'rgrep)
+(global-set-key (kbd "C-c /") 'consult-find)
 (global-set-key (kbd "C-c b p") 'previous-buffer)
 (global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-c k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-x w e") #'elfeed)
+(global-set-key (kbd "C-x w w") #'eww)
 
 ;; Avy
 (setq avy-all-windows t)
@@ -385,32 +388,27 @@ text and copying to the killring."
   (notmuch-search "tag:unread"))
 (global-set-key (kbd "C-c m u") #'notmuch-unread-search)
 
-;;  TODO: Commented code below  still needs adapting for non-evil
- ;; (after! dired
-;; (evil-define-key 'normal dired-mode-map
-;;   (kbd "M-RET") 'dired-display-file
-;;   (kbd "h") 'dired-up-directory
-;;   (kbd "l") 'dired-find-file ; use dired-find-file instead of dired-open.
-;;   (kbd "m") 'dired-mark
-;;   (kbd "t") 'dired-toggle-marks
-;;   (kbd "u") 'dired-unmark
-;;   (kbd "U") 'dired-unmark-all-marks
-;;   (kbd "y") 'dired-do-copy
-;;   (kbd "c") 'dired-create-empty-file
-;;   (kbd "D") 'dired-do-delete
-;;   (kbd "J") 'dired-goto-file
-;;   (kbd "M") 'dired-do-chmod
-;;   (kbd "R") 'dired-do-rename
-;;   (kbd "T") 'dired-do-touch
-;;   (kbd "Y") 'dired-copy-filename-as-kill ; copies filename to kill ring.
-;;   (kbd "Z") 'dired-do-compress
-;;   (kbd "C") 'dired-create-directory
-;;   (kbd "-") 'dired-do-kill-lines
-;;   (kbd "n") 'evil-search-next
-;;   (kbd "N") 'evil-search-previous
-;;   (kbd "q") 'kill-this-buffer
-;;   ))
-
+;; Dired custom keybinds
+(after! dired
+(define-key dired-mode-map (kbd "M-RET") 'dired-display-file)
+(define-key dired-mode-map  (kbd "p") #'dired-up-directory)
+(define-key dired-mode-map  (kbd "n") #'dired-find-file) ; use dired-find-file instead of dired-open.
+(define-key dired-mode-map  (kbd "m") #'dired-mark)
+(define-key dired-mode-map  (kbd "t") #'dired-toggle-marks)
+(define-key dired-mode-map  (kbd "u") #'dired-unmark)
+(define-key dired-mode-map  (kbd "U") #'dired-unmark-all-marks)
+(define-key dired-mode-map  (kbd "y") #'dired-do-copy)
+(define-key dired-mode-map  (kbd "c") #'dired-create-empty-file)
+(define-key dired-mode-map  (kbd "D") #'dired-do-delete)
+(define-key dired-mode-map  (kbd "J") #'dired-goto-file)
+(define-key dired-mode-map  (kbd "M") #'dired-do-chmod)
+(define-key dired-mode-map  (kbd "R") #'dired-do-rename)
+(define-key dired-mode-map  (kbd "T") #'dired-do-touch)
+(define-key dired-mode-map  (kbd "Y") #'dired-copy-filename-as-kill) ; copies filename to kill ring.
+(define-key dired-mode-map  (kbd "Z") #'dired-do-compress)
+(define-key dired-mode-map  (kbd "C") #'dired-create-directory)
+(define-key dired-mode-map  (kbd "-") #'dired-do-kill-lines)
+(define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
 ;; Leader Keybinds
 ; Easier key for terminal popup
 ;; (map! :leader
@@ -432,14 +430,6 @@ text and copying to the killring."
 ;; (map! :leader
 ;;       :desc "Writeroom increase width"
 ;;       "-" 'writeroom-decrease-width)
-;; ; Consult find file
-;; (map! :leader
-;;       :desc "consult-find file"
-;;       "/" 'consult-find)
-;; ; rip grep
-;; (map! :leader
-;;       :desc "rgrep"
-;;       "r" 'rgrep)
 ;; ; Quick org-tags-sparse-tags
 ;; (map! :leader
 ;;       (:prefix ("o" . "org-tags-sparse-tree")
@@ -458,9 +448,7 @@ text and copying to the killring."
 ;; (map! :leader
 ;;       (:prefix ("e" . "Eval")
 ;;                :desc "Eval buffer" "r" 'eval-region))
-;; (map! :leader
-;;       (:prefix ("e" . "eww")
-;;                :desc "eww" "w" 'eww))
+
 ;; Minimal Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
