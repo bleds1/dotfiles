@@ -25,21 +25,13 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 
 # File picker lf needs an extra command for choosing file/dir not working
 config.set("fileselect.handler", "default")
-# config.set("fileselect.handler", "external")
-# config.set("fileselect.folder.command", ['foot', '-e', 'lf' ])
-# config.set("fileselect.single_file.command", ['foot', '-e', 'lf' ])
-# config.set("fileselect.multiple_files.command", ['foot', '-e', 'lf' ])
 
 ## Notifications
 config.set('content.notifications.enabled', True, 'https://lemmy.world')
 config.set('content.notifications.enabled', True, 'https://mastodon.social')
 
 # Reader mode (external readability script)
-config.bind('<space><z>', 'spawn --userscript readability')
-
-## Dark mode
-# config.set("colors.webpage.darkmode.enabled", True)
-# c.colors.webpage.bg = '#1c2128'
+config.bind('<Ctrl-z>', 'spawn --userscript readability')
 
 ## Startpage
 c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -53,12 +45,12 @@ config.bind('<Ctrl-Shift-i>', 'hint images download')
 config.bind('<Ctrl-i>', 'hint images spawn feh {hint-url}')
 
 ## Hiding status bar and tabs key
-config.bind('<Space><x><b>', 'config-cycle statusbar.show always never')
-config.bind('<Space><t>', 'config-cycle tabs.show always never')
-config.bind('<Space><x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+config.bind('<Ctrl-x><b>', 'config-cycle statusbar.show always never')
+config.bind('<Ctrl-x><t>', 'config-cycle tabs.show always never')
+config.bind('<Ctrl-x><x>', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 
 ## Hint links to open with alternate browser
-config.bind('<Space><f><f>', 'hint links spawn librewolf {hint-url}')
+config.bind('<Ctrl-l><w>', 'hint links spawn librewolf {hint-url}')
 
 ## Default fonts
 c.fonts.default_size = '10pt'
@@ -131,12 +123,12 @@ c.colors.completion.odd.bg = '#efefef'
 c.colors.completion.even.bg = '#efefef'
 
 # Key Binds
-config.bind('<Space><b><k>', 'tab-close')
-config.bind('<x>', 'tab-close')
+config.bind('<Ctrl-x><0>', 'tab-close')
+# config.bind('<x>', 'tab-close')
 config.bind('<Ctrl-w>', 'tab-close')
 config.bind('<Space><w><n>', 'tab-give')
-config.bind('<Space><b><n>', 'tab-next')
-config.bind('<Space><b><p>', 'tab-prev')
+config.bind('<Alt-n>', 'tab-next')
+config.bind('<Alt-p>', 'tab-prev')
 config.bind('<ctrl+shift+tab>', 'tab-prev')
 config.bind('<r>', 'reload')
 config.bind('<t>', 'open -t /home/bledley/startpage/index.html')
@@ -151,10 +143,18 @@ config.bind('<alt-8>', 'tab-focus 8')
 config.bind('<alt-9>', 'tab-focus 9')
 config.unbind('<d>')
 config.unbind('<u>')
-config.bind('<ctrl+j>', 'fake-key <down>')
-config.bind('<ctrl+k>', 'fake-key <up>')
-config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
-config.bind('<Ctrl-k>', 'completion-item-focus prev', mode='command')
+config.unbind('<Ctrl-n>')
+config.unbind('<Ctrl-p>')
+config.unbind('<Ctrl-x>')
+config.unbind('<Ctrl-d>')
+config.unbind('<Ctrl-D>')
+config.unbind('<Ctrl-f>')
+config.unbind('<Ctrl-w>')
+config.unbind('<Ctrl-z>')
+config.unbind('<Ctrl-u>')
+config.unbind('<Ctrl-U>')
+config.bind('<Ctrl-n>', 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-p>', 'completion-item-focus prev', mode='command')
 
 ## Bindings for normal mode
 # config.bind("'", 'mode-enter jump_mark')
@@ -176,10 +176,10 @@ config.bind('<alt-x>', 'cmd-set-text :')
 # config.bind(';r', 'hint --rapid links tab-bg')
 # config.bind(';t', 'hint inputs')
 # config.bind(';y', 'hint links yank')
-config.bind('<space><y>', 'hint links yank')
+config.bind('<alt-w>', 'hint links yank')
 # config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
-config.bind('<Ctrl-p>', 'print')
+# config.bind('<Ctrl-p>', 'print')
 # config.bind('<Ctrl-B>', 'scroll-page 0 -1')
 #config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
@@ -197,7 +197,6 @@ config.bind('<space><r><r>', 'restart')
 #config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'mode-enter passthrough')
 config.bind('<Ctrl-w>', 'tab-close')
-config.bind('<space><w><c>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 config.bind('<Ctrl-h>', 'home')
@@ -212,15 +211,14 @@ config.bind('<Ctrl-P>', 'tab-pin')
 config.unbind('B')
 # config.bind('D', 'tab-close -o')
 # config.bind('F', 'hint all tab')
-# config.bind('G', 'scroll-to-perc')
-# config.bind('H', 'back')
-config.bind('K', 'tab-next')
-config.bind('J', 'tab-prev')
+config.bind('<alt-.>', 'scroll-to-perc')
+config.bind('<alt-,>', 'scroll-to-perc 0')
 config.bind('<space><b><n>', 'tab-next')
 config.bind('<space><b><p>', 'tab-prev')
-# config.bind('L', 'forward')
-config.bind('<space><b><m>', 'bookmark-add')
-config.bind('<space><d><m>', 'bookmark-del')
+config.bind('<alt-f>', 'forward')
+config.bind('<alt-b>', 'back')
+config.bind('<Ctrl-b><m>', 'bookmark-add')
+config.bind('<Ctrl-B><m>', 'bookmark-del')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'cmd-set-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -228,16 +226,13 @@ config.bind('<space><d><m>', 'bookmark-del')
 # config.bind('R', 'reload -f')
 # config.bind('Sb', 'bookmark-list --jump')
 config.bind('<Ctrl-h>', 'history')
-config.bind('<space><h>', 'history')
-config.bind('<space><Return>', 'bookmark-list')
+config.bind('<Ctrl-c><Return>', 'bookmark-list')
 # config.bind('Ss', 'set')
 # config.bind('T', 'cmd-set-text -sr :tab-focus')
 # config.bind('U', 'undo -w')
 # config.bind('V', 'mode-enter caret ;; selection-toggle --line')
 # config.bind('ZQ', 'quit')
-config.bind('ZZ', 'quit --save')
-config.bind('<space><q><q>', 'quit --save')
-config.bind('<space><w><q>', 'quit --save')
+config.bind('<Ctrl-x><Ctrl-s>', 'quit --save')
 # config.bind('[[', 'navigate prev')
 # config.bind(']]', 'navigate next')
 # config.bind('`', 'mode-enter set_mark')
@@ -246,19 +241,19 @@ config.bind('<space><.>', 'cmd-set-text -s :quickmark-load')
 config.bind('<space><p><w>', 'open --private')
 config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
-# config.bind('Ctrl+d', 'scroll-page 0 0.5')
-# config.bind('Ctrl+u', 'scroll-page 0 -0.5')
-config.bind('d', 'scroll-page 0 0.5')
-config.bind('u', 'scroll-page 0 -0.5')
-# config.bind('f', 'hint')
+config.bind('<Ctrl-v>', 'scroll-page 0 0.9')
+config.bind('<alt-v>', 'scroll-page 0 -0.9')
+config.bind('<Ctrl-n>', 'scroll-page 0 0.5')
+config.bind('<Ctrl-p>', 'scroll-page 0 -0.5')
+config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
-# config.bind('gB', 'set-cmd-text -s :bookmark-load -t')
+# config.bind('gB', 'cmd-set-text -s :bookmark-load -t')
 # config.bind('gC', 'tab-clone')
 # config.bind('gD', 'tab-give')
 # config.bind('gJ', 'tab-move +')
 # config.bind('gK', 'tab-move -')
-# config.bind('gO', 'set-cmd-text :open -t -r {url:pretty}')
+# config.bind('gO', 'cmd-set-text :open -t -r {url:pretty}')
 # config.bind('gU', 'navigate up -t')
 # config.bind('g^', 'tab-focus 1')
 # config.bind('ga', 'open -t')
@@ -266,11 +261,11 @@ config.bind('u', 'scroll-page 0 -0.5')
 config.bind('gd', 'download')
 config.bind('<space><v><s>', 'view-source')
 config.bind('<space><e><s>', 'view-source --edit')
-# config.bind('gg', 'scroll-to-perc 0')
+config.unbind('gg')
 # config.bind('gi', 'hint inputs --first')
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
-config.bind('<space><b><i>', 'cmd-set-text -s :tab-select')
+config.bind('<Ctrl-x><b>', 'cmd-set-text -s :tab-select')
 config.bind('<space><,>', 'cmd-set-text -s :tab-select')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
@@ -1893,7 +1888,7 @@ c.hints.leave_on_load = True
 ##   - all: Forward all unbound keys.
 ##   - auto: Forward unbound non-alphanumeric keys.
 ##   - none: Don't forward any keys.
-# c.input.forward_unbound_keys = 'auto'
+c.input.forward_unbound_keys = 'all'
 
 ## Enter insert mode if an editable element is clicked.
 ## Type: Bool
@@ -1906,7 +1901,7 @@ c.hints.leave_on_load = True
 ## Automatically enter insert mode if an editable element is focused
 ## after loading the page.
 ## Type: Bool
-# c.input.insert_mode.auto_load = False
+c.input.insert_mode.auto_load = False
 
 ## Leave insert mode when starting a new page load. Patterns may be
 ## unreliable on this setting, and they may match the url you are
@@ -1916,7 +1911,7 @@ c.hints.leave_on_load = True
 
 ## Switch to insert mode when clicking flash and other plugins.
 ## Type: Bool
-# c.input.insert_mode.plugins = False
+c.input.insert_mode.plugins = False
 
 ## Include hyperlinks in the keyboard focus chain when tabbing.
 ## Type: Bool

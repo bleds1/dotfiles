@@ -1,4 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; NOTE:This config is my non- evil setup and very much a work in progress
 
 ;; Fonts
 (setq doom-font (font-spec :family "Aporetic Sans Mono" :size 17)
@@ -6,12 +7,8 @@
       doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
-; Blink Cursor mode NOTE: doesn't stick
-;; (setq blink-cursor-mode t)
-
 ;; Light mode custom faces based off doom-one-light default theme
 (setq doom-theme 'doom-one-light)
-
 (custom-set-faces
   '(cursor ((t (:background "#232323"))))
   '(default ((t (:background "#efefef"))))
@@ -50,7 +47,7 @@
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
   '(org-agenda-done ((t (:foreground "#adadad"))))
   '(org-headline-done ((t (:foreground "#adadad"))))
-  '(region ((t (:extend t :background "#c4c4c4"))))
+  '(region ((t (:extend t :background "#ecc9c6"))))
   '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
   '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
   '(org-level-2 ((t (:foreground "#383a42" :height 1.0))))
@@ -77,34 +74,17 @@
   '(markdown-header-face-4 ((t (:foreground "#0f0f0f" :height 1.1))))
   '(markdown-header-face-5 ((t (:foreground "#0f0f0f" :height 1.1))))
   '(secondary-selection ((t (:background "#dddddd"))))
-  '(widget-button ((t (:weight "regular"))))
  )
 
-;; Always display workspace/tab labels
- ;; (after! persp-mode
- ;;  (defun display-workspaces-in-minibuffer ()
- ;;    (with-current-buffer " *Minibuf-0*"
- ;;      (erase-buffer)
- ;;      (insert (+workspace--tabline))))
- ;;  (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
- ;;  (+workspace/display))
-
-;; Cursor colours
-(setq
-      evil-normal-state-cursor '(box "#232323")
-      evil-insert-state-cursor '(bar "#232323")
-      evil-motion-state-cursor '("#232323")
-      evil-visual-state-cursor '(hollow "#232323"))
-
+;; Bolds & Italic if theme allows it
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 
-;; Save on idle
-;; (run-with-idle-timer 6 t #'save-some-buffers t)
-; Org mode documents are always centred
+;; Org mode documents are always centred
 (add-hook 'org-mode-hook 'writeroom-mode)
-; Avoid spacing issues? source: https://sophiebos.io/posts/beautifying-emacs-org-mode/
+
+;; Avoid spacing issues? source: https://sophiebos.io/posts/beautifying-emacs-org-mode/
 (require 'org-indent)
 (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
 
@@ -112,21 +92,18 @@
 (after! solaire-mode
   (solaire-global-mode -1))
 
-; Initial buffer
+;; Initial buffer
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-;; (setq initial-buffer-choice 'vterm)
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'lisp-mode)
 
-;; Split behaviour (Always right & below and ask for buffer choice)
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (consult-buffer))
+;; Split behaviour (Always right & below and consult  for buffer choice) NOTE: Causing issue with magit
+;; (defadvice! prompt-for-buffer-after-split (&rest _)
+;;   :after '(split-window-below split-window-right)
+;;   (consult-buffer))
 
 ;; Increase line spacing
 (setq-default line-spacing 2)
@@ -136,7 +113,6 @@
       trash-directory "~/.local/share/Trash/files/")
 (global-auto-revert-mode 1)
 (setq undo-limit 80000000
-      evil-want-fine-undo t
       scroll-margin 2)
 
 ;; Org mode
@@ -191,7 +167,6 @@
 ;; Org Capture Templates
 (after! org
   (setq! org-capture-templates
-
         '(
           ("t" " Todo")
           ("tp" "󰭕 Personal" entry (file+headline "~/org/per.org" "INBOX:")
@@ -245,7 +220,6 @@
 
    ("u" "Untagged"
     ((tags-todo "-goal-someday-{.*}")))
-
            ))
 
 ;; Org tag-alist
@@ -307,37 +281,17 @@
   (interactive)
   (org-agenda nil "a"))
 
-(defun me/p1 ()
-  (interactive)
-  (org-agenda nil "1"))
-
-(defun me/p2 ()
-  (interactive)
-  (org-agenda nil "2"))
-
-(defun me/p3 ()
-  (interactive)
-  (org-agenda nil "3"))
-
-(defun me/p4 ()
-  (interactive)
-  (org-agenda nil "4"))
-
 (bind-key "<f6>" #'org-capture)
 (bind-key "C-c SPC" #'jethro/org-capture-inbox)
 (bind-key "C-c <tab>" #'jethro/org-agenda)
-(bind-key "C-c 1" #'me/p1)
-(bind-key "C-c 2" #'me/p2)
-(bind-key "C-c 3" #'me/p3)
-(bind-key "C-c 4" #'me/p4)
 
 ;; Rainer Konig copy org id link
 (defun my/copy-idlink-to-clipboard() "Copy an ID link with the
-headline to killring, if no ID is there then create a new unique
-ID.  This function works only in org-mode or org-agenda buffers.
+headline to killring, if no ID create a new unique
+ID. This function works only in an 'org-mode' or 'org-agenda' buffer.
 
 The purpose of this function is to easily construct id:-links to
-org-mode items. If its assigned to a key it saves you marking the
+'org-mode' items. If assigned to a key it saves you marking the
 text and copying to the killring."
        (interactive)
        (when (eq major-mode 'org-agenda-mode) ;switch to orgmode
@@ -353,12 +307,6 @@ text and copying to the killring."
 
 (global-set-key (kbd "<f5>") 'my/copy-idlink-to-clipboard)
 
-; Make org emphasis bold/italic etc a simpler keybind
-(global-set-key (kbd "C-c b") 'org-emphasize)
-
-(global-set-key (kbd "C-c e") 'emoji-search)
-
-
 ;; Function to find files with keybind
 (defun zz/add-file-keybinding (key file &optional desc)
   (let ((key key)
@@ -367,217 +315,155 @@ text and copying to the killring."
     (map! :desc (or desc file)
           key
           (lambda () (interactive) (find-file file)))))
-(zz/add-file-keybinding "C-c t" "~/org/per.org" "per.org")
-(zz/add-file-keybinding "C-c y" "~/org/work.org" "work.org")
-(zz/add-file-keybinding "C-c u" "~/org/na.org" "na.org")
-(zz/add-file-keybinding "C-c w" "~/org/watch.org" "watch.org")
+(zz/add-file-keybinding "C-c t t" "~/org/per.org" "per.org")
+(zz/add-file-keybinding "C-c t y" "~/org/work.org" "work.org")
+(zz/add-file-keybinding "C-c t u" "~/org/na.org" "na.org")
 (global-set-key (kbd "C-c l") 'org-add-note)
 (global-set-key (kbd "C-c d") 'org-roam-dailies-goto-today)
-(global-set-key (kbd "C-c n D") 'org-roam-dailies-goto-date)
-(global-set-key (kbd "C-c n t") 'org-roam-dailies-goto-tomorrow)
-(global-set-key (kbd "C-c n y") 'org-roam-dailies-goto-yesterday)
-(global-set-key (kbd "C-c n f") 'org-roam-node-find)
-(global-set-key (kbd "C-c n h") 'now)
-(global-set-key (kbd "C-c i") 'org-roam-node-insert)
-(global-set-key (kbd "C-c I") 'org-roam-node-insert-immediate)
-(global-set-key (kbd "C-c n c") 'org-roam-capture)
-(global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
-;; (global-set-key (kbd "C-c n j") 'org-roam-dailies-capture-today)
-;; (global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
-(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-c D") 'org-roam-dailies-goto-date)
+(global-set-key (kbd "C-c T") 'org-roam-dailies-goto-tomorrow)
+(global-set-key (kbd "C-c Y") 'org-roam-dailies-goto-yesterday)
+(global-set-key (kbd "C-c o n") 'org-roam-node-find)
+(global-set-key (kbd "C-c o i") 'org-roam-node-insert)
+(global-set-key (kbd "C-c o I") 'org-roam-node-insert-immediate)
+(global-set-key (kbd "C-c r") 'org-roam-capture)
+(global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c g") 'count-words)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "C-c o a") 'org-agenda)
+(global-set-key (kbd "C-c o c") #'org-capture)
+
 ;; Switch back and forth between some commonly used
 (global-set-key (kbd "C-c 0") (lambda ()
-                              (interactive)
-                              (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
+                               (interactive)
+                               (if (string= (buffer-name) "*vterm*") (previous-buffer) (switch-to-buffer "*vterm*"))))
 (global-set-key (kbd "C-c 9") (lambda ()
-                              (interactive)
-                              (if (string= (buffer-name) "*Org Agenda*") (previous-buffer) (switch-to-buffer "*Org Agenda*"))))
+                               (interactive)
+                               (if (string= (buffer-name) "*Org Agenda*") (previous-buffer) (switch-to-buffer "*Org Agenda*"))))
 (global-set-key (kbd "C-c 8") (lambda ()
-                              (interactive)
-                              (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
-;; Dired go to org roam dirs
-(global-set-key (kbd "C-c f") (lambda () (interactive) (dired "~/org/roam/fleeting")))
-(global-set-key (kbd "C-c r") (lambda () (interactive) (dired "~/org/roam/reference")))
-(global-set-key (kbd "C-c z") (lambda () (interactive) (dired "~/org/roam/zk")))
-;; Keybind for scratchbuffer
-(global-set-key (kbd "C-c s") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+                               (interactive)
+                               (if (string= (buffer-name) "*eww*") (previous-buffer) (switch-to-buffer "*eww*"))))
 
-;; Keybinds for mastodon.el
-(global-set-key (kbd "C-c m t") 'mastodon-toot)
-(global-set-key (kbd "C-c m h") 'mastodon-tl-get-home-timeline)
-(global-set-key (kbd "C-c m f") 'mastodon-tl-get-federated-timeline)
-(global-set-key (kbd "C-c m l") 'mastodon-tl-get-local-timeline)
-(global-set-key (kbd "C-c m m") 'mastodon)
-(global-set-key (kbd "C-c m n") 'mastodon-notifications-get)
-(global-set-key (kbd "C-c m s") 'mastodon-search-query)
-;; Keybind for notmuch search
-(global-set-key (kbd "C-c n s") 'notmuch-search)
-(global-set-key (kbd "C-c n m") 'notmuch)
+;; Keybinds
+(global-set-key (kbd "C-c s c") (lambda () (interactive) (switch-to-buffer "*scratch*")))
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-c RET") 'consult-bookmark)
+(global-set-key (kbd "C-c b m") 'bookmark-set)
+(global-set-key (kbd "C-c b M") 'bookmark-delete)
+(global-set-key (kbd "C-c m m") 'notmuch)
+(global-set-key (kbd "C-x w m") 'doom/window-maximize-buffer)
+(global-set-key (kbd "C-x w c") '+workspace/close-window-or-workspace)
+(global-set-key (kbd "C-x w v") 'split-window-right)
+(global-set-key (kbd "C-x w s") 'split-window-below)
+(global-set-key (kbd "C-x w x") 'window-swap-states)
+(global-set-key (kbd "C-c b n") 'next-buffer)
+(global-set-key (kbd "C-c b i") 'ibuffer)
+(global-set-key (kbd "C-c ,") 'switch-to-buffer)
+(global-set-key (kbd "C-c b p") 'previous-buffer)
+(global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
+(global-set-key (kbd "C-c k") 'doom/kill-this-buffer-in-all-windows)
+(global-set-key (kbd "C-x w e") #'elfeed)
 
-;; function for notmuch search tag:inbox
+;; Avy
+(setq avy-all-windows t)
+(global-set-key (kbd "C-;") #'avy-goto-char-timer)
+
+;; Functions and keybinds for notmuch searches
 (defun notmuch-inbox-search ()
   (interactive)
   (notmuch-search "tag:inbox"))
+(global-set-key (kbd "C-c m i") #'notmuch-inbox-search)
 
-(map! :leader
-      (:prefix "o"
-      :desc "Search inbox" "i" #'notmuch-inbox-search))
-
-;; function for notmuch search tag:flagged
+;; Notmuch search flagged
 (defun notmuch-flagged-search ()
   (interactive)
   (notmuch-search "tag:flagged"))
+(global-set-key (kbd "C-c m f") #'notmuch-flagged-search)
 
-(map! :leader
-      (:prefix "o"
-      :desc "Search inbox" "o" #'notmuch-flagged-search))
-
-;; function for notmuch search tag:unread
+;; Notmuch search unread
 (defun notmuch-unread-search ()
   (interactive)
   (notmuch-search "tag:unread"))
-
-(map! :leader
-      (:prefix "o"
-      :desc "Search inbox" "u" #'notmuch-unread-search))
-
-; Make markdown buffer easier
-(evil-define-command +evil-buffer-markdown-new (_count file)
-  "Creates a new markdown buffer replacing the current window, optionally
-   editing a certain FILE"
-  :repeat nil
-  (interactive "P<f>")
-  (if file
-      (evil-edit file)
-    (let ((buffer (generate-new-buffer "*new md*")))
-      (set-window-buffer nil buffer)
-      (with-current-buffer buffer
-        (markdown-mode)
-        (setq-local doom-real-buffer-p t)))))
-
-(map! :leader
-      (:prefix "n"
-       :desc "New empty Markdown buffer" "M" #'+evil-buffer-markdown-new))
+(global-set-key (kbd "C-c m u") #'notmuch-unread-search)
 
 ; Dired
-(after! dired
-(evil-define-key 'normal dired-mode-map
-  (kbd "M-RET") 'dired-display-file
-  (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-find-file ; use dired-find-file instead of dired-open.
-  (kbd "m") 'dired-mark
-  (kbd "t") 'dired-toggle-marks
-  (kbd "u") 'dired-unmark
-  (kbd "U") 'dired-unmark-all-marks
-  (kbd "y") 'dired-do-copy
-  (kbd "c") 'dired-create-empty-file
-  (kbd "D") 'dired-do-delete
-  (kbd "J") 'dired-goto-file
-  (kbd "M") 'dired-do-chmod
-  (kbd "R") 'dired-do-rename
-  (kbd "T") 'dired-do-touch
-  (kbd "Y") 'dired-copy-filename-as-kill ; copies filename to kill ring.
-  (kbd "Z") 'dired-do-compress
-  (kbd "C") 'dired-create-directory
-  (kbd "-") 'dired-do-kill-lines
-  (kbd "n") 'evil-search-next
-  (kbd "N") 'evil-search-previous
-  (kbd "q") 'kill-this-buffer
-  ))
+ (after! dired
+   (setq dired-hide-details-mode 1)
+   )
+;; (evil-define-key 'normal dired-mode-map
+;;   (kbd "M-RET") 'dired-display-file
+;;   (kbd "h") 'dired-up-directory
+;;   (kbd "l") 'dired-find-file ; use dired-find-file instead of dired-open.
+;;   (kbd "m") 'dired-mark
+;;   (kbd "t") 'dired-toggle-marks
+;;   (kbd "u") 'dired-unmark
+;;   (kbd "U") 'dired-unmark-all-marks
+;;   (kbd "y") 'dired-do-copy
+;;   (kbd "c") 'dired-create-empty-file
+;;   (kbd "D") 'dired-do-delete
+;;   (kbd "J") 'dired-goto-file
+;;   (kbd "M") 'dired-do-chmod
+;;   (kbd "R") 'dired-do-rename
+;;   (kbd "T") 'dired-do-touch
+;;   (kbd "Y") 'dired-copy-filename-as-kill ; copies filename to kill ring.
+;;   (kbd "Z") 'dired-do-compress
+;;   (kbd "C") 'dired-create-directory
+;;   (kbd "-") 'dired-do-kill-lines
+;;   (kbd "n") 'evil-search-next
+;;   (kbd "N") 'evil-search-previous
+;;   (kbd "q") 'kill-this-buffer
+;;   ))
 
 ;; Leader Keybinds
 ; Easier key for terminal popup
-(map! :leader
-      :desc "Vterm toggle"
-      "v" '+vterm/toggle)
-; Easier key for terminal full window
-(map! :leader
-      :desc "Vterm here"
-      "V" '+vterm/here)
-; Writeroom increase text width
-(map! :leader
-      :desc "Writeroom increase width"
-      "=" 'writeroom-increase-width)
-; Writeroom decrease text width
-(map! :leader
-      :desc "Writeroom increase width"
-      "-" 'writeroom-decrease-width)
-; Consult find file
-(map! :leader
-      :desc "consult-find file"
-      "/" 'consult-find)
-; Writeroom mode
-(map! :leader
-      :desc "writeroom-mode"
-      "z" 'writeroom-mode)
-; rip grep
-(map! :leader
-      :desc "rgrep"
-      "r" 'rgrep)
-; Quick org-tags-sparse-tags
-(map! :leader
-      (:prefix ("o" . "org-tags-sparse-tree")
-                :desc "org-tags-sparse-tree" "s" #'org-tags-sparse-tree))
-; Quick org-agenda-filter
-(map! :leader
-      (:prefix ("o" . "org-agenda-filter")
-                :desc "org-agenda-filter" "l" #'org-agenda-filter))
-(map! :leader
-      (:prefix ("n" . "now header")
-                :desc "now header" "h" #'now))
-(map! :leader
-      (:prefix ("n" . "narrow markdown block")
-               :desc "narrow markdown block" "b" #'markdown-narrow-to-block))
-(map! :leader
-      (:prefix ("n" . "org-roam-dailies-goto-yesterday")
-                :desc "org-roam-dailies-goto-yesterday" "y" #'org-roam-dailies-goto-yesterday))
-(map! :leader
-      (:prefix ("n" . "Insert node immediate")
-                :desc "Insert node immediate" "r I" #'org-roam-node-insert-immediate))
-(map! :leader
-      :desc "org-roam-dailies-goto-today"
-      "d" #'org-roam-dailies-goto-today)
-; Evil write all buffers
-(map! :leader
-      (:prefix ("w" . "Write all buffers")
-               :desc "Write all buffers" "a" 'evil-write-all))
-;; Leader e
-(map! :leader
-      (:prefix ("e" . "Eval")
-               :desc "Eval buffer" "b" 'eval-buffer))
-(map! :leader
-      (:prefix ("e" . "Eval")
-               :desc "Eval buffer" "r" 'eval-region))
-(map! :leader
-      (:prefix ("e" . "Elfeed")
-               :desc "Elfeed" "f" 'elfeed))
-(map! :leader
-      (:prefix ("e" . "eww")
-               :desc "eww" "w" 'eww))
-; Focus Mode
-(map! :leader
-      (:prefix ("f")
-               :desc "Focus Mode" "m" 'focus-mode))
-; avy search char in the open windows is kinda like qutebrowsers follow mode
-(setq avy-all-windows t)
-(map! :leader
-      :prefix "j"
-      :desc "avy-goto-char-timer" "j" #'avy-goto-char-timer)
-;; org agenda week/day view (must be in agenda view)
-(map! :leader
-      :prefix "o"
-      :desc "org-agenda-day-view" "1" #'org-agenda-day-view)
-(map! :leader
-      :prefix "o"
-      :desc "org-agenda-week-view" "2" #'org-agenda-week-view)
-(map! :leader
-      :prefix "o"
-      :desc "org-agenda-month-view" "3" #'org-agenda-month-view)
-
-;; Doom modeline
+;; (map! :leader
+;;       :desc "Vterm toggle"
+;;       "v" '+vterm/toggle)
+;; ; Easier key for terminal full window
+;; (map! :leader
+;;       :desc "Vterm here"
+;;       "V" '+vterm/here)
+;; ; Writeroom mode
+;; (map! :leader
+;;       :desc "writeroom-mode"
+;;       "z" 'writeroom-mode)
+;; ;; ; Writeroom increase text width
+;; (map! :leader
+;;       :desc "Writeroom increase width"
+;;       "=" 'writeroom-increase-width)
+;; ; Writeroom decrease text width
+;; (map! :leader
+;;       :desc "Writeroom increase width"
+;;       "-" 'writeroom-decrease-width)
+;; ; Consult find file
+;; (map! :leader
+;;       :desc "consult-find file"
+;;       "/" 'consult-find)
+;; ; rip grep
+;; (map! :leader
+;;       :desc "rgrep"
+;;       "r" 'rgrep)
+;; ; Quick org-tags-sparse-tags
+;; (map! :leader
+;;       (:prefix ("o" . "org-tags-sparse-tree")
+;;                 :desc "org-tags-sparse-tree" "s" #'org-tags-sparse-tree))
+;; ; Quick org-agenda-filter
+;; (map! :leader
+;;       (:prefix ("o" . "org-agenda-filter")
+;;                 :desc "org-agenda-filter" "l" #'org-agenda-filter))
+;; (map! :leader
+;;       (:prefix ("n" . "narrow markdown block")
+;;                :desc "narrow markdown block" "b" #'markdown-narrow-to-block))
+;; ;; Leader e
+;; (map! : leader
+;;       (:prefix ("e" . "Eval")
+;;                :desc "Eval buffer" "b" 'eval-buffer))
+;; (map! :leader
+;;       (:prefix ("e" . "Eval")
+;;                :desc "Eval buffer" "r" 'eval-region))
+;; (map! :leader
+;;       (:prefix ("e" . "eww")
+;;                :desc "eww" "w" 'eww))
+;; Minimal Doom modeline
 (after! doom-modeline
   (remove-hook 'doom-modeline-mode-hook #'size-indication-mode) ; filesize in modeline
   (remove-hook 'doom-modeline-mode-hook #'column-number-mode)   ; cursor column in modeline
@@ -630,17 +516,14 @@ text and copying to the killring."
          :unnarrowed t))
         )
 
-;; (setq org-roam-dailies-capture-templates
-;;       '(("d" "default" entry "* %<%H:%M> %?"
-;;          :if-new (file+head "%<%Y%m%d>.org" "#+title: %<%Y-%m-%d %A>\n#+options: toc:nil num:nil author:nil timestamp:nil\n")
-;;          :empty-lines-before 1)))
+; Org roam dailies capture template
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+datetree "log.org" week)))
       )
 
-;; This function from System Crafters allows you to make empty node/links to detail out later
+;; This function from System Crafters allows you insert empty node/links to detail out later
 (defun org-roam-node-insert-immediate (arg &rest args)
   (interactive "P")
   (let ((args (cons arg args))
@@ -654,10 +537,6 @@ text and copying to the killring."
 
 (use-package! org-roam-ui
     :after org-roam ;; or :after org
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
@@ -687,65 +566,9 @@ text and copying to the killring."
           (inhibit-modification-hooks t))
      (writeroom-mode)
       (set-buffer-modified-p nil)))     )
-;; TODO: Browse article in gui browser instead of eww
-;; (defun elfeed-show-visit-gui ()
-;;   "Wrapper for elfeed-show-visit to use gui browser instead of eww"
-;;   (interactive)
-;;   (let ((browse-url-generic-program "xdg-open"))
 
-;;     (elfeed-show-visit t)))
-;;
 (setq rmh-elfeed-org-files (list "~/org/elfeed.org"))
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
-(after! elfeed-search
-  (set-evil-initial-state! 'elfeed-search-mode 'normal))
-(after! elfeed-show-mode
-  (set-evil-initial-state! 'elfeed-show-mode   'normal))
-;;
-(after! evil-snipe
-  (push 'elfeed-show-mode   evil-snipe-disabled-modes)
-  (push 'elfeed-search-mode evil-snipe-disabled-modes))
-;;
-;; Tecosaur keybinds modified
-(map! :map elfeed-search-mode-map
-      :after elfeed-search
-      [remap kill-this-buffer] "q"
-      [remap kill-buffer] "q"
-      :n doom-leader-key nil
-      :n "c" #'+rss/quit
-      :n "e" #'elfeed-update
-      :n "z" #'elfeed-search-untag-all-unread
-      :n "u" #'elfeed-search-tag-all-unread
-      :n "s" #'elfeed-search-live-filter
-      :n "x" #'elfeed-search-show-entry
-      :n "p" #'elfeed-show-pdf
-      :n "+" #'elfeed-search-tag-all
-      :n "-" #'elfeed-search-untag-all
-      :n "S" #'elfeed-search-set-filter
-      :n "b" #'elfeed-search-browse-url
-      :n "y" #'elfeed-search-yank)
-(map! :map elfeed-show-mode-map
-      :after elfeed-show
-      [remap kill-this-buffer] "q"
-      [remap kill-buffer] "q"
-      :n doom-leader-key nil
-      :nm "c" #'+rss/delete-pane
-      :nm "o" #'ace-link-elfeed
-      :nm "RET" #'org-ref-elfeed-add
-      :nm "n" #'elfeed-show-next
-      :nm "N" #'elfeed-show-prev
-      :nm "p" #'elfeed-show-pdf
-      :nm "+" #'elfeed-show-tag
-      :nm "-" #'elfeed-show-untag
-      :nm "s" #'elfeed-show-new-live-search
-      :nm "y" #'elfeed-show-yank)
-;;
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
 
 ;;  Default browser
 ;; (setq browse-url-browser-function 'eww-browse-url)
@@ -771,8 +594,8 @@ text and copying to the killring."
         org-alert-notify-after-event-cutoff 60
         org-alert-notification-title "Upcoming Task")
   (org-alert-enable))
-;;
-; Nov epub reader (see Tecosaur)
+
+;; Nov epub reader (from Tecosaur modifed)
 (use-package! nov
   :mode ("\\.epub\\'" . nov-mode)
   :config
@@ -789,13 +612,13 @@ text and copying to the killring."
                 writeroom-width 126
                 nov-text-width 126)
     (hl-line-mode -1)
- ;; Re-render with new display settings
+;; Re-render with new display settings
     (nov-render-document)
- ;; Look up words with the dictionary.
+;; Look up words with the dictionary.
     (add-to-list '+lookup-definition-functions #'+lookup/dictionary-definition))
     (add-hook 'nov-mode-hook #'+nov-mode-setup))
 
-;; nov modeline (see Tecosaur)
+;; Nov modeline (from Tecosaur modified)
 (after! doom-modeline
   (defvar doom-modeline-nov-title-max-length 20)
   (doom-modeline-def-segment nov-author
@@ -843,21 +666,19 @@ text and copying to the killring."
         ("Brave Search"      "https://search.brave.com/search?q")
         ("DuckDuckGo"        +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
         ("Github"            "https://github.com/search?ref=simplesearch&q=%s")
-        ("Youtube"           "https://youtube.com/results?aq=f&oq=&search_query=%s")
         ("Wikipedia"         "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
         ("Arch Wiki"         "https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch&wprov=acrw1")
         ("AUR"               "https://aur.archlinux.org/packages?O=0&K=%s")))
 
-;; Escape insert mode with jk kj
-(setq evil-escape-unordered-key-sequence t)
-
 ;; Line numbers with exceptions for certain modes
-(setq display-line-numbers-type 'relative)
+(setq global-display-line-numbers-mode t
+      display-line-numbers-type 'normal)
 (dolist (mode '(org-mode-hook
-                text-mode
+                text-mode-hook
                 markdown-mode-hook
                 mu4e-compose-mode-hook
                 vterm-mode-hook
+                term-mode-hook
                 shell-mode-hook))
  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -874,16 +695,12 @@ text and copying to the killring."
 ;; Disable smartparens (autopairs)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
-;; Transparency
-;; (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
-;; (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
-
 ;; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)
 
- ;;;; Prot: Run commands in a popup frame
- ;;;; https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
-
+;; Prot: Run commands in a popup frame
+;; NOTE: strange font size with more than one workspace active
+;; See: https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
 (defun prot-window-delete-popup-frame (&rest _)
   "Kill selected selected frame if it has parameter `prot-window-popup-frame'.
 Use this function via a hook."
@@ -912,6 +729,17 @@ Also see `prot-window-delete-popup-frame'." command)
 (prot-window-define-with-popup-frame org-capture)
 
 (add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
+
+;; Launch video urls with mpv
+ (defun browse-url-mpv-open (url &optional ignored)
+  "Pass the specified URL to the \"mpv\" command.
+xdg-open is a desktop utility that calls your preferred web browser.
+The optional argument IGNORED is not used."
+  (interactive (browse-url-interactive-arg "URL: "))
+  (call-process "mpv" nil 0 nil url))
+
+(bind-key "C-c m l" #'browse-url-mpv-open)
+
 
 ;; Load other config files
 (load! (concat doom-user-dir "private"))

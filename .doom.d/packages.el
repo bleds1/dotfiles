@@ -69,3 +69,9 @@
 (package! org-roam-ui)
 
 (package! mastodon)
+
+;; (package! elfeed-tube)
+
+(package! elfeed-goodies :disable t)
+
+;;packages.el ends
