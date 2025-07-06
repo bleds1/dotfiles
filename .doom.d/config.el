@@ -394,20 +394,20 @@ text and copying to the killring."
 (define-key dired-mode-map  (kbd "p") #'dired-up-directory)
 (define-key dired-mode-map  (kbd "n") #'dired-find-file) ; use dired-find-file instead of dired-open.
 (define-key dired-mode-map  (kbd "m") #'dired-mark)
+(define-key dired-mode-map  (kbd "I") #'dired-toggle-read-only)
 (define-key dired-mode-map  (kbd "t") #'dired-toggle-marks)
 (define-key dired-mode-map  (kbd "u") #'dired-unmark)
 (define-key dired-mode-map  (kbd "U") #'dired-unmark-all-marks)
-(define-key dired-mode-map  (kbd "y") #'dired-do-copy)
+(define-key dired-mode-map  (kbd "w") #'dired-do-copy)
 (define-key dired-mode-map  (kbd "c") #'dired-create-empty-file)
 (define-key dired-mode-map  (kbd "D") #'dired-do-delete)
-(define-key dired-mode-map  (kbd "J") #'dired-goto-file)
 (define-key dired-mode-map  (kbd "M") #'dired-do-chmod)
 (define-key dired-mode-map  (kbd "R") #'dired-do-rename)
 (define-key dired-mode-map  (kbd "T") #'dired-do-touch)
-(define-key dired-mode-map  (kbd "Y") #'dired-copy-filename-as-kill) ; copies filename to kill ring.
+(define-key dired-mode-map  (kbd "W") #'dired-copy-filename-as-kill) ; copies filename to kill ring.
 (define-key dired-mode-map  (kbd "Z") #'dired-do-compress)
 (define-key dired-mode-map  (kbd "C") #'dired-create-directory)
-(define-key dired-mode-map  (kbd "-") #'dired-do-kill-lines)
+(define-key dired-mode-map  (kbd "K") #'dired-do-kill-lines)
 (define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
 ;; Leader Keybinds
 ; Easier key for terminal popup
