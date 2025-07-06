@@ -385,10 +385,8 @@ text and copying to the killring."
   (notmuch-search "tag:unread"))
 (global-set-key (kbd "C-c m u") #'notmuch-unread-search)
 
-; Dired
- (after! dired
-   (setq dired-hide-details-mode 1)
-   )
+;;  TODO: Commented code below  still needs adapting for non-evil
+ ;; (after! dired
 ;; (evil-define-key 'normal dired-mode-map
 ;;   (kbd "M-RET") 'dired-display-file
 ;;   (kbd "h") 'dired-up-directory
