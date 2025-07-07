@@ -1,5 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-;; NOTE:This config is my non- evil setup and very much a work in progress
+;; NOTE:This config is my non-evil setup and very much a work in progress
 
 ;; Fonts
 (setq doom-font (font-spec :family "Aporetic Sans Mono" :size 17)
@@ -18,6 +18,7 @@
   '(hl-line ((t (:extend t :background "#dddddd"))))
   '(line-number ((t (:extend t :foreground "#adadad"))))
   '(mode-line ((t (:background "#c4c4c4"))))
+  '(diredfl-flag-mark-line ((t (:background "#ecc9c6"))))
   '(doom-themes-org-at-tag ((t (:foreground "#84888b"))))
   '(doom-modeline-project-dir ((t (:foreground "#0f0f0f"))))
   '(doom-modeline-buffer-path ((t (:foreground "#0f0f0f"))))
