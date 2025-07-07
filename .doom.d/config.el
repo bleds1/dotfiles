@@ -327,7 +327,6 @@ text and copying to the killring."
 (global-set-key (kbd "C-c o i") 'org-roam-node-insert)
 (global-set-key (kbd "C-c o I") 'org-roam-node-insert-immediate)
 (global-set-key (kbd "C-c r") 'org-roam-capture)
-(global-set-key (kbd "C-c j") 'org-roam-dailies-capture-today)
 (global-set-key (kbd "C-c g") 'count-words)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") #'org-capture)
@@ -366,7 +365,7 @@ text and copying to the killring."
 
 ;; Avy
 (setq avy-all-windows t)
-(global-set-key (kbd "C-,") #'avy-goto-char-timer)
+(global-set-key (kbd "C-c j") #'avy-goto-char-timer)
 
 ;; Functions and keybinds for notmuch searches
 (defun notmuch-inbox-search ()
