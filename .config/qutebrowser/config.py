@@ -31,7 +31,7 @@ config.set('content.notifications.enabled', True, 'https://lemmy.world')
 config.set('content.notifications.enabled', True, 'https://mastodon.social')
 
 # Reader mode (external readability script)
-config.bind('<Ctrl-z>', 'spawn --userscript readability')
+config.bind('<space><z>', 'spawn --userscript readability')
 
 ## Startpage
 c.url.start_pages=('/home/bledley/startpage/index.html')
@@ -150,7 +150,7 @@ config.unbind('<Ctrl-d>')
 config.unbind('<Ctrl-D>')
 config.unbind('<Ctrl-f>')
 config.unbind('<Ctrl-w>')
-config.unbind('<Ctrl-z>')
+# config.unbind('<Ctrl-z>')
 config.unbind('<Ctrl-u>')
 config.unbind('<Ctrl-U>')
 config.bind('<Ctrl-n>', 'completion-item-focus next', mode='command')

@@ -352,8 +352,6 @@ text and copying to the killring."
 (global-set-key (kbd "C-c m m") 'notmuch)
 (global-set-key (kbd "C-x w m") 'doom/window-maximize-buffer)
 (global-set-key (kbd "C-x w c") '+workspace/close-window-or-workspace)
-(global-set-key (kbd "C-x w v") 'split-window-right)
-(global-set-key (kbd "C-x w s") 'split-window-below)
 (global-set-key (kbd "C-x w x") 'window-swap-states)
 (global-set-key (kbd "C-c b n") 'next-buffer)
 (global-set-key (kbd "C-c b i") 'ibuffer)
@@ -368,7 +366,7 @@ text and copying to the killring."
 
 ;; Avy
 (setq avy-all-windows t)
-(global-set-key (kbd "C-;") #'avy-goto-char-timer)
+(global-set-key (kbd "C-,") #'avy-goto-char-timer)
 
 ;; Functions and keybinds for notmuch searches
 (defun notmuch-inbox-search ()
@@ -390,9 +388,9 @@ text and copying to the killring."
 
 ;; Dired custom keybinds
 (after! dired
-(define-key dired-mode-map (kbd "M-RET") 'dired-display-file)
+(define-key dired-mode-map (kbd "M-RET") #'dired-display-file)
 (define-key dired-mode-map  (kbd "p") #'dired-up-directory)
-(define-key dired-mode-map  (kbd "n") #'dired-find-file) ; use dired-find-file instead of dired-open.
+(define-key dired-mode-map  (kbd "n") #'dired-find-file)
 (define-key dired-mode-map  (kbd "m") #'dired-mark)
 (define-key dired-mode-map  (kbd "I") #'dired-toggle-read-only)
 (define-key dired-mode-map  (kbd "t") #'dired-toggle-marks)
@@ -404,11 +402,13 @@ text and copying to the killring."
 (define-key dired-mode-map  (kbd "M") #'dired-do-chmod)
 (define-key dired-mode-map  (kbd "R") #'dired-do-rename)
 (define-key dired-mode-map  (kbd "T") #'dired-do-touch)
-(define-key dired-mode-map  (kbd "W") #'dired-copy-filename-as-kill) ; copies filename to kill ring.
+(define-key dired-mode-map  (kbd "W") #'dired-copy-filename-as-kill)
 (define-key dired-mode-map  (kbd "Z") #'dired-do-compress)
 (define-key dired-mode-map  (kbd "C") #'dired-create-directory)
 (define-key dired-mode-map  (kbd "K") #'dired-do-kill-lines)
 (define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
+
+;; TODO Some of these still need adapting from evil
 ;; Leader Keybinds
 ; Easier key for terminal popup
 ;; (map! :leader
@@ -724,8 +724,46 @@ The optional argument IGNORED is not used."
   (interactive (browse-url-interactive-arg "URL: "))
   (call-process "mpv" nil 0 nil url))
 
+;; Open YouTube url with mpv/yt-dlp
 (bind-key "C-c m l" #'browse-url-mpv-open)
+;; Browser url with default browser
+(bind-key "C-c b l" #'browse-url-xdg-open)
 
+;; isearch
+(setq isearch-lazy-count t)
+
+;; Cursor blink
+(blink-cursor-mode t)
+
+;; If asked to save buffer on C-x C-c - show diff of changes with d key
+;; From:  https://eugene-andrienko.com/en/it/2025/06/30/my-emacs-configuration-common.html
+(add-to-list 'save-some-buffers-action-alist
+    '("d" (lambda (buffer)
+     (diff-buffer-with-file (buffer-file-name buffer)))
+      "Show diff of changes"))
+
+;; Default mode for new buffers
+(setq-default major-mode 'text-mode)
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+;; Move cursor to new split
+(use-package window
+   :ensure nil
+   :preface
+   (defun hsplit-last-buffer ()
+     "Focus to the last created horizontal window."
+     (interactive)
+     (split-window-horizontally)
+     (other-window 1))
+   (defun vsplit-last-buffer ()
+     "Focus to the last created vertical window."
+     (interactive)
+     (split-window-vertically)
+     (other-window 1))
+    (global-set-key (kbd "C-x 2") #'vsplit-last-buffer)
+    (global-set-key (kbd "C-x 3") #'hsplit-last-buffer))
+    (global-set-key (kbd "C-x w v") #'vsplit-last-buffer)
+    (global-set-key (kbd "C-x w s") #'hsplit-last-buffer)
 
 ;; Load other config files
 (load! (concat doom-user-dir "private"))
