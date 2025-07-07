@@ -100,11 +100,6 @@
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'lisp-mode)
 
-;; Split behaviour (Always right & below and consult  for buffer choice) NOTE: Causing issue with magit
-;; (defadvice! prompt-for-buffer-after-split (&rest _)
-;;   :after '(split-window-below split-window-right)
-;;   (consult-buffer))
-
 ;; Increase line spacing
 (setq-default line-spacing 2)
 
@@ -131,6 +126,7 @@
       org-deadline-warning-days 0
       org-ellipsis " ▾ "
       org-hide-emphasis-markers t
+      org-return-follows-link t
       org-clock-into-drawer t)
 (setq! org-todo-keywords
       '((sequence
@@ -324,8 +320,8 @@ text and copying to the killring."
 (global-set-key (kbd "C-c T") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c Y") 'org-roam-dailies-goto-yesterday)
 (global-set-key (kbd "C-c o n") 'org-roam-node-find)
-(global-set-key (kbd "C-c o i") 'org-roam-node-insert)
-(global-set-key (kbd "C-c o I") 'org-roam-node-insert-immediate)
+(global-set-key (kbd "C-c i r") 'org-roam-node-insert)
+(global-set-key (kbd "C-c I r") 'org-roam-node-insert-immediate)
 (global-set-key (kbd "C-c r") 'org-roam-capture)
 (global-set-key (kbd "C-c g") 'count-words)
 (global-set-key (kbd "C-c o a") 'org-agenda)
@@ -344,22 +340,14 @@ text and copying to the killring."
 
 ;; Keybinds
 (global-set-key (kbd "C-c s c") (lambda () (interactive) (switch-to-buffer "*scratch*")))
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-c RET") 'consult-bookmark)
 (global-set-key (kbd "C-c b m") 'bookmark-set)
 (global-set-key (kbd "C-c b M") 'bookmark-delete)
 (global-set-key (kbd "C-c m m") 'notmuch)
-(global-set-key (kbd "C-x w m") 'doom/window-maximize-buffer)
-(global-set-key (kbd "C-x w c") '+workspace/close-window-or-workspace)
 (global-set-key (kbd "C-x w x") 'window-swap-states)
-(global-set-key (kbd "C-c b n") 'next-buffer)
-(global-set-key (kbd "C-c b i") 'ibuffer)
 (global-set-key (kbd "C-c ,") 'ido-switch-buffer)
-(global-set-key (kbd "C-c .") 'rgrep)
 (global-set-key (kbd "C-c /") 'consult-find)
-(global-set-key (kbd "C-c b p") 'previous-buffer)
 (global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
-(global-set-key (kbd "C-c k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-x w e") #'elfeed)
 (global-set-key (kbd "C-x w w") #'eww)
 
@@ -387,6 +375,8 @@ text and copying to the killring."
 
 ;; Dired custom keybinds
 (after! dired
+  (setq dired-listing-switches
+        "-AGFhlv --group-directories-first")
 (define-key dired-mode-map (kbd "M-RET") #'dired-display-file)
 (define-key dired-mode-map  (kbd "p") #'dired-up-directory)
 (define-key dired-mode-map  (kbd "n") #'dired-find-file)
@@ -406,17 +396,10 @@ text and copying to the killring."
 (define-key dired-mode-map  (kbd "C") #'dired-create-directory)
 (define-key dired-mode-map  (kbd "K") #'dired-do-kill-lines)
 (define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
+;; (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
 ;; TODO Some of these still need adapting from evil
 ;; Leader Keybinds
-; Easier key for terminal popup
-;; (map! :leader
-;;       :desc "Vterm toggle"
-;;       "v" '+vterm/toggle)
-;; ; Easier key for terminal full window
-;; (map! :leader
-;;       :desc "Vterm here"
-;;       "V" '+vterm/here)
 ;; ; Writeroom mode
 ;; (map! :leader
 ;;       :desc "writeroom-mode"
@@ -437,16 +420,6 @@ text and copying to the killring."
 ;; (map! :leader
 ;;       (:prefix ("o" . "org-agenda-filter")
 ;;                 :desc "org-agenda-filter" "l" #'org-agenda-filter))
-;; (map! :leader
-;;       (:prefix ("n" . "narrow markdown block")
-;;                :desc "narrow markdown block" "b" #'markdown-narrow-to-block))
-;; ;; Leader e
-;; (map! : leader
-;;       (:prefix ("e" . "Eval")
-;;                :desc "Eval buffer" "b" 'eval-buffer))
-;; (map! :leader
-;;       (:prefix ("e" . "Eval")
-;;                :desc "Eval buffer" "r" 'eval-region))
 
 ;; Minimal Doom modeline
 (after! doom-modeline
@@ -585,7 +558,7 @@ text and copying to the killring."
   :mode ("\\.epub\\'" . nov-mode)
   :config
   (map! :map nov-mode-map
-        :n "J" #'nov-scroll-up)
+        :n "n" #'nov-scroll-up)
 
   (advice-add 'nov-render-title :override #'ignore)
 
@@ -683,38 +656,6 @@ text and copying to the killring."
 ;; Suppress confirm to exit messages
 (setq confirm-kill-emacs nil)
 
-;; Prot: Run commands in a popup frame
-;; NOTE: strange font size with more than one workspace active
-;; See: https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
-(defun prot-window-delete-popup-frame (&rest _)
-  "Kill selected selected frame if it has parameter `prot-window-popup-frame'.
-Use this function via a hook."
-  (when (frame-parameter nil 'prot-window-popup-frame)
-    (delete-frame)))
-
-(defmacro prot-window-define-with-popup-frame (command)
-  "Define interactive function which calls COMMAND in a new frame.
-Make the new frame have the `prot-window-popup-frame' parameter."
-  `(defun ,(intern (format "prot-window-popup-%s" command)) ()
-     ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
-Also see `prot-window-delete-popup-frame'." command)
-     (interactive)
-     (let ((frame (make-frame '((prot-window-popup-frame . t)))))
-       (select-frame frame)
-       (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
-       (condition-case nil
-           (call-interactively ',command)
-         ((quit error user-error)
-          (delete-frame frame))))))
-
-(declare-function org-capture "org-capture" (&optional goto keys))
-(defvar org-capture-after-finalize-hook)
-
-;;;###autoload (autoload 'prot-window-popup-org-capture "prot-window")
-(prot-window-define-with-popup-frame org-capture)
-
-(add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
-
 ;; Launch video urls with mpv
  (defun browse-url-mpv-open (url &optional ignored)
   "Pass the specified URL to the \"mpv\" command.
@@ -741,13 +682,9 @@ The optional argument IGNORED is not used."
      (diff-buffer-with-file (buffer-file-name buffer)))
       "Show diff of changes"))
 
-;; Default mode for new buffers
-(setq-default major-mode 'text-mode)
-(add-hook 'text-mode-hook 'visual-line-mode)
-
 ;; Move cursor to new split
 (use-package window
-   :ensure nil
+   ;; :ensure nil
    :preface
    (defun hsplit-last-buffer ()
      "Focus to the last created horizontal window."
@@ -761,10 +698,18 @@ The optional argument IGNORED is not used."
      (other-window 1))
     (global-set-key (kbd "C-x 2") #'vsplit-last-buffer)
     (global-set-key (kbd "C-x 3") #'hsplit-last-buffer))
-    (global-set-key (kbd "C-x w v") #'vsplit-last-buffer)
-    (global-set-key (kbd "C-x w s") #'hsplit-last-buffer)
 
-;; Load other config files
+;; Function to replicate evil's o insert newline below from: EmacsRedux
+(defun er-smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(global-set-key (kbd "M-o") #'er-smart-open-line)
+
+;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
 
 ;;; config.el ends here ;;;
