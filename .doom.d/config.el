@@ -715,9 +715,6 @@ Position the cursor at its beginning, according to the current mode."
 ;; Switch to new workspace on opening new project
 (setq +workspaces-on-switch-project-behavior t)
 
-;; Ctrl Tab between workspaces
-(global-set-key (kbd "C-<tab>") #'+workspace/cycle)
-
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
 
