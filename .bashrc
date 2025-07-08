@@ -1,5 +1,6 @@
 # ~/.bashrc
-export EDITOR='nvim'
+export EDITOR='emacsclient -nw'
+export VISUAL='emacsclient -c -a ""'
 #
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

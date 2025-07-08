@@ -397,7 +397,6 @@ text and copying to the killring."
 (define-key dired-mode-map  (kbd "C") #'dired-create-directory)
 (define-key dired-mode-map  (kbd "K") #'dired-do-kill-lines)
 (define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
-;; (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
 ;; TODO Some of these still need adapting from evil
 ;; Leader Keybinds
@@ -506,7 +505,7 @@ text and copying to the killring."
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-day-ago +unread"
+(setq elfeed-search-filter "@1-days-ago +unread -arch -news"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
@@ -709,6 +708,15 @@ Position the cursor at its beginning, according to the current mode."
   (newline-and-indent))
 
 (global-set-key (kbd "M-o") #'er-smart-open-line)
+
+;; Whitespace mode
+(setq whitespace-style '(face indentation trailing lines-tail))
+
+;; Switch to new workspace on opening new project
+(setq +workspaces-on-switch-project-behavior t)
+
+;; Ctrl Tab between workspaces
+(global-set-key (kbd "C-<tab>") #'+workspace/cycle)
 
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
