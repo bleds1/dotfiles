@@ -52,7 +52,7 @@
 ;;
 (package! solaire-mode :disable t)
 
-(package! modus-themes)
+;; (package! modus-themes)
 
 (package! peep-dired)
 

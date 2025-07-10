@@ -43,6 +43,7 @@
   '(mu4e-header-key-face ((t (:foreground "#666666"))))
   '(mu4e-modeline-face ((t (:foreground "#666666"))))
   '(mu4e-unread-face ((t (:foreground "#666666"))))
+  '(doom-mode-line-inactive ((t (:background "#c4c4c4" :foreground "#adadad"))))
   '(mode-line-inactive ((t (:background "#c4c4c4" :foreground "#adadad"))))
   '(org-agenda-clocking ((t (:background "#c4c4c4")))) ;;NOTE: not working
   '(org-agenda-date-today ((t (:foreground "#0f0f0f"))))
@@ -505,7 +506,7 @@ text and copying to the killring."
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-days-ago +unread -arch -news"
+(setq elfeed-search-filter "@1-days-ago +unread"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
@@ -615,7 +616,7 @@ text and copying to the killring."
 ;; Timestamp function
 (defun now ()
  (interactive)
- (insert (format-time-string "**** %H:%M" )
+ (insert (format-time-string "%H:%M" )
  ))
 
 ;; Online lookup search provider list
@@ -669,7 +670,7 @@ The optional argument IGNORED is not used."
 ;; Browser url with default browser
 (bind-key "C-c b l" #'browse-url-xdg-open)
 
-;; isearch
+;; isearch show a count indicator
 (setq isearch-lazy-count t)
 
 ;; Cursor blink
@@ -709,11 +710,18 @@ Position the cursor at its beginning, according to the current mode."
 
 (global-set-key (kbd "M-o") #'er-smart-open-line)
 
+;; Simpler next/previous window
+(global-set-key (kbd "M-p") 'previous-window-any-frame)
+(global-set-key (kbd "M-n") 'next-window-any-frame)
+
 ;; Whitespace mode
 (setq whitespace-style '(face indentation trailing lines-tail))
 
 ;; Switch to new workspace on opening new project
 (setq +workspaces-on-switch-project-behavior t)
+
+;; My window manager makes this unneccessary but here just in case
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
