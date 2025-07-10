@@ -54,6 +54,8 @@
 
 ;; (package! modus-themes)
 
+(package! beacon)
+
 (package! peep-dired)
 
 (package! rainbow-mode)
@@ -69,8 +71,6 @@
 (package! org-roam-ui)
 
 (package! mastodon)
-
-;; (package! elfeed-tube)
 
 (package! elfeed-goodies :disable t)
 

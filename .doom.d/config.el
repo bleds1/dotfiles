@@ -10,6 +10,7 @@
 ;; Light mode custom faces based off doom-one-light default theme
 (setq doom-theme 'doom-one-light)
 (custom-set-faces
+  '(beacon-fallback-background ((t (:background "#ecc9c6"))))
   '(cursor ((t (:background "#232323"))))
   '(default ((t (:background "#efefef"))))
   '(font-lock-type-face ((t (:foreground "#0f0f0f"))))
@@ -196,6 +197,9 @@
            ("pw" "󱛡 Weekly Review" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-weekly.txt"))
 
+            ("pp" "󱛡 Weekly Plan" plain (file "~/org/log.org")
+            (file "~/org/tpl/tpl-weekly-plan.txt"))
+
           ("w" " Watch")
            ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
             (file "~/org/tpl/tpl-towatch.txt"))
@@ -208,15 +212,17 @@
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
  '(("f" "+fleeting"
-    ((tags "+fleeting"
+    ((tags "+@fleeting"
            ((org-agenda-overriding-header "Fleeting"))
            )))
-
-   ("i" "+@inbox"
+      ("i" "+@inbox"
     ((tags-todo "+@inbox"
            ((org-agenda-overriding-header "@inbox"))
            )))
-
+   ("p" "STRT"
+     ((todo "STRT"
+           ((org-agenda-overriding-header "Started"))
+           )))
    ("u" "Untagged"
     ((tags-todo "-goal-someday-{.*}")))
            ))
@@ -231,6 +237,7 @@
              ("@errand")
              ("@games")
              ("@home")
+             ("@idea")
              ("@listen")
              ("@post")
              ("@read")
@@ -241,7 +248,7 @@
              ("@per")
              ("@na")
              ("@work")
-             ("fleeting")
+             ("@fleeting")
              ("posted")
              ("@inbox")
              ("@recur")
@@ -254,6 +261,7 @@
              ("@errand")
              ("@games")
              ("@home")
+             ("@idea")
              ("@listen")
              ("@post")
              ("@read")
@@ -264,7 +272,7 @@
              ("@per")
              ("@na")
              ("@work")
-             ("fleeting")
+             ("@fleeting")
              ("posted")
              ("@inbox")
              ("@recur")
@@ -348,11 +356,12 @@ text and copying to the killring."
 (global-set-key (kbd "C-c b M") 'bookmark-delete)
 (global-set-key (kbd "C-c m m") 'notmuch)
 (global-set-key (kbd "C-x w x") 'window-swap-states)
-(global-set-key (kbd "C-c ,") 'ido-switch-buffer)
-(global-set-key (kbd "C-c /") 'consult-find)
+(global-set-key (kbd "C-x ,") 'ido-switch-buffer)
+(global-set-key (kbd "C-x /") 'consult-find)
 (global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-x w e") #'elfeed)
 (global-set-key (kbd "C-x w w") #'eww)
+(global-set-key (kbd "C-e") #'eval-region)
 
 ;; Avy
 (setq avy-all-windows t)
@@ -399,6 +408,7 @@ text and copying to the killring."
 (define-key dired-mode-map  (kbd "C") #'dired-create-directory)
 (define-key dired-mode-map  (kbd "K") #'dired-do-kill-lines)
 (define-key dired-mode-map  (kbd "q") #'kill-this-buffer))
+(add-hook 'dired-mode-hook 'dired-hide-details-mode) ;; TODO Needs test
 
 ;; TODO Some of these still need adapting from evil
 ;; Leader Keybinds
@@ -714,6 +724,9 @@ The optional argument IGNORED is not used."
                      (name . "^\\*scratch\\*$")
                      (mode . lisp-mode)))
              ("Dired" (mode . dired-mode))
+             ("LaTeX" (or (mode . latex-mode)
+                    (filename . “LaTeXMode”)))
+
              ("Markdown/Text" (or
                       (mode . markdown-mode)
                       (mode . text-mode)))
@@ -729,6 +742,8 @@ The optional argument IGNORED is not used."
     (ibuffer-switch-to-saved-filter-groups "default")))
 
 (setq ibuffer-never-show-predicates '(
+                                  "^\\*Messages\\*$" "^\\*Apropos\\*$"
+                                  "^\\*info\\*$" "^\\*Help\\*$"
                                   "*Quail Completions\\*" "*Warnings\\*"
                                   "*elfeed-log\\*" "*mu4e-last-update*\\*"
                                   "*Calc Trail\\*" "*Compile-Log\\*"
@@ -741,7 +756,7 @@ The optional argument IGNORED is not used."
                                   "*Shell Command Output\\*"
                                   "*Async Shell Command\\*"
                                  "*Completions\\*"  "diary"))
-
+(setq ibuffer-show-empty-filter-groups nil)
 ;; Function to replicate evil's o insert newline below from: EmacsRedux
 (defun er-smart-open-line ()
   "Insert an empty line after the current line.
@@ -754,6 +769,10 @@ Position the cursor at its beginning, according to the current mode."
 
 ;; Whitespace mode
 (setq whitespace-style '(face indentation trailing lines-tail))
+
+;; Beacon mode
+(beacon-mode 1)
+(setq beacon-color "#ecc9c6")
 
 ;; Switch to new workspace on opening new project
 (setq +workspaces-on-switch-project-behavior t)
