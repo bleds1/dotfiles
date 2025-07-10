@@ -1,7 +1,4 @@
 ## ~/.config/qutebrowser/config.py
-## TODO: Trying to unbind n/N from search see line 469
-## I'd like n and p to be simple scrolling without Ctrl
-##
 ##
 ## Get rid of Auto Load Dialogue
 config.load_autoconfig(False)
@@ -144,6 +141,10 @@ config.unbind('<Ctrl-s>')
 config.unbind('<Ctrl-x>')
 # config.unbind('<Ctrl-z>')
 config.unbind('<.>')
+# Unbind 'n' from searching
+config.unbind('n', mode='normal')
+# Unbind 'N' from searching (Shift+n)
+config.unbind('N', mode='normal')
 
 # Keybinds bind
 config.bind('<Ctrl-x><0>', 'tab-close')
@@ -250,8 +251,8 @@ config.bind('<space><c><d>', 'download-clear')
 # config.bind('co', 'tab-only')
 config.bind('<Ctrl-v>', 'scroll-page 0 0.9')
 config.bind('<alt-v>', 'scroll-page 0 -0.9')
-config.bind('<Ctrl-n>', 'scroll-page 0 0.5')
-config.bind('<Ctrl-p>', 'scroll-page 0 -0.5')
+config.bind('<n>', 'scroll-page 0 0.5')
+config.bind('<p>', 'scroll-page 0 -0.5')
 config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
