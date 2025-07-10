@@ -717,10 +717,12 @@ The optional argument IGNORED is not used."
              ("Markdown/Text" (or
                       (mode . markdown-mode)
                       (mode . text-mode)))
-             ("Term" (or
+             ("Shell" (or
                      (mode . term-mode)
                      (mode . vterm-mode)
                      (mode . eshell-mode)))
+             ("Git" (or
+                    (name . "^\\*magit")))
 ))))
 (add-hook 'ibuffer-mode-hook
   (lambda ()
@@ -749,10 +751,6 @@ Position the cursor at its beginning, according to the current mode."
   (newline-and-indent))
 
 (global-set-key (kbd "M-o") #'er-smart-open-line)
-
-;; Simpler next/previous window
-(global-set-key (kbd "M-p") 'previous-window-any-frame)
-(global-set-key (kbd "M-n") 'next-window-any-frame)
 
 ;; Whitespace mode
 (setq whitespace-style '(face indentation trailing lines-tail))
