@@ -12,6 +12,7 @@
 (custom-set-faces
   '(cursor ((t (:background "#232323"))))
   '(default ((t (:background "#efefef"))))
+  '(font-lock-type-face ((t (:foreground "#0f0f0f"))))
   '(font-lock-builtin-face ((t (:foreground "#E45B4F"))))
   '(diredfl-date-time ((t (:foreground "#adadad"))))
   '(diredfl-number ((t (:foreground "#adadad"))))
@@ -699,6 +700,45 @@ The optional argument IGNORED is not used."
      (other-window 1))
     (global-set-key (kbd "C-x 2") #'vsplit-last-buffer)
     (global-set-key (kbd "C-x 3") #'hsplit-last-buffer))
+
+;; ibuffer custom groups
+(setq ibuffer-saved-filter-groups
+  (quote (("default"
+              ("Org" (or
+                     (mode . org-mode)
+                     (name . "^\\*Org Src")
+                     (name . "^\\*Org Agenda\\*$")))
+              ("Lisp" (or
+                     (mode . emacs-lisp-mode)
+                     (mode . ielm-mode)
+                     (name . "^\\*scratch\\*$")
+                     (mode . lisp-mode)))
+             ("Dired" (mode . dired-mode))
+             ("Markdown/Text" (or
+                      (mode . markdown-mode)
+                      (mode . text-mode)))
+             ("Term" (or
+                     (mode . term-mode)
+                     (mode . vterm-mode)
+                     (mode . eshell-mode)))
+))))
+(add-hook 'ibuffer-mode-hook
+  (lambda ()
+    (ibuffer-switch-to-saved-filter-groups "default")))
+
+(setq ibuffer-never-show-predicates '(
+                                  "*Quail Completions\\*" "*Warnings\\*"
+                                  "*elfeed-log\\*" "*mu4e-last-update*\\*"
+                                  "*Calc Trail\\*" "*Compile-Log\\*"
+                                  "*Async-native-compile-log\\*"
+                                  "*Native-compile-log\\*"
+                                  "*Calculator\\*" "*Calendar\\*"
+                                  "*Warning\\*" "*prodigy.*"
+                                  "*Org Help\\*" "*info\\*"
+                                  "*Flycheck error messages\\*" "TAGS"
+                                  "*Shell Command Output\\*"
+                                  "*Async Shell Command\\*"
+                                 "*Completions\\*"  "diary"))
 
 ;; Function to replicate evil's o insert newline below from: EmacsRedux
 (defun er-smart-open-line ()
