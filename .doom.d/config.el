@@ -7,11 +7,24 @@
       doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
+;; Initial buffer
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+(add-to-list 'default-frame-alist '((font . "Aporetic Sans Mono :size 17")))
+(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
+(setq initial-scratch-message " ")
+(setq initial-major-mode 'lisp-mode)
+
+;; Sometimes I turn this behaviour on
+;; When connecting with emacsclient -nc, don't open a new workspace, connect to "main"
+;; (after! persp-mode
+;;   (setq persp-emacsclient-init-frame-behaviour-override "main"))
+
 ;; Light mode custom faces based off doom-one-light default theme
 (setq doom-theme 'doom-one-light)
 (custom-set-faces
-  '(beacon-fallback-background ((t (:background "#ecc9c6"))))
-  '(cursor ((t (:background "#232323"))))
+   '(cursor ((t (:background "#232323"))))
   '(default ((t (:background "#efefef"))))
   '(font-lock-type-face ((t (:foreground "#0f0f0f"))))
   '(font-lock-builtin-face ((t (:foreground "#E45B4F"))))
@@ -53,6 +66,7 @@
   '(org-headline-done ((t (:foreground "#adadad"))))
   '(region ((t (:extend t :background "#ecc9c6"))))
   '(org-ellipsis ((t (:foreground "#666666" :background "#efefef"))))
+  '(org-link ((t (:foreground "#4078f2"))))
   '(org-level-1 ((t (:foreground "#383a42" :height 1.1))))
   '(org-level-2 ((t (:foreground "#383a42" :height 1.0))))
   '(org-level-3 ((t (:foreground "#383a42" :height 1.0))))
@@ -65,10 +79,10 @@
   '(org-checkbox ((t (:foreground "#adadad"))))
   '(org-list-dt ((t (:foreground "#adadad"))))
   '(org-checkbox-statistics-todo ((t (:foreground "#E45B4F"))))
-  '(org-checkbox-statistics-done ((t (:foreground "#2b8c63"))))
+  '(org-checkbox-statistics-done ((t (:foreground "#009982"))))
   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight light :height 0.9))))
   '(org-scheduled-previously ((t (:foreground "#d1a07d"))))
-  '(org-scheduled-today ((t (:foreground "#2b8c63"))))
+  '(org-scheduled-today ((t (:foreground "#009982"))))
   '(org-warning ((t (:foreground "#d1a07d"))))
   '(org-date ((t (:foreground "#adadad"))))
   '(org-agenda-clocking ((t (:background "#0f0f0f"))))
@@ -95,14 +109,6 @@
 ;; Disabling solaire-mode neccessary for consistent custom background colour
 (after! solaire-mode
   (solaire-global-mode -1))
-
-;; Initial buffer
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
-(setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
-(setq initial-scratch-message " ")
-(setq initial-major-mode 'lisp-mode)
 
 ;; Increase line spacing
 (setq-default line-spacing 2)
@@ -143,10 +149,10 @@
          "CANC(c!)" )))
 (setq! org-todo-keyword-faces
       '(("TODO" :foreground "#cc4d3e" :weight bold)
-       ("STRT" :foreground "#85C7A1" :weight bold)
+       ("STRT" :foreground "#009982" :weight bold)
        ("WAIT" :foreground "#83898d" :weight bold)
        ("PROJ" :foreground "#896ccc" :weight bold)
-       ("DONE" :foreground "#2b8c63" :weight bold)
+       ("DONE" :foreground "#adadad" :weight bold)
        ("CANC" :foreground "#5d6265" :weight bold)))
 )
 
@@ -156,13 +162,18 @@
   (setq org-superstar-prettify-item-bullets nil)
   (after! org-fancy-priorities
   (setq
-   org-fancy-priorities-list '("[A]" "[B]" "[C]")
-   org-priority-faces
-   '((?A :foreground "#cc4d3e" :weight bold)
-     (?B :foreground "#ff7f50" :weight bold)
-     (?C :foreground "#d1a07d" :weight bold))
-   ))
-)
+        org-fancy-priorities-list '("[A]" "[B]" "[C]" "[D]" "[E]" "[F]")
+        org-lowest-priority  ?F
+        org-default-priority ?E
+        org-priority-faces
+        '((?A :foreground "#cc4d3e" :weight bold)
+        (?B :foreground "#ff7f50" :weight bold)
+        (?C :foreground "#d1a07d" :weight bold)
+        (?D :foreground "#EBCB8B" :weight bold)
+        (?E :foreground "#d3cbbc" :weight bold)
+        (?F :foreground "#bfbfbf" :weight bold))
+        ))
+  )
 
 ;; Org Capture Templates
 (after! org
@@ -517,7 +528,7 @@ text and copying to the killring."
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-days-ago +unread"
+(setq elfeed-search-filter "@1-days-ago +unread -news"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
@@ -652,9 +663,7 @@ text and copying to the killring."
                 shell-mode-hook))
  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; When connecting with emacsclient -nc, don't open a new workspace, connect to "main"
-(after! persp-mode
-  (setq persp-emacsclient-init-frame-behaviour-override "main"))
+
 
 ;; Highlight line mode
 (add-hook 'text-mode-hook (lambda () (hl-line-mode -1)))
@@ -712,6 +721,7 @@ The optional argument IGNORED is not used."
     (global-set-key (kbd "C-x 3") #'hsplit-last-buffer))
 
 ;; ibuffer custom groups
+(after! ibuffer
 (setq ibuffer-saved-filter-groups
   (quote (("default"
               ("Org" (or
@@ -726,7 +736,6 @@ The optional argument IGNORED is not used."
              ("Dired" (mode . dired-mode))
              ("LaTeX" (or (mode . latex-mode)
                     (filename . “LaTeXMode”)))
-
              ("Markdown/Text" (or
                       (mode . markdown-mode)
                       (mode . text-mode)))
@@ -736,27 +745,12 @@ The optional argument IGNORED is not used."
                      (mode . eshell-mode)))
              ("Git" (or
                     (name . "^\\*magit")))
-))))
+            ))))
 (add-hook 'ibuffer-mode-hook
   (lambda ()
     (ibuffer-switch-to-saved-filter-groups "default")))
+(setq ibuffer-show-empty-filter-groups nil))
 
-(setq ibuffer-never-show-predicates '(
-                                  "^\\*Messages\\*$" "^\\*Apropos\\*$"
-                                  "^\\*info\\*$" "^\\*Help\\*$"
-                                  "*Quail Completions\\*" "*Warnings\\*"
-                                  "*elfeed-log\\*" "*mu4e-last-update*\\*"
-                                  "*Calc Trail\\*" "*Compile-Log\\*"
-                                  "*Async-native-compile-log\\*"
-                                  "*Native-compile-log\\*"
-                                  "*Calculator\\*" "*Calendar\\*"
-                                  "*Warning\\*" "*prodigy.*"
-                                  "*Org Help\\*" "*info\\*"
-                                  "*Flycheck error messages\\*" "TAGS"
-                                  "*Shell Command Output\\*"
-                                  "*Async Shell Command\\*"
-                                 "*Completions\\*"  "diary"))
-(setq ibuffer-show-empty-filter-groups nil)
 ;; Function to replicate evil's o insert newline below from: EmacsRedux
 (defun er-smart-open-line ()
   "Insert an empty line after the current line.
@@ -777,8 +771,36 @@ Position the cursor at its beginning, according to the current mode."
 ;; Switch to new workspace on opening new project
 (setq +workspaces-on-switch-project-behavior t)
 
-;; My window manager makes this unneccessary but here just in case
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; https://protesilaos.com/codelog/2024-09-19-emacs-command-popup-frame-emacsclient/
+;; bind a window manager key to:  emacsclient -e '(prot-window-popup-org-capture)'
+(defun prot-window-delete-popup-frame (&rest _)
+  "Kill selected selected frame if it has parameter `prot-window-popup-frame'.
+Use this function via a hook."
+  (when (frame-parameter nil 'prot-window-popup-frame)
+    (delete-frame)))
+
+(defmacro prot-window-define-with-popup-frame (command)
+  "Define interactive function which calls COMMAND in a new frame.
+Make the new frame have the `prot-window-popup-frame' parameter."
+  `(defun ,(intern (format "prot-window-popup-%s" command)) ()
+     ,(format "Run `%s' in a popup frame with `prot-window-popup-frame' parameter.
+     Also see `prot-window-delete-popup-frame'." command)
+     (interactive)
+     (let ((frame (make-frame '((prot-window-popup-frame . t)))))
+       (select-frame frame)
+       (switch-to-buffer " prot-window-hidden-buffer-for-popup-frame")
+       (condition-case nil
+           (call-interactively ',command)
+         ((quit error user-error)
+          (delete-frame frame))))))
+
+(declare-function org-capture "org-capture" (&optional goto keys))
+(defvar org-capture-after-finalize-hook)
+
+;;;###autoload (autoload 'prot-window-popup-org-capture "prot-window")
+(prot-window-define-with-popup-frame org-capture)
+
+(add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
 
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
