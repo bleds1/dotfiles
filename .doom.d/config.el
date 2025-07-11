@@ -372,7 +372,6 @@ text and copying to the killring."
 (global-set-key (kbd "C-x k") 'doom/kill-this-buffer-in-all-windows)
 (global-set-key (kbd "C-x w e") #'elfeed)
 (global-set-key (kbd "C-x w w") #'eww)
-(global-set-key (kbd "C-e") #'eval-region)
 
 ;; Avy
 (setq avy-all-windows t)
