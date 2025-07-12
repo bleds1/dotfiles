@@ -24,7 +24,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Libreoffice (some work)
 
 ** CLI/TUI
-[[file://assets/Screenshot4.jpg]]
+[[file:/assets/Screenshot4.jpg]]
 - lf (cli file manager)
 - btop (process monitor)
 - lazygit (git tool)
@@ -40,7 +40,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Aporetic 
 
 ** Theme
-[[file://assets/Screenshot2.jpg]]
+[[file:/assets/Screenshot2.jpg]]
 - Adwaita (gtk)
 - Papirus (Icons)
 - Papirus Dark Gray (folders)
@@ -68,25 +68,25 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Hyprshot
 
 ** Lockscreen
-[[file://assets/hyprlock-shot.jpg]]
+[[file:/assets/hyprlock-shot.jpg]]
 - Hyprlock
 
 ** App Launcher
-[[file://assets/Screenshot3.jpg]]
+[[file:/assets/Screenshot3.jpg]]
 - Rofi-wayland
 
 ** GUI File Manager
-[[file://assets/Screenshot6.jpg]]
+[[file:/assets/Screenshot6.jpg]]
 - Nautilus (w/Sushi previewer)
 
 ** Browser
-[[file://assets/qutebrowser-shot.jpg]]
+[[file:/assets/qutebrowser-shot.jpg]]
 - Qutebrowser (main)
 - Librewolf 
 - Brave
 
 ** Email
-[[file://assets/notmuch-shot.jpg]]
+[[file:/assets/notmuch-shot.jpg]]
 - notmuch
 - Thunderbird (backup)
 
