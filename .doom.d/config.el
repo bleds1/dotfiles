@@ -116,7 +116,18 @@
 ;; Trash, revert, undo, scroll
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
+
+;; True delete in dired when delete-by-moving-to-trash is default
+;; mostly just used for emptying the trash
+(defun dired-do-delete-skip-trash (&optional arg)
+  (interactive "P")
+  (let ((delete-by-moving-to-trash nil))
+    (dired-do-delete arg)))
+
+;; Buffers will revert on disk changes
 (global-auto-revert-mode 1)
+
+;; Undo limit & scroll margin
 (setq undo-limit 80000000
       scroll-margin 2)
 
@@ -213,7 +224,10 @@
             ("pp" "󱛡 Weekly Plan" plain (file "~/org/log.org")
             (file "~/org/tpl/tpl-weekly-plan.txt"))
 
-          ("w" " Watch")
+           ("r" "󱓷 Read" entry (file+headline "~/org/read.org" "TO READ:")
+            (file  "~/org/tpl/tpl-read.txt"))
+
+          ("W" " Watch")
            ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
             (file "~/org/tpl/tpl-towatch.txt"))
 
@@ -531,7 +545,7 @@ text and copying to the killring."
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-days-ago +unread -news"
+(setq elfeed-search-filter "@1-days-ago +unread"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
