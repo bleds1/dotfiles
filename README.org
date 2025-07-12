@@ -9,8 +9,6 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Arch Linux
 
 ** Terminal
-# ![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Foot terminal")
-
 [[file:/assets/Screenshot1.jpg]]
 
 - vterm (in Emacs)
@@ -20,13 +18,13 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Bash
 
 ** Editor
-# ![Editor](/assets/Screenshot8.jpg?raw=true "Doom Emacs")
+[[file:/assets/Screenshot8.jpg]]
 - Doom Emacs (gui default)
 - Neovim (cli backup)
 - Libreoffice (some work)
 
 ** CLI/TUI
-# ![Terminal based stuff](/assets/Screenshot4.jpg?raw=true "lf file manager")
+[[file://assets/Screenshot4.jpg]]
 - lf (cli file manager)
 - btop (process monitor)
 - lazygit (git tool)
@@ -42,7 +40,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Aporetic 
 
 ** Theme
-# ![Wallpaper & Cursor](/assets/Screenshot2.jpg?raw=true "Screenshot2")
+[[file://assets/Screenshot2.jpg]]
 - Adwaita (gtk)
 - Papirus (Icons)
 - Papirus Dark Gray (folders)
@@ -70,25 +68,25 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 - Hyprshot
 
 ** Lockscreen
-# ![Hyprlock Screenshot](/assets/hyprlock-shot.jpg?raw=true "Hyprlock")
+[[file://assets/hyprlock-shot.jpg]]
 - Hyprlock
 
 ** App Launcher
-# ![Rofi Screenshot3](/assets/Screenshot3.jpg?raw=true "Rofi Wayland (Launcher)")
+[[file://assets/Screenshot3.jpg]]
 - Rofi-wayland
 
 ** GUI File Manager
-# ![Nautilus Screenshot](/assets/Screenshot6.jpg?raw=true "Nautilus File Manager")
+[[file://assets/Screenshot6.jpg]]
 - Nautilus (w/Sushi previewer)
 
 ** Browser
-# ![Qutebrowser Screenshot](/assets/qutebrowser-shot.jpg?raw=true "Qutebrowser")
+[[file://assets/qutebrowser-shot.jpg]]
 - Qutebrowser (main)
 - Librewolf 
 - Brave
 
 ** Email
-# ![Notmuch Screenshot](/assets/notmuch-shot.jpg?raw=true "Notmuch mail")
+[[file://assets/notmuch-shot.jpg]]
 - notmuch
 - Thunderbird (backup)
 
