@@ -132,11 +132,13 @@
       org-agenda-start-day nil
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
+      org-columns-default-format "%50ITEM(Task) %2PRIORITY(Priority) %10Effort(Effort){:} %10CLOCKSUM(Clocked)"
       org-log-reschedule 'time
       org-deadline-warning-days 0
       org-ellipsis " ▾ "
       org-hide-emphasis-markers t
       org-return-follows-link t
+      org-clock-in-switch-to-state "STRT"
       org-clock-into-drawer t)
 (setq! org-todo-keywords
       '((sequence
@@ -348,6 +350,8 @@ text and copying to the killring."
 (global-set-key (kbd "C-c g") 'count-words)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o c") #'org-capture)
+(global-set-key (kbd "C-c i i") 'org-clock-in)
+(global-set-key (kbd "C-c o o") 'org-clock-out)
 
 ;; Switch back and forth between some commonly used
 (global-set-key (kbd "C-c 0") (lambda ()
