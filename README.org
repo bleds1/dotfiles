@@ -10,6 +10,7 @@ NOTE: This is a bit of a run through of what I use for reference and as a backup
 
 ** Terminal
 # ![Desktop Screenshot](/assets/Screenshot1.jpg?raw=true "Foot terminal")
+[[file:assets/Screenshot1.jpg][Foot Terminal]]
 - vterm (in Emacs)
 - Foot (backup)
 
