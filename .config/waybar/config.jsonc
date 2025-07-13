@@ -45,7 +45,7 @@
 
       "custom/hidesync": {
         "format": " ",
-        "interval": 1800,
+        "interval": 1200,
         "max-length": 1,
          "exec": "~/.local/bin/mail-sync.sh",
          "tooltip": false,
@@ -53,7 +53,7 @@
 
     "custom/notmuch": {
         "format": "+ {} ",
-        "interval": 1900,
+        "interval": 900,
         "max-length": 20,
         "exec": "notmuch count 'tag:unread and tag:inbox'",
         "on-click": "~/.local/bin/mail-sync.sh",

@@ -227,7 +227,7 @@
            ("r" "󱓷 Read" entry (file+headline "~/org/read.org" "TO READ:")
             (file  "~/org/tpl/tpl-read.txt"))
 
-          ("W" " Watch")
+          ("w" " Watch")
            ("wt" "󰿎 To Watch" entry (file+headline "~/org/watch.org" "TO WATCH:")
             (file "~/org/tpl/tpl-towatch.txt"))
 
