@@ -24,17 +24,11 @@
         // "custom/notifications"
     ],
     // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": false,
-    //     "all-outputs": false,
-    //     "warp-on-scroll": false,
-        // "format": "{name}: {icon}",
-        // "format-icons": {
-        //     "urgent": "",
-        //     "focused": "",
-        //     "default": ""
-        // }
-    // },
+    "hyprland/workspaces": {
+        "active-only": true,
+          "format": "{id}"
+               },
+
     "custom/logo": {
         "format": " 󰣇  {} ",
         "interval": 3600,
@@ -62,7 +56,8 @@
 
     "hyprland/window": {
         "format": " {}",
-	    "icon": true,
+	    "icon": false,
+         "tooltip": false,
         "icon-size": 12
     },
     "custom/notifications": {
@@ -111,6 +106,7 @@
     },
     "idle_inhibitor": {
         "format": "{icon}",
+         "tooltip": false,
         "format-icons": {
             "activated": "",
             "deactivated": "󰒲"
@@ -122,8 +118,11 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip": false,
         "format": "  {:%Y-%m-%d %H:%M}",
-        "format-alt": "{:%a, %d %b %Y - %H:%M}"
+        // "format-alt": "{:%a, %d %b %Y - %H:%M}"
+        // "interval": 1,
+        "format-alt": "{:%H:%M}"
      },
     "cpu": {
         "format": "{usage}% ",
@@ -176,6 +175,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}",
+         "tooltip": false,
         "format-bluetooth": "{icon}",
         "format-bluetooth-muted": " {icon}",
         "format-muted": " ",

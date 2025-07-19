@@ -1109,6 +1109,7 @@ c.content.blocking.adblock.lists = [
   "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
   "https://easylist.to/easylist/fanboy-social.txt"
   "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
   "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-general.txt",

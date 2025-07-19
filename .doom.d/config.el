@@ -8,10 +8,6 @@
       doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
 
 ;; Initial buffer
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
-(add-to-list 'default-frame-alist '((font . "Aporetic Sans Mono :size 17")))
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
 (setq initial-scratch-message " ")
 (setq initial-major-mode 'lisp-mode)
@@ -545,7 +541,7 @@ text and copying to the killring."
 (require 'elfeed-org)
 (after! elfeed
 (elfeed-org)
-(setq elfeed-search-filter "@1-days-ago +unread"
+(setq elfeed-search-filter "@7-days-ago +unread +blog"
       elfeed-search-title-min-width 80
       elfeed-show-entry-switch #'pop-to-buffer
       shr-max-image-proportion 0.6)
@@ -818,6 +814,12 @@ Make the new frame have the `prot-window-popup-frame' parameter."
 (prot-window-define-with-popup-frame org-capture)
 
 (add-hook 'org-capture-after-finalize-hook #'prot-window-delete-popup-frame)
+
+;; Testing this later in the config because something if cause errors
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+(add-to-list 'default-frame-alist '((font . "Aporetic Sans Mono :size 17")))
 
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))
