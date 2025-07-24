@@ -137,6 +137,7 @@
       org-agenda-span 'day
       org-agenda-start-on-weekday nil
       org-agenda-start-day nil
+      org-todo-repeat-to-state "TODO"
       org-log-into-drawer t
       org-agenda-start-with-log-mode t
       org-columns-default-format "%50ITEM(Task) %2PRIORITY(Priority) %10Effort(Effort){:} %10CLOCKSUM(Clocked)"
@@ -234,11 +235,7 @@
 
 ;; Org Agenda Custom Commands
 (setq org-agenda-custom-commands
- '(("f" "+fleeting"
-    ((tags "+@fleeting"
-           ((org-agenda-overriding-header "Fleeting"))
-           )))
-      ("i" "+@inbox"
+ '(("i" "+@inbox"
     ((tags-todo "+@inbox"
            ((org-agenda-overriding-header "@inbox"))
            )))
@@ -254,51 +251,39 @@
 (after! org
   (setq org-tag-alist
         '(
-             ("@art")
-             ("@call")
-             ("@email")
-             ("@errand")
-             ("@games")
-             ("@home")
-             ("@idea")
-             ("@listen")
-             ("@post")
-             ("@read")
-             ("@research")
-             ("@sys")
-             ("@watch")
-             ("@web")
-             ("@per")
-             ("@na")
-             ("@work")
-             ("@fleeting")
-             ("posted")
-             ("@inbox")
-             ("@recur")
+             ("@art" . ?a)
+             ("@blog" .?b)
+             ("@call" .?c)
+             ("@email" .?m)
+             ("@errand" .?e)
+             ("@home" . ?h)
+             ("@inbox" . ?i)
+             ("@na" . ?n)
+             ("@per"  . ?p)
+             ("@post" . ?o)
+             ("@read" .?d)
+             ("@research" .?r)
+             ("@sys" . ?s)
+             ("@work" . ?w)
+             ("@zk" .?z)
                ))
   (setq org-tag-alist-for-agenda
         '(
-             ("@art")
-             ("@call")
-             ("@email")
-             ("@errand")
-             ("@games")
-             ("@home")
-             ("@idea")
-             ("@listen")
-             ("@post")
-             ("@read")
-             ("@research")
-             ("@sys")
-             ("@watch")
-             ("@web")
-             ("@per")
-             ("@na")
-             ("@work")
-             ("@fleeting")
-             ("posted")
-             ("@inbox")
-             ("@recur")
+             ("@art" . ?a)
+             ("@blog" .?b)
+             ("@call" .?c)
+             ("@email" .?m)
+             ("@errand" .?e)
+             ("@home" . ?h)
+             ("@inbox" . ?i)
+             ("@na" . ?n)
+             ("@per"  . ?p)
+             ("@post" . ?o)
+             ("@read" .?d)
+             ("@research" .?r)
+             ("@sys" . ?s)
+             ("@work" . ?w)
+             ("@zk" .?z)
                )))
 
 ;; Keybinds
