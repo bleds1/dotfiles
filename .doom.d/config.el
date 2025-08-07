@@ -2,10 +2,10 @@
 ;; NOTE:This config is my non-evil setup and very much a work in progress
 
 ;; Fonts
-(setq doom-font (font-spec :family "Aporetic Sans Mono" :size 17)
-      doom-big-font (font-spec :family "Aporetic Sans Mono" :size 19)
-      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
-      doom-variable-pitch-font (font-spec :family "Aporetic Serif" :size 17))
+(setq doom-font (font-spec :family "Adwaita Mono" :size 16)
+      doom-big-font (font-spec :family "Adwaita Mono" :size 18)
+      doom-serif-font (font-spec :family "Adwaita Mono" :size 16)
+      doom-variable-pitch-font (font-spec :family "Adwaita Mono" :size 16))
 
 ;; Initial buffer
 (setq initial-buffer-choice (lambda () (get-buffer-create "*scratch*")))
@@ -251,41 +251,40 @@
 (after! org
   (setq org-tag-alist
         '(
-             ("@art" . ?a)
-             ("@blog" .?b)
-             ("@call" .?c)
-             ("@email" .?m)
-             ("@errand" .?e)
-             ("@home" . ?h)
-             ("@inbox" . ?i)
-             ("@na" . ?n)
-             ("@per"  . ?p)
-             ("@post" . ?o)
-             ("@read" .?d)
-             ("@research" .?r)
-             ("@sys" . ?s)
-             ("@work" . ?w)
-             ("@zk" .?z)
+             ("@art")
+             ("@blog")
+             ("@call")
+             ("@email")
+             ("@errand")
+             ("@home")
+             ("@inbox")
+             ("@na")
+             ("@per")
+             ("@post")
+             ("@read")
+             ("@research")
+             ("@sys")
+             ("@work")
+             ("@zk")
                ))
   (setq org-tag-alist-for-agenda
         '(
-             ("@art" . ?a)
-             ("@blog" .?b)
-             ("@call" .?c)
-             ("@email" .?m)
-             ("@errand" .?e)
-             ("@home" . ?h)
-             ("@inbox" . ?i)
-             ("@na" . ?n)
-             ("@per"  . ?p)
-             ("@post" . ?o)
-             ("@read" .?d)
-             ("@research" .?r)
-             ("@sys" . ?s)
-             ("@work" . ?w)
-             ("@zk" .?z)
+            ("@art")
+             ("@blog")
+             ("@call")
+             ("@email")
+             ("@errand")
+             ("@home")
+             ("@inbox")
+             ("@na")
+             ("@per")
+             ("@post")
+             ("@read")
+             ("@research")
+             ("@sys")
+             ("@work")
+             ("@zk")
                )))
-
 ;; Keybinds
 (defun jethro/org-capture-inbox ()
   (interactive)
@@ -565,14 +564,14 @@ text and copying to the killring."
 (use-package! pass)
 
 ;; Org alert package
-(use-package! org-alert
-  :custom (alert-default-style 'libnotify)
-  :config
-  (setq org-alert-interval 1800
-        org-alert-notify-cutoff 15
-        org-alert-notify-after-event-cutoff 60
-        org-alert-notification-title "Upcoming Task")
-  (org-alert-enable))
+;; (use-package! org-alert
+;;   :custom (alert-default-style 'libnotify)
+;;   :config
+;;   (setq org-alert-interval 1800
+;;         org-alert-notify-cutoff 15
+;;         org-alert-notify-after-event-cutoff 60
+;;         org-alert-notification-title "Upcoming Task")
+;;   (org-alert-enable))
 
 ;; Nov epub reader (from Tecosaur modifed)
 (use-package! nov
@@ -719,35 +718,35 @@ The optional argument IGNORED is not used."
     (global-set-key (kbd "C-x 3") #'hsplit-last-buffer))
 
 ;; ibuffer custom groups
-(after! ibuffer
-(setq ibuffer-saved-filter-groups
-  (quote (("default"
-              ("Org" (or
-                     (mode . org-mode)
-                     (name . "^\\*Org Src")
-                     (name . "^\\*Org Agenda\\*$")))
-              ("Lisp" (or
-                     (mode . emacs-lisp-mode)
-                     (mode . ielm-mode)
-                     (name . "^\\*scratch\\*$")
-                     (mode . lisp-mode)))
-             ("Dired" (mode . dired-mode))
-             ("LaTeX" (or (mode . latex-mode)
-                    (filename . “LaTeXMode”)))
-             ("Markdown/Text" (or
-                      (mode . markdown-mode)
-                      (mode . text-mode)))
-             ("Shell" (or
-                     (mode . term-mode)
-                     (mode . vterm-mode)
-                     (mode . eshell-mode)))
-             ("Git" (or
-                    (name . "^\\*magit")))
-            ))))
-(add-hook 'ibuffer-mode-hook
-  (lambda ()
-    (ibuffer-switch-to-saved-filter-groups "default")))
-(setq ibuffer-show-empty-filter-groups nil))
+;; (after! ibuffer
+;; (setq  ibuffer-show-empty-filter-groups nil
+;;        ibuffer-saved-filter-groups
+;;        (quote (("default"
+;;               ("Org" (or
+;;                      (mode . org-mode)
+;;                      (name . "^\\*Org Src")
+;;                      (name . "^\\*Org Agenda\\*$")))
+;;               ("Lisp" (or
+;;                      (mode . emacs-lisp-mode)
+;;                      (mode . ielm-mode)
+;;                      (name . "^\\*scratch\\*$")
+;;                      (mode . lisp-mode)))
+;;              ("Dired" (mode . dired-mode))
+;;              ("LaTeX" (or (mode . latex-mode)
+;;                     (filename . “LaTeXMode”)))
+;;              ("Markdown/Text" (or
+;;                       (mode . markdown-mode)
+;;                       (mode . text-mode)))
+;;              ("Shell" (or
+;;                      (mode . term-mode)
+;;                      (mode . vterm-mode)
+;;                      (mode . eshell-mode)))
+;;              ("Git" (or
+;;                     (name . "^\\*magit")))
+;;             )))))
+;; (add-hook 'ibuffer-mode-hook
+;;   (lambda ()
+;;     (ibuffer-switch-to-saved-filter-groups "default")))
 
 ;; Function to replicate evil's o insert newline below from: EmacsRedux
 (defun er-smart-open-line ()
@@ -804,7 +803,7 @@ Make the new frame have the `prot-window-popup-frame' parameter."
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
-(add-to-list 'default-frame-alist '((font . "Aporetic Sans Mono :size 17")))
+(add-to-list 'default-frame-alist '((font . "Adwaita Mono :size 16")))
 
 ;; Load private config file with credentials/email
 (load! (concat doom-user-dir "private"))

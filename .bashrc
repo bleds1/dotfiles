@@ -84,18 +84,18 @@ alias lt="eza -aT --color=always --group-directories-first"
 alias nmtrash="notmuch search --format=text0 --output=files tag:trash | xargs -0 --no-run-if-empty rm"
 
 # Directory Shortcuts
-alias sba="cd ~/sba/"
+alias blog="cd ~/bledsblog/"
 alias scrip="cd ~/.scripts/"
 alias doc="cd ~/Documents//"
 alias dl="cd ~/Downloads/"
 alias pic="cd ~/Pictures/"
-alias .="cd ~/dotfiles/"
+alias dots="cd ~/dotfiles/"
 alias cfg="cd ~/.config/"
 alias vid="cd ~/Videos/"
 alias mus="cd ~/Music/"
 alias org="cd ~/org/"
 alias roam="cd ~/org/roam/"
-alias nn="v ~/org/roam/fleeting/$(date +%Y%m%d%H%M).org"
+alias nn="v ~/Documents/writing/Drafts/$(date +%Y%m%d%H%M).md"
 
 # Grep colours
 alias grep="grep --color=auto"

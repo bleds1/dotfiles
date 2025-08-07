@@ -7,6 +7,7 @@
     "spacing": 0, // Gaps between modules (4px)
 
     "modules-left": [
+        // "custom/logo",
         "hyprland/workspaces",
         "hyprland/window",
     ],
@@ -14,7 +15,7 @@
     ],
     "modules-right": [
         "custom/hidesync",
-        "custom/notmuch",
+        // "custom/notmuch",
         "pulseaudio",
         "network",
         "battery",
@@ -29,7 +30,14 @@
           "format": "{id}"
                },
 
-    "custom/logo": {
+   "custom/logo": {
+        "format": " 󰖯 ",
+        "on-click": "rofi -show window",
+        "tooltip": false,
+    },
+
+
+    "custom/logo-2": {
         "format": " 󰣇  {} ",
         "interval": 3600,
         "max-length": 20,
@@ -119,10 +127,10 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "tooltip": false,
-        "format": "  {:%Y-%m-%d %H:%M}",
+        "format-alt": "  {:%Y-%m-%d %H:%M}",
         // "format-alt": "{:%a, %d %b %Y - %H:%M}"
         // "interval": 1,
-        "format-alt": "{:%H:%M}"
+        "format": "{:%H:%M}"
      },
     "cpu": {
         "format": "{usage}% ",

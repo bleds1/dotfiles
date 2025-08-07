@@ -12,7 +12,7 @@ color = 2e3440 81a1c1
 
 [colors]
 foreground = d8dee9
-background = 000000
+background = 1e1e1e
 
 # selection-foreground = d8dee9
 # selection-background = 4c566a
