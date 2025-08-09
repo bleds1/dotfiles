@@ -74,4 +74,10 @@
 
 (package! elfeed-goodies :disable t)
 
+(package! auto-dark)
+
+(package! adwaita-dark-theme)
+
+(package! catppuccin-theme)
+
 ;;packages.el ends

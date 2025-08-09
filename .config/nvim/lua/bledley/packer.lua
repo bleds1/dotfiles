@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
    use ('norcalli/nvim-colorizer.lua')
    use ("folke/zen-mode.nvim")
    use ('nvim-tree/nvim-web-devicons')
+   use ('Mofiqul/adwaita.nvim')
    use ({
        'projekt0n/github-nvim-theme',
     require('github-theme').setup({

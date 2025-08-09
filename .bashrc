@@ -1,7 +1,10 @@
 # ~/.bashrc
 export EDITOR='emacsclient -nw'
 export VISUAL='emacsclient -c -a ""'
-#
+
+# export EDITOR='nvim'
+# export VISUAL='zeditor'
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -42,14 +45,16 @@ alias ff="clear && fastfetch"
 alias open="xdg-open"
 alias q="exit"
 alias v="nvim"
+alias z="zeditor"
 # search for directory to cd into with fzf
 alias sd="cd ~ && cd \$(find * -type d | fzf)"
 alias sdn="shutdown -h now"
-alias zat="zathura"
 alias tree="tree -C" #colour for tree
 
 # Emacs
+# terminal emacsclient
 alias e="emacsclient -nw"
+# gui emacsclient
 alias ec='emacsclient -c -a ""'
 
 # git abbrevs
